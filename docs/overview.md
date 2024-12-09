@@ -1,0 +1,17 @@
+---
+sidebar_position: 1
+---
+
+# Overview
+
+Voucherly offers a prebuilt, optimized payment environment that lets merchants easily and securely accept payments online, integrating a large number of payment gateways and accept meal vouchers.
+
+This means that there will be no need to integrate each individual payment gateway on the merchant's website, but Voucherly will take care of everything.
+
+Customer will be redirected to the Voucherly Checkout page on which he can choose from numerous voucher payment gateways and not, and complete his order easily and securely. See [here](resources/payment-gateways#full-list-of-available-payment-gateways) for a full list of supported payment gateways.
+
+This documentation is aimed at developers who intend to integrate Voucherly on the merchant's website.
+
+
+#### Postman collection
+It's available a Postman Collection so you can already start using our APIs. Download [here](ciccio).
