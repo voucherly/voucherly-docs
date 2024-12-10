@@ -4,7 +4,7 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "api/webapi/sberempay",
+      id: "api/webapi/voucherly",
     },
     {
       type: "category",
@@ -13,13 +13,13 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/webapi/get-customer-payment-methods",
-          label: "GetCustomerPaymentMethods",
+          label: "Get Customer PaymentMethods",
           className: "api-method get",
         },
         {
           type: "doc",
           id: "api/webapi/delete-customer-payment-method",
-          label: "DeleteCustomerPaymentMethod",
+          label: "Delete Customer PaymentMethod",
           className: "api-method delete",
         },
       ],
@@ -31,7 +31,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/webapi/create-merchant",
-          label: "CreateMerchant",
+          label: "Create Merchant",
           className: "api-method post",
         },
       ],
@@ -43,7 +43,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/webapi/get-payment-gateways",
-          label: "GetPaymentGateways",
+          label: "Get PaymentGateways",
           className: "api-method get",
         },
       ],
@@ -55,19 +55,19 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/webapi/create-payment-link",
-          label: "CreatePaymentLink",
+          label: "Create PaymentLink",
           className: "api-method post",
         },
         {
           type: "doc",
           id: "api/webapi/get-payment-link",
-          label: "GetPaymentLink",
+          label: "Get PaymentLink",
           className: "api-method get",
         },
         {
           type: "doc",
           id: "api/webapi/update-payment-link",
-          label: "UpdatePaymentLink",
+          label: "Update PaymentLink",
           className: "api-method put",
         },
       ],
@@ -79,25 +79,25 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/webapi/create-payment",
-          label: "CreatePayment",
+          label: "Create Payment",
           className: "api-method post",
         },
         {
           type: "doc",
           id: "api/webapi/get-payment",
-          label: "GetPayment",
+          label: "Get Payment",
           className: "api-method get",
         },
         {
           type: "doc",
           id: "api/webapi/confirm-payment",
-          label: "ConfirmPayment",
+          label: "Confirm Payment",
           className: "api-method post",
         },
         {
           type: "doc",
           id: "api/webapi/refund-payment",
-          label: "RefundPayment",
+          label: "Refund Payment",
           className: "api-method post",
         },
       ],

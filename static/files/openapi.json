@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "SberemPay",
+    "title": "Voucherly",
     "description": "",
     "contact": {
       "name": "Francesco Bognini",
@@ -15,7 +15,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "GetCustomerPaymentMethods",
+        "operationId": "Get Customer PaymentMethods",
         "parameters": [
           {
             "name": "customerId",
@@ -55,7 +55,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "DeleteCustomerPaymentMethod",
+        "operationId": "Delete Customer PaymentMethod",
         "parameters": [
           {
             "name": "customerId",
@@ -116,7 +116,7 @@
         "tags": [
           "Merchants"
         ],
-        "operationId": "CreateMerchant",
+        "operationId": "Create Merchant",
         "requestBody": {
           "content": {
             "application/json": {
@@ -159,7 +159,7 @@
         "tags": [
           "PaymentGateway"
         ],
-        "operationId": "GetPaymentGateways",
+        "operationId": "Get PaymentGateways",
         "parameters": [
           {
             "name": "All",
@@ -209,7 +209,7 @@
         "tags": [
           "PaymentLinks"
         ],
-        "operationId": "CreatePaymentLink",
+        "operationId": "Create PaymentLink",
         "requestBody": {
           "content": {
             "application/json": {
@@ -259,7 +259,7 @@
         "tags": [
           "PaymentLinks"
         ],
-        "operationId": "GetPaymentLink",
+        "operationId": "Get PaymentLink",
         "parameters": [
           {
             "name": "id",
@@ -297,7 +297,7 @@
         "tags": [
           "PaymentLinks"
         ],
-        "operationId": "UpdatePaymentLink",
+        "operationId": "Update PaymentLink",
         "parameters": [
           {
             "name": "id",
@@ -347,7 +347,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "CreatePayment",
+        "operationId": "Create Payment",
         "requestBody": {
           "content": {
             "application/json": {
@@ -397,7 +397,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "GetPayment",
+        "operationId": "Get Payment",
         "parameters": [
           {
             "name": "id",
@@ -456,7 +456,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "ConfirmPayment",
+        "operationId": "Confirm Payment",
         "parameters": [
           {
             "name": "id",
@@ -516,7 +516,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "RefundPayment",
+        "operationId": "Refund Payment",
         "parameters": [
           {
             "name": "id",
