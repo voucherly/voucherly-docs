@@ -1,0 +1,71 @@
+---
+id: create-merchant
+title: "CreateMerchant"
+description: "CreateMerchant"
+sidebar_label: "CreateMerchant"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1z2kAM/SsZnV1I0pw4ldBmmkMok6TtgeEgewVsYu86uzIJw/DfO/JibPLRbmfansoF0GolrfT0pA0wLjwMpnBFLluiYQ+zBGxJDllbc6lgACNHyNQoQAKOHiryfG7VGgYbyKxhMiw/sSxzndVX+3feGpH5bEkFyi9elwQDsOkdZWKndOKINXk5NVhQR8uz02YBCZgqzzHNCQbsKtomkFZeG/L+0sytK2pnv7beXBrHelkhj6siJRelzfg0sirOsmdHxEOlHHkfdaO0njGPdpBpXsfZdXalTRZp1VaGXZxhr3RcAJRF6G0TQKW0FBrzSaesc8w9JcCaRRduUnJUTHDd+07psNS9z2hUTs739ujuHYJ5ZIsCjdqfn78CrTpM52NARgXqPOrhc+08R2Mxx2jlf5erSUjK3/cIW/EhpKMdqX1SHPnSGh8yf3p8Il+KfOZ0GShhR1xKKnh2fPzy/BzV0XXgMkj+FI2F0xjKCHmJIgzkqssU2jAtyEECAaZB9P70tcuKOBaU2njGeDqIZKMSHRbEUUQai6V5ahdGGy1QuhDzj9bdt4CaOJvmVPjex/rxpL5hrlVdz91ROPACrRodZy/RMbZ8dGEro/5j4/ew8WYRN+3L4Epnzno7597Ql2PikXXUu1plvVcKVEf6srE7G0lBvLSyq8iklLQjL2EA/dVJv2jIpe/1wlQlJCBlu253mE9PWJQh3WEHaV/2xqpxuEy06p2doRXuV4NW9GwDaA+6g76Vhnne0dqP7Y5OM507XmQId27JrG3+Hgy13dhqVTvTqRW2Q2hvpMbF3NaYeM7y8LxouzbCjDuZvnACKp/Zo/PQ0ZDswxHTH+aNQtPxmS0k+hU5H+yuTmC3IhVoOqYDSI46KDmIZw9jpifulznqetRXru6HAKCpGBd0NbtxAjsQzRJYCtQGU9hsUvT01eXbrYgfKpIyTGcCB6dDX0xn2wSWhEqgMd3APUmlRoFV3t1KIKKeVxLQC4bZJs2NYZZRyT/VnXW6YfLl5lZQvFvUi4Arh4+yxONjKIqtE1JTSC3bQI5mUeFCdINN+fwAG6pFlQ==
+sidebar_class_name: "post api-method"
+info_path: docs/api/sberempay
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CreateMerchant"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/merchants/signup"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+CreateMerchant
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","nullable":true},"businessInformation":{"type":"object","properties":{"businessName":{"type":"string","nullable":true},"vatNumber":{"type":"string","nullable":true},"taxCode":{"type":"string","nullable":true},"streetAddress":{"type":"string","nullable":true},"postalCode":{"type":"string","nullable":true},"city":{"type":"string","nullable":true},"province":{"type":"string","nullable":true},"country":{"type":"string","nullable":true},"sdi":{"type":"string","nullable":true},"pec":{"type":"string","nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantBusinessInformation"},"person":{"type":"object","properties":{"email":{"type":"string","nullable":true},"firstName":{"type":"string","nullable":true},"lastName":{"type":"string","nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantPerson"}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Created"},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"Microsoft.AspNetCore.Mvc.ProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

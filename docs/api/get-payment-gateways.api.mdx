@@ -1,0 +1,71 @@
+---
+id: get-payment-gateways
+title: "GetPaymentGateways"
+description: "GetPaymentGateways"
+sidebar_label: "GetPaymentGateways"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vslu2zAQ/RVjTi1AOEt70qlZmtSHFkbS5WAYxYgc20woUiFHSQ1D/15Qkm3ZVhod0pxskY+zvHkczgoY5wGSCYxxmZHla2R6wiVMBbicPLJ2dqQggWviXUgAATl6zIjJRxMrsJgRJHBmDAjQFhJ4KMgvQUCQC8oQkhXwMo+Y1DlDaKEsxebcyEpTKNo/6+mh0J4UJOwL6rCF3mMEaqYstNYDe23nUJblNFoJubOBKsDp8XH8URSk13nMERK4LaSkENOSzjJZjhDMc6NlRcPRXYi41WEALr0jyZEPH0ljXXvZj+e5OJ87rg5zEWALYzA1VLNRioa8HkCd4bwfUi5I3ruCR71PaFlT8yIwrzV0JmvSV0C2yCCZHIsTcToVawPaMs3Jg4CZ8xlyvfThFASw5mgPblPylI1xObx0GWo73JPn8KLJovEVowzx/yN16VBARl4u0PKFszM9L2rtv1wmRTMszN7lGPWrnQ5XaEyK8r77agAqpWMYaMYtpzM0gbqY+EXpWa6HX9AqQz4cUPK1SXF3/ZIdlLuX+T9rduY1WWWW33prN9yS9MTdlXtEU/Sx8/qE7n6P1ww2jL6x+7fyevgUdCzdNP02tt9SwMeujnuOanBDDwUFfr2uW+/20FSTeA9kYOSirf5/tKeDw4oYtemnchsYrezZpJ3qB9zc61e8IbPUza22OmrlKpp/cv6+pRjvUkNZGF5WyZP6iUarqp7NVr0RKnVUJLV10TlrZMQLFyeROVVFR15AAkePJ0fNm/J7vgVrO3NVuvvihn1fjfBQVsJrJpErH8sQpBuc13mCAMqqMlamP83WgDUP0mVVJyIfaruPJ1VPdYEztC3T18SDJrlBK7udoDZlYvrDR7lBXbW5wlcyqjOfRA+b93Sb+1TAwgWOgNUqxUA/vCnLuFzPU3FOUzrEmqtNWe9puZnbmmYKECezA+RenJs7C+9umjHt/QBEd/y1l+2Ut/U0jR9e10KcTEsBC0IVFTtZrYOTknJunTroEdHKRiTXn79DWf4F7yPRNA==
+sidebar_class_name: "get api-method"
+info_path: docs/api/sberempay
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GetPaymentGateways"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/payment_gateways"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+GetPaymentGateways
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"All","in":"query","schema":{"type":"boolean"}},{"name":"Include","in":"query","required":true,"schema":{"type":"array","items":{"type":"string"}}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"items":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":true},"name":{"type":"string","nullable":true},"image":{"type":"string","nullable":true},"checkoutImage":{"type":"string","nullable":true},"icon":{"type":"string","nullable":true},"paymentAction":{"enum":[0,1,2],"type":"integer","format":"int32","title":"SberemPay.Domain.PaymentGateways.CheckoutAction"},"isActive":{"type":"boolean"},"merchantConfiguration":{"type":"object","properties":{"defaultPaymentGatewayId":{"type":"string","nullable":true},"isFallback":{"type":"boolean"}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.PaymentGateways.MerchantPaymentGatewayDto"},"parameters":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":true},"friendlyName":{"type":"string","nullable":true},"isSecret":{"type":"boolean"},"value":{"type":"string","nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.PaymentGateways.PaymentGatewayParameterDto"},"nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.PaymentGateways.PaymentGatewayDto"},"nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.PaymentGateways.GetPaymentGateways.GetPaymentGatewaysResponse"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

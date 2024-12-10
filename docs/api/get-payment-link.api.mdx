@@ -1,0 +1,71 @@
+---
+id: get-payment-link
+title: "GetPaymentLink"
+description: "GetPaymentLink"
+sidebar_label: "GetPaymentLink"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1V9tu20YQ/RVhnlpgIdmO0Qc+VbVq10DiCnWCPghCMdodSpvshd4dqhYE/nuwJOWyFgNTavOkC+dyZs7Z2eEeGNcRsgXMcWfJ8XvtvkRYCvAFBWTt3b2CDO6IOwYgoMCAlphCct6DQ0uQgVYgQDvIoEDegIBAT6UOpCDjUJKAKDdkEbI98K5IHpGDdmuoqmUyjoV3kWJ6fnVxkT4URRl0kYBABo+llBQjCJDeMTlOJlgURssa6+RzTHb74zx+9ZkkJ+AhVca6yaLVMRYBrjQGV4Ya1FVCllMgJ+l+mL2OU8l6Sx3jlfeG0EEloAxmUBTMmcKNt4WhVNyngW4NFwMMLT4/+N/ztqktv7Hjqh3TmgIIyH2wyM1f7656s54XqRJg0K1LXA/DLH3pOOwG2UYyJJlUi+cOmf7GYa7Fv1y6lWAIuEsqZ7KxR8i9aphjYI2mBdKvinj1OJRhHacl+xvvch1sT7Qel9x7NbWpeW+y8tN1gsOe0ZzkoXSs2TnJKdfuxDR4irHRjoaw943x8FSiY827gUounT6t+uQwO6dtZ/X6dEprj7MAns5rEbwqJT8MnV6t/ax7QQx3u7dDJ46Ot96rvjObxKiUTqnRzDvCydFEEsCaUxx4XFEgO8fd+E9aTQs9/g2dMhTiuHvpdn+8145m7HunyYH6/yDrQ4jBvT44nNrsk85qY7IHcqWFbHEprsS7pXjz3PX1eeYtanfoaBwfJPwxxaoEbNGUNARWnx6couezLsnvp5dDff2a+Y55U74qJbi+uD5e1x48j2596dT/t7AdRPKm9NqihqwJjFyeu/YoYtQDb20XGZ0cAuqbjO3/qQw+aBl89DmPp7F4IL7xgcYftnI8D35lyM5qaLEmqEbapeZoobfEmzTmYE1119P+nsFkezlpd6G/TGJ/steqqpf83NeFvNYOvM7Uco+y5r59UbgNqRNR+tEvfu200yCAbN3JOvTP+cFg1TwfS2/rk0shNnG3l/Wt4SNbdJ3Qd8SjtrRRW5vqHVtMzzwpDOruUt7UvUjRX7bApnIQkGmVXo02PnKy2e9XGOlTMFWV/n4qKS2mi2WaL0E3dC7qaZu+q5fz9grOy8mAH/5oX5d+HIHoh3kY+C41uh1jqcVfaNe8f1XLSsCGUFGoszcPplJSwR2XozOYXsBeNHD360eoqq89luSs
+sidebar_class_name: "get api-method"
+info_path: docs/api/sberempay
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GetPaymentLink"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/payment_links/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+GetPaymentLink
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","nullable":true},"referenceId":{"type":"string","nullable":true},"isActive":{"type":"boolean"},"url":{"type":"string","nullable":true},"afterCompletionUrl":{"type":"string","nullable":true},"name":{"type":"string","nullable":true},"maxNoOfSuccessPayments":{"type":"integer","format":"int32","nullable":true},"noOfSuccessPayments":{"type":"integer","format":"int32"},"language":{"type":"string","nullable":true},"country":{"type":"string","nullable":true},"selectedPaymentGateway":{"type":"string","nullable":true},"paymentGateways":{"type":"array","items":{"type":"string"},"nullable":true},"isPartialPayment":{"type":"boolean"},"s2SUrl":{"type":"string","nullable":true},"isAutoConfirm":{"type":"boolean","nullable":true},"foodAmount":{"type":"integer","format":"int64"},"totalAmount":{"type":"integer","format":"int64"},"discountAmount":{"type":"integer","format":"int64"},"finalAmount":{"type":"integer","format":"int64"},"amount":{"type":"integer","format":"int64"},"lines":{"type":"array","items":{"type":"object","properties":{"quantity":{"type":"integer","format":"int32"},"unitAmount":{"type":"integer","format":"int64"},"unitDiscountAmount":{"type":"integer","format":"int64"},"discountAmount":{"type":"integer","format":"int64"},"totalAmount":{"type":"integer","format":"int64"},"totalDiscountAmount":{"type":"integer","format":"int64"},"finalAmount":{"type":"integer","format":"int64"},"productName":{"type":"string","nullable":true},"productDescription":{"type":"string","nullable":true},"productImage":{"type":"string","nullable":true},"isFood":{"type":"boolean"}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkLineDto"},"nullable":true},"discounts":{"type":"array","items":{"type":"object","properties":{"discountName":{"type":"string","nullable":true},"discountDescription":{"type":"string","nullable":true},"amount":{"type":"integer","format":"int64"},"type":{"enum":[1,2,3],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.DiscountType"},"value":{"type":"integer","format":"int64","nullable":true},"index":{"type":"integer","format":"int32","nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountDto"},"nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDto"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"Microsoft.AspNetCore.Mvc.ProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

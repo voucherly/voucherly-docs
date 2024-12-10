@@ -1,0 +1,71 @@
+---
+id: get-payment
+title: "GetPayment"
+description: "GetPayment"
+sidebar_label: "GetPayment"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1WG1PGzkQ/itoPt1JS0gCOl3z6SgpXKTSokIPnRAfJvaEuN21F3uWEkX730/elxDIcthp+gmUnTfPPJ55PEtgvHMwuoELXGSk2cFtAiYni6yMnkgYwRlx8xESyNFiRkzWKy1BY0YwAiUhAaVhBDnyHBKwdF8oSxJGbAtKwIk5ZQijJfAi9xqOrdJ3UJbJyshEi7SQ1Fq6L8guQkyhtegFFVPmulys+fjHFGJONl3sX6Pi/SuVrfzNCSVZ6HCgNNNd9WlmbIZc/3Q4hLK89fG53GhHlethv+//SHLCqtynEEZwWQhBzkECwmj2eRwtAfM8VaLK8sE35+WWm57N9BuJKu3W14RV7UXJzWMmoIs0xWlKdaLKBJg01s7eFLU0I0ta0CTMdGYkeUHSRQajm0EyTA5vkzcTlgAr9mbgckqWsgtc9MYmQ6V7Lf7af869h7ICHOkWgIHRicKxychGin/IUKVRGqfKOv5UQStC6yNGKDlKSTDJJgNnyPQDF0Gq+TMVF3FluoKfk/huCv5qw1LEhjE9zkzxDIHdyPjjyLuUygkvHqU0UzrSTY5KRis0fSNKD2OEHSMXbu1K9RN/qd69Swb9QTLoD5P9wW4v2GXtsUwgVZpC0PFKN7ovULPiRVDHTKDQKq7EXmG8DTa2AlQ8biuNrQKMBy/j4xfk9c6hi2z6XFiawl/EroZgjSxEeO9p5Mfr0yxcbZLhXZgf5U6NWe/VU2NSQu3pAaCUyrvG9GINdjNMHXWh/Zqmx7nq/Y1apmTdBuw/Kk1jNp09rgXMT1yG1kRwjluF2CRHdZda5JeM6xb4V95WmcADpgWFhNWFAy3pMaSNbOjuHiftuV7DClvUDoX3+BNw6WZyq9MWhZKwMckDaQ09MlmN6UQOIuWHkfKHgbf8GtOUuOOeewKK8rNOF9vh+2GL8azN51kz1t1WmKvo/EzZjOL4hKVZoWWkkiis5+dhxE9YkopP0Mq3ETi1qMPwlGNYZ6LHXNXPx0jxc6N5HlaKDbg8WfmX0G5ppBlcAWHH95umb540bwDXO1kVaaJnpuYrlvy0nSp+u24oqvYU2Asa6fdKxIhPpkEl30Eyxk9Hb7MxN6mMeZPV8uHvqlcI95815+6vePew398d9756mhot/97h6Fqz/trYyohRIncuGbrDePtx+AuGr4/eL27gqH+0uVD5ZHjv1BRa7m6l0jKkt9+19WGiELbFaJHEocBX2jFqERLUq5VaPp0MzpWwxpkZ945d/on4xFjqnT+I3oU105SycRWaqwpURbpemmfLwox47nk93FG9O/TtHQ4eBgcNoXEHSyXLagM3M1X8L6ECLx00Jce6TTdrvVPrE+CE2Xtv7rTSChKgunNUpv+atQLT+ntPmKwiDmRdbfdhUBEt4zirm15j+ox47+lEspOlMz3yQZ6i0tV7td6Q1Ke98YZXBM7vAEdK+h3r3Dj2n5fLKTr6atOy9D/XW0+/WpXK+crJ1TV64XsFfPjtS7Mi/X0Pku6YvtPi2Ya1YekAfoP5gFbVINm125YU68W6zzYcz21vfeeuN69x3v//pN173qdTJ8tG8FgIynnt20YT8RlaAfnswxWU5X8nLgNv
+sidebar_class_name: "get api-method"
+info_path: docs/api/sberempay
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GetPayment"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/payments/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+GetPayment
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"}},{"name":"Include","in":"query","required":true,"schema":{"type":"array","items":{"type":"string"}}},{"name":"Voucherly-Wait-Time","in":"header","schema":{"type":"integer","format":"int32"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","nullable":true},"tenant":{"type":"string","nullable":true},"referenceId":{"type":"string","nullable":true},"mode":{"enum":[1,2,3],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.PaymentMode"},"parentPaymentId":{"type":"string","nullable":true},"customerId":{"type":"string","nullable":true},"customerEmail":{"type":"string","nullable":true},"customerFirstName":{"type":"string","nullable":true},"customerLastName":{"type":"string","nullable":true},"selectedPaymentGateway":{"type":"string","nullable":true},"paymentGateways":{"type":"array","items":{"type":"string"},"nullable":true},"checkoutUrl":{"type":"string","nullable":true},"totalAmount":{"type":"integer","format":"int64"},"discountAmount":{"type":"integer","format":"int64"},"finalAmount":{"type":"integer","format":"int64"},"paidAmount":{"type":"integer","format":"int64"},"paidVoucherAmount":{"type":"integer","format":"int64"},"amount":{"type":"integer","format":"int64"},"status":{"enum":[0,1,2,99,101,102,-1],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.PaymentStatus"},"lines":{"type":"array","items":{"type":"object","properties":{"quantity":{"type":"integer","format":"int32"},"unitAmount":{"type":"integer","format":"int64"},"unitDiscountAmount":{"type":"integer","format":"int64"},"discountAmount":{"type":"integer","format":"int64"},"totalAmount":{"type":"integer","format":"int64"},"totalDiscountAmount":{"type":"integer","format":"int64"},"finalAmount":{"type":"integer","format":"int64"},"taxRate":{"type":"number","format":"double","nullable":true},"productName":{"type":"string","nullable":true},"productDescription":{"type":"string","nullable":true},"productImage":{"type":"string","nullable":true},"isFood":{"type":"boolean"}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.PaymentLineDto"},"nullable":true},"discounts":{"type":"array","items":{"type":"object","properties":{"discountName":{"type":"string","nullable":true},"discountDescription":{"type":"string","nullable":true},"amount":{"type":"integer","format":"int64"},"type":{"enum":[1,2,3],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.DiscountType"},"value":{"type":"integer","format":"int64","nullable":true},"index":{"type":"integer","format":"int32","nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.PaymentDiscountDto"},"nullable":true},"transactions":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"paymentGatewayId":{"type":"string","nullable":true},"externalId1":{"type":"string","nullable":true},"externalId2":{"type":"string","nullable":true},"externalId3":{"type":"string","nullable":true},"isWallet":{"type":"boolean","readOnly":true},"amount":{"type":"integer","format":"int64"},"voucherAmount":{"type":"integer","format":"int64"},"noOfVouchers":{"type":"integer","format":"int32","nullable":true},"confirmedAmount":{"type":"integer","format":"int64"},"refundedAmount":{"type":"integer","format":"int64"},"currency":{"type":"string","nullable":true},"creditCard":{"type":"object","properties":{"brand":{"type":"string","nullable":true},"pan":{"type":"string","nullable":true},"expiration":{"type":"string","nullable":true},"expirationMonth":{"type":"integer","format":"int32","readOnly":true},"expirationYear":{"type":"integer","format":"int32","readOnly":true},"product":{"type":"string","nullable":true}},"additionalProperties":false,"title":"SberemPay.Domain.Customers.CreditCardInfo"},"directDebit":{"type":"object","properties":{"accountId":{"type":"string","nullable":true},"accountBic":{"type":"string","nullable":true},"accountIban":{"type":"string","nullable":true}},"additionalProperties":false,"title":"SberemPay.Domain.Customers.DirectDebitInfo"},"holderEmail":{"type":"string","nullable":true},"holderName":{"type":"string","nullable":true},"status":{"enum":[0,1,2,98,99,100,101,102,200,-1],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.TransactionStatus"}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.TransactionDto"},"nullable":true},"metadata":{"type":"object","additionalProperties":{"type":"string"},"nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.PaymentDto"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"Microsoft.AspNetCore.Mvc.ProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

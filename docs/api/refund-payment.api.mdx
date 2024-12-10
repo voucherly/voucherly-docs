@@ -1,0 +1,71 @@
+---
+id: refund-payment
+title: "RefundPayment"
+description: "RefundPayment"
+sidebar_label: "RefundPayment"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWUtv2zgQ/ivBnHYBxrGdNG192jya3QBNG6QvLAwfRuQoZiuRKkklMQz99wVFyXYSZ0O5bveyucSQ5sWZj/PSHBxeWxiN4RJnOSlnYcJAF2TQSa3OBYzgitJSieY9MCjQYE6OjOebg8KcYARSAAOpYAQFuikwMPS9lIYEjJwpiYHlU8oRRnNws8JzWGekuoaqmgRisu5Yi5mn4Fo5r2w0ByyKTPLamr2vViv/7JEonXwlXttmvO1Okq3fGlQWuee1K9RoDM68tY5y+7wUKR4bzSDVJkcHIyhLKaBigLkug8kNqVSOrsms0krl9ofAQJVZhklGwTeV5xZCejsxu1xRnmJmiYGTztPCh4QM5Zc4632h5KiQvb9QiYyM7bXR690L1sfl+U90nqOqDf31yu1Ce+XVGbKFVjZ4d9jv+3+CLDey8NReV8k5WQtsW0hYH8MHnmDgSOG9GD5NaiglQ4rTeZzoXAvyhKTKHEbjARuy/QmLwMpj/5/qHKVaur35ceE1VPX9JOWah5HW8dI6nZPpSP4mR5l14jiTxrp3dcrowPUWOzBZyog7anH4Jzq6xVkUa3GPJSZntElsnfFT4t906T6ZOBc57TA7issihwdepZCWe/JOTKlUHdUUKEVnhs+65FMynfgiU2ggtg5daVeuVJ/5S/X6NRv0B2zQH7LdwXYv2IegsWKQSUU/UFG+l6icdLOYYlExKJXsFmLPcLoJNjYCVHfc1hwbGdgdvA7vrtCtZg5V5sl9YqFLfxHXJQSjRcnjc09Df7pazeLZznO8jtMj7ZnWq7k60TojVLDNct78eCsVnTq9Nse1gPmBy9CKiPZxy9DVyZ2ySyD5KeW6Bf5HL6ticINZSTFmrcOBEnT3X/eczY/2XE9h5Zd24/creWRbQ3eOjMLsXAw60g870u9H3vIvmGXk1txz34CieK+y2Wb4vtmgPCv9Pm3Kut0Ic3U7n0qTU7d+wtRzRUcmXhrfn8c1ftyQkO4EjXgegYnxo0xcOxmXmeiukGHg7kh+oZWbxoXiEVyWUv4mNBsKaQpXhNnd802TN0+aGcD2ThZBOlepDv2KIV9tE+mejxvyOj1F5oKG+ljyLuTnSVTIt+CM0+XRW29MdSa6zGSBPn6ueqLhfhV67v6i7x72+9vrvVfWCG3/vcXStSL9qbKVk0OBbu2SYb0Zzw+HP6H4euvr7crBuoXKMYqdq7Bj295Spe2Rnp9sw3E6YWyD4iLIxUJfKutQ8cgtRLO6icj3zWZ0iykgTfS1kkp6BJx58bfafFvBgdFJRrntndaHJ/EZMynqeDavwgu7QMfBY3S8027nTJdK/I+Nbth4Mojz5cngQnKjrU5d78gW78idaEO9ixveWxOg2tLV0Dxcvufkpn7wg0LbsIz3DQDs3Qz2mpbX7s2lqPZCzwQMfOSuluv1N3eYF43H7zXk49Bbw36Kr16khwe7L14OXu4evDgc7ib7Kd8d8teH++nhIaZ4CMtus19Nap+luhb5MHHBwwM1EMPQNDQfD86Md7jleuc4oB0YUKhjteg/0pagvQ1c53UbS8YGuTeDuu3X1uWhBDeigwN3lh4Ua8dGR3dur8hQqnqBElZ2wbljL3sxUfil9Kj+2NF4eOILqXWebj5P0NInk1WVf/y9JDOD0XjiZzwjA27G9cTrf4vFXX9g0uIKwm9XzUeU33eArTe1naKUd3UzSnonf6NZ+CpTx2dKKHxaGs+bFydBx249hC4ZH135irUcR5xT4f6VdrKCz8v3Hz4Cg6T5ohPW32Dw1nsOb4ORulhMg/WzOWSorst6CwJBpv/7B7mtQEM=
+sidebar_class_name: "post api-method"
+info_path: docs/api/sberempay
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"RefundPayment"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/payments/{id}/refund"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+RefundPayment
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"transactions":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"amount":{"type":"integer","format":"int32","nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.RefundPaymentTransactionCommand"},"nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.RefundPaymentTransactionsCommand"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","nullable":true},"tenant":{"type":"string","nullable":true},"referenceId":{"type":"string","nullable":true},"mode":{"enum":[1,2,3],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.PaymentMode"},"parentPaymentId":{"type":"string","nullable":true},"customerId":{"type":"string","nullable":true},"customerEmail":{"type":"string","nullable":true},"customerFirstName":{"type":"string","nullable":true},"customerLastName":{"type":"string","nullable":true},"selectedPaymentGateway":{"type":"string","nullable":true},"paymentGateways":{"type":"array","items":{"type":"string"},"nullable":true},"checkoutUrl":{"type":"string","nullable":true},"totalAmount":{"type":"integer","format":"int64"},"discountAmount":{"type":"integer","format":"int64"},"finalAmount":{"type":"integer","format":"int64"},"paidAmount":{"type":"integer","format":"int64"},"paidVoucherAmount":{"type":"integer","format":"int64"},"amount":{"type":"integer","format":"int64"},"status":{"enum":[0,1,2,99,101,102,-1],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.PaymentStatus"},"lines":{"type":"array","items":{"type":"object","properties":{"quantity":{"type":"integer","format":"int32"},"unitAmount":{"type":"integer","format":"int64"},"unitDiscountAmount":{"type":"integer","format":"int64"},"discountAmount":{"type":"integer","format":"int64"},"totalAmount":{"type":"integer","format":"int64"},"totalDiscountAmount":{"type":"integer","format":"int64"},"finalAmount":{"type":"integer","format":"int64"},"taxRate":{"type":"number","format":"double","nullable":true},"productName":{"type":"string","nullable":true},"productDescription":{"type":"string","nullable":true},"productImage":{"type":"string","nullable":true},"isFood":{"type":"boolean"}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.PaymentLineDto"},"nullable":true},"discounts":{"type":"array","items":{"type":"object","properties":{"discountName":{"type":"string","nullable":true},"discountDescription":{"type":"string","nullable":true},"amount":{"type":"integer","format":"int64"},"type":{"enum":[1,2,3],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.DiscountType"},"value":{"type":"integer","format":"int64","nullable":true},"index":{"type":"integer","format":"int32","nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.PaymentDiscountDto"},"nullable":true},"transactions":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid"},"paymentGatewayId":{"type":"string","nullable":true},"externalId1":{"type":"string","nullable":true},"externalId2":{"type":"string","nullable":true},"externalId3":{"type":"string","nullable":true},"isWallet":{"type":"boolean","readOnly":true},"amount":{"type":"integer","format":"int64"},"voucherAmount":{"type":"integer","format":"int64"},"noOfVouchers":{"type":"integer","format":"int32","nullable":true},"confirmedAmount":{"type":"integer","format":"int64"},"refundedAmount":{"type":"integer","format":"int64"},"currency":{"type":"string","nullable":true},"creditCard":{"type":"object","properties":{"brand":{"type":"string","nullable":true},"pan":{"type":"string","nullable":true},"expiration":{"type":"string","nullable":true},"expirationMonth":{"type":"integer","format":"int32","readOnly":true},"expirationYear":{"type":"integer","format":"int32","readOnly":true},"product":{"type":"string","nullable":true}},"additionalProperties":false,"title":"SberemPay.Domain.Customers.CreditCardInfo"},"directDebit":{"type":"object","properties":{"accountId":{"type":"string","nullable":true},"accountBic":{"type":"string","nullable":true},"accountIban":{"type":"string","nullable":true}},"additionalProperties":false,"title":"SberemPay.Domain.Customers.DirectDebitInfo"},"holderEmail":{"type":"string","nullable":true},"holderName":{"type":"string","nullable":true},"status":{"enum":[0,1,2,98,99,100,101,102,200,-1],"type":"integer","format":"int32","title":"SberemPay.Domain.Payments.TransactionStatus"}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.TransactionDto"},"nullable":true},"metadata":{"type":"object","additionalProperties":{"type":"string"},"nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Payments.PaymentDto"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"Microsoft.AspNetCore.Mvc.ProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

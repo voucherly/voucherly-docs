@@ -1,6 +1,8 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type * as Plugin from "@docusaurus/types/src/plugin";
+import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -45,7 +47,9 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: "/",   // Docs-only mode (https://docusaurus.io/docs/docs-introduction#docs-only-mode)
           sidebarPath: './sidebars.ts',
+          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -86,12 +90,15 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'documentationSidebar',
           position: 'left',
           label: 'Documentation',
         },
         {
-          to: '/api', label: 'API', position: 'left'},
+          to: '/api', 
+          label: 'API', 
+          position: 'left'
+        },
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
@@ -154,6 +161,26 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "api", // plugin id
+        docsPluginId: "classic", // configured for preset-classic
+        config: {
+          petstore: {
+            specPath: "static/files/openapi.json",
+            outputDir: "docs/api",
+            sidebarOptions: {
+              // groupPathsBy: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+        }
+      },
+    ]
+  ],
+  themes: ["docusaurus-theme-openapi-docs"], // export theme components
 };
 
 export default config;
