@@ -95,13 +95,13 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          to: '/api', 
+          to: '/api/introduction', 
           label: 'API', 
           position: 'left'
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          href: 'https://dashboard.voucherly.it/',
+          label: 'Dashboard',
           position: 'right',
         },
         {
@@ -169,12 +169,15 @@ const config: Config = {
         id: "api", // plugin id
         docsPluginId: "classic", // configured for preset-classic
         config: {
-          petstore: {
-            specPath: "static/files/openapi.json",
-            outputDir: "docs/api",
+          webapi: {
+            // specPath: "static/files/openapi.json",
+            specPath: "https://api.voucherly.it/swagger/v1/swagger.json",
+            outputDir: "docs/api/webapi",
             sidebarOptions: {
-              // groupPathsBy: "tag",
+              groupPathsBy: "tag",
+              // categoryLinkSource: "tag",
             },
+            showSchemas: true
           } satisfies OpenApiPlugin.Options,
         }
       },
