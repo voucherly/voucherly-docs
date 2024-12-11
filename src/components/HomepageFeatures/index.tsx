@@ -9,34 +9,34 @@ type FeatureItem = {
 };
 
 const FeatureList: FeatureItem[] = [
-  // {
-  //   title: 'API',
-  //   Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-  //   description: (
-  //     <>
-  //       Discover Voucherly API
-  //     </>
-  //   ),
-  // },
-  // {
-  //   title: 'PrestaShop',
-  //   Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-  //   description: (
-  //     <>
-  //       See how to integrate Voucherly [PrestaShop plugin]("/docs/integrations/prestashop") on your website.
-  //     </>
-  //   ),
-  // },
-  // {
-  //   title: 'Powered by React',
-  //   Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-  //   description: (
-  //     <>
-  //       Extend or customize your website layout by reusing React. Docusaurus can
-  //       be extended while reusing the same header and footer.
-  //     </>
-  //   ),
-  // },
+  {
+    title: 'API',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    description: (
+      <>
+        Discover Voucherly API
+      </>
+    ),
+  },
+  {
+    title: 'PrestaShop',
+    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    description: (
+      <>
+        See how to integrate Voucherly [PrestaShop plugin]("/docs/integrations/prestashop") on your website.
+      </>
+    ),
+  },
+  {
+    title: 'Powered by React',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        Extend or customize your website layout by reusing React. Docusaurus can
+        be extended while reusing the same header and footer.
+      </>
+    ),
+  },
 ];
 
 function Feature({title, Svg, description}: FeatureItem) {
