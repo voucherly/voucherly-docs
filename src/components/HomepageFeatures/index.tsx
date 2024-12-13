@@ -1,49 +1,50 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import { FaRocket, FaCode, FaShoppingBag } from 'react-icons/fa';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: any;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'API',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Rest API',
+    icon: <FaRocket />,
     description: (
       <>
-        Discover Voucherly API
+        Communicate with Voucherly via Rest API.
       </>
     ),
   },
   {
-    title: 'PrestaShop',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Integrations',
+    icon: <FaShoppingBag />,
     description: (
       <>
-        See how to integrate Voucherly [PrestaShop plugin]("/docs/integrations/prestashop") on your website.
+        Start accept payments with Voucherly quickly and easily for Woocommerce, Prestashop and Shopify.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Step by step tutorial',
+    icon: <FaCode />,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Follow the quick guides to implement each use case on your website.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, icon, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        {icon}
+        {/* <Svg className=role="img" /> */}
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
