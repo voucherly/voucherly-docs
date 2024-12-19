@@ -75,9 +75,11 @@ const config: Config = {
           label: 'Guides',
         },
         {
-          to: '/api/introduction', 
+          // to: '/api/introduction', 
+          type: 'docSidebar',
+          sidebarId: 'apiSidebar',
+          position: 'left',
           label: 'API', 
-          position: 'left'
         },
         {
           href: 'https://dashboard.voucherly.it/',

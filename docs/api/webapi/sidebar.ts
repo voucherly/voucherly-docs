@@ -3,11 +3,8 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 const sidebar: SidebarsConfig = {
   apisidebar: [
     {
-      type: "doc",
-      id: "api/webapi/voucherly",
-    },
-    {
       type: "category",
+      collapsed: false,
       label: "Customers",
       items: [
         {
@@ -26,6 +23,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      collapsed: false,
       label: "Merchants",
       items: [
         {
@@ -36,44 +34,10 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
+    
     {
       type: "category",
-      label: "PaymentGateway",
-      items: [
-        {
-          type: "doc",
-          id: "api/webapi/get-payment-gateways",
-          label: "Get payment gateways",
-          className: "api-method get",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "PaymentLinks",
-      items: [
-        {
-          type: "doc",
-          id: "api/webapi/create-payment-link",
-          label: "Create payment link",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api/webapi/get-payment-link",
-          label: "Get payment link",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/webapi/update-payment-link",
-          label: "Update payment link",
-          className: "api-method put",
-        },
-      ],
-    },
-    {
-      type: "category",
+      collapsed: false,
       label: "Payments",
       items: [
         {
@@ -102,6 +66,44 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: "category",
+      collapsed: false,
+      label: "Payment Gateways",
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/get-payment-gateways",
+          label: "Get payment gateways",
+          className: "api-method get",
+        },
+      ],
+    },
+    // {
+    //   type: "category",
+    //   collapsed: false,
+    //   label: "Payment Links",
+    //   items: [
+    //     {
+    //       type: "doc",
+    //       id: "api/webapi/create-payment-link",
+    //       label: "Create payment link",
+    //       className: "api-method post",
+    //     },
+    //     {
+    //       type: "doc",
+    //       id: "api/webapi/get-payment-link",
+    //       label: "Get payment link",
+    //       className: "api-method get",
+    //     },
+    //     {
+    //       type: "doc",
+    //       id: "api/webapi/update-payment-link",
+    //       label: "Update payment link",
+    //       className: "api-method put",
+    //     },
+    //   ],
+    // },
   ],
 };
 

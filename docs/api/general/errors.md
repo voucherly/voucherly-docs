@@ -22,18 +22,7 @@ Error object:
 
 <Tabs>
 
-<TabItem value="json" label="404 Not Found">
 
-```json [404 Not Found]
-{
-    "type": "https://tools.ietf.org/html/rfc7231#section-6.5.4",
-    "title": "Payment was not found.",
-    "status": 404,
-    "detail": "Entity \"Payment\" (pay_OJKgojAPRGd) was not found."
-}
-```
-
-</TabItem>
 
 <TabItem value="curl" label="400 Bad request">
 ```json [400 Bad request]
@@ -45,8 +34,20 @@ Error object:
     "code": "PAYMENT_DUPLICATED",
     "parameter": "ReferenceId"
 }
-
 ```
+</TabItem>
+
+<TabItem value="json" label="404 Not Found">
+
+```json [404 Not Found]
+{
+    "type": "https://tools.ietf.org/html/rfc7231#section-6.5.4",
+    "title": "Payment was not found.",
+    "status": 404,
+    "detail": "Entity \"Payment\" (pay_OJKgojAPRGd) was not found."
+}
+```
+
 </TabItem>
 
 </Tabs>
