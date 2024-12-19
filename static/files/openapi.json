@@ -949,7 +949,7 @@
           },
           "isAutoConfirm": {
             "type": "boolean",
-            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl. When auto confirm is disabled, payment requires manual confirmation.",
+            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to redirectOkUrl. When auto confirm is disabled, payment requires manual confirmation.",
             "nullable": true
           },
           "metadata": {
@@ -1113,7 +1113,7 @@
           "isPartialPayment": {
             "type": "boolean"
           },
-          "s2SUrl": {
+          "callbackUrl": {
             "type": "string",
             "nullable": true
           },
@@ -1308,7 +1308,7 @@
           },
           "isAutoConfirm": {
             "type": "boolean",
-            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl. When auto confirm is disabled, payment requires manual confirmation.",
+            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to redirectOkUrl. When auto confirm is disabled, payment requires manual confirmation.",
             "nullable": true
           },
           "metadata": {
@@ -1436,7 +1436,7 @@
           },
           "isAutoConfirm": {
             "type": "boolean",
-            "description": "Enable or disable auto confirm.\r\nIf you don't specify anything the default Merchant configuration will be used.\r\nWhen auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl.\r\nWhen auto confirm is disabled, payment requires manual confirmation.",
+            "description": "Enable or disable auto confirm.\r\nIf you don't specify anything the default Merchant configuration will be used.\r\nWhen auto confirm is enabled, payment is automatically confirmed before redirecting customer to redirectOkUrl.\r\nWhen auto confirm is disabled, payment requires manual confirmation.",
             "nullable": true
           },
           "selectedPaymentGateway": {
@@ -1503,17 +1503,17 @@
             },
             "nullable": true
           },
-          "redirectSuccessUrl": {
+          "redirectOkUrl": {
             "type": "string",
             "nullable": true,
             "deprecated": true
           },
-          "redirectErrorUrl": {
+          "redirectKoUrl": {
             "type": "string",
             "nullable": true,
             "deprecated": true
           },
-          "s2SUrl": {
+          "callbackUrl": {
             "type": "string",
             "nullable": true,
             "deprecated": true
