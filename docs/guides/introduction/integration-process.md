@@ -23,9 +23,9 @@ Activate payment gateways in **Configurazione merchant > [Gateway di pagamento](
 
 Voucher payments often require supplementation with a *standard* transaction, such as a card payment. Therefore, activating at least one non-voucher payment gateway is strongly recommended.
 
-### 4. Check how [Voucherly APIs work](/guides/introduction/overview)
+### 4. Check how [Voucherly APIs work](/api/general/overview)
 
 ### 5. Let's start
-Define what's your [use case](/guides/use-cases), then the payment flow that suits you best and finally integrate the related APIs
+Define what's your [use case](/guides/use-cases), then the payment flow that suits you best and finally integrate the related APIs. You can use the [Postman collection](/api/postman) for a quicker startup.
 
 [dashboard]: https://dashboard.voucherly.it/

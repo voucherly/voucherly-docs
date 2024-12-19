@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "a258f403-8518-49a8-bb95-d1416f5c86ef",
+		"name": "Voucherly_API_v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3304947",
+		"_collection_link": "https://galactic-meadow-295840.postman.co/workspace/Voucherly~c6f21312-a0aa-4d1f-bc50-c969165a751d/collection/3304947-a258f403-8518-49a8-bb95-d1416f5c86ef?action=share&source=collection_link&creator=3304947"
+	},
+	"item": [
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"{{customer_id}}\",\r\n    \"mode\": \"Payment\",\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"language\": \"it\",\r\n    \"country\": \"IT\",\r\n    \"shippingAddress\": \"Via Alessandro Tadino 3, Milano\",\r\n    \"metadata\": {\r\n        \"store\": \"store-123\"\r\n    },\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create payment with partial payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mode\": \"Payment\",\r\n    \"isPartialPayment\": true,\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"country\": \"IT\",\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create payment with auto confirm",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"{{customer_id}}\",\r\n    \"mode\": \"Payment\",\r\n    \"isAutoConfirm\": true,\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"country\": \"IT\",\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create payment with specified payment gateways",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"{{customer_id}}\",\r\n    \"mode\": \"Payment\",\r\n    \"paymentGateways\": [\"FAKEVOU\"],\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"country\": \"IT\",\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create payment with redirect to payment gateway",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"{{customer_id}}\",\r\n    \"mode\": \"Payment\",\r\n    \"selectedPaymentGateway\": \"FAKEVOU\",\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"country\": \"IT\",\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create payment with S2S",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customerId\": \"{{customer_id}}\",\r\n    \"mode\": \"Payment\",\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"callbackUrl\": \"https://{{s2s_host}}/payment/s2s\",\r\n    \"country\": \"IT\",\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create payment with new customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Voucherly-API-Key",
+										"value": "pk_live_yb33Ohw0vjG8HcqQKWXu0u2dUFFREjPcmXwt3ZO10PRah2c0BeYdcKGA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"mode\": \"Payment\",\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"country\": \"IT\",\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    var res = pm.response.json();",
+									"    pm.environment.set(\"payment_id\", res.id);",
+									"    pm.environment.set(\"customer_id\", res.customerId);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Refund",
+					"item": [
+						{
+							"name": "Refund payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments/{{payment_id}}/refund",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments",
+										"{{payment_id}}",
+										"refund"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refund partial payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"transactions\": [\r\n        {\r\n            \"Id\": \"81aa4db7-958b-43ac-9624-1a240c394c45\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments/{{payment_id}}/refund",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments",
+										"{{payment_id}}",
+										"refund"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get payment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Voucherly-Wait-Time",
+								"value": "30",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/payments/{{payment_id}}?include=transactions",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"payments",
+								"{{payment_id}}"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "lines",
+									"disabled": true
+								},
+								{
+									"key": "include",
+									"value": "discounts",
+									"disabled": true
+								},
+								{
+									"key": "include",
+									"value": "transactions"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/payments/{{payment_id}}/confirm",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"payments",
+								"{{payment_id}}",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "List a Customer's PaymentMethods",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/customers/{{customer_id}}/payment_methods",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}",
+								"payment_methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List a Customer's Wallet Movements",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/customers/wallet/movements?customerId={{customer_id}}&fromUtc=2024-01-01T00:00:00&toUtc=2025-12-31T23:59:59&page=1&length=10",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"customers",
+								"wallet",
+								"movements"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "{{customer_id}}"
+								},
+								{
+									"key": "fromUtc",
+									"value": "2024-01-01T00:00:00"
+								},
+								{
+									"key": "toUtc",
+									"value": "2025-12-31T23:59:59"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "length",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Customer's PaymentMethod",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/customers/{{customer_id}}/payment_methods/pm_8m2nr3W6EGlVYpbk",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}",
+								"payment_methods",
+								"pm_8m2nr3W6EGlVYpbk"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaymentGateways",
+			"item": [
+				{
+					"name": "List PaymentGateways",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/payment_gateways?include=parameters",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"payment_gateways"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "include",
+									"value": "parameters"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "versioned_api_base_url",
+			"value": "{{api_base_url}}/v1",
+			"type": "string"
+		}
+	]
+}

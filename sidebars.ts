@@ -31,6 +31,10 @@ const sidebars: SidebarsConfig = {
       ]
     },
     {
+      type: 'doc',
+      id: 'api/postman'
+    },
+    {
       type: 'category',
       label: "Libraries",
       collapsed: true,
