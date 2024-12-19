@@ -8,11 +8,11 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 const config: Config = {
   title: 'Voucherly',
-  tagline: 'Il modo migliore per usare i buoni pasto',
+  tagline: 'Il modo migliore per accettare i buoni pasto',
   favicon: 'https://ucarecdn.com/5c304dd8-db4f-471e-a930-04bc0ed961d3/-/preview/100x100/',
 
   // Set the production url of your site here
-  url: 'https://docs.voucherly.it',
+  url: 'https://legal.voucherly.it',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -50,42 +50,22 @@ const config: Config = {
           routeBasePath: "/",   // Docs-only mode (https://docusaurus.io/docs/docs-introduction#docs-only-mode)
           sidebarPath: './sidebars.ts',
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: false,
-        // blog: {
-        //   showReadingTime: true,
-        //   feedOptions: {
-        //     type: ['rss', 'atom'],
-        //     xslt: true,
-        //   },
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        //   // Useful options to enforce blogging best practices
-        //   onInlineTags: 'warn',
-        //   onInlineAuthors: 'warn',
-        //   onUntruncatedBlogPosts: 'warn',
-        // },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: './src/css/custom.scss',
         },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'https://ucarecdn.com/1a50448f-55d8-46ac-bab0-764dee2b9c4f/-/preview/100x100/',
     navbar: {
-      // title: 'My Site',
       logo: {
         alt: 'Voucherly Logo',
-        src: 'https://ucarecdn.com/a5e716fc-abcb-4ab2-960a-33a6a1b5446c/-/preview/1000x250/',
+        src: 'https://ucarecdn.com/a5e716fc-abcb-4ab2-960a-33a6a1b5446c/-/preview/200x50/',
+        srcDark: 'https://ucarecdn.com/cf4a09cb-1f6e-4385-97c8-46ae406fd671/-/preview/200x50/',
       },
       items: [
         {
@@ -111,7 +91,6 @@ const config: Config = {
       ],
     },
     footer: {
-      // style: 'dark',
       links: [],
       // links: [
       //   {
@@ -163,6 +142,7 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 
   plugins: [
+    'docusaurus-plugin-sass',
     [
       'docusaurus-plugin-openapi-docs',
       {

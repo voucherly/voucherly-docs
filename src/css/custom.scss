@@ -1,0 +1,45 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap');
+@import './apidocs.scss';
+
+/* You can override the default Infima variables here. */
+:root {
+
+  --ifm-font-family-base: "Quicksand";
+
+  --ifm-color-primary: #5c59f2;
+  --ifm-color-primary-dark: #3e3af0;
+  --ifm-color-primary-darker: #2f2bee;
+  --ifm-color-primary-darkest: #1511d7;
+  --ifm-color-primary-light: #7a78f4;
+  --ifm-color-primary-lighter: #8987f6;
+  --ifm-color-primary-lightest: #b6b5f9;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  /* --ifm-color-primary: #514fd1; */
+  --ifm-color-primary: #9593e3;
+  --ifm-color-primary-dark: #7875db;
+  --ifm-color-primary-darker: #6966d7;
+  --ifm-color-primary-darkest: #3e3acc;
+  --ifm-color-primary-light: #b2b1eb;
+  --ifm-color-primary-lighter: #c1c0ef;
+  --ifm-color-primary-lightest: #ececfa;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  display: none !important;
+}
+
+table > thead:has(> tr > th:empty):not(:has(> tr > th:not(:empty))) {
+  display: none;
+}
