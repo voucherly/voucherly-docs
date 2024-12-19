@@ -21,20 +21,19 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
-    {
-      type: "category",
-      collapsed: false,
-      label: "Merchants",
-      items: [
-        {
-          type: "doc",
-          id: "api/webapi/create-merchant",
-          label: "Create merchant",
-          className: "api-method post",
-        },
-      ],
-    },
-    
+    // {
+    //   type: "category",
+    //   collapsed: false,
+    //   label: "Merchants",
+    //   items: [
+    //     {
+    //       type: "doc",
+    //       id: "api/webapi/create-merchant",
+    //       label: "Create merchant",
+    //       className: "api-method post",
+    //     },
+    //   ],
+    // },
     {
       type: "category",
       collapsed: false,

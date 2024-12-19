@@ -6,7 +6,7 @@ sidebar_position: 3
 Technical manual for Voucherly's free plugin for Shopify e-commerce platform.
 
 ## Prerequisites
-- **[Voucherly account](/guides/introduction/integration-process)**.
+- **[Voucherly account](/guides/intro/integration-process)**.
 
 ## Configuration
 
@@ -31,7 +31,7 @@ A full video tutorial is available [here](https://www.youtube.com/watch?v=53d6BC
     - Click **Modifica**.
 
 :::info support
-- Email support@multisafepay.com.
+- Email support@voucherly.it.
 - Submit a support request at [voucherly.it/contattaci](https://voucherly.it/contattaci).
-- Refer to [Voucherly](https://voucherly.it/soluzioni/plugin/shopify) for additional info.
+- Refer to [Voucherly Shopify](https://voucherly.it/soluzioni/plugin/shopify) for additional info.
 :::

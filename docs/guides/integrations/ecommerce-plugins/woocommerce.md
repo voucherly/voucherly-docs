@@ -6,7 +6,7 @@ sidebar_position: 1
 Technical manual for Voucherly's free plugin for WooCommerce e-commerce platform.
 
 ## Prerequisites
-- **[Voucherly account](/guides/introduction/integration-process)**.
+- **[Voucherly account](/guides/intro/integration-process)**.
 - **WordPress** 5.0 or higher.
 - **PHP** 5.6 or higher.
 
@@ -65,8 +65,8 @@ Make sure you have a backup of your production environment, and that you test th
 :::
 
 :::info support
-- Email support@multisafepay.com.
+- Email support@voucherly.it.
 - Create a technical issue on [GitHub](https://github.com/voucherly/voucherly-woocommerce/issues/new).
 - Submit a support request at [voucherly.it/contattaci](https://voucherly.it/contattaci).
-- Refer to [Voucherly](https://voucherly.it/soluzioni/plugin/woocommerce) for additional info.
+- Refer to [Voucherly WooCommere](https://voucherly.it/soluzioni/plugin/woocommerce) for additional info.
 :::

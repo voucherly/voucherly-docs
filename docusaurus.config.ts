@@ -8,11 +8,12 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 const config: Config = {
   title: 'Voucherly',
+  titleDelimiter: '—',
   tagline: 'Il modo migliore per accettare i buoni pasto',
   favicon: 'https://ucarecdn.com/5c304dd8-db4f-471e-a930-04bc0ed961d3/-/preview/100x100/',
 
   // Set the production url of your site here
-  url: 'https://legal.voucherly.it',
+  url: 'https://docs.voucherly.it',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -75,7 +76,6 @@ const config: Config = {
           label: 'Guides',
         },
         {
-          // to: '/api/introduction', 
           type: 'docSidebar',
           sidebarId: 'apiSidebar',
           position: 'left',

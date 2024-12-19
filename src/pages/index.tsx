@@ -1,3 +1,6 @@
+import React, { useEffect } from 'react';
+import { useHistory } from '@docusaurus/router';
+
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -31,6 +34,15 @@ function HomepageHeader() {
 }
 
 export default function Home(): JSX.Element {
+
+  const history = useHistory();
+
+  useEffect(() => {
+    history.push('/guides/intro/overview');
+  }, [history]);
+
+  return null;
+
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
