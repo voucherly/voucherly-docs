@@ -8,9 +8,6 @@ Technical manual for Voucherly's free plugin for Shopify e-commerce platform.
 ## Prerequisites
 - **[Voucherly account](/guides/introduction/integration-process)**.
 
-To integrate Voucherly on you Shopify store, enable the integration from the [Dashboard](https://dashboard.voucherly.it). 
-
-
 ## Configuration
 
 A full video tutorial is available [here](https://www.youtube.com/watch?v=53d6BCiExeg).
@@ -31,7 +28,7 @@ A full video tutorial is available [here](https://www.youtube.com/watch?v=53d6BC
 2. Go to **Configurazione merchant > Integrazioni** and click on Shopify:
     - Click on ✏️ next to *Parametri*.
     - Edit your settings.
-    - Click **Modifica**
+    - Click **Modifica**.
 
 :::info support
 - Email support@multisafepay.com.
