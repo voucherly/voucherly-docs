@@ -3,9 +3,9 @@
     "message": "Voucherly Logo",
     "description": "The alt text of navbar logo"
   },
-  "item.label.Documentation": {
+  "item.label.Guides": {
     "message": "Documentazione",
-    "description": "Navbar item with label Documentation"
+    "description": "Navbar item with label Guides"
   },
   "item.label.API": {
     "message": "API",

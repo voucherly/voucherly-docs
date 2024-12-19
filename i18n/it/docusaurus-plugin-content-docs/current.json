@@ -3,41 +3,41 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.documentationSidebar.category.Tutorial - Basics": {
+  "sidebar.guidesSidebar.category.Tutorial - Basics": {
     "message": "Tutorial - Basics",
     "description": "The label for category Tutorial - Basics in sidebar tutorialSidebar"
   },
-  "sidebar.documentationSidebar.category.Tutorial - Basics.link.generated-index.description": {
+  "sidebar.guidesSidebar.category.Tutorial - Basics.link.generated-index.description": {
     "message": "5 minutes to learn the most important Docusaurus concepts.",
     "description": "The generated-index page description for category Tutorial - Basics in sidebar tutorialSidebar"
   },
-  "sidebar.documentationSidebar.category.Tutorial - Extras": {
+  "sidebar.guidesSidebar.category.Tutorial - Extras": {
     "message": "Tutorial - Extras",
     "description": "The label for category Tutorial - Extras in sidebar tutorialSidebar"
   },
-  "sidebar.documentationSidebar.category.Use Cases": {
+  "sidebar.guidesSidebar.category.Use Cases": {
     "message": "Casi d'uso",
-    "description": "The label for category Use Cases in sidebar documentationSidebar"
+    "description": "The label for category Use Cases in sidebar guidesSidebar"
   },
-  "sidebar.documentationSidebar.category.Use Cases.link.generated-index.description": {
+  "sidebar.guidesSidebar.category.Use Cases.link.generated-index.description": {
     "message": " ",
-    "description": "The generated-index page description for category Use Cases in sidebar documentationSidebar"
+    "description": "The generated-index page description for category Use Cases in sidebar guidesSidebar"
   },
-  "sidebar.documentationSidebar.category.Resources": {
+  "sidebar.guidesSidebar.category.Resources": {
     "message": "Risorse",
-    "description": "The label for category Resources in sidebar documentationSidebar"
+    "description": "The label for category Resources in sidebar guidesSidebar"
   },
-  "sidebar.documentationSidebar.category.Resources.link.generated-index.description": {
+  "sidebar.guidesSidebar.category.Resources.link.generated-index.description": {
     "message": " ",
-    "description": "The generated-index page description for category Resources in sidebar documentationSidebar"
+    "description": "The generated-index page description for category Resources in sidebar guidesSidebar"
   },
-  "sidebar.documentationSidebar.category.Integrations": {
+  "sidebar.guidesSidebar.category.Integrations": {
     "message": "Integrazioni",
-    "description": "The label for category Integrations in sidebar documentationSidebar"
+    "description": "The label for category Integrations in sidebar guidesSidebar"
   },
-  "sidebar.documentationSidebar.category.Integrations.link.generated-index.description": {
+  "sidebar.guidesSidebar.category.Integrations.link.generated-index.description": {
     "message": " ",
-    "description": "The generated-index page description for category Integrations in sidebar documentationSidebar"
+    "description": "The generated-index page description for category Integrations in sidebar guidesSidebar"
   },
   "sidebar.apiSidebar.category.Endpoints": {
     "message": "Endpoints",

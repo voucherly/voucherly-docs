@@ -29,7 +29,7 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'it',
+    defaultLocale: 'en',
     locales: ['en', 'it'],
     path: 'i18n',
     localeConfigs: {
@@ -70,9 +70,9 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'documentationSidebar',
+          sidebarId: 'guidesSidebar',
           position: 'left',
-          label: 'Documentation',
+          label: 'Guides',
         },
         {
           to: '/api/introduction', 

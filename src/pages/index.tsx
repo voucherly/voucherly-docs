@@ -13,7 +13,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title} Documentation
+          {siteConfig.title} Guides
         </Heading>
         <p className="hero__subtitle">
           Discover Voucherly features and start to integrate Voucherly on your website.
@@ -21,7 +21,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/documentation/overview">
+            to="/guides/overview">
             Get started 
           </Link>
         </div>
@@ -34,8 +34,8 @@ export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title} Documentation`}
-      description="Voucherly documentation">
+      title={`${siteConfig.title} Guides`}
+      description="Voucherly guides">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
