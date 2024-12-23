@@ -1,5 +1,9 @@
 {
   "label": "Integrations",
   "position": 150,
-  "collapsible": false
+  "collapsible": false,
+  "link": {
+    "type": "generated-index",
+    "slug": "/guides/integrations"
+  }
 }
