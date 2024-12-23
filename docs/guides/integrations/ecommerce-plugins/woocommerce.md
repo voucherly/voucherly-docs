@@ -6,7 +6,7 @@ sidebar_position: 1
 Technical manual for Voucherly's free plugin for WooCommerce e-commerce platform.
 
 ## Prerequisites
-- **[Voucherly account](/guides/intro/integration-process)**.
+- **[Voucherly account](/guides/intro/getting-started)**.
 - **WordPress** 5.0 or higher.
 - **PHP** 5.6 or higher.
 

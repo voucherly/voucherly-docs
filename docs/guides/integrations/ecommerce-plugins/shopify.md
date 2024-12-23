@@ -6,7 +6,7 @@ sidebar_position: 3
 Technical manual for Voucherly's free plugin for Shopify e-commerce platform.
 
 ## Prerequisites
-- **[Voucherly account](/guides/intro/integration-process)**.
+- **[Voucherly account](/guides/intro/getting-started)**.
 
 ## Configuration
 

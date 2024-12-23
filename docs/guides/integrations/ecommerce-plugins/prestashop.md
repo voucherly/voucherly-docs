@@ -6,7 +6,7 @@ sidebar_position: 2
 Technical manual for Voucherly's free plugin for PrestaShop e-commerce platform.
 
 ## Prerequisites
-- **[Voucherly account](/guides/intro/integration-process)**.
+- **[Voucherly account](/guides/intro/getting-started)**.
 - **PrestaShop** 1.7 up to 8
 - **PHP** 5.6 or higher.
 
