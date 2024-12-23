@@ -1,6 +1,6 @@
 import DocCardList from '@theme/DocCardList';
 
-# Integration process
+# Getting started
 
 The steps below will guide you on how to integrate your platform with our APIs.
 
