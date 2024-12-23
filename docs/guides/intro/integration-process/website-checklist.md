@@ -37,13 +37,9 @@ Provide clear details about your business, including:
 
 This information adds credibility and helps customers verify your business’s legitimacy.
 
-
 </Checkbox>
 
-
-
 <Checkbox label="Your service's general terms and conditions" >
-
 
 Clearly outline your policies to build trust and set expectations. These include:
 
@@ -51,6 +47,7 @@ Clearly outline your policies to build trust and set expectations. These include
 - **Cancellation Policy**. Rules for subscription or reservation cancellations.
 - **Return Policy**. Conditions for returns and step-by-step instructions.
 - **Shipping Policy**. Methods, times, rates, and eligible destinations.
+- **One-click payment Addendum**. Please refer to [Voucherly one-click payment addendum](https://legal.voucherly.it/examples/one-click-payment).
 
 Please add a click-to-accept checkbox with the terms and conditions at checkout. If this is not possible, clearly inform your customers that by placing the order, they implicitly accept the website's terms and conditions.
 
