@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 import Checkbox from '@site/src/components/Checkbox';
@@ -30,10 +30,10 @@ Low-friction communication channels reduce misunderstandings and improve custome
 <Checkbox label="Your business information" >
 
 Provide clear details about your business, including:
-- Legal name
+- Full legal name
 - VAT number
 - Chamber of Commerce registration (CoC, also known as REA in Italy)
-- Address
+- Registered business address
 
 This information adds credibility and helps customers verify your business’s legitimacy.
 

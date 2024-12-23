@@ -2,9 +2,9 @@ import DocCardList from '@theme/DocCardList';
 
 # Getting started
 
-The steps below will guide you on how to integrate your platform with our APIs.
+The instructions below will guide you on how to integrate your platform with our APIs.
 
-## Configuration Steps
+## Configuration
 
 ### 1. Create a Sandbox account
 Visit the [Dashboard][dashboard] and register a new account.  
@@ -16,17 +16,34 @@ Use the private key to authenticate API calls, as explained in [API Authenticati
 
 The public key is intended for frontend API calls, allowing only payment creation.
 
-### 3. Enable Payment Gateways
+### 3. Enable Payment gateways
 Activate payment gateways in **Configurazione merchant > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)**.
 
 Voucher payments often require supplementation with a *standard* transaction, such as a card payment. Therefore, activating at least one non-voucher payment gateway is strongly recommended.
 
-### 4. Check how [Voucherly APIs work](/api/general/overview)
+### 4. Let's start
+Define what's your [use case](/guides/use-cases) and the [integration](/guides/integrations) that suits you best.
 
-### 5. Let's start
-Define what's your [use case](/guides/use-cases), then the payment flow that suits you best and finally integrate the related APIs. You can use the [Postman collection](/api/postman) for a quicker startup.
+#### E-commerce plugins
 
-### 6. Before going live
-<DocCardList />
+Voucherly's e-commerce plugins, developed in-house, require minimal or no development effort and allow you to start testing immediately. We offer a wide range of plugins and apps to integrate with platforms like PrestaShop, WooCommerce and Shopify.
+
+Full guidance: [E-commerce plugins](/guides/integrations/ecommerce-plugins/).
+
+#### API integration
+
+Voucherly's e-commerce plugins, developed in-house, require minimal or no development effort and allow you to start testing immediately. We offer a wide range of plugins and apps to integrate with platforms like PrestaShop, WooCommerce and Shopify.
+
+Full guidance: [API integration](/guides/integrations/api/).
+
+### 5. Before going live
+
+To start processing real transactions, we need to verify and approve your merchant account information.
+
+1. [Activate your account](/guides/intro/getting-started/activate-account) providing information about your company.
+1. Ensure your website aligns with [Website checklist](/guides/intro/getting-started/website-checklist).
+
+Once submitted, we will perform know your customer (KYC) checks. If approved, your account will go live.
+
 
 [dashboard]: https://dashboard.voucherly.it/
