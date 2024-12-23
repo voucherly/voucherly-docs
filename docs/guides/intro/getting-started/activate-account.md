@@ -6,21 +6,33 @@ import Checkbox from '@site/src/components/Checkbox';
 
 
 # Activate your account
-Use this checklist to ensure a smooth transition when taking your integration live.
+Onboarding involves Voucherly verifying and approving the information submitted by merchants and partners applying for a live account to process real transactions.
 
 
-### Activate your account
+
 
 <Checkbox label="Complete onboarding" >
 
-Make sure to configure the branding settings for your account before going live. You can adjust:
-- Custom colors
-- Custom logo and icon
-- Custom domain
+Sign in to [Dashboard](https://dashboard.voucherly.it) and:
+
+1. Provide billing information at **Configurazione merchant > [Panoramica](https://dashboard.voucherly.it/Merchant)**.
+1. Set up a payment method at **Abbonamento e fatturazione > [Metodi di pagamento](https://dashboard.voucherly.it/Billing/PaymentMethod)**.
 
 :::info
-This feature is available depending on your subscription plan.
+Voucherly will verify your details and activate your account.
 :::
+
+
+</Checkbox>
+
+<Checkbox label="Configure Payment gateways" >
+
+Navigate to **Configurazione merchant > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** and enable Payment gateways you need.
+
+:::warning
+For most Payment gateways, you must enter merchant-specific configuration parameters to activate them. These parameters are provided to the merchant through a direct agreement with the payment gateway.
+:::
+
 
 </Checkbox>
 
