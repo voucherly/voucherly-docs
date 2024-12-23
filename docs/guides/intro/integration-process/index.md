@@ -1,8 +1,6 @@
----
-sidebar_position: 2
----
+import DocCardList from '@theme/DocCardList';
 
-# Integration Process
+# Integration process
 
 The steps below will guide you on how to integrate your platform with our APIs.
 
@@ -27,5 +25,8 @@ Voucher payments often require supplementation with a *standard* transaction, su
 
 ### 5. Let's start
 Define what's your [use case](/guides/use-cases), then the payment flow that suits you best and finally integrate the related APIs. You can use the [Postman collection](/api/postman) for a quicker startup.
+
+### 6. Before going live
+<DocCardList />
 
 [dashboard]: https://dashboard.voucherly.it/

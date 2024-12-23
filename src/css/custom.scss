@@ -43,3 +43,23 @@
 table > thead:has(> tr > th:empty):not(:has(> tr > th:not(:empty))) {
   display: none;
 }
+
+.checklist-item {
+  .checklist-item-label {
+    display: block;
+    margin-bottom: var(--ifm-global-spacing);
+
+    input {
+      margin: 0;
+      margin-right: 8px; 
+      height: 14px;
+      width: 14px; 
+    }
+  }
+
+  .checklist-item-body {
+    & > *:last-child{
+      margin-bottom: calc(2 * var(--ifm-global-spacing));
+    }
+  }
+}

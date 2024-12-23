@@ -19,8 +19,13 @@ Additionally, we provide detailed insights into the available payment flows.
 You can select the payment flow that aligns best with your specific use case, simplifying the process of integrating Voucherly according to your needs.
 
 Before getting started, take a moment to explore the range of solutions we've already developed at Voucherly:
-- [E-Commerce plugins](/guides/integrations/ecommerce-plugins/)
+- [E-commerce plugins](/guides/integrations/ecommerce-plugins/)
+
 <!-- - Software di cassa -->
+<!-- 
+We've also teamed up with many Payment Service Providers (PSPs).
+Simply reach out to your PSP today and inquire about Satispay.
+-->
 
 If none of these pre-built solutions align with your system requirements, you can define your unique use case and integrate the corresponding APIs to tailor Voucherly to your needs.
 
@@ -28,6 +33,3 @@ If none of these pre-built solutions align with your system requirements, you ca
 We encourage you to review this document thoroughly. -->
 
 If you have any further questions or need assistance about the integration process you can write to our support at support@voucherly.it.
-
-<!-- #### Postman collection
-It's available a Postman Collection so you can already start using our APIs. Download [here](ciccio). -->
