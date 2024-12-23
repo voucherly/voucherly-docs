@@ -1,9 +1,4 @@
 {
   "label": "Best practices",
-  "position": 4,
-  "link": {
-    "type": "generated-index",
-    "slug": "/api/general/best-practices",
-    "description": " "
-  }
+  "position": 4
 }

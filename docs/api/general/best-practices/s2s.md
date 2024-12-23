@@ -28,7 +28,6 @@ Merchants need to configure an endpoint that accepts a POST request with a JSON 
 
 ## Handle callbacks
 
-
 ### Request
 
 - **Id** *(string)*  
