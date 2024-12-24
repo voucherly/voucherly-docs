@@ -1,11 +1,11 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "SberemPay",
+    "title": "Voucherly",
     "description": "",
     "contact": {
-      "name": "Francesco Bognini",
-      "email": "info@francescobognini.com"
+      "name": "Voucherly",
+      "email": "info@voucherly.it"
     },
     "version": "v1"
   },
@@ -15,7 +15,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "GetCustomerPaymentMethods",
+        "operationId": "Get customer payment methods",
         "parameters": [
           {
             "name": "customerId",
@@ -28,11 +28,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.Core.Domain.Query.Pagination.PaginationResponse`1[[SberemPay.Services.Customers.CustomerPaymentMethodForExternalApi, SberemPay.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                  "$ref": "#/components/schemas/PaginationResponse[[CustomerPaymentMethod]]"
                 }
               }
             }
@@ -42,7 +42,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -55,7 +55,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "DeleteCustomerPaymentMethod",
+        "operationId": "Delete customer payment method",
         "parameters": [
           {
             "name": "customerId",
@@ -74,16 +74,6 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Customers.DeleteCustomerPaymentMethod.DeleteCustomerPaymentMethodCommand"
-              }
-            }
-          },
-          "required": true
-        },
         "responses": {
           "204": {
             "description": "No Content"
@@ -93,7 +83,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -103,7 +93,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -116,12 +106,12 @@
         "tags": [
           "Merchants"
         ],
-        "operationId": "CreateMerchant",
+        "operationId": "Create merchant",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand"
+                "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand"
               }
             }
           },
@@ -136,7 +126,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -146,7 +136,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -159,34 +149,41 @@
         "tags": [
           "PaymentGateway"
         ],
-        "operationId": "GetPaymentGateways",
+        "operationId": "Get payment gateways",
         "parameters": [
           {
             "name": "All",
             "in": "query",
+            "description": "Specifies whether to return all payment gateways or only those are enabled",
             "schema": {
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Specifies whether to return all payment gateways or only those are enabled"
             }
           },
           {
             "name": "Include",
             "in": "query",
-            "required": true,
+            "description": "An array of nested object to be included in response.",
+            "required": false,
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "type": "string",
+                "enum": [
+                  "Parameters"
+                ]
+              },
+              "description": "An array of nested object to be included in response."
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentGateways.GetPaymentGateways.GetPaymentGatewaysResponse"
+                  "$ref": "#/components/schemas/GetPaymentGatewaysResponse"
                 }
               }
             }
@@ -196,7 +193,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -209,12 +206,12 @@
         "tags": [
           "PaymentLinks"
         ],
-        "operationId": "CreatePaymentLink",
+        "operationId": "Create payment link",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.CreatePaymentLinkCommand"
+                "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.CreatePaymentLinkCommand"
               }
             }
           },
@@ -226,7 +223,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
+                  "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
                 }
               }
             }
@@ -236,7 +233,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -246,7 +243,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -259,7 +256,7 @@
         "tags": [
           "PaymentLinks"
         ],
-        "operationId": "GetPaymentLink",
+        "operationId": "Get payment link",
         "parameters": [
           {
             "name": "id",
@@ -272,11 +269,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
+                  "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
                 }
               }
             }
@@ -286,7 +283,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -297,7 +294,7 @@
         "tags": [
           "PaymentLinks"
         ],
-        "operationId": "UpdatePaymentLink",
+        "operationId": "Update payment link",
         "parameters": [
           {
             "name": "id",
@@ -312,7 +309,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.UpdatePaymentLinkBodyCommand"
+                "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.UpdatePaymentLinkBodyCommand"
               }
             }
           },
@@ -320,11 +317,11 @@
         },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
+                  "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
                 }
               }
             }
@@ -334,7 +331,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -347,12 +344,12 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "CreatePayment",
+        "operationId": "Create payment",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Payments.CreatePaymentCommand"
+                "$ref": "#/components/schemas/CreatePaymentRequest"
               }
             }
           },
@@ -364,7 +361,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SberemPay.Services.Payments.PaymentForExternalApi"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -374,7 +371,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -384,7 +381,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -397,7 +394,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "GetPayment",
+        "operationId": "Get payment",
         "parameters": [
           {
             "name": "id",
@@ -410,30 +407,34 @@
           {
             "name": "Include",
             "in": "query",
+            "description": "An array of nested object to be included in response. Can be `Lines`, `Discounts` or `Transactions`.",
             "required": true,
             "schema": {
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "description": "An array of nested object to be included in response. Can be `Lines`, `Discounts` or `Transactions`."
             }
           },
           {
             "name": "Voucherly-Wait-Time",
             "in": "header",
+            "description": "Seconds that the call will be hanging, waiting for a payment status change. Maximum value is 60 seconds.",
             "schema": {
               "type": "integer",
+              "description": "Seconds that the call will be hanging, waiting for a payment status change. Maximum value is 60 seconds.",
               "format": "int32"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SberemPay.Services.Payments.PaymentForExternalApi"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -443,7 +444,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -456,7 +457,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "ConfirmPayment",
+        "operationId": "Confirm payment",
         "parameters": [
           {
             "name": "id",
@@ -467,23 +468,13 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Payments.ConfirmPaymentCommand"
-              }
-            }
-          },
-          "required": true
-        },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SberemPay.Services.Payments.PaymentForExternalApi"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -493,7 +484,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -503,7 +494,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -516,7 +507,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "RefundPayment",
+        "operationId": "Refund payment",
         "parameters": [
           {
             "name": "id",
@@ -531,18 +522,18 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Payments.RefundPaymentTransactionsCommand"
+                "$ref": "#/components/schemas/RefundPaymentRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SberemPay.Services.Payments.PaymentForExternalApi"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -552,7 +543,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -562,7 +553,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -573,7 +564,7 @@
   },
   "components": {
     "schemas": {
-      "Microsoft.AspNetCore.Mvc.ProblemDetails": {
+      "ProblemDetails": {
         "type": "object",
         "properties": {
           "type": {
@@ -600,75 +591,78 @@
         },
         "additionalProperties": { }
       },
-      "SberemPay.Domain.Customers.CreditCardInfo": {
+      "CreditCardInfo": {
         "type": "object",
+        "description": "User's card details",
         "properties": {
           "brand": {
             "type": "string",
-            "nullable": true
+            "description": "Card brand",
+            "nullable": false
           },
           "pan": {
             "type": "string",
-            "nullable": true
+            "description": "Card masked PAN",
+            "nullable": false
           },
           "expiration": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "expirationMonth": {
             "type": "integer",
             "format": "int32",
+            "description": "Two-digit number representing the card’s expiration month.",
             "readOnly": true
           },
           "expirationYear": {
             "type": "integer",
             "format": "int32",
+            "description": "Four-digit number representing the card’s expiration year.",
             "readOnly": true
           },
           "product": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.Domain.Customers.DirectDebitInfo": {
+      "DirectDebitInfo": {
         "type": "object",
         "properties": {
           "accountId": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "accountBic": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "accountIban": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.Domain.PaymentGateways.CheckoutAction": {
+      "PaymentGateways.CheckoutAction": {
         "enum": [
-          0,
-          1,
-          2
+          "OTP",
+          "REDIRECT",
+          "DROPIN"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
-      "SberemPay.Domain.Payments.DiscountType": {
+      "Payments.DiscountType": {
         "enum": [
-          1,
-          2,
-          3
+          "DOLLAROFF",
+          "PERCENOFF",
+          "FIXED"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
-      "SberemPay.Domain.Payments.ExternalError": {
+      "Payments.ExternalError": {
         "type": "object",
         "properties": {
           "message": {
@@ -682,7 +676,7 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.Domain.Payments.PaymentCloseCheckout": {
+      "Payments.PaymentCloseCheckout": {
         "type": "object",
         "properties": {
           "success": {
@@ -695,7 +689,7 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.Domain.Payments.PaymentLastCallback": {
+      "Payments.PaymentLastCallback": {
         "type": "object",
         "properties": {
           "success": {
@@ -708,7 +702,7 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.Domain.Payments.PaymentLinks.PaymentLinkStatus": {
+      "Payments.PaymentLinks.PaymentLinkStatus": {
         "enum": [
           1,
           2,
@@ -717,96 +711,95 @@
         "type": "integer",
         "format": "int32"
       },
-      "SberemPay.Domain.Payments.PaymentMode": {
+      "Payments.PaymentMode": {
         "enum": [
-          1,
-          2,
-          3
+          "Payment",
+          "Wallet",
+          "Setup"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string",
+        "description": "Mode of this Payment.",
+        "nullable": false
       },
-      "SberemPay.Domain.Payments.PaymentStatus": {
+      "Payments.PaymentStatus": {
         "enum": [
-          0,
-          1,
-          2,
-          99,
-          101,
-          102,
-          -1
+          "Requested",
+          "Paid",
+          "Confirmed",
+          "Refunded",
+          "Cancelled",
+          "Voided",
+          "Expired"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
-      "SberemPay.Domain.Payments.TransactionError": {
+      "Payments.TransactionError": {
         "type": "object",
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.TransactionErrorCode"
+            "$ref": "#/components/schemas/Payments.TransactionErrorCode"
           },
           "externalError": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.ExternalError"
+            "$ref": "#/components/schemas/Payments.ExternalError"
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.Domain.Payments.TransactionErrorCode": {
+      "Payments.TransactionErrorCode": {
         "enum": [
-          1,
-          2,
-          3,
-          1000,
-          2000,
-          9999
+          "Generic",
+          "Cancelled",
+          "NotCompleted",
+          "MissingPaymentMethod",
+          "Declined",
+          "System"
+        ],
+        "type": "string"
+      },
+      "Payments.TransactionStatus": {
+        "enum": [
+          "Requested",
+          "Paid",
+          "Confirmed",
+          "Refunded",
+          "Dropped",
+          "Cancelled",
+          "Failed",
+          "Voided",
+          "Expired",
+          "ImpossibleRefund"
         ],
         "type": "integer",
         "format": "int32"
       },
-      "SberemPay.Domain.Payments.TransactionStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          98,
-          99,
-          100,
-          101,
-          102,
-          200,
-          -1
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "SberemPay.Services.Customers.CustomerPaymentMethodForExternalApi": {
+      "CustomerPaymentMethod": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "paymentGatewayId": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "externalId": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "holderEmail": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "holderName": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "creditCard": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Customers.CreditCardInfo"
+            "$ref": "#/components/schemas/CreditCardInfo"
           },
           "directDebit": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Customers.DirectDebitInfo"
+            "$ref": "#/components/schemas/DirectDebitInfo"
           },
           "additionalInformation1": {
             "type": "string",
@@ -823,24 +816,24 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.Services.PaymentGateways.Checkout.PaymentRequest": {
+      "PaymentGateways.Checkout.PaymentRequest": {
         "type": "object",
         "properties": {
           "action": {
-            "$ref": "#/components/schemas/SberemPay.Domain.PaymentGateways.CheckoutAction"
+            "$ref": "#/components/schemas/PaymentGateways.CheckoutAction"
           },
           "externalTransactionId": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "url": {
             "type": "string",
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": true
       },
-      "SberemPay.Services.PaymentGateways.PaymentGatewayDto": {
+      "PaymentGateways.PaymentGatewayDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -852,10 +845,10 @@
             "nullable": true
           },
           "type": {
-            "$ref": "#/components/schemas/SberemPay.Services.PaymentGateways.PaymentGatewayType"
+            "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayType"
           },
           "paymentAction": {
-            "$ref": "#/components/schemas/SberemPay.Domain.PaymentGateways.CheckoutAction"
+            "$ref": "#/components/schemas/PaymentGateways.CheckoutAction"
           },
           "image": {
             "type": "string",
@@ -888,14 +881,14 @@
           "paymentGatewayParameters": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.Services.PaymentGateways.PaymentGatewayParameterDto"
+              "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayParameterDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.Services.PaymentGateways.PaymentGatewayParameterDto": {
+      "PaymentGateways.PaymentGatewayParameterDto": {
         "type": "object",
         "properties": {
           "paymentGatewayId": {
@@ -929,14 +922,14 @@
           "options": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.Services.PaymentGateways.PaymentGatewayParameterOptionDto"
+              "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayParameterOptionDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.Services.PaymentGateways.PaymentGatewayParameterOptionDto": {
+      "PaymentGateways.PaymentGatewayParameterOptionDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -950,7 +943,7 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.Services.PaymentGateways.PaymentGatewayType": {
+      "PaymentGateways.PaymentGatewayType": {
         "enum": [
           0,
           1,
@@ -959,23 +952,23 @@
         "type": "integer",
         "format": "int32"
       },
-      "SberemPay.Services.Payments.PaymentDiscountForExternalApi": {
+      "Payments.PaymentDiscount": {
         "type": "object",
         "properties": {
           "discountName": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "discountDescription": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "amount": {
             "type": "integer",
             "format": "int64"
           },
           "type": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.DiscountType"
+            "$ref": "#/components/schemas/Payments.DiscountType"
           },
           "value": {
             "type": "integer",
@@ -990,23 +983,23 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.Services.Payments.PaymentForExternalApi": {
+      "Payment": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "tenant": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "referenceId": {
             "type": "string",
             "nullable": true
           },
           "mode": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.PaymentMode"
+            "$ref": "#/components/schemas/Payments.PaymentMode"
           },
           "parentPaymentId": {
             "type": "string",
@@ -1014,23 +1007,23 @@
           },
           "customerId": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "customerEmail": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "customerFirstName": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "customerLastName": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "selectedPaymentGateway": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "paymentGateways": {
             "type": "array",
@@ -1044,10 +1037,10 @@
             "nullable": true
           },
           "closeCheckout": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.PaymentCloseCheckout"
+            "$ref": "#/components/schemas/Payments.PaymentCloseCheckout"
           },
           "callback": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.PaymentLastCallback"
+            "$ref": "#/components/schemas/Payments.PaymentLastCallback"
           },
           "totalAmount": {
             "type": "integer",
@@ -1074,7 +1067,7 @@
             "format": "int64"
           },
           "status": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.PaymentStatus"
+            "$ref": "#/components/schemas/Payments.PaymentStatus"
           },
           "metadata": {
             "type": "object",
@@ -1086,33 +1079,33 @@
           "transactions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.Services.Payments.TransactionForExternalApi"
+              "$ref": "#/components/schemas/Payments.Transaction"
             },
             "nullable": true
           },
           "lines": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.Services.Payments.PaymentLineForExternalApi"
+              "$ref": "#/components/schemas/Payments.PaymentLine"
             },
             "nullable": true
           },
           "discounts": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.Services.Payments.PaymentDiscountForExternalApi"
+              "$ref": "#/components/schemas/Payments.PaymentDiscount"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.Services.Payments.PaymentLineForExternalApi": {
+      "Payments.PaymentLine": {
         "type": "object",
         "properties": {
           "productName": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "productDescription": {
             "type": "string",
@@ -1161,7 +1154,7 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.Services.Payments.TransactionForExternalApi": {
+      "Payments.Transaction": {
         "type": "object",
         "properties": {
           "id": {
@@ -1170,14 +1163,14 @@
           },
           "paymentGatewayId": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "paymentGateway": {
-            "$ref": "#/components/schemas/SberemPay.Services.PaymentGateways.PaymentGatewayDto"
+            "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayDto"
           },
           "externalId1": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "externalId2": {
             "type": "string",
@@ -1191,7 +1184,7 @@
             "type": "boolean"
           },
           "error": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.TransactionError"
+            "$ref": "#/components/schemas/Payments.TransactionError"
           },
           "requestedAmount": {
             "type": "integer",
@@ -1220,13 +1213,13 @@
           },
           "currency": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "creditCard": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Customers.CreditCardInfo"
+            "$ref": "#/components/schemas/CreditCardInfo"
           },
           "directDebit": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Customers.DirectDebitInfo"
+            "$ref": "#/components/schemas/DirectDebitInfo"
           },
           "holderEmail": {
             "type": "string",
@@ -1237,29 +1230,15 @@
             "nullable": true
           },
           "status": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.TransactionStatus"
+            "$ref": "#/components/schemas/Payments.TransactionStatus"
           },
           "request": {
-            "$ref": "#/components/schemas/SberemPay.Services.PaymentGateways.Checkout.PaymentRequest"
+            "$ref": "#/components/schemas/PaymentGateways.Checkout.PaymentRequest"
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.Customers.DeleteCustomerPaymentMethod.DeleteCustomerPaymentMethodCommand": {
-        "type": "object",
-        "properties": {
-          "customerId": {
-            "type": "string",
-            "nullable": true
-          },
-          "paymentMethodId": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand": {
+      "Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand": {
         "type": "object",
         "properties": {
           "name": {
@@ -1267,15 +1246,15 @@
             "nullable": true
           },
           "businessInformation": {
-            "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantBusinessInformation"
+            "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantBusinessInformation"
           },
           "person": {
-            "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantPerson"
+            "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantPerson"
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantBusinessInformation": {
+      "Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantBusinessInformation": {
         "type": "object",
         "properties": {
           "businessName": {
@@ -1321,7 +1300,7 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantPerson": {
+      "Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantPerson": {
         "type": "object",
         "properties": {
           "email": {
@@ -1339,20 +1318,20 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentGateways.GetPaymentGateways.GetPaymentGatewaysResponse": {
+      "GetPaymentGatewaysResponse": {
         "type": "object",
         "properties": {
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentGateways.PaymentGatewayDto"
+              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentGateways.PaymentGatewayDto"
             },
-            "nullable": true
+            "nullable": false
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentGateways.MerchantPaymentGatewayDto": {
+      "Voucherly.WebApi.Handlers.PaymentGateways.MerchantPaymentGatewayDto": {
         "type": "object",
         "properties": {
           "defaultPaymentGatewayId": {
@@ -1365,58 +1344,58 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentGateways.PaymentGatewayDto": {
+      "Voucherly.WebApi.Handlers.PaymentGateways.PaymentGatewayDto": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "name": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "image": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "checkoutImage": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "icon": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "paymentAction": {
-            "$ref": "#/components/schemas/SberemPay.Domain.PaymentGateways.CheckoutAction"
+            "$ref": "#/components/schemas/PaymentGateways.CheckoutAction"
           },
           "isActive": {
             "type": "boolean"
           },
           "merchantConfiguration": {
-            "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentGateways.MerchantPaymentGatewayDto"
+            "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentGateways.MerchantPaymentGatewayDto"
           },
           "parameters": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentGateways.PaymentGatewayParameterDto"
+              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentGateways.PaymentGatewayParameterDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentGateways.PaymentGatewayParameterDto": {
+      "Voucherly.WebApi.Handlers.PaymentGateways.PaymentGatewayParameterDto": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "friendlyName": {
             "type": "string",
-            "nullable": true
+            "nullable": false
           },
           "isSecret": {
             "type": "boolean"
@@ -1428,36 +1407,43 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentLinks.CreatePaymentLinkCommand": {
+      "Voucherly.WebApi.Handlers.PaymentLinks.CreatePaymentLinkCommand": {
         "type": "object",
         "properties": {
           "referenceId": {
             "type": "string",
+            "description": "A unique string to reference the Payment Link. This can be a cart ID, order ID, or similar, and can be used to reconcile the Payment Link with your internal systems.",
             "nullable": true
           },
           "afterCompletionUrl": {
             "type": "string",
+            "description": "If specified, the success page is not shown at the end of a payment, but customer is redirected to this url.",
             "nullable": true
           },
           "customResultMessage": {
             "type": "string",
+            "description": "If specified and if `AfterCompletionUrl` is empty, the following message will be displayed upon successful payments. Otherwise, a default message is shown.",
             "nullable": true
           },
           "name": {
             "type": "string",
+            "description": "A name given by merchant to identify this Payment Link in the Dashboard.",
             "nullable": true
           },
           "maxNoOfSuccessPayments": {
             "type": "integer",
+            "description": "If not null, is the maximum number of payments that can be accepted.",
             "format": "int32",
             "nullable": true
           },
           "language": {
             "type": "string",
+            "description": "The language of Voucherly Checkout page.",
             "nullable": true
           },
           "country": {
             "type": "string",
+            "description": "The country of the purchase. If different from Italy, voucher payment gateways are not shown.",
             "nullable": true
           },
           "paymentGateways": {
@@ -1469,6 +1455,7 @@
           },
           "isAutoConfirm": {
             "type": "boolean",
+            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl. When auto confirm is disabled, payment requires manual confirmation.",
             "nullable": true
           },
           "metadata": {
@@ -1476,36 +1463,39 @@
             "additionalProperties": {
               "type": "string"
             },
+            "description": "Generic field that can be used to store generic info. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.",
             "nullable": true
           },
           "foodAmount": {
             "type": "integer",
+            "description": "The payable amount with vouchers. Must be lower than `TotalAmount` and no `Lines` must have been spcified.",
             "format": "int32",
             "nullable": true
           },
           "totalAmount": {
             "type": "integer",
+            "description": "The total payable amount, not considering `Discounts`. No `Lines` must have been spcified.",
             "format": "int32",
             "nullable": true
           },
           "lines": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand"
+              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand"
             },
             "nullable": true
           },
           "discounts": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand"
+              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand": {
+      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand": {
         "type": "object",
         "properties": {
           "discountName": {
@@ -1522,7 +1512,7 @@
             "nullable": true
           },
           "type": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.DiscountType"
+            "$ref": "#/components/schemas/Payments.DiscountType"
           },
           "value": {
             "type": "integer",
@@ -1537,7 +1527,7 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountDto": {
+      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountDto": {
         "type": "object",
         "properties": {
           "discountName": {
@@ -1553,7 +1543,7 @@
             "format": "int64"
           },
           "type": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.DiscountType"
+            "$ref": "#/components/schemas/Payments.DiscountType"
           },
           "value": {
             "type": "integer",
@@ -1568,7 +1558,11 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDto": {
+      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDto": {
+        "required": [
+          "id",
+          "name"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -1579,8 +1573,8 @@
             "type": "string",
             "nullable": true
           },
-          "status": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.PaymentLinks.PaymentLinkStatus"
+          "isActive": {
+            "type": "boolean"
           },
           "url": {
             "type": "string",
@@ -1656,25 +1650,26 @@
           "lines": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkLineDto"
+              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineDto"
             },
             "nullable": true
           },
           "discounts": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountDto"
+              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand": {
+      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand": {
         "type": "object",
         "properties": {
           "quantity": {
             "type": "integer",
+            "description": "The number of units of this article.",
             "format": "int32"
           },
           "priceId": {
@@ -1684,14 +1679,17 @@
           },
           "unitAmount": {
             "type": "integer",
+            "description": "Amount of the single unit of this article.",
             "format": "int32"
           },
           "unitDiscountAmount": {
             "type": "integer",
+            "description": "Discount amount on the unit amount.",
             "format": "int32"
           },
           "discountAmount": {
             "type": "integer",
+            "description": "Total discount amount on this product line.",
             "format": "int32"
           },
           "productId": {
@@ -1701,23 +1699,27 @@
           },
           "productName": {
             "type": "string",
+            "description": "Product name to show to the customer in the checkout.",
             "nullable": true
           },
           "productDescription": {
             "type": "string",
+            "description": "Brief description of the product.",
             "nullable": true
           },
           "productImage": {
             "type": "string",
+            "description": "Product image to show to the customer in the checkout.",
             "nullable": true
           },
           "isFood": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Indicates whether this payment line can be purchased with vouchers."
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkLineDto": {
+      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineDto": {
         "type": "object",
         "properties": {
           "quantity": {
@@ -1766,35 +1768,41 @@
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.PaymentLinks.UpdatePaymentLinkBodyCommand": {
+      "Voucherly.WebApi.Handlers.PaymentLinks.UpdatePaymentLinkBodyCommand": {
         "type": "object",
         "properties": {
-          "status": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.PaymentLinks.PaymentLinkStatus"
+          "isActive": {
+            "type": "boolean"
           },
           "afterCompletionUrl": {
             "type": "string",
+            "description": "If specified, the success page is not shown at the end of a payment, but customer is redirected to this url.",
             "nullable": true
           },
           "customResultMessage": {
             "type": "string",
+            "description": "If specified and if `AfterCompletionUrl` is empty, the following message will be displayed upon successful payments. Otherwise, a default message is shown.",
             "nullable": true
           },
           "name": {
             "type": "string",
+            "description": "A name given by merchant to identify this Payment Link in the Dashboard.",
             "nullable": true
           },
           "maxNoOfSuccessPayments": {
             "type": "integer",
+            "description": "If not null, is the maximum number of payments that can be accepted.",
             "format": "int32",
             "nullable": true
           },
           "language": {
             "type": "string",
+            "description": "The language of Voucherly Checkout page.",
             "nullable": true
           },
           "country": {
             "type": "string",
+            "description": "The country of the purchase. If different from Italy, voucher payment gateways are not shown.",
             "nullable": true
           },
           "paymentGateways": {
@@ -1806,6 +1814,7 @@
           },
           "isAutoConfirm": {
             "type": "boolean",
+            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl. When auto confirm is disabled, payment requires manual confirmation.",
             "nullable": true
           },
           "metadata": {
@@ -1813,63 +1822,58 @@
             "additionalProperties": {
               "type": "string"
             },
+            "description": "Generic field that can be used to store generic info. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.",
             "nullable": true
           },
           "foodAmount": {
             "type": "integer",
+            "description": "The payable amount with vouchers. Must be lower than `TotalAmount` and no `Lines` must have been spcified.",
             "format": "int32",
             "nullable": true
           },
           "totalAmount": {
             "type": "integer",
+            "description": "The total payable amount, not considering `Discounts`. No `Lines` must have been spcified.",
             "format": "int32",
             "nullable": true
           },
           "lines": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand"
+              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand"
             },
             "nullable": true
           },
           "discounts": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand"
+              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.Payments.ConfirmPaymentCommand": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SberemPay.WebApi.Handlers.Payments.CreatePaymentCommand": {
+      "CreatePaymentRequest": {
         "type": "object",
         "properties": {
           "referenceId": {
             "type": "string",
+            "description": "A unique string to reference the Payment. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Payment with your internal systems",
             "nullable": true
           },
           "timeout": {
             "type": "integer",
+            "description": "Timeout in minutes for the checkout sessions. Default is 10.",
             "format": "int32",
             "nullable": true
           },
           "mode": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/Payments.PaymentMode"
           },
           "customerId": {
             "type": "string",
+            "description": "The ID of the customer of this Payment. If empty a new customer will be created.",
             "nullable": true
           },
           "customerEmail": {
@@ -1886,18 +1890,22 @@
           },
           "customerPaymentMethodId": {
             "type": "string",
+            "description": "ID of the Customer payment method to attach to this Payment.",
             "nullable": true
           },
           "isPartialPayment": {
             "type": "boolean",
+            "description": "Enable or disable partial payments. When partial payment is enabled, customers have the flexibility to pay a portion of the total amount. Customers can decide to use alternative payment methods to cover the remaining amount. When partial payment is disabled, customers are required to pay the entire amount using a combination of payment gateways.",
             "nullable": true
           },
           "isAutoConfirm": {
             "type": "boolean",
+            "description": "Enable or disable auto confirm.\r\nIf you don't specify anything the default Merchant configuration will be used.\r\nWhen auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl.\r\nWhen auto confirm is disabled, payment requires manual confirmation.",
             "nullable": true
           },
           "selectedPaymentGateway": {
             "type": "string",
+            "description": "Default PaymentGateway used for the first transaction",
             "nullable": true
           },
           "paymentGateways": {
@@ -1905,15 +1913,18 @@
             "items": {
               "type": "string"
             },
+            "description": "List of PaymentGateways enabled for this Payment. If empty all PaymentGateways are used.",
             "nullable": true
           },
           "redirectOkUrl": {
             "type": "string",
-            "nullable": true
+            "description": "The URL to which Voucherly should send customers when payment is complete.",
+            "nullable": false
           },
           "redirectKoUrl": {
             "type": "string",
-            "nullable": true
+            "description": "The URL to which Voucherly should send customers when payment is cancelled or failed.",
+            "nullable": false
           },
           "callbackUrl": {
             "type": "string",
@@ -1921,14 +1932,17 @@
           },
           "language": {
             "type": "string",
+            "description": "The language of Voucherly Checkout page.",
             "nullable": true
           },
           "country": {
             "type": "string",
+            "description": "The country of the purchase. If different from Italy, voucher payment gateways are not shown.",
             "nullable": true
           },
           "shippingAddress": {
             "type": "string",
+            "description": "Purchase shipping address.",
             "nullable": true
           },
           "metadata": {
@@ -1936,93 +1950,69 @@
             "additionalProperties": {
               "type": "string"
             },
+            "description": "Generic field that can be used to store generic info. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.",
             "nullable": true
           },
           "lines": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Payments.CreatePaymentCommand.PaymentLine"
+              "$ref": "#/components/schemas/CreatePaymentRequest.PaymentLine"
             },
             "nullable": true
           },
           "discounts": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Payments.CreatePaymentCommand.PaymentDiscount"
+              "$ref": "#/components/schemas/CreatePaymentRequest.PaymentDiscount"
             },
             "nullable": true
-          },
-          "redirectSuccessUrl": {
-            "type": "string",
-            "nullable": true,
-            "deprecated": true
-          },
-          "redirectErrorUrl": {
-            "type": "string",
-            "nullable": true,
-            "deprecated": true
-          },
-          "s2SUrl": {
-            "type": "string",
-            "nullable": true,
-            "deprecated": true
-          },
-          "paymentLines": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Payments.CreatePaymentCommand.PaymentLine"
-            },
-            "nullable": true,
-            "deprecated": true
-          },
-          "paymentDiscounts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Payments.CreatePaymentCommand.PaymentDiscount"
-            },
-            "nullable": true,
-            "deprecated": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.Payments.CreatePaymentCommand.PaymentDiscount": {
+      "CreatePaymentRequest.PaymentDiscount": {
         "type": "object",
         "properties": {
           "discountName": {
             "type": "string",
-            "nullable": true
+            "description": "The name of the discount",
+            "nullable": false
           },
           "discountDescription": {
             "type": "string",
-            "nullable": true
+            "description": "Brief description of this discount\r\n",
+            "nullable": false
           },
           "amount": {
             "type": "integer",
+            "description": "Discount amount to subtract from the total. Has to be specified when `Type` is NULL and `Value` is NULL.",
             "format": "int32",
             "nullable": true
           },
           "type": {
-            "$ref": "#/components/schemas/SberemPay.Domain.Payments.DiscountType"
+            "$ref": "#/components/schemas/Payments.DiscountType"
           },
           "value": {
             "type": "integer",
+            "description": "Value of the discount. Has to be specified when Type is not NULL and Amount is NULL. It is contextualized based on type",
             "format": "int32",
             "nullable": true
           },
           "index": {
             "type": "integer",
+            "description": "Specify the order of application of this discount with respect to the others.",
             "format": "int32",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.Payments.CreatePaymentCommand.PaymentLine": {
+      "CreatePaymentRequest.PaymentLine": {
         "type": "object",
         "properties": {
           "quantity": {
             "type": "integer",
+            "description": "The number of units of this article.",
             "format": "int32"
           },
           "priceId": {
@@ -2032,14 +2022,17 @@
           },
           "unitAmount": {
             "type": "integer",
+            "description": "Amount of the single unit of this article.",
             "format": "int32"
           },
           "unitDiscountAmount": {
             "type": "integer",
+            "description": "Discount amount on the unit amount.",
             "format": "int32"
           },
           "discountAmount": {
             "type": "integer",
+            "description": "Total discount amount on this product line.",
             "format": "int32"
           },
           "taxRate": {
@@ -2054,67 +2047,73 @@
           },
           "productName": {
             "type": "string",
+            "description": "Product name to show to the customer in the checkout.",
             "nullable": true
           },
           "productDescription": {
             "type": "string",
+            "description": "Brief description of the product.",
             "nullable": true
           },
           "productImage": {
             "type": "string",
+            "description": "Product image to show to the customer in the checkout.",
             "nullable": true
           },
           "isFood": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Indicates whether this payment line can be purchased with vouchers."
           }
         },
         "additionalProperties": false
-      },
-      "SberemPay.WebApi.Handlers.Payments.RefundPaymentTransactionCommand": {
+      },      
+      "RefundPaymentRequest.Transaction": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
+            "description": "The id of the transaction.",
             "format": "uuid"
           },
           "amount": {
             "type": "integer",
+            "description": "If specified, is the partial amount to be refunded.",
             "format": "int32",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SberemPay.WebApi.Handlers.Payments.RefundPaymentTransactionsCommand": {
+      "RefundPaymentRequest": {
         "type": "object",
         "properties": {
           "transactions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.WebApi.Handlers.Payments.RefundPaymentTransactionCommand"
+              "$ref": "#/components/schemas/RefundPaymentRequest.Transaction"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "fbognini.Core.Domain.Query.Pagination.PaginationResponse`1[[SberemPay.Services.Customers.CustomerPaymentMethodForExternalApi, SberemPay.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+      "PaginationResponse[[CustomerPaymentMethod]]": {
         "type": "object",
         "properties": {
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SberemPay.Services.Customers.CustomerPaymentMethodForExternalApi"
+              "$ref": "#/components/schemas/CustomerPaymentMethod"
             },
             "nullable": true
           },
           "pagination": {
-            "$ref": "#/components/schemas/fbognini.Core.Domain.Query.Pagination.PaginationResult"
+            "$ref": "#/components/schemas/PaginationResult"
           }
         },
         "additionalProperties": false
       },
-      "fbognini.Core.Domain.Query.Pagination.PaginationResult": {
+      "PaginationResult": {
         "type": "object",
         "properties": {
           "pageNumber": {
@@ -2148,7 +2147,7 @@
         },
         "additionalProperties": false
       },
-      "fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails": {
+      "ValidationProblemDetails": {
         "type": "object",
         "properties": {
           "type": {

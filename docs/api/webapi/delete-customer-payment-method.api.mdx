@@ -5,7 +5,7 @@ description: "Delete customer payment method"
 sidebar_label: "Delete customer payment method"
 hide_title: true
 hide_table_of_contents: true
-api: eJztVktvEzEQ/ivRnEAySXmc9kRbWoFEUVVehyhCk/UkMezaiz2bEq32v6OxN9k0CW0QiBO5xGvP+/s84wYY5wGyMZzXgV1JPsBEgavIIxtn32jI4BUVxDTIO4lBhauSLA9K4oXToKBCjyWxKGfjBiyWBBms5d+IiLGQQYW8AAWevtfGk4aMfU0KQr6gEiFrgFeVaAb2xs6hbdXGWOfzKrr8A4uTJEyBz5xeiUTuLJNlWWJVFSaPiY++BmdlrzfVOxnfzW03tolau3XTr5SziHgpKRsK0WWvvReiAlsXBU4LSsm0+/Yf1mkVoNZGEsHiesv3DItACtiwyML7KXkqr3E1/EzT08oMX6PVBfkw3NBhmNBff19vx3Lf2bkrS7QaWgnmLj5xI1TOhlSOZycv5E9TyL2pJGjI4J0bnHfItApenJzsi5yhHtwkMEEdj+P92KTTI1DpaniEZGDkess4GMs0Jw8KZs6XyGnr+bNDypoYTXGUH2MDo82PCyp3+jjBzeX+i7ybTd3cGmuEdpdi/tb5bz35rr2bFlQK9yR50p+wMDri2R2lgyDsiuw4SCAeXLra6v/c+D1u/BLEps8MrkzuXXAzHp6G6h3xufM0vFrmwwMAxUi3oXlwoHSLDHSUjD2WF5DBaPl0tFYLo6ZvpO2oM/Il6YZRs9M2W1AggN/07f/iB5ZVAmq7JfeV2eu8m0EiFZ25WM2uIp9cnS/IFyvYTbcjIOaRgN1Au/QCR8jd4CzdBVBAZYQzmn45Wwus70ruSvG7JB+S3eVT+a5c4BLtlukHy3snvA0fmH7wqCrQWDFb+0isVPex+FKbIgVQkB0ageviy/mBqbhwgcVY00wx0EdftK1sf6/JryAbTxQs0ZtExXED2gRZ60372Il7c6vh0U03YB4PQB3Op9tEK/gssagpIfONVnffKvLo+Ieed8vUTloFC0ItDXfcdFLdKHzyQWz1VvaamQSfNE7znCq+V3ayddFeXby9+HABCqbds6iM8wE83sr7Cm9TzC6WIParuNdAgXZe41xkk1X5/QTWZ6Ap
+api: eJztVcFq3DAQ/RUzpxZEnaQ56dQ2SSHQlhDaXpYlzFqTWKksOdJ46WL070Wy19k4W7Kl0FNPtqU3o5n3xk89MN4FkAs46wK7hnyApQDXkkfWzl4qkHBOhpiKakQULW4aslw0xLVTIKBFjw1xCpaLHiw2BBK2+MsE0RYktMg1CPD00GlPCiT7jgSEqqYGQfbAmzZFBvba3kGMYko2nvk5H/kXGZcJHFpnA4W0f3J0mh6KQuV1m1oGCV9cceYsk2WIAk6Pjp5DPqAqrumho8AgoBrRsgdsW6OrTF55HxK2f16OW91TlQJbn6hmPRQz7M6LFmA7Y3BlaGgvCmDN5jBkYORuJzloy3RHHgTcOt8gD0tvT/YFK2LU5qBztA2MtjqsqMqpw4DTYB2AjgJQKZ2IR3O1w+stmkATZ/AdjVZZnyvvVoaa89xlgBhjVnvvQHDx0XVW/df6z7T+rSj9Y2ewR4dc0K4CL3rQ+CJBZWR2Ja5BQrk+LrdhoewfXSmWY5KbITaU/cxlYraZW5cb3Y6P66qavNnAvMRxNrDKszH61i6cmsxwTvluvd14o7PLrMmHIc/6OH23LnCDdifVixQ8KWeShuknl61BbVPazmeNB24W6SwxGXUAAfKJa88ISvtzI14KqF3glKzvVxjomzcxpuWHjvwG5GIpYI1eD1Ox6EHpkN7V9GfO6p5+MHh1Pfr66wLE/n7GRbSJ4DWajgYlftDm6RWU7pJ/ePKcpriMAmpClbxs0Y+o91VFLe/EP3OUdGFNo31+8eni6wXE+AswYa1H
 sidebar_class_name: "delete api-method"
 info_path: api/webapi/voucherly
 custom_edit_url: null
@@ -54,7 +54,7 @@ Delete customer payment method
 
 <RequestSchema
   title={"Body"}
-  body={{"content":{"application/json":{"schema":{"required":["customerId","paymentMethodId"],"type":"object","properties":{"customerId":{"type":"string","nullable":true},"paymentMethodId":{"type":"string","nullable":true}},"additionalProperties":false,"title":"SberemPay.WebApi.Handlers.Customers.DeleteCustomerPaymentMethod.DeleteCustomerPaymentMethodCommand"}}},"required":true}}
+  body={undefined}
 >
   
 </RequestSchema>
@@ -62,7 +62,7 @@ Delete customer payment method
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"204":{"description":"No Content"},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"fbognini.WebFramework.Handlers.Problems.DetailedValidationProblemDetails"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"Microsoft.AspNetCore.Mvc.ProblemDetails"}}}}}}
+  responses={{"204":{"description":"No Content"},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"ValidationProblemDetails"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}}}}
 >
   
 </StatusCodes>

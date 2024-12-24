@@ -112,9 +112,11 @@ const config: Config = {
             outputDir: "docs/api/webapi",
             sidebarOptions: {
               groupPathsBy: "tag",
-              // categoryLinkSource: "tag",
+              categoryLinkSource: "info",
+              sidebarCollapsible: true,
+              sidebarCollapsed: false,
             },
-            showSchemas: true
+            showSchemas: false,
           } satisfies OpenApiPlugin.Options,
         }
       },

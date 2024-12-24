@@ -4,8 +4,9 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "category",
-      collapsed: false,
       label: "Customers",
+      collapsible: true,
+      collapsed: false,
       items: [
         {
           type: "doc",
@@ -21,23 +22,65 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
-    // {
-    //   type: "category",
-    //   collapsed: false,
-    //   label: "Merchants",
-    //   items: [
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/create-merchant",
-    //       label: "Create merchant",
-    //       className: "api-method post",
-    //     },
-    //   ],
-    // },
     {
       type: "category",
+      label: "Merchants",
+      collapsible: true,
       collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/create-merchant",
+          label: "Create merchant",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "PaymentGateway",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/get-payment-gateways",
+          label: "Get payment gateways",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "PaymentLinks",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/create-payment-link",
+          label: "Create payment link",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/get-payment-link",
+          label: "Get payment link",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/update-payment-link",
+          label: "Update payment link",
+          className: "api-method put",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Payments",
+      collapsible: true,
+      collapsed: false,
       items: [
         {
           type: "doc",
@@ -65,44 +108,6 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
-    {
-      type: "category",
-      collapsed: false,
-      label: "Payment Gateways",
-      items: [
-        {
-          type: "doc",
-          id: "api/webapi/get-payment-gateways",
-          label: "Get payment gateways",
-          className: "api-method get",
-        },
-      ],
-    },
-    // {
-    //   type: "category",
-    //   collapsed: false,
-    //   label: "Payment Links",
-    //   items: [
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/create-payment-link",
-    //       label: "Create payment link",
-    //       className: "api-method post",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/get-payment-link",
-    //       label: "Get payment link",
-    //       className: "api-method get",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/update-payment-link",
-    //       label: "Update payment link",
-    //       className: "api-method put",
-    //     },
-    //   ],
-    // },
   ],
 };
 
