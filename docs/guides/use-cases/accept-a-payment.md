@@ -240,18 +240,10 @@ Payment information is passed via the query string:
     </>
     <>
         :::tip
-        Please refer to [Understanding payments](/guides/resources/payments) for a complete guide on how payments work in Voucherly.
+        Please refer to [Understanding payments](/guides/resources/understanding-payments) for a complete guide on how payments work in Voucherly.
         :::
 
         Voucherly supports two-step card payments, allowing you to first authorize a card and capture the funds later. When Voucherly authorizes a payment, the card issuer guarantees the funds and places a hold for the payment amount on the customer’s card. You then have a specified timeframe to capture the funds (depending on the card, usually 5 days). If the payment is not captured before the authorization expires, the payment is canceled, and the issuer releases the held funds.
-
-        Separating authorization and capture is useful when additional actions are needed between confirming a customer's ability to pay and collecting their payment. For example, if you’re selling stock-limited items, you may need to confirm that the item is still available before capturing the payment and completing the order. You can follow this workflow:
-
-        1. Confirm that Voucherly has authorized the customer’s payment method.
-        2. Check your inventory management system to confirm the item is still available.
-        3. Update your inventory system to reflect that the item has been purchased.
-        4. Capture the customer’s payment.
-        5. Notify the customer whether their purchase was successful on the confirmation page.
 
         To enable this process, set the `isAutoConfirm` parameter to `false` when creating the Payment. This instructs Voucherly to authorize the amount on the customer’s card without capturing it immediately.
 
