@@ -8,7 +8,7 @@ Voucherly provides a prebuilt, optimized payment environment that allows merchan
 
 With Voucherly, merchants no longer need to integrate each payment gateway individually on their websites. Voucherly handles all the complexities for you.
 
-Customers are redirected to the Voucherly Checkout page, where they can choose from a variety of payment options—including meal voucher gateways—and complete their transactions quickly and securely. For a complete list of supported payment gateways, see [here](/guides/resources/payment-gateways#full-list-of-available-payment-gateways).
+Customers are redirected to the Voucherly Checkout page, where they can choose from a variety of payment options—including meal voucher gateways—and complete their transactions quickly and securely. For a complete list of supported payment gateways, see [here](/guides/resources/payment-gateways).
 
 This documentation is designed to help you at every step of the integration process of the Voucherly APIs.
 Whether you're a developer or a merchant, our documentation is here to support you.

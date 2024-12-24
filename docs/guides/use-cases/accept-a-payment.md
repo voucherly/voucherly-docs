@@ -196,7 +196,7 @@ Voucherly sends a callback when a customer successfully completes a Payment. Thi
 
 It's highly recommended to listen for this callback instead of relying solely on the customer being redirected back to your website. Triggering actions only from your Checkout landing page can be unreliable. 
 
-Voucherly sends the callback to the endpoint specified as `callbackUrl` in the [Create Payment API](/api/payments/create_payment) request.
+Voucherly sends the callback to the endpoint specified as `callbackUrl` in the [Create Payment API](/api/webapi/create-payment) request.
 
 Learn more in our [Callback S2S](/api/general/best-practices/s2s) guide.
 
@@ -208,7 +208,7 @@ Make sure your endpoint processes callbacks correctly. Failure to do so may lead
 
 It’s important for your customers to see a success or error page after submitting the payment form.
 
-When a customer completes payment on the Voucherly Checkout page, they are redirected to the URLs specified in the [Create Payment API](/api/payments/create_payment) request:
+When a customer completes payment on the Voucherly Checkout page, they are redirected to the URLs specified in the [Create Payment API](/api/webapi/create-payment) request:
 - If the payment is successful, the customer is redirected to the `redirectOkUrl`.
 - If the payment fails, the customer is redirected to the `redirectKoUrl`.
 
