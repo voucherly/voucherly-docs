@@ -23,6 +23,8 @@ Separating authorization and capture is useful when additional actions are neede
 4. Capture the customer’s payment.
 5. Notify the customer whether their purchase was successful on the confirmation page.
 
+Please look at [Separate authorization and confirm](/guides/use-cases/accept-a-payment#separate-authorization-and-confirm) for more technical information.
+
 :::warning
 Meal voucher Payment gateways do not support two-step process.
 :::
@@ -30,6 +32,18 @@ Meal voucher Payment gateways do not support two-step process.
 :::tip
 You can define the default behaviour in **Configurazione merchant > Checkout > Contabilizzazione automatica**. When enabled, all transactions are automatically captured at the end of a payment.
 :::
+
+### Payment statuses
+
+Payments have a `status` field that reflects the statuses of their transactions.
+
+- **Requested**. A payment has been created but no transactions exist yet.
+- **Paid**. The customer has successfully completed the checkout. At least one transaction is in the `PAID` status and awaits completion.
+- **Confirmed**. The payment was successful, and all transactions have been confirmed.
+- **Refunded**. All transactions have been refunded or cancelled.
+- **Cancelled**. All transactions have been cancelled.
+- **Voided**. The user cancelled the Payment during checkout. All transactions have been voided.
+- **Expired**. The payment has expired.
 
 ### Transaction statuses
 
@@ -45,15 +59,3 @@ The status of a Transaction is determined by the `status` field.
 - **Voided**. A `PAID` transaction has been voided due to an error or a customer cancelling the payment.
 - **Expired** The transaction has expired.
 - **ImpossibleRefund**. A refund could not be processed for the transaction. It's common for meal voucher Payment gateways.
-
-### Payment statuses
-
-Payments have a `status` field that reflects the statuses of their transactions.
-
-- **Requested**. A payment has been created but no transactions exist yet.
-- **Paid**. The customer has successfully completed the checkout. At least one transaction is in the `PAID` status and awaits completion.
-- **Confirmed**. The payment was successful, and all transactions have been confirmed.
-- **Refunded**. All transactions have been refunded or cancelled.
-- **Cancelled**. All transactions have been cancelled.
-- **Voided**. The user cancelled the Payment during checkout. All transactions have been voided.
-- **Expired**. The payment has expired.
