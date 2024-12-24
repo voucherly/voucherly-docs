@@ -1,0 +1,8 @@
+# docs.voucherly.it robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /img/
+Disallow: /download/
+
+Sitemap: https://docs.voucherly.it/sitemap.xml
