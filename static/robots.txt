@@ -4,5 +4,6 @@ User-agent: *
 Allow: /
 Disallow: /img/
 Disallow: /download/
+Disallow: /assets/
 
 Sitemap: https://docs.voucherly.it/sitemap.xml
