@@ -4,42 +4,52 @@ sidebar_position: 2
 
 import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 
-# Payment Gateway
+# Payment gateways
 
-## Wallet
-The Wallet is a virtual payment gateway provided by Voucherly that allows customers to load credit from various types of vouchers. For future payments, customers can use the Wallet to pay for food items without needing to interface with voucher payment gateways again.
+## List of available Payment gateways
+| Id | Name | Meal voucher | 2-step process | Partial refundable |
+|-|-|-|-|-|
+| **EDENRED**           | Edenred           | V |   |   |
+| **[FAKEVOU](#demo)**  | Demo Voucherly    | V |   |   |
+| **LUNCHGM**           | LunchGM           | V |   |   |
+| **MLTSFPY**           | MultiSafepay      |   | V | V |
+| **NEXI**              | Nexi              |   | V | V |
+| **PAYPAL**            | PayPal            |   | V |   |
+| **PELLEGR**           | Pellegrini        | V |   |   |
+| **PHEY**              | Wordline          |   | V | V |
+| **SATISPY**           | Satispay          | V |   | V |
+| **SODEXO**            | Pluxee            | V |   |   |
+| **STRIPE**            | Stripe            |   | V | V |
+| **UPDAY**             | UpDay             | V |   |   |
+| **YESTCKT**           | Yes!Ticket        | V |   |   |
+| **[WALLET](#wallet)** | Wallet            | V |   | V |
 
-Another benefit of the Wallet is that it removes the restriction of using meal vouchers with predetermined values, offering more flexibility to customers.
-
-:::warning
-To use the Wallet, the merchant's website must manage the storage of the Voucherly customer ID, which is generated the first time a customer makes a payment. This ID must be provided in future payments.
-:::
-
-## Fallback Payment Gateway
-To enhance the reliability and availability of the service, merchants can configure a fallback payment gateway for each non-voucher gateway via the Dashboard. This ensures that if a payment gateway error is detected during the process (e.g., temporary unavailability), users can still complete their payment.
-
-## List of Available Payment Gateways
-| Id             | Name          | Voucher | Partial Refundable | Note                                                 |
-|-----------------|---------------|---------|---------------------|-----------------------------------------------------|
-| **ADYEN**       | Adyen         |         | ✔️                  | Refunds are asynchronous.                          |
-| **AXERVE**      | Axerve        |         | ✔️                  |                                                     |
-| **EDENRED**     | Edenred       | ✔️      |                     |                                                     |
-| **FAKEVOU**     | Fake Voucherly| ✔️      |                     | Virtual payment gateway for testing purposes.      |
-| **MULTISAFEPAY**| MultiSafepay  |         | ✔️                  |                                                     |
-| **NEXI**        | Nexi          |         | ✔️                  |                                                     |
-| **PAYPAL**      | PayPal        |         |                     |                                                     |
-| **PELLEGR**     | Pellegrini    | ✔️      |                     |                                                     |
-| **PHEY**        | Phey - Wordline |       | ✔️                  |                                                     |
-| **SATISPY**     | Satispay      |         | ✔️                  |                                                     |
-| **SODEXO**      | Sodexo Multi  | ✔️      |                     |                                                     |
-| **STRIPE**      | Stripe        |         | ✔️                  |                                                     |
-| **UPDAY**       | UpDay         | ✔️      |                     |                                                     |
-| **WALLET**      | Wallet        | ✔️      | ✔️                  | See *[Wallet](payment-gateways#wallet)* for details.|
+<!-- 
+| **ADYEN**     | Adyen | | ✔️ | Refunds are asynchronous. | 
+| **AXERVE**    | Axerve | | ✔️ | |
+-->
 
 :::info
 **Partial refundable** means that a transaction in the `CONFIRMED` status can be refunded for an amount lower than the `ConfirmedAmount`.
 :::
 
+### Demo Voucherly {#demo}
+The Demo Voucherly is a virtual payment gateway provided by Voucherly that you can use for testing purposes.
+
+### Wallet
+The Wallet is a virtual payment gateway provided by Voucherly that enables customers to pay in advance and load *credit*. For future purchases, customers can conveniently use the Wallet to pay for food items without interacting with meal voucher Payment gateways again.
+
+An additional advantage of the Wallet is its flexibility — it eliminates the limitation of meal vouchers with fixed values, giving customers greater freedom in how they use their funds.
+
+:::warning
+To use the Wallet, the merchant's website must store the Voucherly customer ID, which is created when a customer makes their first payment. This ID must be included in all subsequent payments.
+:::
+
+<!-- ## Fallback Payment Gateway
+To enhance the reliability and availability of the service, merchants can configure a fallback payment gateway for each non-voucher gateway via the Dashboard. This ensures that if a payment gateway error is detected during the process (e.g., temporary unavailability), users can still complete their payment. -->
+
+
+<!-- 
 ## Configuration Guide
 Below are short guides on configuring payment gateways to make them compatible with Voucherly (e.g., Voucherly S2S endpoint, payment types, etc.). No specific configuration is required for gateways not listed here.
 
@@ -59,4 +69,5 @@ No specific configuration is necessary for voucher payment gateways. Refer to th
 <IframeWindow url="https://scribehow.com/embed/PayPal_configuration__V4wNn2Z4TOWF_HMzl8DVOA" height="640" />
 
 ### Stripe
-<IframeWindow url="https://scribehow.com/embed/Stripe_Configuration__AU0YOKBDQcSx_i1cQo2Y4Q" height="640" />
+<IframeWindow url="https://scribehow.com/embed/Stripe_Configuration__AU0YOKBDQcSx_i1cQo2Y4Q" height="640" /> 
+-->
