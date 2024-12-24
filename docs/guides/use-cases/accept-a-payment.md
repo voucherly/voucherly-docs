@@ -47,17 +47,22 @@ Let’s walk through a simple example of integrating the payment flow from scrat
 <Tabs groupId="flow" queryString>
 <TabItem value="checkout" label="Hosted checkout">
 
-The simplest way to integrate Voucherly is to use Voucherly Checkout as a single checkout page for all your Payment gateways.
+The simplest and preferred way to integrate Voucherly is to use Voucherly Checkout as a single checkout page for all your Payment gateways.
 
 Add a checkout button to your website that calls a server-side endpoint to create a Payment in Voucherly.
-
-
 
 </TabItem>
 
 <TabItem value="gateway" label="Advanced gateway integration">
 
-Ciccione pasticcione
+You can build a custom payments integration by displaying Payment gateway components on your site.
+
+Voucherly offers a [GET Payment gateway API](/api/webapi/get-payment-gateways) to fetch the active and available payment gateways for your merchant account.
+
+Use this to dynamically display specific Payment gateways on your website, instead of generic labels like *Voucherly* or *Pay online*. Once the customer selects a Payment gateway, call a server-side endpoint to create a Payment in Voucherly.
+
+Additionally, Voucherly provides a [GET Customer payment methods API](/api/webapi/get-customer-payment-methods) to retrieve a customer's saved payment methods.
+This lets you display their preferred Payment methods upfront, enabling seamless direct charges and further reducing friction during the checkout process.
 
 </TabItem>
 </Tabs>
@@ -120,7 +125,7 @@ Payments expire 24 hours after creation by default.
 
 <TabItem value="gateway" label="Advanced gateway integration">
 
-Specify the selected Payment gateway using the `selectedPaymentGateway` parameter.
+Specify the selected Payment gateway using the `selectedPaymentGateway` parameter or the Customer payment method using the `customerPaymentMethodId` parameter.
 
 **Example request**
 
@@ -128,6 +133,7 @@ Specify the selected Payment gateway using the `selectedPaymentGateway` paramete
 {
     "mode": "Payment",
     "selectedPaymentGateway": "GATEWAY",
+    "customerPaymentMethodId": "my-customer-method-1",
     "customerEmail": "mario.rossi@voucherly.it",
     "customerFirstName": "Mario",
     "customerLastName": "Rossi",
