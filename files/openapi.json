@@ -101,244 +101,6 @@
         }
       }
     },
-    "/v1/merchants/signup": {
-      "post": {
-        "tags": [
-          "Merchants"
-        ],
-        "operationId": "Create merchant",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/payment_gateways": {
-      "get": {
-        "tags": [
-          "PaymentGateway"
-        ],
-        "operationId": "Get payment gateways",
-        "parameters": [
-          {
-            "name": "All",
-            "in": "query",
-            "description": "Specifies whether to return all payment gateways or only those are enabled",
-            "schema": {
-              "type": "boolean",
-              "description": "Specifies whether to return all payment gateways or only those are enabled"
-            }
-          },
-          {
-            "name": "Include",
-            "in": "query",
-            "description": "An array of nested object to be included in response.",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "Parameters"
-                ]
-              },
-              "description": "An array of nested object to be included in response."
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetPaymentGatewaysResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/payment_links": {
-      "post": {
-        "tags": [
-          "PaymentLinks"
-        ],
-        "operationId": "Create payment link",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.CreatePaymentLinkCommand"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/payment_links/{id}": {
-      "get": {
-        "tags": [
-          "PaymentLinks"
-        ],
-        "operationId": "Get payment link",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "PaymentLinks"
-        ],
-        "operationId": "Update payment link",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.UpdatePaymentLinkBodyCommand"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/payments": {
       "post": {
         "tags": [
@@ -554,6 +316,63 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment_gateways": {
+      "get": {
+        "tags": [
+          "PaymentGateway"
+        ],
+        "operationId": "Get payment gateways",
+        "parameters": [
+          {
+            "name": "All",
+            "in": "query",
+            "description": "Specifies whether to return all payment gateways or only those are enabled",
+            "schema": {
+              "type": "boolean",
+              "description": "Specifies whether to return all payment gateways or only those are enabled"
+            }
+          },
+          {
+            "name": "Include",
+            "in": "query",
+            "description": "An array of nested object to be included in response.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Parameters"
+                ]
+              },
+              "description": "An array of nested object to be included in response."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPaymentGatewaysResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -1238,86 +1057,6 @@
         },
         "additionalProperties": false
       },
-      "Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "businessInformation": {
-            "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantBusinessInformation"
-          },
-          "person": {
-            "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantPerson"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantBusinessInformation": {
-        "type": "object",
-        "properties": {
-          "businessName": {
-            "type": "string",
-            "nullable": true
-          },
-          "vatNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "taxCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "streetAddress": {
-            "type": "string",
-            "nullable": true
-          },
-          "postalCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "city": {
-            "type": "string",
-            "nullable": true
-          },
-          "province": {
-            "type": "string",
-            "nullable": true
-          },
-          "country": {
-            "type": "string",
-            "nullable": true
-          },
-          "sdi": {
-            "type": "string",
-            "nullable": true
-          },
-          "pec": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.Merchants.CreateMerchantCommand.MerchantPerson": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "firstName": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "GetPaymentGatewaysResponse": {
         "type": "object",
         "properties": {
@@ -1402,453 +1141,6 @@
           },
           "value": {
             "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.PaymentLinks.CreatePaymentLinkCommand": {
-        "type": "object",
-        "properties": {
-          "referenceId": {
-            "type": "string",
-            "description": "A unique string to reference the Payment Link. This can be a cart ID, order ID, or similar, and can be used to reconcile the Payment Link with your internal systems.",
-            "nullable": true
-          },
-          "afterCompletionUrl": {
-            "type": "string",
-            "description": "If specified, the success page is not shown at the end of a payment, but customer is redirected to this url.",
-            "nullable": true
-          },
-          "customResultMessage": {
-            "type": "string",
-            "description": "If specified and if `AfterCompletionUrl` is empty, the following message will be displayed upon successful payments. Otherwise, a default message is shown.",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "description": "A name given by merchant to identify this Payment Link in the Dashboard.",
-            "nullable": true
-          },
-          "maxNoOfSuccessPayments": {
-            "type": "integer",
-            "description": "If not null, is the maximum number of payments that can be accepted.",
-            "format": "int32",
-            "nullable": true
-          },
-          "language": {
-            "type": "string",
-            "description": "The language of Voucherly Checkout page.",
-            "nullable": true
-          },
-          "country": {
-            "type": "string",
-            "description": "The country of the purchase. If different from Italy, voucher payment gateways are not shown.",
-            "nullable": true
-          },
-          "paymentGateways": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "isAutoConfirm": {
-            "type": "boolean",
-            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl. When auto confirm is disabled, payment requires manual confirmation.",
-            "nullable": true
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Generic field that can be used to store generic info. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.",
-            "nullable": true
-          },
-          "foodAmount": {
-            "type": "integer",
-            "description": "The payable amount with vouchers. Must be lower than `TotalAmount` and no `Lines` must have been spcified.",
-            "format": "int32",
-            "nullable": true
-          },
-          "totalAmount": {
-            "type": "integer",
-            "description": "The total payable amount, not considering `Discounts`. No `Lines` must have been spcified.",
-            "format": "int32",
-            "nullable": true
-          },
-          "lines": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand"
-            },
-            "nullable": true
-          },
-          "discounts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand": {
-        "type": "object",
-        "properties": {
-          "discountName": {
-            "type": "string",
-            "nullable": true
-          },
-          "discountDescription": {
-            "type": "string",
-            "nullable": true
-          },
-          "amount": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "type": {
-            "$ref": "#/components/schemas/Payments.DiscountType"
-          },
-          "value": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "index": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountDto": {
-        "type": "object",
-        "properties": {
-          "discountName": {
-            "type": "string",
-            "nullable": true
-          },
-          "discountDescription": {
-            "type": "string",
-            "nullable": true
-          },
-          "amount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "type": {
-            "$ref": "#/components/schemas/Payments.DiscountType"
-          },
-          "value": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true
-          },
-          "index": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDto": {
-        "required": [
-          "id",
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "referenceId": {
-            "type": "string",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "url": {
-            "type": "string",
-            "nullable": true
-          },
-          "afterCompletionUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "maxNoOfSuccessPayments": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "noOfSuccessPayments": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "language": {
-            "type": "string",
-            "nullable": true
-          },
-          "country": {
-            "type": "string",
-            "nullable": true
-          },
-          "selectedPaymentGateway": {
-            "type": "string",
-            "nullable": true
-          },
-          "paymentGateways": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "isPartialPayment": {
-            "type": "boolean"
-          },
-          "s2SUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "isAutoConfirm": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "foodAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "discountAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "finalAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "amount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "lines": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineDto"
-            },
-            "nullable": true
-          },
-          "discounts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountDto"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand": {
-        "type": "object",
-        "properties": {
-          "quantity": {
-            "type": "integer",
-            "description": "The number of units of this article.",
-            "format": "int32"
-          },
-          "priceId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "unitAmount": {
-            "type": "integer",
-            "description": "Amount of the single unit of this article.",
-            "format": "int32"
-          },
-          "unitDiscountAmount": {
-            "type": "integer",
-            "description": "Discount amount on the unit amount.",
-            "format": "int32"
-          },
-          "discountAmount": {
-            "type": "integer",
-            "description": "Total discount amount on this product line.",
-            "format": "int32"
-          },
-          "productId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "productName": {
-            "type": "string",
-            "description": "Product name to show to the customer in the checkout.",
-            "nullable": true
-          },
-          "productDescription": {
-            "type": "string",
-            "description": "Brief description of the product.",
-            "nullable": true
-          },
-          "productImage": {
-            "type": "string",
-            "description": "Product image to show to the customer in the checkout.",
-            "nullable": true
-          },
-          "isFood": {
-            "type": "boolean",
-            "description": "Indicates whether this payment line can be purchased with vouchers."
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineDto": {
-        "type": "object",
-        "properties": {
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "unitAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "unitDiscountAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "discountAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalDiscountAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "finalAmount": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "productName": {
-            "type": "string",
-            "nullable": true
-          },
-          "productDescription": {
-            "type": "string",
-            "nullable": true
-          },
-          "productImage": {
-            "type": "string",
-            "nullable": true
-          },
-          "isFood": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Voucherly.WebApi.Handlers.PaymentLinks.UpdatePaymentLinkBodyCommand": {
-        "type": "object",
-        "properties": {
-          "isActive": {
-            "type": "boolean"
-          },
-          "afterCompletionUrl": {
-            "type": "string",
-            "description": "If specified, the success page is not shown at the end of a payment, but customer is redirected to this url.",
-            "nullable": true
-          },
-          "customResultMessage": {
-            "type": "string",
-            "description": "If specified and if `AfterCompletionUrl` is empty, the following message will be displayed upon successful payments. Otherwise, a default message is shown.",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "description": "A name given by merchant to identify this Payment Link in the Dashboard.",
-            "nullable": true
-          },
-          "maxNoOfSuccessPayments": {
-            "type": "integer",
-            "description": "If not null, is the maximum number of payments that can be accepted.",
-            "format": "int32",
-            "nullable": true
-          },
-          "language": {
-            "type": "string",
-            "description": "The language of Voucherly Checkout page.",
-            "nullable": true
-          },
-          "country": {
-            "type": "string",
-            "description": "The country of the purchase. If different from Italy, voucher payment gateways are not shown.",
-            "nullable": true
-          },
-          "paymentGateways": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "isAutoConfirm": {
-            "type": "boolean",
-            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl. When auto confirm is disabled, payment requires manual confirmation.",
-            "nullable": true
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Generic field that can be used to store generic info. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.",
-            "nullable": true
-          },
-          "foodAmount": {
-            "type": "integer",
-            "description": "The payable amount with vouchers. Must be lower than `TotalAmount` and no `Lines` must have been spcified.",
-            "format": "int32",
-            "nullable": true
-          },
-          "totalAmount": {
-            "type": "integer",
-            "description": "The total payable amount, not considering `Discounts`. No `Lines` must have been spcified.",
-            "format": "int32",
-            "nullable": true
-          },
-          "lines": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkLineCommand"
-            },
-            "nullable": true
-          },
-          "discounts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentLinks.PaymentLinkDiscountCommand"
-            },
             "nullable": true
           }
         },

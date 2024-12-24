@@ -112,7 +112,7 @@ const config: Config = {
             outputDir: "docs/api/webapi",
             sidebarOptions: {
               groupPathsBy: "tag",
-              categoryLinkSource: "info",
+              // categoryLinkSource: "auto",
               sidebarCollapsible: true,
               sidebarCollapsed: false,
             },
