@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Core terms
+# Definitions
 
 This section defines the key terms and concepts used in Voucherly to help you better understand the guides and system functionality.
 
@@ -26,14 +26,14 @@ The entity representing a customer's payment action. A payment must be created v
 
 A payment includes multiple transactions, each representing a payment attempt through a specific gateway.
 
-Refer to the [Use Cases](/guides/use-cases/) section for a detailed explanation.
+Refer to the [Understanding payments](/guides/resources/understanding-payments) guide for a detailed explanation.
 
 ### Payment Gateway
 An external service that Voucherly uses to authorize and process transactions.
 
 Payment gateways can be activated or deactivated from the Dashboard after entering the necessary credentials obtained through agreements between the merchant and the gateway provider.
 
-For more information, see [here](/guides/resources/payment-gateways).
+Refer to the [Payment gateways](/guides/resources/payment-gateways) guide for a detailed explanation.
 
 ### Wallet
 A digital wallet that enhances the purchasing experience by eliminating the need to enter payment data for each transaction. When enabled via the Dashboard, customers can top up their wallets and use the credit for future purchases.
