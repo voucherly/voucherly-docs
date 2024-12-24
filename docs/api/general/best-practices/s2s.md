@@ -87,10 +87,12 @@ The merchant server must respond with an HTTP `200 OK` status code and a JSON bo
 
 - **Ok** *(bool)*  
   Indicates whether the S2S request was successfully processed by the merchant server.
-- **Stop** *(bool?)*  
-  If true, Voucherly will not make further attempts to call the callback endpoint, regardless of the response status or the `Ok` field. 
 - **OrderId** *(string?)*  
   The unique identifier of the order in the merchant's system.
+- **Stop** *(bool?)*  
+  If true, Voucherly will not make further attempts to call the callback endpoint, regardless of the response status or the `Ok` field. 
+- **error** *(string?)*  
+  Merchant error message. Usefull only for investigation purposes. 
 
 ```json
 {
@@ -104,6 +106,16 @@ Until we receive an expected response we resend the notification up to 3 times.
 :::warning
 If the issue persists, the payment will be cancelled, and all transactions will be refunded.
 :::
+
+If the error is *handled* and you are not interested in a retry, you can specify `stop` as `true`.
+
+```json
+{
+    "ok": false,
+    "stop": true,
+    "error": "An error occurred and I'm not interested in a retry"
+}
+```
 
 ## Multiple callbacks and Wallet payments
 
