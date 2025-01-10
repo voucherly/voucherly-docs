@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Accordion from '@site/src/components/Accordion';
 
-# Accept a payment
+# Online payment
 
 Use a prebuilt checkout page to start accepting online payments.
 
