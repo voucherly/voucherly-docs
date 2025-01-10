@@ -53,9 +53,11 @@ Add a checkout button to your website that calls a server-side endpoint to creat
 
 </TabItem>
 
-<TabItem value="gateway" label="Advanced gateway integration">
+<TabItem value="gateway" label="Gateway">
 
 You can build a custom payments integration by displaying Payment gateway components on your site.
+
+![Gateway hosted checkout preparation flow](./gateway_hosted_checkout.svg)
 
 Voucherly offers a [GET Payment gateway API](/api/webapi/get-payment-gateways) to fetch the active and available payment gateways for your merchant account.
 
@@ -67,6 +69,7 @@ This lets you display their preferred Payment methods upfront, enabling seamless
 </TabItem>
 </Tabs>
 
+![Hosted checkout flow](./hosted_checkout.svg)
 
 :::info
 Refer to the [Create Payment API](/api/webapi/create-payment) for detailed functionality and usage.
@@ -123,7 +126,7 @@ Payments expire 24 hours after creation by default.
 
 </TabItem>
 
-<TabItem value="gateway" label="Advanced gateway integration">
+<TabItem value="gateway" label="Gateway">
 
 Specify the selected Payment gateway using the `selectedPaymentGateway` parameter or the Customer payment method using the `customerPaymentMethodId` parameter.
 
