@@ -88,8 +88,6 @@ Customers can scan the QR code using their mobile devices to access the payment 
 You can use a library like [qrcode.js](https://davidshimjs.github.io/qrcodejs/) or a server-side QR code generator to create and display the QR code.
 :::
 
-Example request for polling the Payment status:
-
 **Example response**
 
 ```json

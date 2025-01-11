@@ -22,7 +22,7 @@ Activate payment gateways in **Configurazione merchant > [Gateway di pagamento](
 Voucher payments often require supplementation with a *standard* transaction, such as a card payment. Therefore, activating at least one non-voucher payment gateway is strongly recommended.
 
 ### 4. Let's start
-Define what's your [use case](/guides/use-cases) and the [integration](/guides/integrations) that suits you best.
+Define what's the [integration](/guides/integrations) that suits you best and your [use case](/guides/use-cases).
 
 #### E-commerce plugins
 
