@@ -20,13 +20,13 @@ The kiosk must have:
 - An internet connection.
 - A display toward the user.
 
-If the kiosk is offline but communicates via a local server refer to the [Online Payment use case](./../online-payment?flow=checkout).
+If the kiosk is offline but communicates via a local server refer to the [Online Payment use case](./../ecommerce?flow=checkout).
 
 :::
 
 :::tip Incoming internet connections
 
-If the kiosk allows incoming internet connections refer to the [Online Payment use case](./../online-payment?flow=checkout).
+If the kiosk allows incoming internet connections refer to the [Online Payment use case](./../ecommerce?flow=checkout).
 
 :::
 
@@ -155,7 +155,7 @@ You are free to manage this phase independently, aligning with the best practice
     </>
     <>
         :::info
-        Please refer to [Online payment use case](./../online-payment?flow=gateway) for a complete example.
+        Please refer to [Online payment use case](./../ecommerce?flow=gateway) for a complete example.
         :::
         <GatewayFlowContent />
     </>

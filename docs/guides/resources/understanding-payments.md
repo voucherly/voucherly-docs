@@ -23,7 +23,7 @@ Separating authorization and capture is useful when additional actions are neede
 4. Capture the customer’s payment.
 5. Notify the customer whether their purchase was successful on the confirmation page.
 
-Please look at [Separate authorization and confirm](/guides/use-cases/accept-a-payment#separate-authorization-and-confirm) for more technical information.
+Please look at [Separate authorization and confirm](/guides/use-cases/ecommerce#separate-authorization-and-confirm) for more technical information.
 
 :::warning
 Meal voucher Payment gateways do not support two-step process.
