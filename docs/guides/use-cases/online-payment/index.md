@@ -5,6 +5,10 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Accordion from '@site/src/components/Accordion';
+import PrefillCustomerTitle from './../_partial/prefill_customer_title.md';
+import PrefillCustomerContent from './../_partial/prefill_customer_content.md';
+import GatewayFlowContent from './../_partial/gateway_flow_content.md';
+import CreatePaymentContent from './../_partial/create_payment_content.md';
 
 # Online payment
 
@@ -59,34 +63,14 @@ You can build a custom payments integration by displaying Payment gateway compon
 
 ![Gateway hosted checkout preparation flow](./gateway_hosted_checkout.svg)
 
-Voucherly offers a [GET Payment gateway API](/api/webapi/get-payment-gateways) to fetch the active and available payment gateways for your merchant account.
-
-Use this to dynamically display specific Payment gateways on your website, instead of generic labels like *Voucherly* or *Pay online*. Once the customer selects a Payment gateway, call a server-side endpoint to create a Payment in Voucherly.
-
-Additionally, Voucherly provides a [GET Customer payment methods API](/api/webapi/get-customer-payment-methods) to retrieve a customer's saved payment methods.
-This lets you display their preferred Payment methods upfront, enabling seamless direct charges and further reducing friction during the checkout process.
+<GatewayFlowContent />
 
 </TabItem>
 </Tabs>
 
 ![Hosted checkout flow](./hosted_checkout.svg)
 
-:::info
-Refer to the [Create Payment API](/api/webapi/create-payment) for detailed functionality and usage.
-:::
-
-
-You can also create a Payment for an existing customer, allowing you to prefill the checkout form with their contact details and unify their purchase history. A Payment represents the experience your customer sees when redirected to the payment form. You can configure it with options such as:
-
-- **Lines**. Specify the items to charge for. For each item, the `isFood` field determines whether it can be paid with vouchers.
-- **Discounts**. Define the discounts applied to cart.
-
-Ensure you set `redirectOkUrl` to the URL of a page on your website where the customer is redirected after successful payment. You can also provide a `redirectKoUrl` for a page on your website where the customer is redirected if they cancel the payment process.
-
-:::info
-Payments expire 24 hours after creation by default.
-:::
-
+<CreatePaymentContent />
 
 <Tabs groupId="flow" queryString>
 <TabItem value="checkout" label="Hosted checkout">
@@ -235,13 +219,11 @@ Payment information is passed via the query string:
 ## Next steps
 
 <Accordion>
-    <>
-        ### Prefill customer data
-    </>
-    <div>
-        If you’ve already collected your customer’s information, you can include the `customerEmail`, `customerFirstName`, `customerLastName` parameters when creating the Payment.
-    </div>
+    <PrefillCustomerTitle />
+    <PrefillCustomerContent />
 </Accordion>
+
+
 
 <Accordion>
     <>
