@@ -14,6 +14,10 @@ import CreatePaymentContent from './../_partial/create_payment_content.md';
 
 Use a prebuilt checkout page to start accepting online payments.
 
+:::info E-commerce plugins
+Voucherly can be easily added as a payment method using one of the [E-commerce plugins](/guides/integrations/ecommerce-plugins).
+:::
+
 <!-- ## Restrict Available Payment Gateways
 
 Merchants can dynamically specify which payment gateways are available for each payment by providing an array of payment gateway IDs in the [Create Payment API](/api/webapi/create-payment) request (see [here](/guides/resources/payment-gateways) for a full list).
@@ -155,6 +159,12 @@ Specify the selected Payment gateway using the `selectedPaymentGateway` paramete
 
 
 After creating a Payment, redirect your customer to the `checkoutUrl` returned in the response.
+
+:::tip QR code
+
+When the consumer is physically purchasing in a Brick & Mortar store with a screen facing them, you can display the `checkoutUrl` as a QR code.
+
+:::
 
 
 **Example response**
