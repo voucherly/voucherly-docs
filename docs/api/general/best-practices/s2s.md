@@ -18,7 +18,9 @@ You must set a webhook endpoint, which is a URL that:
 - Is publicly accessible, or has MultiSafepay on your allow list.
 - Uses HTTPS - We don't accept HTTP for security reasons.
 
-## Configure your endpoint
+## Development Guide
+
+### 1. Configure your endpoint
 
 The merchant's endpoint URL must be specified when creating the payment via the [Create Payment API](/api/webapi/create-payment).
 
@@ -26,9 +28,9 @@ When the customer leaves the Voucherly Checkout page after a successfull payment
 
 Merchants need to configure an endpoint that accepts a POST request with a JSON body containing a subset of the Payment properties.
 
-## Handle callbacks
+### 2. Handle callbacks
 
-### Request
+#### Request
 
 - **Id** *(string)*  
   Unique identifier of the payment.  
@@ -57,8 +59,6 @@ Merchants need to configure an endpoint that accepts a POST request with a JSON 
 - **Status** *(string)*  
   The current status of the payment: `Requested`, `Paid`, `Confirmed`, `Refunded`, `Cancelled`, `Voided`, or `Expired`.  
 
-#### Example
-
 Below is an example of the S2S request body sent by Voucherly.
 
 ```json
@@ -82,7 +82,7 @@ Below is an example of the S2S request body sent by Voucherly.
 Since the merchant S2S endpoint does not require any authentication setup, it is recommended to call the [Get Payment API](/api/webapi/get-payment) to validate that the request originates from Voucherly. This API provides all the necessary information about the payment.
 :::
 
-### Response
+#### Response
 The merchant server must respond with an HTTP `200 OK` status code and a JSON body in the following format:
 
 - **Ok** *(bool)*  
@@ -117,7 +117,7 @@ If the error is *handled* and you are not interested in a retry, you can specify
 }
 ```
 
-## Multiple callbacks and Wallet payments
+### Multiple callbacks and Wallet payments
 
 Callbacks are sent every time a user completes a checkout flow successfully. In certain scenarios, multiple callbacks may occur.
 
@@ -130,7 +130,7 @@ Voucherly reserves the right to call the callback endpoint in the future for eve
 :::
 
 
-## Payment loss
+## Why?  Payment loss! {#why}
 
 As previously mentioned, every payment should be handled by callback.
 If the callback is not properly handled, it can lead to potential payment losses, especially in e-commerces.
