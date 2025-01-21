@@ -117,15 +117,16 @@ You can build a custom payments integration by displaying Payment gateway compon
 
 <TabItem value="gateway" label="Gateway">
 
-Specify the selected Payment gateway using the `selectedPaymentGateway` parameter or the Customer payment method using the `customerPaymentMethodId` parameter.
+If clicked, specify the selected Payment gateway using the `selectedPaymentGateway` parameter or the Customer payment method using the `customerPaymentMethodId` parameter.
 
 **Example request**
 
 ```json
 {
     "mode": "Payment",
-    "selectedPaymentGateway": "GATEWAY",
-    "customerPaymentMethodId": "my-customer-method-1",
+    "selectedPaymentGateway": "GATEWAY", // or customerPaymentMethodId
+    "customerPaymentMethodId": "my-customer-method-1", // or selectedPaymentGateway
+    "customerId": "my-customer-id-1",
     "customerEmail": "mario.rossi@voucherly.it",
     "customerFirstName": "Mario",
     "customerLastName": "Rossi",
@@ -182,7 +183,6 @@ When the consumer is physically purchasing in a Brick & Mortar store with a scre
     [...]
 }
 ```
-
 
 ### 2. Handle before-redirect Callback S2S
 
