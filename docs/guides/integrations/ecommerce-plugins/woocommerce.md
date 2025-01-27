@@ -6,7 +6,7 @@ sidebar_position: 1
 Technical manual for Voucherly's free plugin for WooCommerce e-commerce platform.
 
 ## Prerequisites
-- **[Voucherly account](/guides/intro/getting-started)**.
+- Read **[Getting started with a Voucherly account](/guides/intro/getting-started)**.
 - **WordPress** 5.0 or higher.
 - **PHP** 5.6 or higher.
 
@@ -38,12 +38,15 @@ There are two ways to install the Voucherly plugin:
 
 ## Configuration
 
+1. Sign in to your Voucherly dashboard.
+1. Go to **Sviluppatori > [Chiavi API](https://dashboard.voucherly.it/Developer/ApiKey)**:
+   - Get your private key.
 1. Sign in to your WooCommerce backend.
-2. Go to **WooCommerce > Settings > Payments > Voucherly**:
-   - Enter your API keys.
+1. Go to **WooCommerce > Settings > Payments > Voucherly**:
+   - Enter your API key.
    - Edit your settings.
    - Click **Save changes**.
-3. Go to **WooCommerce > Settings > Payments**:
+1. Go to **WooCommerce > Settings > Payments**:
    - Enable Voucherly as payment method.
    
 ## User guide

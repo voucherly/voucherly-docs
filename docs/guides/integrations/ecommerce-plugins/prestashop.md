@@ -6,7 +6,7 @@ sidebar_position: 2
 Technical manual for Voucherly's free plugin for PrestaShop e-commerce platform.
 
 ## Prerequisites
-- **[Voucherly account](/guides/intro/getting-started)**.
+- Read **[Getting started with a Voucherly account](/guides/intro/getting-started)**.
 - **PrestaShop** 1.7 up to 8.
 - **PHP** 5.6 or higher.
 
@@ -38,14 +38,17 @@ We recommend installing the plugin in a test environment first, following the Pr
 
 ## Configuration
 
+1. Sign in to your Voucherly dashboard.
+1. Go to **Sviluppatori > [Chiavi API](https://dashboard.voucherly.it/Developer/ApiKey)**:
+   - Get your private key.
 1. Sign in to your PrestaShop backend.
-2. Go to **Payment > Payment Methods > Voucherly (Configure)**:
-   - Enter your API keys.
+1. Go to **Payment > Payment Methods > Voucherly (Configure)**:
+   - Enter your API key.
    - Edit your settings.
    - Click **Save**.
-3. Go to **International > Locations > Countries**:
+1. Go to **International > Locations > Countries**:
    - Enable United Kingdom
-4. Go to **Payment > Preferences > Country restrictions**:
+1. Go to **Payment > Preferences > Country restrictions**:
     - Enable Voucherly to your relevant countries.
     - Click **Save**.
    

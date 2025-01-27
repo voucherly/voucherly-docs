@@ -11,7 +11,7 @@ Shopify does not allow direct integration of external payment methods within its
 
 
 ## Prerequisites
-- **[Voucherly account](/guides/intro/getting-started)**.
+- Read **[Getting started with a Voucherly account](/guides/intro/getting-started)**.
 
 ## Configuration
 
