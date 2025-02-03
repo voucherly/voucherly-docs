@@ -15,7 +15,7 @@ We recommend using it, as not doing so could lead to missed payments or mishandl
 
 You must set a webhook endpoint, which is a URL that:
 - Doesn't include port numbers.
-- Is publicly accessible, or has MultiSafepay on your allow list.
+- Is publicly accessible, or has Voucherly on your allow list.
 - Uses HTTPS - We don't accept HTTP for security reasons.
 
 ## Development Guide
