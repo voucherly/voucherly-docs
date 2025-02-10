@@ -43,6 +43,8 @@ An additional advantage of the Wallet is its flexibility — it eliminates the l
 
 :::warning
 To use the Wallet, the merchant's website must store the Voucherly customer ID, which is created when a customer makes their first payment. This ID must be included in all subsequent payments.
+
+Learn more in our [Manage customer](/api/general/best-practices/customer) guide.
 :::
 
 <!-- ## Fallback Payment Gateway
