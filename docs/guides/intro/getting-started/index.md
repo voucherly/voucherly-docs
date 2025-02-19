@@ -21,6 +21,12 @@ Activate payment gateways in **Configurazione merchant > [Gateway di pagamento](
 
 Voucher payments often require supplementation with a *standard* transaction, such as a card payment. Therefore, activating at least one non-voucher payment gateway is strongly recommended.
 
+:::tip
+For sandbox testing, we recommend activating Demo Voucherly and MultiSafepay. These are sufficient to replicate all payment behaviors.
+
+Please refer to the [Payment gateways resource](/guides/resources/payment-gateways/) for more information about payment gateways.
+:::
+
 ### 4. Let's start
 Define what's the [integration](/guides/integrations) that suits you best and your [use case](/guides/use-cases).
 

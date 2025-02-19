@@ -30,11 +30,11 @@ Voucherly will verify your details and activate your account.
 Navigate to **Configurazione merchant > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** and enable Payment gateways you need.
 
 :::warning
-For most Payment gateways, you must enter merchant-specific configuration parameters to activate them. These parameters are provided to the merchant through a direct agreement with the payment gateway.
+Merchant-specific configuration parameters must be entered to activate Payment gateways. These parameters are provided to the merchant through a direct agreement with the Payment gateway.
 :::
 
 :::tip
-We recommend enabling an additional Payment gateways, such as credit card, Satispay, or PayPal. This is essential to ensure that customers can always complete their payment, even if they are not using meal vouchers.
+We strongly recommend activating an additional Payment gateway, such as credit card, Satispay, or PayPal. This is essential to ensure that customers can always complete their payment, even if they are not using meal vouchers.
 :::
 
 
