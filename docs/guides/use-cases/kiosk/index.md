@@ -19,15 +19,6 @@ Use Voucherly's Kiosk integration to process payments directly through self-serv
 The kiosk must have:
 - An internet connection.
 - A display toward the user.
-
-If the kiosk is offline but communicates via a local server refer to the [Online Payment use case](./../ecommerce?flow=checkout).
-
-:::
-
-:::tip Incoming internet connections
-
-If the kiosk allows incoming internet connections refer to the [Online Payment use case](./../ecommerce?flow=checkout).
-
 :::
 
 
@@ -108,16 +99,17 @@ You can use a library like [qrcode.js](https://davidshimjs.github.io/qrcodejs/) 
 ### 2. Wait for payment completion
 
 Since the kiosk doesn't allow incoming internet connections, the [Callback S2S](/api/general/best-practices/s2s/) mechanism may not be practical. 
+Instead, you can use [Get Payment API](/api/webapi/get-payment/) with the `Voucherly-Wait-Time` header for long polling.
 
-Instead, you can use [Get Payment API](/api/webapi/get-payment/) with the `Voucherly-Wait-Time` header for long polling. Once the payment is closed, any additional operations should be handled:
+If the kiosk is offline but communicates via a server the [Callback S2S](/api/general/best-practices/s2s/) mechanism should be used. Long polling remains a valid approach for updating the kiosk interface.
+
+ Once the payment is closed, any additional operations should be handled:
 - Print receipts.
 - Update local databases.
 - Enable hardware (e.g. Open a locker).
 
 :::tip
-
-A Payment should not be considered closed if its status is `REQUESTED`.
-
+A Payment should not be considered closed if its status is `REQUESTED`.\
 Please refer to the [Understanding payment resource](/guides/resources/understanding-payments/#payment-statuses) for more information about payment statuses.
 :::
 
