@@ -61,7 +61,7 @@ Provide these details at least one week before the go-live date.
 1. You will receive an invitation at the email provided in step 4 (check Spam). Use it to create an Anypoint account and confirm registration.
 2. Notify Edenred once you've completed the registration. Edenred will enable your access so you can register the application.
 3. Register your application at: https://anypoint.mulesoft.com/exchange/f02a5569-24ac-491a-964a-0950ab318728/edenred-payment-services-api/.
-    - Follow the steps in the attached [Come creare un accesso in produzione su eDPS](/download/edenred/Come%20creare%20un%20accesso%20in%20produzione%20su%20eDPS.pdf/).
+    - Follow the steps in the attached <a target="_blank" href="/download/edenred/Come creare un accesso in produzione su eDPS.pdf">Come creare un accesso in produzione su eDPS</a>.
     - Share the application name with Edenred.
     - Save **PaymentClientId** and **PaymentClientSecret**.
 4. Edenred will complete the configuration and send you the following via email: **AuthenticationClientId**, **AuthenticationClientSecret**, **MID**.
