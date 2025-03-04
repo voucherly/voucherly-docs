@@ -1307,11 +1307,6 @@
             "description": "The number of units of this article.",
             "format": "int32"
           },
-          "priceId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
           "unitAmount": {
             "type": "integer",
             "description": "Amount of the single unit of this article.",
@@ -1333,8 +1328,7 @@
             "nullable": true
           },
           "productId": {
-            "type": "integer",
-            "format": "int32",
+            "type": "string",
             "nullable": true
           },
           "productName": {
