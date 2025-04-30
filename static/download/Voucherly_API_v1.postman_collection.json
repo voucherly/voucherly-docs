@@ -173,16 +173,10 @@
 							"name": "Create payment with new customer",
 							"request": {
 								"method": "POST",
-								"header": [
-									{
-										"key": "Voucherly-API-Key",
-										"value": "pk_live_yb33Ohw0vjG8HcqQKWXu0u2dUFFREjPcmXwt3ZO10PRah2c0BeYdcKGA",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"mode\": \"Payment\",\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"country\": \"IT\",\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
+									"raw": "{\r\n    \"mode\": \"Payment\",\r\n    \"redirectOkUrl\": \"https://{{redirect_host}}/payment/success\",\r\n    \"redirectKoUrl\": \"https://{{redirect_host}}/payment/error\",\r\n    \"customerFirstName\": \"Mario\",\r\n    \"customerLastName\": \"Rossi\",\r\n    \"customerEmail\": \"mario.rossi@voucherly.it\",\r\n    \"country\": \"IT\",\r\n    \"lines\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"unitAmount\": 250,\r\n            \"unitDiscountAmount\": 10,\r\n            \"discountAmount\": 0,\r\n            \"productName\": \"Muffin al Cioccolato\",\r\n            \"productImage\": \"https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg\",\r\n            \"isFood\": true\r\n        }\r\n    ],\r\n    \"discounts\": [\r\n        {\r\n            \"discountName\": \"Coupon\",\r\n            \"discountDescription\": \"\",\r\n            \"amount\": 200\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -291,6 +285,39 @@
 					]
 				},
 				{
+					"name": "Void",
+					"item": [
+						{
+							"name": "Void payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/payments/{{payment_id}}/void",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"payments",
+										"{{payment_id}}",
+										"void"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Get payment",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -300,9 +327,8 @@
 						"header": [
 							{
 								"key": "Voucherly-Wait-Time",
-								"value": "30",
-								"type": "text",
-								"disabled": true
+								"value": "20",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -376,6 +402,248 @@
 		{
 			"name": "Customers",
 			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Create a customer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"utente@voucherly.it\",\r\n    \"firstName\": \"Mario\",\r\n    \"lastName\": \"Rossi\",\r\n    \"phoneNumber\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/customers",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a customer with metadata",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"utente@voucherly.it\",\r\n    \"firstName\": \"Mario\",\r\n    \"lastName\": \"Rossi\",\r\n    \"metadata\": {\r\n        \"key1\": \"val1\",\r\n        \"key2\": \"val2\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/customers",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a customer with email uniqueness",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"utente@voucherly.it\",\r\n    \"firstName\": \"Mario\",\r\n    \"lastName\": \"Rossi\",\r\n    \"phoneNumber\": null,\r\n    \"options\": {\r\n        \"requireUniqueEmail\": true\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/customers",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"\r",
+									"    var res = pm.response.json();\r",
+									"    pm.environment.set(\"customer_id\", res.id);\r",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Get customer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Voucherly-Wait-Time",
+								"value": "30",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/customers/{{customer_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "lines",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Voucherly-Wait-Time",
+								"value": "30",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/customers?email=utente@voucherly.it",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "lines",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "utente@voucherly.it"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Voucherly-Wait-Time",
+								"value": "30",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Mario\",\r\n    \"metadata\": {\r\n        \"key1\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/customers/{{customer_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "lines",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "List a Customer's PaymentMethods",
 					"protocolProfileBehavior": {
@@ -492,6 +760,78 @@
 			]
 		},
 		{
+			"name": "Ecommerce",
+			"item": [
+				{
+					"name": "Stores",
+					"item": [
+						{
+							"name": "Get ecommerce stores",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/ecommerce/stores",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"ecommerce",
+										"stores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get ecommerce store's menu",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{versioned_api_base_url}}/ecommerce/stores/ecomsto_01jp9yvf6qezntcqz1tnvzeay6/menu",
+									"host": [
+										"{{versioned_api_base_url}}"
+									],
+									"path": [
+										"ecommerce",
+										"stores",
+										"ecomsto_01jp9yvf6qezntcqz1tnvzeay6",
+										"menu"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "PaymentGateways",
 			"item": [
 				{
@@ -535,19 +875,67 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Companys",
+			"item": [
+				{
+					"name": "Get company",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Voucherly-Wait-Time",
+								"value": "30",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/companys/com_01jpksjs78e7ravy74w7zzw8cz?include=addresses",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"companys",
+								"com_01jpksjs78e7ravy74w7zzw8cz"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "addresses"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
 		"type": "apikey",
 		"apikey": [
 			{
-				"key": "value",
-				"value": "{{api_key}}",
+				"key": "key",
+				"value": "Voucherly-API-Key",
 				"type": "string"
 			},
 			{
-				"key": "key",
-				"value": "X-API-Key",
+				"key": "value",
+				"value": "{{api_key}}",
 				"type": "string"
 			}
 		]
@@ -558,7 +946,11 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"pm.request.headers.add({key: 'x-voucherly-os', value: 'Postman' })\r",
+					"pm.request.headers.add({key: 'x-voucherly-osversion', value: '1.0.0' })\r",
+					"pm.request.headers.add({key: 'x-voucherly-app', value: 'Postman' })\r",
+					"pm.request.headers.add({key: 'x-voucherly-appversion', value: '1.0.0' })\r",
+					"pm.request.headers.add({key: 'x-voucherly-devicetype', value: 'Postman' })"
 				]
 			}
 		},
