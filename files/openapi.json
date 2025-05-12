@@ -9,6 +9,17 @@
     },
     "version": "v1"
   },
+  "servers": [
+    {
+      "url": "https://api.voucherly.it",
+      "description": "Voucherly API"
+    }
+  ],
+  "security": [
+    {
+      "Voucherly-API-Key": []
+    }
+  ],
   "paths": {
     "/v1/customers/{customerId}/payment_methods": {
       "get": {
@@ -1467,6 +1478,13 @@
           }
         },
         "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Voucherly-API-Key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Voucherly-API-Key"
       }
     }
   }
