@@ -15,7 +15,7 @@ Onboarding involves Voucherly verifying and approving the information submitted 
 
 Sign in to [Dashboard](https://dashboard.voucherly.it) and:
 
-1. Provide billing information at **Configurazione merchant > [Panoramica](https://dashboard.voucherly.it/Merchant)**.
+1. Provide billing information at **Attività > [Panoramica](https://dashboard.voucherly.it/Merchant)**.
 1. Set up a payment method at **Abbonamento e fatturazione > [Metodi di pagamento](https://dashboard.voucherly.it/Billing/PaymentMethod)**.
 
 :::info
@@ -27,7 +27,7 @@ Voucherly will verify your details and activate your account.
 
 <Checkbox label="Configure Payment gateways" >
 
-Navigate to **Configurazione merchant > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** and enable Payment gateways you need.
+Navigate to **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** and enable Payment gateways you need.
 
 :::warning
 Merchant-specific configuration parameters must be entered to activate Payment gateways. These parameters are provided to the merchant through a direct agreement with the Payment gateway.

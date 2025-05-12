@@ -29,7 +29,7 @@ You will need to share the parameters listed in the table below with Edenred. Ac
 
 Once enabled, Edenred will supply the **AuthenticationClientId**, **AuthenticationClientSecret**, **MID**, **PaymentClientId**, **PaymentClientSecret**.
 
-- Configure these parameters in **Configurazione merchant > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** on the Voucherly Dashboard. Use sandbox environment.
+- Configure these parameters in **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** on the Voucherly Dashboard. Use sandbox environment.
 - Schedule a meeting with Edenred to conduct UAT. Voucherly can join if needed.
     - A complete list of tests is available in <a target="_blank" href="/download/edenred/TestBook_UAT.xlsx" download>TestBook_UAT.xlsx</a>.
 
@@ -65,7 +65,7 @@ Provide these details at least one week before the go-live date.
     - Share the application name with Edenred.
     - Save **PaymentClientId** and **PaymentClientSecret**.
 4. Edenred will complete the configuration and send you the following via email: **AuthenticationClientId**, **AuthenticationClientSecret**, **MID**.
-5. Configure these parameters in **Configurazione merchant > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** on the Voucherly Dashboard. Use live environment.
+5. Configure these parameters in **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** on the Voucherly Dashboard. Use live environment.
 
 ### Go live
 

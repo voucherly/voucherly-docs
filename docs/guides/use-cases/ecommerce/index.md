@@ -229,7 +229,7 @@ Make sure your endpoint processes callbacks correctly. Failure to do so may lead
         To enable this process, set the `isAutoConfirm` parameter to `false` when creating the Payment. This instructs Voucherly to authorize the amount on the customer’s card without capturing it immediately.
 
         :::warning
-        If no value is specified, the default behavior defined in **Configurazione merchant > Checkout > Contabilizzazione automatica**  will be applied.
+        If no value is specified, the default behavior defined in **Attività > Checkout > Contabilizzazione automatica**  will be applied.
         :::
 
         To confirm a payment, you can use either the Dashboard or the [Confirm Payment API](/api/webapi/confirm-payment).

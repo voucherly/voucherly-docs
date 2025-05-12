@@ -56,7 +56,7 @@ A full video tutorial is available [here](https://www.youtube.com/watch?v=53d6BC
 ### Voucherly
 
 1. Sign in to your Voucherly dashboard.
-2. Go to **Configurazione merchant > Integrazioni** and click on Shopify:
+2. Go to **Attività > Integrazioni** and click on Shopify:
     - Click on ✏️ next to *Parametri*.
     - Edit your settings.
     - Click **Modifica**.
