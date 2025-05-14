@@ -1,0 +1,71 @@
+---
+id: get-customer
+title: "Get customer"
+description: "Get customer"
+sidebar_label: "Get customer"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1v2zgQ/SvGnFqAqdNusAed1u22hVEgDdomewh8GIvjmF2KZMiRt4ag/16MZCmKrSIK0OOeDJNv3ny8GXEqYLxLkN3CuzKxLygmWCnwgSKy8W6pIYOPxLP8cA0KAkYsiAWa3VbgsCDIoAMsNSgwDjIIyFtQEOm+NJE0ZBxLUpDyLRUIWQW8D2KZOBp3B3WterKly22pqWO6Lynup1BhjChAw1SkMRf1SlhS8C5RA3hzfi4/mlIeTZCUIYPPn0BB7h2TY7nFEKzJm4LMvyeBVKe+/fo75Sz1iVI+Nq0Do0/jUOBKa3Ftqc2kVsDksHX2JJQKNHYScmNi4sumpBPQFp8BDlvv6LIs1hQn4SNtKJLLaTmtHrkvArr9RPR/aC3x02KwZ7SLwpePSm0c013T2hsfC+T26M8LEF3E4saX+ZbiswylmtdBI5P+7K45H8ujtxLYGZuCZAoAtTbSa2ivBtFv0CZSwIYl8X5e/2lS/yZhpg8+vv/BFB3aRTASRUGMGnm0T8fdnMzMSbmfG+FxVLUwXIzN3VvUsy90X1Li3zeA7e2UEWzjnoBMjFymJxvhjzdjxpp46vwalxhdPi2o3OuJo9t9vyegp2p9g9boRp+r6NeWir+bLFOv9sWp2peeZx986fT/Wj9P61+KUj1kBiM6NAENFTh62AvirZcH/46a0sr7ncF893regdK8enjna1CQKO66RaCMFjLYMoeUzecYzKtd+920+1dGCB87v+kuZ4urJcjDnCgvo+F9w9Zfny2ulmefSE5XQ9RX6YlW9hHsw0oQjBwcNoktoW5yPSwap5Z1o8XGNxRdd3eokyQOrYt507rHpNA/1g3lX4/qUSuQ0rU8u9fyP/jEBboB1ZFCj5z3KTL94HmwaJyQNDJUB/VuhVn1y1kCBdlgU1sp2PrEgquqNSa6jrau5bhduUQIbZL0nu5n/iiIfnThxZfDfvZyBmo8uH9Fm8F6t0NbCqrRf4fRtG3+u912veD2Q59dOIOC1KtadU0iUbSARZ5T4IHpyTdKwu/H5+P7b1DXPwGITPAV
+sidebar_class_name: "get api-method"
+info_path: api/webapi/voucherly
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get customer"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/customers/{customerId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get customer
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"customerId","in":"path","required":true,"schema":{"type":"string"}},{"name":"Include","in":"query","required":true,"schema":{"type":"array","items":{"type":"string"}}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","nullable":true},"tenant":{"type":"string","nullable":true},"email":{"type":"string","nullable":true},"firstName":{"type":"string","nullable":true},"lastName":{"type":"string","nullable":true},"phoneNumber":{"type":"string","nullable":true},"referenceId":{"type":"string","nullable":true},"companyId":{"type":"string","nullable":true},"wallet":{"type":"object","properties":{"totalAmount":{"type":"integer","format":"int64"},"totalVoucherAmount":{"type":"integer","format":"int64"},"lastUpdatedOnUtc":{"type":"string","format":"date-time"}},"additionalProperties":false,"title":"CustomerWalletTotalsForExternalApi"},"metadata":{"type":"object","additionalProperties":{"type":"string"},"nullable":true}},"additionalProperties":false,"title":"CustomerForExternalApi"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"ValidationProblemDetails"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

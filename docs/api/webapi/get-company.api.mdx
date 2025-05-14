@@ -1,0 +1,71 @@
+---
+id: get-company
+title: "Get company"
+description: "Get company"
+sidebar_label: "Get company"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVsuOGzcQ/BWhTzFAW7bj05wiP9YQAjgLO/FloUOL07vihkNyyR7BwmD+PWjOY6WVjNCIjzkNQBarH1XkdAeMdwmqG3jnm4DukGCjwAeKyMa7dQ0VfCRe6GEXFASM2BBTlFMdOGwIKjD1H/GdrwkUGAcVBOQdKIj00JpINVQcW1KQ9I4ahKoDPgQ5lzgadwd9r2aqtdO2fWR6aCkeSqgwRhSgYWrSpRD9RlhS8C5RBrx++VI+NSUdTZB6oYIvrdaUEijQ3jE5FgiGYI3OLVneJ8F15wn47T1plhZFaSCbIYqpz5NR4FprcWsJqlu0iXoFTA6HaN/HSum9gntvXO52CXhoawEQ6zpSGnvzL039j7Va3JItSipxJOJPpTWM8LbZUiw6oA0fioAh+r1xuiyN4BOjLZZI+9ZxLMujJmv2FA9XRKtGzh2dMo7pjiIouPWxQR6Wfn0NuTM+0rpIn8ELRtyO9vpI4LytgA0LeHoyVoNvrnz88I0pOrSrYCTkk9x/kPYpXy8Eby5d2bdYLz7TQ0uJf961HXYLBBnTLjIncptK9LqoO6MpuzPGJcZSq+pSk84PfwG6VOqvaE2d9bmOfmupeZ+rTLPab87V/uR5ceVbV/+v9Y9p/V1RusfK4IIOOaFjBU4HgoZ452VOuKPcWfnzV7Dcv1qOmLTspvGgBwWJ4n6aHtpooYIdc0jVconBvNj7Vu8o2sMLI2yngb9Om4vV9Rrkf55ItzE/4Tfd4/bz1fX6+e8kq5tj1BfxwyD5BezjTy8YWRgHkB1hnXUb55Pzk33W4dZnisnZE+qsiNG2qLNtn5KCAmqy+Jnyt5N+9AqkdQPP/hWMf5oG3RHVqTonsecKmb7xMlg0TjiyCt2o3I0QS4rjOKigmoe7jYKdTyygrttior+i7XtZHqY0EaE2STxXz3f9SQbzlYVfPo8j3bMFqMuZ/S26HE2Ee7StoLL2e4xmsPfPDjv5IHdwjjmlM7ej3/RqsofkMGyvtKbARwfPXiZJfr41Hz/8CX3/D3t3/Nw=
+sidebar_class_name: "get api-method"
+info_path: api/webapi/voucherly
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get company"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/companys/{idOrCode}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get company
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"idOrCode","in":"path","required":true,"schema":{"type":"string"}},{"name":"Include","in":"query","required":true,"schema":{"type":"array","items":{"type":"string"}}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","nullable":false},"tenant":{"type":"string","nullable":true},"joinCode":{"type":"string","nullable":true},"name":{"type":"string","nullable":true},"addresses":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":false},"label":{"type":"string","nullable":true},"streetName":{"type":"string","nullable":true},"streetNumber":{"type":"string","nullable":true},"city":{"type":"string","nullable":true},"province":{"type":"string","nullable":true},"postalCode":{"type":"string","nullable":true},"country":{"type":"string","nullable":true},"deliveryFeeAmount":{"type":"integer","format":"int32"},"storeId":{"type":"string","nullable":false}},"additionalProperties":false,"title":"CompanyAddressForExternalApi"},"nullable":true}},"additionalProperties":false,"title":"CompanyForExternalApi"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"ValidationProblemDetails"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

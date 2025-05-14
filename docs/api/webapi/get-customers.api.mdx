@@ -1,0 +1,71 @@
+---
+id: get-customers
+title: "Get customers"
+description: "Get customers"
+sidebar_label: "Get customers"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVk2P20YM/SsLnhpAGydpkINOddNNYLRIjf3qwfCBHtH2JKOZ2RnKiWvovxcc2VrbUrDaRU+CZh45JN8jwR0wriLkM/hYRXYlhQjzDJyngKydnRSQw2fiC9VeZ+AxYEksP/lsBxZLghyuStQGMtAWcnioKGwhg6jWVCLkO+CtF1TkoO0K6jprDSdWmaqgc9NAD5UOVEDOoaIeVxgCClAzlbHviXouXqJ3NlICvHvzRj4FRRW0l/wgh5tKKYqSl3KWybJA0HujVSrB6GsU3K4bgFt8JcVSkCAFY928ch7Pz+L8mXnRzSUDWxmDC0NNNeoMmCw2sT4JpcTMEORSh8hfEi0D0AafAfZrZ+lLVS4oDMIHWlIgq2gyrB7KlR7tdiD6OxpD/DQZ7BjNuHTVSam1ZVpRgAyWLpTIzdGH9yC8iMW9q9SawrMMpZp3vkCm4m97x6ovj9ZKYJesS5JOAiwKLVJFMz2KfokmUgasWRJvG/yflPqthBk/uXD1gylYNGOvJYqSGAvkXpn3P9Ppu065nxthN6qumnClLTYd/BSHHldd4fUz8eu7Xuniim70v/RC86SIF9oi/0UYjyW0cM4Q2v4WsKxtlcpyo60a2JgYWKO5fXGUQ+mdtpxdU6wMD5fuiWUa57NZv1jmc5n7dQbv+0b971hcXNNDRZH/v3Hf3A6Z2E02A5CRkav4QskUxEPHvbaRcahOlCsGC6pZDwaghyrgHo0uEj/T4BaGyj9SljGxnZI+5vl8YSmJ1042mRUl/pDXkMNo83Z0jIoUNoedpgoGclgz+5iPRuj1600z0s32tRYfpw/eHy4vxtMJyN4RSVVB8zZ5a68vx9PJ5Z8kp/Nj1I1orZFTD/Zxk/BaDvaL0pqwSJrY71FdyzpxvHTJxaGSB1QniX1LoEotce4U2j0iufztpB51BlK6xs/mrfx7F7lEe+TqnJWT19scmX7wyBvUVrwkHnZ7xmbiOgN1vKmunUzHGex2C4x0F0xdy3GzRErtCx1Fb0UrqW9S0nZb3aCp5FmQhbSDPQuxnRjwy/V+O311AVl/6M07j8vt40tz+Qm6aYPZvM4OVEq8jdlYKfJ8ZNWZUOKl1fXnq1uo6/8A/AEZlA==
+sidebar_class_name: "get api-method"
+info_path: api/webapi/voucherly
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get customers"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/customers"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get customers
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Email","in":"query","schema":{"type":"string"}},{"name":"Include","in":"query","required":true,"schema":{"type":"array","items":{"type":"string"}}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"items":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":true},"tenant":{"type":"string","nullable":true},"email":{"type":"string","nullable":true},"firstName":{"type":"string","nullable":true},"lastName":{"type":"string","nullable":true},"phoneNumber":{"type":"string","nullable":true},"referenceId":{"type":"string","nullable":true},"companyId":{"type":"string","nullable":true},"wallet":{"type":"object","properties":{"totalAmount":{"type":"integer","format":"int64"},"totalVoucherAmount":{"type":"integer","format":"int64"},"lastUpdatedOnUtc":{"type":"string","format":"date-time"}},"additionalProperties":false,"title":"CustomerWalletTotalsForExternalApi"},"metadata":{"type":"object","additionalProperties":{"type":"string"},"nullable":true}},"additionalProperties":false,"title":"CustomerForExternalApi"},"nullable":true},"pagination":{"type":"object","properties":{"pageNumber":{"type":"integer","format":"int32","nullable":true},"pageSize":{"type":"integer","format":"int32","nullable":true},"total":{"type":"integer","format":"int32","nullable":true},"atLeast":{"type":"boolean","nullable":true},"continuationSince":{"type":"string","nullable":true},"partialTotal":{"type":"integer","format":"int32","nullable":true}},"additionalProperties":false,"title":"PaginationResult"}},"additionalProperties":false,"title":"PaginationResponse[[CustomerForExternalApi]]"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"ValidationProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

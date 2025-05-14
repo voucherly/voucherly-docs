@@ -21,6 +21,314 @@
     }
   ],
   "paths": {
+    "/v1/companys": {
+      "post": {
+        "tags": [
+          "Companys"
+        ],
+        "operationId": "Create company",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCompanyCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyForExternalApi"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/companys/{idOrCode}": {
+      "get": {
+        "tags": [
+          "Companys"
+        ],
+        "operationId": "Get company",
+        "parameters": [
+          {
+            "name": "idOrCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Include",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyForExternalApi"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/customers": {
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Create customer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCustomerCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerForExternalApi"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Get customers",
+        "parameters": [
+          {
+            "name": "Email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Include",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse[[CustomerForExternalApi]]"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/customers/{customerId}": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Get customer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Include",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerForExternalApi"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Update customer",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRequest[[UpdateCustomerCommandInner]]"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerForExternalApi"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/customers/{customerId}/payment_methods": {
       "get": {
         "tags": [
@@ -85,6 +393,16 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCustomerPaymentMethodCommand"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "No Content"
@@ -105,6 +423,453 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/customers/{customerId}/addresses": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Get customer addresses",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse[[CustomerAddressDto]]"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Create customer address",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerAddressRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerAddressDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/customers/{customerId}/addresses/{addressId}": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Get customer address",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerAddressDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Update customer address",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerAddressRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerAddressDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Customers"
+        ],
+        "operationId": "Delete customer address",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "addressId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCustomerAddressCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerAddressDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/merchants/signup": {
+      "post": {
+        "tags": [
+          "Merchants"
+        ],
+        "operationId": "Create merchant",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMerchantCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment_links": {
+      "post": {
+        "tags": [
+          "Payment Links"
+        ],
+        "operationId": "Create payment link",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePaymentLinkCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentLinkDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment_links/{id}": {
+      "get": {
+        "tags": [
+          "Payment Links"
+        ],
+        "operationId": "Get payment link",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentLinkDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Payment Links"
+        ],
+        "operationId": "Update payment link",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePaymentLinkBodyCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentLinkDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
                 }
               }
             }
@@ -337,7 +1102,7 @@
     "/v1/payment_gateways": {
       "get": {
         "tags": [
-          "PaymentGateway"
+          "Payment Gateways"
         ],
         "operationId": "Get payment gateways",
         "parameters": [
@@ -534,9 +1299,9 @@
       },
       "Payments.PaymentLinks.PaymentLinkStatus": {
         "enum": [
-          1,
-          2,
-          3
+          "ACTIVE",
+          "INACTIVE",
+          "EXPIRED"
         ],
         "type": "integer",
         "format": "int32"
@@ -602,7 +1367,130 @@
         "type": "integer",
         "format": "int32"
       },
-      "CustomerPaymentMethod": {
+      "CompanyAddressForExternalApi": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          },
+          "streetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "streetNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "province": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "deliveryFeeAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "storeId": {
+            "type": "string",
+            "nullable": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompanyForExternalApi": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false
+          },
+          "tenant": {
+            "type": "string",
+            "nullable": true
+          },
+          "joinCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CompanyAddressForExternalApi"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerForExternalApi": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenant": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "referenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "wallet": {
+            "$ref": "#/components/schemas/CustomerWalletTotalsForExternalApi"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerPaymentMethodForExternalApi": {
         "type": "object",
         "properties": {
           "id": {
@@ -646,6 +1534,24 @@
         },
         "additionalProperties": false
       },
+      "CustomerWalletTotalsForExternalApi": {
+        "type": "object",
+        "properties": {
+          "totalAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalVoucherAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastUpdatedOnUtc": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "PaymentGateways.Checkout.PaymentRequest": {
         "type": "object",
         "properties": {
@@ -663,7 +1569,7 @@
         },
         "additionalProperties": true
       },
-      "PaymentGateways.PaymentGatewayDto": {
+      "Services.PaymentGateways.PaymentGatewayDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -711,14 +1617,14 @@
           "paymentGatewayParameters": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayParameterDto"
+              "$ref": "#/components/schemas/Services.PaymentGateways.PaymentGatewayParameterDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "PaymentGateways.PaymentGatewayParameterDto": {
+      "Services.PaymentGateways.PaymentGatewayParameterDto": {
         "type": "object",
         "properties": {
           "paymentGatewayId": {
@@ -996,7 +1902,7 @@
             "nullable": false
           },
           "paymentGateway": {
-            "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayDto"
+            "$ref": "#/components/schemas/Services.PaymentGateways.PaymentGatewayDto"
           },
           "externalId1": {
             "type": "string",
@@ -1068,20 +1974,296 @@
         },
         "additionalProperties": false
       },
+      "CreateCompanyCommand": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": false
+          },
+          "joinCode": {
+            "type": "string",
+            "nullable": false,
+            "minLength": 6,
+            "maxLength": 6
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerAddressDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          },
+          "streetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "streetNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "province": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerAddressRequest": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "nullable": false
+          },
+          "streetName": {
+            "type": "string",
+            "nullable": false
+          },
+          "streetNumber": {
+            "type": "string",
+            "nullable": false
+          },
+          "city": {
+            "type": "string",
+            "nullable": false
+          },
+          "province": {
+            "type": "string",
+            "nullable": false
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": false
+          },
+          "country": {
+            "type": "string",
+            "nullable": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteCustomerAddressCommand": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressId": {
+            "type": "string",
+            "nullable": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCustomerCommand": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": false
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "options": {
+            "$ref": "#/components/schemas/CreateCustomerOptions"
+          }
+        }
+      },
+      "CreateCustomerOptions": {
+        "type": "object",
+        "properties": {
+          "requireUniqueEmail": {
+            "type": "boolean",
+            "required": true
+          }
+        }
+      },
+      "DeleteCustomerPaymentMethodCommand": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentMethodId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateCustomerCommandInner": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": false
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "companyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateMerchantCommand": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": false
+          },
+          "businessInformation": {
+            "$ref": "#/components/schemas/CreateMerchantCommand.MerchantBusinessInformation",
+            "nullable": true
+          },
+          "person": {
+            "$ref": "#/components/schemas/CreateMerchantCommand.MerchantPerson"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateMerchantCommand.MerchantBusinessInformation": {
+        "type": "object",
+        "properties": {
+          "businessName": {
+            "type": "string",
+            "nullable": false
+          },
+          "vatNumber": {
+            "type": "string",
+            "nullable": false
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": false
+          },
+          "streetAddress": {
+            "type": "string",
+            "nullable": false
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": false
+          },
+          "city": {
+            "type": "string",
+            "nullable": false
+          },
+          "province": {
+            "type": "string",
+            "nullable": false
+          },
+          "country": {
+            "type": "string",
+            "nullable": false
+          },
+          "sdi": {
+            "type": "string",
+            "description": "Required if PEC is empty",
+            "nullable": true
+          },
+          "pec": {
+            "type": "string",
+            "description": "Required if SDI is empty",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateMerchantCommand.MerchantPerson": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": false
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": false
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": false
+          }
+        },
+        "additionalProperties": false
+      },
       "GetPaymentGatewaysResponse": {
         "type": "object",
         "properties": {
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentGateways.PaymentGatewayDto"
+              "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayDto"
             },
             "nullable": false
           }
         },
         "additionalProperties": false
       },
-      "Voucherly.WebApi.Handlers.PaymentGateways.MerchantPaymentGatewayDto": {
+      "MerchantPaymentGatewayDto": {
         "type": "object",
         "properties": {
           "defaultPaymentGatewayId": {
@@ -1094,7 +2276,7 @@
         },
         "additionalProperties": false
       },
-      "Voucherly.WebApi.Handlers.PaymentGateways.PaymentGatewayDto": {
+      "PaymentGateways.PaymentGatewayDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -1105,38 +2287,41 @@
             "type": "string",
             "nullable": false
           },
-          "image": {
-            "type": "string",
-            "nullable": false
-          },
-          "checkoutImage": {
-            "type": "string",
-            "nullable": false
-          },
-          "icon": {
-            "type": "string",
-            "nullable": false
+          "type": {
+            "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayType"
           },
           "paymentAction": {
             "$ref": "#/components/schemas/PaymentGateways.CheckoutAction"
+          },
+          "image": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkoutImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "icon": {
+            "type": "string",
+            "nullable": true
           },
           "isActive": {
             "type": "boolean"
           },
           "merchantConfiguration": {
-            "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentGateways.MerchantPaymentGatewayDto"
+            "$ref": "#/components/schemas/MerchantPaymentGatewayDto"
           },
           "parameters": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Voucherly.WebApi.Handlers.PaymentGateways.PaymentGatewayParameterDto"
+              "$ref": "#/components/schemas/PaymentGateways.PaymentGatewayParameterDto"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "Voucherly.WebApi.Handlers.PaymentGateways.PaymentGatewayParameterDto": {
+      "PaymentGateways.PaymentGatewayParameterDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -1152,6 +2337,454 @@
           },
           "value": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePaymentLinkCommand": {
+        "type": "object",
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "description": "A unique string to reference the Payment Link. This can be a cart ID, order ID, or similar, and can be used to reconcile the Payment Link with your internal systems.",
+            "nullable": true
+          },
+          "afterCompletionUrl": {
+            "type": "string",
+            "description": "If specified, the success page is not shown at the end of a payment, but customer is redirected to this url.",
+            "nullable": true
+          },
+          "customResultMessage": {
+            "type": "string",
+            "description": "If specified and if `AfterCompletionUrl` is empty, the following message will be displayed upon successful payments. Otherwise, a default message is shown.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "A name given by merchant to identify this Payment Link in the Dashboard.",
+            "nullable": true
+          },
+          "maxNoOfSuccessPayments": {
+            "type": "integer",
+            "description": "If not null, is the maximum number of payments that can be accepted.",
+            "format": "int32",
+            "nullable": true
+          },
+          "language": {
+            "type": "string",
+            "description": "The language of Voucherly Checkout page.",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "The country of the purchase. If different from Italy, voucher payment gateways are not shown.",
+            "nullable": true
+          },
+          "paymentGateways": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "isAutoConfirm": {
+            "type": "boolean",
+            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl. When auto confirm is disabled, payment requires manual confirmation.",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Generic field that can be used to store generic info. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.",
+            "nullable": true
+          },
+          "foodAmount": {
+            "type": "integer",
+            "description": "The payable amount with vouchers. Must be lower than `TotalAmount` and no `Lines` must have been spcified.",
+            "format": "int32",
+            "nullable": true
+          },
+          "totalAmount": {
+            "type": "integer",
+            "description": "The total payable amount, not considering `Discounts`. No `Lines` must have been spcified.",
+            "format": "int32",
+            "nullable": true
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentLinkLineCommand"
+            },
+            "nullable": true
+          },
+          "discounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentLinkDiscountCommand"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentLinkDiscountCommand": {
+        "type": "object",
+        "properties": {
+          "discountName": {
+            "type": "string",
+            "nullable": true
+          },
+          "discountDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/Payments.DiscountType"
+          },
+          "value": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentLinkDiscountDto": {
+        "type": "object",
+        "properties": {
+          "discountName": {
+            "type": "string",
+            "nullable": true
+          },
+          "discountDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "$ref": "#/components/schemas/Payments.DiscountType"
+          },
+          "value": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentLinkDto": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "referenceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "afterCompletionUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxNoOfSuccessPayments": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "noOfSuccessPayments": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "language": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "selectedPaymentGateway": {
+            "type": "string",
+            "nullable": true
+          },
+          "paymentGateways": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "isPartialPayment": {
+            "type": "boolean"
+          },
+          "s2SUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "isAutoConfirm": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "foodAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "discountAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "finalAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentLinkLineDto"
+            },
+            "nullable": true
+          },
+          "discounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentLinkDiscountDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentLinkLineCommand": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "description": "The number of units of this article.",
+            "format": "int32"
+          },
+          "priceId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "unitAmount": {
+            "type": "integer",
+            "description": "Amount of the single unit of this article.",
+            "format": "int32"
+          },
+          "unitDiscountAmount": {
+            "type": "integer",
+            "description": "Discount amount on the unit amount.",
+            "format": "int32"
+          },
+          "discountAmount": {
+            "type": "integer",
+            "description": "Total discount amount on this product line.",
+            "format": "int32"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "productName": {
+            "type": "string",
+            "description": "Product name to show to the customer in the checkout.",
+            "nullable": true
+          },
+          "productDescription": {
+            "type": "string",
+            "description": "Brief description of the product.",
+            "nullable": true
+          },
+          "productImage": {
+            "type": "string",
+            "description": "Product image to show to the customer in the checkout.",
+            "nullable": true
+          },
+          "isFood": {
+            "type": "boolean",
+            "description": "Indicates whether this payment line can be purchased with vouchers."
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentLinkLineDto": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "unitDiscountAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "discountAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalDiscountAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "finalAmount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "productDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "productImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "isFood": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePaymentLinkBodyCommand": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/Payments.PaymentLinks.PaymentLinkStatus",
+            "nullable": false
+          },
+          "afterCompletionUrl": {
+            "type": "string",
+            "description": "If specified, the success page is not shown at the end of a payment, but customer is redirected to this url.",
+            "nullable": true
+          },
+          "customResultMessage": {
+            "type": "string",
+            "description": "If specified and if `AfterCompletionUrl` is empty, the following message will be displayed upon successful payments. Otherwise, a default message is shown.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "A name given by merchant to identify this Payment Link in the Dashboard.",
+            "nullable": true
+          },
+          "maxNoOfSuccessPayments": {
+            "type": "integer",
+            "description": "If not null, is the maximum number of payments that can be accepted.",
+            "format": "int32",
+            "nullable": true
+          },
+          "language": {
+            "type": "string",
+            "description": "The language of Voucherly Checkout page.",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "The country of the purchase. If different from Italy, voucher payment gateways are not shown.",
+            "nullable": true
+          },
+          "paymentGateways": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "isAutoConfirm": {
+            "type": "boolean",
+            "description": "Enable or disable auto confirm. If you don't specify anything the default Merchant configuration will be used. When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl. When auto confirm is disabled, payment requires manual confirmation.",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Generic field that can be used to store generic info. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.",
+            "nullable": true
+          },
+          "foodAmount": {
+            "type": "integer",
+            "description": "The payable amount with vouchers. Must be lower than `TotalAmount` and no `Lines` must have been spcified.",
+            "format": "int32",
+            "nullable": true
+          },
+          "totalAmount": {
+            "type": "integer",
+            "description": "The total payable amount, not considering `Discounts`. No `Lines` must have been spcified.",
+            "format": "int32",
+            "nullable": true
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentLinkLineCommand"
+            },
+            "nullable": true
+          },
+          "discounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentLinkDiscountCommand"
+            },
             "nullable": true
           }
         },
@@ -1347,7 +2980,7 @@
             "description": "Product name to show to the customer in the checkout.",
             "nullable": true
           },
-          "productDescription": {
+          "productVariant": {
             "type": "string",
             "description": "Brief description of the product.",
             "nullable": true
@@ -1360,10 +2993,45 @@
           "isFood": {
             "type": "boolean",
             "description": "Indicates whether this payment line can be purchased with vouchers."
+          },
+          "modifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreatePaymentCommandLineModifier"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
-      },      
+      },
+      "CreatePaymentCommandLineModifier": {
+        "type": "object",
+        "properties": {
+          "modifierId": {
+            "type": "string",
+            "description": "Identifier of the modifier",
+            "required": true
+          },
+          "productId": {
+            "type": "string",
+            "description": "Identifier of the product",
+            "required": true
+          },
+          "productName": {
+            "type": "string",
+            "required": false
+          },
+          "quantity": {
+            "type": "integer",
+            "required": true
+          },
+          "price": {
+            "type": "integer",
+            "required": true
+          }
+        },
+        "additionalProperties": false
+      },  
       "RefundPaymentRequest.Transaction": {
         "type": "object",
         "properties": {
@@ -1394,13 +3062,62 @@
         },
         "additionalProperties": false
       },
+      "UpdateRequest[[UpdateCustomerCommandInner]]": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/UpdateCustomerCommandInner"
+          },
+          "includedProperties": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PaginationResponse[[CustomerPaymentMethod]]": {
         "type": "object",
         "properties": {
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CustomerPaymentMethod"
+              "$ref": "#/components/schemas/CustomerPaymentMethodForExternalApi"
+            },
+            "nullable": true
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaginationResponse[[CustomerAddressDto]]": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerAddressDto"
+            },
+            "nullable": true
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaginationResponse[[CustomerForExternalApi]]": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerForExternalApi"
             },
             "nullable": true
           },
