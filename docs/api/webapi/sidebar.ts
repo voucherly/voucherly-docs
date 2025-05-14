@@ -102,46 +102,6 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Merchants",
-      collapsible: true,
-      collapsed: false,
-      items: [
-        {
-          type: "doc",
-          id: "api/webapi/create-merchant",
-          label: "Create merchant",
-          className: "api-method post",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Payment Links",
-      collapsible: true,
-      collapsed: false,
-      items: [
-        {
-          type: "doc",
-          id: "api/webapi/create-payment-link",
-          label: "Create payment link",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api/webapi/get-payment-link",
-          label: "Get payment link",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/webapi/update-payment-link",
-          label: "Update payment link",
-          className: "api-method put",
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "Payments",
       collapsible: true,
       collapsed: false,
