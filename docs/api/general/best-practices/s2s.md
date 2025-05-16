@@ -79,7 +79,7 @@ Below is an example of the S2S request body sent by Voucherly.
 }
 ```
 :::warning
-Since the merchant S2S endpoint does not require any authentication setup, it is recommended to call the [Get Payment API](/api/webapi/get-payment) to validate that the request originates from Voucherly. This API provides all the necessary information about the payment.
+Since the merchant S2S endpoint does not require any authentication setup, it is recommended to call the [Get Payment API](/api/webapi/retrieve-payment) to validate that the request originates from Voucherly. This API provides all the necessary information about the payment.
 :::
 
 #### Response

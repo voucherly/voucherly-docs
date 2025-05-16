@@ -26,7 +26,7 @@ paths:
     post:
       tags:
         - company
-      operationId: company_create
+      operationId: create-company
       summary: Create a Company
       requestBody:
         content:
@@ -35,7 +35,7 @@ paths:
               allOf:
                 - $ref: "#/components/schemas/Company"
                 - type: object
-                  required: [joinCode, name]
+                  required: [name]
         required: true
       responses:
         '201':
@@ -54,7 +54,7 @@ paths:
     get:
       tags:
         - company
-      operationId: company_retrieve
+      operationId: retrieve-company
       summary: Retrieve a Company
       parameters:
         - name: idOrCode
@@ -94,7 +94,7 @@ paths:
     post:
       tags:
         - customer
-      operationId: customer_create
+      operationId: create-customer
       summary: Create a Customer
       requestBody:
         content:
@@ -128,7 +128,7 @@ paths:
     get:
       tags:
         - customer
-      operationId: customer_list
+      operationId: list-customer
       summary: List all Customers
       parameters:
         - name: email
@@ -166,7 +166,7 @@ paths:
     get:
       tags:
         - customer
-      operationId: customer_retrieve
+      operationId: retrieve-customer
       summary: Retrieve a Customer
       responses:
         '200':
@@ -190,7 +190,7 @@ paths:
     post:
       tags:
         - customer
-      operationId: customer_update
+      operationId: update-customer
       summary: Update a Customer
       requestBody:
         content:
@@ -222,7 +222,7 @@ paths:
     get:
       tags:
         - customer
-      operationId: customer_payment_methods_list
+      operationId: list-customer_payment_method
       summary: List a Customer's PaymentMethods
       description: Returns a list of PaymentMethods for a given Customer
       parameters:
@@ -251,7 +251,7 @@ paths:
     delete:
       tags:
         - customer
-      operationId: customer_payment_methods_delete
+      operationId: delete-customer_payment_method
       summary: Delete a Customer's PaymentMethod
       parameters:
         - $ref: '#/components/parameters/CustomerIdPathParam'
@@ -415,7 +415,8 @@ paths:
     post:
       tags:
         - payment
-      operationId: Create a Payment
+      operationId: create-payment
+      summary: Create a Payment
       requestBody:
         content:
           application/json:
@@ -496,7 +497,7 @@ paths:
     get:
       tags:
         - payment
-      operationId: payment_retrieve
+      operationId: retrieve-payment
       summary: Retrieve a Payment
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
@@ -534,7 +535,7 @@ paths:
     post:
       tags:
         - payment
-      operationId: payment_confirm
+      operationId: confirm-payment
       summary: Confirm a Payment
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
@@ -561,7 +562,7 @@ paths:
     post:
       tags:
         - payment
-      operationId: payment_refund
+      operationId: refund-payment
       summary: Refund a Payment
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
@@ -593,7 +594,8 @@ paths:
     get:
       tags:
         - Payment Gateways
-      operationId: List all PaymentGateways
+      operationId: list-payment_gateway
+      summary: List all PaymentGateways
       parameters:
         - name: All
           in: query

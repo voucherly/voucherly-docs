@@ -99,7 +99,7 @@ You can use a library like [qrcode.js](https://davidshimjs.github.io/qrcodejs/) 
 ### 2. Wait for payment completion
 
 Since the kiosk doesn't allow incoming internet connections, the [Callback S2S](/api/general/best-practices/s2s/) mechanism may not be practical. 
-Instead, you can use [Get Payment API](/api/webapi/get-payment/) with the `Voucherly-Wait-Time` header for long polling.
+Instead, you can use [Get Payment API](/api/webapi/retrieve-payment/) with the `Voucherly-Wait-Time` header for long polling.
 
 If the kiosk is offline but communicates via a server the [Callback S2S](/api/general/best-practices/s2s/) mechanism should be used. Long polling remains a valid approach for updating the kiosk interface.
 

@@ -119,7 +119,7 @@ Explain how you handle customer payment information securely and maintain their 
 <Checkbox label="Accepted payment gateway logos" >
 
 Display the logos of the payment gateways you accept at checkout. This reduces friction by making it clear which payment methods are supported.
-Voucherly provides this information via API. Please refer to the [Get payment gateways](/api/webapi/get-payment-gateways) endpoint.
+Voucherly provides this information via API. Please refer to the [List all PaymentGateways](/api/webapi/list-payment-gateway) endpoint.
 
 
 </Checkbox>

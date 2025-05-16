@@ -18,7 +18,7 @@ Voucherly provides a RESTful API accessible through HTTP requests to manage your
 
 The core element of our API is the payment, which can be linked to multiple transactions.
 
-1. Begin by testing the most common operation with our API: [Create Payment](/api/webapi/create-payment). 
+1. Begin by testing the most common operation with our API: [Create a Payment](/api/webapi/create-payment). 
 
 **Example request**
 
