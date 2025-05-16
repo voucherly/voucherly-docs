@@ -87,6 +87,10 @@ const config: Config = {
           label: 'Dashboard',
           position: 'right',
         },
+        {
+          type: 'search',
+          position: 'right',
+        },
         // {
         //   type: 'localeDropdown',
         //   position: 'right'
@@ -96,6 +100,20 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    algolia: {
+      appId: 'D23TRRADUC',
+      apiKey: 'a5753bd31e9892057744c18fe9da15de',
+      indexName: 'voucherly',
+      contextualSearch: true,
+      // externalUrlRegex: 'external\\.com|domain\\.com',
+      // replaceSearchResultPathname: {
+      //   from: '/docs/',
+      //   to: '/',
+      // },
+      searchParameters: {},
+      searchPagePath: 'search',
+      insights: false,
     },
   } satisfies Preset.ThemeConfig,
 
