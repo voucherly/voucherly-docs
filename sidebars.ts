@@ -45,8 +45,10 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: "🔗 Endpoints",
+      label: "Endpoints 🔗",
       collapsed: false,
+      collapsible: false,
+      className: 'different-section',
       items: [
         ...endpointResourcesSidebar
       ]

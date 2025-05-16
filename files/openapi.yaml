@@ -823,6 +823,7 @@ components:
       x-tags:
         - payment
       type: object
+      description: The Payment object
       properties:
         id:
           $ref: '#/components/schemas/Id'
