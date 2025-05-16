@@ -24,9 +24,9 @@
     "/v1/companys": {
       "post": {
         "tags": [
-          "Companys"
+          "Companies"
         ],
-        "operationId": "Create company",
+        "operationId": "Create a Company",
         "requestBody": {
           "content": {
             "application/json": {
@@ -64,9 +64,9 @@
     "/v1/companys/{idOrCode}": {
       "get": {
         "tags": [
-          "Companys"
+          "Companies"
         ],
-        "operationId": "Get company",
+        "operationId": "Retrieve a Company",
         "parameters": [
           {
             "name": "idOrCode",
@@ -127,7 +127,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Create customer",
+        "operationId": "Create a Customer",
         "requestBody": {
           "content": {
             "application/json": {
@@ -165,7 +165,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Get customers",
+        "operationId": "List all customers",
         "parameters": [
           {
             "name": "Email",
@@ -215,7 +215,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Get customer",
+        "operationId": "Retrieve a Customer",
         "parameters": [
           {
             "name": "customerId",
@@ -274,7 +274,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Update customer",
+        "operationId": "Update a Customer",
         "parameters": [
           {
             "name": "id",
@@ -334,7 +334,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Get customer payment methods",
+        "operationId": "List a Customer's PaymentMethods",
         "parameters": [
           {
             "name": "customerId",
@@ -374,7 +374,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Delete customer payment method",
+        "operationId": "Delete a Customer's PaymentMethod",
         "parameters": [
           {
             "name": "customerId",
@@ -435,7 +435,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Get customer addresses",
+        "operationId": "List a Customer's Addresses",
         "parameters": [
           {
             "name": "customerId",
@@ -491,7 +491,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Create customer address",
+        "operationId": "Create a Customer's Address",
         "parameters": [
           {
             "name": "customerId",
@@ -541,7 +541,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Get customer address",
+        "operationId": "Retrieve a Customer's Address",
         "parameters": [
           {
             "name": "customerId",
@@ -587,7 +587,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Update customer address",
+        "operationId": "Update a Customer's Address",
         "parameters": [
           {
             "name": "customerId",
@@ -643,7 +643,7 @@
         "tags": [
           "Customers"
         ],
-        "operationId": "Delete customer address",
+        "operationId": "Delete a Customer's Address",
         "parameters": [
           {
             "name": "customerId",
@@ -701,7 +701,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "Create payment",
+        "operationId": "Create a Payment",
         "requestBody": {
           "content": {
             "application/json": {
@@ -751,7 +751,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "Get payment",
+        "operationId": "Retrieve a Payment",
         "parameters": [
           {
             "name": "id",
@@ -814,7 +814,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "Confirm payment",
+        "operationId": "Confirm a Payment",
         "parameters": [
           {
             "name": "id",
@@ -864,7 +864,7 @@
         "tags": [
           "Payments"
         ],
-        "operationId": "Refund payment",
+        "operationId": "Refund a Payment",
         "parameters": [
           {
             "name": "id",
@@ -923,7 +923,7 @@
         "tags": [
           "Payment Gateways"
         ],
-        "operationId": "Get payment gateways",
+        "operationId": "List all PaymentGateways",
         "parameters": [
           {
             "name": "All",
@@ -1531,6 +1531,7 @@
       },
       "Payment": {
         "type": "object",
+        "x-tags": ["Payments"],
         "properties": {
           "id": {
             "type": "string",

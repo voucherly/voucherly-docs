@@ -1,0 +1,71 @@
+---
+id: customer-retrieve
+title: "Retrieve a Customer"
+description: "Retrieve a Customer"
+sidebar_label: "Retrieve a Customer"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9V81u20YQfpXBnlqAspzU6EGnuknbCEFiw5HTg2MUI+5I3ITcpXeHqgWBQF+jr9cnKWYp0pJIx3KA9mJLuzPfzu83o41iXAY1uVFpFdgV5NVtolxJHtk4O9Vq0t384Ym9oRWpRHkKpbOBgpps1MvTU/mnKaTelKKnJurirUpU6iyTZbnFssxNGlHHn4OIbFRIMypQPt2Phuy4H2kTyhzX77EgNVGv2rtE8bqUEzf/TCmr5ODxWUbQCkMnU3pxjE1jtdHyd4sT2Bu77OFcW3NXERhNls3CkIeF88AZbUFPVKJslec4z0lNFpgHktigvrD5Wk3YV5QoNiy3aqpVnSgmi01Evv70GwzxoRXmFcEnlZsVfVJgFjvPA92bwAGMBbmGwmlKwHn4pAJa3YibXTGmwFFMLCdbFRJykVVJfEGifrRDs+jKO6dJHKMCTf60X5KaNsf//PV3gKgHqLWnEAYCWidqYXzgpgaeDR91wWJB+9jiSp2oHL8ZWVQfBy4zZ+l9VczJfwN21AYb1QfhPS3Ik01pOljGPfnUFSXa9bB035jpa3BNpb1qFIEzEx56ygTAEFxqkEnDn4azQSv/xDynpv3z/GKhJjebXufudyU7xvy8cNVejxjLtIx9v3C+QG6OfjyLDSUaH12VZuSfpSj5uy61eHBhrzkdikynJWIjNgWpuk4Uam0kWphf7li/bZe2Pdpg/R6DMBMzg6pvD/upTlRBjBoZdyx4hNg+EEtivtB61BBDicYLUSDD2lWQogVkxjQDdoC25SmYSfrkdk5QBVpUeaSywE48hQeHwNjGaeMs4NxVvEs4xgJCYF+lXHnS0IiewJQjuPA9GgtVKc+/ON0x1DAVIVYKIBR4b4qqgJzskjPx6Oy0o9YvtAa0ujk9hTRDH7rLCCa1NpyCwwzWh0X5kJ53bdCfnVBV16JzNjT2fkYNV3RXUeDnzL8nmiLeHtHlW0uPkAyMXIUnO+WHl0PKmvgRru+JGhsYbXqcUamMkmMES/RYEA9T64H0sdn9iLnRMT+X3s1zKl5HL0OX7bN+tt87hl9dFcfnf5zr/YfP4fpqCt0QaAigW1OazaFs3ABBOlFfq45D7JA5zwlkVYF2JGwl4YRQFQX6dTsY9uCFALxMchuEBIIJEgvA1LsQwKVp5aOhodUOWBCQ99LWrX3Pqcn+yHozm11CAwFSSLAkK2ssaZivGw7zZmksBPKrbpMzu9YduBaNOrbW+1E8CB/dlznahldDSalZmFRY8kkbHi3gzUNO1UDN1ocmXW33d0DY2aS7XgpxPNtm1TZS0ka0SuQsbvx3lfGkh709ZlHudcD/tXTLzC2IMye/ZpYUe06cmqjx6sW43bvCeGN0LXbG+miiUflcTVTGXIbJeIylOVk1m0a+PjH98fyxvYTzy2mc9YHSyhteR7TuenR+OR29JTm93ZX6ICFqeGBAtgsclkYOtgnKCHXM5DZ1fc06EvHCRYiW7lqpnhNbLsM0ctkhqOo2/Qj501486kRJ6Bqc1Qv5XrrABdodqOEy3LOh85TpnsdljsYKVszGZpu8G3kg6X4vBpWoidHyAyZzgeV+s5ljoGuf17Uc31XkY8QTtUJvmvK52ShtgnzWXS0dmNIRu/ruatsE38MxRTroQ5tCK5GM20wT8i+SYWm7+rZO2pyKec3FeZpSyTsqvRmzV+W//TJTdf0vhcyLYA==
+sidebar_class_name: "get api-method"
+info_path: api/webapi/voucherly
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Retrieve a Customer"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/customers/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieve a Customer
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"description":"Unique identifier for the object.","schema":{"type":"string","description":"Unique identifier for the object.","nullable":false,"readOnly":true,"title":"Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"x-tags":["customer"],"x-displayName":"Customer","type":"object","description":"The Customer object","properties":{"id":{"type":"string","description":"Unique identifier for the object.","nullable":false,"readOnly":true,"title":"Id"},"tenant":{"type":"string","description":"Has the value \"live\" if the object exists in live mode, or \"sand\" if it exists in test mode.","enum":["sand","live"],"nullable":false,"readOnly":true,"title":"TenantMode"},"email":{"type":"string","description":"The customer’s email address.","nullable":false},"firstName":{"type":"string","description":"The customer’s first name.","nullable":true},"lastName":{"type":"string","description":"The customer’s last name.","nullable":true},"phoneNumber":{"type":"string","description":"The customer’s phone number.","nullable":true},"referenceId":{"type":"string","nullable":true},"companyId":{"type":"string","description":"The ID of the Company this Customer is associated with.","nullable":true},"wallet":{"allOf":[{"type":"object","properties":{"totalAmount":{"type":"integer","format":"int64"},"totalVoucherAmount":{"type":"integer","format":"int64"},"lastUpdatedOnUtc":{"type":"string","format":"date-time"}},"additionalProperties":false,"title":"CustomerWalletTotals"}],"readOnly":true},"metadata":{"type":"object","description":"Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.","additionalProperties":{"type":"string"},"nullable":true,"title":"Metadata"}},"additionalProperties":false,"title":"Customer"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"ValidationProblemDetails"}}}},"404":{"description":"Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","description":"A URI reference that identifies the problem type."},"title":{"type":"string","description":"A short, human-readable summary of the problem type. It remains consistent across occurrences of the same error type."},"status":{"type":"integer","format":"int32","description":"The HTTP status code generated by the origin server for this occurrence of the problem."},"detail":{"type":"string","nullable":true,"description":"A human-readable explanation specific to this occurrence of the problem."}},"additionalProperties":{},"title":"ProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

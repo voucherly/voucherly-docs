@@ -1,0 +1,1567 @@
+openapi: 3.0.1
+info:
+  title: Voucherly
+  description: ''
+  contact:
+    name: Voucherly
+    email: info@voucherly.it
+  version: v1
+servers:
+  - url: https://api.voucherly.it
+    description: Voucherly API
+security:
+  - Voucherly-API-Key: []
+tags:
+  - name: company
+    description: Companies
+    x-displayName: Companies
+  - name: customer
+    description: Customers
+    x-displayName: Customers
+  - name: payment
+    description: Payments
+    x-displayName: Payments
+paths:
+  /v1/companys:
+    post:
+      tags:
+        - company
+      operationId: company_create
+      summary: Create a Company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/Company"
+                - type: object
+                  required: [joinCode, name]
+        required: true
+      responses:
+        '201':
+          description: The Company object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+  /v1/companys/{idOrCode}:
+    get:
+      tags:
+        - company
+      operationId: company_retrieve
+      summary: Retrieve a Company
+      parameters:
+        - name: idOrCode
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: include
+          in: query
+          description: 'An array of nested object to be included in response.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum: ["Addresses"]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /v1/customers:
+    post:
+      tags:
+        - customer
+      operationId: customer_create
+      summary: Create a Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/Customer"
+                - type: object
+                  required: [email]
+                  properties:
+                    options:
+                      type: object
+                      required:
+                        - requireUniqueEmail
+                      properties:
+                        requireUniqueEmail:
+                          type: boolean
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+    get:
+      tags:
+        - customer
+      operationId: customer_list
+      summary: List all Customers
+      parameters:
+        - name: email
+          description: The Customer's email address.
+          in: query
+          schema:
+            type: string
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PageStartQueryParam'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: 'An array containing the actual response elements, paginated by any request parameters.'
+                    items:
+                      $ref: '#/components/schemas/Customer'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationResponse'
+                additionalProperties: false
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+  /v1/customers/{id}:
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+    get:
+      tags:
+        - customer
+      operationId: customer_retrieve
+      summary: Retrieve a Customer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    post:
+      tags:
+        - customer
+      operationId: customer_update
+      summary: Update a Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/Customer"
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /v1/customers/{customerId}/payment_methods:
+    get:
+      tags:
+        - customer
+      operationId: customer_payment_methods_list
+      summary: List a Customer's PaymentMethods
+      description: Returns a list of PaymentMethods for a given Customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPathParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: 'An array containing the actual response elements.'
+                    items:
+                      $ref: '#/components/schemas/PaymentMethod'
+                additionalProperties: false
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+  /v1/customers/{customerId}/payment_methods/{paymentMethodId}:
+    delete:
+      tags:
+        - customer
+      operationId: customer_payment_methods_delete
+      summary: Delete a Customer's PaymentMethod
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPathParam'
+        - $ref: '#/components/parameters/PaymentMethodIdPathParam'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /v1/customers/{customerId}/addresses:
+    get:
+      tags:
+        - Customers
+      operationId: List a Customer's Addresses
+      parameters:
+        - $ref: '#/components/parameters/CustomerIdPathParam'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginationResponse_CustomerAddressDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+    post:
+      tags:
+        - Customers
+      operationId: Create a Customer's Address
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerAddressRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAddressDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+  /v1/customers/{customerId}/addresses/{addressId}:
+    get:
+      tags:
+        - Customers
+      operationId: Retrieve a Customer's Address
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: addressId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAddressDto'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+    put:
+      tags:
+        - Customers
+      operationId: Update a Customer's Address
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: addressId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerAddressRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAddressDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+    delete:
+      tags:
+        - Customers
+      operationId: Delete a Customer's Address
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: addressId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerAddressDto'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+  /v1/payments:
+    post:
+      tags:
+        - payment
+      operationId: Create a Payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/Payment"
+                - type: object
+                  required: [email]
+                  properties:
+                    timeout:
+                      type: integer
+                      description: Timeout in minutes for the checkout sessions. Default is 10.
+                      format: int32
+                      nullable: true
+                    isPartialPayment:
+                      type: boolean
+                      description: >-
+                        Enable or disable partial payments. When partial payment is enabled,
+                        customers have the flexibility to pay a portion of the total amount.
+                        Customers can decide to use alternative payment methods to cover the
+                        remaining amount. When partial payment is disabled, customers are
+                        required to pay the entire amount using a combination of payment
+                        gateways.
+                      nullable: true
+                    isAutoConfirm:
+                      type: boolean
+                      description: "Enable or disable auto confirm.\r\nIf you don't specify anything the default Merchant configuration will be used.\r\nWhen auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl.\r\nWhen auto confirm is disabled, payment requires manual confirmation."
+                      nullable: true
+                    redirectOkUrl:
+                      type: string
+                      description: >-
+                        The URL to which Voucherly should send customers when payment is
+                        complete.
+                      nullable: false
+                    redirectKoUrl:
+                      type: string
+                      description: >-
+                        The URL to which Voucherly should send customers when payment is
+                        cancelled or failed.
+                      nullable: false
+                    callbackUrl:
+                      type: string
+                      nullable: true
+                    language:
+                      type: string
+                      description: The language of Voucherly Checkout page.
+                      nullable: true
+                    country:
+                      type: string
+                      description: >-
+                        The country of the purchase. If different from Italy, voucher
+                        payment gateways are not shown.
+                      nullable: true
+                    shippingAddress:
+                      type: string
+                      description: Purchase shipping address.
+                      nullable: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /v1/payments/{id}:
+    get:
+      tags:
+        - payment
+      operationId: payment_retrieve
+      summary: Retrieve a Payment
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - name: include
+          in: query
+          description: 'An array of nested object to be included in response.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum: ["Lines", "Discounts", "Transactions"]
+        - name: Voucherly-Wait-Time
+          in: header
+          description: >-
+            Seconds that the call will be hanging, waiting for a payment status
+            change. Maximum value is 60 seconds.
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /v1/payments/{id}/confirm:
+    post:
+      tags:
+        - payment
+      operationId: payment_confirm
+      summary: Confirm a Payment
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /v1/payments/{id}/refund:
+    post:
+      tags:
+        - payment
+      operationId: payment_refund
+      summary: Refund a Payment
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundPaymentRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /v1/payment_gateways:
+    get:
+      tags:
+        - Payment Gateways
+      operationId: List all PaymentGateways
+      parameters:
+        - name: All
+          in: query
+          description: >-
+            Specifies whether to return all payment gateways or only those are
+            enabled
+          schema:
+            type: boolean
+            description: >-
+              Specifies whether to return all payment gateways or only those are
+              enabled
+        - name: Include
+          in: query
+          description: An array of nested object to be included in response.
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - Parameters
+            description: An array of nested object to be included in response.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentGatewaysResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+components:
+  parameters:
+    IdPathParam:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier for the object.
+      schema:
+        $ref: '#/components/schemas/Id'
+    CustomerIdPathParam:
+      name: customerId
+      in: path
+      required: true
+      description: Unique identifier for the Customer.
+      schema:
+        $ref: '#/components/schemas/Id'
+    PaymentMethodIdPathParam:
+      name: paymentMethodId
+      in: path
+      required: true
+      description: Unique identifier for the PaymentMethod.
+      schema:
+        $ref: '#/components/schemas/Id'
+    PageSizeQueryParam:
+      name: length
+      in: query
+      required: false
+      description: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
+      schema:
+        type: integer
+    PageStartQueryParam:
+      name: start
+      in: query
+      required: false
+      description: A cursor for pagination across multiple pages of results. Don’t include this parameter on the first call. Use the `nextStart` value returned in a previous response to request subsequent results.
+      schema:
+        type: string
+  schemas:
+    Id:
+      type: string
+      description: Unique identifier for the object.
+      nullable: false
+      readOnly: true
+    Company:
+      x-tags:
+        - company
+      x-displayName: "Company"
+      type: object
+      description: The Company object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        tenant:
+          $ref: '#/components/schemas/TenantMode'
+        joinCode:
+          type: string
+          nullable: false
+          minLength: 6
+          maxLength: 6
+        name:
+          type: string
+          description: Company name.
+          nullable: false
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompanyAddressForExternalApi'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    Customer:
+      x-tags:
+        - customer
+      x-displayName: "Customer"
+      type: object
+      description: The Customer object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        tenant:
+          $ref: '#/components/schemas/TenantMode'
+        email:
+          type: string
+          description: The customer’s email address.
+          nullable: false
+        firstName:
+          type: string
+          description: The customer’s first name.
+          nullable: true
+        lastName:
+          type: string
+          description: The customer’s last name.
+          nullable: true
+        phoneNumber:
+          type: string
+          description: The customer’s phone number.
+          nullable: true
+        referenceId:
+          type: string
+          nullable: true
+        companyId:
+          type: string
+          description: The ID of the Company this Customer is associated with.
+          nullable: true
+        wallet:
+          allOf:
+            - $ref: "#/components/schemas/CustomerWalletTotals"
+          readOnly: true
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+      additionalProperties: false
+    CustomerWalletTotals:
+      type: object
+      properties:
+        totalAmount:
+          type: integer
+          format: int64
+        totalVoucherAmount:
+          type: integer
+          format: int64
+        lastUpdatedOnUtc:
+          type: string
+          format: date-time
+      additionalProperties: false
+    CreditCardInfo:
+      type: object
+      description: If this is a card PaymentMethod, this contains the user’s card details.
+      properties:
+        brand:
+          type: string
+          description: Card brand
+          nullable: false
+        pan:
+          type: string
+          description: Card masked PAN
+          nullable: false
+        expiration:
+          type: string
+          nullable: false
+        expirationMonth:
+          type: integer
+          format: int32
+          description: Two-digit number representing the card’s expiration month.
+          readOnly: true
+        expirationYear:
+          type: integer
+          format: int32
+          description: Four-digit number representing the card’s expiration year.
+          readOnly: true
+        product:
+          type: string
+          nullable: false
+      additionalProperties: false
+    DirectDebitInfo:
+      type: object
+      description: If this is a sepa_debit PaymentMethod, this contains the user’s card details.
+      properties:
+        accountId:
+          type: string
+          description: ID of the bank account.
+          nullable: false
+        accountBic:
+          type: string
+          description: BIC of the bank account.
+          nullable: false
+        accountIban:
+          type: string
+          description: IBAN of the bank account.
+          nullable: false
+      additionalProperties: false 
+    Metadata:
+      type: object
+      description: Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.
+      additionalProperties:
+        type: string
+      nullable: true
+    PaginationResponse:
+      type: object
+      properties:
+        hasMore:
+          type: boolean
+          description: Whether or not there are more elements available after this set. If false, this set comprises the end of the list.
+          nullable: false
+        nextStart:
+          type: integer
+          description: A cursor for use in pagination. If `hasMore` is true, you can pass the value of `nextStart` to a subsequent call to fetch the next page of results.
+          nullable: true
+      additionalProperties: false
+    Payment:
+      x-tags:
+        - payment
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        tenant:
+          $ref: '#/components/schemas/TenantMode'
+        referenceId:
+          description: A unique string to reference the Payment. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Payment with your internal systems.
+          nullable: true
+        mode:
+          $ref: '#/components/schemas/Payments.PaymentMode'
+        parentPaymentId:
+          type: string
+          nullable: true
+          readOnly: true
+        customerId:
+          type: string
+          description: The ID of the Customer of this Payment. If empty a new Customer will be created.
+          nullable: true
+        customerEmail:
+          type: string
+          nullable: false
+        customerFirstName:
+          type: string
+          nullable: false
+        customerLastName:
+          type: string
+          nullable: false
+        customerPhoneNumber:
+          type: string
+          nullable: false
+        customerPaymentMethodId:
+          type: string
+          description: The ID of the Customer's PaymentMethod to attach to this Payment.
+          nullable: true
+        selectedPaymentGateway:
+          type: string
+          description: Default PaymentGateway used for the first transaction.
+          nullable: true
+        paymentGateways:
+          type: array
+          description: List of PaymentGateways enabled for this Payment. If empty all PaymentGateways are used.
+          items:
+            type: string
+          nullable: true
+        checkoutUrl:
+          type: string
+          nullable: true
+          readOnly: true
+        closeCheckout:
+          $ref: '#/components/schemas/Payments.PaymentCloseCheckout'
+        callback:
+          $ref: '#/components/schemas/Payments.PaymentLastCallback'
+        totalAmount:
+          type: integer
+          format: int64
+          readOnly: true
+        discountAmount:
+          type: integer
+          format: int64
+          readOnly: true
+        finalAmount:
+          type: integer
+          format: int64
+          readOnly: true
+        paidAmount:
+          type: integer
+          format: int64
+          readOnly: true
+        paidVoucherAmount:
+          type: integer
+          format: int64
+          readOnly: true
+        amount:
+          type: integer
+          format: int64
+          readOnly: true
+        status:
+          allOf:
+            - $ref: '#/components/schemas/Payments.PaymentStatus'
+          readOnly: true
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payments.Transaction'
+          readOnly: true
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payments.PaymentLine'
+        discounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payments.PaymentDiscount'
+      additionalProperties: false
+    Payments.PaymentStatus:
+      description: Current status of the Payment.
+      enum:
+        - Requested
+        - Paid
+        - Confirmed
+        - Refunded
+        - Cancelled
+        - Voided
+        - Expired
+      type: string
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI reference that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It remains consistent across occurrences of the same error type.
+        status:
+          type: integer
+          format: int32
+          description: The HTTP status code generated by the origin server for this occurrence of the problem.
+        detail:
+          type: string
+          nullable: true
+          description: A human-readable explanation specific to this occurrence of the problem.
+      additionalProperties: {}
+    TenantMode:
+      type: string
+      description: Has the value "live" if the object exists in live mode, or "sand" if it exists in test mode.
+      enum: ["sand", "live"]
+      nullable: false
+      readOnly: true
+     
+    
+    
+    
+    PaymentGateways.CheckoutAction:
+      enum:
+        - OTP
+        - REDIRECT
+        - DROPIN
+      type: string
+    
+    CompanyAddressForExternalApi:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: false
+        label:
+          type: string
+          nullable: true
+        streetName:
+          type: string
+          nullable: true
+        streetNumber:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        province:
+          type: string
+          nullable: true
+        postalCode:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        deliveryFeeAmount:
+          type: integer
+          format: int32
+        storeId:
+          type: string
+          nullable: false
+      additionalProperties: false
+    
+    
+    PaymentMethod:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        paymentGatewayId:
+          type: string
+          nullable: false
+        externalId:
+          type: string
+          nullable: false
+        holderEmail:
+          type: string
+          nullable: false
+        holderName:
+          type: string
+          nullable: false
+        creditCard:
+          $ref: '#/components/schemas/CreditCardInfo'
+        directDebit:
+          $ref: '#/components/schemas/DirectDebitInfo'
+        additionalInformation1:
+          type: string
+          nullable: true
+        additionalInformation2:
+          type: string
+          nullable: true
+        additionalInformation3:
+          type: string
+          nullable: true
+      additionalProperties: false
+    
+    
+    PaymentGateways.Checkout.PaymentRequest:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
+        externalTransactionId:
+          type: string
+          nullable: false
+        url:
+          type: string
+          nullable: true
+      additionalProperties: true
+    Services.PaymentGateways.PaymentGatewayDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/PaymentGateways.PaymentGatewayType'
+        paymentAction:
+          $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
+        image:
+          type: string
+          nullable: true
+        checkoutImage:
+          type: string
+          nullable: true
+        icon:
+          type: string
+          nullable: true
+        minimumAmount:
+          type: integer
+          format: int32
+        isPartiallyRefundable:
+          type: boolean
+          readOnly: true
+        isTokenizable:
+          type: boolean
+          readOnly: true
+        requestAffiliationUrl:
+          type: string
+          nullable: true
+        paymentGatewayParameters:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/Services.PaymentGateways.PaymentGatewayParameterDto
+          nullable: true
+      additionalProperties: false
+    Services.PaymentGateways.PaymentGatewayParameterDto:
+      type: object
+      properties:
+        paymentGatewayId:
+          type: string
+          nullable: true
+        parameterId:
+          type: string
+          nullable: true
+        friendlyName:
+          type: string
+          nullable: true
+        isMerchant:
+          type: boolean
+        isForm:
+          type: boolean
+        isVisible:
+          type: boolean
+        isRequired:
+          type: boolean
+        tenantDefaultValue:
+          type: string
+          nullable: true
+        options:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/PaymentGateways.PaymentGatewayParameterOptionDto
+          nullable: true
+      additionalProperties: false
+    PaymentGateways.PaymentGatewayParameterOptionDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        text:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PaymentGateways.PaymentGatewayType:
+      enum:
+        - 0
+        - 1
+        - 2
+      type: integer
+      format: int32
+    
+    
+      
+    Payments.PaymentMode:
+      enum:
+        - Payment
+        - Wallet
+        - Setup
+      type: string
+      description: Mode of this Payment.
+      nullable: false
+    Payments.ExternalError:
+      type: object
+      properties:
+        message:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Payments.PaymentCloseCheckout:
+      type: object
+      readOnly: true
+      properties:
+        success:
+          type: boolean
+        date:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Payments.PaymentLastCallback:
+      type: object
+      readOnly: true
+      properties:
+        success:
+          type: boolean
+        date:
+          type: string
+          format: date-time
+      additionalProperties: false
+    
+    Payments.PaymentDiscount:
+      type: object
+      properties:
+        discountName:
+          type: string
+          description: The discount’s name, meant to be displayable to the customer.
+          nullable: false
+        discountDescription:
+          type: string
+          description: The discount’s description. Use this field to optionally store a long form explanation of the product being sold for your own rendering purposes.
+          nullable: true
+        amount:
+          type: integer
+          description:  A non-negative integer in cents representing how much to subtract from the total. Must be specified when both `type` and `value` are null.
+          format: int32
+        type:
+          $ref: '#/components/schemas/Payments.DiscountType'
+        value:
+          type: integer
+          description: The value of the discount, contextual to the selected `type`. Must be specified when `type` is provided and `amount` is null.
+          format: int32
+          nullable: true
+        index:
+          type: integer
+          description: Defines the application order of this discount relative to others.
+          format: int32
+          nullable: true
+      additionalProperties: false
+    Payments.DiscountType:
+      enum:
+        - DOLLAROFF
+        - PERCENOFF
+        - FIXED
+      description: |
+        Defines how the discount is calculated:
+        - `DOLLAROFF`: A fixed amount in cents is subtracted from the total.
+        - `PERCENOFF`: A percentage of the total amount is subtracted.
+        - `FIXED`: The final price is set to a fixed amount, overriding the original total.
+      type: string
+    Payments.PaymentLine:
+      type: object
+      properties:
+        quantity:
+          type: integer
+          description: The quantity of the line item being purchased.
+          format: int32
+        productId:
+          type: string
+          description: The ID of the Product that this PaymentLine will belong to. One of `productId` or `productName` is required. When `productId` is provided, all other product-related fields will be ignored, as their values will be automatically loaded from the Product.
+          nullable: true
+        productName:
+          type: string
+          description: The product’s name, meant to be displayable to the customer. One of `productId` or `productName` is required.
+          nullable: true
+        productVariant:
+          type: string
+          description: The product’s variant description, meant to be displayable to the customer.
+          nullable: true
+        productImage:
+          type: string
+          description: The product’s image, meant to be displayable to the customer.
+          nullable: true
+        unitAmount:
+          type: integer
+          description: A non-negative integer in cents representing how much to charge for each individual unit.
+          format: int32
+        unitDiscountAmount:
+          type: integer
+          description: A non-negative integer in cents representing the discount applied to each individual unit. This field is mutually exclusive with `discountAmount` — only one of the two may be specified.
+          format: int32
+        discountAmount:
+          type: integer
+          description: A non-negative integer in cents representing the total discount applied to the entire line. This field is mutually exclusive with `unitDiscountAmount` — only one of the two may be specified.
+          format: int32
+        finalAmount:
+          type: integer
+          description: A non-negative integer in cents representing how much to charge.
+          format: int64
+          readOnly: true
+        taxRate:
+          type: number
+          description: The product's applicable tax rate.
+          format: double
+          nullable: true
+        isFood:
+          type: boolean
+          description: Indicates whether this payment line refers to a food item. This flag is used to determine eligibility for meal vouchers or similar benefits.
+        modifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payments.PaymentLine.Modifier'
+          nullable: true
+      additionalProperties: false
+    Payments.PaymentLine.Modifier:
+      type: object
+      properties:
+        modifierId:
+          type: string
+          description: The ID of the Modifier that this customization will belong to.
+        productId:
+          type: string
+          description: The ID of the Product that this customization will belong to.
+        productName:
+          type: string
+          readOnly: true
+        quantity:
+          type: integer
+        price:
+          type: integer
+      additionalProperties: false
+    
+    Payments.Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        paymentGatewayId:
+          type: string
+          nullable: false
+        paymentGateway:
+          $ref: '#/components/schemas/Services.PaymentGateways.PaymentGatewayDto'
+        externalId1:
+          type: string
+          nullable: false
+        externalId2:
+          type: string
+          nullable: true
+        externalId3:
+          type: string
+          nullable: true
+        isWallet:
+          type: boolean
+        error:
+          $ref: '#/components/schemas/Payments.TransactionError'
+        requestedAmount:
+          type: integer
+          format: int32
+        amount:
+          type: integer
+          format: int64
+        voucherAmount:
+          type: integer
+          format: int64
+        noOfVouchers:
+          type: integer
+          format: int32
+          nullable: true
+        confirmedAmount:
+          type: integer
+          format: int64
+        refundedAmount:
+          type: integer
+          format: int64
+        currency:
+          type: string
+          nullable: false
+        creditCard:
+          $ref: '#/components/schemas/CreditCardInfo'
+        directDebit:
+          $ref: '#/components/schemas/DirectDebitInfo'
+        holderEmail:
+          type: string
+          nullable: true
+        holderName:
+          type: string
+          nullable: true
+        status:
+          $ref: '#/components/schemas/Payments.TransactionStatus'
+        request:
+          $ref: '#/components/schemas/PaymentGateways.Checkout.PaymentRequest'
+      additionalProperties: false
+    Payments.TransactionStatus:
+      description: Current status of the Transaction.
+      enum:
+        - Requested
+        - Paid
+        - Confirmed
+        - Refunded
+        - Dropped
+        - Cancelled
+        - Failed
+        - Voided
+        - Expired
+        - ImpossibleRefund
+      type: string
+    Payments.TransactionError:
+      description: The error encountered during the Transaction, if any.
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/Payments.TransactionErrorCode'
+        externalError:
+          $ref: '#/components/schemas/Payments.ExternalError'
+      additionalProperties: false
+    Payments.TransactionErrorCode:
+      description: The type of error returned.
+      enum:
+        - Generic
+        - Cancelled
+        - NotCompleted
+        - MissingPaymentMethod
+        - Declined
+        - System
+      type: string
+      
+    CustomerAddressDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: false
+        label:
+          type: string
+          nullable: true
+        streetName:
+          type: string
+          nullable: true
+        streetNumber:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        province:
+          type: string
+          nullable: true
+        postalCode:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CustomerAddressRequest:
+      type: object
+      properties:
+        label:
+          type: string
+          nullable: false
+        streetName:
+          type: string
+          nullable: false
+        streetNumber:
+          type: string
+          nullable: false
+        city:
+          type: string
+          nullable: false
+        province:
+          type: string
+          nullable: false
+        postalCode:
+          type: string
+          nullable: false
+        country:
+          type: string
+          nullable: false
+      additionalProperties: false
+    GetPaymentGatewaysResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentGateways.PaymentGatewayDto'
+          nullable: false
+      additionalProperties: false
+    MerchantPaymentGatewayDto:
+      type: object
+      properties:
+        defaultPaymentGatewayId:
+          type: string
+          nullable: true
+        isFallback:
+          type: boolean
+      additionalProperties: false
+    PaymentGateways.PaymentGatewayDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: false
+        name:
+          type: string
+          nullable: false
+        type:
+          $ref: '#/components/schemas/PaymentGateways.PaymentGatewayType'
+        paymentAction:
+          $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
+        image:
+          type: string
+          nullable: true
+        checkoutImage:
+          type: string
+          nullable: true
+        icon:
+          type: string
+          nullable: true
+        isActive:
+          type: boolean
+        merchantConfiguration:
+          $ref: '#/components/schemas/MerchantPaymentGatewayDto'
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentGateways.PaymentGatewayParameterDto'
+          nullable: true
+      additionalProperties: false
+    PaymentGateways.PaymentGatewayParameterDto:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: false
+        friendlyName:
+          type: string
+          nullable: false
+        isSecret:
+          type: boolean
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    
+    RefundPaymentRequest.Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the transaction.
+          format: uuid
+        amount:
+          type: integer
+          description: If specified, is the partial amount to be refunded.
+          format: int32
+          nullable: true
+      additionalProperties: false
+    RefundPaymentRequest:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefundPaymentRequest.Transaction'
+          nullable: true
+      additionalProperties: false
+    
+    PaginationResponse_CustomerAddressDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerAddressDto'
+          nullable: true
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      additionalProperties: false
+    
+    ValidationProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        parameter:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Voucherly-API-Key:
+      type: apiKey
+      in: header
+      name: Voucherly-API-Key

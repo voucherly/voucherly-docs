@@ -43,7 +43,14 @@ const sidebars: SidebarsConfig = {
         }
       ]
     },
-    ...endpointResourcesSidebar
+    {
+      type: 'category',
+      label: "🔗 Endpoints",
+      collapsed: false,
+      items: [
+        ...endpointResourcesSidebar
+      ]
+    },
   ]
 };
 
