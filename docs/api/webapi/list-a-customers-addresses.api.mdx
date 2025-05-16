@@ -1,0 +1,71 @@
+---
+id: list-a-customers-addresses
+title: "List a Customer's Addresses"
+description: "List a Customer's Addresses"
+sidebar_label: "List a Customer's Addresses"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVktv3DYQ/ivEXNoCijdJe9KpblIUi74MO0kPhhHPUrMWU4qUOaNFFoL+ezGUdr32blyhzUkCOY9v5psHexC8Yyiv4U3HEhtKDDcFxJYSiothWUEJvzkWg2Yn8Q2b86pKxEwMBbSYsCFRzfK6h4ANQQl2El5WUIALUEKLUkMBie47l6iCUlJHBVTENrlWnUEJ74O778i4ioK4taNk1jEZqWnv/QwKYFtTg1D2INtWvbEkF+5gvrW4+kRW1FbovMeVJyjX6JkUIFZ/Br/dARQnegvLCobhRu+5jUFjL3t4/fKlfh67veqsJdbc2BiEgqgItq13Nid18YlVrj+OY4SlSU1KgbjRixNq+EAMU8Kt5vXJ+ZfUq1OpehL4UIDHFfnnRTUlQ6E3RPJHpnq+eNesKM1SsE62swTbFDcu2Hkw2siC/k2s5onb2AVJc3AMBWBVOeUW/cVB7qeS2pXQroan9nkrEYZTOPHOBRyL6d+4rZF/j+kwoFWMnjAcNcNfNUlNycRkQhTtgkQGE5kmJjLkqaEgbHCDLsMxuBbSbnFsmOTMLNdmjGd/Zmxs2uSYODcVhcrEdf71jk91l0ZLn+VKMMkBZBeE7igdQT43tkscx7btmIwL5iE5GdHtlIBb49jkhjXb2BmLKskjrg36jhTZ7d75rZFo0HC3YrrvKIix6L0erklsndVUWN1l1UTceeGz/07+xR745TRB4H/ofjxVS4Ma/OHUSPoJK3OpkbJ8vbE03s7opCmMWZMCpeOTpbGOqUEZj75/fUq5IkE3b4C5wIJz54adOzH2q/ArzowP6F2V+blIceWpeZuj5Mz28LRjnl/VDUkddaPfUWZTN3IJi82rxW5d86J/2NzDAg+UmdJmt+S75KGEWqTlcrHA1p1tYmdrSn575uSojz/sLs35xRJ0iTLZLuUhf90/XL84v1i++JX09OZQ6koLcqy5E7IPa7F1ejC9N2rCKhfO9CI51hxyIaxjNrFL907qKIipb9DmvnlqFAqgJldfNvnjo3wMBWjqRjubVzDtogbDgannqXuEZR+x0GdZtB5dUJuZlX6i9VodFft3mNooHz3KHri9KaCOLKrT9ytkep/8MOjxfUcps1HABpMby/e6h8qx/lf7an0Cbz9g4NvL6b33nZn3tjsZ2Y7goHnO43wk5G/l//CtOdwMxY55BToKnFtLrRyoHk09rbZ9d/zy8zsYhn8AGzjiyQ==
+sidebar_class_name: "get api-method"
+info_path: api/webapi/voucherly
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List a Customer's Addresses"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/customers/{customerId}/addresses"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+List a Customer's Addresses
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"customerId","in":"path","required":true,"description":"Unique identifier for the Customer.","schema":{"type":"string","description":"Unique identifier for the object.","nullable":false,"readOnly":true,"title":"Id"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"items":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":false},"label":{"type":"string","nullable":true},"streetName":{"type":"string","nullable":true},"streetNumber":{"type":"string","nullable":true},"city":{"type":"string","nullable":true},"province":{"type":"string","nullable":true},"postalCode":{"type":"string","nullable":true},"country":{"type":"string","nullable":true}},"additionalProperties":false,"title":"CustomerAddressDto"},"nullable":true},"pagination":{"type":"object","properties":{"hasMore":{"type":"boolean","description":"Whether or not there are more elements available after this set. If false, this set comprises the end of the list.","nullable":false},"nextStart":{"type":"integer","description":"A cursor for use in pagination. If `hasMore` is true, you can pass the value of `nextStart` to a subsequent call to fetch the next page of results.","nullable":true}},"additionalProperties":false,"title":"PaginationResponse"}},"additionalProperties":false,"title":"PaginationResponse_CustomerAddressDto"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"ValidationProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

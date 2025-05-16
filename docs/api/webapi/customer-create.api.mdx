@@ -1,0 +1,71 @@
+---
+id: customer-create
+title: "Create a Customer"
+description: "Create a Customer"
+sidebar_label: "Create a Customer"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWM1uGzkMfhWB53F+usUefNo0LbDGok3QJt1DaizoGTqjViNNJY4TwxhgX2Nfb59kQcn2jO1p6/S2QHxwJhRJifw+khqvgPE+wPgO8iawq8jDNANXk0fWzk4KGG9X/so9IRNk4OlrQ4FfuWIJ4xXkzjJZlkesa6PzaHv6OTgrspCXVGFcNeZqDuO7FTyOhvZ9HBU61AaX77AiGMPlZi0DXtYicbPPlDNkUFDIva5lIxjDTUlqo6y2OrWXQFhTkM11Id9rP4G9tvcHfm6t/tqQ0gVZ1nNNXs2dV1zS2ukJZGAbY3BmCMZzNIEkG1hcWbOEMfuGMmDNsgqTAtoMmCym3Hx/698xxI0WaBpSn8DoBX0Cpee97RU96sBBaatkWVWuoEw5rz5BQFskdd1XYwoc1eTkZJtKUi66kMUdJOtHB3QTQ3nrCpLAqEJtfhyXQLPB+N+//wkq2iksCk8hDCS0zWCufeDEgSe7j7bKYkW7viWUNgODP+1ZTL/tuC6dpXdNNSP/E76jtbLRfNC9pzl5sjlNBml8oJ+7qka7HNY+PMzktXKJaZfJUHGpQ1dTOigMweUamQr1oLkcPOUDGkO8W+r7lbtblewYzUXlmp0a0ZbpPtb93PkKOYl+fRkLSiw+uiYvyT/JUPC7rQuJ4Mrecj6Uma2VqI1YVwRtmwEWhZZsobnunX5dLpvy2CTrz5iEGzlmgHa6X09tBhUxFsjYO8E3GtsHYgHmCy1HqTHUqL00CmS1dI3K0SpkxrxU7BTaTZ9SNwKfrM5INYHmjYmtLLCTSFUXkNI2Ba2dVThzDfcbjrYKVWDf5Nx4KlRSPVETjs6l86O2qqll+/Oz3kE1UxUiUxSqCh911VTKkL3nUiJ6ebZtrV9oqdAWSXqm8hJ92C5GZ8K1YQj2EWz3SdnB83aT9CcDCm12iJPMQO2pkIaaWuF0n9suohiGUO5br5/T7Hkz7GpAp/M6c84QWmjlM5Uv2SDUzoZk/eLsXP7sUusyTnMZBEfP7+ep/Ty1n6f289R+ntrPU/t/MLXjIHx5dnY4+15hod6nl9inzL8fFEVcPaLK1yc9QjMwchN+WCm/vBgyLoi/0esPVLUNjDY/7lC5jJJjFGv0WBEPt9Y97WPR/YhGFxGfa+9mhqrXMcqQLj/7hZjuOApV705SEZdOfteoXUS/Ri5hDKeL89NNcw+QQSC/kCdpho03MIaSuQ7j01Os9ckidTKzPNGH5f9xs6guriexlwTKG695Gb1tl0cX15PRHyTSaV/rgxAucWpAd5tKrLUIBD05HWER47PpFnZoKekRTr/vfr1584hVnbi4vhj0mmo3zjthN4g72c4M7cQ7s68T90ZcJ+y11jbSce5ioBvQN7EcpHpdvZjH6t0PHbb3nejytx3U2gwE4ORncS7/CyMqtD1XQwTaOcEWDaZHPq0NaiueImNWa27difsMOnZNMyiFfOM7WK1mGOjWm7YV8deGfORDBgv0OhXI3bTNNvgKgb4IDeAyda3Rjewv6qZJrNjrYPLykiwu8pxq/q7utFcf11cfbiCD2fpXviqWPXh8EHDxIWW/944TZSswaO8bvBfd5FM+/wF8fiWY
+sidebar_class_name: "post api-method"
+info_path: api/webapi/voucherly
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a Customer"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/customers"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a Customer
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"allOf":[{"x-tags":["customer"],"x-displayName":"Customer","type":"object","description":"The Customer object","properties":{"id":{"type":"string","description":"Unique identifier for the object.","nullable":false,"readOnly":true,"title":"Id"},"tenant":{"type":"string","description":"Has the value \"live\" if the object exists in live mode, or \"sand\" if it exists in test mode.","enum":["sand","live"],"nullable":false,"readOnly":true,"title":"TenantMode"},"email":{"type":"string","description":"The customer’s email address.","nullable":false},"firstName":{"type":"string","description":"The customer’s first name.","nullable":true},"lastName":{"type":"string","description":"The customer’s last name.","nullable":true},"phoneNumber":{"type":"string","description":"The customer’s phone number.","nullable":true},"referenceId":{"type":"string","nullable":true},"companyId":{"type":"string","description":"The ID of the Company this Customer is associated with.","nullable":true},"wallet":{"allOf":[{"type":"object","properties":{"totalAmount":{"type":"integer","format":"int64"},"totalVoucherAmount":{"type":"integer","format":"int64"},"lastUpdatedOnUtc":{"type":"string","format":"date-time"}},"additionalProperties":false,"title":"CustomerWalletTotals"}],"readOnly":true},"metadata":{"type":"object","description":"Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.","additionalProperties":{"type":"string"},"nullable":true,"title":"Metadata"}},"additionalProperties":false,"title":"Customer"},{"type":"object","required":["email"],"properties":{"options":{"type":"object","required":["requireUniqueEmail"],"properties":{"requireUniqueEmail":{"type":"boolean"}}}}}]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Created","content":{"application/json":{"schema":{"x-tags":["customer"],"x-displayName":"Customer","type":"object","description":"The Customer object","properties":{"id":{"type":"string","description":"Unique identifier for the object.","nullable":false,"readOnly":true,"title":"Id"},"tenant":{"type":"string","description":"Has the value \"live\" if the object exists in live mode, or \"sand\" if it exists in test mode.","enum":["sand","live"],"nullable":false,"readOnly":true,"title":"TenantMode"},"email":{"type":"string","description":"The customer’s email address.","nullable":false},"firstName":{"type":"string","description":"The customer’s first name.","nullable":true},"lastName":{"type":"string","description":"The customer’s last name.","nullable":true},"phoneNumber":{"type":"string","description":"The customer’s phone number.","nullable":true},"referenceId":{"type":"string","nullable":true},"companyId":{"type":"string","description":"The ID of the Company this Customer is associated with.","nullable":true},"wallet":{"allOf":[{"type":"object","properties":{"totalAmount":{"type":"integer","format":"int64"},"totalVoucherAmount":{"type":"integer","format":"int64"},"lastUpdatedOnUtc":{"type":"string","format":"date-time"}},"additionalProperties":false,"title":"CustomerWalletTotals"}],"readOnly":true},"metadata":{"type":"object","description":"Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.","additionalProperties":{"type":"string"},"nullable":true,"title":"Metadata"}},"additionalProperties":false,"title":"Customer"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"ValidationProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

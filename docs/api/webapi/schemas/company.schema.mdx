@@ -1,0 +1,33 @@
+---
+id: company
+title: "Company"
+description: "The Company object"
+sidebar_label: "Company"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"string","tenant":"sand","joinCode":"string","name":"string","addresses":[{"id":"string","label":"string","streetName":"string","streetNumber":"string","city":"string","province":"string","postalCode":"string","country":"string","deliveryFeeAmount":0,"storeId":"string"}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Company"}
+>
+</Heading>
+
+
+
+The Company object
+
+<Schema
+  schema={{"x-tags":["company"],"x-displayName":"Company","type":"object","description":"The Company object","properties":{"id":{"type":"string","description":"Unique identifier for the object.","nullable":false,"readOnly":true,"title":"Id"},"tenant":{"type":"string","description":"Has the value \"live\" if the object exists in live mode, or \"sand\" if it exists in test mode.","enum":["sand","live"],"nullable":false,"readOnly":true,"title":"TenantMode"},"joinCode":{"type":"string","nullable":false,"minLength":6,"maxLength":6},"name":{"type":"string","description":"Company name.","nullable":false},"addresses":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":false},"label":{"type":"string","nullable":true},"streetName":{"type":"string","nullable":true},"streetNumber":{"type":"string","nullable":true},"city":{"type":"string","nullable":true},"province":{"type":"string","nullable":true},"postalCode":{"type":"string","nullable":true},"country":{"type":"string","nullable":true},"deliveryFeeAmount":{"type":"integer","format":"int32"},"storeId":{"type":"string","nullable":false}},"additionalProperties":false,"title":"CompanyAddressForExternalApi"},"nullable":true,"readOnly":true}},"additionalProperties":false,"title":"Company"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

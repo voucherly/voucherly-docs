@@ -1,0 +1,33 @@
+---
+id: directdebitinfo
+title: "DirectDebitInfo"
+description: "If this is a sepa_debit PaymentMethod, this contains the user’s card details."
+sidebar_label: "DirectDebitInfo"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"accountId":"string","accountBic":"string","accountIban":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DirectDebitInfo"}
+>
+</Heading>
+
+
+
+If this is a sepa_debit PaymentMethod, this contains the user’s card details.
+
+<Schema
+  schema={{"type":"object","description":"If this is a sepa_debit PaymentMethod, this contains the user’s card details.","properties":{"accountId":{"type":"string","description":"ID of the bank account.","nullable":false},"accountBic":{"type":"string","description":"BIC of the bank account.","nullable":false},"accountIban":{"type":"string","description":"IBAN of the bank account.","nullable":false}},"additionalProperties":false,"title":"DirectDebitInfo"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

@@ -1,0 +1,33 @@
+---
+id: paymentmethod
+title: "PaymentMethod"
+description: ""
+sidebar_label: "PaymentMethod"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"string","paymentGatewayId":"string","externalId":"string","holderEmail":"string","holderName":"string","creditCard":{"brand":"string","pan":"string","expiration":"string","expirationMonth":0,"expirationYear":0,"product":"string"},"directDebit":{"accountId":"string","accountBic":"string","accountIban":"string"},"additionalInformation1":"string","additionalInformation2":"string","additionalInformation3":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"PaymentMethod"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"id":{"type":"string","description":"Unique identifier for the object.","nullable":false,"readOnly":true,"title":"Id"},"paymentGatewayId":{"type":"string","nullable":false},"externalId":{"type":"string","nullable":false},"holderEmail":{"type":"string","nullable":false},"holderName":{"type":"string","nullable":false},"creditCard":{"type":"object","description":"If this is a card PaymentMethod, this contains the user’s card details.","properties":{"brand":{"type":"string","description":"Card brand","nullable":false},"pan":{"type":"string","description":"Card masked PAN","nullable":false},"expiration":{"type":"string","nullable":false},"expirationMonth":{"type":"integer","format":"int32","description":"Two-digit number representing the card’s expiration month.","readOnly":true},"expirationYear":{"type":"integer","format":"int32","description":"Four-digit number representing the card’s expiration year.","readOnly":true},"product":{"type":"string","nullable":false}},"additionalProperties":false,"title":"CreditCardInfo"},"directDebit":{"type":"object","description":"If this is a sepa_debit PaymentMethod, this contains the user’s card details.","properties":{"accountId":{"type":"string","description":"ID of the bank account.","nullable":false},"accountBic":{"type":"string","description":"BIC of the bank account.","nullable":false},"accountIban":{"type":"string","description":"IBAN of the bank account.","nullable":false}},"additionalProperties":false,"title":"DirectDebitInfo"},"additionalInformation1":{"type":"string","nullable":true},"additionalInformation2":{"type":"string","nullable":true},"additionalInformation3":{"type":"string","nullable":true}},"additionalProperties":false,"title":"PaymentMethod"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

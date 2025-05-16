@@ -1,0 +1,71 @@
+---
+id: list-all-payment-gateways
+title: "List all PaymentGateways"
+description: "List all PaymentGateways"
+sidebar_label: "List all PaymentGateways"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vk1v4zgM/SsCz5qm7c7Jp8223SKY2WmQdudSBAtFZmJNZcmV6MwEgf/7QLbsfDYxFu3JsEw9PvKRNNdAYuEheYaxWOVoiN0Lwp9i5WHKwRboBClrRikk8FV5YkJrFk07Sw6FcCJHQheg1mBEjpDAUGvgoAwk8FqiWwGHFL10qgiYkMBjgVLNFXr2M0PK0DGyzCGVztSOishpET0x65g1esUosx6ZcMjQiJnGFDh4mWEuIFkDrYrgfmatRmE+0mtV8S7akZG6TPF0xEPDhHNixeycGfSEKbOzHygpcJghUw1IypRhDn1hjccL4ODwtVQOU0jmQns8Em0NG5wT5n7r3JNTZgEc0JR5I3Sn1bR6H35VNQ0Um9fa+fXlZXjsgj98AQ7SGkJD4asoCq1kXWCDHz6YrA/jatyHGnOhHEk1DvbDfCv8t66nx1JkSq2DsDHLFY/a9rFsLNZtmi/5Fb+etsegDOECHXCYW5cLao7+uAYOpCjgwF5XXey+PwWcKnRafTqUTU47f/DwNAYOk7vb0eTu5gk43E4exqNvsOHQkX/L402G8sWWLXjFQeVicSZ+cmUIX8a7o943lGwCOG/oA6ElHmntikOOTmbC0I01c7Uom3l1vgBSnItS024KRmeqoiP0t9B6JuTLMUoVB5GmKtAQerzlNHZum/1/IvFdCrdkG5k3A/Wja3zuFJpUr771rnXlH1E6pOOKLIUu+5RA30SdboxunMXMfYiTA+wmE33B73FPZT+JwxKqKqB8PjYu/xIpm+BriZ7eb262Y+pskUfuPSw9CSq36/HEsDu4nCIJpfu1nfEkjOw5j2zaz7DrtHes2O9Cq7TWZ+zsTGN+W0fpa7UP/rkn9qocKbNh91pgLaWgDBIYLK8G8T/w32Jj7NEt2w2sdBoSyIgKnwwGolAXS1vKDJ1eXSg6WEu+tx/ZcDyC8Df3KEunaFWjdZ8/DcejT18wnE63rR5D9TUFdsR2M8AKFQ7ihpShSOsqiQvU4c2qVn1ua4g2t63VQRCxSYSsm2QfNGxAeV1qNeSfO/kIUwudb3CWV/UEtp5yYbag9nViW0LtMOniJfxFg0ILVc/FWpN1FPE5uOl+5xsZpxwy6ykYrNcz4fFfp6sqHDcLZZAjVb5ZP9u62/PejYr3XbCPBvUSBI6bfhz8AGEr7k/y/+7EJ/hsdvENp2l4capp5+ew+sYCDCmNYUiJBW3dOpi0AaVryvu7J6iq33gQolk=
+sidebar_class_name: "get api-method"
+info_path: api/webapi/voucherly
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List all PaymentGateways"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/payment_gateways"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+List all PaymentGateways
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"All","in":"query","description":"Specifies whether to return all payment gateways or only those are enabled","schema":{"type":"boolean","description":"Specifies whether to return all payment gateways or only those are enabled"}},{"name":"Include","in":"query","description":"An array of nested object to be included in response.","required":false,"schema":{"type":"array","items":{"type":"string","enum":["Parameters"]},"description":"An array of nested object to be included in response."}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"items":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":false},"name":{"type":"string","nullable":false},"type":{"enum":[0,1,2],"type":"integer","format":"int32","title":"PaymentGateways.PaymentGatewayType"},"paymentAction":{"enum":["OTP","REDIRECT","DROPIN"],"type":"string","title":"PaymentGateways.CheckoutAction"},"image":{"type":"string","nullable":true},"checkoutImage":{"type":"string","nullable":true},"icon":{"type":"string","nullable":true},"isActive":{"type":"boolean"},"merchantConfiguration":{"type":"object","properties":{"defaultPaymentGatewayId":{"type":"string","nullable":true},"isFallback":{"type":"boolean"}},"additionalProperties":false,"title":"MerchantPaymentGatewayDto"},"parameters":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":false},"friendlyName":{"type":"string","nullable":false},"isSecret":{"type":"boolean"},"value":{"type":"string","nullable":true}},"additionalProperties":false,"title":"PaymentGateways.PaymentGatewayParameterDto"},"nullable":true}},"additionalProperties":false,"title":"PaymentGateways.PaymentGatewayDto"},"nullable":false}},"additionalProperties":false,"title":"GetPaymentGatewaysResponse"}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true},"code":{"type":"string","nullable":true},"parameter":{"type":"string","nullable":true}},"additionalProperties":false,"title":"ValidationProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

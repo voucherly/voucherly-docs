@@ -1,0 +1,33 @@
+---
+id: creditcardinfo
+title: "CreditCardInfo"
+description: "If this is a card PaymentMethod, this contains the user’s card details."
+sidebar_label: "CreditCardInfo"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"brand":"string","pan":"string","expiration":"string","expirationMonth":0,"expirationYear":0,"product":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CreditCardInfo"}
+>
+</Heading>
+
+
+
+If this is a card PaymentMethod, this contains the user’s card details.
+
+<Schema
+  schema={{"type":"object","description":"If this is a card PaymentMethod, this contains the user’s card details.","properties":{"brand":{"type":"string","description":"Card brand","nullable":false},"pan":{"type":"string","description":"Card masked PAN","nullable":false},"expiration":{"type":"string","nullable":false},"expirationMonth":{"type":"integer","format":"int32","description":"Two-digit number representing the card’s expiration month.","readOnly":true},"expirationYear":{"type":"integer","format":"int32","description":"Four-digit number representing the card’s expiration year.","readOnly":true},"product":{"type":"string","nullable":false}},"additionalProperties":false,"title":"CreditCardInfo"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

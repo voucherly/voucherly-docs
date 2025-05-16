@@ -1,0 +1,33 @@
+---
+id: paginationresponse
+title: "PaginationResponse"
+description: ""
+sidebar_label: "PaginationResponse"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"hasMore":true,"nextStart":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"PaginationResponse"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"hasMore":{"type":"boolean","description":"Whether or not there are more elements available after this set. If false, this set comprises the end of the list.","nullable":false},"nextStart":{"type":"integer","description":"A cursor for use in pagination. If `hasMore` is true, you can pass the value of `nextStart` to a subsequent call to fetch the next page of results.","nullable":true}},"additionalProperties":false,"title":"PaginationResponse"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

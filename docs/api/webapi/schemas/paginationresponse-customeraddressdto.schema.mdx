@@ -1,0 +1,33 @@
+---
+id: paginationresponse-customeraddressdto
+title: "PaginationResponse_CustomerAddressDto"
+description: ""
+sidebar_label: "PaginationResponse_CustomerAddressDto"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"items":[{"id":"string","label":"string","streetName":"string","streetNumber":"string","city":"string","province":"string","postalCode":"string","country":"string"}],"pagination":{"hasMore":true,"nextStart":0}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"PaginationResponse_CustomerAddressDto"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"items":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":false},"label":{"type":"string","nullable":true},"streetName":{"type":"string","nullable":true},"streetNumber":{"type":"string","nullable":true},"city":{"type":"string","nullable":true},"province":{"type":"string","nullable":true},"postalCode":{"type":"string","nullable":true},"country":{"type":"string","nullable":true}},"additionalProperties":false,"title":"CustomerAddressDto"},"nullable":true},"pagination":{"type":"object","properties":{"hasMore":{"type":"boolean","description":"Whether or not there are more elements available after this set. If false, this set comprises the end of the list.","nullable":false},"nextStart":{"type":"integer","description":"A cursor for use in pagination. If `hasMore` is true, you can pass the value of `nextStart` to a subsequent call to fetch the next page of results.","nullable":true}},"additionalProperties":false,"title":"PaginationResponse"}},"additionalProperties":false,"title":"PaginationResponse_CustomerAddressDto"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

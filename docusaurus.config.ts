@@ -108,16 +108,16 @@ const config: Config = {
         docsPluginId: "classic", // configured for preset-classic
         config: {
           webapi: {
-            specPath: "files/openapi.json",
+            specPath: "files/openapi.yaml",
             //specPath: "https://api.voucherly.it/swagger/v1/swagger.json",
             outputDir: "docs/api/webapi",
             sidebarOptions: {
               groupPathsBy: "tag",
               // categoryLinkSource: "auto",
               sidebarCollapsible: true,
-              sidebarCollapsed: false,
+              sidebarCollapsed: true,
             },
-            showSchemas: false,
+            showSchemas: true,
           } satisfies OpenApiPlugin.Options,
         }
       },

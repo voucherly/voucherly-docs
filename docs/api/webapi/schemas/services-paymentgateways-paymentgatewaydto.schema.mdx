@@ -1,0 +1,33 @@
+---
+id: services-paymentgateways-paymentgatewaydto
+title: "Services.PaymentGateways.PaymentGatewayDto"
+description: ""
+sidebar_label: "Services.PaymentGateways.PaymentGatewayDto"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"string","name":"string","type":0,"paymentAction":"OTP","image":"string","checkoutImage":"string","icon":"string","minimumAmount":0,"isPartiallyRefundable":true,"isTokenizable":true,"requestAffiliationUrl":"string","paymentGatewayParameters":[{"paymentGatewayId":"string","parameterId":"string","friendlyName":"string","isMerchant":true,"isForm":true,"isVisible":true,"isRequired":true,"tenantDefaultValue":"string","options":[{"id":"string","text":"string"}]}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Services.PaymentGateways.PaymentGatewayDto"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"id":{"type":"string","nullable":true},"name":{"type":"string","nullable":true},"type":{"enum":[0,1,2],"type":"integer","format":"int32","title":"PaymentGateways.PaymentGatewayType"},"paymentAction":{"enum":["OTP","REDIRECT","DROPIN"],"type":"string","title":"PaymentGateways.CheckoutAction"},"image":{"type":"string","nullable":true},"checkoutImage":{"type":"string","nullable":true},"icon":{"type":"string","nullable":true},"minimumAmount":{"type":"integer","format":"int32"},"isPartiallyRefundable":{"type":"boolean","readOnly":true},"isTokenizable":{"type":"boolean","readOnly":true},"requestAffiliationUrl":{"type":"string","nullable":true},"paymentGatewayParameters":{"type":"array","items":{"type":"object","properties":{"paymentGatewayId":{"type":"string","nullable":true},"parameterId":{"type":"string","nullable":true},"friendlyName":{"type":"string","nullable":true},"isMerchant":{"type":"boolean"},"isForm":{"type":"boolean"},"isVisible":{"type":"boolean"},"isRequired":{"type":"boolean"},"tenantDefaultValue":{"type":"string","nullable":true},"options":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","nullable":true},"text":{"type":"string","nullable":true}},"additionalProperties":false,"title":"PaymentGateways.PaymentGatewayParameterOptionDto"},"nullable":true}},"additionalProperties":false,"title":"Services.PaymentGateways.PaymentGatewayParameterDto"},"nullable":true}},"additionalProperties":false,"title":"Services.PaymentGateways.PaymentGatewayDto"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            
