@@ -13,13 +13,19 @@ security:
   - Voucherly-API-Key: []
 tags:
   - name: company
-    description: Companies
+    description: |
+      A Company represents an organizational entity used to logically group multiple customers. Associating customers with a Company enables centralized management of related data such as delivery addresses, discount rules, and custom business logic.
+
+      This is particularly useful for reporting, invoicing, and applying shared configurations across customers that belong to the same organization.
     x-displayName: Companies
   - name: customer
-    description: Customers
+    description: This object represents a customer of your business. Use it to save payment and contact information, and track payments that belong to the same customer.
     x-displayName: Customers
   - name: payment
-    description: Payments
+    description: |
+      A Payment guides you through the process of collecting a payment from your customer. We recommend that you create exactly one Payment for each order or customer session in your system. You can reference the Payment later to see the history of payment attempts for a particular session.
+      
+      A Payment transitions through [multiple statuses](/payments-lifecycle) throughout its lifetime.
     x-displayName: Payments
 paths:
   /v1/companys:
@@ -705,7 +711,6 @@ components:
     Customer:
       x-tags:
         - customer
-      x-displayName: "Customer"
       type: object
       description: The Customer object
       properties:
@@ -1002,7 +1007,6 @@ components:
           nullable: false
       additionalProperties: false
     
-    
     PaymentMethod:
       type: object
       properties:
@@ -1034,7 +1038,6 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    
     
     PaymentGateways.Checkout.PaymentRequest:
       type: object

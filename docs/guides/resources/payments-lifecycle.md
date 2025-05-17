@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Understanding payments
+# How Payments work
 
-### How a Payment works behind the scenes
+### Learn how Payments work within the payment flow.
 
 In Voucherly, a Payment is a logical entity that manages the user's checkout experience. Each Payment can include multiple Transactions, where each Transaction represents a payment attempt using a specific Payment gateway.
 

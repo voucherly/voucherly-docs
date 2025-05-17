@@ -53,7 +53,7 @@ const config: Config = {
           customCss: './src/css/custom.scss',
         },
       } satisfies Preset.Options,
-    ],
+    ]
   ],
 
   themeConfig: {
@@ -127,15 +127,14 @@ const config: Config = {
         config: {
           webapi: {
             specPath: "files/openapi.yaml",
-            //specPath: "https://api.voucherly.it/swagger/v1/swagger.json",
             outputDir: "docs/api/webapi",
             sidebarOptions: {
               groupPathsBy: "tag",
-              // categoryLinkSource: "auto",
+              categoryLinkSource: 'tag',
               sidebarCollapsible: true,
               sidebarCollapsed: true,
             },
-            showSchemas: true,
+            showSchemas: false,
           } satisfies OpenApiPlugin.Options,
         }
       },

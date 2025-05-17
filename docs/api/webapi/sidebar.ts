@@ -9,6 +9,10 @@ const sidebar: SidebarsConfig = {
     {
       type: "category",
       label: "Companies",
+      link: {
+        type: "doc",
+        id: "api/webapi/company",
+      },
       collapsible: true,
       collapsed: true,
       items: [
@@ -35,6 +39,10 @@ const sidebar: SidebarsConfig = {
     {
       type: "category",
       label: "Customers",
+      link: {
+        type: "doc",
+        id: "api/webapi/customer",
+      },
       collapsible: true,
       collapsed: true,
       items: [
@@ -85,6 +93,10 @@ const sidebar: SidebarsConfig = {
     {
       type: "category",
       label: "Payments",
+      link: {
+        type: "doc",
+        id: "api/webapi/payment",
+      },
       collapsible: true,
       collapsed: true,
       items: [
@@ -172,248 +184,6 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
-    // {
-    //   type: "category",
-    //   label: "Schemas",
-    //   collapsible: true,
-    //   collapsed: true,
-    //   items: [
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/id",
-    //       label: "Id",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/customerwallettotals",
-    //       label: "CustomerWalletTotals",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/creditcardinfo",
-    //       label: "CreditCardInfo",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/directdebitinfo",
-    //       label: "DirectDebitInfo",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/metadata",
-    //       label: "Metadata",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paginationresponse",
-    //       label: "PaginationResponse",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-paymentstatus",
-    //       label: "Payments.PaymentStatus",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/problemdetails",
-    //       label: "ProblemDetails",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/tenantmode",
-    //       label: "TenantMode",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paymentgateways-checkoutaction",
-    //       label: "PaymentGateways.CheckoutAction",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/companyaddressforexternalapi",
-    //       label: "CompanyAddressForExternalApi",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paymentmethod",
-    //       label: "PaymentMethod",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paymentgateways-checkout-paymentrequest",
-    //       label: "PaymentGateways.Checkout.PaymentRequest",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/services-paymentgateways-paymentgatewaydto",
-    //       label: "Services.PaymentGateways.PaymentGatewayDto",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/services-paymentgateways-paymentgatewayparameterdto",
-    //       label: "Services.PaymentGateways.PaymentGatewayParameterDto",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paymentgateways-paymentgatewayparameteroptiondto",
-    //       label: "PaymentGateways.PaymentGatewayParameterOptionDto",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paymentgateways-paymentgatewaytype",
-    //       label: "PaymentGateways.PaymentGatewayType",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-paymentmode",
-    //       label: "Payments.PaymentMode",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-externalerror",
-    //       label: "Payments.ExternalError",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-paymentclosecheckout",
-    //       label: "Payments.PaymentCloseCheckout",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-paymentlastcallback",
-    //       label: "Payments.PaymentLastCallback",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-paymentdiscount",
-    //       label: "Payments.PaymentDiscount",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-discounttype",
-    //       label: "Payments.DiscountType",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-paymentline",
-    //       label: "Payments.PaymentLine",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-paymentline-modifier",
-    //       label: "Payments.PaymentLine.Modifier",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-transaction",
-    //       label: "Payments.Transaction",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-transactionstatus",
-    //       label: "Payments.TransactionStatus",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-transactionerror",
-    //       label: "Payments.TransactionError",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/payments-transactionerrorcode",
-    //       label: "Payments.TransactionErrorCode",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/customeraddressdto",
-    //       label: "CustomerAddressDto",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/customeraddressrequest",
-    //       label: "CustomerAddressRequest",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/getpaymentgatewaysresponse",
-    //       label: "GetPaymentGatewaysResponse",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/merchantpaymentgatewaydto",
-    //       label: "MerchantPaymentGatewayDto",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paymentgateways-paymentgatewaydto",
-    //       label: "PaymentGateways.PaymentGatewayDto",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paymentgateways-paymentgatewayparameterdto",
-    //       label: "PaymentGateways.PaymentGatewayParameterDto",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/refundpaymentrequest-transaction",
-    //       label: "RefundPaymentRequest.Transaction",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/refundpaymentrequest",
-    //       label: "RefundPaymentRequest",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/paginationresponse-customeraddressdto",
-    //       label: "PaginationResponse_CustomerAddressDto",
-    //       className: "schema",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/schemas/validationproblemdetails",
-    //       label: "ValidationProblemDetails",
-    //       className: "schema",
-    //     },
-    //   ],
-    // },
   ],
 };
 
