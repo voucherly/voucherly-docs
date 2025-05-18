@@ -221,7 +221,7 @@ Make sure your endpoint processes callbacks correctly. Failure to do so may lead
     </>
     <>
         :::tip
-        Please refer to [Understanding payments](/guides/resources/understanding-payments) for a complete guide on how payments work in Voucherly.
+        Please refer to [How Payments work](/guides/resources/payments-lifecycle) for a complete guide on how payments work in Voucherly.
         :::
 
         Voucherly supports two-step card payments, allowing you to first authorize a card and capture the funds later. When Voucherly authorizes a payment, the card issuer guarantees the funds and places a hold for the payment amount on the customer’s card. You then have a specified timeframe to capture the funds (depending on the card, usually 5 days). If the payment is not captured before the authorization expires, the payment is canceled, and the issuer releases the held funds.

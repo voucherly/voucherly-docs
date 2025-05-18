@@ -26,7 +26,7 @@ The entity representing a customer's payment action. A payment must be created v
 
 A payment includes multiple transactions, each representing a payment attempt through a specific gateway.
 
-Refer to the [Understanding payments](/guides/resources/understanding-payments) guide for a detailed explanation.
+Refer to the [How Payments work](/guides/resources/payments-lifecycle) guide for a detailed explanation.
 
 ### Payment Gateway
 An external service that Voucherly uses to authorize and process transactions.

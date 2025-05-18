@@ -110,7 +110,7 @@ If the kiosk is offline but communicates via a server the [Callback S2S](/api/ge
 
 :::tip
 A Payment should not be considered closed if its status is `REQUESTED`.\
-Please refer to the [Understanding payment resource](/guides/resources/understanding-payments/#payment-statuses) for more information about payment statuses.
+Please refer to [How Payments work](/guides/resources/payments-lifecycle/#payment-statuses) for more information about payment statuses.
 :::
 
 :::warning
