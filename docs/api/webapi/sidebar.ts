@@ -132,44 +132,6 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
-    // {
-    //   type: "category",
-    //   label: "Customers",
-    //   collapsible: true,
-    //   collapsed: true,
-    //   items: [
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/list-a-customers-addresses",
-    //       label: "List a Customer's Addresses",
-    //       className: "api-method get",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/create-a-customers-address",
-    //       label: "Create a Customer's Address",
-    //       className: "api-method post",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/retrieve-a-customers-address",
-    //       label: "Retrieve a Customer's Address",
-    //       className: "api-method get",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/update-a-customers-address",
-    //       label: "Update a Customer's Address",
-    //       className: "api-method put",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "api/webapi/delete-a-customers-address",
-    //       label: "Delete a Customer's Address",
-    //       className: "api-method delete",
-    //     },
-    //   ],
-    // },
     {
       type: "category",
       label: "Payment Gateways",

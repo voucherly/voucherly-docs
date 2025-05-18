@@ -14,9 +14,7 @@ security:
 tags:
   - name: company
     description: |
-      A Company represents an organizational entity used to logically group multiple customers. Associating customers with a Company enables centralized management of related data such as delivery addresses, discount rules, and custom business logic.
-
-      This is particularly useful for reporting, invoicing, and applying shared configurations across customers that belong to the same organization.
+      A Company represents an organization or business entity to which one or more customers can be associated. This logical grouping facilitates management and reporting at the company level. Each Company can have specific information linked to it, such as default delivery addresses, pricing rules, discounts, and other company-specific configurations.
     x-displayName: Companies
   - name: customer
     description: This object represents a customer of your business. Use it to save payment and contact information, and track payments that belong to the same customer.
@@ -278,146 +276,146 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-  /v1/customers/{customerId}/addresses:
-    get:
-      tags:
-        - Customers
-      operationId: List a Customer's Addresses
-      parameters:
-        - $ref: '#/components/parameters/CustomerIdPathParam'
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaginationResponse_CustomerAddressDto'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationProblemDetails'
-    post:
-      tags:
-        - Customers
-      operationId: Create a Customer's Address
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerAddressRequest'
-        required: true
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerAddressDto'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationProblemDetails'
-  /v1/customers/{customerId}/addresses/{addressId}:
-    get:
-      tags:
-        - Customers
-      operationId: Retrieve a Customer's Address
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: addressId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerAddressDto'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-    put:
-      tags:
-        - Customers
-      operationId: Update a Customer's Address
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: addressId
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CustomerAddressRequest'
-        required: true
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerAddressDto'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationProblemDetails'
-    delete:
-      tags:
-        - Customers
-      operationId: Delete a Customer's Address
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: addressId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerAddressDto'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationProblemDetails'
+  # /v1/customers/{customerId}/addresses:
+  #   get:
+  #     tags:
+  #       - Customers
+  #     operationId: List a Customer's Addresses
+  #     parameters:
+  #       - $ref: '#/components/parameters/CustomerIdPathParam'
+  #     responses:
+  #       '200':
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/PaginationResponse_CustomerAddressDto'
+  #       '400':
+  #         description: Bad Request
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ValidationProblemDetails'
+  #   post:
+  #     tags:
+  #       - Customers
+  #     operationId: Create a Customer's Address
+  #     parameters:
+  #       - name: customerId
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/CustomerAddressRequest'
+  #       required: true
+  #     responses:
+  #       '201':
+  #         description: Created
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/CustomerAddressDto'
+  #       '400':
+  #         description: Bad Request
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ValidationProblemDetails'
+  # /v1/customers/{customerId}/addresses/{addressId}:
+  #   get:
+  #     tags:
+  #       - Customers
+  #     operationId: Retrieve a Customer's Address
+  #     parameters:
+  #       - name: customerId
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - name: addressId
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/CustomerAddressDto'
+  #       '404':
+  #         description: Not Found
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ProblemDetails'
+  #   put:
+  #     tags:
+  #       - Customers
+  #     operationId: Update a Customer's Address
+  #     parameters:
+  #       - name: customerId
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - name: addressId
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/CustomerAddressRequest'
+  #       required: true
+  #     responses:
+  #       '201':
+  #         description: Created
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/CustomerAddressDto'
+  #       '400':
+  #         description: Bad Request
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ValidationProblemDetails'
+  #   delete:
+  #     tags:
+  #       - Customers
+  #     operationId: Delete a Customer's Address
+  #     parameters:
+  #       - name: customerId
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - name: addressId
+  #         in: path
+  #         required: true
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '201':
+  #         description: Created
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/CustomerAddressDto'
+  #       '400':
+  #         description: Bad Request
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ValidationProblemDetails'
   /v1/payments:
     post:
       tags:
