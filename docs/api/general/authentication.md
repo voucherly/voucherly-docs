@@ -12,4 +12,4 @@ Provide your API key as the "Voucherly-API-Key" header. For example:
 -H  "Voucherly-API-Key: sk_sand_BYsZDnaUWfVKGwHFvLop0dc9Fp1mE8py2Mtgm5aU6IrtCiuJg9s4747J"
 ```
 
-All API requests must be made over  [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure). Calls made over plain HTTP will fail. API requests without authentication will also fail.
+All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure). Calls made over plain HTTP will fail. API requests without authentication will also fail.

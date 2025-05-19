@@ -76,6 +76,24 @@ const sidebar: SidebarsConfig = {
           label: "Update a Customer",
           className: "api-method post",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Payment Methods",
+      link: {
+        type: "doc",
+        id: "api/webapi/payment-method",
+      },
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/schemas/paymentmethod",
+          label: "PaymentMethod",
+          className: "schema",
+        },
         {
           type: "doc",
           id: "api/webapi/list-customer-payment-method",

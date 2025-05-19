@@ -19,6 +19,10 @@ tags:
   - name: customer
     description: This object represents a customer of your business. Use it to save payment and contact information, and track payments that belong to the same customer.
     x-displayName: Customers
+  - name: paymentMethod
+    description: |
+      PaymentMethod objects represent your Customer’s payment instruments. You can use them with Payments to collect payments or save them to Customer objects to store instrument details for future payments.
+    x-displayName: Payment Methods
   - name: payment
     description: |
       A Payment guides you through the process of collecting a payment from your customer. We recommend that you create exactly one Payment for each order or customer session in your system. You can reference the Payment later to see the history of payment attempts for a particular session.
@@ -43,7 +47,7 @@ paths:
         required: true
       responses:
         '201':
-          description: The Company object
+          description: Returns a Company object.
           content:
             application/json:
               schema:
@@ -73,7 +77,7 @@ paths:
               enum: ["Addresses"]
       responses:
         '200':
-          description: Success
+          description: Returns a Company object if a valid identifier was provided.
           content:
             application/json:
               schema:
@@ -106,7 +110,7 @@ paths:
                           type: boolean
       responses:
         '201':
-          description: Created
+          description: Returns a Customer object.
           content:
             application/json:
               schema:
@@ -128,7 +132,8 @@ paths:
         - $ref: '#/components/parameters/PageStartQueryParam'
       responses:
         '200':
-          description: Success
+          description: |
+            A dictionary with a `items` property that contains an array of up to `length` Customers, starting after Customer `start`. Passing an optional email will result in filtering to Customers with only that exact email address. Each entry in the array is a separate Customer object. If no more Customers are available, the resulting array will be empty.
           content:
             application/json:
               schema:
@@ -154,7 +159,7 @@ paths:
       summary: Retrieve a Customer
       responses:
         '200':
-          description: The Customer object
+          description: Returns a Customer object if a valid identifier was provided.
           content:
             application/json:
               schema:
@@ -178,7 +183,7 @@ paths:
         required: true
       responses:
         '200':
-          description: The Customer object
+          description: Returns a Customer object.
           content:
             application/json:
               schema:
@@ -188,7 +193,8 @@ paths:
   /v1/customers/{customerId}/payment_methods:
     get:
       tags:
-        - customer
+        # - customer
+        - paymentMethod
       operationId: list-customer_payment_method
       summary: List a Customer's PaymentMethods
       description: Returns a list of PaymentMethods for a given Customer
@@ -196,7 +202,8 @@ paths:
         - $ref: '#/components/parameters/CustomerIdPathParam'
       responses:
         '200':
-          description: OK
+          description: |
+            A dictionary with a `items` property that contains an array of PaymentMethods. Each entry in the array is a separate PaymentMethod object. This request should never return an error.
           content:
             application/json:
               schema:
@@ -213,7 +220,8 @@ paths:
   /v1/customers/{customerId}/payment_methods/{paymentMethodId}:
     delete:
       tags:
-        - customer
+        # - customer
+        - paymentMethod
       operationId: delete-customer_payment_method
       summary: Delete a Customer's PaymentMethod
       parameters:
@@ -221,7 +229,7 @@ paths:
         - $ref: '#/components/parameters/PaymentMethodIdPathParam'
       responses:
         '204':
-          description: No Content
+          description: ""
         '400':
           $ref: "#/components/responses/BadRequest"
         '404':
@@ -431,7 +439,7 @@ paths:
                       nullable: true
       responses:
         '201':
-          description: Created
+          description: Returns a Payment object.
           content:
             application/json:
               schema:
@@ -465,7 +473,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: OK
+          description: Returns a Payment object if a valid identifier was provided.
           content:
             application/json:
               schema:
@@ -484,7 +492,7 @@ paths:
         - $ref: '#/components/parameters/IdPathParam'
       responses:
         '200':
-          description: OK
+          description: Returns a Payment object.
           content:
             application/json:
               schema:
@@ -508,7 +516,7 @@ paths:
               $ref: '#/components/schemas/RefundPaymentRequest'
       responses:
         '200':
-          description: OK
+          description: Returns a Payment object.
           content:
             application/json:
               schema:
@@ -547,7 +555,8 @@ paths:
             description: An array of nested object to be included in response.
       responses:
         '200':
-          description: OK
+          description: |
+            A dictionary with a `items` property that contains an array of PaymentGateways. Each entry in the array is a separate PaymentGateway object. This request should never return an error.
           content:
             application/json:
               schema:
@@ -741,6 +750,48 @@ components:
           description: A cursor for use in pagination. If `hasMore` is true, you can pass the value of `nextStart` to a subsequent call to fetch the next page of results.
           nullable: true
       additionalProperties: false
+    PaymentMethod:
+      x-tags:
+        - paymentMethod
+      type: object
+      description: The PaymentMethod object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+        customerId:
+          type: string
+          description: The ID of the Customer to which this PaymentMethod is saved.
+          nullable: false
+        paymentGatewayId:
+          type: string
+          description: The ID of the PaymentGateway through which this PaymentMethod is processed.
+          nullable: false
+        externalId:
+          type: string
+          description: The ID of the PaymentMethod as registered in the external PaymentGateway system. Used to reference the method in operations with the provider.
+          nullable: false
+        holderEmail:
+          type: string
+          description: Email address associated with the PaymentMethod holder. This may differ from the Customer's email.
+          nullable: false
+        holderName:
+          type: string
+          description: Full name of the individual or entity that owns the PaymentMethod. This may differ from the Customer's registered name.
+          nullable: false
+        creditCard:
+          $ref: '#/components/schemas/CreditCardInfo'
+        directDebit:
+          $ref: '#/components/schemas/DirectDebitInfo'
+        additionalInformation1:
+          type: string
+          nullable: true
+        additionalInformation2:
+          type: string
+          nullable: true
+        additionalInformation3:
+          type: string
+          nullable: true
+      additionalProperties: false
     Payment:
       x-tags:
         - payment
@@ -921,38 +972,6 @@ components:
         storeId:
           type: string
           nullable: false
-      additionalProperties: false
-    
-    PaymentMethod:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/Id'
-        paymentGatewayId:
-          type: string
-          nullable: false
-        externalId:
-          type: string
-          nullable: false
-        holderEmail:
-          type: string
-          nullable: false
-        holderName:
-          type: string
-          nullable: false
-        creditCard:
-          $ref: '#/components/schemas/CreditCardInfo'
-        directDebit:
-          $ref: '#/components/schemas/DirectDebitInfo'
-        additionalInformation1:
-          type: string
-          nullable: true
-        additionalInformation2:
-          type: string
-          nullable: true
-        additionalInformation3:
-          type: string
-          nullable: true
       additionalProperties: false
     
     PaymentGateways.Checkout.PaymentRequest:
