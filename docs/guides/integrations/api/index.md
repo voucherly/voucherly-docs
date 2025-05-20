@@ -11,7 +11,7 @@ Before continuing with this tutorial, see if you can save development time with 
 
 ## Tutorial
 
-### 1. Check how [Voucherly APIs work](/api/general/overview)
+### 1. Check how [Voucherly APIs work](/api/webapi/voucherly-api)
 
 ### 2. Create a Payment
 Voucherly provides a RESTful API accessible through HTTP requests to manage your data. The API supports data exclusively in JSON format.

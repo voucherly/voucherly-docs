@@ -12,7 +12,7 @@ Verify your email address by clicking the link sent to your inbox.
 
 ### 2. Obtain API Keys
 In the **[Sviluppatori](https://dashboard.voucherly.it/Developer/ApiKey)** section, you will find both private and public keys.  
-Use the private key to authenticate API calls, as explained in [API Authentication](/api/general/authentication).  
+Use the private key to authenticate API calls, as explained in [API Authentication](/api/webapi/voucherly-api#authentication).  
 
 The public key is intended for frontend API calls, allowing only payment creation.
 
