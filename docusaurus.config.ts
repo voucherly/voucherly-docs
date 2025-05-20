@@ -3,6 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Plugin from "@docusaurus/types/src/plugin";
 import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
+import { createApiPageMDForVoucherly } from './customMdGenerators';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -65,7 +66,7 @@ const config: Config = {
     image: 'https://ucarecdn.com/1a50448f-55d8-46ac-bab0-764dee2b9c4f/-/preview/100x100/',
     navbar: {
       logo: {
-        alt: 'Voucherly Logo',
+        alt: 'Voucherly logo',
         src: 'https://ucarecdn.com/a5e716fc-abcb-4ab2-960a-33a6a1b5446c/-/preview/200x50/',
         srcDark: 'https://ucarecdn.com/cf4a09cb-1f6e-4385-97c8-46ae406fd671/-/preview/200x50/',
       },
@@ -135,6 +136,7 @@ const config: Config = {
               sidebarCollapsed: true,
             },
             showSchemas: false,
+            markdownGenerators: { createApiPageMD: createApiPageMDForVoucherly },
           } satisfies OpenApiPlugin.Options,
         }
       },
