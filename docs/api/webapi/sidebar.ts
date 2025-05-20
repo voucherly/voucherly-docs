@@ -4,7 +4,7 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "api/webapi/voucherly",
+      id: "api/webapi/voucherly-api",
     },
     {
       type: "category",

@@ -1,14 +1,43 @@
 openapi: 3.0.1
-info:
-  title: Voucherly
-  description: ''
-  contact:
-    name: Voucherly
-    email: info@voucherly.it
-  version: v1
 servers:
   - url: https://api.voucherly.it
     description: Voucherly API
+info:
+  title: Voucherly API
+  termsOfService: "https://legal.voucherly.it/terms/service/"
+  description: |
+
+    ## Introduction
+
+    The Voucherly API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable resource-oriented URLs, accepts request bodies and returns responses in [JSON-encoded](http://www.json.org/) format (using [camelCase](https://en.wikipedia.org/wiki/Camel_case) notation), and uses standard HTTP response codes, authentication, and verbs.
+
+    You can use the Voucherly API in sandbox mode, which doesn't affect your live data or interact with the banking networks. The API key you use to authenticate the request determines whether the request is live mode or test mode.
+    ```
+    https://api.voucherly.it
+    ```
+
+    ## Authentication    
+    
+    The Voucherly API uses API keys to authenticate requests. Sandbox mode secret keys have the prefix `sk_sand_` and live mode secret keys have the prefix `sk_live_`. You can view and manage your API keys in the [Voucherly Dashboard](https://dashboard.voucherly.it/Developer/ApiKey).
+
+    Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+
+    Provide your API key as the "Voucherly-API-Key" header. For example:
+    ```cURL []
+    -H  "Voucherly-API-Key: sk_sand_BYsZDnaUWfVKGwHFvLop0dc9Fp1mE8py2Mtgm5aU6IrtCiuJg9s4747J"
+    ```
+
+    All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure). Calls made over plain HTTP will fail. API requests without authentication will also fail.
+  contact:
+    name: API Support
+    email: support@voucherly.it
+  # x-logo:
+  #   url: "https://ucarecdn.com/a5e716fc-abcb-4ab2-960a-33a6a1b5446c/-/preview/200x50/"
+  #   altText: Voucherly logo
+  # x-dark-logo:
+  #   url: "https://ucarecdn.com/cf4a09cb-1f6e-4385-97c8-46ae406fd671/-/preview/200x50/"
+  #   altText: "Voucherly dark logo"
+  version: v1
 security:
   - Voucherly-API-Key: []
 tags:
@@ -1558,3 +1587,5 @@ components:
       type: apiKey
       in: header
       name: Voucherly-API-Key
+      description: |
+        Sandbox mode secret keys have the prefix `sk_sand_` and live mode secret keys have the prefix `sk_live_`.

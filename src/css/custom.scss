@@ -101,22 +101,40 @@ table > thead:has(> tr > th:empty):not(:has(> tr > th:not(:empty))) {
   }
 }
 
-.different-section {
-    & > .menu__list-item-collapsible:first-child {
-        margin-top: 1.5rem;
+.endpoint-section {
+  & > .menu__list-item-collapsible:first-child {
+    margin-top: 1.5rem;
 
-        .menu__link {
-          font-weight: 600;
-          font-family: var(--ifm-heading-font-family);
-        }
-
-        .menu__link--active {
-          color: unset;
-        }
-
-        &:hover {
-          background: unset;
-        }
-
+    .menu__link {
+      font-weight: 600;
+      font-family: var(--ifm-heading-font-family);
     }
+
+    .menu__link--active {
+      color: unset;
+    }
+
+    &:hover {
+      background: unset;
+    }
+  }
+}
+
+.theme-doc-version-badge {
+  margin-bottom: 1rem;
+}
+
+.openapi__logo {
+  max-width: 200px;
+}
+
+.openapi-tabs__schema-container{
+
+  th, td {
+    text-align: start;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
 }
