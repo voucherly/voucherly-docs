@@ -466,6 +466,26 @@ paths:
                       type: string
                       description: Purchase shipping address.
                       nullable: true
+            examples:
+              'New customer':
+                summary: Create payment with new customer
+                value:
+                  mode: Payment
+                  redirectOkUrl: "https://httpbin.org/get"
+                  redirectKoUrl: "https://httpbin.org/get"
+                  customerFirstName: Mario
+                  customerLastName: Rossi
+                  customerEmail: mario.rossi@voucherly.it
+                  country: IT
+                  lines:
+                    - quantity: 2
+                      unitAmount: 250
+                      unitDiscountAmount: 10
+                      productName: Muffin
+                      isFood: true
+                  discounts:
+                    - discountName: Coupon XSDWFE
+                      amount: 200
       responses:
         '201':
           description: Returns a Payment object.
