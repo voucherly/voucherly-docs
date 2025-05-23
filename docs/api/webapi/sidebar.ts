@@ -30,6 +30,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/webapi/list-company",
+          label: "List all Companys",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api/webapi/retrieve-company",
           label: "Retrieve a Company",
           className: "api-method get",

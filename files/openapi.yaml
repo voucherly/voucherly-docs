@@ -83,6 +83,33 @@ paths:
                 $ref: '#/components/schemas/Company'
         '400':
           $ref: "#/components/responses/BadRequest"
+    get:
+      tags:
+        - company
+      operationId: list-company
+      summary: List all Companys
+      parameters:
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PageStartQueryParam'
+      responses:
+        '200':
+          description: |
+            A dictionary with a `items` property that contains an array of up to `length` Companys, starting after Company `start`. Each entry in the array is a separate Company object. If no more Companys are available, the resulting array will be empty.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: 'An array containing the actual response elements, paginated by any request parameters.'
+                    items:
+                      $ref: '#/components/schemas/Customer'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationResponse'
+                additionalProperties: false
+        '400':
+          $ref: "#/components/responses/BadRequest"
   /v1/companys/{idOrCode}:
     get:
       tags:
