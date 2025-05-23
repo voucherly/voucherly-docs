@@ -451,6 +451,17 @@ paths:
                 - type: object
                   required: [email]
                   properties:
+                    companyId:
+                      type: string
+                      description: |
+                        The ID of the Company this Payment is associated with. If empty, the Company associated with the Customer will be used, if one exists. 
+                        
+                        You cannot specify both `customerId` and `companyId` at the same time.
+                      nullable: true
+                    customerId:
+                      type: string
+                      description: The ID of the Customer of this Payment. If empty a new Customer will be created.
+                      nullable: true                    
                     timeout:
                       type: integer
                       description: Timeout in minutes for the checkout sessions. Default is 10.
@@ -473,14 +484,12 @@ paths:
                     redirectOkUrl:
                       type: string
                       description: >-
-                        The URL to which Voucherly should send customers when payment is
-                        complete.
+                        The URL to which Voucherly should send customers when payment is complete.
                       nullable: false
                     redirectKoUrl:
                       type: string
                       description: >-
-                        The URL to which Voucherly should send customers when payment is
-                        cancelled or failed.
+                        The URL to which Voucherly should send customers when payment is cancelled or failed.
                       nullable: false
                     callbackUrl:
                       type: string
@@ -893,10 +902,13 @@ components:
           type: string
           nullable: true
           readOnly: true
+        companyId:
+          type: string
+          description: The ID of the Company this Payment is associated with.
+          nullable: true
         customerId:
           type: string
-          description: The ID of the Customer of this Payment. If empty a new Customer will be created.
-          nullable: true
+          description: The ID of the Customer of this Payment.
         customerEmail:
           type: string
           nullable: false
