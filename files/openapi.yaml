@@ -212,6 +212,16 @@ paths:
         - customer
       operationId: retrieve-customer
       summary: Retrieve a Customer
+      parameters:
+        - name: include
+          in: query
+          description: 'An array of nested object to be included in response.'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum: ["Wallet"]
       responses:
         '200':
           description: Returns a Customer object if a valid identifier was provided.
