@@ -52,7 +52,7 @@ The status of a Transaction is determined by the `status` field.
 - **Requested**. A new transaction object has been created but has not yet been paid.
 - **Paid**. The transaction has been authorized. Funds are blocked until confirmation occurs ([Confirm Payment API](/api/webapi/confirm-payment)) or the time interval defined by the payment gateway configuration expires.
 - **Confirmed**. The transaction has been captured. Funds previously blocked have been transferred to the merchant’s account.
-- **Refunded**. A transaction in the `CONFIRMED` status has been fully refunded.
+- **Refunded**. A transaction in the `Confirmed` status has been fully refunded.
 - **Dropped**. The transaction has been released.
 - **Cancelled**. A transaction in the `PAID` status has been cancelled, unlocking the funds.
 - **Failed**. The payment gateway failed to process the transaction.

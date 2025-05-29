@@ -39,10 +39,10 @@ If a wallet charge occurs within the payment flow, a new payment object will be 
 
 A payment may consist of multiple transactions across different payment gateways, with varying outcomes (some successful, others not).
 
-As detailed in [this guide](/guides/resources/payments), after the customer completes the payment and is redirected to the merchant's website, successful transactions may have a status of either `PAID` or `CONFIRMED`. This depends on factors like the type of payment gateway or whether [Auto Confirm](/guides/resources/payments#auto-confirm) is enabled.
+As detailed in [this guide](/guides/resources/payments), after the customer completes the payment and is redirected to the merchant's website, successful transactions may have a status of either `PAID` or `Confirmed`. This depends on factors like the type of payment gateway or whether [Auto Confirm](/guides/resources/payments#auto-confirm) is enabled.
 
 :::warning
-Transactions completed through voucher payment gateways automatically transition to the `CONFIRMED` status.
+Transactions completed through voucher payment gateways automatically transition to the `Confirmed` status.
 :::
 
 Merchants must confirm or refund payments. Leaving a payment in the `PAID` status could result in the funds being returned to the customer, depending on the gateway configuration. Always confirm successful payments, for example, when the order is prepared or shipped. -->
@@ -90,7 +90,7 @@ You can build a custom payments integration by displaying Payment gateway compon
     "customerLastName": "Rossi",
     "redirectOkUrl": "https://{redirect_host}}/payment/success",
     "redirectKoUrl": "https://{{redirect_host}}/payment/error",
-    "callbackUrl": "https://{{s2s_host}}/payment/s2s",
+    "callbackUrl": "https://{{s2s_host}}/webhook/payment",
     "country": "IT",
     "lines": [
         {
@@ -132,7 +132,7 @@ If clicked, specify the selected Payment gateway using the `selectedPaymentGatew
     "customerLastName": "Rossi",
     "redirectOkUrl": "https://{redirect_host}}/payment/success",
     "redirectKoUrl": "https://{{redirect_host}}/payment/error",
-    "callbackUrl": "https://{{s2s_host}}/payment/s2s",
+    "callbackUrl": "https://{{s2s_host}}/webhook/payment",
     "country": "IT",
     "lines": [
         {
@@ -236,6 +236,6 @@ Make sure your endpoint processes callbacks correctly. Failure to do so may lead
 
         If the order cannot be fulfilled or the customer cancels before shipment, use the [Refund Payment API](/api/webapi/refund-payment). Voucherly will:
         - Automatically cancel transactions in the `PAID` status.
-        - Refund transactions in the `CONFIRMED` status.
+        - Refund transactions in the `Confirmed` status.
     </>
 </Accordion>

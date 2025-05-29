@@ -30,7 +30,7 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 -->
 
 :::info
-**Partial refundable** means that a transaction in the `CONFIRMED` status can be refunded for an amount lower than the `ConfirmedAmount`.
+**Partial refundable** means that a transaction in the `Confirmed` status can be refunded for an amount lower than the `ConfirmedAmount`.
 :::
 
 ### Demo Voucherly {#demo}

@@ -28,6 +28,11 @@ When the customer leaves the Voucherly Checkout page after a successfull payment
 
 Merchants need to configure an endpoint that accepts a POST request with a JSON body containing a subset of the Payment properties.
 
+:::info
+Voucherly ensures that the callback is delivered synchronously. You can rely on this mechanism with confidence.
+If your server encounters an error during callback handling, Voucherly will automatically cancel and refund the payment to prevent inconsistencies.
+:::
+
 ### 2. Handle callbacks
 
 #### Request
@@ -127,6 +132,41 @@ For more details, refer to the [Charge Wallet](/guides/use-cases/charge-wallet) 
 
 :::warning
 Voucherly reserves the right to call the callback endpoint in the future for every payment status update. Ensure your endpoint is robust and capable of processing multiple callback attempts seamlessly.
+:::
+
+### Callback and Direct payments
+
+When working with **Direct payments**, such as those initiated by specifying  `customerPaymentMethodId` or `selectedPaymentGateway` in the [Create Payment API](/api/webapi/create-payment) request, you can always rely on the server-to-server (S2S) callback to trigger your internal processing logic.
+
+It is crucial to understand that a `Confirmed` or `Paid` status does not invariably guarantee successful processing of the callback by your system. In scenarios where the callback fails to process successfully, despite the payment being technically confirmed, **Voucherly will automatically detect the failure and initiate a refund shortly thereafter**. To identify such occurrences, you must inspect the `closeCheckout.success` property within the API response. A `false` value for this property indicates a callback failure.
+
+Here is an example of such a case — a payment marked as `Confirmed` but whose callback failed:
+
+```json
+{
+    "id": "my-payment-id-1",
+    "tenant": "live",
+    "mode": "Payment",
+    "customerId": "my-customer-id-1",
+    [...]
+    "checkoutUrl": "https://example.voucherly.it/checkout",
+    "callbackUrl": "https://api.myecommerce.com/webhook/payment",
+    "closeCheckout": {
+        "success": false,
+        "date": "2025-01-01T10:00:00.0000000+02:00",
+        "errorReason": "Payment.Callback"
+    },
+    "callback": {
+        "success": false,
+        "date": "2025-01-01T10:00:00.0000000+02:00"
+    },
+    "status": "Confirmed",
+    [...]
+}
+```
+
+:::warning
+The `status` field alone is not sufficient to determine the final outcome of a direct payment. Always check `closeCheckout.success` to ensure that the callback was processed correctly by your system.
 :::
 
 
