@@ -776,7 +776,7 @@ components:
           readOnly: true
         metadata:
           $ref: '#/components/schemas/Metadata'
-      additionalProperties: false
+      additionalProperties: true # I need this because it's used in create request (probably it's a plugin bug)
     CustomerWalletTotals:
       type: object
       properties:
@@ -938,11 +938,11 @@ components:
           type: string
           description: The ID of the Customer's PaymentMethod to attach to this Payment.
           nullable: true
-        selectedPaymentGateway:
+        selectedPaymentGatewayId:
           type: string
           description: Default PaymentGateway used for the first transaction.
           nullable: true
-        paymentGateways:
+        paymentGatewayIds:
           type: array
           description: List of PaymentGateways enabled for this Payment. If empty all PaymentGateways are used.
           items:
@@ -999,7 +999,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Payments.PaymentDiscount'
-      additionalProperties: false
+      additionalProperties: true # I need this because it's used in create request (probably it's a plugin bug)
     Payments.PaymentStatus:
       description: Current status of the Payment.
       enum:
