@@ -5,11 +5,6 @@ sidebar_position: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Accordion from '@site/src/components/Accordion';
-import PrefillCustomerTitle from './../_partial/prefill_customer_title.md';
-import PrefillCustomerContent from './../_partial/prefill_customer_content.md';
-import GatewayFlowContent from './../_partial/gateway_flow_content.md';
-import CreatePaymentContent from './../_partial/create_payment_content.md';
-import RedirectUrlContent from './../_partial/redirect_url_content.md';
 
 # Pay at Table
 
@@ -96,24 +91,3 @@ The `signature` parameter is used by Voucherly to ensure integrity and authentic
 #### Logout endpoint
 
 The second endpoint must be exposed to handle logout requests initiated by Voucherly, allowing the merchant to properly terminate the customer’s session in their system.
-
-
-
-## Next steps
-
-<Accordion>
-    <PrefillCustomerTitle />
-    <PrefillCustomerContent />
-</Accordion>
-
-<Accordion>
-    <>
-        ### Display payment gateways
-    </>
-    <>
-        :::info
-        Please refer to [Online payment use case](./../ecommerce?flow=gateway) for a complete example.
-        :::
-        <GatewayFlowContent />
-    </>
-</Accordion>
