@@ -213,8 +213,6 @@ Make sure your endpoint processes callbacks correctly. Failure to do so may lead
     <PrefillCustomerContent />
 </Accordion>
 
-
-
 <Accordion>
     <>
         ### Separate authorization and confirm

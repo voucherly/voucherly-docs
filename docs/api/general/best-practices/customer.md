@@ -4,6 +4,7 @@ sidebar_position: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Accordion from '@site/src/components/Accordion';
 
 # Manage customer
 
@@ -109,34 +110,42 @@ No further action is required on your part.
 </TabItem>
 </Tabs>
 
-### Retrieve Customer Payment Methods
+<Accordion>
+    <>
+        ### Retrieve Customer Payment Methods
+    </>
+    <>
+        
+        Use the `GET Customer Payment Methods API` to fetch a customer's saved payment methods. This functionality can be used to:
+        - Display the saved payment methods in the customer's profile page.
+        - Reduce checkout time and increase conversion rates by offering direct access to the customer's preferred payment methods. 
 
-Use the `GET Customer Payment Methods API` to fetch a customer's saved payment methods. This functionality can be used to:
-- Display the saved payment methods in the customer's profile page.
-- Reduce checkout time and increase conversion rates by offering direct access to the customer's preferred payment methods. 
+
+        The Voucherly Checkout automatically displays all saved payment methods for the user. Therefore, there is no need to pre-display them in advance, as the checkout process already ensures a seamless and efficient user experience.
+
+        If you use a custom integration, please refer to the [Online payment use case](/guides/use-cases/ecommerce/?flow=gateway) for a complete example.
+
+        #### Custom integration workflow
+
+        - Retrieve saved payment methods.
+        - Display them on your website.
+        - Use `customerPaymentMethodId` to preselect the customer’s preferred payment method when creating the Payment.
+
+        **Example Request**
+
+        ```json
+        {
+            "mode": "Payment",
+            [...]
+            "customerId": "my-customer-id-1",
+            "customerPaymentMethodId": "my-customer-method-1",
+            [...]
+        }
+        ```
+    </>
+</Accordion>
 
 
-The Voucherly Checkout automatically displays all saved payment methods for the user. Therefore, there is no need to pre-display them in advance, as the checkout process already ensures a seamless and efficient user experience.
-
-If you use a custom integration, please refer to the [Online payment use case](/guides/use-cases/ecommerce/?flow=gateway) for a complete example.
-
-#### Custom integration workflow
-
-- Retrieve saved payment methods.
-- Display them on your website.
-- Use `customerPaymentMethodId` to preselect the customer’s preferred payment method when creating the Payment.
-
-**Example Request**
-
-```json
-{
-    "mode": "Payment",
-    [...]
-    "customerId": "my-customer-id-1",
-    "customerPaymentMethodId": "my-customer-method-1",
-    [...]
-}
-```
 
 ## Why? Benefits! {#why}
 

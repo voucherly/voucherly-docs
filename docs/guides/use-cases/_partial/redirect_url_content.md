@@ -12,12 +12,6 @@
     - **paymentId**. The unique Voucherly identifier for the Payment.
     - **referenceId**. The merchant's custom reference ID.
     - **amount**. The total paid amount in cents.
-    - **voucherAmount**. The portion of the paid amount covered by vouchers in cents.
-    - **walletAmount**. The portion of the paid amount covered by wallet credit in cents.
-    - **transactions**. The number of transactions involved in the Payment.
     - **customerId**. The unique Voucherly identifier for the customer.
-    - **customerEmail**. The customer's email address.
-    - **customerFirstName**. The customer's first name.
-    - **customerLastName**. The customer's last name.
     - **tenant**. *live* or *sand*.
 </>
