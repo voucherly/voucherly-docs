@@ -41,7 +41,9 @@ Every website where you want to implement the Google Pay button must be approved
 1. Under **Integrate with your website**, click **Add website**.
 1. Add the website where you want to integrate **Google Pay direct**.
 1. Set the **Google Pay API integration** type to **Gateway**.
-1. Upload the requested screenshots for each section of your website. You can active Google Pay in Voucherly sandbox environment.
+1. Upload the requested screenshots for each section of your website. You can activate Google Pay in the Voucherly sandbox environment.
+    - See [Payment method screen](/download/google-pay/Payment%20method%20screen.png) or download <a target="_blank" download href="/download/google-pay/Payment method screen.png">here</a>.
+    - See [Google Pay API payment screen](/download/google-pay/Google%20Pay%20API%20payment%20screen.png) or download <a target="_blank" download href="/download/google-pay/Google Pay API payment screen.png">here</a>.
 1. Click **Save**.
 
 Once all details have been provided and approved, go to **Google Pay API**. In the form, check every box once you have confirmed that all steps have been cleared. Click **Submit for approval**.
