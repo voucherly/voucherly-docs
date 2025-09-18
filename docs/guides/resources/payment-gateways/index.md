@@ -9,8 +9,9 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 ## List of available Payment gateways
 | Id | Name | Meal voucher | 2-step process | Partial refundable |
 |-|-|-|-|-|
-| **EDENRED**           | Edenred           | V |   |   |
+| **[EDENRED](edenred)**| Edenred           | V |   |   |
 | **[FAKEVOU](#demo)**  | Demo Voucherly    | V |   |   |
+| **[GPAY](google-pay)**| Google Pay        |   | V | V |
 | **LUNCHGM**           | LunchGM           | V |   |   |
 | **MLTSFPY**           | MultiSafepay      |   | V | V |
 | **NEXI**              | Nexi              |   | V | V |
