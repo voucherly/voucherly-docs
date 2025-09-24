@@ -11,13 +11,17 @@ sidebar_position: 2
 - For more information, see [Google Pay – Overview](https://developers.google.com/pay/api/web/overview).
 :::
 
-Voucherly complies with all technical and UX standards set by Google Pay. Activation requires Google Pay approval.
-
 :::warning
 Integration with Google Pay is not a direct integration. A supported PSP is required:
 - MultiSafepay
 - Nexi
 - Stripe
+:::
+
+Voucherly complies with all technical and UX standards set by Google Pay. Activation for a custom domain requires Google Pay approval.
+
+:::info
+If you don't use a custom domain you don't need this guide. Google Pay can be directly activated in **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/merchant/payment-gateways)** on the Voucherly Dashboard.
 :::
 
 ## Submit your details for approval
