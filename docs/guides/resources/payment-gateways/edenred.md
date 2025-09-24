@@ -13,6 +13,41 @@ The standard Edenred integration process consists of 3 phases:
 
 Voucherly complies with all technical and UX standards set by Edenred. Activation only requires some manual configuration steps.
 
+
+## Become a partner
+
+To enable Edenred Ticket Restaurant with Voucherly, your business must first be registered as an Edenred partner.
+
+#### Already accepting Edenred 
+If you already accept Ticket Restaurant via POS in your physical store: 
+   - Contact your Edenred sales representative.  
+   - Request the activation to also accept Ticket Restaurant Edenred online through your e-commerce.  
+
+#### New to Edenred
+If you are not yet an Edenred partner, you can request activation by: 
+   - Filling out the form https://www.edenred.it/merchant/edenred-per-il-ecommerce/.
+   - Or sending an email to assistenzanetwork-it@edenred.com with the subject line *Richiesta convenzione buoni pasto Edenred per e-commerce* and include the following company details:  
+     - Legal company name (*Ragione sociale*)  
+     - VAT number (*Partita IVA*)  
+     - Fiscal code (*Codice fiscale*)  
+     - Trade name (*Insegna*, if different from legal name)  
+     - REA code  
+     - Registered office address  
+     - Operational office address (if different)  
+     - IBAN  
+     - PEC or SDI code  
+     - Legal representative (name, surname, tax code, ID document)  
+     - Contact email (used for contract delivery)  
+     - Contact mobile number  
+
+
+> **Note:** Edenred will also offer free POS activation. This is optional and not required to accept vouchers online with Voucherly.  
+
+
+:::warning
+Response times may vary and are not controlled by Voucherly. Activation typically takes about two weeks, but this depends on Edenred’s processing time.
+:::
+
 ## Integration and UAT
 Edenred will provide you with the *Introduzione ad EDPS* document containing all necessary information about the process and required integrations.
 
