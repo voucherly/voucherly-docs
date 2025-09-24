@@ -56,7 +56,7 @@ You need an active Voucherly account to configure Google Pay in the live environ
 
 Once Google approves your website, you can get the merchant ID and merchant name from your [Google Pay Business Console](https://pay.google.com/business/console/).
 
-1. Configure the Merchant ID in **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)** on the Voucherly Dashboard. Use live environment.
+1. Configure the Merchant ID in **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/merchant/payment-gateways)** on the Voucherly Dashboard. Use live environment.
 1. Depending on your PSP, additional steps or configurations may be required. Visit the reference documentation for more information.
 
 

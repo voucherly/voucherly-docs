@@ -17,7 +17,7 @@ Use the private key to authenticate API calls, as explained in [API Authenticati
 The public key is intended for frontend API calls, allowing only payment creation.
 
 ### 3. Enable Payment gateways
-Activate payment gateways in **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/Merchant/PaymentGateways)**.
+Activate payment gateways in **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/merchant/payment-gateways)**.
 
 Voucher payments often require supplementation with a *standard* transaction, such as a card payment. Therefore, activating at least one non-voucher payment gateway is strongly recommended.
 
