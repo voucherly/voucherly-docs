@@ -5,7 +5,7 @@ import DocCardList from '@theme/DocCardList';
 These steps will show you how to successfully integrate your platform with our APIs.
 
 ## Prerequisites
-- **[Voucherly account](/guides/intro/getting-started)**.
+- Read **[Getting started with a Voucherly account](/guides/intro/getting-started)**.
 
 Before continuing with this tutorial, see if you can save development time with our [postman collection](/api/postman) or range of [wrappers and SDKs](/api/libraries).
 
