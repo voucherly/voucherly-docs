@@ -15,7 +15,7 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 | **LUNCHGM**           | LunchGM           | V |   |   |
 | **MLTSFPY**           | MultiSafepay      |   | V | V |
 | **NEXI**              | Nexi              |   | V | V |
-| **PAYPAL**            | PayPal            |   | V |   |
+| **[PAYPAL](paypal)**  | PayPal            |   | V |   |
 | **PELLEGR**           | Pellegrini        | V |   |   |
 | **PHEY**              | Wordline          |   | V | V |
 | **SATISPY**           | Satispay          | V |   | V |
