@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Plugin from "@docusaurus/types/src/plugin";
 import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
-import { createApiPageMDForVoucherly } from './customMdGenerators';
+import { createApiPageMdForVoucherly } from './customMdGenerators';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -136,7 +136,7 @@ const config: Config = {
               sidebarCollapsed: true,
             },
             showSchemas: false,
-            markdownGenerators: { createApiPageMD: createApiPageMDForVoucherly },
+            markdownGenerators: { createApiPageMD: createApiPageMdForVoucherly },
           } satisfies OpenApiPlugin.Options,
         }
       },

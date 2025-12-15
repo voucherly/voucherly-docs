@@ -12,7 +12,7 @@ import { createVendorExtensions } from "docusaurus-plugin-openapi-docs/lib/markd
 import { render } from "docusaurus-plugin-openapi-docs/lib/markdown/utils";
 import { ApiPageMetadata } from "docusaurus-plugin-openapi-docs/src/types";
 
-export function createApiPageMDForVoucherly({
+export function createApiPageMdForVoucherly({
   title,
   api: {
     deprecated,
