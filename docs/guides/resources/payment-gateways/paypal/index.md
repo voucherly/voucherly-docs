@@ -17,7 +17,7 @@ You must use a PayPal business account.
 ![App & Credentials page](sandbox-create.png)
 1. Copy the client ID and client secret for your app.
 ![alt text](copy-client-keys.png)
-1. Configure these parameters in **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/merchant/payment-gateways)** on the Voucherly Dashboard. Use the correct environment.
+1. Configure these parameters in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use the correct environment.
 
 
 :::tip

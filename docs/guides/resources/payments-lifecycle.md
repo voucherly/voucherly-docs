@@ -30,7 +30,7 @@ Meal voucher Payment gateways do not support two-step process.
 :::
 
 :::tip
-You can define the default behaviour in **Attività > Checkout > Contabilizzazione automatica**. When enabled, all transactions are automatically captured at the end of a payment.
+You can define the default behaviour in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways) > Contabilizzazione automatica**. When enabled, all transactions are automatically captured at the end of a payment.
 :::
 
 ### Payment statuses

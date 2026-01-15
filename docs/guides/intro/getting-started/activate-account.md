@@ -27,7 +27,7 @@ Voucherly will verify your details and activate your account.
 
 <Checkbox label="Configure Payment gateways" >
 
-Navigate to **Attività > [Gateway di pagamento](https://dashboard.voucherly.it/merchant/payment-gateways)** and enable Payment gateways you need.
+Navigate to **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** and enable Payment gateways you need.
 
 :::warning
 Merchant-specific configuration parameters must be entered to activate Payment gateways. These parameters are provided to the merchant through a direct agreement with the Payment gateway.
