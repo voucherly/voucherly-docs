@@ -590,6 +590,11 @@ paths:
       summary: Confirm a Payment
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmPaymentRequest'
       responses:
         '200':
           description: Returns a Payment object.
@@ -941,12 +946,6 @@ components:
         selectedPaymentGatewayId:
           type: string
           description: Default PaymentGateway used for the first transaction.
-          nullable: true
-        paymentGatewayIds:
-          type: array
-          description: List of PaymentGateways enabled for this Payment. If empty all PaymentGateways are used.
-          items:
-            type: string
           nullable: true
         checkoutUrl:
           type: string
@@ -1380,12 +1379,14 @@ components:
         - Paid
         - Confirmed
         - Refunded
-        - Dropped
+        - RefundedPartially
         - Cancelled
         - Failed
         - Voided
         - Expired
+        - Reversed
         - ImpossibleRefund
+        - NextAction
       type: string
     Payments.TransactionError:
       description: The error encountered during the Transaction, if any.
@@ -1525,6 +1526,30 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+
+    ConfirmPaymentRequest.Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the transaction.
+          format: uuid
+        amount:
+          type: integer
+          description: If specified, is the partial amount to be confirmed.
+          format: int32
+          nullable: true
+      additionalProperties: false
+    ConfirmPaymentRequest:
+      type: object
+      properties:
+        transactions:
+          type: array
+          description: List of transactions to be confirmed.
+          items:
+            $ref: '#/components/schemas/ConfirmPaymentRequest.Transaction'
+          nullable: true
+      additionalProperties: false
     
     RefundPaymentRequest.Transaction:
       type: object
@@ -1538,12 +1563,21 @@ components:
           description: If specified, is the partial amount to be refunded.
           format: int32
           nullable: true
+        asCredit:
+          type: boolean
+          description: Indicates whether the refunded amount should be added to the customer's wallet as credit.
+          nullable: true
       additionalProperties: false
     RefundPaymentRequest:
       type: object
       properties:
+        asCredit:
+          type: boolean
+          description: Indicates whether the refunded amount should be added to the customer's wallet as credit.
+          nullable: true
         transactions:
           type: array
+          description: List of transactions to be refunded.
           items:
             $ref: '#/components/schemas/RefundPaymentRequest.Transaction'
           nullable: true
