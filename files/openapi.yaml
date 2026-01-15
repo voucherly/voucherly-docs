@@ -120,6 +120,7 @@ paths:
         - name: idOrCode
           in: path
           required: true
+          description: The unique identifier (ID) or join code of the Company to retrieve.
           schema:
             type: string
         - name: include
@@ -158,11 +159,13 @@ paths:
                   properties:
                     options:
                       type: object
+                      description: Optional settings for customer creation.
                       required:
                         - requireUniqueEmail
                       properties:
                         requireUniqueEmail:
                           type: boolean
+                          description: If true, the API will return an error if a customer with the same email address already exists. If false, allows duplicate emails.
       responses:
         '201':
           description: Returns a Customer object.
@@ -502,6 +505,7 @@ paths:
                       nullable: false
                     callbackUrl:
                       type: string
+                      description: The URL where Voucherly will send a Server-to-Server (S2S) callback notification when the payment status changes. This allows your system to be notified synchronously about payment updates.
                       nullable: true
                     language:
                       type: string
@@ -645,12 +649,9 @@ paths:
           in: query
           description: >-
             Specifies whether to return all payment gateways or only those are
-            enabled
+            enabled. If true, returns all payment gateways regardless of their enabled status. If false or omitted, returns only enabled payment gateways.
           schema:
             type: boolean
-            description: >-
-              Specifies whether to return all payment gateways or only those are
-              enabled
         - name: Include
           in: query
           description: An array of nested object to be included in response.
@@ -728,6 +729,7 @@ components:
           $ref: '#/components/schemas/TenantMode'
         joinCode:
           type: string
+          description: A unique 6-character code that can be used to join or reference this Company.
           nullable: false
           minLength: 6
           maxLength: 6
@@ -737,6 +739,7 @@ components:
           nullable: false
         addresses:
           type: array
+          description: An array of delivery addresses associated with this Company. Each address can have specific delivery fees and store information.
           items:
             $ref: '#/components/schemas/CompanyAddressForExternalApi'
           nullable: true
@@ -770,6 +773,7 @@ components:
           nullable: true
         referenceId:
           type: string
+          description: A unique identifier from your system that you can use to reference this Customer. This can be used to reconcile the Customer with your internal systems.
           nullable: true
         companyId:
           type: string
@@ -784,16 +788,20 @@ components:
       additionalProperties: true # I need this because it's used in create request (probably it's a plugin bug)
     CustomerWalletTotals:
       type: object
+      description: Summary information about the Customer's wallet, including total amounts and last update timestamp.
       properties:
         totalAmount:
           type: integer
           format: int64
+          description: The total amount available in the customer's wallet, in cents.
         totalVoucherAmount:
           type: integer
           format: int64
+          description: The total amount of voucher funds available in the customer's wallet, in cents.
         lastUpdatedOnUtc:
           type: string
           format: date-time
+          description: The UTC timestamp of when the wallet totals were last updated.
       additionalProperties: false
     CreditCardInfo:
       type: object
@@ -809,6 +817,7 @@ components:
           nullable: false
         expiration:
           type: string
+          description: The card's expiration date, typically in MM/YY format.
           nullable: false
         expirationMonth:
           type: integer
@@ -822,6 +831,7 @@ components:
           readOnly: true
         product:
           type: string
+          description: The card product type (e.g., "Visa Classic", "Mastercard Gold").
           nullable: false
       additionalProperties: false
     DirectDebitInfo:
@@ -893,12 +903,15 @@ components:
           $ref: '#/components/schemas/DirectDebitInfo'
         additionalInformation1:
           type: string
+          description: Additional information field 1 for the payment method. Can be used to store custom data specific to the payment gateway.
           nullable: true
         additionalInformation2:
           type: string
+          description: Additional information field 2 for the payment method. Can be used to store custom data specific to the payment gateway.
           nullable: true
         additionalInformation3:
           type: string
+          description: Additional information field 3 for the payment method. Can be used to store custom data specific to the payment gateway.
           nullable: true
       additionalProperties: false
     Payment:
@@ -918,6 +931,7 @@ components:
           $ref: '#/components/schemas/Payments.PaymentMode'
         parentPaymentId:
           type: string
+          description: The ID of the parent Payment, if this Payment is a child payment (e.g., a wallet).
           nullable: true
           readOnly: true
         companyId:
@@ -929,15 +943,19 @@ components:
           description: The ID of the Customer of this Payment.
         customerEmail:
           type: string
+          description: The email address of the customer associated with this Payment.
           nullable: false
         customerFirstName:
           type: string
+          description: The first name of the customer associated with this Payment.
           nullable: false
         customerLastName:
           type: string
+          description: The last name of the customer associated with this Payment.
           nullable: false
         customerPhoneNumber:
           type: string
+          description: The phone number of the customer associated with this Payment.
           nullable: false
         customerPaymentMethodId:
           type: string
@@ -949,6 +967,7 @@ components:
           nullable: true
         checkoutUrl:
           type: string
+          description: The URL where the customer should be redirected to complete the payment. This URL is provided after creating a Payment and should be used to redirect the customer to the Voucherly checkout page.
           nullable: true
           readOnly: true
         closeCheckout:
@@ -958,26 +977,32 @@ components:
         totalAmount:
           type: integer
           format: int64
+          description: The total amount of the payment before discounts, in cents. This is the sum of all line items.
           readOnly: true
         discountAmount:
           type: integer
           format: int64
+          description: The total amount of discounts applied to the payment, in cents. This is the sum of all discount amounts.
           readOnly: true
         finalAmount:
           type: integer
           format: int64
+          description: The final amount to be paid after applying all discounts, in cents. This is calculated as totalAmount - discountAmount.
           readOnly: true
         paidAmount:
           type: integer
           format: int64
+          description: The total amount that has been paid so far, in cents. This includes both regular payments and voucher payments.
           readOnly: true
         paidVoucherAmount:
           type: integer
           format: int64
+          description: The amount that has been paid using vouchers, in cents.
           readOnly: true
         amount:
           type: integer
           format: int64
+          description: The remaining amount to be paid, in cents. This is calculated as finalAmount - paidAmount.
           readOnly: true
         status:
           allOf:
@@ -987,15 +1012,18 @@ components:
           $ref: '#/components/schemas/Metadata'
         transactions:
           type: array
+          description: An array of Transaction objects representing all payment attempts and transactions associated with this Payment.
           items:
             $ref: '#/components/schemas/Payments.Transaction'
           readOnly: true
         lines:
           type: array
+          description: An array of PaymentLine objects representing the line items (products or services) included in this Payment.
           items:
             $ref: '#/components/schemas/Payments.PaymentLine'
         discounts:
           type: array
+          description: An array of PaymentDiscount objects representing all discounts applied to this Payment.
           items:
             $ref: '#/components/schemas/Payments.PaymentDiscount'
       additionalProperties: true # I need this because it's used in create request (probably it's a plugin bug)
@@ -1019,95 +1047,124 @@ components:
       readOnly: true
     
     PaymentGateways.CheckoutAction:
+      description: The type of checkout action required by the payment gateway.
       enum:
         - OTP
         - REDIRECT
         - DROPIN
       type: string
+      x-enum-descriptions:
+        - OTP: One-Time Password authentication is required. The customer needs to enter an OTP code.
+        - REDIRECT: The customer must be redirected to an external URL to complete the payment.
+        - DROPIN: An embedded payment form (drop-in) can be used within your application.
     
     CompanyAddressForExternalApi:
       type: object
+      description: An address associated with a Company, typically used for delivery purposes.
       properties:
         id:
           type: string
+          description: Unique identifier for the address.
           nullable: false
         label:
           type: string
+          description: A friendly label or name for this address (e.g., "Main Office", "Warehouse").
           nullable: true
         streetName:
           type: string
+          description: The street name of the address.
           nullable: true
         streetNumber:
           type: string
+          description: The street number of the address.
           nullable: true
         city:
           type: string
+          description: The city of the address.
           nullable: true
         province:
           type: string
+          description: The province or state of the address.
           nullable: true
         postalCode:
           type: string
+          description: The postal or ZIP code of the address.
           nullable: true
         country:
           type: string
+          description: The country code of the address (e.g., "IT" for Italy).
           nullable: true
         deliveryFeeAmount:
           type: integer
           format: int32
+          description: The delivery fee amount for this address, in cents.
         storeId:
           type: string
+          description: The unique identifier of the store associated with this address.
           nullable: false
       additionalProperties: false
     
     PaymentGateways.Checkout.PaymentRequest:
       type: object
+      description: Information about the payment request, including the action required and any redirect URL.
       properties:
         action:
           $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
+          description: The type of checkout action required to complete the payment.
         externalTransactionId:
           type: string
+          description: The unique identifier of the transaction in the external payment gateway system.
           nullable: false
         url:
           type: string
+          description: The URL to redirect the customer to, if the action is REDIRECT. This URL is provided by the payment gateway.
           nullable: true
       additionalProperties: true
     Services.PaymentGateways.PaymentGatewayDto:
       type: object
+      description: Information about a payment gateway available for processing payments.
       properties:
         id:
           type: string
+          description: Unique identifier for the payment gateway.
           nullable: true
         name:
           type: string
+          description: The display name of the payment gateway (e.g., "Visa", "Mastercard", "Edenred").
           nullable: true
         type:
           $ref: '#/components/schemas/PaymentGateways.PaymentGatewayType'
+          description: The type of payment gateway (0 = Card, 1 = Voucher, 2 = Other).
         paymentAction:
           $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
+          description: The type of checkout action required by this payment gateway.
         image:
           type: string
+          description: URL of the image to display for this payment gateway in the checkout.
           nullable: true
         checkoutImage:
           type: string
+          description: URL of the image to display for this payment gateway in the checkout page.
           nullable: true
         icon:
           type: string
+          description: URL of the icon to display for this payment gateway.
           nullable: true
         minimumAmount:
           type: integer
           format: int32
-        isPartiallyRefundable:
+          description: The minimum payment amount required for this payment gateway, in cents.
+        isRefundablePartially:
           type: boolean
+          description: Indicates whether partial refunds are supported by this payment gateway.
           readOnly: true
         isTokenizable:
           type: boolean
+          description: Indicates whether payment methods can be saved (tokenized) for future use with this payment gateway.
           readOnly: true
-        requestAffiliationUrl:
-          type: string
-          nullable: true
         paymentGatewayParameters:
           type: array
+          description: An array of configuration parameters for this payment gateway.
           items:
             $ref: >-
               #/components/schemas/Services.PaymentGateways.PaymentGatewayParameterDto
@@ -1115,29 +1172,39 @@ components:
       additionalProperties: false
     Services.PaymentGateways.PaymentGatewayParameterDto:
       type: object
+      description: A configuration parameter for a payment gateway.
       properties:
         paymentGatewayId:
           type: string
+          description: The ID of the payment gateway this parameter belongs to.
           nullable: true
         parameterId:
           type: string
+          description: The unique identifier of this parameter.
           nullable: true
         friendlyName:
           type: string
+          description: A human-readable name for this parameter.
           nullable: true
         isMerchant:
           type: boolean
+          description: Indicates whether this parameter is configured at the merchant level.
         isForm:
           type: boolean
+          description: Indicates whether this parameter should be displayed as a form field.
         isVisible:
           type: boolean
+          description: Indicates whether this parameter should be visible in the UI.
         isRequired:
           type: boolean
+          description: Indicates whether this parameter is required.
         tenantDefaultValue:
           type: string
+          description: The default value for this parameter at the tenant level.
           nullable: true
         options:
           type: array
+          description: An array of available options for this parameter, if it's a select/dropdown type.
           items:
             $ref: >-
               #/components/schemas/PaymentGateways.PaymentGatewayParameterOptionDto
@@ -1145,21 +1212,29 @@ components:
       additionalProperties: false
     PaymentGateways.PaymentGatewayParameterOptionDto:
       type: object
+      description: An option value for a payment gateway parameter.
       properties:
         id:
           type: string
+          description: The unique identifier of this option.
           nullable: true
         text:
           type: string
+          description: The display text for this option.
           nullable: true
       additionalProperties: false
     PaymentGateways.PaymentGatewayType:
+      description: The type of payment gateway.
       enum:
         - 0
         - 1
         - 2
       type: integer
       format: int32
+      x-enum-descriptions:
+        - "0: Card payment gateway (credit/debit cards)"
+        - "1: Voucher payment gateway (meal vouchers, etc.)"
+        - "2: Other payment gateway type"
       
     Payments.PaymentMode:
       enum:
@@ -1171,33 +1246,42 @@ components:
       nullable: false
     Payments.ExternalError:
       type: object
+      description: Error information returned by an external payment gateway provider.
       properties:
         message:
           type: string
+          description: A human-readable error message from the payment gateway.
           nullable: true
         code:
           type: string
+          description: An error code from the payment gateway provider.
           nullable: true
       additionalProperties: false
     Payments.PaymentCloseCheckout:
       type: object
+      description: Information about when and whether the checkout was closed by the customer.
       readOnly: true
       properties:
         success:
           type: boolean
+          description: Indicates whether the checkout was closed successfully (true) or cancelled (false).
         date:
           type: string
           format: date-time
+          description: The UTC timestamp when the checkout was closed.
       additionalProperties: false
     Payments.PaymentLastCallback:
       type: object
+      description: Information about the last callback sent to your callbackUrl endpoint.
       readOnly: true
       properties:
         success:
           type: boolean
+          description: Indicates whether the callback was sent successfully (true) or failed (false).
         date:
           type: string
           format: date-time
+          description: The UTC timestamp when the last callback was sent.
       additionalProperties: false
     
     Payments.PaymentDiscount:
@@ -1295,6 +1379,7 @@ components:
       additionalProperties: false
     Payments.PaymentLine.Modifier:
       type: object
+      description: A modifier or customization applied to a payment line item (e.g., extra toppings, size options).
       properties:
         modifierId:
           type: string
@@ -1304,73 +1389,98 @@ components:
           description: The ID of the Product that this customization will belong to.
         productName:
           type: string
+          description: The name of the modifier product, automatically loaded from the Product.
           readOnly: true
         quantity:
           type: integer
+          description: The quantity of this modifier.
         price:
           type: integer
+          description: The price of this modifier, in cents.
       additionalProperties: false
     
     Payments.Transaction:
       type: object
+      description: A Transaction represents a single payment attempt or operation within a Payment. A Payment can have multiple Transactions.
       properties:
         id:
           type: string
           format: uuid
+          description: Unique identifier for the transaction.
         paymentGatewayId:
           type: string
+          description: The ID of the PaymentGateway used for this transaction.
           nullable: false
         paymentGateway:
           $ref: '#/components/schemas/Services.PaymentGateways.PaymentGatewayDto'
+          description: Detailed information about the PaymentGateway used for this transaction.
         externalId1:
           type: string
+          description: The primary external transaction ID from the payment gateway provider.
           nullable: false
         externalId2:
           type: string
+          description: An additional external transaction ID or reference from the payment gateway provider.
           nullable: true
         externalId3:
           type: string
+          description: A third external transaction ID or reference from the payment gateway provider.
           nullable: true
         isWallet:
           type: boolean
+          description: Indicates whether this transaction was paid using the customer's wallet balance.
         error:
           $ref: '#/components/schemas/Payments.TransactionError'
+          description: Error information if the transaction failed.
         requestedAmount:
           type: integer
           format: int32
+          description: The amount that was requested for this transaction, in cents.
         amount:
           type: integer
           format: int64
+          description: The actual amount processed in this transaction, in cents.
         voucherAmount:
           type: integer
           format: int64
+          description: The amount paid using vouchers in this transaction, in cents.
         noOfVouchers:
           type: integer
           format: int32
+          description: The number of vouchers used in this transaction.
           nullable: true
         confirmedAmount:
           type: integer
           format: int64
+          description: The amount that has been confirmed (captured) from this transaction, in cents.
         refundedAmount:
           type: integer
           format: int64
+          description: The amount that has been refunded from this transaction, in cents.
         currency:
           type: string
+          description: The currency code for this transaction (e.g., "EUR", "USD").
           nullable: false
         creditCard:
           $ref: '#/components/schemas/CreditCardInfo'
+          description: Credit card information if this transaction was paid with a card.
         directDebit:
           $ref: '#/components/schemas/DirectDebitInfo'
+          description: Direct debit (SEPA) information if this transaction was paid via direct debit.
         holderEmail:
           type: string
+          description: The email address of the payment method holder for this transaction.
           nullable: true
         holderName:
           type: string
+          description: The name of the payment method holder for this transaction.
           nullable: true
         status:
           $ref: '#/components/schemas/Payments.TransactionStatus'
+          description: The current status of this transaction.
         request:
           $ref: '#/components/schemas/PaymentGateways.Checkout.PaymentRequest'
+          description: Information about the payment request, including any redirect URL or action required.
       additionalProperties: false
     Payments.TransactionStatus:
       description: Current status of the Transaction.
@@ -1410,120 +1520,158 @@ components:
       
     CustomerAddressDto:
       type: object
+      description: An address associated with a Customer.
       properties:
         id:
           type: string
+          description: Unique identifier for the address.
           nullable: false
         label:
           type: string
+          description: A friendly label or name for this address (e.g., "Home", "Work").
           nullable: true
         streetName:
           type: string
+          description: The street name of the address.
           nullable: true
         streetNumber:
           type: string
+          description: The street number of the address.
           nullable: true
         city:
           type: string
+          description: The city of the address.
           nullable: true
         province:
           type: string
+          description: The province or state of the address.
           nullable: true
         postalCode:
           type: string
+          description: The postal or ZIP code of the address.
           nullable: true
         country:
           type: string
+          description: The country code of the address (e.g., "IT" for Italy).
           nullable: true
       additionalProperties: false
     CustomerAddressRequest:
       type: object
+      description: Request object for creating or updating a Customer address.
       properties:
         label:
           type: string
+          description: A friendly label or name for this address (e.g., "Home", "Work"). This field is required.
           nullable: false
         streetName:
           type: string
+          description: The street name of the address. This field is required.
           nullable: false
         streetNumber:
           type: string
+          description: The street number of the address. This field is required.
           nullable: false
         city:
           type: string
+          description: The city of the address. This field is required.
           nullable: false
         province:
           type: string
+          description: The province or state of the address. This field is required.
           nullable: false
         postalCode:
           type: string
+          description: The postal or ZIP code of the address. This field is required.
           nullable: false
         country:
           type: string
+          description: The country code of the address (e.g., "IT" for Italy). This field is required.
           nullable: false
       additionalProperties: false
     GetPaymentGatewaysResponse:
       type: object
+      description: Response object containing a list of available payment gateways.
       properties:
         items:
           type: array
+          description: An array of PaymentGateway objects representing all available payment gateways.
           items:
             $ref: '#/components/schemas/PaymentGateways.PaymentGatewayDto'
           nullable: false
       additionalProperties: false
     MerchantPaymentGatewayDto:
       type: object
+      description: Merchant-specific configuration for a payment gateway.
       properties:
         defaultPaymentGatewayId:
           type: string
+          description: The ID of the default payment gateway to use if no specific gateway is selected.
           nullable: true
         isFallback:
           type: boolean
+          description: Indicates whether this payment gateway should be used as a fallback option when other gateways fail.
       additionalProperties: false
     PaymentGateways.PaymentGatewayDto:
       type: object
+      description: Detailed information about a payment gateway, including merchant configuration and parameters.
       properties:
         id:
           type: string
+          description: Unique identifier for the payment gateway.
           nullable: false
         name:
           type: string
+          description: The display name of the payment gateway (e.g., "Visa", "Mastercard", "Edenred").
           nullable: false
         type:
           $ref: '#/components/schemas/PaymentGateways.PaymentGatewayType'
+          description: The type of payment gateway (0 = Card, 1 = Voucher, 2 = Other).
         paymentAction:
           $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
+          description: The type of checkout action required by this payment gateway.
         image:
           type: string
+          description: URL of the image to display for this payment gateway.
           nullable: true
         checkoutImage:
           type: string
+          description: URL of the image to display for this payment gateway in the checkout page.
           nullable: true
         icon:
           type: string
+          description: URL of the icon to display for this payment gateway.
           nullable: true
         isActive:
           type: boolean
+          description: Indicates whether this payment gateway is currently active and available for use.
         merchantConfiguration:
           $ref: '#/components/schemas/MerchantPaymentGatewayDto'
+          description: Merchant-specific configuration for this payment gateway.
         parameters:
           type: array
+          description: An array of configuration parameters for this payment gateway.
           items:
             $ref: '#/components/schemas/PaymentGateways.PaymentGatewayParameterDto'
           nullable: true
       additionalProperties: false
     PaymentGateways.PaymentGatewayParameterDto:
       type: object
+      description: A configuration parameter for a payment gateway, including its current value.
       properties:
         id:
           type: string
+          description: Unique identifier for this parameter.
           nullable: false
         friendlyName:
           type: string
+          description: A human-readable name for this parameter.
           nullable: false
         isSecret:
           type: boolean
+          description: Indicates whether this parameter contains sensitive information that should be masked or hidden.
         value:
           type: string
+          description: The current value of this parameter. May be null if not configured.
           nullable: true
       additionalProperties: false
 
