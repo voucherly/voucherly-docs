@@ -34,12 +34,15 @@ The core element of our API is the payment, which can be linked to multiple tran
     "lines": [
         {
             "quantity": 2,
-            "unitAmount": 250,
             "unitDiscountAmount": 10,
             "discountAmount": 0,
-            "productName": "Muffin al Cioccolato",
-            "productImage": "https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg",
-            "isFood": true
+            "product": {
+                "externalId": "SKU-MUFFIN-001",
+                "name": "Muffin al Cioccolato",
+                "image": "https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg",
+                "unitAmount": 250,
+                "isFood": true
+            }
         }
     ],
     "discounts": [
@@ -76,17 +79,19 @@ The core element of our API is the payment, which can be linked to multiple tran
     "status": "Requested",
     "lines": [
         {
-            "productName": "Muffin al Cioccolato",
-            "productDescription": "",
-            "productImage": "https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg",
             "quantity": 2,
-            "unitAmount": 250,
             "unitDiscountAmount": 10,
             "discountAmount": 0,
             "totalAmount": 500,
             "totalDiscountAmount": 20,
             "finalAmount": 480,
-            "isFood": true
+            "product": {
+                "externalId": "SKU-MUFFIN-001",
+                "name": "Muffin al Cioccolato",
+                "image": "https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg",
+                "unitAmount": 250,
+                "isFood": true
+            }
         }
     ],
     "discounts": [
