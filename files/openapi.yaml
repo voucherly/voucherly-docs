@@ -534,10 +534,12 @@ paths:
                   country: IT
                   lines:
                     - quantity: 2
-                      unitAmount: 250
-                      unitDiscountAmount: 10
-                      productName: Muffin
-                      isFood: true
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        unitAmount: 250
+                        unitDiscountAmount: 10
+                        isFood: true
                   discounts:
                     - discountName: Coupon XSDWFE
                       amount: 200
@@ -1332,23 +1334,53 @@ components:
           format: int32
         productId:
           type: string
-          description: The ID of the Product that this PaymentLine will belong to. One of `productId` or `productName` is required. When `productId` is provided, all other product-related fields will be ignored, as their values will be automatically loaded from the Product.
+          description: |
+            The ID of an existing Product in Voucherly that this PaymentLine refers to. One of `productId` or `product` is required.
+
+            - When only `productId` is provided, all product details (name, unit amount, tax rate, etc.) are automatically loaded from the existing Product.
+            - When `productId` is provided together with `product`, the fields specified inside `product` are optional and will override the corresponding values from the Product configuration. This is useful, for example, to force a different price for this specific Payment.
           nullable: true
-        productName:
+        product:
+          allOf:
+            - $ref: '#/components/schemas/Payments.PaymentLine.Product'
+          description: |
+            Inline product information for this line. One of `productId` or `product` is required.
+
+            - When provided without `productId`, all required fields must be populated and the product will be treated as an ad-hoc product for this Payment.
+            - When provided together with `productId`, every field becomes optional and any populated value overrides the configuration of the referenced Product (useful to force prices, names, etc.).
+          nullable: true
+        modifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payments.PaymentLine.Modifier'
+          nullable: true
+      additionalProperties: false
+    Payments.PaymentLine.Product:
+      type: object
+      description: |
+        Inline description of the product associated with a PaymentLine.
+
+        When the line also specifies a `productId`, all fields of this object are optional and any populated value overrides the configuration of the referenced Product. When `productId` is not specified, the required fields below must be populated.
+      properties:
+        externalId:
           type: string
-          description: The product’s name, meant to be displayable to the customer. One of `productId` or `productName` is required.
+          description: An external reference for the product, used by Voucherly to reconcile the product across systems and to correctly compute reporting. Highly recommended whenever the product is not referenced via `productId`.
           nullable: true
-        productVariant:
+        name:
+          type: string
+          description: The product’s name, meant to be displayable to the customer. Required when `productId` is not specified.
+          nullable: true
+        variant:
           type: string
           description: The product’s variant description, meant to be displayable to the customer.
           nullable: true
-        productImage:
+        image:
           type: string
-          description: The product’s image, meant to be displayable to the customer.
+          description: The product’s image URL, meant to be displayable to the customer.
           nullable: true
         unitAmount:
           type: integer
-          description: A non-negative integer in cents representing how much to charge for each individual unit.
+          description: A non-negative integer in cents representing how much to charge for each individual unit. Required when `productId` is not specified.
           format: int32
         unitDiscountAmount:
           type: integer
@@ -1370,11 +1402,7 @@ components:
           nullable: true
         isFood:
           type: boolean
-          description: Indicates whether this payment line refers to a food item. This flag is used to determine eligibility for meal vouchers or similar benefits.
-        modifiers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payments.PaymentLine.Modifier'
+          description: Indicates whether this product is a food item. This flag is used to determine eligibility for meal vouchers or similar benefits.
           nullable: true
       additionalProperties: false
     Payments.PaymentLine.Modifier:
