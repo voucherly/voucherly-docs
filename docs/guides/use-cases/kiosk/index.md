@@ -54,13 +54,13 @@ Add a checkout button to your kiosk and create a Payment in Voucherly.
     "lines": [
         {
             "quantity": 2,
+            "unitAmount": 250,
             "unitDiscountAmount": 10,
             "discountAmount": 0,
             "product": {
                 "externalId": "SKU-MUFFIN-001",
                 "name": "Muffin al Cioccolato",
                 "image": "https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg",
-                "unitAmount": 250,
                 "isFood": true
             }
         }

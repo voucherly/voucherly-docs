@@ -95,13 +95,13 @@ You can build a custom payments integration by displaying Payment gateway compon
     "lines": [
         {
             "quantity": 2,
+            "unitAmount": 250,
             "unitDiscountAmount": 10,
             "discountAmount": 0,
             "product": {
                 "externalId": "SKU-MUFFIN-001",
                 "name": "Muffin al Cioccolato",
                 "image": "https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg",
-                "unitAmount": 250,
                 "isFood": true
             }
         }
@@ -140,13 +140,13 @@ If clicked, specify the selected Payment gateway using the `selectedPaymentGatew
     "lines": [
         {
             "quantity": 2,
+            "unitAmount": 250,
             "unitDiscountAmount": 10,
             "discountAmount": 0,
             "product": {
                 "externalId": "SKU-MUFFIN-001",
                 "name": "Muffin al Cioccolato",
                 "image": "https://cdn.trovaricetta.com/photo/2016/10/07/1771032/b/muffin-al-cioccolato-facilissimi.jpg",
-                "unitAmount": 250,
                 "isFood": true
             }
         }

@@ -539,11 +539,11 @@ paths:
                   country: IT
                   lines:
                     - quantity: 2
+                      unitAmount: 250
                       unitDiscountAmount: 10
                       product:
                         externalId: SKU-MUFFIN-001
                         name: Muffin
-                        unitAmount: 250
                         isFood: true
                   discounts:
                     - discountName: Coupon XSDWFE
@@ -1399,7 +1399,7 @@ components:
     Payments.PaymentLine.Request:
       type: object
       description: |
-        Request shape of a PaymentLine, used in the create-payment request body. Product attributes are grouped under a nested `product` object.
+        Request shape of a PaymentLine, used in the create-payment request body. Product attributes are grouped under a nested `product` object; pricing and discount amounts stay at the line level.
 
         Each line must specify the product through one of:
         - `productId` only — all product details are loaded from the referenced Voucherly Product.
@@ -1422,6 +1422,11 @@ components:
 
             When provided together with `productId`, every field is optional and any populated value overrides the configuration of the referenced Product.
           nullable: true
+        unitAmount:
+          type: integer
+          description: A non-negative integer in cents representing how much to charge for each individual unit. Required when `productId` is not specified.
+          format: int32
+          nullable: true
         unitDiscountAmount:
           type: integer
           description: A non-negative integer in cents representing the discount applied to each individual unit. This field is mutually exclusive with `discountAmount` — only one of the two may be specified.
@@ -1439,9 +1444,9 @@ components:
     Payments.PaymentLine.Product:
       type: object
       description: |
-        Inline description of the product associated with a PaymentLine, used inside the create-payment request body.
+        Inline description of the product associated with a PaymentLine, used inside the create-payment request body. Contains only product attributes; pricing and discount amounts are line-level fields on `Payments.PaymentLine.Request`.
 
-        When the line also specifies a `productId`, all fields below are optional and any populated value overrides the configuration of the referenced Product. When `productId` is not specified, `name` and `unitAmount` must be populated.
+        When the line also specifies a `productId`, all fields below are optional and any populated value overrides the configuration of the referenced Product. When `productId` is not specified, `name` must be populated (and `unitAmount` must be populated at the line level).
       properties:
         externalId:
           type: string
@@ -1458,11 +1463,6 @@ components:
         image:
           type: string
           description: The product’s image URL, meant to be displayable to the customer.
-          nullable: true
-        unitAmount:
-          type: integer
-          description: A non-negative integer in cents representing how much to charge for each individual unit. Required when `productId` is not specified.
-          format: int32
           nullable: true
         taxRate:
           type: number
