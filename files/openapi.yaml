@@ -463,17 +463,22 @@ paths:
                 - type: object
                   required: [email]
                   properties:
+                    lines:
+                      type: array
+                      description: An array of PaymentLine objects representing the line items (products or services) to include in this Payment. Each line must reference a product either by `productId`, by an inline `product` object, or both (in which case the inline `product` overrides the referenced Product configuration).
+                      items:
+                        $ref: '#/components/schemas/Payments.PaymentLine.Request'
                     companyId:
                       type: string
                       description: |
-                        The ID of the Company this Payment is associated with. If empty, the Company associated with the Customer will be used, if one exists. 
-                        
+                        The ID of the Company this Payment is associated with. If empty, the Company associated with the Customer will be used, if one exists.
+
                         You cannot specify both `customerId` and `companyId` at the same time.
                       nullable: true
                     customerId:
                       type: string
                       description: The ID of the Customer of this Payment. If empty a new Customer will be created.
-                      nullable: true                    
+                      nullable: true
                     timeout:
                       type: integer
                       description: Timeout in minutes for the checkout sessions. Default is 10.
@@ -534,11 +539,11 @@ paths:
                   country: IT
                   lines:
                     - quantity: 2
+                      unitDiscountAmount: 10
                       product:
                         externalId: SKU-MUFFIN-001
                         name: Muffin
                         unitAmount: 250
-                        unitDiscountAmount: 10
                         isFood: true
                   discounts:
                     - discountName: Coupon XSDWFE
@@ -1327,6 +1332,10 @@ components:
       type: string
     Payments.PaymentLine:
       type: object
+      description: |
+        Response shape of a PaymentLine, returned within a Payment object.
+
+        Note: when creating a Payment, the request body uses a different, normalized shape that nests product fields under a `product` object. See `Payments.PaymentLine.Request` for the create-payment request line shape.
       properties:
         quantity:
           type: integer
@@ -1334,11 +1343,76 @@ components:
           format: int32
         productId:
           type: string
-          description: |
-            The ID of an existing Product in Voucherly that this PaymentLine refers to. One of `productId` or `product` is required.
+          description: The ID of the Product that this PaymentLine refers to, when the line was created against an existing Voucherly Product.
+          nullable: true
+        productName:
+          type: string
+          description: The product’s name, meant to be displayable to the customer.
+          nullable: true
+        productVariant:
+          type: string
+          description: The product’s variant description, meant to be displayable to the customer.
+          nullable: true
+        productImage:
+          type: string
+          description: The product’s image URL, meant to be displayable to the customer.
+          nullable: true
+        productExternalId1:
+          type: string
+          description: Primary external reference for the product, used by Voucherly to reconcile the product across systems and to correctly compute reporting.
+          nullable: true
+        productExternalId2:
+          type: string
+          description: Secondary external reference for the product, used by Voucherly to reconcile the product across systems and to correctly compute reporting.
+          nullable: true
+        unitAmount:
+          type: integer
+          description: A non-negative integer in cents representing how much to charge for each individual unit.
+          format: int32
+        unitDiscountAmount:
+          type: integer
+          description: A non-negative integer in cents representing the discount applied to each individual unit.
+          format: int32
+        discountAmount:
+          type: integer
+          description: A non-negative integer in cents representing the total discount applied to the entire line.
+          format: int32
+        finalAmount:
+          type: integer
+          description: A non-negative integer in cents representing the final amount charged for this line, after discounts.
+          format: int64
+          readOnly: true
+        taxRate:
+          type: number
+          description: The product's applicable tax rate.
+          format: double
+          nullable: true
+        isFood:
+          type: boolean
+          description: Indicates whether this payment line refers to a food item. This flag is used to determine eligibility for meal vouchers or similar benefits.
+        modifiers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payments.PaymentLine.Modifier'
+          nullable: true
+      additionalProperties: false
+    Payments.PaymentLine.Request:
+      type: object
+      description: |
+        Request shape of a PaymentLine, used in the create-payment request body. Product attributes are grouped under a nested `product` object.
 
-            - When only `productId` is provided, all product details (name, unit amount, tax rate, etc.) are automatically loaded from the existing Product.
-            - When `productId` is provided together with `product`, the fields specified inside `product` are optional and will override the corresponding values from the Product configuration. This is useful, for example, to force a different price for this specific Payment.
+        Each line must specify the product through one of:
+        - `productId` only — all product details are loaded from the referenced Voucherly Product.
+        - `product` only — inline ad-hoc product description; required fields inside `product` must be populated.
+        - `productId` + `product` — the line is linked to the referenced Product, and any field set inside `product` overrides the corresponding value of the Product configuration (useful to force a specific price, name, etc.).
+      properties:
+        quantity:
+          type: integer
+          description: The quantity of the line item being purchased.
+          format: int32
+        productId:
+          type: string
+          description: The ID of an existing Product in Voucherly that this PaymentLine refers to. One of `productId` or `product` is required.
           nullable: true
         product:
           allOf:
@@ -1346,9 +1420,16 @@ components:
           description: |
             Inline product information for this line. One of `productId` or `product` is required.
 
-            - When provided without `productId`, all required fields must be populated and the product will be treated as an ad-hoc product for this Payment.
-            - When provided together with `productId`, every field becomes optional and any populated value overrides the configuration of the referenced Product (useful to force prices, names, etc.).
+            When provided together with `productId`, every field is optional and any populated value overrides the configuration of the referenced Product.
           nullable: true
+        unitDiscountAmount:
+          type: integer
+          description: A non-negative integer in cents representing the discount applied to each individual unit. This field is mutually exclusive with `discountAmount` — only one of the two may be specified.
+          format: int32
+        discountAmount:
+          type: integer
+          description: A non-negative integer in cents representing the total discount applied to the entire line. This field is mutually exclusive with `unitDiscountAmount` — only one of the two may be specified.
+          format: int32
         modifiers:
           type: array
           items:
@@ -1358,9 +1439,9 @@ components:
     Payments.PaymentLine.Product:
       type: object
       description: |
-        Inline description of the product associated with a PaymentLine.
+        Inline description of the product associated with a PaymentLine, used inside the create-payment request body.
 
-        When the line also specifies a `productId`, all fields of this object are optional and any populated value overrides the configuration of the referenced Product. When `productId` is not specified, the required fields below must be populated.
+        When the line also specifies a `productId`, all fields below are optional and any populated value overrides the configuration of the referenced Product. When `productId` is not specified, `name` and `unitAmount` must be populated.
       properties:
         externalId:
           type: string
@@ -1382,19 +1463,7 @@ components:
           type: integer
           description: A non-negative integer in cents representing how much to charge for each individual unit. Required when `productId` is not specified.
           format: int32
-        unitDiscountAmount:
-          type: integer
-          description: A non-negative integer in cents representing the discount applied to each individual unit. This field is mutually exclusive with `discountAmount` — only one of the two may be specified.
-          format: int32
-        discountAmount:
-          type: integer
-          description: A non-negative integer in cents representing the total discount applied to the entire line. This field is mutually exclusive with `unitDiscountAmount` — only one of the two may be specified.
-          format: int32
-        finalAmount:
-          type: integer
-          description: A non-negative integer in cents representing how much to charge.
-          format: int64
-          readOnly: true
+          nullable: true
         taxRate:
           type: number
           description: The product's applicable tax rate.
