@@ -120,6 +120,31 @@ const config: Config = {
 
   plugins: [
     'docusaurus-plugin-sass',
+    function webpackFallbackPlugin() {
+      return {
+        name: 'webpack-fallback',
+        configureWebpack() {
+          return {
+            resolve: {
+              fallback: {
+                path: false,
+                fs: false,
+                os: false,
+                stream: false,
+                buffer: false,
+                util: false,
+                crypto: false,
+                http: false,
+                https: false,
+                url: false,
+                zlib: false,
+                child_process: false,
+              },
+            },
+          };
+        },
+      };
+    },
     [
       'docusaurus-plugin-openapi-docs',
       {

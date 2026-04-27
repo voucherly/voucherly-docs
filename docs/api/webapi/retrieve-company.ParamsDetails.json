@@ -1,0 +1,1 @@
+{"parameters":[{"name":"idOrCode","in":"path","required":true,"description":"The unique identifier (ID) or join code of the Company to retrieve.","schema":{"type":"string"}},{"name":"include","in":"query","description":"An array of nested object to be included in response.","required":false,"schema":{"type":"array","items":{"type":"string","enum":["Addresses"]}}}]}
