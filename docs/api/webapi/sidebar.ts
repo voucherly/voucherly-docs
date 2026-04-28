@@ -31,7 +31,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/webapi/list-company",
-          label: "List all Companys",
+          label: "List all Companies",
           className: "api-method get",
         },
         {
@@ -81,6 +81,48 @@ const sidebar: SidebarsConfig = {
           id: "api/webapi/update-customer",
           label: "Update a Customer",
           className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/retrieve-customer-prepaid-balance",
+          label: "Retrieve a Customer's prepaid balance",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/list-customer-wallet-movement",
+          label: "List a Customer's wallet movements",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/list-customer-address",
+          label: "List a Customer's Addresses",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/create-customer-address",
+          label: "Create a Customer's Address",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/retrieve-customer-address",
+          label: "Retrieve a Customer's Address",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/update-customer-address",
+          label: "Update a Customer's Address",
+          className: "api-method put",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/delete-customer-address",
+          label: "Delete a Customer's Address",
+          className: "api-method delete",
         },
       ],
     },
@@ -154,11 +196,33 @@ const sidebar: SidebarsConfig = {
           label: "Refund a Payment",
           className: "api-method post",
         },
+        {
+          type: "doc",
+          id: "api/webapi/void-payment",
+          label: "Void a Payment",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/download-payment-receipt",
+          label: "Download a Payment receipt",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/download-payment-refund-receipt",
+          label: "Download a Payment refund receipt",
+          className: "api-method get",
+        },
       ],
     },
     {
       type: "category",
       label: "Payment Gateways",
+      link: {
+        type: "doc",
+        id: "api/webapi/payment-gateway",
+      },
       collapsible: true,
       collapsed: true,
       items: [
@@ -167,6 +231,54 @@ const sidebar: SidebarsConfig = {
           id: "api/webapi/list-payment-gateway",
           label: "List all PaymentGateways",
           className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Receipts",
+      link: {
+        type: "doc",
+        id: "api/webapi/receipt",
+      },
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/retrieve-receipt",
+          label: "Retrieve a Receipt",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/download-receipt",
+          label: "Download a Receipt",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Terminals",
+      link: {
+        type: "doc",
+        id: "api/webapi/terminal",
+      },
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/list-terminal",
+          label: "List all Terminals",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/delete-terminal",
+          label: "Delete a Terminal",
+          className: "api-method delete",
         },
       ],
     },
