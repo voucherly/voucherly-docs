@@ -1,0 +1,130 @@
+---
+title: Scontrini elettronici con AdE - Documento Commerciale on line
+sidebar_label: AdE - Documento Commerciale
+sidebar_position: 1
+description: Configura Voucherly per emettere scontrini elettronici tramite la procedura Documento Commerciale on line dell'Agenzia delle Entrate. Guida passo-passo a incarico Fisconline, credenziali, PIN e attivazione.
+keywords:
+  - scontrino elettronico
+  - documento commerciale online
+  - Agenzia delle Entrate
+  - Fisconline
+  - credenziali Fisconline
+  - incarico Fisconline
+  - PIN Agenzia Entrate
+  - corrispettivi telematici
+  - Voucherly
+image: https://ucarecdn.com/1a50448f-55d8-46ac-bab0-764dee2b9c4f/-/preview/100x100/
+---
+
+import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
+
+export const faqs = [
+  {
+    question: 'Posso usare le credenziali Fisconline anche sul mio gestionale di cassa?',
+    answer: 'No. Voucherly ruota automaticamente la password ogni 90 giorni per rispettare la policy AdE: il gestionale di cassa, alla rotazione successiva, troverebbe credenziali non più valide. Se ti serve emettere scontrini anche da un altro sistema, conferisci un secondo incarico Fisconline e usa credenziali dedicate.',
+  },
+  {
+    question: 'Cosa succede quando la password Fisconline scade?',
+    answer: 'Niente: Voucherly se ne accorge prima della scadenza dei 90 giorni e la rinnova automaticamente sul portale dell\'Agenzia delle Entrate. Non devi fare nulla.',
+  },
+  {
+    question: 'Devo conferire l\'incarico se ho una ditta individuale?',
+    answer: 'No. Per le ditte individuali è sufficiente accedere al portale AdE con SPID/CIE del titolare e procedere direttamente al <a href="#ottenere-le-credenziali-fisconline">prelievo delle credenziali Fisconline</a>.',
+  },
+  {
+    question: 'Lo scontrino emesso da Voucherly è valido a tutti gli effetti?',
+    answer: 'Sì. È un documento commerciale on line emesso tramite la procedura ufficiale dell\'Agenzia delle Entrate, esattamente come quello che otterresti compilando il form a mano. L\'automazione via software è espressamente confermata dalla <a href="https://www.agenziaentrate.gov.it/portale/documents/20143/2665720/Risposta+n.+413+del+25+settembre+2020.pdf/35bddf23-25e5-0aa8-49f0-ed7703230c04">risposta all\'interpello n. 413/2020</a>.',
+  },
+];
+
+# Scontrini elettronici con AdE - Documento Commerciale on line
+
+Voucherly emette scontrini elettronici a norma di legge integrandosi direttamente con la procedura web ufficiale dell'**Agenzia delle Entrate** chiamata **"Documento Commerciale on line"**. Quando il tuo cliente paga, Voucherly si autentica su Fisconline per tuo conto e genera il documento commerciale, pronto da stampare o inviare via email.
+
+In questa guida vedrai come ottenere le credenziali Fisconline, conferire l'eventuale incarico per società/associazioni e collegare il tutto a Voucherly in pochi minuti.
+
+:::info Risposta ufficiale dell'Agenzia delle Entrate
+Con la risposta all'interpello n. 413 del 25/09/2020, l'Agenzia delle Entrate ha confermato che è possibile **automatizzare via software** la procedura web di emissione dei documenti commerciali on line (scontrini elettronici).
+[Leggi la risposta ufficiale all'interpello N. 413/2020](https://www.agenziaentrate.gov.it/portale/documents/20143/2665720/Risposta+n.+413+del+25+settembre+2020.pdf/35bddf23-25e5-0aa8-49f0-ed7703230c04).
+:::
+
+:::warning Aliquote IVA obbligatorie
+Per emettere correttamente lo scontrino è obbligatorio indicare le **aliquote IVA** nei dettagli di ogni richiesta di pagamento.
+Voucherly trasmette queste informazioni direttamente all'Agenzia delle Entrate: senza IVA non può essere generato un documento commerciale valido.
+:::
+
+## Prerequisiti
+
+Cosa ti serve dipende dalla forma giuridica della tua attività:
+
+- **Ditta individuale** — bastano le credenziali **SPID** o **CIE** del titolare. Puoi saltare lo step dell'incarico e andare direttamente a [Ottenere le credenziali Fisconline](#ottenere-le-credenziali-fisconline).
+- **Società, associazione o ente** — servono le credenziali **SPID** / **CIE** del **rappresentante legale**, e va prima conferito un **incarico** su Fisconline alla persona fisica che gestirà l'integrazione.
+
+In entrambi i casi è consigliato un dispositivo con schermo ampio (PC o tablet) per le procedure sul portale dell'Agenzia delle Entrate.
+
+:::tip Sconsigliamo le credenziali Fisconline aziendali
+La procedura per ottenere credenziali Fisconline intestate direttamente alla società è lenta e macchinosa. È molto più rapido conferire un incarico a una persona fisica e usare le sue credenziali Fisconline personali.
+:::
+
+## Conferire l'incarico su Fisconline (solo società) 
+
+Questa procedura è necessaria solo per **società, associazioni ed enti**. Le ditte individuali possono saltare alla [sezione successiva](#ottenere-le-credenziali-fisconline).
+
+1. Accedi al [portale dell'Agenzia delle Entrate](https://portale.agenziaentrate.gov.it/PortaleWeb/home) usando lo **SPID del rappresentante legale**.
+1. Clicca su **"Profilo utente"**, poi nella barra a sinistra seleziona **"Incarichi"**.
+1. Nella sezione di gestione incarichi clicca su **"Come rappresentante legale"**.
+1. Inserisci il **codice fiscale** o la **partita IVA** dell'organizzazione.
+1. Clicca **"Aggiungi gestore incaricato"** e inserisci il **codice fiscale** della persona fisica che dovrà operare per conto dell'azienda (tipicamente il rappresentante legale stesso).
+
+L'incaricato così designato è la persona le cui credenziali Fisconline andranno inserite in Voucherly al passo successivo.
+
+## Ottenere le credenziali Fisconline
+
+Le credenziali Fisconline (codice fiscale + password + PIN a 10 cifre) consentono a Voucherly di autenticarsi sul portale AdE senza intervento manuale.
+
+1. Accedi al [portale dell'Agenzia delle Entrate](https://portale.agenziaentrate.gov.it) con le tue credenziali **SPID** o **CIE personali**.
+1. In alto a destra verifica di essere in modalità **persona fisica**. Se è selezionata una partita IVA, clicca su **"Cambia Utenza"** e passa alla persona fisica.
+1. Apri **"Il tuo profilo"** e nella sezione **Contatti** assicurati che esista almeno un contatto email con **tutte le spunte attive**: serve a ricevere via email la seconda parte del PIN e la password iniziale.
+1. Nel pannello a sinistra clicca su **"Credenziali / PIN"** e poi su **"Prelievo credenziali"**.
+1. Annota le **prime 4 cifre del PIN** mostrate a video. Le **restanti 6 cifre** del PIN e la **password iniziale** ti arriveranno via email: insieme alle 4 a video formano un PIN completo da **10 cifre** (esattamente quello che chiede Voucherly).
+1. **Ripristina la password iniziale** sulla pagina [Ripristino password Fisconline](https://telematici.agenziaentrate.gov.it/Abilitazione/RipristinaPassword): usa la password iniziale ricevuta via email per impostarne una nuova a tua scelta. È questa nuova password che inserirai in Voucherly.
+
+:::warning La password iniziale non si usa per accedere
+La password che ricevi via email serve **solo** al primo ripristino. Conservala — ti servirà per eventuali ripristini futuri — ma **non** usarla per accedere a Fisconline o per configurare Voucherly: usa sempre la password che hai impostato tu al passo 6.
+:::
+
+## Configurare Voucherly
+
+Una volta in possesso di codice fiscale dell'incaricato, partita IVA dell'azienda, password definitiva e PIN a 10 cifre, l'attivazione su Voucherly richiede pochi secondi.
+
+1. Accedi alla [Dashboard Voucherly](https://dashboard.voucherly.it/).
+1. Vai in **Attività** > **[Integrazioni](https://dashboard.voucherly.it/merchant/integrations)** e seleziona **AdE - Documento Commerciale on line**.
+1. Clicca su **Configura** (icona della matita in alto a destra).
+1. Inserisci le credenziali dell'Agenzia delle Entrate:
+    - **Codice Fiscale** (incaricato — la persona fisica)
+    - **Partita IVA** (azienda)
+    - **Password** (quella definitiva impostata al ripristino)
+    - **PIN** (10 cifre: 4 a video + 6 via email)
+1. Salva le impostazioni e clicca su **Attiva**.
+
+Se l'attivazione va a buon fine, l'integrazione passa allo stato **Attivo** e Voucherly inizia a emettere documenti commerciali a ogni pagamento andato a buon fine.
+
+## Note importanti
+
+### Rotazione automatica della password ogni 90 giorni
+
+L'Agenzia delle Entrate impone la **scadenza della password Fisconline ogni 90 giorni**. Per evitare interruzioni del servizio, **Voucherly cambia la password in autonomia** prima della scadenza. Una volta attivata l'integrazione, la password configurata cambia nel tempo e non corrisponde più a quella inserita inizialmente.
+
+:::info Le credenziali sono dedicate a Voucherly
+Per via della rotazione automatica, le **stesse credenziali Fisconline non possono essere usate in parallelo su altri sistemi** (gestionali di cassa, software di terze parti, accesso manuale al portale): non appena Voucherly ruota la password, l'altro sistema si troverebbe con credenziali non più valide.
+
+Se hai bisogno di emettere documenti commerciali anche da un altro applicativo, **conferisci un secondo incarico Fisconline** a un'altra persona fisica e usa quelle credenziali — separate — sull'altro sistema.
+:::
+
+### Aliquote IVA su ogni richiesta di pagamento
+
+Come ricordato in apertura, ogni voce della richiesta di pagamento deve riportare l'aliquota IVA: senza, l'AdE rifiuta l'emissione del documento commerciale.
+
+## Domande frequenti
+
+<FAQStructuredData faqs={faqs} />
