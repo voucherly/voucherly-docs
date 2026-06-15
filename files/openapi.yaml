@@ -70,6 +70,10 @@ tags:
     description: |
       A Terminal represents a physical POS device registered with a PaymentGateway and optionally bound to a Store. Terminals are used to process card-present payments.
     x-displayName: Terminals
+  - name: reports
+    description: |
+      Reports expose aggregated analytics over your Payments. The volumes report returns turnover broken down by PaymentGateway (and optionally by Store) for a given date range, together with the grand totals across all rows. It mirrors the Volumes report available in the Voucherly Dashboard.
+    x-displayName: Reports
 paths:
   /v1/companys:
     post:
@@ -821,6 +825,80 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaymentGateways.GetPaymentGatewaysResponse'
+        '400':
+          $ref: "#/components/responses/BadRequest"
+  /v1/reports/volumes:
+    get:
+      tags:
+        - reports
+      operationId: volumes-report
+      summary: Volumes
+      description: |
+        Returns aggregated turnover for the given date range, broken down by PaymentGateway and optionally by Store, together with the grand totals across all rows. This is the same data shown in the Volumes report of the Voucherly Dashboard.
+      parameters:
+        - name: fromDate
+          in: query
+          required: true
+          description: Start of the reporting period (inclusive). Only the date part is considered.
+          schema:
+            type: string
+            format: date-time
+        - name: toDate
+          in: query
+          required: true
+          description: End of the reporting period (inclusive). Only the date part is considered. Must be greater than or equal to `fromDate`, and the range cannot exceed 366 days.
+          schema:
+            type: string
+            format: date-time
+        - name: paymentMode
+          in: query
+          required: false
+          description: Filter by payment mode. When omitted, wallet recharges are excluded and only payments are aggregated.
+          schema:
+            $ref: '#/components/schemas/Payments.PaymentMode'
+        - name: groupBy
+          in: query
+          required: false
+          description: How rows are grouped. When omitted, rows are aggregated per PaymentGateway only.
+          schema:
+            $ref: '#/components/schemas/Reports.RevenuesGrouping'
+        - name: paymentGatewayIds
+          in: query
+          required: false
+          description: Filter by one or more PaymentGateway identifiers. Repeat the parameter to provide multiple values.
+          schema:
+            type: array
+            items:
+              type: string
+        - name: storeIds
+          in: query
+          required: false
+          description: Filter by one or more Store identifiers. Repeat the parameter to provide multiple values.
+          schema:
+            type: array
+            items:
+              type: string
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PageStartQueryParam'
+      responses:
+        '200':
+          description: |
+            A dictionary with an `items` property containing the per-PaymentGateway breakdown (paginated by any request parameters), a `pagination` cursor, and a `totals` object with the grand totals computed across the whole result set (not just the current page).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: 'An array containing the per-PaymentGateway breakdown rows, paginated by any request parameters.'
+                    items:
+                      $ref: '#/components/schemas/Reports.RevenuesDetails'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationResponse'
+                  totals:
+                    $ref: '#/components/schemas/Reports.RevenuesTotals'
+                additionalProperties: false
         '400':
           $ref: "#/components/responses/BadRequest"
 components:
@@ -2273,7 +2351,180 @@ components:
             $ref: '#/components/schemas/RefundPaymentRequest.Transaction'
           nullable: true
       additionalProperties: false
-    
+
+    Reports.RevenuesGrouping:
+      enum:
+        - All
+        - Store
+      type: string
+      description: How volumes report rows are grouped. `All` aggregates per PaymentGateway only; `Store` additionally breaks the rows down per Store.
+      nullable: false
+    Reports.RevenuesDetails:
+      type: object
+      description: A volumes report row, aggregating turnover for a single PaymentGateway (and, when grouped by Store, a single Store).
+      properties:
+        paymentGatewayId:
+          type: string
+          description: Unique identifier of the PaymentGateway this row aggregates.
+          nullable: false
+        paymentGatewayName:
+          type: string
+          description: Display name of the PaymentGateway.
+          nullable: false
+        storeId:
+          type: string
+          description: Unique identifier of the Store this row aggregates. Only populated when `groupBy` is `Store`.
+          nullable: true
+        storeName:
+          type: string
+          description: Display name of the Store. Only populated when `groupBy` is `Store`.
+          nullable: true
+        paidAmount:
+          type: integer
+          format: int64
+          description: Total amount of paid transactions, in cents.
+        cancelledAmount:
+          type: integer
+          format: int64
+          description: Amount that was paid but not confirmed (paid minus confirmed), in cents.
+        confirmedAmount:
+          type: integer
+          format: int64
+          description: Total confirmed amount, in cents.
+        refundedAmount:
+          type: integer
+          format: int64
+          description: Total refunded amount, in cents.
+        profitAmount:
+          type: integer
+          format: int64
+          description: Net revenue (confirmed minus refunded), in cents.
+        paidCount:
+          type: integer
+          format: int32
+          description: Number of paid transactions.
+        cancelledCount:
+          type: integer
+          format: int32
+          description: Number of paid-but-not-confirmed transactions.
+        confirmedCount:
+          type: integer
+          format: int32
+          description: Number of confirmed transactions.
+        refundedCount:
+          type: integer
+          format: int32
+          description: Number of refunded transactions.
+        profitCount:
+          type: integer
+          format: int32
+          description: Number of transactions contributing to net revenue.
+        childPaymentGateways:
+          type: array
+          description: Breakdown of this row by secondary (child) PaymentGateway, when applicable.
+          items:
+            $ref: '#/components/schemas/Reports.ChildRevenuesDetails'
+          nullable: false
+      additionalProperties: false
+    Reports.ChildRevenuesDetails:
+      type: object
+      description: A secondary (child) PaymentGateway breakdown nested inside a volumes report row.
+      properties:
+        paymentGatewayId:
+          type: string
+          description: Unique identifier of the child PaymentGateway.
+          nullable: false
+        paymentGatewayName:
+          type: string
+          description: Display name of the child PaymentGateway.
+          nullable: false
+        paidAmount:
+          type: integer
+          format: int64
+          description: Total amount of paid transactions, in cents.
+        cancelledAmount:
+          type: integer
+          format: int64
+          description: Amount that was paid but not confirmed (paid minus confirmed), in cents.
+        confirmedAmount:
+          type: integer
+          format: int64
+          description: Total confirmed amount, in cents.
+        refundedAmount:
+          type: integer
+          format: int64
+          description: Total refunded amount, in cents.
+        profitAmount:
+          type: integer
+          format: int64
+          description: Net revenue (confirmed minus refunded), in cents.
+        paidCount:
+          type: integer
+          format: int32
+          description: Number of paid transactions.
+        cancelledCount:
+          type: integer
+          format: int32
+          description: Number of paid-but-not-confirmed transactions.
+        confirmedCount:
+          type: integer
+          format: int32
+          description: Number of confirmed transactions.
+        refundedCount:
+          type: integer
+          format: int32
+          description: Number of refunded transactions.
+        profitCount:
+          type: integer
+          format: int32
+          description: Number of transactions contributing to net revenue.
+      additionalProperties: false
+    Reports.RevenuesTotals:
+      type: object
+      description: Grand totals of the volumes report, computed across the whole result set.
+      properties:
+        paidAmount:
+          type: integer
+          format: int64
+          description: Total amount of paid transactions, in cents.
+        cancelledAmount:
+          type: integer
+          format: int64
+          description: Amount that was paid but not confirmed (paid minus confirmed), in cents.
+        confirmedAmount:
+          type: integer
+          format: int64
+          description: Total confirmed amount, in cents.
+        refundedAmount:
+          type: integer
+          format: int64
+          description: Total refunded amount, in cents.
+        profitAmount:
+          type: integer
+          format: int64
+          description: Net revenue (confirmed minus refunded), in cents.
+        paidCount:
+          type: integer
+          format: int32
+          description: Number of paid transactions.
+        cancelledCount:
+          type: integer
+          format: int32
+          description: Number of paid-but-not-confirmed transactions.
+        confirmedCount:
+          type: integer
+          format: int32
+          description: Number of confirmed transactions.
+        refundedCount:
+          type: integer
+          format: int32
+          description: Number of refunded transactions.
+        profitCount:
+          type: integer
+          format: int32
+          description: Number of transactions contributing to net revenue.
+      additionalProperties: false
+
     # PROBLEM DETAILS
     ProblemDetails:
       type: object

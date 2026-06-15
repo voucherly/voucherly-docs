@@ -282,6 +282,24 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: "category",
+      label: "Reports",
+      link: {
+        type: "doc",
+        id: "api/webapi/reports",
+      },
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/volumes-report",
+          label: "Volumes",
+          className: "api-method get",
+        },
+      ],
+    },
   ],
 };
 
