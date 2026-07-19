@@ -1,5 +1,13 @@
 ---
 sidebar_position: 1
+description: "Accept online payments with a prebuilt Voucherly Checkout: create a payment, handle the S2S callback, and show a success page."
+keywords:
+  - online payments
+  - hosted checkout
+  - Voucherly Checkout
+  - ecommerce integration
+  - Create Payment API
+  - S2S callback
 ---
 
 import Tabs from '@theme/Tabs';
@@ -18,34 +26,6 @@ Use a prebuilt checkout page to start accepting online payments.
 :::info E-commerce plugins
 Voucherly can be easily added as a payment method using one of the [E-commerce plugins](/guides/integrations/ecommerce-plugins).
 :::
-
-<!-- ## Restrict Available Payment Gateways
-
-Merchants can dynamically specify which payment gateways are available for each payment by providing an array of payment gateway IDs in the [Create Payment API](/api/webapi/create-payment) request (see [here](/guides/resources/payment-gateways) for a full list).
-
-If you do not require this feature, leave the `PaymentGateways` field empty and manage gateway activation/deactivation from the Dashboard.
-
-## Wallet Charge During Payment
-
-On the Voucherly Checkout page, if Wallet functionality is enabled, customers can top up their wallet credit to use for current or future payments.
-
-This process is entirely managed by Voucherly and requires no additional integration from the merchant.
-
-If a wallet charge occurs within the payment flow, a new payment object will be created with:
-- `Mode` set to `Wallet`.
-- `ParentPaymentId` referencing the original payment.
-
-## Complete or Refund a Payment
-
-A payment may consist of multiple transactions across different payment gateways, with varying outcomes (some successful, others not).
-
-As detailed in [this guide](/guides/resources/payments), after the customer completes the payment and is redirected to the merchant's website, successful transactions may have a status of either `PAID` or `Confirmed`. This depends on factors like the type of payment gateway or whether [Auto Confirm](/guides/resources/payments#auto-confirm) is enabled.
-
-:::warning
-Transactions completed through voucher payment gateways automatically transition to the `Confirmed` status.
-:::
-
-Merchants must confirm or refund payments. Leaving a payment in the `PAID` status could result in the funds being returned to the customer, depending on the gateway configuration. Always confirm successful payments, for example, when the order is prepared or shipped. -->
 
 ## Quick Guide
 
@@ -88,7 +68,7 @@ You can build a custom payments integration by displaying Payment gateway compon
     "customerEmail": "mario.rossi@voucherly.it",
     "customerFirstName": "Mario",
     "customerLastName": "Rossi",
-    "redirectOkUrl": "https://{redirect_host}}/payment/success",
+    "redirectOkUrl": "https://{{redirect_host}}/payment/success",
     "redirectKoUrl": "https://{{redirect_host}}/payment/error",
     "callbackUrl": "https://{{s2s_host}}/webhook/payment",
     "country": "IT",
@@ -133,7 +113,7 @@ If clicked, specify the selected Payment gateway using the `selectedPaymentGatew
     "customerEmail": "mario.rossi@voucherly.it",
     "customerFirstName": "Mario",
     "customerLastName": "Rossi",
-    "redirectOkUrl": "https://{redirect_host}}/payment/success",
+    "redirectOkUrl": "https://{{redirect_host}}/payment/success",
     "redirectKoUrl": "https://{{redirect_host}}/payment/error",
     "callbackUrl": "https://{{s2s_host}}/webhook/payment",
     "country": "IT",

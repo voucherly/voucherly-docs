@@ -1,5 +1,13 @@
 ---
 sidebar_position: 1
+description: "Understand how Voucherly Payments work: authorization and capture, two-step processing, and the full list of Payment and Transaction statuses."
+keywords:
+  - payment lifecycle
+  - authorization and capture
+  - payment statuses
+  - transaction statuses
+  - two-step payment
+  - Voucherly
 ---
 
 # How Payments work
@@ -33,12 +41,12 @@ Meal voucher Payment gateways do not support two-step process.
 You can define the default behaviour in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways) > Contabilizzazione automatica**. When enabled, all transactions are automatically captured at the end of a payment.
 :::
 
-### Payment statuses
+### Payment statuses {#payment-statuses}
 
 Payments have a `status` field that reflects the statuses of their transactions.
 
 - **Requested**. A payment has been created but no transactions exist yet.
-- **Paid**. The customer has successfully completed the checkout. At least one transaction is in the `PAID` status and awaits completion.
+- **Paid**. The customer has successfully completed the checkout. At least one transaction is in the `Paid` status and awaits completion.
 - **Confirmed**. The payment was successful, and all transactions have been confirmed.
 - **Refunded**. All transactions have been refunded or cancelled.
 - **Cancelled**. All transactions have been cancelled.
@@ -54,8 +62,8 @@ The status of a Transaction is determined by the `status` field.
 - **Confirmed**. The transaction has been captured. Funds previously blocked have been transferred to the merchant’s account.
 - **Refunded**. A transaction in the `Confirmed` status has been fully refunded.
 - **Dropped**. The transaction has been released.
-- **Cancelled**. A transaction in the `PAID` status has been cancelled, unlocking the funds.
+- **Cancelled**. A transaction in the `Paid` status has been cancelled, unlocking the funds.
 - **Failed**. The payment gateway failed to process the transaction.
-- **Voided**. A `PAID` transaction has been voided due to an error or a customer cancelling the payment.
+- **Voided**. A `Paid` transaction has been voided due to an error or a customer cancelling the payment.
 - **Expired** The transaction has expired.
 - **ImpossibleRefund**. A refund could not be processed for the transaction. It's common for meal voucher Payment gateways.

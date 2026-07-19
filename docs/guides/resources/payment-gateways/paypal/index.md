@@ -1,6 +1,14 @@
 ---
 title: PayPal
 sidebar_position: 30
+description: "Get your PayPal client ID and client secret from the PayPal Developer Dashboard and configure them in Voucherly for Sandbox and Live payments."
+keywords:
+  - PayPal
+  - client ID
+  - client secret
+  - PayPal business account
+  - Sandbox
+  - Voucherly
 ---
 
 
@@ -16,7 +24,7 @@ You must use a PayPal business account.
 1. Choose your environment (use Sandbox for test payments) and click **Create App** (or use the Default Application).
 ![App & Credentials page](sandbox-create.png)
 1. Copy the client ID and client secret for your app.
-![alt text](copy-client-keys.png)
+![Copy client ID and client secret](copy-client-keys.png)
 1. Configure these parameters in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use the correct environment.
 
 

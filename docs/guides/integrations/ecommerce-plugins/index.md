@@ -1,3 +1,14 @@
+---
+description: "Official Voucherly plugins for the most popular e-commerce platforms: WooCommerce, PrestaShop and Shopify. Accept meal vouchers and payments online."
+keywords:
+  - Voucherly plugins
+  - e-commerce plugins
+  - WooCommerce
+  - PrestaShop
+  - Shopify
+  - meal vouchers
+---
+
 import DocCardList from '@theme/DocCardList';
 
 # E-commerce plugins

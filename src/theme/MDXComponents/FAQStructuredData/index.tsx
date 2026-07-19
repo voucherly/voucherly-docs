@@ -23,7 +23,7 @@ interface FAQPageStructuredData {
   }[];
 }
 
-export default function FAQStructuredData({ faqs }: FAQStructuredDataProps): JSX.Element {
+export default function FAQStructuredData({ faqs }: FAQStructuredDataProps): React.JSX.Element {
   const structuredData: FAQPageStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

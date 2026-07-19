@@ -1,5 +1,13 @@
 ---
 sidebar_position: 10
+description: "Accept Ticket Restaurant Edenred meal vouchers online with Voucherly: become an Edenred partner, complete UAT and configure production to go live."
+keywords:
+  - Edenred
+  - Ticket Restaurant
+  - meal vouchers
+  - UAT
+  - eDPS
+  - Voucherly integration
 ---
 
 
@@ -18,7 +26,7 @@ Voucherly complies with all technical and UX standards set by Edenred. Activatio
 
 To enable Edenred Ticket Restaurant with Voucherly, your business must first be registered as an Edenred partner.
 
-#### Already accepting Edenred 
+#### Already accepting Edenred
 If you already accept Ticket Restaurant via POS in your physical store: 
    - Contact your Edenred sales representative.  
    - Request the activation to also accept Ticket Restaurant Edenred online through your e-commerce.  
@@ -101,6 +109,7 @@ Provide these details at least one week before the go-live date.
     - Save **PaymentClientId** and **PaymentClientSecret**.
 4. Edenred will complete the configuration and send you the following via email: **AuthenticationClientId**, **AuthenticationClientSecret**, **MID**.
 5. Configure these parameters in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use live environment.
+    - If you operate multiple locations with different MIDs, create one account per MID and assign it to each location — see [Per-store configuration](./per-store-configuration.md).
 
 ### Go live
 

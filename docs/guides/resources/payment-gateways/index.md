@@ -1,5 +1,13 @@
 ---
 sidebar_position: 2
+description: "The payment gateways available in Voucherly, including meal vouchers, cards and wallets, with support for two-step processing and partial refunds."
+keywords:
+  - payment gateways
+  - meal vouchers
+  - two-step payment
+  - partial refund
+  - Voucherly Wallet
+  - supported gateways
 ---
 
 import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
@@ -17,8 +25,8 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 | **NEXI**              | Nexi              |   | V | V |
 | **[PAYPAL](paypal)**  | PayPal            |   | V |   |
 | **PELLEGR**           | Pellegrini        | V |   |   |
-| **PHEY**              | Wordline          |   | V | V |
-| **SATISPY**           | Satispay          | V |   | V |
+| **PHEY**              | Worldline         |   | V | V |
+| **[SATISPY](satispay)**| Satispay         | V |   | V |
 | **SODEXO**            | Pluxee            | V |   |   |
 | **STRIPE**            | Stripe            |   | V | V |
 | **UPDAY**             | UpDay             | V |   |   |

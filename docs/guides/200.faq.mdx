@@ -1,0 +1,38 @@
+---
+sidebar_position: 200
+description: "Answers to common Voucherly questions: missing payment gateways at checkout, empty wallet credit, Wallet food-only limits and gateway configuration errors."
+keywords:
+  - Voucherly FAQ
+  - payment gateway
+  - Voucherly Checkout
+  - wallet credit
+  - Customer ID
+  - troubleshooting
+---
+
+import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
+
+# FAQs
+
+A list of questions and answers that might resolve some doubts.
+
+export const faqs = [
+  {
+    question: 'Some payment gateways are not shown to the customer on the Voucherly Checkout page.',
+    answer: 'There could be several reasons:<ul><li>The payment gateway in question has not been enabled from the Dashboard.</li><li>The customer\'s payment amount is below the minimum for that payment gateway, so it is not shown.</li></ul>',
+  },
+  {
+    question: 'A customer has empty wallet credit, despite having charged their wallet in a previous payment.',
+    answer: '<ul><li>Make sure you save the Voucherly Customer ID associated with each user at the end of a payment.</li><li>When creating a payment, be sure to send the Voucherly Customer ID.</li></ul>',
+  },
+  {
+    question: 'A customer cannot pay with the Wallet, even if they have sufficient remaining credit.',
+    answer: '<ul><li>The Wallet contains voucher credit, so it can only be used for food items (<code>IsFood</code> set to true).</li></ul>',
+  },
+  {
+    question: 'An error occurs when a customer tries to use a certain payment gateway.',
+    answer: '<ul><li>Make sure you have configured your payment gateway correctly (see <a href="https://docs.voucherly.it/en/guides/resources/payment-gateways">here</a>).</li><li>If the problem persists, please contact us on the <a href="https://voucherly.it/#contact">contact page</a>.</li></ul>',
+  },
+];
+
+<FAQStructuredData faqs={faqs} />

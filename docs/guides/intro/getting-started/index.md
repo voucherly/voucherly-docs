@@ -1,4 +1,13 @@
-import DocCardList from '@theme/DocCardList';
+---
+description: "Step-by-step guide to integrate your platform with Voucherly: create a sandbox account, get API keys, enable payment gateways and go live."
+keywords:
+  - voucherly getting started
+  - api keys
+  - sandbox account
+  - payment gateways
+  - integration
+  - go live
+---
 
 # Getting started
 
@@ -10,11 +19,11 @@ The instructions below will guide you on how to integrate your platform with our
 Visit the [Dashboard][dashboard] and register a new account.  
 Verify your email address by clicking the link sent to your inbox.
 
-### 2. Obtain API Keys
-In the **[Sviluppatori](https://dashboard.voucherly.it/Developer/ApiKey)** section, you will find both private and public keys.  
-Use the private key to authenticate API calls, as explained in [API Authentication](/api/webapi/voucherly-api#authentication).  
+### 2. Obtain API keys
+In the **[Sviluppatori](https://dashboard.voucherly.it/Developer/ApiKey)** section, you will find both secret and publishable keys.  
+Use the secret key to authenticate API calls, as explained in [API Authentication](/api/webapi/voucherly-api#authentication).  
 
-The public key is intended for frontend API calls, allowing only payment creation.
+The publishable key is intended for frontend API calls, allowing only payment creation.
 
 ### 3. Enable Payment gateways
 Activate payment gateways in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)**.
@@ -37,7 +46,7 @@ Full guidance: [E-commerce plugins](/guides/integrations/ecommerce-plugins/).
 
 #### API integration
 
-Voucherly's e-commerce plugins, developed in-house, require minimal or no development effort and allow you to start testing immediately. We offer a wide range of plugins and apps to integrate with platforms like PrestaShop, WooCommerce and Shopify.
+Integrate directly with our REST API for full control over the payment flow. Ideal when you need custom logic or your platform isn't covered by our plugins.
 
 Full guidance: [API integration](/guides/integrations/api/).
 

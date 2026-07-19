@@ -1,5 +1,13 @@
 ---
 sidebar_position: 1
+description: "How Voucherly complies with GDPR: EU certified data centers, encryption, a registered DPO and data deletion on request, acting as data controller."
+keywords:
+  - GDPR
+  - data protection
+  - Voucherly
+  - data controller
+  - DPO
+  - EU data privacy
 ---
 
 # GDPR Compliance and Data Protection
@@ -26,6 +34,6 @@ Access to customer data is highly restricted. Only a limited number of certified
 ## Data Destruction
 In compliance with relevant regulations, Voucherly automatically destroys data when it reaches its expiration period.
 
-Additionally, customers can request the deletion of their data, in line with the principle of **Privacy by Design**. 
+Additionally, customers can request the deletion of their data, in line with the principle of **Privacy by Design**.
 
 To request data deletion, email the Data Protection Officer at **[dpo@voucherly.it](mailto:dpo@voucherly.it)**.

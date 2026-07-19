@@ -1,5 +1,13 @@
 ---
 sidebar_position: 3
+description: "Accept payments on internet-connected self-service vending machines with Voucherly, using the same flow as the Kiosk use case."
+keywords:
+  - smart vending machine
+  - vending machine payments
+  - self-service
+  - Voucherly integration
+  - QR code payment
+  - kiosk
 ---
 
 

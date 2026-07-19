@@ -1,5 +1,13 @@
 ---
 sidebar_position: 2
+description: "Process payments on self-service kiosks with Voucherly: show the checkout URL as a QR code and use long polling to detect completion."
+keywords:
+  - kiosk payments
+  - self-service kiosk
+  - QR code payment
+  - Voucherly Checkout
+  - long polling
+  - Get Payment API
 ---
 
 import Tabs from '@theme/Tabs';
@@ -48,7 +56,7 @@ Add a checkout button to your kiosk and create a Payment in Voucherly.
     "customerEmail": "mario.rossi@voucherly.it",
     "customerFirstName": "Mario",
     "customerLastName": "Rossi",
-    "redirectOkUrl": "https://{redirect_host}}/payment/success",
+    "redirectOkUrl": "https://{{redirect_host}}/payment/success",
     "redirectKoUrl": "https://{{redirect_host}}/payment/error",
     "country": "IT",
     "lines": [

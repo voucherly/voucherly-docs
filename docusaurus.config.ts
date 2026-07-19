@@ -10,8 +10,8 @@ import { createApiPageMdForVoucherly } from './customMdGenerators';
 const config: Config = {
   title: 'Voucherly',
   titleDelimiter: '—',
-  tagline: 'Il modo migliore per accettare i buoni pasto',
-  favicon: 'https://voucherly-media.s3.eu-central-1.amazonaws.com/logo/voucherly-favicon.ico',
+  tagline: 'The best way to accept meal vouchers',
+  favicon: 'img/voucherly-favicon.ico',
 
   url: 'https://docs.voucherly.it',
   baseUrl: '/',
@@ -28,14 +28,16 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'it'],
     path: 'i18n',
     localeConfigs: {
       en: {
         label: 'English',
+        baseUrl: '/en/',
       },
       it: {
         label: 'Italiano',
+        baseUrl: '/it/',
       }
     }
   },
@@ -63,12 +65,16 @@ const config: Config = {
       disableSwitch: false,
       respectPrefersColorScheme: false,
     },
-    image: 'https://voucherly-media.s3.eu-central-1.amazonaws.com/logo/voucherly-logo-square.png',
+    image: 'img/voucherly-logo-square.png',
+    metadata: [
+      {name: 'keywords', content: 'Voucherly, meal vouchers, buoni pasto, payment gateway, online payments, checkout, payment API, POS'},
+      {name: 'twitter:card', content: 'summary_large_image'},
+    ],
     navbar: {
       logo: {
         alt: 'Voucherly logo',
-        src: 'https://voucherly-media.s3.eu-central-1.amazonaws.com/logo/voucherly-logo.png',
-        srcDark: 'https://voucherly-media.s3.eu-central-1.amazonaws.com/logo/voucherly-logo-white.png',
+        src: 'img/voucherly-logo.png',
+        srcDark: 'img/voucherly-logo-white.png',
       },
       items: [
         {
@@ -89,14 +95,40 @@ const config: Config = {
           position: 'right',
         },
         {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
           type: 'search',
           position: 'right',
         },
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'right'
-        // }
       ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Documentation',
+          items: [
+            {label: 'Guides', to: '/'},
+            {label: 'Postman collection', to: '/api/postman'},
+          ],
+        },
+        {
+          title: 'Product',
+          items: [
+            {label: 'Dashboard', href: 'https://dashboard.voucherly.it/'},
+            {label: 'Website', href: 'https://voucherly.it/'},
+          ],
+        },
+        {
+          title: 'Support',
+          items: [
+            {label: 'Contact', href: 'https://voucherly.it/#contact'},
+          ],
+        },
+      ],
+      copyright: `© ${new Date().getFullYear()} Voucherly. All rights reserved.`,
     },
     prism: {
       theme: prismThemes.github,

@@ -1,5 +1,13 @@
 ---
 sidebar_position: 1
+description: "Install and configure Voucherly's free WooCommerce plugin: WordPress setup, API key configuration, refunds and Checkout Blocks support."
+keywords:
+  - Voucherly WooCommerce
+  - WooCommerce plugin
+  - WordPress payment
+  - meal vouchers
+  - API key
+  - Checkout Blocks
 ---
 
 # WooCommerce
@@ -10,7 +18,7 @@ Technical manual for Voucherly's free plugin for WooCommerce e-commerce platform
 - **WordPress** 5.0 or higher.
 - **PHP** 5.6 or higher.
 
-## Downlaod
+## Download
 - From [Github](https://github.com/voucherly/voucherly-woocommerce) (click [here](https://github.com/voucherly/voucherly-woocommerce/releases/latest/download/voucherly-woocommerce.zip) to download the latest release).
 - From [WordPress Marketplace](https://wordpress.org/plugins/voucherly/).
 
@@ -38,9 +46,9 @@ There are two ways to install the Voucherly plugin:
 
 ## Configuration
 
-1. Sign in to your Voucherly dashboard.
-1. Go to **Sviluppatori > [Chiavi API](https://dashboard.voucherly.it/Developer/ApiKey)**:
-   - Get your private key.
+1. Sign in to the Dashboard.
+1. Go to **Sviluppatori > [API keys](https://dashboard.voucherly.it/Developer/ApiKey)**:
+   - Get your secret key.
 1. Sign in to your WooCommerce backend.
 1. Go to **WooCommerce > Settings > Payments > Voucherly**:
    - Enter your API key.
@@ -71,5 +79,5 @@ Make sure you have a backup of your production environment, and that you test th
 - Email support@voucherly.it.
 - Create a technical issue on [GitHub](https://github.com/voucherly/voucherly-woocommerce/issues/new).
 - Submit a support request at [voucherly.it/contattaci](https://voucherly.it/contattaci).
-- Refer to [Voucherly WooCommere](https://voucherly.it/soluzioni/plugin/woocommerce) for additional info.
+- Refer to [Voucherly WooCommerce](https://voucherly.it/soluzioni/plugin/woocommerce) for additional info.
 :::

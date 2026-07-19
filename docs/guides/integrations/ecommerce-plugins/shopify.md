@@ -1,5 +1,13 @@
 ---
 sidebar_position: 3
+description: "Connect Voucherly to Shopify: create a custom app, configure API scopes and a manual payment method to accept meal vouchers via asynchronous checkout."
+keywords:
+  - Voucherly Shopify
+  - Shopify plugin
+  - Shopify payment
+  - custom app
+  - meal vouchers
+  - manual payment method
 ---
 
 # Shopify
@@ -31,18 +39,18 @@ A full video tutorial is available [here](https://www.youtube.com/watch?v=53d6BC
     - Click **Create a custom app**.
     - In the modal window, enter the **App name** and select an **App developer**. The app developer can be the store owner, or any staff or collaborator account with the Develop apps permission.
     - Click **Create app**.
-3. Select API scopes.
+4. Select API scopes.
     - Go to **Configuration > Admin API integration**.
     - Click **Configure**.
     - Select the following scopes: `write_order_edits`, `read_order_edits`, `write_orders`, `read_orders`, `read_products`.
     - Click **Save**.
-4. Install the app to get the API access token and API secret key from **API credentials**.
+5. Install the app to get the API access token and API secret key from **API credentials**.
     - Go to **API credentials**.
     - Click **Install app**.
     - Reveal and copy *Admin API access token*.
     - Copy *API key*.
     - Copy *API secret key*.
-5. [Create a custom manual payment method](https://help.shopify.com/it/manual/payments/manual-payments#crea-un-metodo-di-pagamento-manuale-personalizzato). 
+6. [Create a custom manual payment method](https://help.shopify.com/it/manual/payments/manual-payments#crea-un-metodo-di-pagamento-manuale-personalizzato). 
     - Go to **Settings > Payments**.
     - In the **Manual payment methods** section, select **Create custom payment method**.
     - In **Custom payment method name**, enter the name of your payment method. The payment method does not necessarily need to be called "Voucherly", but it must include the word "Voucherly". For example *Buoni Pasto - Paga con Voucherly*.
@@ -50,12 +58,12 @@ A full video tutorial is available [here](https://www.youtube.com/watch?v=53d6BC
         - In **Additional details**, *Dopo aver cliccato "Paga ora", riceverai una mail con le istruzioni per il pagamento*.
         - In **Payment instructions**, *Ti è stata inviata una mail contenente le istruzioni per il pagamento. Clicca sul link ricevuto e completa l'acquisto in modo sicuro su Voucherly*.
             
-6. Go to **Settings > Domains** and get your Shopify store URL, in the format mydomain.myshopify.com.
-7. (optional) By default, the entire amount of the order will be payable with vouchers. To limit payments via vouchers to only certain products, assign a dedicated tag (*Food Product Tag*) to them.
+7. Go to **Settings > Domains** and get your Shopify store URL, in the format mydomain.myshopify.com.
+8. (optional) By default, the entire amount of the order will be payable with vouchers. To limit payments via vouchers to only certain products, assign a dedicated tag (*Food Product Tag*) to them.
 
 ### Voucherly
 
-1. Sign in to your Voucherly dashboard.
+1. Sign in to the Dashboard.
 2. Go to **Impostazioni** > **Attività** > **[Integrazioni](https://dashboard.voucherly.it/merchant/integrations)** and click on Shopify:
     - Click on ⚙️ next to *Parametri*.
     - Edit your settings.

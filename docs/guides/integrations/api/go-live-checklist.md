@@ -1,5 +1,13 @@
 ---
 sidebar_position: 3
+description: "Checklist to take your Voucherly integration live: follow API best practices, review error handling and logging, and switch from test to live API keys."
+keywords:
+  - go-live checklist
+  - Voucherly integration
+  - live mode
+  - API keys
+  - best practices
+  - error handling
 ---
 
 import Checkbox from '@site/src/components/Checkbox';

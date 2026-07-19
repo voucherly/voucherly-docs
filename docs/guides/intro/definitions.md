@@ -1,5 +1,13 @@
 ---
 sidebar_position: 3
+description: "Key Voucherly terms and concepts: merchant, user, customer, payment, payment gateway, wallet and payment method."
+keywords:
+  - voucherly definitions
+  - merchant
+  - customer
+  - payment gateway
+  - wallet
+  - payment method
 ---
 
 # Definitions

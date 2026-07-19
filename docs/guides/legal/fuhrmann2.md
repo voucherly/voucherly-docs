@@ -1,5 +1,15 @@
 ---
 sidebar_position: 2
+title: "Fuhrmann-2: payment button requirements"
+sidebar_label: Fuhrmann-2
+description: "Voucherly Checkout payment buttons meet the EU Fuhrmann-2 (C-249/21) ruling: button text must clearly state the customer's obligation to pay."
+keywords:
+  - Fuhrmann-2
+  - C-249/21
+  - payment button
+  - obligation to pay
+  - EU e-commerce law
+  - Voucherly Checkout
 ---
 
 # Fuhrmann-2

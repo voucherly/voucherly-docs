@@ -1,5 +1,13 @@
 ---
 sidebar_position: 2
+description: "Activate your Voucherly live account: complete onboarding, configure payment gateways, choose a subscription plan and set up branding."
+keywords:
+  - voucherly activation
+  - onboarding
+  - live account
+  - payment gateways
+  - subscription
+  - kyc
 ---
 
 import Checkbox from '@site/src/components/Checkbox';
@@ -27,14 +35,14 @@ Voucherly will verify your details and activate your account.
 
 <Checkbox label="Configure Payment gateways" >
 
-Navigate to **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** and enable Payment gateways you need.
+Navigate to **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** and enable payment gateways you need.
 
 :::warning
-Merchant-specific configuration parameters must be entered to activate Payment gateways. These parameters are provided to the merchant through a direct agreement with the Payment gateway.
+Merchant-specific configuration parameters must be entered to activate payment gateways. These parameters are provided to the merchant through a direct agreement with the payment gateway.
 :::
 
 :::tip
-We strongly recommend activating an additional Payment gateway, such as credit card, Satispay, or PayPal. This is essential to ensure that customers can always complete their payment, even if they are not using meal vouchers.
+We strongly recommend activating an additional payment gateway, such as credit card, Satispay, or PayPal. This is essential to ensure that customers can always complete their payment, even if they are not using meal vouchers.
 :::
 
 

@@ -1,6 +1,14 @@
 ---
 title: Pay at table
 sidebar_position: 5
+description: "Integrate your authentication and SSO with Voucherly pay-at-table: expose login/logout endpoints and sign redirect parameters with a 2048-bit RSA key."
+keywords:
+  - Voucherly pay at table
+  - SSO integration
+  - RSA signature
+  - login endpoint
+  - QR code payment
+  - authentication
 ---
 
 import Tabs from '@theme/Tabs';
@@ -21,7 +29,7 @@ These endpoints will exchange a set of signed parameters to ensure data integrit
 By the end of this guide, you’ll know how to:
 - Set up your authentication endpoints
 - Generate and verify digital signatures
-- Configure everything in the Voucherly dashboard
+- Configure everything in the Dashboard
 - (Optionally) handle user logout
 
 ## Prerequisites
@@ -58,7 +66,7 @@ This endpoint works like a typical SSO login page:
 
 #### Signature calculation
 
-The `signature`  parameter ensures the integrity and authenticity of the redirect. Use your [2048-bit RSA private key (PKCS#8)](#generating-a-2048-bit-rsa-key-pair-pkcs8) to sign the parameters.
+The `signature` parameter ensures the integrity and authenticity of the redirect. Use your [2048-bit RSA private key (PKCS#8)](#generating-a-2048-bit-rsa-key-pair-pkcs8) to sign the parameters.
 1. Concatenate the following parameters in the exact order:
 ```
 customerId + email + friendlyName + firstName + lastName + timestamp
@@ -135,7 +143,7 @@ If not implemented, the user will not see a logout button in Voucherly.
 
 ## Configuration
 
-1. Sign in to your Voucherly dashboard.
+1. Sign in to the Dashboard.
 1. Go to **Impostazioni > [Pagamento al tavolo](https://dashboard.voucherly.it/settings/table)**.
     - Select `Redirect` as the authentication type.
     - Enter your login endpoint URL.
@@ -144,7 +152,7 @@ If not implemented, the user will not see a logout button in Voucherly.
     - Save the configuration.
 
 :::tip
-You can include placeholders in the endpoint URLs will populate at redirect time:
+You can include placeholders in the endpoint URLs that will be populated at redirect time:
 - `{ExternalTableId}`
 - `{ExternalShopId}`
 - `{OrderId}`
@@ -154,9 +162,9 @@ These placeholders can be used, for example, to perform checks on shops or table
 
 ## Test the integration
 
-Once you’ve configured your login/logout endpoints and uploaded your RSA key, you can test the pay-at-table flow directly from the Voucherly dashboard.
+Once you’ve configured your login/logout endpoints and uploaded your RSA key, you can test the pay-at-table flow directly from the Dashboard.
 
-1. Sign in to your Voucherly dashboard.
+1. Sign in to the Dashboard.
 1. Go to **Impostazioni > [Sedi](https://dashboard.voucherly.it/settings/store)** and create a new location (if not already present).
 1. Navigate to **Tavoli > [Sedi e tavoli](https://dashboard.voucherly.it/table/table)**.
     - Select the location you just created.

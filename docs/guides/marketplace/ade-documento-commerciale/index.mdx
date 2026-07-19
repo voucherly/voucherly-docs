@@ -1,16 +1,14 @@
 ---
-title: Scontrini elettronici con AdE - Documento Commerciale on line
+title: Electronic receipts with AdE - Documento Commerciale on line
 sidebar_label: AdE - Documento Commerciale
 sidebar_position: 1
-description: Configura Voucherly per emettere scontrini elettronici tramite la procedura Documento Commerciale on line dell'Agenzia delle Entrate. Guida passo-passo a incarico Fisconline, credenziali, PIN e attivazione.
+description: "Issue legally valid electronic receipts with Voucherly through the Italian Revenue Agency's Documento Commerciale on line: Fisconline setup, credentials and activation."
 keywords:
-  - scontrino elettronico
+  - electronic receipt
   - documento commerciale online
   - Agenzia delle Entrate
   - Fisconline
-  - credenziali Fisconline
-  - incarico Fisconline
-  - PIN Agenzia Entrate
+  - Fisconline credentials
   - corrispettivi telematici
   - Voucherly
 image: https://ucarecdn.com/1a50448f-55d8-46ac-bab0-764dee2b9c4f/-/preview/100x100/
@@ -20,111 +18,111 @@ import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
 
 export const faqs = [
   {
-    question: 'Posso usare le credenziali Fisconline anche sul mio gestionale di cassa?',
-    answer: 'No. Voucherly ruota automaticamente la password ogni 90 giorni per rispettare la policy AdE: il gestionale di cassa, alla rotazione successiva, troverebbe credenziali non più valide. Se ti serve emettere scontrini anche da un altro sistema, conferisci un secondo incarico Fisconline e usa credenziali dedicate.',
+    question: 'Can I use the same Fisconline credentials on my cash-register software too?',
+    answer: 'No. Voucherly automatically rotates the password every 90 days to comply with the Revenue Agency policy: at the next rotation your cash-register software would find the credentials no longer valid. If you also need to issue receipts from another system, grant a second Fisconline delegation and use dedicated credentials.',
   },
   {
-    question: 'Cosa succede quando la password Fisconline scade?',
-    answer: 'Niente: Voucherly se ne accorge prima della scadenza dei 90 giorni e la rinnova automaticamente sul portale dell\'Agenzia delle Entrate. Non devi fare nulla.',
+    question: 'What happens when the Fisconline password expires?',
+    answer: 'Nothing: Voucherly detects it before the 90-day deadline and renews it automatically on the Italian Revenue Agency portal. You do not have to do anything.',
   },
   {
-    question: 'Devo conferire l\'incarico se ho una ditta individuale?',
-    answer: 'No. Per le ditte individuali è sufficiente accedere al portale AdE con SPID/CIE del titolare e procedere direttamente al <a href="#ottenere-le-credenziali-fisconline">prelievo delle credenziali Fisconline</a>.',
+    question: 'Do I need to grant the delegation if I am a sole proprietor?',
+    answer: 'No. For sole proprietorships it is enough to log in to the Revenue Agency portal with the owner\'s SPID/CIE and proceed directly to <a href="#obtain-your-fisconline-credentials">obtaining your Fisconline credentials</a>.',
   },
   {
-    question: 'Lo scontrino emesso da Voucherly è valido a tutti gli effetti?',
-    answer: 'Sì. È un documento commerciale on line emesso tramite la procedura ufficiale dell\'Agenzia delle Entrate, esattamente come quello che otterresti compilando il form a mano. L\'automazione via software è espressamente confermata dalla <a href="https://www.agenziaentrate.gov.it/portale/documents/20143/2665720/Risposta+n.+413+del+25+settembre+2020.pdf/35bddf23-25e5-0aa8-49f0-ed7703230c04">risposta all\'interpello n. 413/2020</a>.',
+    question: 'Is the receipt issued by Voucherly fully valid?',
+    answer: 'Yes. It is an online commercial document issued through the Italian Revenue Agency\'s official procedure, exactly like the one you would obtain by filling in the form manually. Software automation is expressly confirmed by <a href="https://www.agenziaentrate.gov.it/portale/documents/20143/2665720/Risposta+n.+413+del+25+settembre+2020.pdf/35bddf23-25e5-0aa8-49f0-ed7703230c04">ruling no. 413/2020</a>.',
   },
 ];
 
-# Scontrini elettronici con AdE - Documento Commerciale on line
+# Electronic receipts with AdE - Documento Commerciale on line
 
-Voucherly emette scontrini elettronici a norma di legge integrandosi direttamente con la procedura web ufficiale dell'**Agenzia delle Entrate** chiamata **"Documento Commerciale on line"**. Quando il tuo cliente paga, Voucherly si autentica su Fisconline per tuo conto e genera il documento commerciale, pronto da stampare o inviare via email.
+Voucherly issues legally compliant electronic receipts by integrating directly with the official web procedure of the Italian **Revenue Agency (Agenzia delle Entrate)** called **"Documento Commerciale on line"**. When your customer pays, Voucherly authenticates on Fisconline on your behalf and generates the commercial document, ready to print or send by email.
 
-In questa guida vedrai come ottenere le credenziali Fisconline, conferire l'eventuale incarico per società/associazioni e collegare il tutto a Voucherly in pochi minuti.
+In this guide you will see how to obtain your Fisconline credentials, grant the delegation for companies/associations where needed, and connect everything to Voucherly in a few minutes.
 
-:::info Risposta ufficiale dell'Agenzia delle Entrate
-Con la risposta all'interpello n. 413 del 25/09/2020, l'Agenzia delle Entrate ha confermato che è possibile **automatizzare via software** la procedura web di emissione dei documenti commerciali on line (scontrini elettronici).
-[Leggi la risposta ufficiale all'interpello N. 413/2020](https://www.agenziaentrate.gov.it/portale/documents/20143/2665720/Risposta+n.+413+del+25+settembre+2020.pdf/35bddf23-25e5-0aa8-49f0-ed7703230c04).
+:::info Official response from the Italian Revenue Agency
+With ruling no. 413 of 25/09/2020, the Italian Revenue Agency confirmed that the web procedure for issuing online commercial documents (electronic receipts) can be **automated via software**.
+[Read the official ruling no. 413/2020](https://www.agenziaentrate.gov.it/portale/documents/20143/2665720/Risposta+n.+413+del+25+settembre+2020.pdf/35bddf23-25e5-0aa8-49f0-ed7703230c04).
 :::
 
-:::warning Aliquote IVA obbligatorie
-Per emettere correttamente lo scontrino è obbligatorio indicare le **aliquote IVA** nei dettagli di ogni richiesta di pagamento.
-Voucherly trasmette queste informazioni direttamente all'Agenzia delle Entrate: senza IVA non può essere generato un documento commerciale valido.
+:::warning VAT rates are mandatory
+To issue the receipt correctly, you must include the **VAT rates** in the details of every payment request.
+Voucherly forwards this information directly to the Revenue Agency: without VAT, a valid commercial document cannot be generated.
 :::
 
-## Prerequisiti
+## Prerequisites
 
-Cosa ti serve dipende dalla forma giuridica della tua attività:
+What you need depends on the legal form of your business:
 
-- **Ditta individuale** — bastano le credenziali **SPID** o **CIE** del titolare. Puoi saltare lo step dell'incarico e andare direttamente a [Ottenere le credenziali Fisconline](#ottenere-le-credenziali-fisconline).
-- **Società, associazione o ente** — servono le credenziali **SPID** / **CIE** del **rappresentante legale**, e va prima conferito un **incarico** su Fisconline alla persona fisica che gestirà l'integrazione.
+- **Sole proprietorship** — the owner's **SPID** or **CIE** credentials are enough. You can skip the delegation step and go straight to [Obtain your Fisconline credentials](#obtain-your-fisconline-credentials).
+- **Company, association or entity** — you need the **SPID** / **CIE** credentials of the **legal representative**, and you must first grant a **delegation** on Fisconline to the individual who will manage the integration.
 
-In entrambi i casi è consigliato un dispositivo con schermo ampio (PC o tablet) per le procedure sul portale dell'Agenzia delle Entrate.
+In both cases we recommend a device with a large screen (PC or tablet) for the procedures on the Revenue Agency portal.
 
-:::tip Sconsigliamo le credenziali Fisconline aziendali
-La procedura per ottenere credenziali Fisconline intestate direttamente alla società è lenta e macchinosa. È molto più rapido conferire un incarico a una persona fisica e usare le sue credenziali Fisconline personali.
+:::tip We advise against company Fisconline credentials
+The procedure to obtain Fisconline credentials issued directly to the company is slow and cumbersome. It is much faster to grant a delegation to an individual and use their personal Fisconline credentials.
 :::
 
-## Conferire l'incarico su Fisconline (solo società) 
+## Grant the delegation on Fisconline (companies only)
 
-Questa procedura è necessaria solo per **società, associazioni ed enti**. Le ditte individuali possono saltare alla [sezione successiva](#ottenere-le-credenziali-fisconline).
+This procedure is only required for **companies, associations and entities**. Sole proprietorships can skip to the [next section](#obtain-your-fisconline-credentials).
 
-1. Accedi al [portale dell'Agenzia delle Entrate](https://portale.agenziaentrate.gov.it/PortaleWeb/home) usando lo **SPID del rappresentante legale**.
-1. Clicca su **"Profilo utente"**, poi nella barra a sinistra seleziona **"Incarichi"**.
-1. Nella sezione di gestione incarichi clicca su **"Come rappresentante legale"**.
-1. Inserisci il **codice fiscale** o la **partita IVA** dell'organizzazione.
-1. Clicca **"Aggiungi gestore incaricato"** e inserisci il **codice fiscale** della persona fisica che dovrà operare per conto dell'azienda (tipicamente il rappresentante legale stesso).
+1. Log in to the [Revenue Agency portal](https://portale.agenziaentrate.gov.it/PortaleWeb/home) using the **legal representative's SPID**.
+1. Click **"Profilo utente"**, then in the left-hand bar select **"Incarichi"**.
+1. In the delegation management section click **"Come rappresentante legale"**.
+1. Enter the organization's **tax code** or **VAT number**.
+1. Click **"Aggiungi gestore incaricato"** and enter the **tax code** of the individual who will operate on behalf of the company (typically the legal representative themselves).
 
-L'incaricato così designato è la persona le cui credenziali Fisconline andranno inserite in Voucherly al passo successivo.
+The delegate designated in this way is the person whose Fisconline credentials you will enter in Voucherly in the next step.
 
-## Ottenere le credenziali Fisconline
+## Obtain your Fisconline credentials
 
-Le credenziali Fisconline (codice fiscale + password + PIN a 10 cifre) consentono a Voucherly di autenticarsi sul portale AdE senza intervento manuale.
+The Fisconline credentials (tax code + password + 10-digit PIN) allow Voucherly to authenticate on the Revenue Agency portal without manual intervention.
 
-1. Accedi al [portale dell'Agenzia delle Entrate](https://portale.agenziaentrate.gov.it) con le tue credenziali **SPID** o **CIE personali**.
-1. In alto a destra verifica di essere in modalità **persona fisica**. Se è selezionata una partita IVA, clicca su **"Cambia Utenza"** e passa alla persona fisica.
-1. Apri **"Il tuo profilo"** e nella sezione **Contatti** assicurati che esista almeno un contatto email con **tutte le spunte attive**: serve a ricevere via email la seconda parte del PIN e la password iniziale.
-1. Nel pannello a sinistra clicca su **"Credenziali / PIN"** e poi su **"Prelievo credenziali"**.
-1. Annota le **prime 4 cifre del PIN** mostrate a video. Le **restanti 6 cifre** del PIN e la **password iniziale** ti arriveranno via email: insieme alle 4 a video formano un PIN completo da **10 cifre** (esattamente quello che chiede Voucherly).
-1. **Ripristina la password iniziale** sulla pagina [Ripristino password Fisconline](https://telematici.agenziaentrate.gov.it/Abilitazione/RipristinaPassword): usa la password iniziale ricevuta via email per impostarne una nuova a tua scelta. È questa nuova password che inserirai in Voucherly.
+1. Log in to the [Revenue Agency portal](https://portale.agenziaentrate.gov.it) with your personal **SPID** or **CIE** credentials.
+1. In the top right, make sure you are in **individual** mode. If a VAT number is selected, click **"Cambia Utenza"** and switch to the individual.
+1. Open **"Il tuo profilo"** and, in the **Contatti** section, make sure there is at least one email contact with **all the checkboxes enabled**: it is used to receive the second part of the PIN and the initial password by email.
+1. In the left panel click **"Credenziali / PIN"** and then **"Prelievo credenziali"**.
+1. Note down the **first 4 digits of the PIN** shown on screen. The **remaining 6 digits** of the PIN and the **initial password** will be sent to you by email: together with the 4 on screen they form a complete **10-digit** PIN (exactly what Voucherly asks for).
+1. **Reset the initial password** on the [Fisconline password reset page](https://telematici.agenziaentrate.gov.it/Abilitazione/RipristinaPassword): use the initial password received by email to set a new one of your choice. It is this new password that you will enter in Voucherly.
 
-:::warning La password iniziale non si usa per accedere
-La password che ricevi via email serve **solo** al primo ripristino. Conservala — ti servirà per eventuali ripristini futuri — ma **non** usarla per accedere a Fisconline o per configurare Voucherly: usa sempre la password che hai impostato tu al passo 6.
+:::warning The initial password is not used to log in
+The password you receive by email is **only** for the first reset. Keep it — you will need it for any future resets — but do **not** use it to log in to Fisconline or to configure Voucherly: always use the password you set yourself in step 6.
 :::
 
-## Configurare Voucherly
+## Configure Voucherly
 
-Una volta in possesso di codice fiscale dell'incaricato, partita IVA dell'azienda, password definitiva e PIN a 10 cifre, l'attivazione su Voucherly richiede pochi secondi.
+Once you have the delegate's tax code, the company's VAT number, the final password and the 10-digit PIN, activation on Voucherly takes just a few seconds.
 
-1. Accedi alla [Dashboard Voucherly](https://dashboard.voucherly.it/).
-1. Vai in **Attività** > **[Integrazioni](https://dashboard.voucherly.it/merchant/integrations)** e seleziona **AdE - Documento Commerciale on line**.
-1. Clicca su **Configura** (icona della matita in alto a destra).
-1. Inserisci le credenziali dell'Agenzia delle Entrate:
-    - **Codice Fiscale** (incaricato — la persona fisica)
-    - **Partita IVA** (azienda)
-    - **Password** (quella definitiva impostata al ripristino)
-    - **PIN** (10 cifre: 4 a video + 6 via email)
-1. Salva le impostazioni e clicca su **Attiva**.
+1. Log in to the [Voucherly Dashboard](https://dashboard.voucherly.it/).
+1. Go to **Attività** > **[Integrazioni](https://dashboard.voucherly.it/merchant/integrations)** and select **AdE - Documento Commerciale on line**.
+1. Click **Configura** (the pencil icon in the top right).
+1. Enter the Revenue Agency credentials:
+    - **Codice Fiscale** (the delegate — the individual)
+    - **Partita IVA** (company)
+    - **Password** (the final one set during the reset)
+    - **PIN** (10 digits: 4 on screen + 6 by email)
+1. Save the settings and click **Attiva**.
 
-Se l'attivazione va a buon fine, l'integrazione passa allo stato **Attivo** e Voucherly inizia a emettere documenti commerciali a ogni pagamento andato a buon fine.
+If activation is successful, the integration switches to the **Active** state and Voucherly starts issuing commercial documents on every successful payment.
 
-## Note importanti
+## Important notes
 
-### Rotazione automatica della password ogni 90 giorni
+### Automatic password rotation every 90 days
 
-L'Agenzia delle Entrate impone la **scadenza della password Fisconline ogni 90 giorni**. Per evitare interruzioni del servizio, **Voucherly cambia la password in autonomia** prima della scadenza. Una volta attivata l'integrazione, la password configurata cambia nel tempo e non corrisponde più a quella inserita inizialmente.
+The Italian Revenue Agency requires the **Fisconline password to expire every 90 days**. To avoid service interruptions, **Voucherly changes the password on its own** before it expires. Once the integration is active, the configured password changes over time and no longer matches the one you entered initially.
 
-:::info Le credenziali sono dedicate a Voucherly
-Per via della rotazione automatica, le **stesse credenziali Fisconline non possono essere usate in parallelo su altri sistemi** (gestionali di cassa, software di terze parti, accesso manuale al portale): non appena Voucherly ruota la password, l'altro sistema si troverebbe con credenziali non più valide.
+:::info The credentials are dedicated to Voucherly
+Because of the automatic rotation, the **same Fisconline credentials cannot be used in parallel on other systems** (cash-register software, third-party software, manual portal access): as soon as Voucherly rotates the password, the other system would be left with credentials that are no longer valid.
 
-Se hai bisogno di emettere documenti commerciali anche da un altro applicativo, **conferisci un secondo incarico Fisconline** a un'altra persona fisica e usa quelle credenziali — separate — sull'altro sistema.
+If you need to issue commercial documents from another application as well, **grant a second Fisconline delegation** to another individual and use those — separate — credentials on the other system.
 :::
 
-### Aliquote IVA su ogni richiesta di pagamento
+### VAT rates on every payment request
 
-Come ricordato in apertura, ogni voce della richiesta di pagamento deve riportare l'aliquota IVA: senza, l'AdE rifiuta l'emissione del documento commerciale.
+As mentioned at the beginning, every line of the payment request must include the VAT rate: without it, the Revenue Agency rejects the issuance of the commercial document.
 
-## Domande frequenti
+## Frequently asked questions
 
 <FAQStructuredData faqs={faqs} />

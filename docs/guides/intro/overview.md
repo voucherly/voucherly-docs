@@ -1,6 +1,13 @@
 ---
 sidebar_position: 1
 slug: /
+description: "Voucherly is a prebuilt payment platform letting merchants accept online payments and meal vouchers through many payment gateways."
+keywords:
+  - voucherly
+  - online payments
+  - meal vouchers
+  - payment gateways
+  - checkout
 ---
 
 # Overview
@@ -22,15 +29,6 @@ You can select the payment flow that aligns best with your specific use case, si
 Before getting started, take a moment to explore the range of solutions we've already developed at Voucherly:
 - [E-commerce plugins](/guides/integrations/ecommerce-plugins/)
 
-<!-- - Software di cassa -->
-<!-- 
-We've also teamed up with many Payment Service Providers (PSPs).
-Simply reach out to your PSP today and inquire about Satispay.
--->
-
 If none of these pre-built solutions align with your system requirements, you can define your unique use case and integrate the corresponding APIs to tailor Voucherly to your needs.
-
-<!-- Please keep in mind that by integrating Voucherly as a payment method, you are agreeing to abide by the Voucherly Business API Terms of Use.
-We encourage you to review this document thoroughly. -->
 
 If you have any further questions or need assistance about the integration process you can write to our support at support@voucherly.it.

@@ -1,5 +1,12 @@
 ---
 sidebar_position: 5
+description: "Manage registered customers with Voucherly to streamline checkout, reuse saved payment methods and simplify payment reconciliation."
+keywords:
+  - Voucherly customer management
+  - customerId
+  - saved payment methods
+  - checkout
+  - reconciliation
 ---
 
 import Tabs from '@theme/Tabs';
@@ -8,7 +15,7 @@ import Accordion from '@site/src/components/Accordion';
 
 # Manage customer
 
-Proper customer management is not only a technical best practice but also essential for enhancing user experience, streamline operations, and driving business success. 
+Proper customer management is not only a technical best practice but also essential for enhancing the user experience, streamlining operations, and driving business success. 
 
 This guide explains how and why to use registered customers with Voucherly.
 
@@ -102,7 +109,7 @@ If you haven't provided a `customerId` in your initial request, you should:
 
 <TabItem value="next" label="Next payment">
 
-Since you've provided a `customerId` in your initial request, will automatically reference the corresponding existing Customer for the Payment.
+Since you've provided a `customerId` in your initial request, the payment will automatically reference the corresponding existing Customer for the Payment.
 
 No further action is required on your part.
 

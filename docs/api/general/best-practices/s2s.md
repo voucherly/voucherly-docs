@@ -1,5 +1,12 @@
 ---
 sidebar_position: 4
+description: "Implement Voucherly's server-to-server (S2S) callback to reliably receive payment results, handle retries and prevent payment loss."
+keywords:
+  - Voucherly S2S callback
+  - server-to-server
+  - webhook
+  - payment notification
+  - callback retry
 ---
 
 import Tabs from '@theme/Tabs';
@@ -24,7 +31,7 @@ You must set a webhook endpoint, which is a URL that:
 
 The merchant's endpoint URL must be specified when creating the payment via the [Create Payment API](/api/webapi/create-payment).
 
-When the customer leaves the Voucherly Checkout page after a successfull payment Voucherly attempts to contact the merchant's server before redirecting the customer to the merchant's website.
+When the customer leaves the Voucherly Checkout page after a successful payment Voucherly attempts to contact the merchant's server before redirecting the customer to the merchant's website.
 
 Merchants need to configure an endpoint that accepts a POST request with a JSON body containing a subset of the Payment properties.
 
@@ -69,7 +76,7 @@ Below is an example of the S2S request body sent by Voucherly.
 ```json
 {
     "id": "pay_7orq17rP3Kx",
-    "tenant": "sand"
+    "tenant": "sand",
     "mode": "Payment",
     "referenceId": "eb8f57f8-241b-4142-b7b0-d308d724541a",
     "merchantId": "7C9E6679-7425-40DE-944B-E07FC1F90AE7",
@@ -80,7 +87,7 @@ Below is an example of the S2S request body sent by Voucherly.
     "paidAmount": 700,
     "paidVoucherAmount": 0,
     "amount": 700,
-    "status": "Paid",
+    "status": "Paid"
 }
 ```
 :::warning
@@ -97,7 +104,7 @@ The merchant server must respond with an HTTP `200 OK` status code and a JSON bo
 - **Stop** *(bool?)*  
   If true, Voucherly will not make further attempts to call the callback endpoint, regardless of the response status or the `Ok` field. 
 - **error** *(string?)*  
-  Merchant error message. Usefull only for investigation purposes. 
+  Merchant error message. Useful only for investigation purposes. 
 
 ```json
 {

@@ -1,5 +1,13 @@
 ---
 sidebar_position: 3
+description: "Website checklist to go live with Voucherly: contact info, business details, policies, privacy, security and payment gateway logos."
+keywords:
+  - voucherly website checklist
+  - go live requirements
+  - privacy policy
+  - terms and conditions
+  - pci
+  - payment gateways
 ---
 
 import Checkbox from '@site/src/components/Checkbox';
@@ -92,7 +100,7 @@ Voucherly supports EUR only payments.
 
 </Checkbox>
 
-<Checkbox label="Legal or export Restrictions" >
+<Checkbox label="Legal or export restrictions" >
 
 
 Disclose any legal or export restrictions applicable to your products or services. This transparency builds trust and helps customers understand any limitations that might impact them.
@@ -105,7 +113,7 @@ Clearly state the conditions for any promotions, discounts, or free trials. Prov
 
 </Checkbox>
 
-<Checkbox label="Security of your website and payment Information" >
+<Checkbox label="Security of your website and payment information" >
 
 Reassure customers that their payment data is safe by:
 - Complying with PCI standards.

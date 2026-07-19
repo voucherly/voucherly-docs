@@ -1,4 +1,13 @@
-import DocCardList from '@theme/DocCardList';
+---
+description: "Step-by-step guide to integrating your platform with the Voucherly REST API: create payments, view request logs and manage your API keys."
+keywords:
+  - Voucherly API
+  - API integration
+  - create payment
+  - REST API
+  - API keys
+  - test mode
+---
 
 # API integration
 
@@ -28,7 +37,7 @@ The core element of our API is the payment, which can be linked to multiple tran
     "customerEmail": "mario.rossi@voucherly.it",
     "customerFirstName": "Mario",
     "customerLastName": "Rossi",
-    "redirectOkUrl": "https://{redirect_host}}/payment/success",
+    "redirectOkUrl": "https://{{redirect_host}}/payment/success",
     "redirectKoUrl": "https://{{redirect_host}}/payment/error",
     "country": "IT",
     "lines": [
@@ -105,7 +114,7 @@ The core element of our API is the payment, which can be linked to multiple tran
 
 ### 3. View logs
 
-Whenever you make a call to Voucherly APIs, Voucherly creates and stores API for your merchant account. The API key you specify for the request determines whether the objects are stored in test or live mode. For example, if the last request used your test API secret key, Voucherly stored the objects in test mode.
+Whenever you make a call to Voucherly APIs, Voucherly creates and stores the API request for your merchant account. The API key you specify for the request determines whether the objects are stored in test or live mode. For example, if the last request used your test API secret key, Voucherly stored the objects in test mode.
 
 To view the API request log:
 

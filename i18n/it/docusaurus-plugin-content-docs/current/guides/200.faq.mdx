@@ -1,0 +1,39 @@
+---
+slug: /guide/faq
+sidebar_position: 200
+description: "Risposte alle domande frequenti su Voucherly: gateway mancanti al checkout, credito wallet vuoto, limiti del Wallet ai soli alimentari ed errori di configurazione."
+keywords:
+  - FAQ Voucherly
+  - gateway di pagamento
+  - Checkout Voucherly
+  - credito wallet
+  - Customer ID
+  - risoluzione problemi
+---
+
+import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
+
+# Domande frequenti
+
+Un elenco di domande e risposte che potrebbero chiarire alcuni dubbi.
+
+export const faqs = [
+  {
+    question: 'Alcuni gateway di pagamento non vengono mostrati al cliente nella pagina di Checkout di Voucherly.',
+    answer: 'Le cause possono essere diverse:<ul><li>Il gateway di pagamento in questione non è stato abilitato dalla Dashboard.</li><li>L\'importo del pagamento del cliente è inferiore al minimo previsto per quel gateway di pagamento, quindi non viene mostrato.</li></ul>',
+  },
+  {
+    question: 'Un cliente ha il credito del wallet vuoto, nonostante abbia ricaricato il wallet in un pagamento precedente.',
+    answer: '<ul><li>Assicurati di salvare il Voucherly Customer ID associato a ciascun utente al termine di un pagamento.</li><li>Quando crei un pagamento, assicurati di inviare il Voucherly Customer ID.</li></ul>',
+  },
+  {
+    question: 'Un cliente non riesce a pagare con il Wallet, anche se ha credito residuo sufficiente.',
+    answer: '<ul><li>Il Wallet contiene credito derivante da buoni, quindi può essere utilizzato solo per prodotti alimentari (<code>IsFood</code> impostato a true).</li></ul>',
+  },
+  {
+    question: 'Si verifica un errore quando un cliente prova a utilizzare un determinato gateway di pagamento.',
+    answer: '<ul><li>Assicurati di aver configurato correttamente il gateway di pagamento (consulta <a href="https://docs.voucherly.it/it/guide/risorse/gateway-di-pagamento">questa pagina</a>).</li><li>Se il problema persiste, contattaci nella <a href="https://voucherly.it/#contact">pagina dei contatti</a>.</li></ul>',
+  },
+];
+
+<FAQStructuredData faqs={faqs} />

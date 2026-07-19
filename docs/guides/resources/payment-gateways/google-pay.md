@@ -1,5 +1,13 @@
 ---
 sidebar_position: 20
+description: "Enable Google Pay on a custom domain with Voucherly: submit your site for Google approval and go live via MultiSafepay, Nexi or Stripe."
+keywords:
+  - Google Pay
+  - custom domain
+  - Google Pay Business Console
+  - PSP integration
+  - Voucherly
+  - go live
 ---
 
 
@@ -60,7 +68,7 @@ You need an active Voucherly account to configure Google Pay in the live environ
 
 Once Google approves your website, you can get the merchant ID and merchant name from your [Google Pay Business Console](https://pay.google.com/business/console/).
 
-1. Configure the Merchant ID in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use live environment.
+1. Configure the merchant ID in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use live environment.
 1. Depending on your PSP, additional steps or configurations may be required. Visit the reference documentation for more information.
 
 

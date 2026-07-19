@@ -1,5 +1,12 @@
 ---
 sidebar_position: 2
+description: "Official Voucherly PHP SDK supporting PHP 5.6.0 and later to integrate the Voucherly payment API."
+keywords:
+  - Voucherly PHP SDK
+  - PHP library
+  - Composer
+  - Packagist
+  - payment API
 ---
 
 # PHP SDK

@@ -1,5 +1,13 @@
 ---
 sidebar_position: 2
+description: "Install and configure Voucherly's free PrestaShop plugin: setup, API key configuration, refunds and checkout compatibility for your online store."
+keywords:
+  - Voucherly PrestaShop
+  - PrestaShop plugin
+  - PrestaShop payment
+  - meal vouchers
+  - API key
+  - refunds
 ---
 
 # PrestaShop
@@ -10,7 +18,7 @@ Technical manual for Voucherly's free plugin for PrestaShop e-commerce platform.
 - **PrestaShop** 1.7 up to 8.
 - **PHP** 5.6 or higher.
 
-## Downlaod
+## Download
 - From [Github](https://github.com/voucherly/voucherly-prestashop) (click [here](https://github.com/voucherly/voucherly-prestashop/releases/latest/download/voucherly-prestashop.zip) to download the latest release).
 
 ## Installation
@@ -19,15 +27,6 @@ Technical manual for Voucherly's free plugin for PrestaShop e-commerce platform.
 We recommend installing the plugin in a test environment first, following the PrestaShop installation procedure. Always create a backup.
 :::
 
-<!-- There are two ways to install the Voucherly plugin:
-
-### 1. WordPress Installation
-1. Sign in to your PrestaShop backend.
-2. Go to **Plugins > Add new**.
-3. Search for **Voucherly**.
-4. For the Voucherly plugin for PrestaShop, click **Install now > Activate**.
-
-### 2. Manual Installation -->
 1. Click the **Download** button above.
 2. Sign in to your PrestaShop backend.
 3. Go to **Modules > Module manager > Upload a module**.
@@ -38,16 +37,16 @@ We recommend installing the plugin in a test environment first, following the Pr
 
 ## Configuration
 
-1. Sign in to your Voucherly dashboard.
-1. Go to **Sviluppatori > [Chiavi API](https://dashboard.voucherly.it/Developer/ApiKey)**:
-   - Get your private key.
+1. Sign in to the Dashboard.
+1. Go to **Sviluppatori > [API keys](https://dashboard.voucherly.it/Developer/ApiKey)**:
+   - Get your secret key.
 1. Sign in to your PrestaShop backend.
 1. Go to **Payment > Payment Methods > Voucherly (Configure)**:
    - Enter your API key.
    - Edit your settings.
    - Click **Save**.
 1. Go to **International > Locations > Countries**:
-   - Enable United Kingdom
+   - Enable your country
 1. Go to **Payment > Preferences > Country restrictions**:
     - Enable Voucherly to your relevant countries.
     - Click **Save**.

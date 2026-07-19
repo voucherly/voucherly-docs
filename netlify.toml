@@ -1,19 +1,223 @@
 [build]
-	command = "yarn build"
+	command = "yarn build && node postbuild.mjs"
 	publish = "build"
 
+# --- Legacy path redirects (pre-i18n structure), now pointing under /en/ ---
 [[redirects]]
 from = '/terms/vsa'
-to = '/terms/service'
+to = '/en/terms/service'
+status = 301
 
 [[redirects]]
 from = '/api/general/overview/'
-to = '/api/webapi/voucherly-api/'
+to = '/en/api/webapi/voucherly-api/'
+status = 301
 
 [[redirects]]
 from = '/api/general/authentication/'
-to = '/api/webapi/voucherly-api/'
+to = '/en/api/webapi/voucherly-api/'
+status = 301
 
 [[redirects]]
 from = '/api/general/miscellaneous/'
-to = '/api/webapi/voucherly-api/'
+to = '/en/api/webapi/voucherly-api/'
+status = 301
+
+# --- Old un-prefixed English URLs -> /en/ (preserve SEO of already-indexed pages) ---
+[[redirects]]
+from = '/guides/*'
+to = '/en/guides/:splat'
+status = 301
+
+[[redirects]]
+from = '/api/*'
+to = '/en/api/:splat'
+status = 301
+
+[[redirects]]
+from = '/search'
+to = '/en/search'
+status = 301
+
+[[redirects]]
+from = '/download/*'
+to = '/en/download/:splat'
+status = 301
+
+# --- Localized IT slugs (English path -> Italian slug) ---
+[[redirects]]
+from = '/it/guides/intro/definitions/'
+to = '/it/guide/introduzione/definizioni/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/intro/getting-started/'
+to = '/it/guide/introduzione/per-iniziare/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/intro/getting-started/activate-account/'
+to = '/it/guide/introduzione/per-iniziare/attiva-account/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/intro/getting-started/website-checklist/'
+to = '/it/guide/introduzione/per-iniziare/checklist-sito-web/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/api/'
+to = '/it/guide/integrazioni/api/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/api/go-live-checklist/'
+to = '/it/guide/integrazioni/api/checklist-go-live/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/ecommerce-plugins/'
+to = '/it/guide/integrazioni/plugin-e-commerce/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/ecommerce-plugins/prestashop/'
+to = '/it/guide/integrazioni/plugin-e-commerce/prestashop/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/ecommerce-plugins/woocommerce/'
+to = '/it/guide/integrazioni/plugin-e-commerce/woocommerce/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/ecommerce-plugins/shopify/'
+to = '/it/guide/integrazioni/plugin-e-commerce/shopify/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/pay-at-table/'
+to = '/it/guide/integrazioni/pagamento-al-tavolo/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/legal/gdpr/'
+to = '/it/guide/note-legali/gdpr/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/legal/fuhrmann2/'
+to = '/it/guide/note-legali/fuhrmann2/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/marketplace/ade-documento-commerciale/'
+to = '/it/guide/marketplace/ade-documento-commerciale/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payments-lifecycle/'
+to = '/it/guide/risorse/ciclo-di-vita-dei-pagamenti/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/'
+to = '/it/guide/risorse/gateway-di-pagamento/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/google-pay/'
+to = '/it/guide/risorse/gateway-di-pagamento/google-pay/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/edenred/'
+to = '/it/guide/risorse/gateway-di-pagamento/edenred/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/satispay/'
+to = '/it/guide/risorse/gateway-di-pagamento/satispay/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/per-store-configuration/'
+to = '/it/guide/risorse/gateway-di-pagamento/configurazione-per-punto-vendita/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/paypal/'
+to = '/it/guide/risorse/gateway-di-pagamento/paypal/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/charge-wallet/'
+to = '/it/guide/casi-duso/ricarica-wallet/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/smart-vending-machine/'
+to = '/it/guide/casi-duso/distributori-automatici-smart/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/ecommerce/'
+to = '/it/guide/casi-duso/e-commerce/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/kiosk/'
+to = '/it/guide/casi-duso/chiosco/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/faq/'
+to = '/it/guide/faq/'
+status = 301
+
+[[redirects]]
+from = '/it/api/general/errors/'
+to = '/it/api/generale/errori/'
+status = 301
+
+[[redirects]]
+from = '/it/api/general/best-practices/'
+to = '/it/api/generale/best-practice/'
+status = 301
+
+[[redirects]]
+from = '/it/api/general/best-practices/s2s/'
+to = '/it/api/generale/best-practice/s2s/'
+status = 301
+
+[[redirects]]
+from = '/it/api/general/best-practices/customer/'
+to = '/it/api/generale/best-practice/gestione-clienti/'
+status = 301
+
+[[redirects]]
+from = '/it/api/libraries/'
+to = '/it/api/librerie/'
+status = 301
+
+[[redirects]]
+from = '/it/api/libraries/sdks/php/'
+to = '/it/api/librerie/sdk/php/'
+status = 301
+
+[[redirects]]
+from = '/it/api/libraries/sdks/dotnet/'
+to = '/it/api/librerie/sdk/dotnet/'
+status = 301
+
+# --- Root: send visitors to their language (Italian browsers -> /it/, others -> /en/) ---
+[[redirects]]
+from = '/'
+to = '/it/'
+status = 302
+conditions = {Language = ["it"]}
+
+[[redirects]]
+from = '/'
+to = '/en/'
+status = 302

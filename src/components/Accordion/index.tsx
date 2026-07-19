@@ -1,4 +1,5 @@
 import React, { useState, ReactNode } from 'react';
+import Translate from '@docusaurus/Translate';
 
 interface AccordionProps {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ const Accordion: React.FC<AccordionProps> = ({ children }) => {
         onClick={toggleAccordion}
       >
         <div className='accordion-title'>
-          <span>Optional</span>
+          <span><Translate id="accordion.optional">Optional</Translate></span>
           {children[0]}
         </div>
         <span className='menu__caret'></span>

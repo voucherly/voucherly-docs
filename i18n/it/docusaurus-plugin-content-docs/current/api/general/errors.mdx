@@ -1,0 +1,97 @@
+---
+slug: /api/generale/errori
+sidebar_position: 3
+description: "Comprendi gli errori dell'API Voucherly: codici di stato HTTP e problem details RFC 7807 con i campi type, title, status, detail, code e parameter."
+keywords:
+  - errori API Voucherly
+  - codici di stato HTTP
+  - RFC 7807
+  - problem details
+  - codici di errore
+---
+
+# Errori
+
+
+Voucherly utilizza i codici di risposta HTTP convenzionali per indicare il successo o il fallimento di una richiesta API. In generale: i codici nell'intervallo  `2xx`  indicano un successo. I codici nell'intervallo  `4xx`  indicano un errore dovuto alle informazioni fornite (ad es. un parametro obbligatorio è stato omesso, un addebito è fallito, ecc.). I codici nell'intervallo  `5xx`  indicano un errore dei server di Voucherly (questi sono rari).
+
+Gli errori vengono restituiti come [problem details (RFC 7807)](https://www.rfc-editor.org/rfc/rfc7807). Consulta le guide ufficiali.
+
+<div>
+  <div className="openapi-schema__list-item">
+    <div>
+      <span className="openapi-schema__container">
+        <strong className="openapi-schema__property">type</strong>
+        <span className="openapi-schema__name">string</span>
+        <span className="openapi-schema__divider" />
+        <span className="openapi-schema__nullable">nullable</span>
+      </span>
+      <p>Un riferimento URI che identifica il tipo di problema.</p>
+    </div>
+  </div>
+  <div className="openapi-schema__list-item">
+    <div>
+      <span className="openapi-schema__container">
+        <strong className="openapi-schema__property">title</strong>
+        <span className="openapi-schema__name">string</span>
+      </span>
+      <p>
+        Un breve riepilogo leggibile del tipo di problema. Rimane
+        coerente tra le diverse occorrenze dello stesso tipo di errore.
+      </p>
+    </div>
+  </div>
+  <div className="openapi-schema__list-item">
+    <div>
+      <span className="openapi-schema__container">
+        <strong className="openapi-schema__property">status</strong>
+        <span className="openapi-schema__name">int32</span>
+      </span>
+      <p>
+        Il codice di stato HTTP generato dal server di origine per questa
+        occorrenza del problema.
+      </p>
+    </div>
+  </div>
+  <div className="openapi-schema__list-item">
+    <div>
+      <span className="openapi-schema__container">
+        <strong className="openapi-schema__property">detail</strong>
+        <span className="openapi-schema__name">string</span>
+        <span className="openapi-schema__divider" />
+        <span className="openapi-schema__nullable">nullable</span>
+      </span>
+      <p>
+        Una spiegazione leggibile specifica per questa occorrenza del
+        problema.
+      </p>
+    </div>
+  </div>
+  <div className="openapi-schema__list-item">
+    <div>
+      <span className="openapi-schema__container">
+        <strong className="openapi-schema__property">code</strong>
+        <span className="openapi-schema__name">string</span>
+      </span>
+      <p>
+        Per alcuni errori che possono essere gestiti a livello di codice, una breve
+        stringa che indica il codice di errore riportato.
+      </p>
+    </div>
+  </div>
+  <div className="openapi-schema__list-item">
+    <div>
+      <span className="openapi-schema__container">
+        <strong className="openapi-schema__property">parameter</strong>
+        <span className="openapi-schema__name">string</span>
+        <span className="openapi-schema__divider" />
+        <span className="openapi-schema__nullable">nullable</span>
+      </span>
+      <p>
+        Se l'errore è specifico di un parametro, il parametro correlato all'
+        errore. Ad esempio, puoi utilizzarlo per mostrare un messaggio vicino
+        al campo del modulo corretto.
+      </p>
+    </div>
+  </div>
+</div>

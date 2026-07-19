@@ -1,0 +1,226 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.guidesSidebar.category.Introduction": {
+    "message": "Introduzione",
+    "description": "The label for category 'Introduction' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.Getting started": {
+    "message": "Per iniziare",
+    "description": "The label for category 'Getting started' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.Security and legal": {
+    "message": "Sicurezza e aspetti legali",
+    "description": "The label for category 'Security and legal' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.Use cases": {
+    "message": "Casi d'uso",
+    "description": "The label for category 'Use cases' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.Integrations": {
+    "message": "Integrazioni",
+    "description": "The label for category 'Integrations' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.API integration": {
+    "message": "Integrazione API",
+    "description": "The label for category 'API integration' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.E-commerce plugins": {
+    "message": "Plugin e-commerce",
+    "description": "The label for category 'E-commerce plugins' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.Marketplace": {
+    "message": "Marketplace",
+    "description": "The label for category 'Marketplace' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.Resources": {
+    "message": "Risorse",
+    "description": "The label for category 'Resources' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.Payment gateways": {
+    "message": "Gateway di pagamento",
+    "description": "The label for category 'Payment gateways' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.apiSidebar.category.General": {
+    "message": "Generale",
+    "description": "The label for category 'General' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Best practices": {
+    "message": "Best practice",
+    "description": "The label for category 'Best practices' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Libraries": {
+    "message": "Librerie",
+    "description": "The label for category 'Libraries' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Endpoints 🔗": {
+    "message": "Endpoint 🔗",
+    "description": "The label for category 'Endpoints 🔗' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Companies": {
+    "message": "Companies",
+    "description": "The label for category 'Companies' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Customers": {
+    "message": "Customers",
+    "description": "The label for category 'Customers' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Payment Methods": {
+    "message": "Payment Methods",
+    "description": "The label for category 'Payment Methods' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Payments": {
+    "message": "Payments",
+    "description": "The label for category 'Payments' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Payment Gateways": {
+    "message": "Payment Gateways",
+    "description": "The label for category 'Payment Gateways' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Receipts": {
+    "message": "Receipts",
+    "description": "The label for category 'Receipts' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Terminals": {
+    "message": "Terminals",
+    "description": "The label for category 'Terminals' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Reports": {
+    "message": "Reports",
+    "description": "The label for category 'Reports' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.doc.Company": {
+    "message": "Company",
+    "description": "The label for the doc item 'Company' in sidebar 'apiSidebar', linking to the doc api/webapi/schemas/company"
+  },
+  "sidebar.apiSidebar.doc.Create a Company": {
+    "message": "Create a Company",
+    "description": "The label for the doc item 'Create a Company' in sidebar 'apiSidebar', linking to the doc api/webapi/create-company"
+  },
+  "sidebar.apiSidebar.doc.List all Companies": {
+    "message": "List all Companies",
+    "description": "The label for the doc item 'List all Companies' in sidebar 'apiSidebar', linking to the doc api/webapi/list-company"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Company": {
+    "message": "Retrieve a Company",
+    "description": "The label for the doc item 'Retrieve a Company' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-company"
+  },
+  "sidebar.apiSidebar.doc.Customer": {
+    "message": "Customer",
+    "description": "The label for the doc item 'Customer' in sidebar 'apiSidebar', linking to the doc api/webapi/schemas/customer"
+  },
+  "sidebar.apiSidebar.doc.Create a Customer": {
+    "message": "Create a Customer",
+    "description": "The label for the doc item 'Create a Customer' in sidebar 'apiSidebar', linking to the doc api/webapi/create-customer"
+  },
+  "sidebar.apiSidebar.doc.List all Customers": {
+    "message": "List all Customers",
+    "description": "The label for the doc item 'List all Customers' in sidebar 'apiSidebar', linking to the doc api/webapi/list-customer"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Customer": {
+    "message": "Retrieve a Customer",
+    "description": "The label for the doc item 'Retrieve a Customer' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-customer"
+  },
+  "sidebar.apiSidebar.doc.Update a Customer": {
+    "message": "Update a Customer",
+    "description": "The label for the doc item 'Update a Customer' in sidebar 'apiSidebar', linking to the doc api/webapi/update-customer"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Customer's prepaid balance": {
+    "message": "Retrieve a Customer's prepaid balance",
+    "description": "The label for the doc item 'Retrieve a Customer's prepaid balance' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-customer-prepaid-balance"
+  },
+  "sidebar.apiSidebar.doc.List a Customer's wallet movements": {
+    "message": "List a Customer's wallet movements",
+    "description": "The label for the doc item 'List a Customer's wallet movements' in sidebar 'apiSidebar', linking to the doc api/webapi/list-customer-wallet-movement"
+  },
+  "sidebar.apiSidebar.doc.List a Customer's Addresses": {
+    "message": "List a Customer's Addresses",
+    "description": "The label for the doc item 'List a Customer's Addresses' in sidebar 'apiSidebar', linking to the doc api/webapi/list-customer-address"
+  },
+  "sidebar.apiSidebar.doc.Create a Customer's Address": {
+    "message": "Create a Customer's Address",
+    "description": "The label for the doc item 'Create a Customer's Address' in sidebar 'apiSidebar', linking to the doc api/webapi/create-customer-address"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Customer's Address": {
+    "message": "Retrieve a Customer's Address",
+    "description": "The label for the doc item 'Retrieve a Customer's Address' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-customer-address"
+  },
+  "sidebar.apiSidebar.doc.Update a Customer's Address": {
+    "message": "Update a Customer's Address",
+    "description": "The label for the doc item 'Update a Customer's Address' in sidebar 'apiSidebar', linking to the doc api/webapi/update-customer-address"
+  },
+  "sidebar.apiSidebar.doc.Delete a Customer's Address": {
+    "message": "Delete a Customer's Address",
+    "description": "The label for the doc item 'Delete a Customer's Address' in sidebar 'apiSidebar', linking to the doc api/webapi/delete-customer-address"
+  },
+  "sidebar.apiSidebar.doc.PaymentMethod": {
+    "message": "PaymentMethod",
+    "description": "The label for the doc item 'PaymentMethod' in sidebar 'apiSidebar', linking to the doc api/webapi/schemas/paymentmethod"
+  },
+  "sidebar.apiSidebar.doc.List a Customer's PaymentMethods": {
+    "message": "List a Customer's PaymentMethods",
+    "description": "The label for the doc item 'List a Customer's PaymentMethods' in sidebar 'apiSidebar', linking to the doc api/webapi/list-customer-payment-method"
+  },
+  "sidebar.apiSidebar.doc.Delete a Customer's PaymentMethod": {
+    "message": "Delete a Customer's PaymentMethod",
+    "description": "The label for the doc item 'Delete a Customer's PaymentMethod' in sidebar 'apiSidebar', linking to the doc api/webapi/delete-customer-payment-method"
+  },
+  "sidebar.apiSidebar.doc.Payment": {
+    "message": "Payment",
+    "description": "The label for the doc item 'Payment' in sidebar 'apiSidebar', linking to the doc api/webapi/schemas/payment"
+  },
+  "sidebar.apiSidebar.doc.Create a Payment": {
+    "message": "Create a Payment",
+    "description": "The label for the doc item 'Create a Payment' in sidebar 'apiSidebar', linking to the doc api/webapi/create-payment"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Payment": {
+    "message": "Retrieve a Payment",
+    "description": "The label for the doc item 'Retrieve a Payment' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-payment"
+  },
+  "sidebar.apiSidebar.doc.Confirm a Payment": {
+    "message": "Confirm a Payment",
+    "description": "The label for the doc item 'Confirm a Payment' in sidebar 'apiSidebar', linking to the doc api/webapi/confirm-payment"
+  },
+  "sidebar.apiSidebar.doc.Refund a Payment": {
+    "message": "Refund a Payment",
+    "description": "The label for the doc item 'Refund a Payment' in sidebar 'apiSidebar', linking to the doc api/webapi/refund-payment"
+  },
+  "sidebar.apiSidebar.doc.Void a Payment": {
+    "message": "Void a Payment",
+    "description": "The label for the doc item 'Void a Payment' in sidebar 'apiSidebar', linking to the doc api/webapi/void-payment"
+  },
+  "sidebar.apiSidebar.doc.Download a Payment receipt": {
+    "message": "Download a Payment receipt",
+    "description": "The label for the doc item 'Download a Payment receipt' in sidebar 'apiSidebar', linking to the doc api/webapi/download-payment-receipt"
+  },
+  "sidebar.apiSidebar.doc.Download a Payment refund receipt": {
+    "message": "Download a Payment refund receipt",
+    "description": "The label for the doc item 'Download a Payment refund receipt' in sidebar 'apiSidebar', linking to the doc api/webapi/download-payment-refund-receipt"
+  },
+  "sidebar.apiSidebar.doc.List all PaymentGateways": {
+    "message": "List all PaymentGateways",
+    "description": "The label for the doc item 'List all PaymentGateways' in sidebar 'apiSidebar', linking to the doc api/webapi/list-payment-gateway"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Receipt": {
+    "message": "Retrieve a Receipt",
+    "description": "The label for the doc item 'Retrieve a Receipt' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-receipt"
+  },
+  "sidebar.apiSidebar.doc.Download a Receipt": {
+    "message": "Download a Receipt",
+    "description": "The label for the doc item 'Download a Receipt' in sidebar 'apiSidebar', linking to the doc api/webapi/download-receipt"
+  },
+  "sidebar.apiSidebar.doc.List all Terminals": {
+    "message": "List all Terminals",
+    "description": "The label for the doc item 'List all Terminals' in sidebar 'apiSidebar', linking to the doc api/webapi/list-terminal"
+  },
+  "sidebar.apiSidebar.doc.Delete a Terminal": {
+    "message": "Delete a Terminal",
+    "description": "The label for the doc item 'Delete a Terminal' in sidebar 'apiSidebar', linking to the doc api/webapi/delete-terminal"
+  },
+  "sidebar.apiSidebar.doc.Volumes": {
+    "message": "Volumes",
+    "description": "The label for the doc item 'Volumes' in sidebar 'apiSidebar', linking to the doc api/webapi/volumes-report"
+  }
+}
