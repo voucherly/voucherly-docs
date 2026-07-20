@@ -58,11 +58,16 @@ Questo endpoint funziona come una tipica pagina di login SSO:
 | -------------- | ----------------- |
 | `customerId`   | Identificatore univoco del cliente nel tuo sistema (**obbligatorio**) |
 | `email`        | Indirizzo email del cliente |
+| `receiptEmail` | Indirizzo email usato per precompilare il destinatario dello scontrino durante il checkout. Passalo quando `email` contiene un valore mascherato. Se omesso, viene usato `email`. |
 | `friendlyName` | Nome visualizzato che Voucherly userà per rivolgersi al cliente |
 | `firstName`    | Nome del cliente |
 | `lastName`     | Cognome del cliente |
 | `timestamp`    | Timestamp Unix in secondi (generato dal tuo sistema al momento del redirect) |
 | `signature`    | Firma digitale per verificare l'autenticità |
+
+:::info Perché `email` e `receiptEmail` possono essere diversi
+`email` può contenere un valore mascherato (ad esempio per non esporre l'indirizzo reale). `receiptEmail` deve invece contenere l'indirizzo effettivo usato per l'invio dello scontrino fiscale: Voucherly vi applica le proprie logiche di conservazione e redemption per la compliance GDPR. Se `receiptEmail` non viene passato, Voucherly usa `email` come fallback per precompilare il destinatario dello scontrino.
+:::
 
 
 #### Calcolo della firma
@@ -70,12 +75,12 @@ Questo endpoint funziona come una tipica pagina di login SSO:
 Il parametro `signature` garantisce l'integrità e l'autenticità del redirect. Usa la tua [chiave privata RSA a 2048 bit (PKCS#8)](#generazione-di-una-coppia-di-chiavi-rsa-a-2048-bit-pkcs8) per firmare i parametri.
 1. Concatena i seguenti parametri nell'esatto ordine:
 ```
-customerId + email + friendlyName + firstName + lastName + timestamp
+customerId + email + receiptEmail + friendlyName + firstName + lastName + timestamp
 ```
 2. Calcola l'hash SHA-256 della stringa concatenata.
 3. Firma l'hash usando RSA PKCS#1 v1.5 con la tua chiave privata.
 4. Codifica la firma in base64.
-1. Aggiungila all'URL di redirect come `signature`.
+5. Aggiungila all'URL di redirect come `signature`.
 
 <Tabs>
 
@@ -85,6 +90,7 @@ customerId + email + friendlyName + firstName + lastName + timestamp
 var concatenation = new StringBuilder()
     .Append(customerId)
     .Append(email)
+    .Append(receiptEmail)
     .Append(friendlyName)
     .Append(firstName)
     .Append(lastName)

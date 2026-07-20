@@ -47,6 +47,14 @@ html {
   overflow-y:scroll;
 }
 
+/* Sticky footer: #__docusaurus uses `min-height: 100%`, which needs every
+   ancestor to have a definite height. `html` already has `height: 100%` but
+   `body` had lost it, breaking the chain — so on short pages the page didn't
+   fill the viewport and the footer rose into view. Restore it here. */
+body {
+  height: 100%;
+}
+
 .hidden {
   display: none !important;
 }
