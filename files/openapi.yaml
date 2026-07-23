@@ -31,12 +31,6 @@ info:
   contact:
     name: API Support
     email: support@voucherly.it
-  # x-logo:
-  #   url: "https://ucarecdn.com/a5e716fc-abcb-4ab2-960a-33a6a1b5446c/-/preview/200x50/"
-  #   altText: Voucherly logo
-  # x-dark-logo:
-  #   url: "https://ucarecdn.com/cf4a09cb-1f6e-4385-97c8-46ae406fd671/-/preview/200x50/"
-  #   altText: "Voucherly dark logo"
   version: v1
 security:
   - Voucherly-API-Key: []

@@ -1,0 +1,111 @@
+---
+title: Linking your payment systems to the Revenue Agency (POS-RT)
+sidebar_label: POS-RT connection
+sidebar_position: 2
+description: "Register your Voucherly ecommerce acquirer with the Italian Revenue Agency (POS-RT rule, from 1 Jan 2026): what to declare, deadlines and the acquirer tax codes."
+keywords:
+  - POS-RT
+  - collegamento POS registratore telematico
+  - censimento strumenti di pagamento
+  - Agenzia delle Entrate
+  - documento commerciale online
+  - acquirer codice fiscale
+  - Voucherly
+---
+
+import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
+
+export const faqs = [
+  {
+    question: 'I only sell online. Do I still have to register a POS?',
+    answer: 'Yes, if you certify your online sales with a Registratore Telematico or with the Documento Commerciale on line. Your ecommerce gateway counts as a "virtual/online POS" and its acquirer must be registered. If you only issue B2B electronic invoices, the obligation does not apply.',
+  },
+  {
+    question: 'What do I enter as the Terminal ID for an online POS?',
+    answer: 'Nothing. Online POS are identified by the acquirer\'s tax code and legal name plus your agreement/merchant number with the payment provider, not by a physical Terminal ID.',
+  },
+  {
+    question: 'My payment provider is not in the pre-loaded list. What do I do?',
+    answer: 'Enter the data manually. Take the acquirer\'s legal name and tax code from your contract or monthly statement with the provider, select whether the acquirer is Italian or foreign, and add your merchant/agreement number.',
+  },
+  {
+    question: 'Can my accountant register the connection for me?',
+    answer: 'For a Registratore Telematico the registration can be delegated. When you register through the Documento Commerciale on line web procedure, however, it must be done by the merchant directly and cannot be delegated.',
+  },
+];
+
+# Linking your payment systems to the Revenue Agency (POS-RT)
+
+From **1 January 2026**, Italian law requires anyone who certifies their takings (*corrispettivi*) — through a *Registratore Telematico* or the *Documento Commerciale on line* web procedure — to **register the technical link** between their electronic payment tools and the Italian **Revenue Agency (Agenzia delle Entrate)**. This is not a physical connection: it is a one-off, logical association declared on the **"Fatture e Corrispettivi"** portal.
+
+Voucherly is an **ecommerce** platform, so your payment gateway is, for the purposes of this rule, a **"virtual / online POS"**. Registering it is an action **you** perform on the Revenue Agency portal: Voucherly issues the commercial document on your behalf (see [AdE - Documento Commerciale](../ade-documento-commerciale/index.mdx)), but it cannot register the POS link for you.
+
+:::info Regulatory references
+The rule was introduced by the 2025 Budget Law (**Law no. 207 of 30 December 2024**, art. 1, paragraphs 74 and 77), which amends art. 2 of **Legislative Decree 127/2015**, and was implemented by **Revenue Agency ruling no. 424470 of 31 October 2025**. See the Revenue Agency's [merchant guide](https://www.agenziaentrate.gov.it/portale/cosa-deve-fare-l-esercente-guida).
+:::
+
+## Who it applies to (ecommerce)
+
+The obligation concerns anyone who **certifies their takings** with a Registratore Telematico or with the Documento Commerciale on line and collects payments electronically through an acquirer/POS.
+
+- If you issue **electronic receipts** for your online sales (for example via Voucherly's [Documento Commerciale on line](../ade-documento-commerciale/index.mdx) integration), you must register your acquirer.
+- If you only issue **B2B electronic invoices**, or your activity is not subject to *corrispettivi* certification, the obligation does not apply (see Revenue Agency ruling no. 44/2026).
+
+## What you declare for an online POS
+
+An ecommerce gateway is registered as an **online POS**. Unlike a physical terminal, it has **no Terminal ID**; you provide:
+
+- **Acquirer type** — Italian or foreign.
+- **Acquirer tax code (*codice fiscale*)** and **legal name (*denominazione*)** — the payment provider (PSP) you have a contract with: PayPal, Mollie, Stripe, Nexi, and so on. See the [table below](#acquirer-tax-codes).
+- **Agreement / merchant number (*numero di convenzionamento*)** — your account or organisation ID with that provider.
+
+## How to register the connection
+
+1. Log in to the **"Fatture e Corrispettivi"** portal on the Revenue Agency website.
+1. Open **"Gestione collegamenti"** → **"Collegamento dispositivi – POS"**.
+1. Choose **"Aggiungi nuovo POS"** and select the POS type **"Online"**.
+1. Indicate whether the acquirer is **Italian or foreign** and enter its **tax code**, **legal name** and your **agreement/merchant number**. Leave the Terminal ID empty.
+1. Save. Many acquirers are already **pre-loaded** in the portal; if yours is missing, enter the data manually.
+
+:::warning The Documento Commerciale on line registration cannot be delegated
+When you register the link through the Documento Commerciale on line web procedure, you must do it **yourself**: it cannot be delegated to an accountant or other intermediary. Delegation is only allowed for Registratore Telematico devices, through the "Accreditamento e censimento dispositivi" service.
+:::
+
+## Deadlines
+
+:::warning Key dates
+- The obligation applies **from 1 January 2026**.
+- The online registration service is available **from 5 March 2026**.
+- Tools already in use in January 2026 must be registered **by 20 April 2026**.
+- For a new tool, or any change afterwards: from the **6th day of the second month** following the tool becoming available, and by the **last working day of that month**.
+:::
+
+## Finding your agreement number
+
+The *numero di convenzionamento* is the identifier of your account/organisation with the payment provider — for example the *Organisation ID* for Mollie, or the *Account ID* for Stripe and PayPal. You can find it in your provider's dashboard or in your contract.
+
+## Acquirer tax codes
+
+The table below lists the registration data for the acquirers most used with Voucherly. **Always double-check the values against your own contract or statement** before entering them: the correct acquirer is the entity that appears as such in your agreement with the provider.
+
+| Acquirer (legal name) | Italian / Foreign | Tax code | Notes |
+|---|---|---|---|
+| PAYPAL (EUROPE) S.à r.l. et Cie, S.C.A. | Foreign | 97973160159 | — |
+| Mollie BV | Foreign | 815839091B01 | — |
+| Nexi Payments S.p.A. | Italian | 04107060966 | — |
+| Satispay Europe S.A. | Foreign | 92298050284 | — |
+| Stripe Technology Europe, Limited | Foreign | 97979220155 | Stripe operates through more than one entity: verify which one your contract/statement names as your acquirer. |
+| Stripe Payments Europe, Limited | Foreign | 12221650968 | Stripe operates through more than one entity: verify which one your contract/statement names as your acquirer. |
+| Adyen N.V. | Foreign | 97830130155 | Confirm the tax code against your Adyen agreement/report. |
+
+:::info Acquirer not listed
+For any other provider (Klarna, Amazon Pay, MultiSafepay, Nuvei, SumUp, Stancer, Fabrick, Viva, Numia, Phey, Scalapay, Floa, and so on), take the acquirer's legal name and tax code from your **contract or monthly statement** with the provider, or from the **pre-loaded list** in the "Fatture e Corrispettivi" portal. Do not enter unverified data.
+:::
+
+:::info Not tax advice
+This guide is provided for general information only and is not tax advice. Always verify the data against your own contracts and, where needed, consult your accountant.
+:::
+
+## Frequently asked questions
+
+<FAQStructuredData faqs={faqs} />

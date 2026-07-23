@@ -111,8 +111,33 @@ to = '/it/guide/note-legali/fuhrmann2/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/marketplace/ade-documento-commerciale/'
-to = '/it/guide/marketplace/ade-documento-commerciale/'
+from = '/it/guides/marketplace3/'
+to = '/it/guides/products/electronic-receipt/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/marketplace/ade-documento-commerciale/'
+to = '/it/guide/prodotti/scontrino-elettronico/documento-commerciale-online/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/marketplace/ade-documento-commerciale/'
+to = '/en/guides/products/electronic-receipt/ade-documento-commerciale/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/products/electronic-receipt/ade-documento-commerciale/'
+to = '/it/guide/prodotti/scontrino-elettronico/documento-commerciale-online/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/products/electronic-receipt/pos-rt-connection/'
+to = '/it/guide/prodotti/scontrino-elettronico/collegamento-pos-rt/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/marketplace3/'
+to = '/en/guides/products/electronic-receipt/'
 status = 301
 
 [[redirects]]

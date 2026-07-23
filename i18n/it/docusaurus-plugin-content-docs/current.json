@@ -31,9 +31,13 @@
     "message": "Plugin e-commerce",
     "description": "The label for category 'E-commerce plugins' in sidebar 'guidesSidebar'"
   },
-  "sidebar.guidesSidebar.category.Marketplace": {
-    "message": "Marketplace",
-    "description": "The label for category 'Marketplace' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.Products": {
+    "message": "Prodotti",
+    "description": "The label for category 'Products' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.Electronic receipt": {
+    "message": "Scontrino elettronico",
+    "description": "The label for category 'Electronic receipt' in sidebar 'guidesSidebar'"
   },
   "sidebar.guidesSidebar.category.Resources": {
     "message": "Risorse",

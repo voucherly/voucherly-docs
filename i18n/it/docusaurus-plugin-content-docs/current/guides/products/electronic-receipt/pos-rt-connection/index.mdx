@@ -1,0 +1,112 @@
+---
+slug: /guide/prodotti/scontrino-elettronico/collegamento-pos-rt
+title: Collegamento dei sistemi di pagamento all'Agenzia delle Entrate (POS-RT)
+sidebar_label: Collegamento POS-RT
+sidebar_position: 2
+description: "Censisci il tuo acquirer ecommerce all'Agenzia delle Entrate (obbligo POS-RT dal 1° gennaio 2026): cosa dichiarare, scadenze e i codici fiscali degli acquirer."
+keywords:
+  - POS-RT
+  - collegamento POS registratore telematico
+  - censimento strumenti di pagamento
+  - Agenzia delle Entrate
+  - documento commerciale online
+  - codice fiscale acquirer
+  - Voucherly
+---
+
+import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
+
+export const faqs = [
+  {
+    question: 'Faccio solo ecommerce, devo comunque collegare un POS?',
+    answer: 'Sì, se certifichi le vendite online con un Registratore Telematico o con il Documento Commerciale on line. Il tuo gateway ecommerce vale come "POS virtuale/online" e il relativo acquirer va censito. Se emetti solo fatture elettroniche B2B, l\'obbligo non si applica.',
+  },
+  {
+    question: 'Cosa inserisco come Terminal ID di un POS online?',
+    answer: 'Nulla. I POS online sono identificati dal codice fiscale e dalla denominazione dell\'acquirer più il numero di convenzionamento presso il prestatore di servizi di pagamento, non da un Terminal ID fisico.',
+  },
+  {
+    question: 'Il mio prestatore di pagamento non è nell\'elenco precaricato. Cosa faccio?',
+    answer: 'Inserisci i dati manualmente. Prendi denominazione e codice fiscale dell\'acquirer dal contratto o dall\'estratto conto con il prestatore, indica se l\'acquirer è italiano o estero e aggiungi il tuo numero di convenzionamento.',
+  },
+  {
+    question: 'Può fare il collegamento il mio commercialista?',
+    answer: 'Per un Registratore Telematico il collegamento è delegabile. Se invece lo effettui tramite la procedura web Documento Commerciale on line, deve farlo direttamente l\'esercente e non è delegabile.',
+  },
+];
+
+# Collegamento dei sistemi di pagamento all'Agenzia delle Entrate (POS-RT)
+
+Dal **1° gennaio 2026** la legge italiana impone a chi certifica i corrispettivi — tramite un *Registratore Telematico* o la procedura web *Documento Commerciale on line* — di **censire il collegamento tecnico** tra gli strumenti di pagamento elettronico e l'**Agenzia delle Entrate**. Non si tratta di un collegamento fisico: è un'associazione logica, una tantum, dichiarata sul portale **"Fatture e Corrispettivi"**.
+
+Voucherly è una piattaforma **ecommerce**, quindi il tuo gateway di pagamento è, ai fini della norma, un **"POS virtuale / online"**. Censirlo è un'operazione che compi **tu** sul portale dell'Agenzia delle Entrate: Voucherly emette il documento commerciale per tuo conto (vedi [AdE - Documento Commerciale](../ade-documento-commerciale/index.mdx)), ma non può effettuare il censimento del POS al posto tuo.
+
+:::info Riferimenti normativi
+La norma è stata introdotta dalla Legge di Bilancio 2025 (**Legge n. 207 del 30 dicembre 2024**, art. 1, commi 74 e 77), che modifica l'art. 2 del **D.Lgs. 127/2015**, ed è attuata dal **Provvedimento dell'Agenzia delle Entrate n. 424470 del 31 ottobre 2025**. Vedi la [guida per l'esercente](https://www.agenziaentrate.gov.it/portale/cosa-deve-fare-l-esercente-guida) dell'Agenzia delle Entrate.
+:::
+
+## A chi si applica (ecommerce)
+
+L'obbligo riguarda chi **certifica i corrispettivi** con un Registratore Telematico o con il Documento Commerciale on line e incassa con strumenti elettronici tramite un acquirer/POS.
+
+- Se emetti **scontrini elettronici** per le tue vendite online (ad esempio con l'integrazione [Documento Commerciale on line](../ade-documento-commerciale/index.mdx) di Voucherly), devi censire il tuo acquirer.
+- Se emetti solo **fatture elettroniche B2B**, o la tua attività non è soggetta a certificazione dei corrispettivi, l'obbligo non si applica (cfr. Risposta dell'Agenzia delle Entrate n. 44/2026).
+
+## Cosa dichiarare per un POS online
+
+Un gateway ecommerce si censisce come **POS online**. A differenza di un terminale fisico non ha **Terminal ID**; devi indicare:
+
+- **Tipo di acquirer** — italiano o estero.
+- **Codice fiscale** e **denominazione** dell'acquirer — il prestatore di servizi di pagamento (PSP) con cui hai il contratto: PayPal, Mollie, Stripe, Nexi e così via. Vedi la [tabella qui sotto](#codici-fiscali-degli-acquirer).
+- **Numero di convenzionamento** — l'ID del tuo account o della tua organizzazione presso quel prestatore.
+
+## Come effettuare il collegamento
+
+1. Accedi al portale **"Fatture e Corrispettivi"** sul sito dell'Agenzia delle Entrate.
+1. Apri **"Gestione collegamenti"** → **"Collegamento dispositivi – POS"**.
+1. Scegli **"Aggiungi nuovo POS"** e seleziona il tipo di POS **"Online"**.
+1. Indica se l'acquirer è **italiano o estero** e inserisci il suo **codice fiscale**, la **denominazione** e il tuo **numero di convenzionamento**. Lascia vuoto il Terminal ID.
+1. Salva. Molti acquirer sono già **precaricati** nel portale; se il tuo non c'è, inserisci i dati manualmente.
+
+:::warning Il collegamento tramite Documento Commerciale on line non è delegabile
+Se effettui il collegamento tramite la procedura web Documento Commerciale on line, devi farlo **tu direttamente**: non è delegabile a un commercialista o ad altri intermediari. La delega è ammessa solo per i dispositivi Registratore Telematico, tramite il servizio "Accreditamento e censimento dispositivi".
+:::
+
+## Scadenze
+
+:::warning Date importanti
+- L'obbligo si applica **dal 1° gennaio 2026**.
+- Il servizio web per il collegamento è disponibile **dal 5 marzo 2026**.
+- Gli strumenti già in uso a gennaio 2026 vanno censiti **entro il 20 aprile 2026**.
+- Per un nuovo strumento, o per una variazione successiva: dal **6° giorno del secondo mese** successivo alla disponibilità dello strumento, ed entro l'**ultimo giorno lavorativo dello stesso mese**.
+:::
+
+## Dove trovare il numero di convenzionamento
+
+Il numero di convenzionamento è l'identificativo del tuo account/organizzazione presso il prestatore di pagamento — ad esempio l'*Organisation ID* per Mollie, o l'*Account ID* per Stripe e PayPal. Lo trovi nel cruscotto del prestatore o nel contratto.
+
+## Codici fiscali degli acquirer
+
+La tabella seguente riporta i dati di censimento degli acquirer più usati con Voucherly. **Verifica sempre i valori sul tuo contratto o estratto conto** prima di inserirli: l'acquirer corretto è il soggetto che risulta come tale nel tuo accordo con il prestatore.
+
+| Acquirer (denominazione) | Italiano / Estero | Codice fiscale | Note |
+|---|---|---|---|
+| PAYPAL (EUROPE) S.à r.l. et Cie, S.C.A. | Estero | 97973160159 | — |
+| Mollie BV | Estero | 815839091B01 | — |
+| Nexi Payments S.p.A. | Italiano | 04107060966 | — |
+| Satispay Europe S.A. | Estero | 92298050284 | — |
+| Stripe Technology Europe, Limited | Estero | 97979220155 | Stripe opera tramite più entità: verifica quale è indicata come tuo acquirer nel contratto/estratto conto. |
+| Stripe Payments Europe, Limited | Estero | 12221650968 | Stripe opera tramite più entità: verifica quale è indicata come tuo acquirer nel contratto/estratto conto. |
+| Adyen N.V. | Estero | 97830130155 | Conferma il codice fiscale sul tuo contratto/report Adyen. |
+
+:::info Acquirer non in elenco
+Per qualsiasi altro prestatore (Klarna, Amazon Pay, MultiSafepay, Nuvei, SumUp, Stancer, Fabrick, Viva, Numia, Phey, Scalapay, Floa e simili), prendi denominazione e codice fiscale dell'acquirer dal **contratto o dall'estratto conto** con il prestatore, oppure dall'**elenco precaricato** nel portale "Fatture e Corrispettivi". Non inserire dati non verificati.
+:::
+
+:::info Non è consulenza fiscale
+Questa guida ha finalità puramente informative e non costituisce consulenza fiscale. Verifica sempre i dati sui tuoi contratti e, se necessario, rivolgiti al tuo commercialista.
+:::
+
+## Domande frequenti
+
+<FAQStructuredData faqs={faqs} />
