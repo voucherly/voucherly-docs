@@ -1,4 +1,5 @@
 ---
+sidebar_label: Edenred
 slug: /guide/risorse/gateway-di-pagamento/edenred
 sidebar_position: 10
 description: "Accetta i buoni pasto Ticket Restaurant Edenred online con Voucherly: diventa partner Edenred, completa l'UAT e configura la produzione per il go live."
@@ -9,8 +10,31 @@ keywords:
   - UAT
   - eDPS
   - integrazione Voucherly
+  - certificazione Edenred
+  - partner Edenred
+  - attivazione Edenred
 ---
 
+import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
+
+export const faqs = [
+  {
+    question: 'Devo sviluppare qualcosa per accettare Edenred con Voucherly?',
+    answer: 'No. Voucherly mette a disposizione un\'integrazione pronta all\'uso, già conforme agli standard tecnici e di UX di Edenred, flusso SSO e pagina di pagamento compresi. Ti basta completare i passaggi di attivazione con Edenred e inserire in Dashboard le credenziali che ricevi.',
+  },
+  {
+    question: 'Voucherly è partner certificato Edenred?',
+    answer: 'Voucherly è un fornitore tecnico dell\'esercente, non un rivenditore né un partner commerciale di Edenred: la convenzione resta sempre tra te ed Edenred. Non abbiamo in corso alcun percorso di certificazione formale, perché non è un requisito tecnico: l\'integrazione rispetta già gli standard Edenred ed è Edenred stessa a validarla, per ogni esercente, durante l\'UAT. La certificazione risponde a dinamiche di tipo commerciale e percorrerla comporterebbe costi aggiuntivi che finirebbero per ricadere sugli esercenti: abbiamo preferito evitarlo.',
+  },
+  {
+    question: 'L\'integrazione Edenred è già usata in produzione?',
+    answer: 'Sì. È pienamente operativa e utilizzata ogni giorno da e-commerce e catene della ristorazione, sia sul checkout web sia all\'interno delle loro app. Se prima di partire vuoi vedere qualche esempio live, scrivici a <a href="mailto:support@voucherly.it">support@voucherly.it</a> e ti condividiamo alcune referenze.',
+  },
+  {
+    question: 'La mia attivazione Edenred è ferma da tempo o è stata rifiutata: Voucherly può fare qualcosa?',
+    answer: 'L\'abilitazione degli esercenti e le regole di utilizzo dei buoni Ticket Restaurant sono gestite da Edenred, che decide autonomamente su requisiti, condizioni e tempistiche. Questi tempi possono variare da esercente a esercente e Voucherly non può accelerarli né influenzarne l\'esito. Il canale più efficace è il tuo referente commerciale Edenred oppure <a href="mailto:assistenzanetwork-it@edenred.com">assistenzanetwork-it@edenred.com</a>. Nel frattempo possiamo aiutarti a preparare tutta la parte tecnica, così da andare live non appena Edenred ti abilita.',
+  },
+];
 
 # Ticket Restaurant Edenred
 
@@ -20,8 +44,23 @@ Il processo di integrazione standard di Edenred si compone di 3 fasi:
 - Validazione e processo di UAT, che richiede il completamento con successo di test specifici (UAT, User Acceptance Testing).
 - Configurazione dell'ambiente di produzione.
 
-Voucherly rispetta tutti gli standard tecnici e di UX definiti da Edenred. L'attivazione richiede solo alcuni passaggi di configurazione manuale.
+## Come funziona Voucherly con Edenred
 
+Voucherly è un servizio tecnico per gli esercenti, non un rivenditore né un partner commerciale di Edenred: la convenzione, il MID e le condizioni economiche sono concordati direttamente tra te ed Edenred, e Voucherly non si inserisce mai in quel rapporto.
+
+L'integrazione è già attiva e in produzione: ogni giorno e-commerce e catene della ristorazione accettano Ticket Restaurant Edenred tramite Voucherly, sia sul checkout web sia in app. Infrastruttura, flusso SSO e pagina di pagamento rispettano già gli standard tecnici e di UX definiti da Edenred, quindi **non è richiesto alcuno sviluppo da parte tua**: restano solo i passaggi di configurazione descritti in questa guida.
+
+### Chi fa cosa
+
+| | |
+|-|-|
+| **Tu** | Firmi la convenzione con Edenred, fornisci i dati aziendali richiesti, partecipi alla sessione di UAT e inserisci nella Dashboard di Voucherly le credenziali che ricevi. |
+| **Edenred** | Valuta e abilita l'esercente, rilascia le credenziali (MID, client id e secret), definisce le regole di utilizzo dei propri buoni e valida l'integrazione durante l'UAT. |
+| **Voucherly** | Fornisce e mantiene l'integrazione, la pagina di checkout e il flusso di pagamento, e ti affianca in configurazione, UAT e go live. |
+
+:::info
+L'abilitazione degli esercenti, i tempi di attivazione e le regole che governano l'utilizzo dei buoni Ticket Restaurant sono definiti autonomamente da Edenred, in quanto emettitore dei buoni. Voucherly non ha visibilità né possibilità di intervento su queste decisioni, ma ti supporta su tutto ciò che riguarda la parte tecnica: scrivici a support@voucherly.it.
+:::
 
 ## Diventa partner
 
@@ -54,14 +93,14 @@ Se non sei ancora partner Edenred, puoi richiedere l'attivazione:
 
 
 :::warning
-I tempi di risposta possono variare e non dipendono da Voucherly. L'attivazione richiede in genere circa due settimane, ma dipende dai tempi di elaborazione di Edenred.
+I tempi di risposta dipendono dal processo di valutazione di Edenred e non dipendono da Voucherly. L'attivazione richiede in genere circa due settimane, ma la tempistica effettiva è nelle mani di Edenred — vedi le [FAQ](#domande-frequenti).
 :::
 
 ## Integrazione e UAT
 Edenred ti fornirà il documento *Introduzione ad EDPS* contenente tutte le informazioni necessarie sul processo e sulle integrazioni richieste.
 
 :::info
-Voucherly fornisce un'infrastruttura pronta all'uso, senza necessità di sviluppo aggiuntivo. Una lettura attenta non è obbligatoria ma solo consigliata.
+Il documento descrive l'integrazione che Voucherly già mette a tua disposizione, quindi una lettura attenta non è obbligatoria ma solo consigliata.
 :::
 
 Dovrai condividere con Edenred i parametri elencati nella tabella sottostante. L'attivazione richiede in genere un paio di giorni.
@@ -119,3 +158,7 @@ Ora sei pronto ad accettare Ticket Restaurant Edenred con Voucherly!
 :::warning
 Edenred potrebbe richiedere un'ulteriore UAT per l'ambiente di produzione.
 :::
+
+## Domande frequenti
+
+<FAQStructuredData faqs={faqs} />

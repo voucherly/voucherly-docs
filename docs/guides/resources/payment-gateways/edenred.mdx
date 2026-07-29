@@ -1,4 +1,5 @@
 ---
+sidebar_label: Edenred
 sidebar_position: 10
 description: "Accept Ticket Restaurant Edenred meal vouchers online with Voucherly: become an Edenred partner, complete UAT and configure production to go live."
 keywords:
@@ -8,8 +9,31 @@ keywords:
   - UAT
   - eDPS
   - Voucherly integration
+  - Edenred certification
+  - Edenred partner
+  - Edenred activation
 ---
 
+import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
+
+export const faqs = [
+  {
+    question: 'Do I need to develop anything to accept Edenred with Voucherly?',
+    answer: 'No. Voucherly provides a ready-to-use integration that already complies with Edenred\'s technical and UX standards, including the SSO flow and the payment page. All you have to do is complete the activation steps with Edenred and enter the credentials you receive in the Dashboard.',
+  },
+  {
+    question: 'Is Voucherly an Edenred certified partner?',
+    answer: 'Voucherly is a technical provider for the merchant, not an Edenred reseller or commercial partner: the convention is always signed directly between you and Edenred. We have no formal certification programme in progress, because it is not a technical requirement — the integration already meets Edenred\'s standards and every activation is validated by Edenred itself during the UAT. Certification answers commercial dynamics, and pursuing it would add costs that would end up being passed on to merchants: we preferred to avoid that.',
+  },
+  {
+    question: 'Is the Edenred integration already used in production?',
+    answer: 'Yes. It is fully operational and used daily by e-commerce sites and restaurant chains, both on web checkout and inside their apps. If you would like to see live examples before starting, ask us at <a href="mailto:support@voucherly.it">support@voucherly.it</a> and we will share some references.',
+  },
+  {
+    question: 'My Edenred activation is taking a long time, or my request was turned down. Can Voucherly help?',
+    answer: 'Merchant onboarding and the rules for the use of Ticket Restaurant vouchers are managed by Edenred, which decides autonomously on eligibility, conditions and timing. Those timings can vary from one merchant to another and Voucherly cannot speed them up or influence the outcome. The most effective channel is your Edenred sales contact, or <a href="mailto:assistenzanetwork-it@edenred.com">assistenzanetwork-it@edenred.com</a>. In the meantime we can help you get everything ready on the technical side, so you can go live as soon as Edenred enables you.',
+  },
+];
 
 # Ticket Restaurant Edenred
 
@@ -19,8 +43,23 @@ The standard Edenred integration process consists of 3 phases:
 - Validation and UAT process, requiring successful completion of specific tests (UAT, User Acceptance Testing).
 - Production environment setup.
 
-Voucherly complies with all technical and UX standards set by Edenred. Activation only requires some manual configuration steps.
+## How Voucherly works with Edenred
 
+Voucherly is a technical service for merchants, not an Edenred reseller or commercial partner: your convention, your MID and your economic conditions are agreed directly with Edenred, and Voucherly never steps into that relationship.
+
+The integration is already live and in production: e-commerce sites and restaurant chains accept Ticket Restaurant Edenred through Voucherly every day, both on web checkout and in-app. Infrastructure, SSO flow and payment page already comply with Edenred's technical and UX standards, so **no development is required on your side** — what remains are the configuration steps described in this guide.
+
+### Who does what
+
+| | |
+|-|-|
+| **You** | Sign the convention with Edenred, provide the requested company details, take part in the UAT session and enter the credentials you receive in the Voucherly Dashboard. |
+| **Edenred** | Evaluates and enables the merchant, issues the credentials (MID, client id and secret), defines the rules for the use of its vouchers and validates the integration during the UAT. |
+| **Voucherly** | Provides and maintains the integration, the checkout page and the payment flow, and supports you through configuration, UAT and go live. |
+
+:::info
+Merchant onboarding, activation times and the rules that govern how Ticket Restaurant vouchers can be spent are defined by Edenred autonomously, as the issuer of the vouchers. Voucherly has no visibility or influence over those decisions, but we support you on everything technical: write to support@voucherly.it.
+:::
 
 ## Become a partner
 
@@ -53,14 +92,14 @@ If you are not yet an Edenred partner, you can request activation by:
 
 
 :::warning
-Response times may vary and are not controlled by Voucherly. Activation typically takes about two weeks, but this depends on Edenred’s processing time.
+Response times depend on Edenred's evaluation process and are outside Voucherly's control. Activation typically takes about two weeks, but the actual timing is up to Edenred — see the [FAQ](#frequently-asked-questions).
 :::
 
 ## Integration and UAT
 Edenred will provide you with the *Introduzione ad EDPS* document containing all necessary information about the process and required integrations.
 
 :::info
-Voucherly provides a ready-to-use infrastructure, with no additional development needed. A careful read-through is not mandatory but only recommended.
+The document describes the integration that Voucherly already provides for you, so a careful read-through is not mandatory but only recommended.
 :::
 
 You will need to share the parameters listed in the table below with Edenred. Activation typically takes a couple of days.
@@ -118,3 +157,7 @@ Now you're ready to accept Ticket Restaurant Edenred with Voucherly!
 :::warning
 Edenred may require an additional UAT for production environment.
 :::
+
+## Frequently asked questions
+
+<FAQStructuredData faqs={faqs} />
