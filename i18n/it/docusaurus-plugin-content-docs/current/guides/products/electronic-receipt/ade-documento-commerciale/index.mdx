@@ -124,6 +124,56 @@ Se hai bisogno di emettere documenti commerciali anche da un altro applicativo, 
 
 Come ricordato in apertura, ogni voce della richiesta di pagamento deve riportare l'aliquota IVA: senza, l'AdE rifiuta l'emissione del documento commerciale.
 
+## Risoluzione dei problemi
+
+Quando salvi le credenziali in **Impostazioni > Scontrini e fatture > Configurazione AdE**, Voucherly esegue l'accesso al portale dell'Agenzia delle Entrate in più fasi. Se qualcosa non va, il messaggio mostrato ti dice **in quale fase** si è fermato l'accesso. Trova qui sotto il messaggio che hai ricevuto e come risolverlo.
+
+### "Credenziali Fisconline non valide"
+
+> Credenziali Fisconline non valide. Controlla Utente, Password e PIN inseriti.
+
+L'accesso a Fisconline è stato rifiutato: uno tra Utente, Password o PIN non è corretto. Controlla che:
+
+- l'**Utente** sia il **codice fiscale della persona fisica** incaricata, non la partita IVA;
+- la **Password** sia quella **definitiva** impostata da te al ripristino, non la password iniziale ricevuta via email;
+- il **PIN** sia composto da **10 cifre**: 4 mostrate a video + 6 ricevute via email.
+
+:::tip
+Se hai dubbi, ripeti la procedura di [prelievo delle credenziali Fisconline](#ottenere-le-credenziali-fisconline) e reimposta la password.
+:::
+
+### "Nessun incarico trovato per la Partita IVA indicata"
+
+> Nessun incarico trovato per la Partita IVA indicata. Verifica di aver conferito l'incarico su Fisconline e che la Partita IVA sia corretta.
+
+L'accesso è riuscito, ma sul portale AdE la persona fisica che stai usando **non risulta incaricata** a operare per la partita IVA indicata.
+
+- Verifica di aver [conferito l'incarico su Fisconline](#conferire-lincarico-su-fisconline-solo-società) alla persona fisica le cui credenziali stai inserendo.
+- Controlla che la **Partita IVA** inserita in Voucherly sia quella dell'azienda per cui è stato conferito l'incarico.
+- Se hai appena conferito l'incarico, attendi qualche minuto: l'AdE può impiegare un po' a renderlo attivo.
+
+:::tip Ditta individuale
+Se operi come **ditta individuale** non serve alcun incarico. Assicurati di usare le credenziali Fisconline del titolare e la partita IVA della ditta.
+:::
+
+### "Adesione ai servizi non attiva"
+
+> Accesso riuscito, ma l'adesione ai servizi di fatturazione e corrispettivi non risulta attiva sul portale AdE.
+
+Le credenziali sono valide, ma sul portale **Fatture e Corrispettivi** non risulta attiva l'**adesione** ai servizi necessari all'emissione del documento commerciale.
+
+Accedi al [portale Fatture e Corrispettivi](https://ivaservizi.agenziaentrate.gov.it) con l'utenza incaricata, completa l'**adesione** ai servizi e poi riprova a salvare le credenziali su Voucherly.
+
+### "Portale dell'Agenzia delle Entrate non raggiungibile" o errore temporaneo
+
+> Al momento non è possibile raggiungere il portale dell'Agenzia delle Entrate. Riprova tra qualche minuto.
+
+> Accesso riuscito, ma la configurazione non è andata a buon fine. Riprova, se il problema persiste contatta il supporto.
+
+Si tratta di un problema temporaneo di comunicazione con i sistemi dell'Agenzia delle Entrate (portale non raggiungibile o non disponibile in quel momento).
+
+Riprova dopo qualche minuto. Se l'errore persiste, scrivi a support@voucherly.it indicando l'orario del tentativo, oppure invia una richiesta di supporto su [voucherly.it/contattaci](https://voucherly.it/contattaci).
+
 ## Domande frequenti
 
 <FAQStructuredData faqs={faqs} />

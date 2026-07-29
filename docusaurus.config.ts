@@ -19,7 +19,12 @@ const config: Config = {
   projectName: 'voucherly-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
 
   trailingSlash: true,
 

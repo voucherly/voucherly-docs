@@ -4,9 +4,10 @@
  * work well for content-centric websites.
  */
 
+@use './apidocs.scss';
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap');
-@import './apidocs.scss';
 
 /* You can override the default Infima variables here. */
 :root {
@@ -47,13 +48,6 @@ html {
   overflow-y:scroll;
 }
 
-/* Sticky footer: #__docusaurus uses `min-height: 100%`, which needs every
-   ancestor to have a definite height. `html` already has `height: 100%` but
-   `body` had lost it, breaking the chain — so on short pages the page didn't
-   fill the viewport and the footer rose into view. Restore it here. */
-body {
-  height: 100%;
-}
 
 .hidden {
   display: none !important;
@@ -153,4 +147,8 @@ table > thead:has(> tr > th:empty):not(:has(> tr > th:not(:empty))) {
 
 .markdown h1:first-child {
   --ifm-h1-font-size: unset;
+}
+
+.main-wrapper {
+  min-height: calc(100vh - var(--ifm-navbar-height));
 }

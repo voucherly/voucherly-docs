@@ -121,6 +121,56 @@ If you need to issue commercial documents from another application as well, **gr
 
 As mentioned at the beginning, every line of the payment request must include the VAT rate: without it, the Revenue Agency rejects the issuance of the commercial document.
 
+## Troubleshooting
+
+When you save your credentials in **Impostazioni > Scontrini e fatture > Configurazione AdE**, Voucherly logs in to the Revenue Agency portal in several steps. If something goes wrong, the message shown tells you **at which step** the login stopped. Find the message you received below and how to fix it.
+
+### "Credenziali Fisconline non valide" (invalid Fisconline credentials)
+
+> Credenziali Fisconline non valide. Controlla Utente, Password e PIN inseriti.
+
+The Fisconline login was rejected: one of Utente, Password or PIN is wrong. Check that:
+
+- **Utente** is the **tax code of the delegated individual**, not the VAT number;
+- **Password** is the **final** one you set during the reset, not the initial password received by email;
+- **PIN** is made up of **10 digits**: 4 shown on screen + 6 received by email.
+
+:::tip
+If in doubt, repeat the [Fisconline credentials retrieval](#obtain-your-fisconline-credentials) procedure and reset the password.
+:::
+
+### "Nessun incarico trovato per la Partita IVA indicata" (no delegation found for the VAT number)
+
+> Nessun incarico trovato per la Partita IVA indicata. Verifica di aver conferito l'incarico su Fisconline e che la Partita IVA sia corretta.
+
+The login succeeded, but on the Revenue Agency portal the individual you are using **is not delegated** to operate for the VAT number provided.
+
+- Make sure you have [granted the delegation on Fisconline](#grant-the-delegation-on-fisconline-companies-only) to the individual whose credentials you are entering.
+- Check that the **Partita IVA** entered in Voucherly is the one of the company the delegation was granted for.
+- If you have just granted the delegation, wait a few minutes: the Revenue Agency may take a while to make it active.
+
+:::tip Sole proprietorship
+If you operate as a **sole proprietorship**, no delegation is required. Make sure you use the owner's Fisconline credentials and the business VAT number.
+:::
+
+### "Adesione ai servizi non attiva" (service membership not active)
+
+> Accesso riuscito, ma l'adesione ai servizi di fatturazione e corrispettivi non risulta attiva sul portale AdE.
+
+The credentials are valid, but on the **Fatture e Corrispettivi** portal the **membership** to the services required to issue the commercial document is not active.
+
+Log in to the [Fatture e Corrispettivi portal](https://ivaservizi.agenziaentrate.gov.it) with the delegated user, complete the service **membership**, then try saving the credentials in Voucherly again.
+
+### "Revenue Agency portal unreachable" or temporary error
+
+> Al momento non è possibile raggiungere il portale dell'Agenzia delle Entrate. Riprova tra qualche minuto.
+
+> Accesso riuscito, ma la configurazione non è andata a buon fine. Riprova, se il problema persiste contatta il supporto.
+
+This is a temporary communication problem with the Revenue Agency systems (portal unreachable or unavailable at that moment).
+
+Try again after a few minutes. If the error persists, write to support@voucherly.it stating the time of the attempt, or send a support request at [voucherly.it/contattaci](https://voucherly.it/contattaci).
+
 ## Frequently asked questions
 
 <FAQStructuredData faqs={faqs} />
