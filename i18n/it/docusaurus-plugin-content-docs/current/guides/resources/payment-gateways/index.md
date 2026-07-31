@@ -16,6 +16,7 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 # Gateway di pagamento
 
 ## Elenco dei gateway di pagamento disponibili
+
 | Id | Nome | Buoni pasto | Processo a 2 fasi | Rimborsabile parzialmente |
 |-|-|-|-|-|
 | **[EDENRED](edenred)**| Edenred           | V |   |   |
@@ -44,9 +45,11 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 :::
 
 ### Demo Voucherly {#demo}
+
 Demo Voucherly è un gateway di pagamento virtuale fornito da Voucherly che puoi utilizzare per scopi di test.
 
 ### Wallet
+
 Il Wallet è un gateway di pagamento virtuale fornito da Voucherly che consente ai clienti di pagare in anticipo e caricare *credito*. Per gli acquisti futuri, i clienti possono comodamente utilizzare il Wallet per pagare i prodotti alimentari senza dover interagire nuovamente con i gateway di pagamento dei buoni pasto.
 
 Un ulteriore vantaggio del Wallet è la sua flessibilità: elimina la limitazione dei buoni pasto dal valore fisso, offrendo ai clienti maggiore libertà nell'utilizzo dei propri fondi.
@@ -59,7 +62,6 @@ Scopri di più nella nostra guida [Gestione del cliente](/api/generale/best-prac
 
 <!-- ## Fallback Payment Gateway
 To enhance the reliability and availability of the service, merchants can configure a fallback payment gateway for each non-voucher gateway via the Dashboard. This ensures that if a payment gateway error is detected during the process (e.g., temporary unavailability), users can still complete their payment. -->
-
 
 <!-- 
 ## Configuration Guide

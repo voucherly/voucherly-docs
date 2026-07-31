@@ -17,5 +17,7 @@ Voucherly official plugins for the most widespread e-commerce platforms are avai
 <DocCardList />
 
 :::info
+
 - Refer to [Voucherly Plugin](https://voucherly.it/soluzioni/plugin) for additional info.
+
 :::

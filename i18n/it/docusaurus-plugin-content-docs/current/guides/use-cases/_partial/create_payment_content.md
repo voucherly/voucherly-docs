@@ -3,7 +3,6 @@
     Consulta la [Create Payment API](/api/webapi/create-payment) per il funzionamento e l'utilizzo dettagliati.
     :::
 
-
     Puoi anche creare un pagamento per un cliente esistente, così da precompilare il modulo di checkout con i suoi dati di contatto e unificarne lo storico degli acquisti. Un pagamento rappresenta l'esperienza che il cliente vede quando viene reindirizzato al modulo di pagamento. Puoi configurarlo con opzioni come:
 
     - **Lines**. Specifica gli articoli da addebitare. Per ogni articolo, il campo `product.isFood` determina se può essere pagato con i buoni.

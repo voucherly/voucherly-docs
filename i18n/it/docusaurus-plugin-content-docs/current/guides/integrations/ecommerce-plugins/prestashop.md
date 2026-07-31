@@ -12,14 +12,17 @@ keywords:
 ---
 
 # PrestaShop
+
 Manuale tecnico del plugin gratuito di Voucherly per la piattaforma e-commerce PrestaShop.
 
 ## Prerequisiti
+
 - Leggi **[Come iniziare con un account Voucherly](/guide/introduzione/per-iniziare)**.
 - **PrestaShop** dalla 1.7 fino alla 8.
 - **PHP** 5.6 o superiore.
 
 ## Download
+
 - Da [Github](https://github.com/voucherly/voucherly-prestashop) (clicca [qui](https://github.com/voucherly/voucherly-prestashop/releases/latest/download/voucherly-prestashop.zip) per scaricare l'ultima release).
 
 ## Installazione
@@ -34,7 +37,6 @@ Ti consigliamo di installare prima il plugin in un ambiente di test, seguendo la
 4. Clicca **Browse file**.
 5. Carica il file `voucherly-prestashop.zip`.
 6. Vai su **Configure** e svuota la cache.
-
 
 ## Configurazione
 
@@ -51,21 +53,24 @@ Ti consigliamo di installare prima il plugin in un ambiente di test, seguendo la
 1. Vai su **Payment > Preferences > Country restrictions**:
     - Abilita Voucherly per i paesi di tuo interesse.
     - Clicca **Save**.
-   
+
 ## Guida all'uso
 
 ### Rimborsi
+
 Puoi effettuare rimborsi completi direttamente dalla dashboard di PrestaShop.
+
 1. Vai su **Orders** e seleziona il tuo ordine.
 2. Vai alla sezione **Voucherly** sotto quella Payment.
 3. Clicca il link **Refund section**.
 4. Clicca **Refund**.
 
-
 ### Checkout
+
 Il plugin supporta il checkout di PrestaShop ed è compatibile con la maggior parte dei temi premium, a meno che tu non abbia un checkout personalizzato.
 
 ### Aggiornamenti
+
 Puoi aggiornare il plugin dal tuo backend e dal marketplace del CMS, oppure via SFTP.
 
 :::warning
@@ -73,6 +78,7 @@ Assicurati di avere un backup del tuo ambiente di produzione e di testare il plu
 :::
 
 :::info support
+
 - Scrivi a support@voucherly.it.
 - Crea una issue tecnica su [GitHub](https://github.com/voucherly/voucherly-prestashop/issues/new).
 - Invia una richiesta di supporto su [voucherly.it/contattaci](https://voucherly.it/contattaci).

@@ -13,7 +13,7 @@ keywords:
 
 # Come funzionano i pagamenti
 
-### Scopri come funzionano i pagamenti all'interno del flusso di pagamento.
+### Scopri come funzionano i pagamenti all'interno del flusso di pagamento
 
 In Voucherly, un pagamento è un'entità logica che gestisce l'esperienza di checkout dell'utente. Ogni pagamento può includere più transazioni, dove ogni transazione rappresenta un tentativo di pagamento tramite uno specifico gateway di pagamento.
 

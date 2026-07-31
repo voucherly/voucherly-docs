@@ -12,19 +12,18 @@ keywords:
 
 import Checkbox from '@site/src/components/Checkbox';
 
-
 # Go-live checklist
+
 Use this checklist to ensure a smooth transition when taking your integration live.
 
 Voucherly’s live and test modes are designed to function as similarly as possible, making the transition to live mode largely a matter of switching your API keys.
 
 If you are a developer, or had a developer integrate Voucherly for you, consider the following points before going live. If you’re using Voucherly through a connected website or plug-in, many of these items may not apply.
 
-
 <Checkbox label="Follow Voucherly API best practices" >
 
 Make sure your integration follow [Voucherly API best practices](/api/general/best-practices).
- 
+
 </Checkbox>
 
 <Checkbox label="Always authenticate your user" >

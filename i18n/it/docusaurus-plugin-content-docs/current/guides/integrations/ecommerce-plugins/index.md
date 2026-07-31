@@ -18,5 +18,7 @@ Sono disponibili i plugin ufficiali Voucherly per le piattaforme e-commerce più
 <DocCardList />
 
 :::info
+
 - Consulta [Voucherly Plugin](https://voucherly.it/soluzioni/plugin) per ulteriori informazioni.
+
 :::

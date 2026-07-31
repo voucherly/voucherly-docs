@@ -15,15 +15,13 @@ import Accordion from '@site/src/components/Accordion';
 
 # Manage customer
 
-Proper customer management is not only a technical best practice but also essential for enhancing the user experience, streamlining operations, and driving business success. 
+Proper customer management is not only a technical best practice but also essential for enhancing the user experience, streamlining operations, and driving business success.
 
 This guide explains how and why to use registered customers with Voucherly.
 
 ## Development Guide
 
 ### 1. Prepare your request
-
-
 
 <Tabs groupId="payment" queryString>
 <TabItem value="first" label="First payment">
@@ -76,7 +74,6 @@ You can also pass the customer details to update them.
 }
 ```
 
-
 </TabItem>
 </Tabs>
 
@@ -101,6 +98,7 @@ You can also pass the customer details to update them.
 <TabItem value="first" label="First payment">
 
 If you haven't provided a `customerId` in your initial request, you should:
+
 - Extract the `customerId` from the response.
 - Save it to your database.
 - Include it in subsequent requests for the same customer.
@@ -113,7 +111,6 @@ Since you've provided a `customerId` in your initial request, the payment will a
 
 No further action is required on your part.
 
-
 </TabItem>
 </Tabs>
 
@@ -122,7 +119,7 @@ No further action is required on your part.
         ### Retrieve Customer Payment Methods
     </>
     <>
-        
+
         Use the `GET Customer Payment Methods API` to fetch a customer's saved payment methods. This functionality can be used to:
         - Display the saved payment methods in the customer's profile page.
         - Reduce checkout time and increase conversion rates by offering direct access to the customer's preferred payment methods. 
@@ -152,12 +149,10 @@ No further action is required on your part.
     </>
 </Accordion>
 
-
-
 ## Why? Benefits! {#why}
 
 - **Streamline Checkout**.
-   - Prefill customer details like name and email, reducing manual input.
-   - Save customer preferences and payment methods for quicker future checkouts.
-   - Reduce friction. For example, Payment gateways like Edenred use Single Sign-On (SSO). Voucherly can maintain active sessions, improving the purchase flow.
+  - Prefill customer details like name and email, reducing manual input.
+  - Save customer preferences and payment methods for quicker future checkouts.
+  - Reduce friction. For example, Payment gateways like Edenred use Single Sign-On (SSO). Voucherly can maintain active sessions, improving the purchase flow.
 - **Simplified Reconciliation**. Associating every payment with a customer enables clear transaction tracking. This is particularly useful for managing refunds, sales analysis and accounting audits.

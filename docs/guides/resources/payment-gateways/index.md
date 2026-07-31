@@ -15,6 +15,7 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 # Payment gateways
 
 ## List of available Payment gateways
+
 | Id | Name | Meal voucher | 2-step process | Partial refundable |
 |-|-|-|-|-|
 | **[EDENRED](edenred)**| Edenred           | V |   |   |
@@ -43,9 +44,11 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 :::
 
 ### Demo Voucherly {#demo}
+
 The Demo Voucherly is a virtual payment gateway provided by Voucherly that you can use for testing purposes.
 
 ### Wallet
+
 The Wallet is a virtual payment gateway provided by Voucherly that enables customers to pay in advance and load *credit*. For future purchases, customers can conveniently use the Wallet to pay for food items without interacting with meal voucher Payment gateways again.
 
 An additional advantage of the Wallet is its flexibility — it eliminates the limitation of meal vouchers with fixed values, giving customers greater freedom in how they use their funds.
@@ -58,7 +61,6 @@ Learn more in our [Manage customer](/api/general/best-practices/customer) guide.
 
 <!-- ## Fallback Payment Gateway
 To enhance the reliability and availability of the service, merchants can configure a fallback payment gateway for each non-voucher gateway via the Dashboard. This ensures that if a payment gateway error is detected during the process (e.g., temporary unavailability), users can still complete their payment. -->
-
 
 <!-- 
 ## Configuration Guide

@@ -16,16 +16,19 @@ The instructions below will guide you on how to integrate your platform with our
 ## Configuration
 
 ### 1. Create a Sandbox account
+
 Visit the [Dashboard][dashboard] and register a new account.  
 Verify your email address by clicking the link sent to your inbox.
 
 ### 2. Obtain API keys
+
 In the **[Sviluppatori](https://dashboard.voucherly.it/Developer/ApiKey)** section, you will find both secret and publishable keys.  
 Use the secret key to authenticate API calls, as explained in [API Authentication](/api/webapi/voucherly-api#authentication).  
 
 The publishable key is intended for frontend API calls, allowing only payment creation.
 
 ### 3. Enable Payment gateways
+
 Activate payment gateways in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)**.
 
 Voucher payments often require supplementation with a *standard* transaction, such as a card payment. Therefore, activating at least one non-voucher payment gateway is strongly recommended.
@@ -36,6 +39,7 @@ Please refer to the [Payment gateways resource](/guides/resources/payment-gatewa
 :::
 
 ### 4. Let's start
+
 Define what's the [integration](/guides/integrations) that suits you best and your [use case](/guides/use-cases).
 
 #### E-commerce plugins
@@ -58,6 +62,5 @@ To start processing real transactions, we need to verify and approve your mercha
 1. Ensure your website aligns with [Website checklist](/guides/intro/getting-started/website-checklist).
 
 Once submitted, we will perform know your customer (KYC) checks. If approved, your account will go live.
-
 
 [dashboard]: https://dashboard.voucherly.it/

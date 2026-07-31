@@ -27,23 +27,27 @@ You’ll need to expose a login endpoint (required) and optionally a logout endp
 These endpoints will exchange a set of signed parameters to ensure data integrity and trust between your system and Voucherly.
 
 By the end of this guide, you’ll know how to:
+
 - Set up your authentication endpoints
 - Generate and verify digital signatures
 - Configure everything in the Dashboard
 - (Optionally) handle user logout
 
 ## Prerequisites
+
 - Read **[Getting started with a Voucherly account](/guides/intro/getting-started)**.
 
-
 ## Overview
+
 Voucherly requires your system to expose two endpoints:
+
 - **Endpoint login** – standard SSO-style login page that receives authentication requests from Voucherly and, after verifying the user, redirects them back to Voucherly with the required customer information.
 - **Endpoint logout** (optional) – if implemented, handles logout requests from Voucherly to terminate customer sessions in your system.
 
 Your system is responsible for verifying user identity, optionally allowing guest access, and securely communicating customer data back to Voucherly via signed query parameters.
 
 ## Integration
+
 ### Login endpoint
 
 This endpoint works like a typical SSO login page:
@@ -68,14 +72,16 @@ This endpoint works like a typical SSO login page:
 `email` may carry a masked value (for example, to avoid exposing the real address). `receiptEmail` should carry the actual address used to deliver the fiscal receipt: Voucherly applies its own retention and redemption rules to it for GDPR compliance. If `receiptEmail` is not passed, Voucherly falls back to `email` to pre-fill the receipt recipient.
 :::
 
-
 #### Signature calculation
 
 The `signature` parameter ensures the integrity and authenticity of the redirect. Use your [2048-bit RSA private key (PKCS#8)](#generating-a-2048-bit-rsa-key-pair-pkcs8) to sign the parameters.
+
 1. Concatenate the following parameters in the exact order:
-```
-customerId + email + receiptEmail + friendlyName + firstName + lastName + timestamp
-```
+
+   ```text
+   customerId + email + receiptEmail + friendlyName + firstName + lastName + timestamp
+   ```
+
 2. Compute the SHA-256 hash of the concatenated string.
 3. Sign the hash using RSA PKCS#1 v1.5 with your private key.
 4. Encode the signature in base64.
@@ -113,8 +119,8 @@ var signature = rsa.SignData(dataBytes, HashAlgorithmName.SHA256, RSASignaturePa
 
 </Tabs>
 
-    
 #### Generating a 2048-bit RSA Key Pair (PKCS#8)
+
 To sign authentication requests, you need an asymmetric RSA key pair:
 
 1. Generate the private key in PKCS#8 format (2048-bit).
@@ -129,10 +135,10 @@ openssl rsa -pubout -in private_key.pem -out public_key.pem
 ```
 
 :::warning
+
 - Keep the private key secure. Do not expose it in client-side code.
+
 :::
-
-
 
 ### Logout endpoint (optional)
 
@@ -146,7 +152,6 @@ This endpoint is optional and works like a standard SSO logout page:
 If not implemented, the user will not see a logout button in Voucherly.
 :::
 
-
 ## Configuration
 
 1. Sign in to the Dashboard.
@@ -159,6 +164,7 @@ If not implemented, the user will not see a logout button in Voucherly.
 
 :::tip
 You can include placeholders in the endpoint URLs that will be populated at redirect time:
+
 - `{ExternalTableId}`
 - `{ExternalShopId}`
 - `{OrderId}`
@@ -188,6 +194,7 @@ Otherwise, you’ll need to manage the presence of orders in your POS system man
 :::
 
 :::info support
+
 - Email support@voucherly.it.
 - Submit a support request at [voucherly.it/contattaci](https://voucherly.it/contattaci).
 :::

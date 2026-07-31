@@ -13,12 +13,9 @@ keywords:
 
 import Checkbox from '@site/src/components/Checkbox';
 
-
 # Attiva il tuo account
+
 L'onboarding prevede che Voucherly verifichi e approvi le informazioni inviate dai merchant e dai partner che richiedono un account di produzione (live) per elaborare transazioni reali.
-
-
-
 
 <Checkbox label="Completa l'onboarding" >
 
@@ -30,7 +27,6 @@ Accedi alla [Dashboard](https://dashboard.voucherly.it) e:
 :::info
 Voucherly verificherà i tuoi dati e attiverà il tuo account.
 :::
-
 
 </Checkbox>
 
@@ -46,7 +42,6 @@ Per attivare i gateway di pagamento è necessario inserire i parametri di config
 Consigliamo vivamente di attivare un gateway di pagamento aggiuntivo, come carta di credito, Satispay o PayPal. È essenziale per garantire che i clienti possano sempre completare il pagamento, anche quando non utilizzano i buoni pasto.
 :::
 
-
 </Checkbox>
 
 <Checkbox label="Scegli il piano di abbonamento migliore" >
@@ -59,6 +54,7 @@ Puoi effettuare l'upgrade o il downgrade del piano in qualsiasi momento per adat
 <Checkbox label="Configura il branding" >
 
 Assicurati di configurare le impostazioni di branding del tuo account prima di andare in produzione. Puoi personalizzare:
+
 - Colori personalizzati
 - Logo e icona personalizzati
 - Dominio personalizzato

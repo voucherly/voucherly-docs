@@ -14,6 +14,7 @@ keywords:
 These steps will show you how to successfully integrate your platform with our APIs.
 
 ## Prerequisites
+
 - Read **[Getting started with a Voucherly account](/guides/intro/getting-started)**.
 
 Before continuing with this tutorial, see if you can save development time with our [postman collection](/api/postman) or range of [wrappers and SDKs](/api/libraries).
@@ -23,11 +24,12 @@ Before continuing with this tutorial, see if you can save development time with 
 ### 1. Check how [Voucherly APIs work](/api/webapi/voucherly-api)
 
 ### 2. Create a Payment
+
 Voucherly provides a RESTful API accessible through HTTP requests to manage your data. The API supports data exclusively in JSON format.
 
 The core element of our API is the payment, which can be linked to multiple transactions.
 
-1. Begin by testing the most common operation with our API: [Create a Payment](/api/webapi/create-payment). 
+1. Begin by testing the most common operation with our API: [Create a Payment](/api/webapi/create-payment).
 
 **Example request**
 
@@ -64,7 +66,7 @@ The core element of our API is the payment, which can be linked to multiple tran
 }
 ```
 
-2. Check that you receive a 200 OK response.
+1. Check that you receive a 200 OK response.
 
 **Example response**
 
@@ -110,7 +112,7 @@ The core element of our API is the payment, which can be linked to multiple tran
 }
 ```
 
-3. Open the `checkoutUrl` to complete payment on the checkout page.
+1. Open the `checkoutUrl` to complete payment on the checkout page.
 
 ### 3. View logs
 

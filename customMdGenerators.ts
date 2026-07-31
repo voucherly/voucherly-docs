@@ -66,7 +66,7 @@ export function createApiPageMdForVoucherly({
       title: "Body",
       body: requestBody,
     }),
-    // @ts-ignore
+    // @ts-expect-error - responses è ristretto alla sola description per i 2xx
     createStatusCodes({ responses }),
     createCallbacks({ callbacks }),
   ]);

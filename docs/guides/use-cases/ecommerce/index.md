@@ -144,8 +144,6 @@ If clicked, specify the selected Payment gateway using the `selectedPaymentGatew
 </TabItem>
 </Tabs>
 
-
-
 After creating a Payment, redirect your customer to the `checkoutUrl` returned in the response.
 
 :::tip QR code
@@ -153,7 +151,6 @@ After creating a Payment, redirect your customer to the `checkoutUrl` returned i
 When the consumer is physically purchasing in a Brick & Mortar store with a screen facing them, you can display the `checkoutUrl` as a QR code.
 
 :::
-
 
 **Example response**
 
@@ -178,7 +175,7 @@ Voucherly sends a callback when a customer successfully completes a Payment. Thi
 - Record the sale in a database.
 - Initiate a shipping workflow.
 
-It's highly recommended to listen for this callback instead of relying solely on the customer being redirected back to your website. Triggering actions only from your Checkout landing page can be unreliable. 
+It's highly recommended to listen for this callback instead of relying solely on the customer being redirected back to your website. Triggering actions only from your Checkout landing page can be unreliable.
 
 Voucherly sends the callback to the endpoint specified as `callbackUrl` in the [Create Payment API](/api/webapi/create-payment) request.
 

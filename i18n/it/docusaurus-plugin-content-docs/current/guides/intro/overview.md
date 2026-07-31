@@ -27,6 +27,7 @@ Inoltre, forniamo indicazioni dettagliate sui flussi di pagamento disponibili.
 Puoi selezionare il flusso di pagamento più adatto al tuo caso d'uso specifico, semplificando l'integrazione di Voucherly in base alle tue esigenze.
 
 Prima di iniziare, prenditi un momento per esplorare la gamma di soluzioni che abbiamo già sviluppato in Voucherly:
+
 - [Plugin e-commerce](/guide/integrazioni/plugin-e-commerce/)
 
 Se nessuna di queste soluzioni predefinite soddisfa i requisiti del tuo sistema, puoi definire il tuo caso d'uso specifico e integrare le API corrispondenti per adattare Voucherly alle tue necessità.

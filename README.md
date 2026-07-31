@@ -4,13 +4,13 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 ### Installation
 
-```
+```bash
 $ yarn
 ```
 
 ### Local Development
 
-```
+```bash
 $ yarn start
 ```
 
@@ -18,7 +18,7 @@ This command starts a local development server and opens up a browser window. Mo
 
 ### Build
 
-```
+```bash
 $ yarn build
 ```
 
@@ -28,6 +28,6 @@ This command generates static content into the `build` directory and can be serv
 
 Using SSH:
 
-```
+```bash
 yarn docusaurus clean-api-docs webapi; yarn docusaurus gen-api-docs webapi; yarn start
 ```

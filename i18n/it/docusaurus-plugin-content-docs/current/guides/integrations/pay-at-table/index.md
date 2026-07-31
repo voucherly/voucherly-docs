@@ -28,23 +28,27 @@ Dovrai esporre un endpoint di login (obbligatorio) e, facoltativamente, un endpo
 Questi endpoint si scambieranno un insieme di parametri firmati per garantire l'integrità dei dati e la fiducia tra il tuo sistema e Voucherly.
 
 Al termine di questa guida, saprai come:
+
 - Configurare i tuoi endpoint di autenticazione
 - Generare e verificare le firme digitali
 - Configurare tutto nella Dashboard
 - (Facoltativamente) gestire il logout dell'utente
 
 ## Prerequisiti
+
 - Leggi **[Come iniziare con un account Voucherly](/guide/introduzione/per-iniziare)**.
 
-
 ## Panoramica
+
 Voucherly richiede che il tuo sistema esponga due endpoint:
+
 - **Endpoint login** – pagina di login standard in stile SSO che riceve le richieste di autenticazione da Voucherly e, dopo aver verificato l'utente, lo reindirizza a Voucherly con le informazioni cliente richieste.
 - **Endpoint logout** (facoltativo) – se implementato, gestisce le richieste di logout provenienti da Voucherly per terminare le sessioni cliente nel tuo sistema.
 
 Il tuo sistema è responsabile della verifica dell'identità dell'utente, dell'eventuale accesso come ospite e della comunicazione sicura dei dati cliente a Voucherly tramite parametri di query firmati.
 
 ## Integrazione
+
 ### Endpoint di login
 
 Questo endpoint funziona come una tipica pagina di login SSO:
@@ -69,14 +73,16 @@ Questo endpoint funziona come una tipica pagina di login SSO:
 `email` può contenere un valore mascherato (ad esempio per non esporre l'indirizzo reale). `receiptEmail` deve invece contenere l'indirizzo effettivo usato per l'invio dello scontrino fiscale: Voucherly vi applica le proprie logiche di conservazione e redemption per la compliance GDPR. Se `receiptEmail` non viene passato, Voucherly usa `email` come fallback per precompilare il destinatario dello scontrino.
 :::
 
-
 #### Calcolo della firma
 
 Il parametro `signature` garantisce l'integrità e l'autenticità del redirect. Usa la tua [chiave privata RSA a 2048 bit (PKCS#8)](#generazione-di-una-coppia-di-chiavi-rsa-a-2048-bit-pkcs8) per firmare i parametri.
+
 1. Concatena i seguenti parametri nell'esatto ordine:
-```
-customerId + email + receiptEmail + friendlyName + firstName + lastName + timestamp
-```
+
+   ```text
+   customerId + email + receiptEmail + friendlyName + firstName + lastName + timestamp
+   ```
+
 2. Calcola l'hash SHA-256 della stringa concatenata.
 3. Firma l'hash usando RSA PKCS#1 v1.5 con la tua chiave privata.
 4. Codifica la firma in base64.
@@ -114,8 +120,8 @@ var signature = rsa.SignData(dataBytes, HashAlgorithmName.SHA256, RSASignaturePa
 
 </Tabs>
 
-    
 #### Generazione di una coppia di chiavi RSA a 2048 bit (PKCS#8)
+
 Per firmare le richieste di autenticazione, hai bisogno di una coppia di chiavi asimmetriche RSA:
 
 1. Genera la chiave privata in formato PKCS#8 (2048 bit).
@@ -130,10 +136,10 @@ openssl rsa -pubout -in private_key.pem -out public_key.pem
 ```
 
 :::warning
+
 - Mantieni la chiave privata al sicuro. Non esporla nel codice client-side.
+
 :::
-
-
 
 ### Endpoint di logout (facoltativo)
 
@@ -147,7 +153,6 @@ Questo endpoint è facoltativo e funziona come una pagina di logout SSO standard
 Se non implementato, l'utente non vedrà un pulsante di logout in Voucherly.
 :::
 
-
 ## Configurazione
 
 1. Accedi alla Dashboard.
@@ -160,6 +165,7 @@ Se non implementato, l'utente non vedrà un pulsante di logout in Voucherly.
 
 :::tip
 Puoi includere negli URL degli endpoint dei segnaposto che verranno popolati al momento del redirect:
+
 - `{ExternalTableId}`
 - `{ExternalShopId}`
 - `{OrderId}`
@@ -189,6 +195,7 @@ Altrimenti, dovrai gestire manualmente la presenza degli ordini nel tuo sistema 
 :::
 
 :::info support
+
 - Scrivi a support@voucherly.it.
 - Invia una richiesta di supporto su [voucherly.it/contattaci](https://voucherly.it/contattaci).
 :::

@@ -24,8 +24,6 @@ Questa guida spiega come e perché utilizzare i clienti registrati con Voucherly
 
 ### 1. Prepara la richiesta
 
-
-
 <Tabs groupId="payment" queryString>
 <TabItem value="first" label="Primo pagamento">
 
@@ -77,7 +75,6 @@ Puoi anche passare i dettagli del cliente per aggiornarli.
 }
 ```
 
-
 </TabItem>
 </Tabs>
 
@@ -102,6 +99,7 @@ Puoi anche passare i dettagli del cliente per aggiornarli.
 <TabItem value="first" label="Primo pagamento">
 
 Se non hai fornito un `customerId` nella richiesta iniziale, dovresti:
+
 - Estrarre il `customerId` dalla risposta.
 - Salvarlo nel tuo database.
 - Includerlo nelle richieste successive per lo stesso cliente.
@@ -114,7 +112,6 @@ Poiché hai fornito un `customerId` nella richiesta iniziale, il pagamento farà
 
 Non è richiesta alcuna ulteriore azione da parte tua.
 
-
 </TabItem>
 </Tabs>
 
@@ -123,7 +120,7 @@ Non è richiesta alcuna ulteriore azione da parte tua.
         ### Recupera i metodi di pagamento del cliente
     </>
     <>
-        
+
         Utilizza la `GET Customer Payment Methods API` per recuperare i metodi di pagamento salvati di un cliente. Questa funzionalità può essere utilizzata per:
         - Mostrare i metodi di pagamento salvati nella pagina del profilo del cliente.
         - Ridurre i tempi di checkout e aumentare i tassi di conversione offrendo accesso diretto ai metodi di pagamento preferiti del cliente.
@@ -153,12 +150,10 @@ Non è richiesta alcuna ulteriore azione da parte tua.
     </>
 </Accordion>
 
-
-
 ## Perché? I vantaggi! {#why}
 
 - **Ottimizza il checkout**.
-   - Precompila i dettagli del cliente come nome ed email, riducendo l'inserimento manuale.
-   - Salva le preferenze e i metodi di pagamento del cliente per checkout futuri più rapidi.
-   - Riduci gli attriti. Ad esempio, gateway di pagamento come Edenred utilizzano il Single Sign-On (SSO). Voucherly può mantenere attive le sessioni, migliorando il flusso di acquisto.
+  - Precompila i dettagli del cliente come nome ed email, riducendo l'inserimento manuale.
+  - Salva le preferenze e i metodi di pagamento del cliente per checkout futuri più rapidi.
+  - Riduci gli attriti. Ad esempio, gateway di pagamento come Edenred utilizzano il Single Sign-On (SSO). Voucherly può mantenere attive le sessioni, migliorando il flusso di acquisto.
 - **Riconciliazione semplificata**. Associare ogni pagamento a un cliente consente un tracciamento chiaro delle transazioni. Questo è particolarmente utile per gestire i rimborsi, l'analisi delle vendite e le verifiche contabili.

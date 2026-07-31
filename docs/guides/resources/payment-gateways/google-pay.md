@@ -14,16 +14,20 @@ keywords:
 # Google Pay
 
 :::info
+
 - By processing Google Pay payments, you agree to the [Google API Terms of Service](https://payments.developers.google.com/terms/sellertos).
 - When integrating Google Pay into your ecommerce platform, you must follow [Google's brand guidelines](https://developers.google.com/pay/api/web/guides/brand-guidelines).
 - For more information, see [Google Pay – Overview](https://developers.google.com/pay/api/web/overview).
+
 :::
 
 :::warning
 Integration with Google Pay is not a direct integration. A supported PSP is required:
+
 - MultiSafepay
 - Nexi
 - Stripe
+
 :::
 
 Voucherly complies with all technical and UX standards set by Google Pay. Activation for a custom domain requires Google Pay approval.
@@ -70,6 +74,5 @@ Once Google approves your website, you can get the merchant ID and merchant name
 
 1. Configure the merchant ID in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use live environment.
 1. Depending on your PSP, additional steps or configurations may be required. Visit the reference documentation for more information.
-
 
 Now you're ready to accept Google Pay with Voucherly!

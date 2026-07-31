@@ -24,7 +24,6 @@ Non devi configurarli separatamente: se la tua utenza Satispay Business è abili
 
 L'attivazione richiede solo di creare un **negozio** Satispay e collegare il suo codice di attivazione a Voucherly.
 
-
 ## Diventa partner
 
 Per accettare Satispay con Voucherly ti servono un account **Satispay Business** e almeno un **negozio**.
@@ -37,7 +36,6 @@ Per accettare Satispay con Voucherly ti servono un account **Satispay Business**
 :::info
 Ogni negozio Satispay ha il proprio codice di attivazione. Un negozio = un codice di attivazione = un account di pagamento in Voucherly. Se gestisci più di un punto vendita, crea un negozio per ogni punto vendita e consulta [Configurazione per punto vendita](/guide/risorse/gateway-di-pagamento/configurazione-per-punto-vendita).
 :::
-
 
 ## Configurazione
 
@@ -61,7 +59,6 @@ Il codice di attivazione è monouso e legato a un singolo negozio. Se la validaz
 
 Per una catena, o quando Satispay è già attivato separatamente per ogni negozio, crea **un account di pagamento per ogni negozio** e assegna ciascuno al proprio punto vendita. Vedi **[Configurazione per punto vendita](/guide/risorse/gateway-di-pagamento/configurazione-per-punto-vendita)**.
 
-
 ## Buoni pasto & Fringe Benefit
 
 Accettare **Buoni Pasto** e **Fringe Benefit** tramite Satispay non richiede alcuna configurazione aggiuntiva in Voucherly — la stessa integrazione li gestisce.
@@ -72,7 +69,6 @@ Accettare **Buoni Pasto** e **Fringe Benefit** tramite Satispay non richiede alc
 :::info
 Contattali tramite la [pagina contatti di Satispay](https://www.satispay.com/it-it/contatti/). Consulta anche la guida per i merchant [Buoni Pasto Satispay per il tuo negozio](https://www.satispay.com/it-it/blog/welfare-benefits/configurare-satispay-accettare-buoni-pasto-nei-negozi/). Sul lato Voucherly è tutto trasparente — una volta abilitata la tua utenza Satispay Business, non è necessaria alcuna modifica alla configurazione.
 :::
-
 
 ## Go live
 

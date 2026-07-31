@@ -63,6 +63,7 @@ Pattern di introduzione al primo uso: **`Termine EN (gloss IT)`**, poi si usa il
 | KYC | **verifiche KYC (know your customer)** | |
 
 **Decisioni confermate (2026-07-19):**
+
 1. **UI Dashboard solo italiana** → le voci di menu Dashboard restano **in italiano anche nei doc EN** (l'utente vede una UI italiana). Si uniformano solo le varianti: la voce chiavi è sempre **Sviluppatori > API keys** (non "Chiavi API"/"API Key" da soli).
 2. **`secret key`/`publishable key` invariati in IT** (inglese), con glossa "(chiave segreta)"/"(chiave pubblicabile)" al primo uso. Vietato "chiave privata/pubblica".
 3. **`ade-documento-commerciale`**: il sorgente `docs/` va **tradotto in inglese**; la versione italiana resta in `i18n/it`.
@@ -87,6 +88,7 @@ image: <og:image per-pagina, per le pagine di punta>
 ```
 
 Regole:
+
 - `description` **unica per pagina**, non generica; in IT è **tradotta** (non lasciata in EN).
 - `keywords` in lingua: keyword italiane nei file IT, inglesi nei file EN.
 - `title`/`description`/`keywords`/`image` vanno **sempre tradotti** nella controparte `i18n/it`.
@@ -108,6 +110,7 @@ Regole:
 Le traduzioni sono copie manuali complete: **ogni modifica a un file `docs/**` va replicata nella controparte `i18n/it/…/current/**`** (stesso path, stessi heading/anchor, stesso frontmatter tradotto).
 
 Checklist rapida a ogni modifica:
+
 1. Il file IT esiste allo stesso path? Ha gli stessi heading e lo stesso numero di sezioni?
 2. Frontmatter tradotto (title/description/keywords) e `slug` IT presente?
 3. `import`, componenti, nomi immagine e ancore identici all'EN?

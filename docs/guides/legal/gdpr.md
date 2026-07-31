@@ -22,16 +22,19 @@ We take all necessary measures to ensure data protection, including:
 - **Appointing a Data Protection Officer (DPO)**, registered with the relevant Data Protection Authority.
 
 ## Voucherly and GDPR
+
 As a platform facilitating the acceptance of online payments via vouchers, Voucherly acts as a **data controller**. We are responsible for storing data securely and ensuring its protection. Voucherly is **not a processor or sub-processor** of data.
 
 For more information, refer to the [Voucherly – DPA](https://legal.voucherly.it/privacy/dpa/), which includes provisions aligned with standard data processing agreements.
 
 ## Customer Data
+
 Voucherly strictly uses customer data solely for processing payments. We do not use customer data for any other commercial purposes. If there is a need to use the data for a different purpose, we explicitly request customer consent.
 
 Access to customer data is highly restricted. Only a limited number of certified Voucherly staff have access to customer data, and strictly on a need-to-know basis.
 
 ## Data Destruction
+
 In compliance with relevant regulations, Voucherly automatically destroys data when it reaches its expiration period.
 
 Additionally, customers can request the deletion of their data, in line with the principle of **Privacy by Design**.

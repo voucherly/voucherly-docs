@@ -25,10 +25,10 @@ Use Voucherly's Kiosk integration to process payments directly through self-serv
 
 :::warning Hardware requirements
 The kiosk must have:
+
 - An internet connection.
 - A display toward the user.
 :::
-
 
 ## Quick Guide
 
@@ -105,16 +105,15 @@ You can use a library like [qrcode.js](https://davidshimjs.github.io/qrcodejs/) 
 }
 ```
 
-
-
 ### 2. Wait for payment completion
 
-Since the kiosk doesn't allow incoming internet connections, the [Callback S2S](/api/general/best-practices/s2s/) mechanism may not be practical. 
+Since the kiosk doesn't allow incoming internet connections, the [Callback S2S](/api/general/best-practices/s2s/) mechanism may not be practical.
 Instead, you can use [Get Payment API](/api/webapi/retrieve-payment/) with the `Voucherly-Wait-Time` header for long polling.
 
 If the kiosk is offline but communicates via a server the [Callback S2S](/api/general/best-practices/s2s/) mechanism should be used. Long polling remains a valid approach for updating the kiosk interface.
 
  Once the payment is closed, any additional operations should be handled:
+
 - Print receipts.
 - Update local databases.
 - Enable hardware (e.g. Open a locker).
@@ -128,11 +127,9 @@ Please refer to [How Payments work](/guides/resources/payments-lifecycle/#paymen
 After 10 minutes, it is recommended to stop the process and consider the payment cancelled. Continuing indefinitely may lead to unnecessary resource usage and delays in handling the transaction.
 :::
 
-
-
 ### 3. Show a success page
 
-#### Mobile device 
+#### Mobile device
 
 <RedirectUrlContent />
 
@@ -141,7 +138,6 @@ After 10 minutes, it is recommended to stop the process and consider the payment
 After the customer completes the payment on the Voucherly Checkout page, they can close their mobile device and seamlessly continue their order experience directly at the kiosk.
 
 You are free to manage this phase independently, aligning with the best practices of your company.
-
 
 ## Next steps
 

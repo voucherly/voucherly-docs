@@ -1,0 +1,46 @@
+{
+  // Lint della prosa in docs/ e delle traduzioni in i18n/it.
+  // I .mdx non sono inclusi: markdownlint non capisce JSX/import ed emette falsi positivi.
+  "globs": [
+    "docs/**/*.md",
+    "i18n/**/*.md",
+    "*.md"
+  ],
+  "ignores": [
+    "docs/api/webapi/**",
+    "node_modules/**",
+    "build/**",
+    ".docusaurus/**"
+  ],
+  // Restano attive le regole di igiene (spazi, righe vuote, blocchi, newline finale):
+  // sono tutte auto-correggibili con `yarn lint:md:fix`.
+  // Sotto sono disattivate le regole di sola preferenza stilistica che confliggono
+  // con le convenzioni già in uso in questa documentazione.
+  "config": {
+    "default": true,
+    // Righe lunghe: il wrapping lo fa il browser.
+    "MD013": false,
+    // Le admonition Docusaurus (:::tip) e i componenti richiedono HTML inline.
+    "MD033": false,
+    // La prima riga è il frontmatter YAML, non un heading H1.
+    "MD041": false,
+    // Heading uguali sotto sezioni diverse sono legittimi (es. "Configurazione").
+    "MD024": {"siblings_only": true},
+    // Spaziatura delle pipe nelle tabelle: irrilevante per il rendering.
+    "MD060": false,
+    // Label in grassetto sopra i blocchi di codice ("**Esempio di richiesta**"): stile della casa.
+    "MD036": false,
+    // Docusaurus/GFM trasformano da soli gli URL nudi in link.
+    "MD034": false,
+    // Il README mostra i comandi col prompt `$` di proposito.
+    "MD014": false,
+    // Mix di blocchi fenced e indentati nelle guide esistenti.
+    "MD046": false,
+    // Testo dei link: troppo rumoroso sulla prosa tradotta.
+    "MD059": false,
+    // Alcune pagine hanno un H1 nel corpo oltre al title del frontmatter.
+    "MD025": false,
+    // Salti di livello negli heading voluti in alcune guide.
+    "MD001": false
+  }
+}

@@ -21,6 +21,7 @@ We recommend using it, as not doing so could lead to missed payments or mishandl
 ## Prerequisites
 
 You must set a webhook endpoint, which is a URL that:
+
 - Doesn't include port numbers.
 - Is publicly accessible, or has Voucherly on your allow list.
 - Uses HTTPS - We don't accept HTTP for security reasons.
@@ -90,11 +91,13 @@ Below is an example of the S2S request body sent by Voucherly.
     "status": "Paid"
 }
 ```
+
 :::warning
 Since the merchant S2S endpoint does not require any authentication setup, it is recommended to call the [Get Payment API](/api/webapi/retrieve-payment) to validate that the request originates from Voucherly. This API provides all the necessary information about the payment.
 :::
 
 #### Response
+
 The merchant server must respond with an HTTP `200 OK` status code and a JSON body in the following format:
 
 - **Ok** *(bool)*  
@@ -102,9 +105,9 @@ The merchant server must respond with an HTTP `200 OK` status code and a JSON bo
 - **OrderId** *(string?)*  
   The unique identifier of the order in the merchant's system.
 - **Stop** *(bool?)*  
-  If true, Voucherly will not make further attempts to call the callback endpoint, regardless of the response status or the `Ok` field. 
+  If true, Voucherly will not make further attempts to call the callback endpoint, regardless of the response status or the `Ok` field.
 - **error** *(string?)*  
-  Merchant error message. Useful only for investigation purposes. 
+  Merchant error message. Useful only for investigation purposes.
 
 ```json
 {
@@ -176,7 +179,6 @@ Here is an example of such a case — a payment marked as `Confirmed` but whose 
 The `status` field alone is not sufficient to determine the final outcome of a direct payment. Always check `closeCheckout.success` to ensure that the callback was processed correctly by your system.
 :::
 
-
 ## Why?  Payment loss! {#why}
 
 As previously mentioned, every payment should be handled by callback.
@@ -190,5 +192,3 @@ To illustrate this further, consider the following scenario:
 1. The user is redirected to Voucherly Checkout page and pay.
 1. The user closes their web browser before being redirected to merchant's website.
 1. In this scenario, while Voucherly effectively processes the transaction, failure to appropriately manage callbacks on the e-commerce side can lead to the incorrect generation of an order.
-
-

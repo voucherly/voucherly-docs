@@ -13,19 +13,18 @@ keywords:
 
 import Checkbox from '@site/src/components/Checkbox';
 
-
 # Checklist per andare in produzione
+
 Usa questa checklist per garantire una transizione senza intoppi quando porti la tua integrazione in produzione.
 
 Le modalità live e test di Voucherly sono progettate per funzionare nel modo più simile possibile, rendendo il passaggio alla modalità live essenzialmente una questione di sostituzione delle API key.
 
 Se sei uno sviluppatore, o se hai fatto integrare Voucherly da uno sviluppatore, considera i seguenti punti prima di andare in produzione. Se utilizzi Voucherly tramite un sito web collegato o un plug-in, molti di questi elementi potrebbero non essere applicabili.
 
-
 <Checkbox label="Segui le best practice delle API Voucherly" >
 
 Assicurati che la tua integrazione segua le [best practice delle API Voucherly](/api/generale/best-practice).
- 
+
 </Checkbox>
 
 <Checkbox label="Autentica sempre il tuo utente" >

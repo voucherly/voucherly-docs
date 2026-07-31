@@ -26,10 +26,10 @@ Usa l'integrazione Kiosk di Voucherly per elaborare i pagamenti direttamente tra
 
 :::warning Requisiti hardware
 Il chiosco deve disporre di:
+
 - Una connessione a internet.
 - Un display rivolto verso l'utente.
 :::
-
 
 ## Guida rapida
 
@@ -106,16 +106,15 @@ Puoi utilizzare una libreria come [qrcode.js](https://davidshimjs.github.io/qrco
 }
 ```
 
-
-
 ### 2. Attendi il completamento del pagamento
 
-Poiché il chiosco non consente connessioni internet in ingresso, il meccanismo [Callback S2S](/api/generale/best-practice/s2s/) potrebbe non essere pratico. 
+Poiché il chiosco non consente connessioni internet in ingresso, il meccanismo [Callback S2S](/api/generale/best-practice/s2s/) potrebbe non essere pratico.
 In alternativa, puoi utilizzare la [Get Payment API](/api/webapi/retrieve-payment/) con l'header `Voucherly-Wait-Time` per il long polling.
 
 Se il chiosco è offline ma comunica tramite un server, è consigliabile utilizzare il meccanismo [Callback S2S](/api/generale/best-practice/s2s/). Il long polling rimane un approccio valido per aggiornare l'interfaccia del chiosco.
 
  Una volta chiuso il pagamento, è necessario gestire eventuali operazioni aggiuntive:
+
 - Stampare le ricevute.
 - Aggiornare i database locali.
 - Abilitare l'hardware (ad es. aprire un locker).
@@ -129,11 +128,9 @@ Consulta [Come funzionano i pagamenti](/guide/risorse/ciclo-di-vita-dei-pagament
 Dopo 10 minuti, è consigliabile interrompere il processo e considerare il pagamento annullato. Continuare all'infinito può comportare un utilizzo inutile di risorse e ritardi nella gestione della transazione.
 :::
 
-
-
 ### 3. Mostra una pagina di successo
 
-#### Dispositivo mobile 
+#### Dispositivo mobile
 
 <RedirectUrlContent />
 
@@ -142,7 +139,6 @@ Dopo 10 minuti, è consigliabile interrompere il processo e considerare il pagam
 Dopo che il cliente ha completato il pagamento sulla pagina di Voucherly Checkout, può chiudere il proprio dispositivo mobile e proseguire senza interruzioni l'esperienza d'ordine direttamente al chiosco.
 
 Sei libero di gestire questa fase in autonomia, in linea con le best practice della tua azienda.
-
 
 ## Passi successivi
 

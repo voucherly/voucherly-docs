@@ -20,7 +20,6 @@ The model has three levels:
 - **Payment configuration** — a named bundle of one or more payment accounts. Every merchant has a **default configuration** that applies automatically to all locations without a specific one.
 - **Location** (*Sede*) — a point of sale. Each location can be assigned a payment configuration.
 
-
 :::info
 A **Location** is never linked to a payment account directly. It points to a **payment configuration**, which in turn contains one or more accounts. Change the configuration assigned to a location to change which accounts that location uses.
 :::

@@ -23,7 +23,6 @@ You don't configure these separately: if your Satispay business is enabled for m
 
 Activation only requires you to create a Satispay **store** and connect its activation code to Voucherly.
 
-
 ## Become a partner
 
 To accept Satispay with Voucherly you need a **Satispay Business** account and at least one **store** (*negozio*).
@@ -36,7 +35,6 @@ To accept Satispay with Voucherly you need a **Satispay Business** account and a
 :::info
 Each Satispay store has its own activation code. One store = one activation code = one payment account in Voucherly. If you run more than one location, create one store per location and see [Per-store configuration](./per-store-configuration.md).
 :::
-
 
 ## Configuration
 
@@ -60,7 +58,6 @@ The activation code is single-use and tied to one store. If validation fails, ge
 
 For a chain, or when Satispay is already activated separately for each shop, create **one payment account per store** and assign each one to its location. See **[Per-store configuration](./per-store-configuration.md)**.
 
-
 ## Meal vouchers & Fringe Benefit
 
 Accepting **Buoni Pasto** and **Fringe Benefit** through Satispay does not require any extra setup in Voucherly — the same integration handles them.
@@ -71,7 +68,6 @@ Accepting **Buoni Pasto** and **Fringe Benefit** through Satispay does not requi
 :::info
 Reach out via the [Satispay contacts page](https://www.satispay.com/it-it/contatti/). See also the merchant guide [Buoni Pasto Satispay per il tuo negozio](https://www.satispay.com/it-it/blog/welfare-benefits/configurare-satispay-accettare-buoni-pasto-nei-negozi/). On the Voucherly side everything is transparent — once your Satispay business is enabled, no configuration change is needed.
 :::
-
 
 ## Go live
 

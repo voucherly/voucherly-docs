@@ -11,14 +11,17 @@ keywords:
 ---
 
 # WooCommerce
+
 Technical manual for Voucherly's free plugin for WooCommerce e-commerce platform.
 
 ## Prerequisites
+
 - Read **[Getting started with a Voucherly account](/guides/intro/getting-started)**.
 - **WordPress** 5.0 or higher.
 - **PHP** 5.6 or higher.
 
 ## Download
+
 - From [Github](https://github.com/voucherly/voucherly-woocommerce) (click [here](https://github.com/voucherly/voucherly-woocommerce/releases/latest/download/voucherly-woocommerce.zip) to download the latest release).
 - From [WordPress Marketplace](https://wordpress.org/plugins/voucherly/).
 
@@ -31,18 +34,19 @@ We recommend installing the plugin in a test environment first, following the Wo
 There are two ways to install the Voucherly plugin:
 
 ### 1. WordPress Installation
+
 1. Sign in to your WooCommerce backend.
 2. Go to **Plugins > Add new**.
 3. Search for **Voucherly**.
 4. For the Voucherly plugin for WooCommerce, click **Install now > Activate**.
 
 ### 2. Manual Installation
+
 1. Click the **Download** button above.
 2. Sign in to your WooCommerce backend.
 3. Go to **Plugins > Add new**.
 4. Click **Browse file**.
 5. Upload the `voucherly-woocommerce.zip` file.
-
 
 ## Configuration
 
@@ -56,19 +60,23 @@ There are two ways to install the Voucherly plugin:
    - Click **Save changes**.
 1. Go to **WooCommerce > Settings > Payments**:
    - Enable Voucherly as payment method.
-   
+
 ## User guide
 
 ### Refunds
+
 You can process full refunds directly from the WooCommerce dashboard.
 
 ### Checkouts
+
 The plugin supports the WooCommerce checkout and is compatible with most premium themes, unless you have a custom checkout.
 
 #### WooCommerce Checkout Blocks
+
 You can use the Checkout Blocks for WooCommerce to customize your checkout.
 
 ### Updates
+
 You can update the plugin in your backend and the CMS marketplace, or via SFTP.
 
 :::warning
@@ -76,6 +84,7 @@ Make sure you have a backup of your production environment, and that you test th
 :::
 
 :::info support
+
 - Email support@voucherly.it.
 - Create a technical issue on [GitHub](https://github.com/voucherly/voucherly-woocommerce/issues/new).
 - Submit a support request at [voucherly.it/contattaci](https://voucherly.it/contattaci).

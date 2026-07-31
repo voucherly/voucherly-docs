@@ -22,6 +22,7 @@ Ti consigliamo di utilizzarla, poiché non farlo potrebbe portare a pagamenti pe
 ## Prerequisiti
 
 Devi impostare un endpoint webhook, ovvero un URL che:
+
 - Non include numeri di porta.
 - È accessibile pubblicamente, oppure includa Voucherly nella tua allow list.
 - Utilizza HTTPS. Non accettiamo HTTP per motivi di sicurezza.
@@ -91,11 +92,13 @@ Di seguito un esempio del body della richiesta S2S inviata da Voucherly.
     "status": "Paid"
 }
 ```
+
 :::warning
 Poiché l'endpoint S2S del merchant non richiede alcuna configurazione di autenticazione, è consigliabile chiamare la [Get Payment API](/api/webapi/retrieve-payment) per verificare che la richiesta provenga da Voucherly. Questa API fornisce tutte le informazioni necessarie sul pagamento.
 :::
 
 #### Risposta
+
 Il server del merchant deve rispondere con un codice di stato HTTP `200 OK` e un body JSON nel seguente formato:
 
 - **Ok** *(bool)*  
@@ -103,9 +106,9 @@ Il server del merchant deve rispondere con un codice di stato HTTP `200 OK` e un
 - **OrderId** *(string?)*  
   L'identificatore univoco dell'ordine nel sistema del merchant.
 - **Stop** *(bool?)*  
-  Se `true`, Voucherly non effettuerà ulteriori tentativi di chiamare l'endpoint di callback, indipendentemente dallo stato della risposta o dal campo `Ok`. 
+  Se `true`, Voucherly non effettuerà ulteriori tentativi di chiamare l'endpoint di callback, indipendentemente dallo stato della risposta o dal campo `Ok`.
 - **error** *(string?)*  
-  Messaggio di errore del merchant. Utile solo a scopo di indagine. 
+  Messaggio di errore del merchant. Utile solo a scopo di indagine.
 
 ```json
 {
@@ -177,7 +180,6 @@ Ecco un esempio di un caso simile: un pagamento contrassegnato come `Confirmed` 
 Il campo `status` da solo non è sufficiente a determinare l'esito finale di un pagamento diretto. Controlla sempre `closeCheckout.success` per assicurarti che il callback sia stato elaborato correttamente dal tuo sistema.
 :::
 
-
 ## Perché? Perdita di pagamenti! {#why}
 
 Come detto in precedenza, ogni pagamento dovrebbe essere gestito tramite callback.
@@ -191,5 +193,3 @@ Per illustrarlo ulteriormente, considera il seguente scenario:
 1. L'utente viene reindirizzato alla pagina di Checkout di Voucherly ed effettua il pagamento.
 1. L'utente chiude il browser prima di essere reindirizzato al sito web del merchant.
 1. In questo scenario, mentre Voucherly elabora effettivamente la transazione, la mancata gestione appropriata dei callback lato e-commerce può portare alla generazione errata di un ordine.
-
-

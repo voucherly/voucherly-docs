@@ -13,8 +13,8 @@ keywords:
 
 import Checkbox from '@site/src/components/Checkbox';
 
-
 # Checklist del sito web
+
 Assicurati che il tuo sito web sia conforme agli standard dei circuiti di pagamento e alle best practice dell'e-commerce.
 
 Questa pagina contiene un elenco degli elementi comuni — come descrizioni accurate dei prodotti, policy chiare e adeguate funzionalità di sicurezza — che ogni attività su Voucherly dovrebbe curare sul proprio sito web. Rispettare queste raccomandazioni riduce il rischio di confusione e contestazioni da parte dei clienti. Ti aiuta inoltre a soddisfare gli standard di Voucherly e quelli stabiliti dai circuiti delle carte di credito.
@@ -28,6 +28,7 @@ Se uno qualsiasi dei requisiti non è soddisfatto, l'attivazione di Voucherly no
 <Checkbox label="Informazioni di contatto del servizio clienti" >
 
 Assicurati che i clienti possano contattarti facilmente offrendo più canali di contatto, come:
+
 - Indirizzi email
 - Numeri di telefono
 - Live chat
@@ -39,6 +40,7 @@ Canali di comunicazione a bassa frizione riducono i malintesi e migliorano la so
 <Checkbox label="Le informazioni sulla tua attività" >
 
 Fornisci dettagli chiari sulla tua attività, tra cui:
+
 - Ragione sociale completa
 - Partita IVA
 - Iscrizione alla Camera di Commercio (CoC, in Italia nota come REA)
@@ -64,7 +66,6 @@ Aggiungi al checkout una casella di spunta (click-to-accept) con i termini e le 
 Se la tua attività non prevede un processo di evasione (come nei servizi erogati di persona), le policy di evasione non sono richieste.
 :::
 
-
 </Checkbox>
 
 <Checkbox label="La privacy policy del tuo sito web" >
@@ -80,6 +81,7 @@ Applicando queste pratiche, aumenti la fiducia dei clienti, migliori la loro esp
 <Checkbox label="Una descrizione di ciò che vendi" >
 
 Aiuta i tuoi clienti a prendere decisioni d'acquisto consapevoli fornendo descrizioni dettagliate dei tuoi prodotti o servizi. Ad esempio:
+
 - Per i beni fisici, includi più immagini e informazioni su materiali, colori e altre specifiche.
 - Per le offerte digitali o basate su servizi, illustra chiaramente caratteristiche, vantaggi ed eventuali limitazioni.
 
@@ -103,7 +105,6 @@ Voucherly supporta esclusivamente pagamenti in EUR.
 
 <Checkbox label="Restrizioni legali o all'esportazione" >
 
-
 Segnala eventuali restrizioni legali o all'esportazione applicabili ai tuoi prodotti o servizi. Questa trasparenza crea fiducia e aiuta i clienti a comprendere eventuali limitazioni che potrebbero riguardarli.
 
 </Checkbox>
@@ -117,6 +118,7 @@ Indica chiaramente le condizioni di eventuali promozioni, sconti o prove gratuit
 <Checkbox label="Sicurezza del tuo sito web e delle informazioni di pagamento" >
 
 Rassicura i clienti sul fatto che i loro dati di pagamento sono al sicuro:
+
 - Rispettando gli standard PCI.
 - Utilizzando HTTPS e altre best practice di sicurezza.
 - Prevenendo vulnerabilità come il card testing.
@@ -129,6 +131,5 @@ Spiega come gestisci in modo sicuro le informazioni di pagamento dei clienti e c
 
 Mostra al checkout i loghi dei gateway di pagamento che accetti. Questo riduce la frizione rendendo chiaro quali metodi di pagamento sono supportati.
 Voucherly fornisce questa informazione tramite API. Consulta l'endpoint [List all PaymentGateways](/api/webapi/list-payment-gateway).
-
 
 </Checkbox>

@@ -27,9 +27,10 @@ You must use a PayPal business account.
 ![Copy client ID and client secret](copy-client-keys.png)
 1. Configure these parameters in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use the correct environment.
 
-
 :::tip
+
 - You get different keys for Sandbox and Live. Don’t mix them up.
 - Keep your Client Secret private. Never share it publicly.
 - If something doesn’t work, double-check the environment and credentials.
+
 :::
