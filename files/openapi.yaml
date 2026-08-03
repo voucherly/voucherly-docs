@@ -828,7 +828,7 @@ paths:
       operationId: volumes-report
       summary: Volumes
       description: |
-        Returns aggregated turnover for the given date range, broken down by PaymentGateway and optionally by Store, together with the grand totals across all rows. This is the same data shown in the Volumes report of the Voucherly Dashboard.
+        Returns aggregated turnover for the given date range, broken down by PaymentGateway and optionally by Store and/or Company, together with the grand totals across all rows. This is the same data shown in the Volumes report of the Voucherly Dashboard.
       parameters:
         - name: fromDate
           in: query
@@ -853,9 +853,11 @@ paths:
         - name: groupBy
           in: query
           required: false
-          description: How rows are grouped. When omitted, rows are aggregated per PaymentGateway only.
+          description: How rows are grouped. Repeat the parameter to group by more than one dimension (e.g. `groupBy=Store&groupBy=Company`). When omitted, rows are aggregated per PaymentGateway only.
           schema:
-            $ref: '#/components/schemas/Reports.RevenuesGrouping'
+            type: array
+            items:
+              $ref: '#/components/schemas/Reports.RevenuesGrouping'
         - name: paymentGatewayIds
           in: query
           required: false
@@ -868,6 +870,14 @@ paths:
           in: query
           required: false
           description: Filter by one or more Store identifiers. Repeat the parameter to provide multiple values.
+          schema:
+            type: array
+            items:
+              type: string
+        - name: companyIds
+          in: query
+          required: false
+          description: Filter by one or more Company identifiers. Repeat the parameter to provide multiple values.
           schema:
             type: array
             items:
@@ -2350,12 +2360,13 @@ components:
       enum:
         - All
         - Store
+        - Company
       type: string
-      description: How volumes report rows are grouped. `All` aggregates per PaymentGateway only; `Store` additionally breaks the rows down per Store.
+      description: A grouping dimension for volumes report rows. `All` aggregates per PaymentGateway only; `Store` additionally breaks the rows down per Store; `Company` additionally breaks the rows down per Company.
       nullable: false
     Reports.RevenuesDetails:
       type: object
-      description: A volumes report row, aggregating turnover for a single PaymentGateway (and, when grouped by Store, a single Store).
+      description: A volumes report row, aggregating turnover for a single PaymentGateway (and, when grouped by Store and/or Company, a single Store and/or Company).
       properties:
         paymentGatewayId:
           type: string
@@ -2367,11 +2378,19 @@ components:
           nullable: false
         storeId:
           type: string
-          description: Unique identifier of the Store this row aggregates. Only populated when `groupBy` is `Store`.
+          description: Unique identifier of the Store this row aggregates. Only populated when `groupBy` includes `Store`.
           nullable: true
         storeName:
           type: string
-          description: Display name of the Store. Only populated when `groupBy` is `Store`.
+          description: Display name of the Store. Only populated when `groupBy` includes `Store`.
+          nullable: true
+        companyId:
+          type: string
+          description: Unique identifier of the Company this row aggregates. Only populated when `groupBy` includes `Company`.
+          nullable: true
+        companyName:
+          type: string
+          description: Display name of the Company. Only populated when `groupBy` includes `Company`.
           nullable: true
         paidAmount:
           type: integer

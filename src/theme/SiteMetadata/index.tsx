@@ -36,6 +36,7 @@ const SLUG_MAP: [string, string][] = [
   ['guides/legal/fuhrmann2/', 'guide/note-legali/fuhrmann2/'],
   ['guides/products/electronic-receipt/ade-documento-commerciale/', 'guide/prodotti/scontrino-elettronico/documento-commerciale-online/'],
   ['guides/products/electronic-receipt/pos-rt-connection/', 'guide/prodotti/scontrino-elettronico/collegamento-pos-rt/'],
+  ['guides/products/pay-at-table/upselling/', 'guide/prodotti/pagamento-al-tavolo/upselling/'],
   ['guides/resources/payments-lifecycle/', 'guide/risorse/ciclo-di-vita-dei-pagamenti/'],
   ['guides/resources/payment-gateways/', 'guide/risorse/gateway-di-pagamento/'],
   ['guides/resources/payment-gateways/google-pay/', 'guide/risorse/gateway-di-pagamento/google-pay/'],

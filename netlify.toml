@@ -136,6 +136,11 @@ to = '/it/guide/prodotti/scontrino-elettronico/collegamento-pos-rt/'
 status = 301
 
 [[redirects]]
+from = '/it/guides/products/pay-at-table/upselling/'
+to = '/it/guide/prodotti/pagamento-al-tavolo/upselling/'
+status = 301
+
+[[redirects]]
 from = '/en/guides/marketplace3/'
 to = '/en/guides/products/electronic-receipt/'
 status = 301

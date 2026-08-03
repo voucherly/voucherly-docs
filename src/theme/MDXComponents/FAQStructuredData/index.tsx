@@ -47,7 +47,7 @@ export default function FAQStructuredData({ faqs }: FAQStructuredDataProps): Rea
       {faqs.map((faq) => (
         <React.Fragment key={faq.question}>
           <h3>{faq.question}</h3>
-          <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
+          <div className="faq-answer" dangerouslySetInnerHTML={{ __html: faq.answer }} />
         </React.Fragment>
       ))}
     </>
