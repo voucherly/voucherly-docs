@@ -1,0 +1,72 @@
+---
+id: delete-store-area
+title: "Delete a Store Area"
+description: "Permanently deletes the Store Area. The Stores that referenced it are never deleted: pass `migrateToStoreAreaId` to reassign them to another Store Area, or omit it to leave them without one (their `storeAreaId` becomes null)."
+sidebar_label: "Delete a Store Area"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "delete api-method"
+info_path: api/webapi/voucherly-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a Store Area"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/store_areas/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Permanently deletes the Store Area. The Stores that referenced it are never deleted: pass `migrateToStoreAreaId` to reassign them to another Store Area, or omit it to leave them without one (their `storeAreaId` becomes null).
+
+Call `GET /v1/stores?storeAreaId={id}` first to list the Stores this operation will affect.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./delete-store-area.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./delete-store-area.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./delete-store-area.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

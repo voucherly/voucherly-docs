@@ -1,10 +1,13 @@
 ---
 slug: /guide/introduzione/definizioni
 sidebar_position: 3
-description: "Termini e concetti chiave di Voucherly: merchant, user, customer, payment, gateway di pagamento, wallet e metodo di pagamento."
+description: "Termini e concetti chiave di Voucherly: merchant, user, sede, customer, payment, gateway di pagamento, wallet e metodo di pagamento."
 keywords:
   - definizioni voucherly
   - merchant
+  - sede
+  - insegna
+  - area
   - customer
   - gateway di pagamento
   - wallet
@@ -26,6 +29,30 @@ Il titolare dell'attività di un negozio online che integra Voucherly. È l'enti
 Una persona, tipicamente un dipendente del merchant, che può accedere e gestire l'account del merchant tramite la Dashboard. Gli utenti possono visualizzare i dati, modificare le impostazioni ed eseguire operazioni.
 
 Un singolo utente può avere accesso a più merchant.
+
+### Store (Sede)
+
+Un punto vendita di un merchant, fisico oppure online. Nella Dashboard si trova in **Impostazioni > [Sedi](https://dashboard.voucherly.it/settings/store)**.
+
+Ogni sede ha il proprio indirizzo, la propria connessione al POS e la propria configurazione di pagamento: un merchant con più sedi può quindi accettare gateway di pagamento diversi in ciascuna. Pagamenti e terminali possono essere attribuiti a una sede.
+
+Consulta la guida [Configurazione per punto vendita](/guide/risorse/gateway-di-pagamento/configurazione-per-punto-vendita) per vedere come una sede viene collegata a una configurazione di pagamento.
+
+### Concept Store (Insegna)
+
+Un brand usato per raggruppare le sedi dello stesso merchant. Un merchant che gestisce più brand può distinguerli mantenendo un solo account. Nella Dashboard si trova in **Impostazioni > Sedi > [Insegne](https://dashboard.voucherly.it/settings/concept-store)**.
+
+Assegnare un'insegna a una sede è opzionale.
+
+Eliminare un'insegna non elimina mai le sue sedi: puoi spostarle su un'altra insegna, oppure lasciarle senza.
+
+### Store Area (Area)
+
+Un raggruppamento geografico o operativo di sedi, definito dal merchant: per esempio una regione, o un cluster in franchising. Nella Dashboard si trova in **Impostazioni > Sedi > [Aree](https://dashboard.voucherly.it/settings/store-area)**.
+
+Assegnare un'area a una sede è opzionale. Le aree sono indipendenti dalle insegne: una sede può appartenere a entrambe, a una sola o a nessuna delle due.
+
+Come per le insegne, eliminare un'area non elimina mai le sue sedi: puoi spostarle su un'altra area, oppure lasciarle senza.
 
 ### Customer (Cliente)
 

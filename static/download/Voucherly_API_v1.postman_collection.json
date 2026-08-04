@@ -923,6 +923,662 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Stores",
+			"item": [
+				{
+					"name": "List all Stores",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/stores?include=conceptStore&include=storeArea",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"stores"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Bella Vista",
+									"disabled": true
+								},
+								{
+									"key": "isActive",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "conceptStoreId",
+									"value": "{{concept_store_id}}",
+									"disabled": true
+								},
+								{
+									"key": "storeAreaId",
+									"value": "{{store_area_id}}",
+									"disabled": true
+								},
+								{
+									"key": "include",
+									"value": "conceptStore"
+								},
+								{
+									"key": "include",
+									"value": "storeArea"
+								},
+								{
+									"key": "include",
+									"value": "status",
+									"disabled": true
+								},
+								{
+									"key": "length",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    var res = pm.response.json();",
+									"    pm.environment.set(\"store_id\", res.id);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Trattoria Bella Vista\",\r\n    \"slug\": \"bella-vista\",\r\n    \"externalId1\": \"MILANO-01\",\r\n    \"externalId2\": null,\r\n    \"conceptStoreId\": null,\r\n    \"storeAreaId\": null,\r\n    \"paymentGatewayConfigurationId\": null,\r\n    \"isActive\": true,\r\n    \"address\": {\r\n        \"streetName\": \"Via Alessandro Tadino\",\r\n        \"streetNumber\": \"3\",\r\n        \"city\": \"Milano\",\r\n        \"province\": \"MI\",\r\n        \"postalCode\": \"20124\",\r\n        \"country\": \"IT\"\r\n    },\r\n    \"ecommerceIsActive\": false,\r\n    \"ecommerceDeliveryIsActive\": false,\r\n    \"ecommercePickupIsActive\": false,\r\n    \"ecommerceReservationIsActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/stores",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Store with concept store and area",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    var res = pm.response.json();",
+									"    pm.environment.set(\"store_id\", res.id);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bella Vista Duomo\",\r\n    \"slug\": \"bella-vista-duomo\",\r\n    \"externalId1\": \"MILANO-02\",\r\n    \"conceptStoreId\": \"{{concept_store_id}}\",\r\n    \"storeAreaId\": \"{{store_area_id}}\",\r\n    \"isActive\": true,\r\n    \"address\": {\r\n        \"streetName\": \"Piazza del Duomo\",\r\n        \"streetNumber\": \"1\",\r\n        \"city\": \"Milano\",\r\n        \"province\": \"MI\",\r\n        \"postalCode\": \"20121\",\r\n        \"country\": \"IT\"\r\n    },\r\n    \"ecommerceIsActive\": true,\r\n    \"ecommerceDeliveryIsActive\": true,\r\n    \"ecommercePickupIsActive\": true,\r\n    \"ecommerceReservationIsActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/stores",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Store with POS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    var res = pm.response.json();",
+									"    pm.environment.set(\"store_id\", res.id);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bella Vista Navigli\",\r\n    \"slug\": \"bella-vista-navigli\",\r\n    \"externalId1\": \"MILANO-03\",\r\n    \"pos\": {\r\n        \"posId\": \"00011\",\r\n        \"posEndpoint\": \"https://pos.bellavista.it/api/\"\r\n    },\r\n    \"isActive\": true,\r\n    \"address\": {\r\n        \"streetName\": \"Ripa di Porta Ticinese\",\r\n        \"streetNumber\": \"37\",\r\n        \"city\": \"Milano\",\r\n        \"province\": \"MI\",\r\n        \"postalCode\": \"20143\",\r\n        \"country\": \"IT\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/stores",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a Store",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/stores/{{store_id}}?include=conceptStore&include=storeArea&include=status",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"stores",
+								"{{store_id}}"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "conceptStore"
+								},
+								{
+									"key": "include",
+									"value": "storeArea"
+								},
+								{
+									"key": "include",
+									"value": "status"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Store",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Trattoria Bella Vista\",\r\n    \"slug\": \"bella-vista\",\r\n    \"externalId1\": \"MILANO-01\",\r\n    \"externalId2\": null,\r\n    \"conceptStoreId\": null,\r\n    \"storeAreaId\": null,\r\n    \"isActive\": false,\r\n    \"address\": {\r\n        \"streetName\": \"Via Alessandro Tadino\",\r\n        \"streetNumber\": \"3\",\r\n        \"city\": \"Milano\",\r\n        \"province\": \"MI\",\r\n        \"postalCode\": \"20124\",\r\n        \"country\": \"IT\"\r\n    },\r\n    \"ecommerceIsActive\": false,\r\n    \"ecommerceDeliveryIsActive\": false,\r\n    \"ecommercePickupIsActive\": false,\r\n    \"ecommerceReservationIsActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/stores/{{store_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"stores",
+								"{{store_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ConceptStores",
+			"item": [
+				{
+					"name": "List all Concept Stores",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/concept_stores",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"concept_stores"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Bella Vista",
+									"disabled": true
+								},
+								{
+									"key": "ids",
+									"value": "{{concept_store_id}}",
+									"disabled": true
+								},
+								{
+									"key": "length",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Concept Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    var res = pm.response.json();",
+									"    pm.environment.set(\"concept_store_id\", res.id);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bella Vista\",\r\n    \"externalId1\": \"BRAND-01\",\r\n    \"externalId2\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/concept_stores",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"concept_stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a Concept Store",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/concept_stores/{{concept_store_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"concept_stores",
+								"{{concept_store_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Concept Store",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bella Vista Ristoranti\",\r\n    \"externalId1\": \"BRAND-01\",\r\n    \"externalId2\": \"BRAND-01-ALT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/concept_stores/{{concept_store_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"concept_stores",
+								"{{concept_store_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Concept Store",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/concept_stores/{{concept_store_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"concept_stores",
+								"{{concept_store_id}}"
+							],
+							"query": [
+								{
+									"key": "migrateToConceptStoreId",
+									"value": "conce_01kg2gestgepdbmsn7hs6bsrwp",
+									"description": "Reassigns the Stores of the deleted Concept Store to this one.",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "StoreAreas",
+			"item": [
+				{
+					"name": "List all Store Areas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/store_areas",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"store_areas"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Lombardia",
+									"disabled": true
+								},
+								{
+									"key": "ids",
+									"value": "{{store_area_id}}",
+									"disabled": true
+								},
+								{
+									"key": "length",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Store Area",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    var res = pm.response.json();",
+									"    pm.environment.set(\"store_area_id\", res.id);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lombardia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/store_areas",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"store_areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a Store Area",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/store_areas/{{store_area_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"store_areas",
+								"{{store_area_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Store Area",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lombardia Ovest\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/store_areas/{{store_area_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"store_areas",
+								"{{store_area_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Store Area",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{versioned_api_base_url}}/store_areas/{{store_area_id}}",
+							"host": [
+								"{{versioned_api_base_url}}"
+							],
+							"path": [
+								"store_areas",
+								"{{store_area_id}}"
+							],
+							"query": [
+								{
+									"key": "migrateToStoreAreaId",
+									"value": "starea_01kg2gestgepdbmsn7hs6bsrwp",
+									"description": "Reassigns the Stores of the deleted Store Area to this one.",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {

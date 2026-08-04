@@ -37,6 +37,9 @@ Pattern di introduzione al primo uso: **`Termine EN (gloss IT)`**, poi si usa il
 | merchant | **merchant** (invariato) | Mai "esercente/commerciante/negoziante". Già coerente. |
 | user | **utente** (entità: `User`) | |
 | customer | **cliente** (entità: `Customer`) | |
+| store | **sede** (entità: `Store`) | La voce di menu Dashboard è **Impostazioni > Sedi**. Evitare "negozio"/"punto vendita" nel corpo, tranne dove è già lo slug IT consolidato (`configurazione-per-punto-vendita`). |
+| concept store | **insegna** (invariato, entità: `ConceptStore`) | È il brand che raggruppa le sedi. Non tradurre. |
+| store area | **area** (entità: `StoreArea`) | Primo uso: "Store Area (area)". Raggruppamento geografico/operativo di sedi. |
 | payment | **pagamento** (entità: `Payment`) | |
 | transaction | **transazione** (entità: `Transaction`) | |
 | payment gateway | **gateway di pagamento** | Primo uso: "Payment Gateway (gateway di pagamento)". |

@@ -19,10 +19,14 @@ Il modello ha tre livelli:
 
 - **Account di pagamento** — una singola attivazione di un gateway (ad esempio un negozio Satispay, o un MID Edenred). Contiene le credenziali che inserisci nella Dashboard.
 - **Configurazione di pagamento** — un insieme denominato di uno o più account di pagamento. Ogni merchant ha una **configurazione predefinita** che si applica automaticamente a tutti i punti vendita che non ne hanno una specifica.
-- **Punto vendita** (*Sede*) — un tuo punto vendita fisico o online. A ogni punto vendita può essere assegnata una configurazione di pagamento.
+- **Punto vendita** (*Sede*) — un tuo punto vendita fisico o online. A ogni punto vendita può essere assegnata una configurazione di pagamento. È la risorsa [Store](/guide/introduzione/definizioni#store-sede) delle API.
 
 :::info
 Un **punto vendita** non è mai collegato direttamente a un account di pagamento. Punta a una **configurazione di pagamento**, che a sua volta contiene uno o più account. Cambia la configurazione assegnata a un punto vendita per modificare quali account utilizza quel punto vendita.
+:::
+
+:::tip
+Tutto quello che c'è in questa pagina si può fare anche via API: crea i tuoi punti vendita con [Create a Store](/api/webapi/create-store) e imposta `paymentGatewayConfigurationId` sulla configurazione che ciascuno deve usare.
 :::
 
 ## Punto vendita singolo

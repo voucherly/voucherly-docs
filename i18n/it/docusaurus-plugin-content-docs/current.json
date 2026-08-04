@@ -230,5 +230,73 @@
   "sidebar.apiSidebar.doc.Volumes": {
     "message": "Volumes",
     "description": "The label for the doc item 'Volumes' in sidebar 'apiSidebar', linking to the doc api/webapi/volumes-report"
+  },
+  "sidebar.apiSidebar.category.Stores": {
+    "message": "Stores",
+    "description": "The label for category 'Stores' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Concept Stores": {
+    "message": "Concept Stores",
+    "description": "The label for category 'Concept Stores' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.category.Store Areas": {
+    "message": "Store Areas",
+    "description": "The label for category 'Store Areas' in sidebar 'apiSidebar'"
+  },
+  "sidebar.apiSidebar.doc.List all Stores": {
+    "message": "List all Stores",
+    "description": "The label for the doc item 'List all Stores' in sidebar 'apiSidebar', linking to the doc api/webapi/list-store"
+  },
+  "sidebar.apiSidebar.doc.Create a Store": {
+    "message": "Create a Store",
+    "description": "The label for the doc item 'Create a Store' in sidebar 'apiSidebar', linking to the doc api/webapi/create-store"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Store": {
+    "message": "Retrieve a Store",
+    "description": "The label for the doc item 'Retrieve a Store' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-store"
+  },
+  "sidebar.apiSidebar.doc.Update a Store": {
+    "message": "Update a Store",
+    "description": "The label for the doc item 'Update a Store' in sidebar 'apiSidebar', linking to the doc api/webapi/update-store"
+  },
+  "sidebar.apiSidebar.doc.List all Concept Stores": {
+    "message": "List all Concept Stores",
+    "description": "The label for the doc item 'List all Concept Stores' in sidebar 'apiSidebar', linking to the doc api/webapi/list-concept-store"
+  },
+  "sidebar.apiSidebar.doc.Create a Concept Store": {
+    "message": "Create a Concept Store",
+    "description": "The label for the doc item 'Create a Concept Store' in sidebar 'apiSidebar', linking to the doc api/webapi/create-concept-store"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Concept Store": {
+    "message": "Retrieve a Concept Store",
+    "description": "The label for the doc item 'Retrieve a Concept Store' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-concept-store"
+  },
+  "sidebar.apiSidebar.doc.Update a Concept Store": {
+    "message": "Update a Concept Store",
+    "description": "The label for the doc item 'Update a Concept Store' in sidebar 'apiSidebar', linking to the doc api/webapi/update-concept-store"
+  },
+  "sidebar.apiSidebar.doc.List all Store Areas": {
+    "message": "List all Store Areas",
+    "description": "The label for the doc item 'List all Store Areas' in sidebar 'apiSidebar', linking to the doc api/webapi/list-store-area"
+  },
+  "sidebar.apiSidebar.doc.Create a Store Area": {
+    "message": "Create a Store Area",
+    "description": "The label for the doc item 'Create a Store Area' in sidebar 'apiSidebar', linking to the doc api/webapi/create-store-area"
+  },
+  "sidebar.apiSidebar.doc.Retrieve a Store Area": {
+    "message": "Retrieve a Store Area",
+    "description": "The label for the doc item 'Retrieve a Store Area' in sidebar 'apiSidebar', linking to the doc api/webapi/retrieve-store-area"
+  },
+  "sidebar.apiSidebar.doc.Update a Store Area": {
+    "message": "Update a Store Area",
+    "description": "The label for the doc item 'Update a Store Area' in sidebar 'apiSidebar', linking to the doc api/webapi/update-store-area"
+  },
+  "sidebar.apiSidebar.doc.Delete a Concept Store": {
+    "message": "Delete a Concept Store",
+    "description": "The label for the doc item 'Delete a Concept Store' in sidebar 'apiSidebar', linking to the doc api/webapi/delete-concept-store"
+  },
+  "sidebar.apiSidebar.doc.Delete a Store Area": {
+    "message": "Delete a Store Area",
+    "description": "The label for the doc item 'Delete a Store Area' in sidebar 'apiSidebar', linking to the doc api/webapi/delete-store-area"
   }
 }

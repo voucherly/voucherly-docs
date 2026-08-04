@@ -18,10 +18,14 @@ The model has three levels:
 
 - **Payment account** — a single activation of a gateway (for example one Satispay store, or one Edenred MID). It holds the credentials you enter in the Dashboard.
 - **Payment configuration** — a named bundle of one or more payment accounts. Every merchant has a **default configuration** that applies automatically to all locations without a specific one.
-- **Location** (*Sede*) — a point of sale. Each location can be assigned a payment configuration.
+- **Location** (*Sede*) — a point of sale. Each location can be assigned a payment configuration. This is the [Store](/guides/intro/definitions#store) resource of the API.
 
 :::info
 A **Location** is never linked to a payment account directly. It points to a **payment configuration**, which in turn contains one or more accounts. Change the configuration assigned to a location to change which accounts that location uses.
+:::
+
+:::tip
+Everything on this page can also be done through the API: create your locations with [Create a Store](/api/webapi/create-store) and set `paymentGatewayConfigurationId` to the configuration each one should use.
 :::
 
 ## Single location
