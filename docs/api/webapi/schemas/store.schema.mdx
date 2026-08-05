@@ -1,0 +1,32 @@
+---
+id: store
+title: "Store"
+description: "A Store is a point of sale of a Merchant, with its own address, POS connection and payment configuration."
+sidebar_label: "Store"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"sto_01kg2gestgepdbmsn7hs6bsrwp","conceptStoreId":"conce_01kg2gestgepdbmsn7hs6bsrwp","conceptStoreName":"string","storeAreaId":"starea_01kg2gestgepdbmsn7hs6bsrwp","storeAreaName":"string","name":"string","slug":"string","pos":{"posId":"string","posEndpoint":"string"},"externalId1":"string","externalId2":"string","address":{"streetName":"string","streetNumber":"string","city":"string","province":"string","postalCode":"string","country":"string"},"isActive":true,"paymentGatewayConfigurationId":"pgc_01kg2gestgepdbmsn7hs6bsrwp","ecommerceIsActive":true,"ecommerceDeliveryIsActive":true,"ecommercePickupIsActive":true,"ecommerceReservationIsActive":true,"status":{"status":"Up","currentStatusFromUtc":"2024-07-29T15:51:28.071Z","lastCheckedAtUtc":"2024-07-29T15:51:28.071Z","lastSuccessAtUtc":"2024-07-29T15:51:28.071Z","consecutiveKos":0,"consecutiveOks":0,"lastResponseTimeMs":0},"createdOnUtc":"2024-07-29T15:51:28.071Z"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Store"}
+>
+</Heading>
+
+
+
+A Store is a point of sale of a Merchant, with its own address, POS connection and payment configuration.
+
+<Schema
+  {...require("./store.Schema.json")}
+>
+  
+</Schema>
+            

@@ -302,6 +302,144 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Stores",
+      link: {
+        type: "doc",
+        id: "api/webapi/store",
+      },
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/schemas/store",
+          label: "Store",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/list-store",
+          label: "List all Stores",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/create-store",
+          label: "Create a Store",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/retrieve-store",
+          label: "Retrieve a Store",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/update-store",
+          label: "Update a Store",
+          className: "api-method put",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Concept Stores",
+      link: {
+        type: "doc",
+        id: "api/webapi/concept-store",
+      },
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/schemas/conceptstore",
+          label: "ConceptStore",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/list-concept-store",
+          label: "List all Concept Stores",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/create-concept-store",
+          label: "Create a Concept Store",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/retrieve-concept-store",
+          label: "Retrieve a Concept Store",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/update-concept-store",
+          label: "Update a Concept Store",
+          className: "api-method put",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/delete-concept-store",
+          label: "Delete a Concept Store",
+          className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Store Areas",
+      link: {
+        type: "doc",
+        id: "api/webapi/store-area",
+      },
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "api/webapi/schemas/storearea",
+          label: "StoreArea",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/list-store-area",
+          label: "List all Store Areas",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/create-store-area",
+          label: "Create a Store Area",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/retrieve-store-area",
+          label: "Retrieve a Store Area",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/update-store-area",
+          label: "Update a Store Area",
+          className: "api-method put",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/delete-store-area",
+          label: "Delete a Store Area",
+          className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Reports",
       link: {
         type: "doc",

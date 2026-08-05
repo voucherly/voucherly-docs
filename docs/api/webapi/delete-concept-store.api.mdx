@@ -1,0 +1,72 @@
+---
+id: delete-concept-store
+title: "Delete a Concept Store"
+description: "Permanently deletes the Concept Store. The Stores that referenced it are never deleted: pass `migrateToConceptStoreId` to reassign them to another Concept Store, or omit it to leave them without one (their `conceptStoreId` becomes null)."
+sidebar_label: "Delete a Concept Store"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "delete api-method"
+info_path: api/webapi/voucherly-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a Concept Store"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/concept_stores/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Permanently deletes the Concept Store. The Stores that referenced it are never deleted: pass `migrateToConceptStoreId` to reassign them to another Concept Store, or omit it to leave them without one (their `conceptStoreId` becomes null).
+
+Call `GET /v1/stores?conceptStoreId={id}` first to list the Stores this operation will affect.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./delete-concept-store.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./delete-concept-store.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./delete-concept-store.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      
