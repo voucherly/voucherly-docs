@@ -32,6 +32,7 @@ const SLUG_MAP: [string, string][] = [
   ['guides/integrations/ecommerce-plugins/woocommerce/', 'guide/integrazioni/plugin-e-commerce/woocommerce/'],
   ['guides/integrations/ecommerce-plugins/shopify/', 'guide/integrazioni/plugin-e-commerce/shopify/'],
   ['guides/integrations/pay-at-table/', 'guide/integrazioni/pagamento-al-tavolo/'],
+  ['guides/integrations/tcpos/', 'guide/integrazioni/tcpos/'],
   ['guides/legal/gdpr/', 'guide/note-legali/gdpr/'],
   ['guides/legal/fuhrmann2/', 'guide/note-legali/fuhrmann2/'],
   ['guides/products/electronic-receipt/ade-documento-commerciale/', 'guide/prodotti/scontrino-elettronico/documento-commerciale-online/'],

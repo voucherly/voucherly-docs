@@ -101,6 +101,11 @@ to = '/it/guide/integrazioni/pagamento-al-tavolo/'
 status = 301
 
 [[redirects]]
+from = '/it/guides/integrations/tcpos/'
+to = '/it/guide/integrazioni/tcpos/'
+status = 301
+
+[[redirects]]
 from = '/it/guides/legal/gdpr/'
 to = '/it/guide/note-legali/gdpr/'
 status = 301
