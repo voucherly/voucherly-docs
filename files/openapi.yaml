@@ -872,7 +872,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Receipts.Receipt'
+                $ref: '#/components/schemas/Receipt'
         '404':
           $ref: '#/components/responses/NotFound'
   /v1/receipts/{id}/download:
@@ -940,7 +940,7 @@ paths:
                     type: array
                     description: An array containing the actual response elements, paginated by any request parameters.
                     items:
-                      $ref: '#/components/schemas/Terminals.Terminal'
+                      $ref: '#/components/schemas/Terminal'
                   pagination:
                     $ref: '#/components/schemas/PaginationResponse'
                 additionalProperties: false
@@ -1186,6 +1186,7 @@ components:
           nullable: false
       additionalProperties: false
     Customer:
+      x-displayName: Customer
       x-tags:
         - customer
       type: object
@@ -1436,6 +1437,7 @@ components:
           nullable: true
       additionalProperties: false
     PaymentMethod:
+      x-displayName: Payment Method
       x-tags:
         - paymentMethod
       type: object
@@ -1481,6 +1483,7 @@ components:
           nullable: true
       additionalProperties: false
     Payment:
+      x-displayName: Payment
       x-tags:
         - payment
       type: object
@@ -2403,7 +2406,10 @@ components:
         - Sale
         - Void
       type: string
-    Receipts.Receipt:
+    Receipt:
+      x-tags:
+        - receipt
+      x-displayName: Receipt
       type: object
       description: A fiscal Receipt issued for a Payment.
       properties:
@@ -2441,7 +2447,10 @@ components:
         - Inactive
         - Deleted
       type: string
-    Terminals.Terminal:
+    Terminal:
+      x-tags:
+        - terminal
+      x-displayName: Terminal
       type: object
       description: A POS Terminal registered with a PaymentGateway and optionally bound to a Store.
       properties:
@@ -2524,7 +2533,7 @@ components:
           type: array
           description: An array of PaymentGateway objects representing all available PaymentGateways.
           items:
-            $ref: '#/components/schemas/PaymentGateways.PaymentGatewayDto'
+            $ref: '#/components/schemas/PaymentGateway'
           nullable: false
       additionalProperties: false
     MerchantPaymentGatewayDto:
@@ -2539,7 +2548,10 @@ components:
           type: boolean
           description: Indicates whether this payment gateway should be used as a fallback option when other gateways fail.
       additionalProperties: false
-    PaymentGateways.PaymentGatewayDto:
+    PaymentGateway:
+      x-tags:
+        - paymentGateway
+      x-displayName: Payment Gateway
       type: object
       description: Detailed information about a payment gateway, including merchant configuration and parameters.
       properties:

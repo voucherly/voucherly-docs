@@ -1,0 +1,32 @@
+---
+id: terminal
+title: "Terminal"
+description: "A POS Terminal registered with a PaymentGateway and optionally bound to a Store."
+sidebar_label: "Terminal"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"string","paymentGatewayAccountId":"string","paymentGateway":{"id":"string","name":"string","type":0,"paymentAction":"OTP","image":"string","icon":"string"},"storeId":"string","externalId":"string","name":"string","brand":"string","model":"string","serialNumber":"string","status":"Active","externalCreatedAt":"2024-07-29T15:51:28.071Z","externalUpdatedAt":"2024-07-29T15:51:28.071Z"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Terminal"}
+>
+</Heading>
+
+
+
+A POS Terminal registered with a PaymentGateway and optionally bound to a Store.
+
+<Schema
+  {...require("./terminal.Schema.json")}
+>
+  
+</Schema>
+            
