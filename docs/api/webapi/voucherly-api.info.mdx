@@ -45,6 +45,8 @@ The Voucherly API uses API keys to authenticate requests. Sandbox mode secret ke
 
 Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
 
+Publishable keys (`pk_sand_`, `pk_live_`) are meant for client-side code and are **not** accepted by this API: every request authenticated with one is rejected with `401 Unauthorized` and the message "This API call cannot be made with a publishable API key. Use your secret key from your server."
+
 Provide your API key as the "Voucherly-API-Key" header. For example:
 ```cURL []
 -H  "Voucherly-API-Key: sk_sand_BYsZDnaUWfVKGwHFvLop0dc9Fp1mE8py2Mtgm5aU6IrtCiuJg9s4747J"
@@ -71,7 +73,7 @@ All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Sec
     >
       
       
-      Sandbox mode secret keys have the prefix `sk_sand_` and live mode secret keys have the prefix `sk_live_`.
+      Sandbox mode secret keys have the prefix `sk_sand_` and live mode secret keys have the prefix `sk_live_`. Publishable keys (`pk_`) are not accepted.
       
       
       <div>
