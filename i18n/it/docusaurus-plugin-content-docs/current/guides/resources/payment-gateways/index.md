@@ -19,29 +19,51 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 
 | Id | Nome | Buoni pasto | Processo a 2 fasi | Rimborsabile parzialmente |
 |-|-|-|-|-|
+| **ADYEN**             | Adyen             |   |   | V |
+| **AMZNPAY**           | Amazon Pay        |   | V | V |
+| **APLPAY**            | Apple Pay         |   | V |   |
+| **CARDVOU**           | Card Voucherly    |   | V | V |
+| **DAYCLK**            | DayClick          | V |   |   |
 | **[EDENRED](edenred)**| Edenred           | V |   |   |
-| **[FAKEVOU](#demo)**  | Demo Voucherly    | V |   |   |
-| **[GPAY](google-pay)**| Google Pay        |   | V | V |
+| **FABRICK**           | Fabrick           |   | V | V |
+| **[FAKEVOU](#demo)**  | Demo Voucherly    | V |   | V |
+| **FLOA**              | Floa              |   | V | V |
+| **[GPAY](google-pay)**| Google Pay        |   | V |   |
+| **KLARNA**            | Klarna            |   | V | V |
 | **LUNCHGM**           | LunchGM           | V |   |   |
 | **MLTSFPY**           | MultiSafepay      |   | V | V |
+| **MOLLIE**            | Mollie            |   | V | V |
 | **NEXI**              | Nexi              |   | V | V |
-| **[PAYPAL](paypal)**  | PayPal            |   | V |   |
+| **NUMIA**             | Numia             |   | V | V |
+| **NUVEI**             | Nuvei             |   | V | V |
+| **[PAYPAL](paypal)**  | PayPal            |   | V | V |
 | **PELLEGR**           | Pellegrini        | V |   |   |
 | **PHEY**              | Worldline         |   | V | V |
+| **PLUXEE**            | Pluxee            | V |   |   |
+| **PREPAID**           | Prepaid           |   |   | V |
 | **[SATISPY](satispay)**| Satispay         | V |   | V |
-| **SODEXO**            | Pluxee            | V |   |   |
+| **SCALAPY**           | Scalapay          |   | V | V |
+| **SODEXO**            | Sodexo            | V |   |   |
+| **STANCER**           | Stancer           |   | V | V |
 | **STRIPE**            | Stripe            |   | V | V |
+| **SUMUP**             | SumUp             |   |   | V |
 | **UPDAY**             | UpDay             | V |   |   |
-| **YESTCKT**           | Yes!Ticket        | V |   |   |
+| **VIVA**              | Viva Wallet       |   | V | V |
 | **[WALLET](#wallet)** | Wallet            | V |   | V |
-
-<!-- 
-| **ADYEN**     | Adyen | | ✔️ | Refunds are asynchronous. | 
-| **AXERVE**    | Axerve | | ✔️ | |
--->
+| **YESTCKT**           | Yes!Ticket        | V |   |   |
 
 :::info
+**Buoni pasto** significa che il gateway può saldare una parte del pagamento con fondi da buono pasto, utilizzabili solo sulla quota alimentare dell'ordine.
+
+**Processo a 2 fasi** significa che la transazione viene prima autorizzata e poi catturata in un passaggio separato. I gateway che non lo prevedono incassano direttamente al checkout.
+
 **Rimborsabile parzialmente** significa che una transazione nello stato `Confirmed` può essere rimborsata per un importo inferiore al `ConfirmedAmount`.
+:::
+
+:::note
+**Apple Pay** e **Google Pay** sono wallet, non gateway autonomi: vengono offerti sopra un gateway già configurato. Apple Pay si appoggia a MultiSafepay e SumUp; Google Pay a Fabrick, MultiSafepay, Nexi e SumUp. Il comportamento su rimborsi e catture segue quello del gateway sottostante.
+
+**Sodexo** e **Pluxee** sono due gateway distinti e coesistono, nonostante il rebrand commerciale di Sodexo in Pluxee. Attivare uno non attiva l'altro.
 :::
 
 ### Demo Voucherly {#demo}

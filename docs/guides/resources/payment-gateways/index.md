@@ -18,29 +18,51 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 
 | Id | Name | Meal voucher | 2-step process | Partial refundable |
 |-|-|-|-|-|
+| **ADYEN**             | Adyen             |   |   | V |
+| **AMZNPAY**           | Amazon Pay        |   | V | V |
+| **APLPAY**            | Apple Pay         |   | V |   |
+| **CARDVOU**           | Card Voucherly    |   | V | V |
+| **DAYCLK**            | DayClick          | V |   |   |
 | **[EDENRED](edenred)**| Edenred           | V |   |   |
-| **[FAKEVOU](#demo)**  | Demo Voucherly    | V |   |   |
-| **[GPAY](google-pay)**| Google Pay        |   | V | V |
+| **FABRICK**           | Fabrick           |   | V | V |
+| **[FAKEVOU](#demo)**  | Demo Voucherly    | V |   | V |
+| **FLOA**              | Floa              |   | V | V |
+| **[GPAY](google-pay)**| Google Pay        |   | V |   |
+| **KLARNA**            | Klarna            |   | V | V |
 | **LUNCHGM**           | LunchGM           | V |   |   |
 | **MLTSFPY**           | MultiSafepay      |   | V | V |
+| **MOLLIE**            | Mollie            |   | V | V |
 | **NEXI**              | Nexi              |   | V | V |
-| **[PAYPAL](paypal)**  | PayPal            |   | V |   |
+| **NUMIA**             | Numia             |   | V | V |
+| **NUVEI**             | Nuvei             |   | V | V |
+| **[PAYPAL](paypal)**  | PayPal            |   | V | V |
 | **PELLEGR**           | Pellegrini        | V |   |   |
 | **PHEY**              | Worldline         |   | V | V |
+| **PLUXEE**            | Pluxee            | V |   |   |
+| **PREPAID**           | Prepaid           |   |   | V |
 | **[SATISPY](satispay)**| Satispay         | V |   | V |
-| **SODEXO**            | Pluxee            | V |   |   |
+| **SCALAPY**           | Scalapay          |   | V | V |
+| **SODEXO**            | Sodexo            | V |   |   |
+| **STANCER**           | Stancer           |   | V | V |
 | **STRIPE**            | Stripe            |   | V | V |
+| **SUMUP**             | SumUp             |   |   | V |
 | **UPDAY**             | UpDay             | V |   |   |
-| **YESTCKT**           | Yes!Ticket        | V |   |   |
+| **VIVA**              | Viva Wallet       |   | V | V |
 | **[WALLET](#wallet)** | Wallet            | V |   | V |
-
-<!-- 
-| **ADYEN**     | Adyen | | ✔️ | Refunds are asynchronous. | 
-| **AXERVE**    | Axerve | | ✔️ | |
--->
+| **YESTCKT**           | Yes!Ticket        | V |   |   |
 
 :::info
+**Meal voucher** means that the gateway can settle part of the payment with meal voucher funds, which are only usable on the food portion of the order.
+
+**2-step process** means that the transaction is authorised first and captured in a separate step. Gateways without it capture the funds directly at checkout.
+
 **Partial refundable** means that a transaction in the `Confirmed` status can be refunded for an amount lower than the `ConfirmedAmount`.
+:::
+
+:::note
+**Apple Pay** and **Google Pay** are wallets, not standalone gateways: they are offered on top of an already configured gateway. Apple Pay runs on MultiSafepay and SumUp; Google Pay runs on Fabrick, MultiSafepay, Nexi and SumUp. Refund and capture behaviour follows the underlying gateway.
+
+**Sodexo** and **Pluxee** are two distinct gateways and coexist, despite Sodexo's commercial rebranding to Pluxee. Activating one does not activate the other.
 :::
 
 ### Demo Voucherly {#demo}
