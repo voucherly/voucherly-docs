@@ -39,6 +39,10 @@
     "message": "Scontrino elettronico",
     "description": "The label for category 'Electronic receipt' in sidebar 'guidesSidebar'"
   },
+  "sidebar.guidesSidebar.category.Pay at table": {
+    "message": "Pagamento al tavolo",
+    "description": "The label for category 'Pay at table' in sidebar 'guidesSidebar'"
+  },
   "sidebar.guidesSidebar.category.Resources": {
     "message": "Risorse",
     "description": "The label for category 'Resources' in sidebar 'guidesSidebar'"

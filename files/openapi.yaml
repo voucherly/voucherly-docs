@@ -4,9 +4,9 @@ servers:
     description: Voucherly API
 info:
   title: Voucherly API
-  termsOfService: "https://legal.voucherly.it/terms/service/"
+  termsOfService: https://legal.voucherly.it/terms/service/
   description: |
-
+    
     ## Introduction
 
     The Voucherly API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable resource-oriented URLs, accepts request bodies and returns responses in [JSON-encoded](http://www.json.org/) format (using [camelCase](https://en.wikipedia.org/wiki/Camel_case) notation), and uses standard HTTP response codes, authentication, and verbs.
@@ -17,10 +17,12 @@ info:
     ```
 
     ## Authentication    
-    
+
     The Voucherly API uses API keys to authenticate requests. Sandbox mode secret keys have the prefix `sk_sand_` and live mode secret keys have the prefix `sk_live_`. You can view and manage your API keys in the [Voucherly Dashboard](https://dashboard.voucherly.it/Developer/ApiKey).
 
     Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+
+    Publishable keys (`pk_sand_`, `pk_live_`) are meant for client-side code and are **not** accepted by this API: every request authenticated with one is rejected with `401 Unauthorized` and the message "This API call cannot be made with a publishable API key. Use your secret key from your server."
 
     Provide your API key as the "Voucherly-API-Key" header. For example:
     ```cURL []
@@ -64,6 +66,15 @@ tags:
     description: |
       A Terminal represents a physical POS device registered with a PaymentGateway and optionally bound to a Store. Terminals are used to process card-present payments.
     x-displayName: Terminals
+  - name: store
+    description: Merchant locations, including POS and payment configuration.
+    x-displayName: Stores
+  - name: conceptStore
+    description: Brands used to group Stores.
+    x-displayName: Concept Stores
+  - name: storeArea
+    description: Merchant-defined geographical or operational Store areas.
+    x-displayName: Store Areas
   - name: reports
     description: |
       Reports expose aggregated analytics over your Payments. The volumes report returns turnover broken down by PaymentGateway (and optionally by Store) for a given date range, together with the grand totals across all rows. It mirrors the Volumes report available in the Voucherly Dashboard.
@@ -89,7 +100,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Company'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
     get:
       tags:
         - company
@@ -109,14 +120,14 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: 'An array containing the actual response elements, paginated by any request parameters.'
+                    description: An array containing the actual response elements, paginated by any request parameters.
                     items:
                       $ref: '#/components/schemas/Company'
                   pagination:
                     $ref: '#/components/schemas/PaginationResponse'
                 additionalProperties: false
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
   /v1/companys/{idOrCode}:
     get:
       tags:
@@ -132,13 +143,14 @@ paths:
             type: string
         - name: include
           in: query
-          description: 'An array of nested object to be included in response.'
+          description: An array of nested object to be included in response.
           required: false
           schema:
             type: array
             items:
               type: string
-              enum: ["Addresses"]
+              enum:
+                - Addresses
       responses:
         '200':
           description: Returns a Company object if a valid identifier was provided.
@@ -147,9 +159,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Company'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/customers:
     post:
       tags:
@@ -161,6 +173,30 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateCustomerRequest'
+            examples:
+              Default:
+                summary: Create a customer
+                value:
+                  email: mario.rossi@voucherly.it
+                  firstName: Mario
+                  lastName: Rossi
+              Metadata:
+                summary: Create a customer with metadata
+                value:
+                  email: mario.rossi@voucherly.it
+                  firstName: Mario
+                  lastName: Rossi
+                  metadata:
+                    crmId: crm-4821
+                    plan: premium
+              Email uniqueness:
+                summary: Create a customer with email uniqueness
+                value:
+                  email: mario.rossi@voucherly.it
+                  firstName: Mario
+                  lastName: Rossi
+                  options:
+                    requireUniqueEmail: true
         required: true
       responses:
         '201':
@@ -170,7 +206,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customer'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
     get:
       tags:
         - customer
@@ -195,14 +231,14 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: 'An array containing the actual response elements, paginated by any request parameters.'
+                    description: An array containing the actual response elements, paginated by any request parameters.
                     items:
                       $ref: '#/components/schemas/Customer'
                   pagination:
                     $ref: '#/components/schemas/PaginationResponse'
                 additionalProperties: false
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
   /v1/customers/{id}:
     parameters:
       - $ref: '#/components/parameters/IdPathParam'
@@ -214,13 +250,14 @@ paths:
       parameters:
         - name: include
           in: query
-          description: 'An array of nested object to be included in response.'
+          description: An array of nested object to be included in response.
           required: false
           schema:
             type: array
             items:
               type: string
-              enum: ["Wallet"]
+              enum:
+                - Wallet
       responses:
         '200':
           description: Returns a Customer object if a valid identifier was provided.
@@ -229,9 +266,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customer'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
     post:
       tags:
         - customer
@@ -252,9 +289,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customer'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/customers/{customerId}/payment_methods:
     get:
       tags:
@@ -275,16 +312,16 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: 'An array containing the actual response elements, paginated by any request parameters.'
+                    description: An array containing the actual response elements, paginated by any request parameters.
                     items:
                       $ref: '#/components/schemas/PaymentMethod'
                   pagination:
                     $ref: '#/components/schemas/PaginationResponse'
                 additionalProperties: false
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/customers/{customerId}/payment_methods/{paymentMethodId}:
     delete:
       tags:
@@ -296,11 +333,11 @@ paths:
         - $ref: '#/components/parameters/PaymentMethodIdPathParam'
       responses:
         '204':
-          description: ""
+          description: ''
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/customers/{customerId}/prepaid:
     get:
       tags:
@@ -325,9 +362,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customers.CustomerPrepaidBalance'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/customers/{id}/wallet/movements:
     get:
       tags:
@@ -364,16 +401,16 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: 'An array containing the actual response elements, paginated by any request parameters.'
+                    description: An array containing the actual response elements, paginated by any request parameters.
                     items:
                       $ref: '#/components/schemas/Customers.CustomerWalletMovement'
                   pagination:
                     $ref: '#/components/schemas/PaginationResponse'
                 additionalProperties: false
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/customers/{customerId}/addresses:
     get:
       tags:
@@ -395,16 +432,16 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: 'An array containing the actual response elements, paginated by any request parameters.'
+                    description: An array containing the actual response elements, paginated by any request parameters.
                     items:
                       $ref: '#/components/schemas/Customers.CustomerAddress'
                   pagination:
                     $ref: '#/components/schemas/PaginationResponse'
                 additionalProperties: false
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
     post:
       tags:
         - customer
@@ -426,9 +463,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customers.CustomerAddress'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/customers/{customerId}/addresses/{addressId}:
     get:
       tags:
@@ -446,9 +483,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customers.CustomerAddress'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
     put:
       tags:
         - customer
@@ -464,16 +501,16 @@ paths:
               $ref: '#/components/schemas/Customers.CustomerAddress.Request'
         required: true
       responses:
-        '200':
+        '201':
           description: Returns the updated CustomerAddress object.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Customers.CustomerAddress'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
     delete:
       tags:
         - customer
@@ -484,11 +521,11 @@ paths:
         - $ref: '#/components/parameters/AddressIdPathParam'
       responses:
         '204':
-          description: ""
+          description: ''
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/payments:
     post:
       tags:
@@ -502,12 +539,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreatePaymentRequest'
             examples:
-              'New customer':
+              New customer:
                 summary: Create payment with new customer
                 value:
                   mode: Payment
-                  redirectOkUrl: "https://httpbin.org/get"
-                  redirectKoUrl: "https://httpbin.org/get"
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
                   customerFirstName: Mario
                   customerLastName: Rossi
                   customerEmail: mario.rossi@voucherly.it
@@ -523,6 +560,137 @@ paths:
                   discounts:
                     - discountName: Coupon XSDWFE
                       amount: 200
+              Existing customer:
+                summary: Create payment for an existing customer
+                value:
+                  mode: Payment
+                  customerId: cs_5vY3nKp8QwR
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  language: it
+                  country: IT
+                  shippingAddress: Via Alessandro Tadino 3, Milano
+                  metadata:
+                    orderId: order-123
+                  lines:
+                    - quantity: 2
+                      unitAmount: 250
+                      unitDiscountAmount: 10
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        isFood: true
+                        taxRate: 10
+                  discounts:
+                    - discountName: Coupon XSDWFE
+                      amount: 200
+              New store:
+                summary: Create payment on a store identified by your own ids
+                value:
+                  mode: Payment
+                  customerId: cs_5vY3nKp8QwR
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  store:
+                    externalId1: '35'
+                    name: Punto vendita Milano
+                  lines:
+                    - quantity: 2
+                      unitAmount: 250
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        isFood: true
+              Partial completion:
+                summary: Create payment the customer can pay partially
+                value:
+                  mode: Payment
+                  completionMode: Partial
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  country: IT
+                  lines:
+                    - quantity: 2
+                      unitAmount: 250
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        isFood: true
+              Auto confirm:
+                summary: Create payment confirmed automatically
+                value:
+                  mode: Payment
+                  customerId: cs_5vY3nKp8QwR
+                  isAutoConfirm: true
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  country: IT
+                  lines:
+                    - quantity: 2
+                      unitAmount: 250
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        isFood: true
+              Preselected gateway:
+                summary: Create payment redirecting straight to one payment gateway
+                value:
+                  mode: Payment
+                  customerId: cs_5vY3nKp8QwR
+                  selectedPaymentGatewayId: SATISPAY
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  country: IT
+                  lines:
+                    - quantity: 2
+                      unitAmount: 250
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        isFood: true
+              Transactions:
+                summary: Create payment charging a gateway server-side
+                value:
+                  mode: Payment
+                  customerId: cs_5vY3nKp8QwR
+                  transactions:
+                    - paymentGatewayId: PREPAID
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  country: IT
+                  lines:
+                    - quantity: 2
+                      unitAmount: 5050
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        isFood: true
+              Server-to-server callback:
+                summary: Create payment notified over a S2S callback
+                value:
+                  mode: Payment
+                  customerId: cs_5vY3nKp8QwR
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  callbackUrl: https://httpbin.org/post
+                  country: IT
+                  lines:
+                    - quantity: 2
+                      unitAmount: 250
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        isFood: true
+              Wallet:
+                summary: Create a Wallet to save a payment method
+                value:
+                  mode: Wallet
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  customerFirstName: Mario
+                  customerLastName: Rossi
+                  customerEmail: mario.rossi@voucherly.it
+                  country: IT
       responses:
         '201':
           description: Returns a Payment object.
@@ -531,7 +699,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Payment'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
   /v1/payments/{id}:
     get:
       tags:
@@ -542,18 +710,19 @@ paths:
         - $ref: '#/components/parameters/IdPathParam'
         - name: include
           in: query
-          description: 'An array of nested object to be included in response.'
+          description: An array of nested object to be included in response.
           required: false
           schema:
             type: array
             items:
               type: string
-              enum: ["Lines", "Discounts", "Transactions"]
+              enum:
+                - Lines
+                - Discounts
+                - Transactions
         - name: Voucherly-Wait-Time
           in: header
-          description: >-
-            Seconds that the call will be hanging, waiting for a payment status
-            change. Maximum value is 60 seconds.
+          description: Seconds that the call will be hanging, waiting for a payment status change. Maximum value is 60 seconds.
           schema:
             type: integer
             format: int32
@@ -565,9 +734,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Payment'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/payments/{id}/confirm:
     post:
       tags:
@@ -589,11 +758,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Payment'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
         '409':
-          $ref: "#/components/responses/PaymentConflict"
+          $ref: '#/components/responses/PaymentConflict'
   /v1/payments/{id}/refund:
     post:
       tags:
@@ -607,6 +776,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RefundPaymentRequest'
+            examples:
+              Full:
+                summary: Refund the whole Payment
+                value: {}
+              As credit:
+                summary: Refund the whole Payment into the customer's wallet
+                value:
+                  asCredit: true
+              Single transaction:
+                summary: Refund part of one transaction
+                value:
+                  transactions:
+                    - id: 81aa4db7-958b-43ac-9624-1a240c394c45
+                      amount: 250
       responses:
         '200':
           description: Returns a Payment object.
@@ -615,11 +798,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Payment'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
         '409':
-          $ref: "#/components/responses/PaymentConflict"
+          $ref: '#/components/responses/PaymentConflict'
   /v1/payments/{id}/void:
     post:
       tags:
@@ -637,11 +820,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Payment'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
         '409':
-          $ref: "#/components/responses/PaymentConflict"
+          $ref: '#/components/responses/PaymentConflict'
   /v1/payments/{id}/receipt:
     get:
       tags:
@@ -660,9 +843,9 @@ paths:
                 type: string
                 format: binary
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/payments/{id}/refund_receipt:
     get:
       tags:
@@ -681,9 +864,9 @@ paths:
                 type: string
                 format: binary
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/receipts/{id}:
     get:
       tags:
@@ -698,9 +881,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Receipts.Receipt'
+                $ref: '#/components/schemas/Receipt'
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/receipts/{id}/download:
     get:
       tags:
@@ -719,7 +902,7 @@ paths:
                 type: string
                 format: binary
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
   /v1/terminals:
     get:
       tags:
@@ -764,14 +947,14 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: 'An array containing the actual response elements, paginated by any request parameters.'
+                    description: An array containing the actual response elements, paginated by any request parameters.
                     items:
-                      $ref: '#/components/schemas/Terminals.Terminal'
+                      $ref: '#/components/schemas/Terminal'
                   pagination:
                     $ref: '#/components/schemas/PaginationResponse'
                 additionalProperties: false
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
   /v1/terminals/{id}:
     delete:
       tags:
@@ -782,9 +965,427 @@ paths:
         - $ref: '#/components/parameters/IdPathParam'
       responses:
         '204':
-          description: ""
+          description: ''
         '404':
-          $ref: "#/components/responses/NotFound"
+          $ref: '#/components/responses/NotFound'
+  /v1/stores:
+    get:
+      tags:
+        - store
+      operationId: list-store
+      summary: List all Stores
+      parameters:
+        - name: name
+          in: query
+          required: false
+          description: Filter by Stores whose name contains this value. The match is case-sensitive.
+          schema:
+            type: string
+            maxLength: 100
+        - name: isActive
+          in: query
+          required: false
+          description: Filter by Store management status. When omitted, both active and inactive Stores are returned.
+          schema:
+            type: boolean
+        - name: conceptStoreId
+          in: query
+          required: false
+          description: Filter by the Stores assigned to this Concept Store.
+          schema:
+            $ref: '#/components/schemas/Id'
+        - name: storeAreaId
+          in: query
+          required: false
+          description: Filter by the Stores assigned to this Store Area.
+          schema:
+            $ref: '#/components/schemas/Id'
+        - name: include
+          in: query
+          required: false
+          description: Related data to embed in each Store. Omit to receive only the Store's own fields.
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Stores.StoreInclude'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PageStartQueryParam'
+      responses:
+        '200':
+          description: |
+            A dictionary with an `items` property that contains an array of up to `length` Stores, starting after Store `start`, ordered by name. Each entry in the array is a separate Store object. If no more Stores are available, the resulting array will be empty.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: An array containing the actual response elements, paginated by any request parameters.
+                    items:
+                      $ref: '#/components/schemas/Store'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationResponse'
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/BadRequest'
+    post:
+      tags:
+        - store
+      operationId: create-store
+      summary: Create a Store
+      description: |
+        Creates a Store for the authenticated Merchant. `conceptStoreName`, `storeAreaName` and the `status` object are never returned by this operation; retrieve the Store with the `include` parameter to read them.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stores.StoreRequest'
+            example:
+              name: Trattoria Bella Vista
+              slug: bella-vista
+              externalId1: MILANO-01
+              isActive: true
+              address:
+                streetName: Via Roma
+                streetNumber: '1'
+                city: Milano
+                province: MI
+                postalCode: '20100'
+                country: IT
+      responses:
+        '201':
+          description: Returns a Store object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v1/stores/{id}:
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+    get:
+      tags:
+        - store
+      operationId: retrieve-store
+      summary: Retrieve a Store
+      parameters:
+        - name: include
+          in: query
+          required: false
+          description: Related data to embed in the Store. Omit to receive only the Store's own fields.
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Stores.StoreInclude'
+      responses:
+        '200':
+          description: Returns a Store object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - store
+      operationId: update-store
+      summary: Update a Store
+      description: |
+        Replaces every writable field of the Store. Fields omitted from the request body are cleared, not preserved. `conceptStoreName`, `storeAreaName` and the `status` object are never returned by this operation; retrieve the Store with the `include` parameter to read them.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stores.StoreRequest'
+            example:
+              name: Trattoria Bella Vista
+              slug: bella-vista
+              externalId1: MILANO-01
+              isActive: false
+      responses:
+        '200':
+          description: Returns the updated Store object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/concept_stores:
+    get:
+      tags:
+        - conceptStore
+      operationId: list-concept-store
+      summary: List all Concept Stores
+      parameters:
+        - name: name
+          in: query
+          required: false
+          description: Filter by Concept Stores whose name contains this value. The match is case-sensitive.
+          schema:
+            type: string
+            maxLength: 100
+        - name: ids
+          in: query
+          required: false
+          description: Filter by a specific set of Concept Store identifiers.
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Id'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PageStartQueryParam'
+      responses:
+        '200':
+          description: |
+            A dictionary with an `items` property that contains an array of up to `length` Concept Stores, starting after Concept Store `start`, ordered by name. Each entry in the array is a separate Concept Store object. If no more Concept Stores are available, the resulting array will be empty.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: An array containing the actual response elements, paginated by any request parameters.
+                    items:
+                      $ref: '#/components/schemas/ConceptStore'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationResponse'
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/BadRequest'
+    post:
+      tags:
+        - conceptStore
+      operationId: create-concept-store
+      summary: Create a Concept Store
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stores.ConceptStoreRequest'
+            example:
+              name: Bella Vista
+              externalId1: BRAND-01
+      responses:
+        '201':
+          description: Returns a Concept Store object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConceptStore'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v1/concept_stores/{id}:
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+    get:
+      tags:
+        - conceptStore
+      operationId: retrieve-concept-store
+      summary: Retrieve a Concept Store
+      responses:
+        '200':
+          description: Returns a Concept Store object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConceptStore'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - conceptStore
+      operationId: update-concept-store
+      summary: Update a Concept Store
+      description: |
+        Replaces every writable field of the Concept Store. Fields omitted from the request body are cleared, not preserved.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stores.ConceptStoreRequest'
+            example:
+              name: Bella Vista
+              externalId1: BRAND-01
+      responses:
+        '200':
+          description: Returns the updated Concept Store object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConceptStore'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - conceptStore
+      operationId: delete-concept-store
+      summary: Delete a Concept Store
+      description: |
+        Permanently deletes the Concept Store. The Stores that referenced it are never deleted: pass `migrateToConceptStoreId` to reassign them to another Concept Store, or omit it to leave them without one (their `conceptStoreId` becomes null).
+
+        Call `GET /v1/stores?conceptStoreId={id}` first to list the Stores this operation will affect.
+      parameters:
+        - name: migrateToConceptStoreId
+          in: query
+          required: false
+          description: The Concept Store the referencing Stores are reassigned to. It must belong to the authenticated Merchant and must be different from `id`. When omitted, the referencing Stores are left without a Concept Store.
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        '204':
+          description: The Concept Store has been deleted.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/store_areas:
+    get:
+      tags:
+        - storeArea
+      operationId: list-store-area
+      summary: List all Store Areas
+      parameters:
+        - name: name
+          in: query
+          required: false
+          description: Filter by Store Areas whose name contains this value. The match is case-sensitive.
+          schema:
+            type: string
+            maxLength: 100
+        - name: ids
+          in: query
+          required: false
+          description: Filter by a specific set of Store Area identifiers.
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Id'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PageStartQueryParam'
+      responses:
+        '200':
+          description: |
+            A dictionary with an `items` property that contains an array of up to `length` Store Areas, starting after Store Area `start`, ordered by name. Each entry in the array is a separate Store Area object. If no more Store Areas are available, the resulting array will be empty.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    description: An array containing the actual response elements, paginated by any request parameters.
+                    items:
+                      $ref: '#/components/schemas/StoreArea'
+                  pagination:
+                    $ref: '#/components/schemas/PaginationResponse'
+                additionalProperties: false
+        '400':
+          $ref: '#/components/responses/BadRequest'
+    post:
+      tags:
+        - storeArea
+      operationId: create-store-area
+      summary: Create a Store Area
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stores.StoreAreaRequest'
+            example:
+              name: Lombardia
+      responses:
+        '201':
+          description: Returns a Store Area object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreArea'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v1/store_areas/{id}:
+    parameters:
+      - $ref: '#/components/parameters/IdPathParam'
+    get:
+      tags:
+        - storeArea
+      operationId: retrieve-store-area
+      summary: Retrieve a Store Area
+      responses:
+        '200':
+          description: Returns a Store Area object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreArea'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - storeArea
+      operationId: update-store-area
+      summary: Update a Store Area
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stores.StoreAreaRequest'
+            example:
+              name: Lombardia
+      responses:
+        '200':
+          description: Returns the updated Store Area object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreArea'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - storeArea
+      operationId: delete-store-area
+      summary: Delete a Store Area
+      description: |
+        Permanently deletes the Store Area. The Stores that referenced it are never deleted: pass `migrateToStoreAreaId` to reassign them to another Store Area, or omit it to leave them without one (their `storeAreaId` becomes null).
+
+        Call `GET /v1/stores?storeAreaId={id}` first to list the Stores this operation will affect.
+      parameters:
+        - name: migrateToStoreAreaId
+          in: query
+          required: false
+          description: The Store Area the referencing Stores are reassigned to. It must belong to the authenticated Merchant and must be different from `id`. When omitted, the referencing Stores are left without a Store Area.
+          schema:
+            $ref: '#/components/schemas/Id'
+      responses:
+        '204':
+          description: The Store Area has been deleted.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
   /v1/payment_gateways:
     get:
       tags:
@@ -795,10 +1396,7 @@ paths:
         - name: all
           in: query
           required: false
-          description: >-
-            Specifies whether to return all payment gateways or only those that are enabled.
-            If true, returns all payment gateways regardless of their enabled status.
-            If false or omitted, returns only enabled payment gateways.
+          description: Specifies whether to return all payment gateways or only those that are enabled. If true, returns all payment gateways regardless of their enabled status. If false or omitted, returns only enabled payment gateways.
           schema:
             type: boolean
         - name: include
@@ -820,7 +1418,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaymentGateways.GetPaymentGatewaysResponse'
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
   /v1/reports/volumes:
     get:
       tags:
@@ -828,7 +1426,7 @@ paths:
       operationId: volumes-report
       summary: Volumes
       description: |
-        Returns aggregated turnover for the given date range, broken down by PaymentGateway and optionally by Store, together with the grand totals across all rows. This is the same data shown in the Volumes report of the Voucherly Dashboard.
+        Returns aggregated turnover for the given date range, broken down by PaymentGateway and optionally by Store and/or Company, together with the grand totals across all rows. This is the same data shown in the Volumes report of the Voucherly Dashboard.
       parameters:
         - name: fromDate
           in: query
@@ -853,9 +1451,11 @@ paths:
         - name: groupBy
           in: query
           required: false
-          description: How rows are grouped. When omitted, rows are aggregated per PaymentGateway only.
+          description: How rows are grouped. Repeat the parameter to group by more than one dimension (e.g. `groupBy=Store&groupBy=Company`). When omitted, rows are aggregated per PaymentGateway only.
           schema:
-            $ref: '#/components/schemas/Reports.RevenuesGrouping'
+            type: array
+            items:
+              $ref: '#/components/schemas/Reports.RevenuesGrouping'
         - name: paymentGatewayIds
           in: query
           required: false
@@ -868,6 +1468,14 @@ paths:
           in: query
           required: false
           description: Filter by one or more Store identifiers. Repeat the parameter to provide multiple values.
+          schema:
+            type: array
+            items:
+              type: string
+        - name: companyIds
+          in: query
+          required: false
+          description: Filter by one or more Company identifiers. Repeat the parameter to provide multiple values.
           schema:
             type: array
             items:
@@ -885,7 +1493,7 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: 'An array containing the per-PaymentGateway breakdown rows, paginated by any request parameters.'
+                    description: An array containing the per-PaymentGateway breakdown rows, paginated by any request parameters.
                     items:
                       $ref: '#/components/schemas/Reports.RevenuesDetails'
                   pagination:
@@ -894,7 +1502,7 @@ paths:
                     $ref: '#/components/schemas/Reports.RevenuesTotals'
                 additionalProperties: false
         '400':
-          $ref: "#/components/responses/BadRequest"
+          $ref: '#/components/responses/BadRequest'
 components:
   parameters:
     IdPathParam:
@@ -940,6 +1548,347 @@ components:
       schema:
         type: string
   schemas:
+    Stores.StoreRequest:
+      type: object
+      description: The writable fields of a Store. Every field is replaced on update; omitted optional fields are cleared.
+      required:
+        - name
+      properties:
+        conceptStoreId:
+          type: string
+          description: The ID of the Concept Store this Store belongs to. It must belong to the authenticated Merchant.
+          nullable: true
+          example: conce_01kg2gestgepdbmsn7hs6bsrwp
+        storeAreaId:
+          type: string
+          description: The ID of the Store Area this Store belongs to. It must belong to the authenticated Merchant.
+          nullable: true
+          example: starea_01kg2gestgepdbmsn7hs6bsrwp
+        name:
+          type: string
+          description: The display name of the Store. Leading and trailing whitespace is removed.
+          maxLength: 100
+          nullable: false
+        slug:
+          type: string
+          description: A URL-safe identifier for the Store, unique across the Merchant. Leading and trailing whitespace is removed; a blank value is stored as null.
+          maxLength: 120
+          nullable: true
+        pos:
+          $ref: '#/components/schemas/Stores.StorePos'
+        externalId1:
+          type: string
+          description: Your own identifier for the Store, unique across the Merchant. Required when `pos` is set. Leading and trailing whitespace is removed; a blank value is stored as null.
+          maxLength: 50
+          nullable: true
+        externalId2:
+          type: string
+          description: A second identifier of your own for the Store, unique across the Merchant. Leading and trailing whitespace is removed; a blank value is stored as null.
+          maxLength: 50
+          nullable: true
+        address:
+          $ref: '#/components/schemas/Stores.StoreLocation'
+        isActive:
+          type: boolean
+          description: Whether the Store is operational. Unlike the other optional fields, omitting it does not clear it but defaults it to true, so an update that leaves it out reactivates the Store.
+          default: true
+        paymentGatewayConfigurationId:
+          type: string
+          description: The ID of the PaymentGatewayConfiguration used by this Store. It must belong to the authenticated Merchant and be active. When null, the Merchant default configuration applies.
+          nullable: true
+          example: pgc_01kg2gestgepdbmsn7hs6bsrwp
+        ecommerceIsActive:
+          type: boolean
+          description: Whether the Store accepts e-commerce orders.
+        ecommerceDeliveryIsActive:
+          type: boolean
+          description: Whether the Store accepts e-commerce orders for delivery.
+        ecommercePickupIsActive:
+          type: boolean
+          description: Whether the Store accepts e-commerce orders for pickup.
+        ecommerceReservationIsActive:
+          type: boolean
+          description: Whether the Store accepts e-commerce reservations.
+      additionalProperties: false
+    Store:
+      x-tags:
+        - store
+      x-displayName: Store
+      type: object
+      description: A Store is a point of sale of a Merchant, with its own address, POS connection and payment configuration.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the Store.
+          nullable: false
+          example: sto_01kg2gestgepdbmsn7hs6bsrwp
+        conceptStoreId:
+          type: string
+          description: The ID of the Concept Store this Store belongs to.
+          nullable: true
+          example: conce_01kg2gestgepdbmsn7hs6bsrwp
+        conceptStoreName:
+          type: string
+          description: The name of the Concept Store this Store belongs to. Returned only when `conceptStore` is requested through the `include` parameter. Retrieve the Concept Store from `/v1/concept_stores/{conceptStoreId}` to read its other fields.
+          nullable: true
+          readOnly: true
+        storeAreaId:
+          type: string
+          description: The ID of the Store Area this Store belongs to.
+          nullable: true
+          example: starea_01kg2gestgepdbmsn7hs6bsrwp
+        storeAreaName:
+          type: string
+          description: The name of the Store Area this Store belongs to. Returned only when `storeArea` is requested through the `include` parameter. Retrieve the Store Area from `/v1/store_areas/{storeAreaId}` to read its other fields.
+          nullable: true
+          readOnly: true
+        name:
+          type: string
+          description: The display name of the Store.
+          nullable: false
+        slug:
+          type: string
+          description: A URL-safe identifier for the Store, unique across the Merchant.
+          nullable: true
+        pos:
+          $ref: '#/components/schemas/Stores.StorePos'
+        externalId1:
+          type: string
+          description: Your own identifier for the Store, unique across the Merchant.
+          nullable: true
+        externalId2:
+          type: string
+          description: A second identifier of your own for the Store, unique across the Merchant.
+          nullable: true
+        address:
+          $ref: '#/components/schemas/Stores.StoreLocation'
+        isActive:
+          type: boolean
+          description: Whether the Store is operational.
+        paymentGatewayConfigurationId:
+          type: string
+          description: The ID of the PaymentGatewayConfiguration used by this Store. When null, the Merchant default configuration applies.
+          nullable: true
+          example: pgc_01kg2gestgepdbmsn7hs6bsrwp
+        ecommerceIsActive:
+          type: boolean
+          description: Whether the Store accepts e-commerce orders.
+        ecommerceDeliveryIsActive:
+          type: boolean
+          description: Whether the Store accepts e-commerce orders for delivery.
+        ecommercePickupIsActive:
+          type: boolean
+          description: Whether the Store accepts e-commerce orders for pickup.
+        ecommerceReservationIsActive:
+          type: boolean
+          description: Whether the Store accepts e-commerce reservations.
+        status:
+          allOf:
+            - $ref: '#/components/schemas/Stores.StoreStatus'
+          description: The current health of the Store POS connection. Returned only when `status` is requested through the `include` parameter, and only for active Stores that have `pos` configured.
+          nullable: true
+          readOnly: true
+        createdOnUtc:
+          type: string
+          format: date-time
+          description: The UTC timestamp when the Store was created.
+          readOnly: true
+      additionalProperties: false
+    Stores.StoreInclude:
+      type: string
+      description: Related data that can be embedded in a Store response through the `include` parameter.
+      enum:
+        - conceptStore
+        - storeArea
+        - status
+    Stores.StorePos:
+      type: object
+      description: The connection to the POS system that serves the Store. Setting it makes `externalId1` required.
+      nullable: true
+      required:
+        - posId
+        - posEndpoint
+      properties:
+        posId:
+          type: string
+          description: The identifier of the Store inside the POS system.
+          maxLength: 10
+          nullable: false
+        posEndpoint:
+          type: string
+          description: The base URL of the POS system. A trailing slash is added when missing.
+          format: uri
+          maxLength: 200
+          nullable: false
+      additionalProperties: false
+    Stores.StoreLocation:
+      type: object
+      description: The postal address of the Store.
+      nullable: true
+      required:
+        - streetName
+        - streetNumber
+        - city
+        - province
+        - postalCode
+        - country
+      properties:
+        streetName:
+          type: string
+          description: The street name.
+          maxLength: 100
+          nullable: false
+        streetNumber:
+          type: string
+          description: The street number.
+          maxLength: 20
+          nullable: false
+        city:
+          type: string
+          description: The city.
+          maxLength: 100
+          nullable: false
+        province:
+          type: string
+          description: The two-letter province code.
+          minLength: 2
+          maxLength: 2
+          nullable: false
+        postalCode:
+          type: string
+          description: The postal code.
+          minLength: 5
+          maxLength: 20
+          nullable: false
+        country:
+          type: string
+          description: The country.
+          maxLength: 100
+          nullable: false
+      additionalProperties: false
+    Stores.StoreStatus:
+      type: object
+      description: The outcome of the periodic health checks Voucherly runs against the Store POS connection.
+      readOnly: true
+      properties:
+        status:
+          type: string
+          description: The current health of the Store.
+          enum:
+            - Up
+            - Degraded
+            - Down
+        currentStatusFromUtc:
+          type: string
+          format: date-time
+          description: The UTC timestamp when the Store entered the current status.
+        lastCheckedAtUtc:
+          type: string
+          format: date-time
+          description: The UTC timestamp of the most recent health check.
+        lastSuccessAtUtc:
+          type: string
+          format: date-time
+          description: The UTC timestamp of the most recent successful health check.
+          nullable: true
+        consecutiveKos:
+          type: integer
+          format: int32
+          description: The number of consecutive failed health checks.
+        consecutiveOks:
+          type: integer
+          format: int32
+          description: The number of consecutive successful health checks.
+        lastResponseTimeMs:
+          type: integer
+          format: int32
+          description: The response time of the most recent health check, in milliseconds.
+      additionalProperties: false
+    Stores.ConceptStoreRequest:
+      type: object
+      description: The writable fields of a Concept Store. Every field is replaced on update; omitted optional fields are cleared.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The display name of the Concept Store, unique across the Merchant. Leading and trailing whitespace is removed.
+          maxLength: 100
+          nullable: false
+        externalId1:
+          type: string
+          description: Your own identifier for the Concept Store, unique across the Merchant. Leading and trailing whitespace is removed; a blank value is stored as null.
+          maxLength: 50
+          nullable: true
+        externalId2:
+          type: string
+          description: A second identifier of your own for the Concept Store, unique across the Merchant. Leading and trailing whitespace is removed; a blank value is stored as null.
+          maxLength: 50
+          nullable: true
+      additionalProperties: false
+    ConceptStore:
+      x-tags:
+        - conceptStore
+      x-displayName: Concept Store
+      type: object
+      description: A Concept Store is a brand used to group Stores of the same Merchant.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the Concept Store.
+          nullable: false
+          example: conce_01kg2gestgepdbmsn7hs6bsrwp
+        name:
+          type: string
+          description: The display name of the Concept Store, unique across the Merchant.
+          nullable: false
+        externalId1:
+          type: string
+          description: Your own identifier for the Concept Store, unique across the Merchant.
+          nullable: true
+        externalId2:
+          type: string
+          description: A second identifier of your own for the Concept Store, unique across the Merchant.
+          nullable: true
+        createdOnUtc:
+          type: string
+          format: date-time
+          description: The UTC timestamp when the Concept Store was created.
+          readOnly: true
+      additionalProperties: false
+    Stores.StoreAreaRequest:
+      type: object
+      description: The writable fields of a Store Area.
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The display name of the Store Area, unique across the Merchant. Leading and trailing whitespace is removed.
+          maxLength: 100
+          nullable: false
+      additionalProperties: false
+    StoreArea:
+      x-tags:
+        - storeArea
+      x-displayName: Store Area
+      type: object
+      description: A Store Area is a geographical or operational grouping of Stores, defined by the Merchant.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the Store Area.
+          nullable: false
+          example: starea_01kg2gestgepdbmsn7hs6bsrwp
+        name:
+          type: string
+          description: The display name of the Store Area, unique across the Merchant.
+          nullable: false
+        createdOnUtc:
+          type: string
+          format: date-time
+          description: The UTC timestamp when the Store Area was created.
+          readOnly: true
     Id:
       type: string
       description: Unique identifier for the object.
@@ -948,12 +1897,16 @@ components:
     Company:
       x-tags:
         - company
-      x-displayName: "Company"
+      x-displayName: Company
       type: object
       description: The Company object
       properties:
         id:
           $ref: '#/components/schemas/Id'
+        merchantId:
+          type: string
+          format: uuid
+          description: The ID of the merchant this Company belongs to, that is your own merchant.
         tenant:
           $ref: '#/components/schemas/TenantMode'
         joinCode:
@@ -966,6 +1919,15 @@ components:
           type: string
           description: Company name.
           nullable: false
+        priceAdjustmentPercentage:
+          type: integer
+          format: int32
+          description: The percentage applied to catalogue prices for this Company. Positive values raise them, negative values lower them.
+        prepaidPolicy:
+          allOf:
+            - $ref: '#/components/schemas/Customers.PrepaidPolicy'
+          description: The prepaid policy applied to the Customers of this Company.
+          readOnly: true
         addresses:
           type: array
           description: An array of delivery addresses associated with this Company. Each address can have specific delivery fees and store information.
@@ -977,7 +1939,8 @@ components:
     CreateCompanyRequest:
       type: object
       description: Request body for creating a Company.
-      required: [name]
+      required:
+        - name
       properties:
         joinCode:
           type: string
@@ -991,6 +1954,7 @@ components:
           nullable: false
       additionalProperties: false
     Customer:
+      x-displayName: Customer
       x-tags:
         - customer
       type: object
@@ -998,8 +1962,16 @@ components:
       properties:
         id:
           $ref: '#/components/schemas/Id'
+        merchantId:
+          type: string
+          format: uuid
+          description: The ID of the merchant this Customer belongs to, that is your own merchant.
         tenant:
           $ref: '#/components/schemas/TenantMode'
+        created:
+          type: string
+          format: date-time
+          description: The date and time the Customer was created, in UTC.
         email:
           type: string
           description: The customer’s email address.
@@ -1024,12 +1996,70 @@ components:
           type: string
           description: The ID of the Company this Customer is associated with.
           nullable: true
+        company:
+          allOf:
+            - $ref: '#/components/schemas/Company'
+          description: The Company this Customer is associated with, returned in full when one exists.
+          nullable: true
+          readOnly: true
+        packaging:
+          $ref: '#/components/schemas/Customers.Packaging'
         wallet:
           allOf:
-            - $ref: "#/components/schemas/Customers.CustomerWalletTotals"
+            - $ref: '#/components/schemas/Customers.CustomerWalletTotals'
           readOnly: true
+        spendData:
+          $ref: '#/components/schemas/Customers.SpendData'
         metadata:
           $ref: '#/components/schemas/Metadata'
+      additionalProperties: false
+    Customers.Packaging:
+      type: object
+      description: The packaging the Customer uses, for merchants that operate a reusable container scheme.
+      nullable: true
+      readOnly: true
+      properties:
+        type:
+          type: string
+          enum:
+            - Reusable
+            - Disposable
+          description: Whether the Customer is on reusable or disposable packaging.
+        isDepositPaid:
+          type: boolean
+          description: Whether the deposit on the reusable packaging has been paid.
+          nullable: true
+      additionalProperties: false
+    Customers.SpendData:
+      type: object
+      description: Aggregated spending history of the Customer.
+      nullable: true
+      readOnly: true
+      properties:
+        totalSpentAmount:
+          type: integer
+          format: int64
+          description: The total amount the Customer has spent, in cents.
+        totalRefundedAmount:
+          type: integer
+          format: int64
+          description: The total amount refunded to the Customer, in cents.
+        noOfPayments:
+          type: integer
+          format: int32
+          description: The number of Payments the Customer has completed.
+        averagePaymentAmount:
+          type: integer
+          format: int32
+          description: The average amount of the Customer's Payments, in cents.
+        firstPaymentOnOtc:
+          type: string
+          format: date-time
+          description: The date and time of the Customer's first Payment, in UTC. The property name carries a typo that is part of the wire format.
+        lastPaymentOnUtc:
+          type: string
+          format: date-time
+          description: The date and time of the Customer's most recent Payment, in UTC.
       additionalProperties: false
     CreateCustomerRequest:
       type: object
@@ -1050,10 +2080,6 @@ components:
         phoneNumber:
           type: string
           description: The customer’s phone number.
-          nullable: true
-        referenceId:
-          type: string
-          description: A unique identifier from your system that you can use to reference this Customer. This can be used to reconcile the Customer with your internal systems.
           nullable: true
         companyId:
           type: string
@@ -1159,7 +2185,7 @@ components:
           type: string
           description: IBAN of the bank account.
           nullable: false
-      additionalProperties: false 
+      additionalProperties: false
     Metadata:
       type: object
       description: Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. It can contain up to 10 key-value items with a maximum length of 40 for the key and of 400 chars for the value.
@@ -1179,6 +2205,7 @@ components:
           nullable: true
       additionalProperties: false
     PaymentMethod:
+      x-displayName: Payment Method
       x-tags:
         - paymentMethod
       type: object
@@ -1190,6 +2217,10 @@ components:
           type: string
           description: The ID of the Customer to which this PaymentMethod is saved.
           nullable: false
+        paymentGatewayAccountId:
+          type: string
+          description: The ID of the PaymentGatewayAccount that holds this PaymentMethod.
+          nullable: true
         paymentGatewayId:
           type: string
           description: The ID of the PaymentGateway through which this PaymentMethod is processed.
@@ -1210,20 +2241,9 @@ components:
           $ref: '#/components/schemas/CreditCardInfo'
         directDebit:
           $ref: '#/components/schemas/DirectDebitInfo'
-        additionalInformation1:
-          type: string
-          description: Additional information field 1 for the payment method. Can be used to store custom data specific to the payment gateway.
-          nullable: true
-        additionalInformation2:
-          type: string
-          description: Additional information field 2 for the payment method. Can be used to store custom data specific to the payment gateway.
-          nullable: true
-        additionalInformation3:
-          type: string
-          description: Additional information field 3 for the payment method. Can be used to store custom data specific to the payment gateway.
-          nullable: true
       additionalProperties: false
     Payment:
+      x-displayName: Payment
       x-tags:
         - payment
       type: object
@@ -1233,9 +2253,18 @@ components:
           $ref: '#/components/schemas/Id'
         tenant:
           $ref: '#/components/schemas/TenantMode'
+        merchantId:
+          type: string
+          format: uuid
+          description: The ID of the merchant this Payment belongs to, that is your own merchant.
+          readOnly: true
         referenceId:
           type: string
           description: A unique string to reference the Payment. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Payment with your internal systems.
+          nullable: true
+        externalOrderId:
+          type: string
+          description: The identifier of the order this Payment settles in your own systems.
           nullable: true
         mode:
           $ref: '#/components/schemas/Payments.PaymentMode'
@@ -1247,6 +2276,10 @@ components:
         companyId:
           type: string
           description: The ID of the Company this Payment is associated with.
+          nullable: true
+        storeId:
+          type: string
+          description: The ID of the Store this Payment belongs to.
           nullable: true
         customerId:
           type: string
@@ -1268,56 +2301,133 @@ components:
           type: string
           description: The phone number of the customer associated with this Payment.
           nullable: true
-        customerPaymentMethodId:
+        selectedPaymentGateway:
           type: string
-          description: The ID of the Customer's PaymentMethod to attach to this Payment.
+          description: The ID of the PaymentGateway preselected for the first transaction.
           nullable: true
-        selectedPaymentGatewayId:
+        paymentGateways:
+          type: array
+          description: The IDs of the PaymentGateways the payer is allowed to choose from, when the choice was restricted.
+          nullable: true
+          items:
+            type: string
+        paymentGatewayConfigurationId:
           type: string
-          description: Default PaymentGateway used for the first transaction.
+          description: The ID of the PaymentGatewayAccount used to process this Payment.
           nullable: true
         checkoutUrl:
           type: string
           description: The URL where the customer should be redirected to complete the payment. This URL is provided after creating a Payment and should be used to redirect the customer to the Voucherly checkout page.
           nullable: true
           readOnly: true
+        callbackUrl:
+          type: string
+          description: The URL Voucherly calls server to server when the Payment changes status.
+          nullable: true
         closeCheckout:
           $ref: '#/components/schemas/Payments.PaymentCloseCheckout'
         callback:
           $ref: '#/components/schemas/Payments.PaymentLastCallback'
         totalAmount:
           type: integer
-          format: int64
+          format: int32
           description: The total amount of the payment before discounts, in cents. This is the sum of all line items.
           readOnly: true
         discountAmount:
           type: integer
-          format: int64
+          format: int32
           description: The total amount of discounts applied to the payment, in cents. This is the sum of all discount amounts.
           readOnly: true
         finalAmount:
           type: integer
-          format: int64
+          format: int32
           description: The final amount to be paid after applying all discounts, in cents. This is calculated as totalAmount - discountAmount.
           readOnly: true
         paidAmount:
           type: integer
-          format: int64
+          format: int32
           description: The total amount that has been paid so far, in cents. This includes both regular payments and voucher payments.
+          readOnly: true
+        paidDigitalAmount:
+          type: integer
+          format: int32
+          description: The amount that has been paid with a digital payment method, in cents.
           readOnly: true
         paidVoucherAmount:
           type: integer
-          format: int64
+          format: int32
           description: The amount that has been paid using vouchers, in cents.
+          readOnly: true
+        paidFringeAmount:
+          type: integer
+          format: int32
+          description: The amount that has been paid with a fringe benefit credit, in cents.
+          readOnly: true
+        paidCashAmount:
+          type: integer
+          format: int32
+          description: The amount that has been paid in cash, in cents.
           readOnly: true
         amount:
           type: integer
-          format: int64
+          format: int32
           description: The remaining amount to be paid, in cents. This is calculated as finalAmount - paidAmount.
           readOnly: true
         status:
           allOf:
             - $ref: '#/components/schemas/Payments.PaymentStatus'
+          readOnly: true
+        confirmedAmount:
+          type: integer
+          format: int32
+          description: The amount that has been confirmed (captured), in cents.
+          readOnly: true
+        confirmedOnUtc:
+          type: string
+          format: date-time
+          description: The date and time the Payment was confirmed, in UTC.
+          nullable: true
+          readOnly: true
+        cancelledAmount:
+          type: integer
+          format: int32
+          description: The amount that has been cancelled, in cents.
+          readOnly: true
+        refundedAmount:
+          type: integer
+          format: int32
+          description: The amount that has been refunded, in cents.
+          readOnly: true
+        refundedOnUtc:
+          type: string
+          format: date-time
+          description: The date and time the Payment was refunded, in UTC.
+          nullable: true
+          readOnly: true
+        receiptId:
+          type: string
+          description: The ID of the Receipt issued for this Payment.
+          nullable: true
+          readOnly: true
+        refundReceiptId:
+          type: string
+          description: The ID of the Receipt issued for the refund of this Payment.
+          nullable: true
+          readOnly: true
+        receipt:
+          allOf:
+            - $ref: '#/components/schemas/Receipt'
+          description: The Receipt issued for this Payment.
+          readOnly: true
+        refundReceipt:
+          allOf:
+            - $ref: '#/components/schemas/Receipt'
+          description: The Receipt issued for the refund of this Payment.
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          description: The date and time the Payment was created, in UTC.
           readOnly: true
         metadata:
           $ref: '#/components/schemas/Metadata'
@@ -1342,11 +2452,15 @@ components:
     CreatePaymentRequest:
       type: object
       description: Request body for creating a Payment.
-      required: [customerEmail]
       properties:
         referenceId:
           type: string
           description: A unique string to reference the Payment. This can be a customer ID, a cart ID, or similar, and can be used to reconcile the Payment with your internal systems.
+          nullable: true
+        referenceDate:
+          type: string
+          format: date
+          description: The date this Payment refers to in your own system, when it differs from the date it is created on.
           nullable: true
         mode:
           $ref: '#/components/schemas/Payments.PaymentMode'
@@ -1385,6 +2499,10 @@ components:
           type: string
           description: Default PaymentGateway used for the first transaction.
           nullable: true
+        paymentGatewayConfigurationId:
+          type: string
+          description: The ID of the PaymentGatewayAccount to use for this Payment, in the form `pga_01kg2gestgepdbmsn7hs6bsrwp`. Use it when the same gateway is configured more than once and you need a specific configuration.
+          nullable: true
         metadata:
           $ref: '#/components/schemas/Metadata'
         lines:
@@ -1402,29 +2520,43 @@ components:
           description: Timeout in minutes for the checkout sessions. Default is 10.
           format: int32
           nullable: true
-        isPartialPayment:
-          type: boolean
-          description: >-
-            Enable or disable partial payments. When partial payment is enabled,
-            customers have the flexibility to pay a portion of the total amount.
-            Customers can decide to use alternative payment methods to cover the
-            remaining amount. When partial payment is disabled, customers are
-            required to pay the entire amount using a combination of payment
-            gateways.
+        completionMode:
+          type: string
+          enum:
+            - Standard
+            - Partial
+            - AnyTransaction
+          description: How the Payment is allowed to complete. With `Standard` the customer must cover the entire amount, combining payment gateways if needed. With `Partial` the customer can pay a portion of the total and use alternative payment methods for the rest. With `AnyTransaction` the Payment completes as soon as one transaction succeeds.
           nullable: true
+        storeId:
+          type: string
+          description: The ID of an existing store, in the form `sto_01jkqh8ksaeszr3kme0vcq0hbz`. Use `store` instead to identify it by your own identifiers.
+          nullable: true
+        store:
+          $ref: '#/components/schemas/CreatePaymentRequestStore'
+        transactions:
+          type: array
+          description: Transactions to prepare on the Payment, each bound to a specific payment gateway. Use it to charge a gateway server-side instead of letting the customer pick one on the Checkout page.
+          nullable: true
+          items:
+            $ref: '#/components/schemas/CreatePaymentRequestTransaction'
         isAutoConfirm:
           type: boolean
-          description: "Enable or disable auto confirm.\r\nIf you don't specify anything the default Merchant configuration will be used.\r\nWhen auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl.\r\nWhen auto confirm is disabled, payment requires manual confirmation."
+          description: "Enable or disable auto confirm.\r
+
+            If you don't specify anything the default Merchant configuration will be used.\r
+
+            When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl.\r
+
+            When auto confirm is disabled, payment requires manual confirmation."
           nullable: true
         redirectOkUrl:
           type: string
-          description: >-
-            The URL to which Voucherly should send customers when payment is complete.
+          description: The URL to which Voucherly should send customers when payment is complete.
           nullable: false
         redirectKoUrl:
           type: string
-          description: >-
-            The URL to which Voucherly should send customers when payment is cancelled or failed.
+          description: The URL to which Voucherly should send customers when payment is cancelled or failed.
           nullable: false
         callbackUrl:
           type: string
@@ -1436,9 +2568,7 @@ components:
           nullable: true
         country:
           type: string
-          description: >-
-            The country of the purchase. If different from Italy, voucher
-            payment gateways are not shown.
+          description: The country of the purchase. If different from Italy, voucher payment gateways are not shown.
           nullable: true
         shippingAddress:
           type: string
@@ -1456,14 +2586,14 @@ components:
         - Voided
         - Expired
       type: string
-    
     TenantMode:
       type: string
       description: Has the value "live" if the object exists in live mode, or "sand" if it exists in test mode.
-      enum: ["sand", "live"]
+      enum:
+        - sand
+        - live
       nullable: false
       readOnly: true
-    
     PaymentGateways.CheckoutAction:
       description: The type of checkout action required by the payment gateway.
       enum:
@@ -1475,7 +2605,6 @@ components:
         - OTP: One-Time Password authentication is required. The customer needs to enter an OTP code.
         - REDIRECT: The customer must be redirected to an external URL to complete the payment.
         - DROPIN: An embedded payment form (drop-in) can be used within your application.
-    
     CompanyAddressForExternalApi:
       type: object
       description: An address associated with a Company, typically used for delivery purposes.
@@ -1521,7 +2650,6 @@ components:
           description: The unique identifier of the store associated with this address.
           nullable: false
       additionalProperties: false
-    
     PaymentGateways.Checkout.PaymentRequest:
       type: object
       description: Information about the payment request, including the action required and any redirect URL.
@@ -1547,10 +2675,9 @@ components:
       type: integer
       format: int32
       x-enum-descriptions:
-        - "0: Card payment gateway (credit/debit cards)"
-        - "1: Voucher payment gateway (meal vouchers, etc.)"
-        - "2: Other payment gateway type"
-      
+        - '0: Card payment gateway (credit/debit cards)'
+        - '1: Voucher payment gateway (meal vouchers, etc.)'
+        - '2: Other payment gateway type'
     Payments.PaymentMode:
       enum:
         - Payment
@@ -1598,7 +2725,6 @@ components:
           format: date-time
           description: The UTC timestamp when the last callback was sent.
       additionalProperties: false
-    
     Payments.PaymentDiscount:
       type: object
       properties:
@@ -1612,7 +2738,7 @@ components:
           nullable: true
         amount:
           type: integer
-          description:  A non-negative integer in cents representing how much to subtract from the total. Must be specified when both `type` and `value` are null.
+          description: A non-negative integer in cents representing how much to subtract from the total. Must be specified when both `type` and `value` are null.
           format: int32
         type:
           $ref: '#/components/schemas/Payments.DiscountType'
@@ -1626,6 +2752,22 @@ components:
           description: Defines the application order of this discount relative to others.
           format: int32
           nullable: true
+        externalId1:
+          type: string
+          description: Primary external reference for the discount, used by Voucherly to reconcile it across systems and to correctly compute reporting.
+          nullable: true
+        externalId2:
+          type: string
+          description: Secondary external reference for the discount, used by Voucherly to reconcile it across systems and to correctly compute reporting.
+          nullable: true
+        couponCode:
+          type: string
+          description: The coupon code the payer entered to obtain this discount.
+          nullable: true
+        points:
+          type: integer
+          format: int32
+          description: The loyalty points spent to obtain this discount.
       additionalProperties: false
     Payments.DiscountType:
       enum:
@@ -1651,15 +2793,15 @@ components:
           description: The quantity of the line item being purchased.
         unitAmount:
           type: integer
-          format: int64
+          format: int32
           description: A non-negative integer in cents representing how much to charge for each individual unit.
         unitDiscountAmount:
           type: integer
-          format: int64
+          format: int32
           description: A non-negative integer in cents representing the discount applied to each individual unit.
         discountAmount:
           type: integer
-          format: int64
+          format: int32
           description: A non-negative integer in cents representing the total discount applied to the entire line.
         finalAmount:
           type: integer
@@ -1701,6 +2843,52 @@ components:
         isGift:
           type: boolean
           description: Indicates whether this PaymentLine is a gift item.
+        origin:
+          $ref: '#/components/schemas/Payments.LineOrigin'
+      additionalProperties: false
+    Payments.LineOrigin:
+      description: |
+        Where the PaymentLine comes from:
+        - `Standard`: the line was part of the original order.
+        - `TableUpsell`: the line was added by an upselling proposal accepted while paying at the table.
+      enum:
+        - Standard
+        - TableUpsell
+      type: string
+    CreatePaymentRequestStore:
+      type: object
+      description: The store the Payment belongs to, identified by your own identifiers. When no store matches, Voucherly creates one on the fly.
+      nullable: true
+      properties:
+        externalId1:
+          type: string
+          description: Your primary identifier for the store.
+          nullable: true
+        externalId2:
+          type: string
+          description: Your secondary identifier for the store.
+          nullable: true
+        name:
+          type: string
+          description: The name of the store, used when Voucherly has to create it.
+          nullable: true
+      additionalProperties: false
+    CreatePaymentRequestTransaction:
+      type: object
+      description: A transaction prepared on a specific payment gateway.
+      properties:
+        paymentGatewayId:
+          type: string
+          description: The id of the payment gateway that will process this transaction.
+          nullable: false
+        amount:
+          type: integer
+          format: int32
+          description: The amount of this transaction, in cents. When omitted the whole Payment amount is used.
+          nullable: true
+        requireSingleTransactionForWholePayment:
+          type: boolean
+          description: When true, the transaction must cover the entire Payment amount or the request fails.
       additionalProperties: false
     Payments.PaymentLine.Request:
       type: object
@@ -1715,7 +2903,7 @@ components:
         quantity:
           type: integer
           description: The quantity of the line item being purchased.
-          format: int32          
+          format: int32
         unitAmount:
           type: integer
           description: A non-negative integer in cents representing how much to charge for each individual unit. Required when `productId` is not specified.
@@ -1772,7 +2960,7 @@ components:
           items:
             $ref: '#/components/schemas/Payments.PaymentLine.Modifier'
           nullable: true
-      additionalProperties: false      
+      additionalProperties: false
     Payments.PaymentLine.Modifier:
       type: object
       description: A modifier or customization applied to a payment line item (e.g., extra toppings, size options).
@@ -1790,7 +2978,6 @@ components:
           format: int32
           description: The quantity of this modifier.
       additionalProperties: false
-    
     Payments.Transaction:
       type: object
       description: A Transaction represents a single payment attempt or operation within a Payment. A Payment can have multiple Transactions.
@@ -1799,6 +2986,10 @@ components:
           type: string
           format: uuid
           description: Unique identifier for the transaction.
+        paymentGatewayAccountId:
+          type: string
+          description: The ID of the PaymentGatewayAccount that processed this transaction.
+          nullable: false
         paymentGatewayId:
           type: string
           description: The ID of the PaymentGateway used for this transaction.
@@ -1806,6 +2997,14 @@ components:
         paymentGateway:
           $ref: '#/components/schemas/PaymentGateways.PaymentGatewayEssential'
           description: Essential information about the PaymentGateway used for this transaction.
+        paymentGatewayId2:
+          type: string
+          description: The ID of the secondary PaymentGateway, when the transaction rides on another gateway (e.g. a wallet on a card gateway).
+          nullable: true
+        terminalId:
+          type: string
+          description: The ID of the Terminal that took the payment, for card-present transactions.
+          nullable: true
         externalId1:
           type: string
           description: The primary external transaction ID from the payment gateway provider.
@@ -1818,24 +3017,41 @@ components:
           type: string
           description: A third external transaction ID or reference from the payment gateway provider.
           nullable: true
-        isWallet:
-          type: boolean
-          description: Indicates whether this transaction was paid using the customer's wallet balance.
         error:
           $ref: '#/components/schemas/Payments.TransactionError'
           description: Error information if the transaction failed.
+        requestedAt:
+          type: string
+          format: date-time
+          description: The date and time the transaction was requested, in UTC.
         requestedAmount:
           type: integer
           format: int32
           description: The amount that was requested for this transaction, in cents.
+        exceedingAmount:
+          type: integer
+          format: int32
+          description: The part of the requested amount the gateway could not charge because it sits below its minimum, in cents.
         amount:
           type: integer
-          format: int64
+          format: int32
           description: The actual amount processed in this transaction, in cents.
+        digitalAmount:
+          type: integer
+          format: int32
+          description: The amount paid with a digital payment method in this transaction, in cents.
         voucherAmount:
           type: integer
-          format: int64
+          format: int32
           description: The amount paid using vouchers in this transaction, in cents.
+        fringeAmount:
+          type: integer
+          format: int32
+          description: The amount paid with a fringe benefit credit in this transaction, in cents.
+        cashAmount:
+          type: integer
+          format: int32
+          description: The amount paid in cash in this transaction, in cents.
         noOfVouchers:
           type: integer
           format: int32
@@ -1843,12 +3059,17 @@ components:
           nullable: true
         confirmedAmount:
           type: integer
-          format: int64
+          format: int32
           description: The amount that has been confirmed (captured) from this transaction, in cents.
         refundedAmount:
           type: integer
-          format: int64
+          format: int32
           description: The amount that has been refunded from this transaction, in cents.
+        paidOnUtc:
+          type: string
+          format: date-time
+          description: The date and time the transaction was paid, in UTC.
+          nullable: true
         currency:
           type: string
           description: The currency code for this transaction (e.g., "EUR", "USD").
@@ -1873,6 +3094,72 @@ components:
         request:
           $ref: '#/components/schemas/PaymentGateways.Checkout.PaymentRequest'
           description: Information about the payment request, including any redirect URL or action required.
+        nextAction:
+          $ref: '#/components/schemas/Payments.TransactionNextAction'
+          description: The action the payer still has to perform for the transaction to complete.
+        operations:
+          type: array
+          description: The confirm, refund, cancel and reverse operations performed on this transaction.
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Payments.TransactionOperation'
+      additionalProperties: false
+    Payments.TransactionNextAction:
+      type: object
+      description: The action the payer still has to perform for the transaction to complete. Its shape depends on the PaymentGateway.
+      properties:
+        params:
+          type: object
+          description: The gateway specific parameters describing the action.
+          additionalProperties: true
+      additionalProperties: false
+    Payments.TransactionOperation:
+      type: object
+      description: A single confirm, refund, cancel or reverse performed on a Transaction.
+      properties:
+        id:
+          type: integer
+          format: int32
+          description: The identifier of the operation.
+        operation:
+          $ref: '#/components/schemas/Payments.OperationType'
+        amount:
+          type: integer
+          format: int32
+          description: The amount the operation moved, in cents.
+        occurredOnUtc:
+          type: string
+          format: date-time
+          description: The date and time the operation was performed, in UTC.
+        success:
+          type: boolean
+          description: Whether the operation succeeded.
+        externalId:
+          type: string
+          description: The identifier of the operation in the PaymentGateway provider system.
+          nullable: true
+        error:
+          $ref: '#/components/schemas/Payments.TransactionOperationError'
+          description: The error returned when the operation failed.
+      additionalProperties: false
+    Payments.OperationType:
+      description: The kind of operation performed on a Transaction.
+      enum:
+        - Confirm
+        - Refund
+        - Cancel
+        - Reverse
+      type: string
+    Payments.TransactionOperationError:
+      type: object
+      description: The error returned when an operation on a Transaction failed.
+      properties:
+        externalError:
+          $ref: '#/components/schemas/Payments.ExternalError'
+          description: The error as reported by the PaymentGateway provider.
+        isSystemError:
+          type: boolean
+          description: Whether the failure comes from Voucherly rather than from the PaymentGateway provider.
       additionalProperties: false
     Payments.TransactionStatus:
       description: Current status of the Transaction.
@@ -1909,7 +3196,6 @@ components:
         - Declined
         - System
       type: string
-      
     Customers.CustomerAddress:
       type: object
       description: An address associated with a Customer.
@@ -1950,7 +3236,14 @@ components:
     Customers.CustomerAddress.Request:
       type: object
       description: Request body for creating or updating a Customer address.
-      required: [label, streetName, streetNumber, city, province, postalCode, country]
+      required:
+        - label
+        - streetName
+        - streetNumber
+        - city
+        - province
+        - postalCode
+        - country
       properties:
         label:
           type: string
@@ -2090,7 +3383,10 @@ components:
         - Sale
         - Void
       type: string
-    Receipts.Receipt:
+    Receipt:
+      x-tags:
+        - receipt
+      x-displayName: Receipt
       type: object
       description: A fiscal Receipt issued for a Payment.
       properties:
@@ -2128,7 +3424,10 @@ components:
         - Inactive
         - Deleted
       type: string
-    Terminals.Terminal:
+    Terminal:
+      x-tags:
+        - terminal
+      x-displayName: Terminal
       type: object
       description: A POS Terminal registered with a PaymentGateway and optionally bound to a Store.
       properties:
@@ -2146,10 +3445,18 @@ components:
           type: string
           description: The ID of the Store this Terminal is bound to, when applicable.
           nullable: true
+        storeName:
+          type: string
+          description: The name of the Store this Terminal is bound to, when applicable.
+          nullable: true
         externalId:
           type: string
           description: The identifier assigned to the Terminal by the PaymentGateway provider.
           nullable: false
+        referenceId:
+          type: string
+          description: The identifier you assigned to the Terminal to reconcile it with your own systems.
+          nullable: true
         name:
           type: string
           description: The display name of the Terminal.
@@ -2190,18 +3497,22 @@ components:
           type: string
           description: The display name of the PaymentGateway (e.g., "Visa", "Mastercard", "Edenred").
           nullable: false
-        type:
-          $ref: '#/components/schemas/PaymentGateways.PaymentGatewayType'
-        paymentAction:
-          $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
         image:
           type: string
           description: URL of the image to display for this PaymentGateway.
           nullable: true
-        icon:
-          type: string
-          description: URL of the icon to display for this PaymentGateway.
+        type:
+          allOf:
+            - $ref: '#/components/schemas/PaymentGateways.PaymentGatewayType'
+          description: Null when the PaymentGateway is no longer offered and only survives on historical records.
           nullable: true
+          readOnly: true
+        paymentAction:
+          allOf:
+            - $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
+          description: Null when the PaymentGateway is no longer offered and only survives on historical records.
+          nullable: true
+          readOnly: true
       additionalProperties: false
     PaymentGateways.GetPaymentGatewaysResponse:
       type: object
@@ -2211,7 +3522,7 @@ components:
           type: array
           description: An array of PaymentGateway objects representing all available PaymentGateways.
           items:
-            $ref: '#/components/schemas/PaymentGateways.PaymentGatewayDto'
+            $ref: '#/components/schemas/PaymentGateway'
           nullable: false
       additionalProperties: false
     MerchantPaymentGatewayDto:
@@ -2226,7 +3537,10 @@ components:
           type: boolean
           description: Indicates whether this payment gateway should be used as a fallback option when other gateways fail.
       additionalProperties: false
-    PaymentGateways.PaymentGatewayDto:
+    PaymentGateway:
+      x-tags:
+        - paymentGateway
+      x-displayName: Payment Gateway
       type: object
       description: Detailed information about a payment gateway, including merchant configuration and parameters.
       properties:
@@ -2289,7 +3603,6 @@ components:
           description: The current value of this parameter. May be null if not configured.
           nullable: true
       additionalProperties: false
-
     ConfirmPaymentRequest.Transaction:
       type: object
       properties:
@@ -2313,7 +3626,6 @@ components:
             $ref: '#/components/schemas/ConfirmPaymentRequest.Transaction'
           nullable: true
       additionalProperties: false
-    
     RefundPaymentRequest.Transaction:
       type: object
       properties:
@@ -2345,17 +3657,17 @@ components:
             $ref: '#/components/schemas/RefundPaymentRequest.Transaction'
           nullable: true
       additionalProperties: false
-
     Reports.RevenuesGrouping:
       enum:
         - All
         - Store
+        - Company
       type: string
-      description: How volumes report rows are grouped. `All` aggregates per PaymentGateway only; `Store` additionally breaks the rows down per Store.
+      description: A grouping dimension for volumes report rows. `All` aggregates per PaymentGateway only; `Store` additionally breaks the rows down per Store; `Company` additionally breaks the rows down per Company.
       nullable: false
     Reports.RevenuesDetails:
       type: object
-      description: A volumes report row, aggregating turnover for a single PaymentGateway (and, when grouped by Store, a single Store).
+      description: A volumes report row, aggregating turnover for a single PaymentGateway (and, when grouped by Store and/or Company, a single Store and/or Company).
       properties:
         paymentGatewayId:
           type: string
@@ -2367,11 +3679,19 @@ components:
           nullable: false
         storeId:
           type: string
-          description: Unique identifier of the Store this row aggregates. Only populated when `groupBy` is `Store`.
+          description: Unique identifier of the Store this row aggregates. Only populated when `groupBy` includes `Store`.
           nullable: true
         storeName:
           type: string
-          description: Display name of the Store. Only populated when `groupBy` is `Store`.
+          description: Display name of the Store. Only populated when `groupBy` includes `Store`.
+          nullable: true
+        companyId:
+          type: string
+          description: Unique identifier of the Company this row aggregates. Only populated when `groupBy` includes `Company`.
+          nullable: true
+        companyName:
+          type: string
+          description: Display name of the Company. Only populated when `groupBy` includes `Company`.
           nullable: true
         paidAmount:
           type: integer
@@ -2518,8 +3838,6 @@ components:
           format: int32
           description: Number of transactions contributing to net revenue.
       additionalProperties: false
-
-    # PROBLEM DETAILS
     ProblemDetails:
       type: object
       properties:
@@ -2586,8 +3904,7 @@ components:
         paymentStatus:
           allOf:
             - $ref: '#/components/schemas/Payments.PaymentStatus'
-      additionalProperties: false      
-    # END PROBLEM DETAILS
+      additionalProperties: false
   responses:
     BadRequest:
       description: The request was unacceptable, often due to missing a required parameter.
@@ -2661,4 +3978,4 @@ components:
       in: header
       name: Voucherly-API-Key
       description: |
-        Sandbox mode secret keys have the prefix `sk_sand_` and live mode secret keys have the prefix `sk_live_`.
+        Sandbox mode secret keys have the prefix `sk_sand_` and live mode secret keys have the prefix `sk_live_`. Publishable keys (`pk_`) are not accepted.

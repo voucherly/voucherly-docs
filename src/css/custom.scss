@@ -57,6 +57,11 @@ table > thead:has(> tr > th:empty):not(:has(> tr > th:not(:empty))) {
   display: none;
 }
 
+// La risposta è un div e non un paragrafo, quindi non eredita il ritmo verticale del markdown.
+.faq-answer {
+  margin-bottom: var(--ifm-paragraph-margin-bottom);
+}
+
 .checklist-item {
   .checklist-item-label {
     display: block;

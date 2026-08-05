@@ -6,7 +6,7 @@ Sito di documentazione Voucherly (Docusaurus 3, docs-only mode, bilingue EN/IT).
 
 ## Comandi
 
-- **Package manager: `yarn`** (`package-lock.json` e `yarn.lock` sono entrambi in `.gitignore`; non usare npm). Node >= 20.
+- **Package manager: `yarn`** (`package-lock.json` è in `.gitignore`; non usare npm). `yarn.lock` è tracciato: CI e Netlify installano con `--frozen-lockfile`, quindi va committato insieme a ogni cambio di dipendenze. Versione di Node pinnata in `.nvmrc` (22), letta sia dalla CI sia da Netlify.
 - `yarn start` — dev server. Serve **solo il locale di default (en)**; per vedere l'italiano: `yarn start --locale it`.
 - `yarn build` — build di tutti i locali. È il gate di qualità: `onBrokenLinks: 'throw'` e `onBrokenMarkdownLinks: 'throw'`, quindi **un link interno rotto fa fallire il build**. Eseguirlo dopo modifiche a link, slug o rinomine di file.
 - `yarn typecheck` — `tsc` sui file TS/TSX.
@@ -41,6 +41,7 @@ Altri vincoli sui link:
 
 ## Git e deploy
 
-- Workflow misto: commit diretti su `main` per fix rapidi, branch + PR per lavori più ampi. Messaggi di commit brevi, in inglese, all'imperativo (`Add POS-RT connection`).
-- **Un push su `main` pubblica in produzione**: Netlify builda e deploya automaticamente. Verifica che `yarn build` passi prima di pushare.
+- **`main` è protetto: nessun push diretto.** Ogni modifica entra via branch + PR su `github.com/voucherly/voucherly-docs`. Messaggi di commit brevi, in inglese, all'imperativo (`Add POS-RT connection`).
+- Ogni PR verso `main` fa girare la GitHub Action `build` (`yarn build && node postbuild.mjs`, lo stesso comando di `netlify.toml`): è un required status check, quindi un link rotto blocca il merge. In parallelo Netlify pubblica un deploy preview della PR.
+- **È il merge su `main` a pubblicare in produzione**, non il push: Netlify builda e deploya `docs.voucherly.it`.
 - Dopo un cambio di slug, forzare il re-crawl di Algolia DocSearch per riallineare l'indice.
