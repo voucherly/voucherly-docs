@@ -1,0 +1,32 @@
+---
+id: paymentgateway
+title: "PaymentGateway"
+description: "Detailed information about a payment gateway, including merchant configuration and parameters."
+sidebar_label: "PaymentGateway"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"string","name":"string","type":0,"paymentAction":"OTP","image":"string","checkoutImage":"string","icon":"string","isActive":true,"merchantConfiguration":{"defaultPaymentGatewayId":"string","isFallback":true},"parameters":[{"id":"string","friendlyName":"string","isSecret":true,"value":"string"}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"PaymentGateway"}
+>
+</Heading>
+
+
+
+Detailed information about a payment gateway, including merchant configuration and parameters.
+
+<Schema
+  {...require("./paymentgateway.Schema.json")}
+>
+  
+</Schema>
+            

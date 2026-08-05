@@ -228,6 +228,12 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
+          id: "api/webapi/schemas/paymentgateway",
+          label: "PaymentGateway",
+          className: "schema",
+        },
+        {
+          type: "doc",
           id: "api/webapi/list-payment-gateway",
           label: "List all PaymentGateways",
           className: "api-method get",
@@ -244,6 +250,12 @@ const sidebar: SidebarsConfig = {
       collapsible: true,
       collapsed: true,
       items: [
+        {
+          type: "doc",
+          id: "api/webapi/schemas/receipt",
+          label: "Receipt",
+          className: "schema",
+        },
         {
           type: "doc",
           id: "api/webapi/retrieve-receipt",
@@ -268,6 +280,12 @@ const sidebar: SidebarsConfig = {
       collapsible: true,
       collapsed: true,
       items: [
+        {
+          type: "doc",
+          id: "api/webapi/schemas/terminal",
+          label: "Terminal",
+          className: "schema",
+        },
         {
           type: "doc",
           id: "api/webapi/list-terminal",
