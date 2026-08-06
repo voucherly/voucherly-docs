@@ -66,6 +66,8 @@ Do not change the WOnD user after activating. TCPOS only shows each user the web
 
 ## How it works
 
+The cash register does not notify the instant an item is locked: TCPOS.WebHook checks for events to send at a fixed interval, 30 seconds by default, set in its `appsettings.json`. Expect a delay of that order between locking an item at the till and the product disappearing from Voucherly.
+
 ### Two independent controls
 
 A product is offered only when **both** agree:
@@ -93,6 +95,7 @@ Availability per store governs the products Voucherly offers in that store, incl
 |---|---|
 | Activation fails | the address is wrong, the service is not reachable from Voucherly, or the credentials were rejected. The message says which one |
 | The **Attiva** button is greyed out | the address of TCPOS.WebHook has not been filled in yet |
+| The change arrives, but late | normal: TCPOS.WebHook sends events at an interval, 30 seconds by default. Whoever administers your TCPOS can shorten it |
 | You lock an item at the cash register and nothing changes in Voucherly | `ordersNotificationLegacyMode` is still `true`, or the subscription was removed on the TCPOS side after activation |
 | Everything worked, then stopped after a change on the TCPOS side | the subscription may have been removed. Open the parameters and use **Aggiorna**: it registers it again |
 | A whole store never updates | that store is not linked to the shop the notifications refer to |

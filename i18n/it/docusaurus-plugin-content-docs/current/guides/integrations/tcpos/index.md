@@ -67,6 +67,8 @@ Non cambiare l'utente WOnD dopo l'attivazione. TCPOS mostra a ogni utente soltan
 
 ## Come funziona
 
+La cassa non avvisa nell'istante in cui blocchi un articolo: il TCPOS.WebHook controlla se ci sono eventi da inviare a intervalli regolari, per difetto ogni 30 secondi, impostati nel suo `appsettings.json`. Fra il blocco in cassa e la sparizione del prodotto da Voucherly passa quindi un ritardo di quell'ordine.
+
 ### Due controlli indipendenti
 
 Un prodotto viene proposto solo quando **entrambi** sono d'accordo:
@@ -94,6 +96,7 @@ La disponibilità per punto vendita governa i prodotti che Voucherly propone in 
 |---|---|
 | L'attivazione dà errore | l'indirizzo è sbagliato, il servizio non è raggiungibile da Voucherly, oppure le credenziali sono state rifiutate. Il messaggio dice quale dei tre |
 | Il bottone **Attiva** è grigio | l'indirizzo del TCPOS.WebHook non è ancora stato inserito |
+| La modifica arriva, ma in ritardo | è normale: il TCPOS.WebHook invia gli eventi a intervalli, per difetto ogni 30 secondi. Chi amministra il tuo TCPOS può accorciarli |
 | Blocchi un articolo in cassa e in Voucherly non cambia niente | `ordersNotificationLegacyMode` è ancora `true`, oppure la sottoscrizione è stata rimossa lato TCPOS dopo l'attivazione |
 | Funzionava, poi si è fermato dopo un intervento sul TCPOS | la sottoscrizione potrebbe essere stata rimossa. Apri i parametri e usa **Aggiorna**: la registra di nuovo |
 | Un intero punto vendita non si aggiorna mai | quel punto vendita non è collegato al negozio a cui si riferiscono le notifiche |
