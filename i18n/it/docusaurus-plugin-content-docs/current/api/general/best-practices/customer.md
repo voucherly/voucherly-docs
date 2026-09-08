@@ -128,7 +128,7 @@ Non è richiesta alcuna ulteriore azione da parte tua.
 
         Il Checkout di Voucherly mostra automaticamente tutti i metodi di pagamento salvati dell'utente. Non è quindi necessario mostrarli in anticipo, poiché il processo di checkout garantisce già un'esperienza utente fluida ed efficiente.
 
-        Se utilizzi un'integrazione personalizzata, consulta il [caso d'uso Pagamento online](/guide/casi-duso/e-commerce/?flow=gateway) per un esempio completo.
+        Se utilizzi un'integrazione personalizzata, consulta il [Integrazione personalizzata](/guide/pagamenti-online/integrazione-personalizzata) per un esempio completo.
 
         #### Flusso di integrazione personalizzata
 

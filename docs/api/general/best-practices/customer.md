@@ -127,7 +127,7 @@ No further action is required on your part.
 
         The Voucherly Checkout automatically displays all saved payment methods for the user. Therefore, there is no need to pre-display them in advance, as the checkout process already ensures a seamless and efficient user experience.
 
-        If you use a custom integration, please refer to the [Online payment use case](/guides/use-cases/ecommerce/?flow=gateway) for a complete example.
+        If you use a custom integration, please refer to the [Custom integration](/guides/online-payments/custom-integration) for a complete example.
 
         #### Custom integration workflow
 

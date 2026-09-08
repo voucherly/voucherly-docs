@@ -53,6 +53,13 @@ const config: Config = {
         docs: {
           routeBasePath: "/",   // Docs-only mode (https://docusaurus.io/docs/docs-introduction#docs-only-mode)
           sidebarPath: './sidebars.ts',
+          // The index.md of the section headers stays a plain "Overview" child instead of becoming the category link, so the header is not clickable.
+          sidebarItemsGenerator: async function ({defaultSidebarItemsGenerator, ...args}) {
+            const sectionHeaders = ['start-building', 'online-payments', 'in-person-payments'];
+            const isCategoryIndex = (doc: {directories: string[]; fileName: string; extension: string}) =>
+              sectionHeaders.includes(doc.directories[0]) ? false : args.isCategoryIndex(doc);
+            return defaultSidebarItemsGenerator({...args, isCategoryIndex});
+          },
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
         },
         blog: false,

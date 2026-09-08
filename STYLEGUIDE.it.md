@@ -60,6 +60,9 @@ Pattern di introduzione al primo uso: **`Termine EN (gloss IT)`**, poi si usa il
 | to void / Voided | **invalidare / invalidata** (gloss "(void)" al 1º uso) | ⚠️ Distinguere da *cancel*. Stato API `Voided` resta in EN. Uniformare `s2s.md` alla resa di `payments-lifecycle.md`. |
 | webhook / callback / S2S | **webhook / callback / S2S (server-to-server)** | Invariati. |
 | onboarding | **onboarding** | Invariato. |
+| Voucherly Components / Payment Component / Express Checkout Component | **invariati** | Nomi di prodotto. Gloss 1º uso: "componente (component)". Gli slug IT restano `components`. |
+| Voucherly.js | **Voucherly.js** (invariato) | La libreria che mostra i Components. |
+| component (generico) | **componente** | |
 | KYC | **verifiche KYC (know your customer)** | |
 
 **Decisioni confermate (2026-07-19):**
