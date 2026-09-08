@@ -23,6 +23,17 @@ from = '/api/general/miscellaneous/'
 to = '/en/api/webapi/voucherly-api/'
 status = 301
 
+# --- /api/ has no page of its own: the API section opens on its introduction ---
+[[redirects]]
+from = '/en/api/'
+to = '/en/api/webapi/voucherly-api/'
+status = 301
+
+[[redirects]]
+from = '/it/api/'
+to = '/it/api/webapi/voucherly-api/'
+status = 301
+
 # --- Old un-prefixed English URLs -> /en/ (preserve SEO of already-indexed pages) ---
 [[redirects]]
 from = '/guides/*'
