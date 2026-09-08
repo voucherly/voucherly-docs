@@ -12,6 +12,25 @@ import { createVendorExtensions } from "docusaurus-plugin-openapi-docs/lib/markd
 import { render } from "docusaurus-plugin-openapi-docs/lib/markdown/utils";
 import { ApiPageMetadata } from "docusaurus-plugin-openapi-docs/src/types";
 
+// The schemas that carry x-tags in openapi.yaml: the plugin generates a page under schemas/ for these only.
+const SCHEMAS_WITH_PAGE = ["Company", "ConceptStore", "Customer", "Payment", "PaymentGateway", "PaymentMethod", "Receipt", "Store", "StoreArea", "Terminal"];
+
+// The response is stripped to its description: this turns "Returns a Payment object." into a link to the schema page.
+// The URL is absolute to the EN locale because docs/api/webapi is shared by every locale (see STYLEGUIDE.it.md).
+function describeObjectResponse(response: any): string {
+  const description: string = response.description ?? "";
+  const title: string | undefined = response.content?.["application/json"]?.schema?.title;
+  if (!title || !SCHEMAS_WITH_PAGE.includes(title)) {
+    return description;
+  }
+
+  const link = `[${title} object](https://docs.voucherly.it/en/api/webapi/schemas/${title.toLowerCase()})`;
+  const objectMention = `${title} object`;
+  return description.includes(objectMention)
+    ? description.replace(objectMention, link)
+    : `${description} See the ${link}.`;
+}
+
 export function createApiPageMdForVoucherly({
   title,
   api: {
@@ -36,7 +55,7 @@ export function createApiPageMdForVoucherly({
       // If response is OK, I'll return only description. The response is the element object.
       const keyAsNumber = Number(key);
       if (keyAsNumber >= 200 && keyAsNumber <= 299) {
-        return [key, { description: value.description }];
+        return [key, { description: describeObjectResponse(value) }];
       } else {
         return [key, value];
       }
