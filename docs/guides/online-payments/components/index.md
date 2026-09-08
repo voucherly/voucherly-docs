@@ -177,6 +177,16 @@ The callbacks tell your page what the customer saw, not what your systems record
 
 The `event` of `onPaymentComplete` carries the `paymentId`, the `amount` paid in cents and the `status` of the Payment. The full payload of every callback is in the [reference](./reference.md#callbacks).
 
+#### `Paid` or `Confirmed`: what you find after the payment
+
+A Payment goes from `Requested` to `Paid` when the customer completes the checkout, and to `Confirmed` when the funds are captured — the [payment lifecycle](/guides/about/resources/payments-lifecycle) describes every status. Which of the two you find after `onPaymentComplete`, or when the customer comes back from a redirect, depends on the payment method and on the Payment:
+
+- Meal vouchers, personal credit, prepaid quota and some providers — Satispay, SumUp, Adyen among them — capture at checkout: the Payment lands directly in `Confirmed`.
+- Cards, PayPal and the other two-step providers only authorize: the Payment stays `Paid` until you call [Confirm a Payment](/api/webapi/confirm-payment), or until the authorization expires and the funds are released.
+- With `isAutoConfirm: true` in [Create a Payment](/api/webapi/create-payment), Voucherly confirms every transaction as soon as the customer pays, and the Payment is `Confirmed` whatever the method. Without it, the default set in **Impostazioni > Pagamenti > Gateway di pagamento > Contabilizzazione automatica** applies.
+
+Do not write code that reasons per provider: read the `status` from your server and, if it is `Paid`, confirm it — or create the Payment with `isAutoConfirm: true` if you have nothing to check between the authorization and the capture. A `Paid` Payment left alone is money you have not collected.
+
 ### 5. Redirect-based payment methods
 
 Some payment methods — PayPal, Satispay, Scalapay, Klarna, meal vouchers with the issuer's login such as Edenred and Pluxee — need the provider's own page. When the customer picks one, Voucherly.js navigates **the whole page**, not the iframe, to the provider; once the customer is done, the provider sends them back to the URL of your page, with a few query parameters that Voucherly.js consumes and removes from the address bar.
@@ -211,7 +221,9 @@ The Express Checkout Component is a row of buttons for the payment methods that 
 </script>
 ```
 
-The two components share the same Payment and the same session, so a payment started in one is reflected in the other. Apple Pay and Google Pay appear only on devices and browsers that support them, and only if a gateway with wallet support is enabled on your account; personal credit and prepaid quota appear according to `paymentMethods`, where `auto` shows them only when they cover the whole remaining amount — an express button that leaves the customer with a residual to pay defeats its purpose.
+The two components share the same Payment and the same session, so a payment started in one is reflected in the other. Apple Pay and Google Pay appear only on devices and browsers that can pay with them, and only if a gateway with wallet support is enabled on your account; personal credit and prepaid quota appear according to `paymentMethods`, where `auto` shows them only when they cover the whole remaining amount — an express button that leaves the customer with a residual to pay defeats its purpose.
+
+While the Express Checkout Component is mounted, the Payment Component hides its own Apple Pay and Google Pay rows: the wallets are offered once, in the express row, and the form keeps the other methods. You do not need to set `wallets` on the Payment Component for this.
 
 ## Customize the appearance
 
@@ -243,7 +255,7 @@ frame-src https://checkout.voucherly.it;
 
 ## Test the integration
 
-Use your `pk_sand_` key on the page and your `sk_sand_` key on the server: the Payment is created in the sandbox environment and the component shows the gateways you enabled there, with their test credentials. The environment is read from the key, so the same page works in production once you swap the keys.
+Use your `pk_sand_` key on the page and your `sk_sand_` key on the server: the Payment is created in the sandbox environment and the component shows the gateways you enabled there, with their test credentials. The environment is read from the key, so the same page works in production once you swap the keys. The codes of the Demo Voucherly meal vouchers and the test cards are in [Test data](/guides/start-building/start-developing/test-data).
 
 Check at least these cases before going live:
 

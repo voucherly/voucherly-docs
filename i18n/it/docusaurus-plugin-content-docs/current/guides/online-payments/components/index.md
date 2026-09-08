@@ -178,6 +178,16 @@ Le callback dicono alla tua pagina cosa ha visto il cliente, non cosa hanno regi
 
 L'`event` di `onPaymentComplete` contiene il `paymentId`, l'`amount` pagato in centesimi e lo `status` del Payment. Il payload completo di ogni callback è nel [riferimento](./reference.md#callback).
 
+#### `Paid` o `Confirmed`: cosa trovi dopo il pagamento
+
+Un Payment passa da `Requested` a `Paid` quando il cliente completa il checkout, e a `Confirmed` quando i fondi vengono catturati — il [ciclo di vita dei pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) descrive ogni stato. Quale dei due trovi dopo `onPaymentComplete`, o quando il cliente rientra da un reindirizzamento, dipende dal metodo di pagamento e dal Payment:
+
+- Buoni pasto, credito personale, quota prepagata e alcuni provider — tra cui Satispay, SumUp e Adyen — catturano al checkout: il Payment arriva direttamente in `Confirmed`.
+- Carte, PayPal e gli altri provider a due fasi si limitano ad autorizzare: il Payment resta `Paid` finché non chiami [Confirm a Payment](/api/webapi/confirm-payment), o finché l'autorizzazione non scade e i fondi vengono rilasciati.
+- Con `isAutoConfirm: true` in [Create a Payment](/api/webapi/create-payment), Voucherly conferma ogni transazione appena il cliente paga, e il Payment è `Confirmed` qualunque sia il metodo. Senza, vale il default impostato in **Impostazioni > Pagamenti > Gateway di pagamento > Contabilizzazione automatica**.
+
+Non scrivere codice che ragiona per provider: leggi lo `status` dal tuo server e, se è `Paid`, confermalo — oppure crea il Payment con `isAutoConfirm: true` se non hai nulla da verificare tra l'autorizzazione e la cattura. Un Payment lasciato in `Paid` è denaro che non hai incassato.
+
 ### 5. Metodi di pagamento con reindirizzamento
 
 Alcuni metodi di pagamento — PayPal, Satispay, Scalapay, Klarna, i buoni pasto con il login dell'emittente come Edenred e Pluxee — richiedono la pagina del provider. Quando il cliente ne sceglie uno, Voucherly.js naviga **l'intera pagina**, non l'iframe, verso il provider; quando il cliente ha finito, il provider lo rimanda all'URL della tua pagina, con alcuni parametri di query che Voucherly.js consuma e rimuove dalla barra degli indirizzi.
@@ -212,7 +222,9 @@ L'Express Checkout Component è una fila di pulsanti per i metodi di pagamento c
 </script>
 ```
 
-I due componenti condividono lo stesso Payment e la stessa sessione, quindi un pagamento avviato in uno si riflette nell'altro. Apple Pay e Google Pay compaiono solo sui dispositivi e browser che li supportano, e solo se sul tuo account è attivo un gateway con il supporto ai wallet; credito personale e quota prepagata compaiono secondo `paymentMethods`, dove `auto` li mostra solo quando coprono l'intero importo residuo — un pulsante express che lascia al cliente un residuo da pagare tradisce il suo scopo.
+I due componenti condividono lo stesso Payment e la stessa sessione, quindi un pagamento avviato in uno si riflette nell'altro. Apple Pay e Google Pay compaiono solo sui dispositivi e browser che possono pagarci, e solo se sul tuo account è attivo un gateway con il supporto ai wallet; credito personale e quota prepagata compaiono secondo `paymentMethods`, dove `auto` li mostra solo quando coprono l'intero importo residuo — un pulsante express che lascia al cliente un residuo da pagare tradisce il suo scopo.
+
+Finché l'Express Checkout Component è montato, il Payment Component nasconde le proprie righe Apple Pay e Google Pay: i wallet vengono offerti una volta sola, nella riga express, e il form tiene gli altri metodi. Non serve impostare `wallets` sul Payment Component per ottenerlo.
 
 ## Personalizza l'aspetto
 
@@ -244,7 +256,7 @@ frame-src https://checkout.voucherly.it;
 
 ## Testa l'integrazione
 
-Usa la tua chiave `pk_sand_` nella pagina e la tua chiave `sk_sand_` sul server: il Payment viene creato nell'ambiente sandbox e il componente mostra i gateway che hai attivato lì, con le loro credenziali di test. L'ambiente si legge dalla chiave, quindi la stessa pagina funziona in produzione una volta sostituite le chiavi.
+Usa la tua chiave `pk_sand_` nella pagina e la tua chiave `sk_sand_` sul server: il Payment viene creato nell'ambiente sandbox e il componente mostra i gateway che hai attivato lì, con le loro credenziali di test. L'ambiente si legge dalla chiave, quindi la stessa pagina funziona in produzione una volta sostituite le chiavi. I codici dei buoni pasto Demo Voucherly e le carte di test sono in [Dati di test](/guide/inizia-a-integrare/inizia-a-sviluppare/dati-di-test).
 
 Verifica almeno questi casi prima di andare in produzione:
 

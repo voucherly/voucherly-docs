@@ -34,12 +34,20 @@ Separating authorization and capture is useful when additional actions are neede
 Please look at [Separate authorization and confirm](/guides/online-payments/hosted-checkout#separate-authorization-and-confirm) for more technical information.
 
 :::warning
-Meal voucher Payment gateways do not support two-step process.
+Meal voucher Payment gateways do not support two-step process, and neither do the wallet, the prepaid quota and a few providers — Satispay, SumUp and Adyen among them. Their transactions are captured at checkout, so a Payment paid only with them is `Confirmed` as soon as the customer pays, while a Payment paid with a card or PayPal stays `Paid` until you confirm it. Your integration should read the `status` of the Payment rather than assume it from the payment method.
 :::
 
 :::tip
 You can define the default behaviour in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways) > Contabilizzazione automatica**. When enabled, all transactions are automatically captured at the end of a payment.
 :::
+
+### When a Payment closes {#completion-mode}
+
+A Payment can be paid with more than one Transaction — a meal voucher for part of the amount, a card for the rest. `completionMode`, set in [Create a Payment](/api/webapi/create-payment), decides when the Payment stops asking for more:
+
+- **Standard** (default). The Payment closes when the whole amount is covered. After a partial Transaction the checkout asks for the remaining amount with another payment method.
+- **Partial**. The Payment closes with the first successful Transaction, whatever it covers, and the remaining amount is not collected. Use it when the rest is settled elsewhere — at the till, or with a later Payment.
+- **AnyTransaction**. As `Partial`.
 
 ### Payment statuses {#payment-statuses}
 
@@ -50,8 +58,10 @@ Payments have a `status` field that reflects the statuses of their transactions.
 - **Confirmed**. The payment was successful, and all transactions have been confirmed.
 - **Refunded**. All transactions have been refunded or cancelled.
 - **Cancelled**. All transactions have been cancelled.
-- **Voided**. The user cancelled the Payment during checkout. All transactions have been voided.
+- **Voided**. The Payment was voided while still `Requested`, by the customer during checkout or by you with [Void a Payment](/api/webapi/void-payment). All transactions have been voided.
 - **Expired**. The payment has expired.
+
+In short: a Payment moves from `Requested` to `Paid` when the customer completes the checkout and to `Confirmed` when the funds are captured. [Void a Payment](/api/webapi/void-payment) works only on a `Requested` Payment; once it is `Paid` or `Confirmed`, the way back is [Refund a Payment](/api/webapi/refund-payment), which cancels the authorizations not yet captured and refunds the captured ones.
 
 ### Transaction statuses
 

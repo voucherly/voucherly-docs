@@ -27,6 +27,7 @@ const SLUG_MAP: [string, string][] = [
   ['guides/start-building/start-developing/quickstart/', 'guide/inizia-a-integrare/inizia-a-sviluppare/quickstart/'],
   ['guides/start-building/start-developing/go-live-checklist/', 'guide/inizia-a-integrare/inizia-a-sviluppare/checklist-go-live/'],
   ['guides/start-building/start-developing/website-checklist/', 'guide/inizia-a-integrare/inizia-a-sviluppare/checklist-sito-web/'],
+  ['guides/start-building/start-developing/test-data/', 'guide/inizia-a-integrare/inizia-a-sviluppare/dati-di-test/'],
   ['guides/online-payments/', 'guide/pagamenti-online/'],
   ['guides/online-payments/hosted-checkout/', 'guide/pagamenti-online/checkout-ospitato/'],
   ['guides/online-payments/components/', 'guide/pagamenti-online/components/'],
