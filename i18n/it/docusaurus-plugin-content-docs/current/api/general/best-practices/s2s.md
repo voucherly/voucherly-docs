@@ -139,7 +139,7 @@ I callback vengono inviati ogni volta che un utente completa con successo un flu
 
 Ad esempio, se il pagamento avviato dal merchant è in modalità **Payment** e il cliente decide di ricaricare il proprio wallet durante il processo, Voucherly gestisce questa ricarica del wallet come un pagamento separato. Questo pagamento separato è collegato al pagamento originale avviato dal merchant tramite la proprietà `ParentPaymentId` e gli viene assegnata la modalità **Wallet**.
 
-Per maggiori dettagli, consulta il caso d'uso [Ricarica Wallet](/guide/casi-duso/ricarica-wallet).
+Per maggiori dettagli, consulta il caso d'uso [Ricarica Wallet](/guide/informazioni/risorse/ricarica-wallet).
 
 :::warning
 Voucherly si riserva il diritto di chiamare l'endpoint di callback in futuro per ogni aggiornamento dello stato del pagamento. Assicurati che il tuo endpoint sia robusto e in grado di gestire senza problemi più tentativi di callback.

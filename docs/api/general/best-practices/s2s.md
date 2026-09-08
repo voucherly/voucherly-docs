@@ -138,7 +138,7 @@ Callbacks are sent every time a user completes a checkout flow successfully. In 
 
 For example, if the payment initiated by the merchant is in **Payment** mode, and the customer decides to charge their wallet during the process, Voucherly handles this wallet charge as a separate payment. This separate payment is linked to the original merchant-initiated payment using the `ParentPaymentId` property and is assigned the **Wallet** mode.
 
-For more details, refer to the [Charge Wallet](/guides/use-cases/charge-wallet) use case.
+For more details, refer to the [Charge Wallet](/guides/about/resources/charge-wallet) use case.
 
 :::warning
 Voucherly reserves the right to call the callback endpoint in the future for every payment status update. Ensure your endpoint is robust and capable of processing multiple callback attempts seamlessly.

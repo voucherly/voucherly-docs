@@ -34,5 +34,9 @@
   "footer.copyright": {
     "message": "© 2026 Voucherly. Tutti i diritti riservati.",
     "description": "The footer copyright"
+  },
+  "copyright": {
+    "message": "© 2026 Voucherly. All rights reserved.",
+    "description": "The footer copyright"
   }
 }

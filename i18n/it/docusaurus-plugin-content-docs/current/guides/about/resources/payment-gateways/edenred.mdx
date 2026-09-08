@@ -1,0 +1,164 @@
+---
+sidebar_label: Edenred
+slug: /guide/informazioni/risorse/gateway-di-pagamento/edenred
+sidebar_position: 10
+description: "Accetta i buoni pasto Ticket Restaurant Edenred online con Voucherly: diventa partner Edenred, completa l'UAT e configura la produzione per il go live."
+keywords:
+  - Edenred
+  - Ticket Restaurant
+  - buoni pasto
+  - UAT
+  - eDPS
+  - integrazione Voucherly
+  - certificazione Edenred
+  - partner Edenred
+  - attivazione Edenred
+---
+
+import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
+
+export const faqs = [
+  {
+    question: 'Devo sviluppare qualcosa per accettare Edenred con Voucherly?',
+    answer: 'No. Voucherly mette a disposizione un\'integrazione pronta all\'uso, già conforme agli standard tecnici e di UX di Edenred, flusso SSO e pagina di pagamento compresi. Ti basta completare i passaggi di attivazione con Edenred e inserire in Dashboard le credenziali che ricevi.',
+  },
+  {
+    question: 'Voucherly è partner certificato Edenred?',
+    answer: 'Voucherly è un fornitore tecnico dell\'esercente, non un rivenditore né un partner commerciale di Edenred: la convenzione resta sempre tra te ed Edenred. Non abbiamo in corso alcun percorso di certificazione formale, perché non è un requisito tecnico: l\'integrazione rispetta già gli standard Edenred ed è Edenred stessa a validarla, per ogni esercente, durante l\'UAT. La certificazione risponde a dinamiche di tipo commerciale e percorrerla comporterebbe costi aggiuntivi che finirebbero per ricadere sugli esercenti: abbiamo preferito evitarlo.',
+  },
+  {
+    question: 'L\'integrazione Edenred è già usata in produzione?',
+    answer: 'Sì. È pienamente operativa e utilizzata ogni giorno da e-commerce e catene della ristorazione, sia sul checkout web sia all\'interno delle loro app. Se prima di partire vuoi vedere qualche esempio live, scrivici a <a href="mailto:support@voucherly.it">support@voucherly.it</a> e ti condividiamo alcune referenze.',
+  },
+  {
+    question: 'La mia attivazione Edenred è ferma da tempo o è stata rifiutata: Voucherly può fare qualcosa?',
+    answer: 'L\'abilitazione degli esercenti e le regole di utilizzo dei buoni Ticket Restaurant sono gestite da Edenred, che decide autonomamente su requisiti, condizioni e tempistiche. Questi tempi possono variare da esercente a esercente e Voucherly non può accelerarli né influenzarne l\'esito. Il canale più efficace è il tuo referente commerciale Edenred oppure <a href="mailto:assistenzanetwork-it@edenred.com">assistenzanetwork-it@edenred.com</a>. Nel frattempo possiamo aiutarti a preparare tutta la parte tecnica, così da andare live non appena Edenred ti abilita.',
+  },
+];
+
+# Ticket Restaurant Edenred
+
+Il processo di integrazione standard di Edenred si compone di 3 fasi:
+
+- Integrazione e sviluppo.
+- Validazione e processo di UAT, che richiede il completamento con successo di test specifici (UAT, User Acceptance Testing).
+- Configurazione dell'ambiente di produzione.
+
+## Come funziona Voucherly con Edenred
+
+Voucherly è un servizio tecnico per gli esercenti, non un rivenditore né un partner commerciale di Edenred: la convenzione, il MID e le condizioni economiche sono concordati direttamente tra te ed Edenred, e Voucherly non si inserisce mai in quel rapporto.
+
+L'integrazione è già attiva e in produzione: ogni giorno e-commerce e catene della ristorazione accettano Ticket Restaurant Edenred tramite Voucherly, sia sul checkout web sia in app. Infrastruttura, flusso SSO e pagina di pagamento rispettano già gli standard tecnici e di UX definiti da Edenred, quindi **non è richiesto alcuno sviluppo da parte tua**: restano solo i passaggi di configurazione descritti in questa guida.
+
+### Chi fa cosa
+
+| | |
+|-|-|
+| **Tu** | Firmi la convenzione con Edenred, fornisci i dati aziendali richiesti, partecipi alla sessione di UAT e inserisci nella Dashboard di Voucherly le credenziali che ricevi. |
+| **Edenred** | Valuta e abilita l'esercente, rilascia le credenziali (MID, client id e secret), definisce le regole di utilizzo dei propri buoni e valida l'integrazione durante l'UAT. |
+| **Voucherly** | Fornisce e mantiene l'integrazione, la pagina di checkout e il flusso di pagamento, e ti affianca in configurazione, UAT e go live. |
+
+:::info
+L'abilitazione degli esercenti, i tempi di attivazione e le regole che governano l'utilizzo dei buoni Ticket Restaurant sono definiti autonomamente da Edenred, in quanto emettitore dei buoni. Voucherly non ha visibilità né possibilità di intervento su queste decisioni, ma ti supporta su tutto ciò che riguarda la parte tecnica: scrivici a support@voucherly.it.
+:::
+
+## Diventa partner
+
+Per abilitare Edenred Ticket Restaurant con Voucherly, la tua azienda deve prima essere registrata come partner Edenred.
+
+#### Accetti già Edenred
+Se accetti già Ticket Restaurant tramite POS nel tuo punto vendita fisico:
+   - Contatta il tuo referente commerciale Edenred.
+   - Richiedi l'attivazione per accettare Ticket Restaurant Edenred anche online tramite il tuo e-commerce.
+
+#### Non sei ancora partner Edenred
+Se non sei ancora partner Edenred, puoi richiedere l'attivazione:
+   - Compilando il modulo https://www.edenred.it/merchant/edenred-per-il-ecommerce/.
+   - Oppure inviando un'email a assistenzanetwork-it@edenred.com con oggetto *Richiesta convenzione buoni pasto Edenred per e-commerce* e includendo i seguenti dati aziendali:
+     - Ragione sociale
+     - Partita IVA
+     - Codice fiscale
+     - Insegna (se diversa dalla ragione sociale)
+     - Codice REA
+     - Indirizzo della sede legale
+     - Indirizzo della sede operativa (se diverso)
+     - IBAN
+     - PEC o codice SDI
+     - Legale rappresentante (nome, cognome, codice fiscale, documento d'identità)
+     - Email di contatto (utilizzata per l'invio del contratto)
+     - Numero di cellulare di contatto
+
+
+> **Nota:** Edenred offrirà anche l'attivazione gratuita del POS. Questa è opzionale e non necessaria per accettare buoni online con Voucherly.
+
+
+:::warning
+I tempi di risposta dipendono dal processo di valutazione di Edenred e non dipendono da Voucherly. L'attivazione richiede in genere circa due settimane, ma la tempistica effettiva è nelle mani di Edenred — vedi le [FAQ](#domande-frequenti).
+:::
+
+## Integrazione e UAT
+Edenred ti fornirà il documento *Introduzione ad EDPS* contenente tutte le informazioni necessarie sul processo e sulle integrazioni richieste.
+
+:::info
+Il documento descrive l'integrazione che Voucherly già mette a tua disposizione, quindi una lettura attenta non è obbligatoria ma solo consigliata.
+:::
+
+Dovrai condividere con Edenred i parametri elencati nella tabella sottostante. L'attivazione richiede in genere un paio di giorni.
+
+| Parametro | Valore | 
+|-|-|
+| **Redirect login**   | https://checkout.voucherly.it/edenred/callback |
+| **Redirect logout**  | https://checkout.voucherly.it/edenred/logout |
+
+Una volta abilitato, Edenred ti fornirà **AuthenticationClientId**, **AuthenticationClientSecret**, **MID**, **PaymentClientId**, **PaymentClientSecret**.
+
+- Configura questi parametri in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** nella Dashboard di Voucherly. Utilizza l'ambiente sandbox.
+- Fissa un incontro con Edenred per svolgere l'UAT. Voucherly può partecipare se necessario.
+    - L'elenco completo dei test è disponibile in <a target="_blank" href="/download/edenred/TestBook_UAT.xlsx" download>TestBook_UAT.xlsx</a>.
+
+## Ambiente di produzione e Go live
+
+:::warning
+Hai bisogno di un account Voucherly attivo per configurare Ticket Restaurant Edenred nell'ambiente di produzione. Se non l'hai ancora fatto, [attiva il tuo account](/guide/inizia-a-integrare/attiva-account) fornendo le informazioni della tua azienda.
+:::
+
+Al termine del processo di UAT, Edenred invierà un'email con le istruzioni per la configurazione in produzione e il go live.
+
+### Configurazione
+Edenred richiederà nuovi parametri per l'attivazione dell'ambiente di produzione.
+1. URL di callback opt-in (post-login): URL a cui gli utenti vengono reindirizzati dopo il login.
+1. (Facoltativo) URL di callback opt-out (post-logout): URL a cui gli utenti vengono reindirizzati dopo il logout.
+1. (Facoltativo) URL del tuo logo.
+1. Un'email per creare un account Anypoint con cui registrare la tua applicazione. Si consiglia di utilizzare un'email aziendale condivisa (es. edps@edenred.com) anziché una personale.
+1. Durata dell'autorizzazione (predefinita: 60 minuti): il tempo dopo il quale un'autorizzazione non catturata scade.
+
+Fornisci questi dettagli almeno una settimana prima della data di go-live.
+| Parametro | Valore | 
+|-|-|
+| **Redirect login**   | https://checkout.voucherly.it/edenred/callback |
+| **Redirect logout**  | https://checkout.voucherly.it/edenred/logout |
+| **Logo**             | Utilizza una risorsa statica per evitare modifiche indesiderate. Il link fornito mostrerà il logo durante il flusso SSO. |
+| **Authorization duration**   | La transazione Edenred rimane nello stato di *autorizzazione* mentre l'utente completa il pagamento con altri metodi (es. carta di debito o di credito). Consigliamo almeno 10 minuti. Anche il valore predefinito di 60 minuti è accettabile. |
+
+### Registrazione
+1. Riceverai un invito all'email fornita al punto 4 (controlla lo Spam). Usalo per creare un account Anypoint e confermare la registrazione.
+2. Comunica a Edenred una volta completata la registrazione. Edenred abiliterà il tuo accesso così potrai registrare l'applicazione.
+3. Registra la tua applicazione all'indirizzo: https://anypoint.mulesoft.com/exchange/f02a5569-24ac-491a-964a-0950ab318728/edenred-payment-services-api/.
+    - Segui i passaggi indicati nell'allegato <a target="_blank" href="/download/edenred/Come creare un accesso in produzione su eDPS.pdf">Come creare un accesso in produzione su eDPS</a>.
+    - Condividi il nome dell'applicazione con Edenred.
+    - Salva **PaymentClientId** e **PaymentClientSecret**.
+4. Edenred completerà la configurazione e ti invierà via email: **AuthenticationClientId**, **AuthenticationClientSecret**, **MID**.
+5. Configura questi parametri in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** nella Dashboard di Voucherly. Utilizza l'ambiente di produzione.
+    - Se gestisci più punti vendita con MID differenti, crea un account per ogni MID e assegnalo a ciascun punto vendita — vedi [Configurazione per punto vendita](/guide/informazioni/risorse/gateway-di-pagamento/configurazione-per-punto-vendita).
+
+### Go live
+
+Ora sei pronto ad accettare Ticket Restaurant Edenred con Voucherly!
+
+:::warning
+Edenred potrebbe richiedere un'ulteriore UAT per l'ambiente di produzione.
+:::
+
+## Domande frequenti
+
+<FAQStructuredData faqs={faqs} />

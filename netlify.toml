@@ -46,83 +46,98 @@ status = 301
 
 # --- Localized IT slugs (English path -> Italian slug) ---
 [[redirects]]
-from = '/it/guides/intro/definitions/'
-to = '/it/guide/introduzione/definizioni/'
+from = '/it/guides/about/definitions/'
+to = '/it/guide/informazioni/definizioni/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/intro/getting-started/'
-to = '/it/guide/introduzione/per-iniziare/'
+from = '/it/guides/start-building/'
+to = '/it/guide/inizia-a-integrare/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/intro/getting-started/activate-account/'
-to = '/it/guide/introduzione/per-iniziare/attiva-account/'
+from = '/it/guides/start-building/activate-account/'
+to = '/it/guide/inizia-a-integrare/attiva-account/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/intro/getting-started/website-checklist/'
-to = '/it/guide/introduzione/per-iniziare/checklist-sito-web/'
+from = '/it/guides/start-building/start-developing/quickstart/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/quickstart/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/integrations/api/'
-to = '/it/guide/integrazioni/api/'
+from = '/it/guides/start-building/start-developing/go-live-checklist/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/checklist-go-live/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/integrations/api/go-live-checklist/'
-to = '/it/guide/integrazioni/api/checklist-go-live/'
+from = '/it/guides/start-building/start-developing/website-checklist/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/checklist-sito-web/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/integrations/ecommerce-plugins/'
-to = '/it/guide/integrazioni/plugin-e-commerce/'
+from = '/it/guides/online-payments/'
+to = '/it/guide/pagamenti-online/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/integrations/ecommerce-plugins/prestashop/'
-to = '/it/guide/integrazioni/plugin-e-commerce/prestashop/'
+from = '/it/guides/online-payments/hosted-checkout/'
+to = '/it/guide/pagamenti-online/checkout-ospitato/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/integrations/ecommerce-plugins/woocommerce/'
-to = '/it/guide/integrazioni/plugin-e-commerce/woocommerce/'
+from = '/it/guides/online-payments/components/'
+to = '/it/guide/pagamenti-online/components/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/integrations/ecommerce-plugins/shopify/'
-to = '/it/guide/integrazioni/plugin-e-commerce/shopify/'
+from = '/it/guides/online-payments/components/reference/'
+to = '/it/guide/pagamenti-online/components/riferimento/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/integrations/pay-at-table/'
-to = '/it/guide/integrazioni/pagamento-al-tavolo/'
+from = '/it/guides/online-payments/custom-integration/'
+to = '/it/guide/pagamenti-online/integrazione-personalizzata/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/legal/gdpr/'
-to = '/it/guide/note-legali/gdpr/'
+from = '/it/guides/online-payments/ecommerce-plugins/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/legal/fuhrmann2/'
-to = '/it/guide/note-legali/fuhrmann2/'
+from = '/it/guides/online-payments/ecommerce-plugins/prestashop/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/prestashop/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/marketplace3/'
-to = '/it/guides/products/electronic-receipt/'
+from = '/it/guides/online-payments/ecommerce-plugins/woocommerce/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/woocommerce/'
 status = 301
 
 [[redirects]]
-from = '/it/guide/marketplace/ade-documento-commerciale/'
-to = '/it/guide/prodotti/scontrino-elettronico/documento-commerciale-online/'
+from = '/it/guides/online-payments/ecommerce-plugins/shopify/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/shopify/'
 status = 301
 
 [[redirects]]
-from = '/en/guides/marketplace/ade-documento-commerciale/'
-to = '/en/guides/products/electronic-receipt/ade-documento-commerciale/'
+from = '/it/guides/in-person-payments/kiosk/'
+to = '/it/guide/pagamenti-di-persona/chiosco/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/in-person-payments/smart-vending-machine/'
+to = '/it/guide/pagamenti-di-persona/distributori-automatici-smart/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/about/legal/gdpr/'
+to = '/it/guide/informazioni/note-legali/gdpr/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/about/legal/fuhrmann2/'
+to = '/it/guide/informazioni/note-legali/fuhrmann2/'
 status = 301
 
 [[redirects]]
@@ -136,68 +151,53 @@ to = '/it/guide/prodotti/scontrino-elettronico/collegamento-pos-rt/'
 status = 301
 
 [[redirects]]
+from = '/it/guides/products/pay-at-table/authentication-sso/'
+to = '/it/guide/prodotti/pagamento-al-tavolo/autenticazione-sso/'
+status = 301
+
+[[redirects]]
 from = '/it/guides/products/pay-at-table/upselling/'
 to = '/it/guide/prodotti/pagamento-al-tavolo/upselling/'
 status = 301
 
 [[redirects]]
-from = '/en/guides/marketplace3/'
-to = '/en/guides/products/electronic-receipt/'
+from = '/it/guides/about/resources/payments-lifecycle/'
+to = '/it/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/resources/payments-lifecycle/'
-to = '/it/guide/risorse/ciclo-di-vita-dei-pagamenti/'
+from = '/it/guides/about/resources/payment-gateways/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/resources/payment-gateways/'
-to = '/it/guide/risorse/gateway-di-pagamento/'
+from = '/it/guides/about/resources/payment-gateways/google-pay/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/google-pay/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/resources/payment-gateways/google-pay/'
-to = '/it/guide/risorse/gateway-di-pagamento/google-pay/'
+from = '/it/guides/about/resources/payment-gateways/edenred/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/edenred/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/resources/payment-gateways/edenred/'
-to = '/it/guide/risorse/gateway-di-pagamento/edenred/'
+from = '/it/guides/about/resources/payment-gateways/satispay/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/satispay/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/resources/payment-gateways/satispay/'
-to = '/it/guide/risorse/gateway-di-pagamento/satispay/'
+from = '/it/guides/about/resources/payment-gateways/per-store-configuration/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/configurazione-per-punto-vendita/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/resources/payment-gateways/per-store-configuration/'
-to = '/it/guide/risorse/gateway-di-pagamento/configurazione-per-punto-vendita/'
+from = '/it/guides/about/resources/payment-gateways/paypal/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/paypal/'
 status = 301
 
 [[redirects]]
-from = '/it/guides/resources/payment-gateways/paypal/'
-to = '/it/guide/risorse/gateway-di-pagamento/paypal/'
-status = 301
-
-[[redirects]]
-from = '/it/guides/use-cases/charge-wallet/'
-to = '/it/guide/casi-duso/ricarica-wallet/'
-status = 301
-
-[[redirects]]
-from = '/it/guides/use-cases/smart-vending-machine/'
-to = '/it/guide/casi-duso/distributori-automatici-smart/'
-status = 301
-
-[[redirects]]
-from = '/it/guides/use-cases/ecommerce/'
-to = '/it/guide/casi-duso/e-commerce/'
-status = 301
-
-[[redirects]]
-from = '/it/guides/use-cases/kiosk/'
-to = '/it/guide/casi-duso/chiosco/'
+from = '/it/guides/about/resources/charge-wallet/'
+to = '/it/guide/informazioni/risorse/ricarica-wallet/'
 status = 301
 
 [[redirects]]
@@ -238,6 +238,402 @@ status = 301
 [[redirects]]
 from = '/it/api/libraries/sdks/dotnet/'
 to = '/it/api/librerie/sdk/dotnet/'
+status = 301
+
+[[redirects]]
+from = '/it/api/libraries/sdks/javascript/'
+to = '/it/api/librerie/sdk/javascript/'
+status = 301
+
+# --- Pages moved by the September 2026 reorganization (old URL -> new URL, both locales) ---
+[[redirects]]
+from = '/en/guides/legal/gdpr/'
+to = '/en/guides/about/legal/gdpr/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/legal/gdpr/'
+to = '/it/guide/informazioni/note-legali/gdpr/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/note-legali/gdpr/'
+to = '/it/guide/informazioni/note-legali/gdpr/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/legal/fuhrmann2/'
+to = '/en/guides/about/legal/fuhrmann2/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/legal/fuhrmann2/'
+to = '/it/guide/informazioni/note-legali/fuhrmann2/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/note-legali/fuhrmann2/'
+to = '/it/guide/informazioni/note-legali/fuhrmann2/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/resources/'
+to = '/en/guides/about/resources/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/'
+to = '/it/guides/about/resources/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/resources/payments-lifecycle/'
+to = '/en/guides/about/resources/payments-lifecycle/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payments-lifecycle/'
+to = '/it/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/risorse/ciclo-di-vita-dei-pagamenti/'
+to = '/it/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/resources/payment-gateways/'
+to = '/en/guides/about/resources/payment-gateways/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/risorse/gateway-di-pagamento/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/resources/payment-gateways/google-pay/'
+to = '/en/guides/about/resources/payment-gateways/google-pay/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/google-pay/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/google-pay/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/risorse/gateway-di-pagamento/google-pay/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/google-pay/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/resources/payment-gateways/edenred/'
+to = '/en/guides/about/resources/payment-gateways/edenred/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/edenred/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/edenred/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/risorse/gateway-di-pagamento/edenred/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/edenred/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/resources/payment-gateways/satispay/'
+to = '/en/guides/about/resources/payment-gateways/satispay/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/satispay/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/satispay/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/risorse/gateway-di-pagamento/satispay/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/satispay/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/resources/payment-gateways/per-store-configuration/'
+to = '/en/guides/about/resources/payment-gateways/per-store-configuration/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/per-store-configuration/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/configurazione-per-punto-vendita/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/risorse/gateway-di-pagamento/configurazione-per-punto-vendita/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/configurazione-per-punto-vendita/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/resources/payment-gateways/paypal/'
+to = '/en/guides/about/resources/payment-gateways/paypal/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/resources/payment-gateways/paypal/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/paypal/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/risorse/gateway-di-pagamento/paypal/'
+to = '/it/guide/informazioni/risorse/gateway-di-pagamento/paypal/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/intro/definitions/'
+to = '/en/guides/about/definitions/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/intro/definitions/'
+to = '/it/guide/informazioni/definizioni/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/introduzione/definizioni/'
+to = '/it/guide/informazioni/definizioni/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/intro/getting-started/'
+to = '/en/guides/start-building/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/intro/getting-started/'
+to = '/it/guide/inizia-a-integrare/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/introduzione/per-iniziare/'
+to = '/it/guide/inizia-a-integrare/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/intro/getting-started/activate-account/'
+to = '/en/guides/start-building/activate-account/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/intro/getting-started/activate-account/'
+to = '/it/guide/inizia-a-integrare/attiva-account/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/introduzione/per-iniziare/attiva-account/'
+to = '/it/guide/inizia-a-integrare/attiva-account/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/intro/getting-started/website-checklist/'
+to = '/en/guides/start-building/start-developing/website-checklist/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/intro/getting-started/website-checklist/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/checklist-sito-web/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/introduzione/per-iniziare/checklist-sito-web/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/checklist-sito-web/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/use-cases/'
+to = '/en/guides/online-payments/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/'
+to = '/it/guide/pagamenti-online/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/integrations/'
+to = '/en/guides/online-payments/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/'
+to = '/it/guide/pagamenti-online/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/use-cases/ecommerce/'
+to = '/en/guides/online-payments/hosted-checkout/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/ecommerce/'
+to = '/it/guide/pagamenti-online/checkout-ospitato/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/casi-duso/e-commerce/'
+to = '/it/guide/pagamenti-online/checkout-ospitato/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/use-cases/kiosk/'
+to = '/en/guides/in-person-payments/kiosk/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/kiosk/'
+to = '/it/guide/pagamenti-di-persona/chiosco/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/casi-duso/chiosco/'
+to = '/it/guide/pagamenti-di-persona/chiosco/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/use-cases/smart-vending-machine/'
+to = '/en/guides/in-person-payments/smart-vending-machine/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/smart-vending-machine/'
+to = '/it/guide/pagamenti-di-persona/distributori-automatici-smart/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/casi-duso/distributori-automatici-smart/'
+to = '/it/guide/pagamenti-di-persona/distributori-automatici-smart/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/use-cases/charge-wallet/'
+to = '/en/guides/about/resources/charge-wallet/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/use-cases/charge-wallet/'
+to = '/it/guide/informazioni/risorse/ricarica-wallet/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/casi-duso/ricarica-wallet/'
+to = '/it/guide/informazioni/risorse/ricarica-wallet/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/integrations/api/'
+to = '/en/guides/start-building/start-developing/quickstart/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/api/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/quickstart/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/integrazioni/api/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/quickstart/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/integrations/api/go-live-checklist/'
+to = '/en/guides/start-building/start-developing/go-live-checklist/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/api/go-live-checklist/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/checklist-go-live/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/integrazioni/api/checklist-go-live/'
+to = '/it/guide/inizia-a-integrare/inizia-a-sviluppare/checklist-go-live/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/integrations/ecommerce-plugins/'
+to = '/en/guides/online-payments/ecommerce-plugins/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/ecommerce-plugins/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/integrazioni/plugin-e-commerce/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/integrations/ecommerce-plugins/prestashop/'
+to = '/en/guides/online-payments/ecommerce-plugins/prestashop/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/ecommerce-plugins/prestashop/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/prestashop/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/integrazioni/plugin-e-commerce/prestashop/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/prestashop/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/integrations/ecommerce-plugins/woocommerce/'
+to = '/en/guides/online-payments/ecommerce-plugins/woocommerce/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/ecommerce-plugins/woocommerce/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/woocommerce/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/integrazioni/plugin-e-commerce/woocommerce/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/woocommerce/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/integrations/ecommerce-plugins/shopify/'
+to = '/en/guides/online-payments/ecommerce-plugins/shopify/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/ecommerce-plugins/shopify/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/shopify/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/integrazioni/plugin-e-commerce/shopify/'
+to = '/it/guide/pagamenti-online/plugin-e-commerce/shopify/'
+status = 301
+
+[[redirects]]
+from = '/en/guides/integrations/pay-at-table/'
+to = '/en/guides/products/pay-at-table/authentication-sso/'
+status = 301
+
+[[redirects]]
+from = '/it/guides/integrations/pay-at-table/'
+to = '/it/guide/prodotti/pagamento-al-tavolo/autenticazione-sso/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/integrazioni/pagamento-al-tavolo/'
+to = '/it/guide/prodotti/pagamento-al-tavolo/autenticazione-sso/'
 status = 301
 
 # --- Root: send visitors to their language (Italian browsers -> /it/, others -> /en/) ---

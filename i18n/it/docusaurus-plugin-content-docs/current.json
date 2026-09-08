@@ -3,37 +3,33 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.guidesSidebar.category.Introduction": {
-    "message": "Introduzione",
-    "description": "The label for category 'Introduction' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.Start building": {
+    "message": "Inizia a integrare",
+    "description": "The label for category 'Start building' in sidebar 'guidesSidebar'"
   },
-  "sidebar.guidesSidebar.category.Getting started": {
-    "message": "Per iniziare",
-    "description": "The label for category 'Getting started' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.Start developing": {
+    "message": "Inizia a sviluppare",
+    "description": "The label for category 'Start developing' in sidebar 'guidesSidebar'"
   },
   "sidebar.guidesSidebar.category.Security and legal": {
     "message": "Sicurezza e aspetti legali",
     "description": "The label for category 'Security and legal' in sidebar 'guidesSidebar'"
   },
-  "sidebar.guidesSidebar.category.Use cases": {
-    "message": "Casi d'uso",
-    "description": "The label for category 'Use cases' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.Voucherly Components": {
+    "message": "Voucherly Components",
+    "description": "The label for category 'Voucherly Components' in sidebar 'guidesSidebar'"
   },
-  "sidebar.guidesSidebar.category.Integrations": {
-    "message": "Integrazioni",
-    "description": "The label for category 'Integrations' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.Online payments": {
+    "message": "Pagamenti online",
+    "description": "The label for category 'Online payments' in sidebar 'guidesSidebar'"
   },
-  "sidebar.guidesSidebar.category.API integration": {
-    "message": "Integrazione API",
-    "description": "The label for category 'API integration' in sidebar 'guidesSidebar'"
+  "sidebar.guidesSidebar.category.In-person payments": {
+    "message": "Pagamenti di persona",
+    "description": "The label for category 'In-person payments' in sidebar 'guidesSidebar'"
   },
   "sidebar.guidesSidebar.category.E-commerce plugins": {
     "message": "Plugin e-commerce",
     "description": "The label for category 'E-commerce plugins' in sidebar 'guidesSidebar'"
-  },
-  "sidebar.guidesSidebar.category.Products": {
-    "message": "Prodotti",
-    "description": "The label for category 'Products' in sidebar 'guidesSidebar'"
   },
   "sidebar.guidesSidebar.category.Electronic receipt": {
     "message": "Scontrino elettronico",
@@ -230,5 +226,13 @@
   "sidebar.apiSidebar.doc.Volumes": {
     "message": "Volumes",
     "description": "The label for the doc item 'Volumes' in sidebar 'apiSidebar', linking to the doc api/webapi/volumes-report"
+  },
+  "sidebar.guidesSidebar.category.Products": {
+    "message": "Prodotti",
+    "description": "The label for category 'Products' in sidebar 'guidesSidebar'"
+  },
+  "sidebar.guidesSidebar.category.About Voucherly": {
+    "message": "Informazioni su Voucherly",
+    "description": "The label for category 'About Voucherly' in sidebar 'guidesSidebar'"
   }
 }
