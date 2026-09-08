@@ -67,7 +67,7 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 
 ### Demo Voucherly {#demo}
 
-The Demo Voucherly is a virtual payment gateway provided by Voucherly that you can use for testing purposes.
+The Demo Voucherly is a virtual payment gateway provided by Voucherly that you can use for testing purposes. It simulates a meal voucher: the code the customer types decides the outcome of the payment, of the confirmation and of the refund. The codes are in [Test data](/guides/start-building/start-developing/test-data).
 
 ### Wallet
 
