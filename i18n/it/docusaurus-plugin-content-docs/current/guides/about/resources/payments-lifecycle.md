@@ -35,12 +35,20 @@ Separare l'autorizzazione e la cattura è utile quando sono necessarie azioni ag
 Consulta [Separare autorizzazione e conferma](/guide/pagamenti-online/checkout-ospitato#separare-autorizzazione-e-conferma) per informazioni più tecniche.
 
 :::warning
-I gateway di pagamento dei buoni pasto non supportano il processo a due fasi.
+I gateway di pagamento dei buoni pasto non supportano il processo a due fasi, e nemmeno il wallet, la quota prepagata e alcuni provider — tra cui Satispay, SumUp e Adyen. Le loro transazioni vengono catturate al checkout, quindi un Payment pagato solo con questi è `Confirmed` appena il cliente paga, mentre un Payment pagato con carta o PayPal resta `Paid` finché non lo confermi. La tua integrazione dovrebbe leggere lo `status` del Payment invece di dedurlo dal metodo di pagamento.
 :::
 
 :::tip
 Puoi definire il comportamento predefinito in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways) > Contabilizzazione automatica**. Quando è abilitata, tutte le transazioni vengono catturate automaticamente al termine di un pagamento.
 :::
+
+### Quando un Payment si chiude {#completion-mode}
+
+Un Payment può essere pagato con più di una Transaction — un buono pasto per una parte dell'importo, una carta per il resto. `completionMode`, impostato in [Create a Payment](/api/webapi/create-payment), decide quando il Payment smette di chiedere altro:
+
+- **Standard** (default). Il Payment si chiude quando l'intero importo è coperto. Dopo una Transaction parziale il checkout chiede l'importo residuo con un altro metodo di pagamento.
+- **Partial**. Il Payment si chiude con la prima Transaction riuscita, qualunque importo copra, e il residuo non viene incassato. Usalo quando il resto si salda altrove — alla cassa, o con un Payment successivo.
+- **AnyTransaction**. Come `Partial`.
 
 ### Stati del pagamento {#payment-statuses}
 
@@ -51,8 +59,10 @@ I pagamenti hanno un campo `status` che riflette gli stati delle relative transa
 - **Confirmed**. Il pagamento è andato a buon fine e tutte le transazioni sono state confermate.
 - **Refunded**. Tutte le transazioni sono state rimborsate o annullate.
 - **Cancelled**. Tutte le transazioni sono state annullate.
-- **Voided**. L'utente ha annullato il pagamento durante il checkout. Tutte le transazioni sono state invalidate (voided).
+- **Voided**. Il Payment è stato invalidato (voided) mentre era ancora `Requested`, dal cliente durante il checkout o da te con [Void a Payment](/api/webapi/void-payment). Tutte le transazioni sono state invalidate.
 - **Expired**. Il pagamento è scaduto.
+
+In breve: un Payment passa da `Requested` a `Paid` quando il cliente completa il checkout e a `Confirmed` quando i fondi vengono catturati. [Void a Payment](/api/webapi/void-payment) funziona solo su un Payment `Requested`; una volta `Paid` o `Confirmed`, la strada a ritroso è [Refund a Payment](/api/webapi/refund-payment), che annulla le autorizzazioni non ancora catturate e rimborsa quelle catturate.
 
 ### Stati della transazione
 

@@ -88,9 +88,11 @@ Lo stesso oggetto è accettato da `Voucherly.init` e da `Voucherly.initExpress`.
 | Parametro | Tipo | Descrizione |
 | --- | --- | --- |
 | `appearance.variables` | `object` | Colori, font e raggio del componente. Vedi [Aspetto](#aspetto). |
-| `wallets.applePay` | `"auto"` \| `"never"` | Se proporre Apple Pay nel modulo. `auto` (default) lo mostra solo sui dispositivi che lo supportano, e solo se sul tuo account è attivo un gateway con Apple Pay. |
-| `wallets.googlePay` | `"auto"` \| `"never"` | Lo stesso per Google Pay. |
+| `wallets.applePay` | `"auto"` \| `"never"` | `auto` (default) mostra Apple Pay se il browser del cliente può pagarci. `never` lo nasconde. |
+| `wallets.googlePay` | `"auto"` \| `"never"` | `auto` (default) mostra Google Pay se il browser del cliente può pagarci. `never` lo nasconde. |
 | `showSubmitButton` | `boolean` | Se il componente mostra il proprio pulsante di pagamento. Default `true`. Con `false`, invia il modulo dalla tua pagina con [`Voucherly.submit()`](#voucherlysubmit). |
+
+Apple Pay e Google Pay richiedono inoltre un gateway con il supporto ai wallet attivo sul tuo account. Quando nella stessa pagina c'è l'Express Checkout Component, il Payment Component non li mostra, qualunque cosa dica `wallets`: sono già nella riga express.
 
 ## Voucherly.initExpress(options, componentOptions)
 
@@ -119,8 +121,8 @@ Voucherly.initExpress({
 | `buttonType.googlePay` | `string` | Etichetta del pulsante Google Pay: `"buy"` (default), `"pay"`, `"plain"` o un altro tipo supportato da Google Pay. |
 | `paymentMethods.wallet` | `"always"` \| `"auto"` \| `"never"` | Il credito personale del cliente. `always` (default) lo mostra ogni volta che il cliente ha credito, `auto` solo quando il credito copre l'intero importo residuo, `never` lo nasconde. |
 | `paymentMethods.prepaid` | `"always"` \| `"auto"` \| `"never"` | La quota prepagata del cliente, con gli stessi valori. |
-| `paymentMethods.applePay` | `"auto"` \| `"never"` | Come `wallets.applePay` del Payment Component. |
-| `paymentMethods.googlePay` | `"auto"` \| `"never"` | Come `wallets.googlePay` del Payment Component. |
+| `paymentMethods.applePay` | `"auto"` \| `"never"` | `auto` (default) mostra il pulsante Apple Pay se il browser del cliente può pagarci. `never` lo nasconde. |
+| `paymentMethods.googlePay` | `"auto"` \| `"never"` | `auto` (default) mostra il pulsante Google Pay se il browser del cliente può pagarci. `never` lo nasconde. |
 
 ## Aspetto
 
@@ -158,7 +160,7 @@ Il componente è stato mostrato ed è interattivo.
 
 ### onResize(height)
 
-L'altezza del componente è cambiata, per esempio quando il cliente ha aperto un metodo di pagamento. Voucherly.js applica da solo la nuova altezza; usa la callback solo se il tuo layout deve reagire.
+L'altezza del componente è cambiata, per esempio quando il cliente ha aperto un metodo di pagamento. Voucherly.js applica da solo la nuova altezza, fotogramma per fotogramma durante le animazioni del modulo; la callback viene chiamata una volta, con l'altezza finale, quando l'altezza si è assestata. Usala solo se il tuo layout deve reagire.
 
 ### onPaymentComplete(event)
 
@@ -169,7 +171,7 @@ Il Payment è interamente pagato. Confermalo dal tuo server prima di evadere l'o
 | `success` | `boolean` | Sempre `true`. |
 | `paymentId` | `string` | Il Payment. |
 | `amount` | `number` | Il totale pagato, in centesimi. Assente quando il componente riprende dopo un reindirizzamento. |
-| `status` | `string` | Lo stato del Payment, per esempio `Paid` o `Confirmed`. Assente quando il componente riprende dopo un reindirizzamento. |
+| `status` | `string` | Lo stato del Payment: `Confirmed` quando il metodo cattura al checkout o il Payment ha `isAutoConfirm`, `Paid` quando serve ancora [Confirm a Payment](/api/webapi/confirm-payment). Assente quando il componente riprende dopo un reindirizzamento. |
 
 ### onPartialPayment(event)
 
