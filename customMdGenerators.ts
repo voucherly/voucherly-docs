@@ -17,9 +17,14 @@ const SCHEMAS_WITH_PAGE = ["Company", "ConceptStore", "Customer", "Payment", "Pa
 
 // The response is stripped to its description: this turns "Returns a Payment object." into a link to the schema page.
 // The URL is absolute to the EN locale because docs/api/webapi is shared by every locale (see STYLEGUIDE.it.md).
-function describeObjectResponse(response: any): string {
-  const description: string = response.description ?? "";
-  const title: string | undefined = response.content?.["application/json"]?.schema?.title;
+type ObjectResponse = {
+  description?: string;
+  content?: Record<string, { schema?: { title?: string } }>;
+};
+
+function describeObjectResponse(response: ObjectResponse): string {
+  const description = response.description ?? "";
+  const title = response.content?.["application/json"]?.schema?.title;
   if (!title || !SCHEMAS_WITH_PAGE.includes(title)) {
     return description;
   }
@@ -85,7 +90,6 @@ export function createApiPageMdForVoucherly({
       title: "Body",
       body: requestBody,
     }),
-    // @ts-expect-error - responses è ristretto alla sola description per i 2xx
     createStatusCodes({ responses }),
     createCallbacks({ callbacks }),
   ]);
