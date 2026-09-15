@@ -117,7 +117,7 @@ Il server del merchant deve rispondere con un codice di stato HTTP `200 OK` e un
 }
 ```
 
-Finché non riceviamo una risposta attesa, reinviamo la notifica fino a 3 volte.
+Voucherly chiama il tuo endpoint fino a 3 volte, a un secondo di distanza, finché non riceve la risposta attesa. Un errore di connessione, o nessuna risposta entro 60 secondi, interrompe subito i tentativi.
 
 :::warning
 Se il problema persiste, il pagamento verrà annullato e tutte le transazioni verranno rimborsate.

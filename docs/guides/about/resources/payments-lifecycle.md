@@ -68,12 +68,14 @@ In short: a Payment moves from `Requested` to `Paid` when the customer completes
 The status of a Transaction is determined by the `status` field.
 
 - **Requested**. A new transaction object has been created but has not yet been paid.
+- **NextAction**. The customer still has to complete a step required by the payment gateway before the transaction can be paid.
 - **Paid**. The transaction has been authorized. Funds are blocked until confirmation occurs ([Confirm Payment API](/api/webapi/confirm-payment)) or the time interval defined by the payment gateway configuration expires.
 - **Confirmed**. The transaction has been captured. Funds previously blocked have been transferred to the merchant’s account.
 - **Refunded**. A transaction in the `Confirmed` status has been fully refunded.
-- **Dropped**. The transaction has been released.
+- **RefundedPartially**. Part of the amount of a `Confirmed` transaction has been refunded; the rest can still be refunded.
 - **Cancelled**. A transaction in the `Paid` status has been cancelled, unlocking the funds.
 - **Failed**. The payment gateway failed to process the transaction.
 - **Voided**. A `Paid` transaction has been voided due to an error or a customer cancelling the payment.
-- **Expired** The transaction has expired.
+- **Expired**. The transaction has expired.
+- **Reversed**. A `Paid` transaction has been cancelled during the checkout, before the payment closed, and does not count towards the paid amount.
 - **ImpossibleRefund**. A refund could not be processed for the transaction. It's common for meal voucher Payment gateways.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 200
-description: "Answers to common Voucherly questions: missing payment gateways at checkout, empty wallet credit, Wallet food-only limits and gateway configuration errors."
+description: "Answers to common Voucherly questions: missing payment gateways at checkout, empty wallet credit, what Wallet credit can pay for and gateway configuration errors."
 keywords:
   - Voucherly FAQ
   - payment gateway
@@ -27,7 +27,7 @@ export const faqs = [
   },
   {
     question: 'A customer cannot pay with the Wallet, even if they have sufficient remaining credit.',
-    answer: '<ul><li>The Wallet contains voucher credit, so it can only be used for food items (<code>IsFood</code> set to true).</li></ul>',
+    answer: '<ul><li>Wallet credit keeps the nature of the money it came from. The part loaded with meal vouchers can only pay food items (<code>IsFood</code> set to true); the part loaded with a card or another payment method, or credited manually from the Dashboard, can pay any item.</li><li>If the cart holds only non-food items, credit loaded with meal vouchers cannot cover it.</li></ul>',
   },
   {
     question: 'An error occurs when a customer tries to use a certain payment gateway.',
