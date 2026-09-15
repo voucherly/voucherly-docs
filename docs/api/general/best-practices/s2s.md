@@ -116,7 +116,7 @@ The merchant server must respond with an HTTP `200 OK` status code and a JSON bo
 }
 ```
 
-Until we receive an expected response we resend the notification up to 3 times.
+Voucherly calls your endpoint up to 3 times, one second apart, until it receives the expected response. A connection error, or no answer within 60 seconds, ends the attempts at once.
 
 :::warning
 If the issue persists, the payment will be cancelled, and all transactions will be refunded.

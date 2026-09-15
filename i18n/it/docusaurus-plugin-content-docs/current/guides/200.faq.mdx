@@ -1,7 +1,7 @@
 ---
 slug: /guide/faq
 sidebar_position: 200
-description: "Risposte alle domande frequenti su Voucherly: gateway mancanti al checkout, credito wallet vuoto, limiti del Wallet ai soli alimentari ed errori di configurazione."
+description: "Risposte alle domande frequenti su Voucherly: gateway mancanti al checkout, credito wallet vuoto, cosa può pagare il credito del Wallet ed errori di configurazione."
 keywords:
   - FAQ Voucherly
   - gateway di pagamento
@@ -28,7 +28,7 @@ export const faqs = [
   },
   {
     question: 'Un cliente non riesce a pagare con il Wallet, anche se ha credito residuo sufficiente.',
-    answer: '<ul><li>Il Wallet contiene credito derivante da buoni, quindi può essere utilizzato solo per prodotti alimentari (<code>IsFood</code> impostato a true).</li></ul>',
+    answer: '<ul><li>Il credito del Wallet mantiene la natura del denaro da cui proviene. La parte caricata con buoni pasto può pagare solo prodotti alimentari (<code>IsFood</code> impostato a true); la parte caricata con carta o con un altro metodo di pagamento, o accreditata manualmente dalla Dashboard, può pagare qualsiasi prodotto.</li><li>Se il carrello contiene solo prodotti non alimentari, il credito caricato con buoni pasto non può coprirlo.</li></ul>',
   },
   {
     question: 'Si verifica un errore quando un cliente prova a utilizzare un determinato gateway di pagamento.',

@@ -2517,7 +2517,7 @@ components:
             $ref: '#/components/schemas/Payments.PaymentDiscount'
         timeout:
           type: integer
-          description: Timeout in minutes for the checkout sessions. Default is 10.
+          description: Seconds the customer has to complete the checkout, after which the Payment is voided. Without it the checkout has no deadline of its own, and a Payment still `Requested` 12 hours after its creation is voided.
           format: int32
           nullable: true
         completionMode:

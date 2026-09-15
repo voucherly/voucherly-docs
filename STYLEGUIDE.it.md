@@ -24,7 +24,7 @@ Riferimento per mantenere **coerenza terminologica, naturalezza e branding** nel
 - **Nomi prodotto/entità sempre con la maiuscola coerente**: `Voucherly`, `Dashboard`, `Payment`, `Transaction`, `Payment Gateway`, `Wallet`, `Customer`, `Merchant` (quando indicano l'entità/oggetto del modello). In prosa discorsiva i sostantivi comuni restano minuscoli ("il pagamento", "la transazione").
 - **`Dashboard`**: sempre maiuscolo (nome del prodotto). Correggere le occorrenze "dashboard" minuscolo.
 - **`buono pasto` / `buoni pasto`**: minuscolo, tranne a inizio frase o in un titolo. Correggere "Buono pasto" nelle intestazioni di tabella.
-- **Valori di stato / enum API** (`Requested`, `Paid`, `Confirmed`, `Refunded`, `Cancelled`, `Voided`, `Expired`, `Dropped`, `Failed`, `ImpossibleRefund`, `PAID`, …): **restano in inglese**, in grassetto o `code`, anche in IT. Si traduce solo la spiegazione, non il valore.
+- **Valori di stato / enum API** (`Requested`, `Paid`, `Confirmed`, `Refunded`, `Cancelled`, `Voided`, `Expired`, `Failed`, `ImpossibleRefund`, `PAID`, …): **restano in inglese**, in grassetto o `code`, anche in IT. Si traduce solo la spiegazione, non il valore.
 - **Nomi di campo/parametro** (`mode`, `status`, `ParentPaymentId`, `checkoutUrl`, …): invariati, in `code`.
 - Percorsi di menu Dashboard resi con `>`: es. **Sviluppatori > API keys**, **Impostazioni > Pagamenti > Gateway di pagamento**.
 
