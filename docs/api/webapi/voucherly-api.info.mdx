@@ -75,6 +75,8 @@ All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Sec
       
       Sandbox mode secret keys have the prefix `sk_sand_` and live mode secret keys have the prefix `sk_live_`. Publishable keys (`pk_`) are not accepted.
       
+      Platform keys (`ik_`) are issued to Voucherly products rather than to a merchant. They declare the merchant they operate on with the `Voucherly-Merchant-Id` header, and, when the key itself states no environment, the environment with the `Voucherly-Tenant` header.
+      
       
       <div>
         <table>
@@ -90,6 +92,62 @@ All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Sec
                 Header parameter name:
               </th><td>
                 Voucherly-API-Key
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem><TabItem
+      label={"API Key: Voucherly-Merchant-Id"}
+      value={"Voucherly-Merchant-Id"}
+    >
+      
+      
+      Declares the merchant a request operates on. Required with a platform key (`ik_`), which belongs to no merchant; rejected with `401 Unauthorized` on a key that already belongs to one. A request that omits it where a merchant is needed is rejected with `400 Bad Request`.
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                apiKey
+              </td>
+            </tr><tr>
+              <th>
+                Header parameter name:
+              </th><td>
+                Voucherly-Merchant-Id
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem><TabItem
+      label={"API Key: Voucherly-Tenant"}
+      value={"Voucherly-Tenant"}
+    >
+      
+      
+      Declares the environment a request operates on, `live` or `sand`. Required with a platform key that states no environment of its own (`ik_` with no `live`/`sand` segment); rejected with `401 Unauthorized` on a key that already states one, and on any value other than `live` or `sand`. A request that omits it is rejected with `400 Bad Request`, except on the endpoint that looks up an ecommerce site, which is the call that reveals which environment to declare.
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                apiKey
+              </td>
+            </tr><tr>
+              <th>
+                Header parameter name:
+              </th><td>
+                Voucherly-Tenant
               </td>
             </tr>
           </tbody>
