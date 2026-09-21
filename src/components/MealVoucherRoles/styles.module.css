@@ -1,0 +1,162 @@
+.figure {
+  --mvr-paper: #ffffff;
+  --mvr-ink: #1c2230;
+  --mvr-muted: #5a6273;
+  --mvr-line: #c8cedb;
+  --mvr-divider: #e1e5ec;
+  --mvr-brand: #5c59f2;
+  --mvr-brand-tint: #efeffe;
+  --mvr-issuer: #eef0f3;
+  --mvr-agreement: #f2bd4d;
+  --mvr-agreement-text: #9a6b0c;
+
+  margin: 1.5rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  background: var(--mvr-paper);
+  border: 1px solid var(--mvr-divider);
+  border-radius: 12px;
+  break-inside: avoid;
+}
+
+[data-theme='dark'] .figure {
+  --mvr-paper: #1f2026;
+  --mvr-ink: #e6e8ee;
+  --mvr-muted: #a4aabb;
+  --mvr-line: #4a4f5e;
+  --mvr-divider: #33363f;
+  --mvr-brand: #9593e3;
+  --mvr-brand-tint: #2a2a45;
+  --mvr-issuer: #2a2d35;
+  --mvr-agreement: #f2bd4d;
+  --mvr-agreement-text: #f2bd4d;
+}
+
+@media print {
+  .figure {
+    overflow: visible;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Below this width the labels would shrink past legibility, so the figure scrolls instead. */
+@media (max-width: 640px) {
+  .svg {
+    min-width: 640px;
+  }
+}
+
+.inkFill {
+  fill: var(--mvr-ink);
+}
+
+.agreementFill {
+  fill: var(--mvr-agreement);
+}
+
+.section {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  fill: var(--mvr-muted);
+}
+
+.merchantArea {
+  fill: var(--mvr-brand-tint);
+  stroke: var(--mvr-brand);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 5;
+}
+
+.areaLabel {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--mvr-brand);
+}
+
+.box,
+.voucherlyBox,
+.merchantBox,
+.issuerBox,
+.notPartyBox {
+  fill: var(--mvr-paper);
+  stroke: var(--mvr-line);
+  stroke-width: 1.5;
+}
+
+.voucherlyBox {
+  stroke: var(--mvr-brand);
+  stroke-width: 2.5;
+}
+
+.merchantBox {
+  stroke: var(--mvr-brand);
+}
+
+.issuerBox {
+  fill: var(--mvr-issuer);
+}
+
+.notPartyBox {
+  stroke-dasharray: 5 4;
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 700;
+  fill: var(--mvr-ink);
+}
+
+.brand {
+  fill: var(--mvr-brand);
+}
+
+.caption {
+  font-size: 13px;
+  fill: var(--mvr-muted);
+}
+
+.small {
+  font-size: 12px;
+  fill: var(--mvr-muted);
+}
+
+.statement {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--mvr-ink);
+}
+
+.arrow {
+  stroke: var(--mvr-ink);
+  stroke-width: 1.5;
+}
+
+.divider {
+  stroke: var(--mvr-divider);
+  stroke-width: 1;
+}
+
+.agreement {
+  stroke: var(--mvr-agreement);
+  stroke-width: 2;
+}
+
+.agreementLabel {
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--mvr-agreement-text);
+}
+
+.notParty {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--mvr-brand);
+}

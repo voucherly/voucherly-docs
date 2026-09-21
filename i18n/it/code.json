@@ -2,6 +2,66 @@
   "accordion.optional": {
     "message": "Facoltativo"
   },
+  "mealVoucherRoles.title": {
+    "message": "Il ruolo di Voucherly tra l'ecommerce del merchant e gli emettitori di buoni pasto"
+  },
+  "mealVoucherRoles.flow": {
+    "message": "FLUSSO TECNICO DEL PAGAMENTO"
+  },
+  "mealVoucherRoles.merchantTools": {
+    "message": "Strumenti scelti e utilizzati dal merchant"
+  },
+  "mealVoucherRoles.customer": {
+    "message": "Cliente"
+  },
+  "mealVoucherRoles.customerCaption": {
+    "message": "paga con buoni pasto"
+  },
+  "mealVoucherRoles.ecommerce": {
+    "message": "Ecommerce"
+  },
+  "mealVoucherRoles.ecommerceCaption": {
+    "message": "del merchant"
+  },
+  "mealVoucherRoles.voucherlyCaption": {
+    "message": "layer tecnologico"
+  },
+  "mealVoucherRoles.issuers": {
+    "message": "Emettitori"
+  },
+  "mealVoucherRoles.issuersCaption": {
+    "message": "di buoni pasto"
+  },
+  "mealVoucherRoles.buys": {
+    "message": "acquista"
+  },
+  "mealVoucherRoles.request": {
+    "message": "richiesta"
+  },
+  "mealVoucherRoles.outcome": {
+    "message": "esito"
+  },
+  "mealVoucherRoles.serviceStatement": {
+    "message": "Un servizio per il merchant, non per gli emettitori"
+  },
+  "mealVoucherRoles.relationship": {
+    "message": "RAPPORTO CONTRATTUALE ED ECONOMICO"
+  },
+  "mealVoucherRoles.merchantCaption": {
+    "message": "convenzionato"
+  },
+  "mealVoucherRoles.issuer": {
+    "message": "Emettitore"
+  },
+  "mealVoucherRoles.issuerCaption": {
+    "message": "di buoni pasto"
+  },
+  "mealVoucherRoles.agreement": {
+    "message": "convenzione diretta"
+  },
+  "mealVoucherRoles.notParty": {
+    "message": "Voucherly non è parte della convenzione"
+  },
   "theme.ErrorPageContent.title": {
     "message": "Questa pagina è andata in crash.",
     "description": "The title of the fallback page when the page crashed"
@@ -150,7 +210,7 @@
     "description": "The default label used for the Info admonition (:::info)"
   },
   "theme.admonition.note": {
-    "message": "note",
+    "message": "nota",
     "description": "The default label used for the Note admonition (:::note)"
   },
   "theme.admonition.tip": {
