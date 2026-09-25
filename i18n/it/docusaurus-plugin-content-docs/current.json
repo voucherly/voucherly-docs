@@ -47,6 +47,10 @@
     "message": "Gateway di pagamento",
     "description": "The label for category 'Payment gateways' in sidebar 'guidesSidebar'"
   },
+  "sidebar.guidesSidebar.category.Voucherly and meal vouchers": {
+    "message": "Voucherly e i buoni pasto",
+    "description": "The label for category 'Voucherly and meal vouchers' in sidebar 'guidesSidebar'"
+  },
   "sidebar.apiSidebar.category.General": {
     "message": "Generale",
     "description": "The label for category 'General' in sidebar 'apiSidebar'"

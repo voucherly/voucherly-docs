@@ -48,6 +48,7 @@ const SLUG_MAP: [string, string][] = [
   ['guides/about/resources/payments-lifecycle/', 'guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti/'],
   ['guides/about/resources/payment-gateways/', 'guide/informazioni/risorse/gateway-di-pagamento/'],
   ['guides/about/resources/payment-gateways/meal-vouchers/', 'guide/informazioni/risorse/gateway-di-pagamento/buoni-pasto/'],
+  ['guides/about/resources/payment-gateways/meal-vouchers/payment-costs/', 'guide/informazioni/risorse/gateway-di-pagamento/buoni-pasto/costi-dei-pagamenti/'],
   ['guides/about/resources/payment-gateways/google-pay/', 'guide/informazioni/risorse/gateway-di-pagamento/google-pay/'],
   ['guides/about/resources/payment-gateways/edenred/', 'guide/informazioni/risorse/gateway-di-pagamento/edenred/'],
   ['guides/about/resources/payment-gateways/edenred/objections/', 'guide/informazioni/risorse/gateway-di-pagamento/edenred/obiezioni/'],
