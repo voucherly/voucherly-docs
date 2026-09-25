@@ -62,6 +62,66 @@
   "mealVoucherRoles.notParty": {
     "message": "Voucherly non è parte della convenzione"
   },
+  "mealVoucherCosts.title": {
+    "message": "I costi che il merchant sostiene sui pagamenti che passano da Voucherly, con e senza buoni pasto"
+  },
+  "mealVoucherCosts.heading": {
+    "message": "COSTI PER TIPO DI PAGAMENTO"
+  },
+  "mealVoucherCosts.unchanged": {
+    "message": "Invariato"
+  },
+  "mealVoucherCosts.new": {
+    "message": "Nuovo"
+  },
+  "mealVoucherCosts.methodFees": {
+    "message": "Commissioni di pagamento"
+  },
+  "mealVoucherCosts.methodFeesUnchanged": {
+    "message": "da convenzione diretta, invariata"
+  },
+  "mealVoucherCosts.methods": {
+    "message": "Carta, PayPal"
+  },
+  "mealVoucherCosts.methodsCaption": {
+    "message": "e altri metodi"
+  },
+  "mealVoucherCosts.customer": {
+    "message": "Cliente"
+  },
+  "mealVoucherCosts.customerCaption": {
+    "message": "paga l'ordine"
+  },
+  "mealVoucherCosts.ecommerce": {
+    "message": "Ecommerce"
+  },
+  "mealVoucherCosts.ecommerceCaption": {
+    "message": "del merchant"
+  },
+  "mealVoucherCosts.voucherlyCaption": {
+    "message": "layer tecnologico"
+  },
+  "mealVoucherCosts.voucherlyFee": {
+    "message": "Costo del servizio Voucherly"
+  },
+  "mealVoucherCosts.voucherlyFeeSubscription": {
+    "message": "abbonamento mensile"
+  },
+  "mealVoucherCosts.voucherlyFeeVolumes": {
+    "message": "definito in base ai volumi"
+  },
+  "mealVoucherCosts.issuers": {
+    "message": "Emettitori"
+  },
+  "mealVoucherCosts.issuersCaption": {
+    "message": "di buoni pasto"
+  },
+  "mealVoucherCosts.issuerFee": {
+    "message": "Commissione dell'emettitore"
+  },
+  "mealVoucherCosts.issuerFeeCaption": {
+    "message": "da convenzione diretta, invariata"
+  },
   "theme.ErrorPageContent.title": {
     "message": "Questa pagina è andata in crash.",
     "description": "The title of the fallback page when the page crashed"
