@@ -195,7 +195,7 @@ const config: Config = {
         docsPluginId: "classic", // configured for preset-classic
         config: {
           webapi: {
-            specPath: "files/openapi.yaml",
+            specPath: "static/download/openapi.yaml",
             outputDir: "docs/api/webapi",
             sidebarOptions: {
               groupPathsBy: "tag",

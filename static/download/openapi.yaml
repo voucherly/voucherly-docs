@@ -696,6 +696,28 @@ paths:
                         externalId: SKU-MUFFIN-001
                         name: Muffin
                         lineType: Food
+              Terminal:
+                summary: Create payment collected on a card reader
+                value:
+                  mode: Payment
+                  referenceId: 00011.007.451.11143
+                  transactions:
+                    - paymentGatewayId: POS
+                      details:
+                        referenceTerminalId: '00011.007'
+                  completionMode: AnyTransaction
+                  exceedingAmountMode: HideGateways
+                  isAutoConfirm: true
+                  redirectOkUrl: https://httpbin.org/get
+                  redirectKoUrl: https://httpbin.org/get
+                  country: IT
+                  lines:
+                    - quantity: 1
+                      unitAmount: 140
+                      product:
+                        externalId: SKU-MUFFIN-001
+                        name: Muffin
+                        lineType: Food
               Server-to-server callback:
                 summary: Create payment notified over a S2S callback
                 value:
@@ -2432,12 +2454,6 @@ components:
           type: string
           description: The ID of the PaymentGateway preselected for the first transaction.
           nullable: true
-        paymentGateways:
-          type: array
-          description: The IDs of the PaymentGateways the payer is allowed to choose from, when the choice was restricted.
-          nullable: true
-          items:
-            type: string
         paymentGatewayConfigurationId:
           type: string
           description: The ID of the PaymentGatewayAccount used to process this Payment.
@@ -2659,7 +2675,7 @@ components:
             - Standard
             - Partial
             - AnyTransaction
-          description: How the Payment is allowed to complete. With `Standard` the customer must cover the entire amount, combining payment gateways if needed. With `Partial` the customer can pay a portion of the total and use alternative payment methods for the rest. With `AnyTransaction` the Payment completes as soon as one transaction succeeds.
+          description: 'When the Payment counts as paid. Defaults to `Standard`. With `Standard` the Payment stays open until its whole amount is paid, so the customer can combine several payment gateways, such as meal vouchers and a card for the rest. With `Partial` the first successful transaction completes the Payment, whatever it paid: `amount` is set to the paid amount, and anything left is settled outside this Payment. A failed transaction leaves the Payment open for another attempt. With `AnyTransaction` the Payment gets a single attempt: it completes as with `Partial` when the first transaction succeeds, and is voided when it fails. Use it on a card reader, where a declined card has to end the Payment. With `Partial` and `AnyTransaction` the checkout does not capture the transactions it authorized, so confirm the Payment or set `isAutoConfirm`. Both require a subscription plan that includes partial payments, except in sandbox.'
           nullable: true
         storeId:
           type: string
@@ -2682,6 +2698,14 @@ components:
             When auto confirm is enabled, payment is automatically confirmed before redirecting customer to RedirectSuccessUrl.\r
 
             When auto confirm is disabled, payment requires manual confirmation."
+          nullable: true
+        exceedingAmountMode:
+          type: string
+          enum:
+            - None
+            - Credit
+            - HideGateways
+          description: "What to do when the amount to charge is below the minimum a payment gateway accepts — 0.50 EUR on most card gateways. The request is raised to that minimum, and this decides what happens to the part that exceeds what is due: with `None` it stays with you, with `Credit` it is credited to the customer's wallet. With `HideGateways` the amount is not raised at all: the gateway is not offered on the Checkout page, and a transaction requested on it fails with `AMOUNT_BELOW_MINIMUM`. Use `HideGateways` when nobody can pick another method, such as a charge on a terminal. If you don't specify anything the default Merchant configuration will be used."
           nullable: true
         redirectOkUrl:
           type: string
@@ -3108,7 +3132,25 @@ components:
           nullable: true
         requireSingleTransactionForWholePayment:
           type: boolean
-          description: When true, the transaction must cover the entire Payment amount or the request fails.
+          description: "Honored only by the `Wallet` and `Prepaid` payment gateways: every other gateway ignores it. When true and the customer's balance does not cover the amount of this transaction, the transaction is declined instead of drawing what is available. The Payment is created anyway, and the response is a 422 that carries it. When false, the transaction draws as much of the balance as the Payment still needs, and `completionMode` decides whether the Payment stays open for the rest."
+        details:
+          type: object
+          description: 'Gateway-specific details of the transaction. Only `POS` takes them today, to say which card reader must collect the payment: give exactly one of the three identifiers below. The Terminal is looked up across the whole merchant, so it must be paired and, for `referenceTerminalId`, carry that reference — otherwise the request fails with `RESOURCE_MISSING` and no Payment is created.'
+          nullable: true
+          properties:
+            terminalId:
+              type: string
+              description: The ID of the Terminal in Voucherly, in the form `term_01kg2gestgepdbmsn7hs6bsrwp`.
+              nullable: true
+            externalTerminalId:
+              type: string
+              description: The ID the payment gateway gave the reader, as returned by the Terminals endpoint.
+              nullable: true
+            referenceTerminalId:
+              type: string
+              description: Your own reference for the reader, set on the Terminal from the Voucherly dashboard. Use it to address a reader by the code your cash register already knows, such as `00011.007`.
+              nullable: true
+          additionalProperties: false
       additionalProperties: false
     Payments.PaymentLine.Request:
       type: object
@@ -3793,7 +3835,7 @@ components:
             $ref: '#/components/schemas/PaymentGateway'
           nullable: false
       additionalProperties: false
-    MerchantPaymentGatewayDto:
+    PaymentGateways.MerchantPaymentGateway:
       type: object
       description: Merchant-specific configuration for a payment gateway.
       properties:
@@ -3842,16 +3884,16 @@ components:
           type: boolean
           description: Indicates whether this payment gateway is currently active and available for use.
         merchantConfiguration:
-          $ref: '#/components/schemas/MerchantPaymentGatewayDto'
+          $ref: '#/components/schemas/PaymentGateways.MerchantPaymentGateway'
           description: Merchant-specific configuration for this payment gateway.
         parameters:
           type: array
           description: An array of configuration parameters for this payment gateway.
           items:
-            $ref: '#/components/schemas/PaymentGateways.PaymentGatewayParameterDto'
+            $ref: '#/components/schemas/PaymentGateways.PaymentGatewayParameter'
           nullable: true
       additionalProperties: false
-    PaymentGateways.PaymentGatewayParameterDto:
+    PaymentGateways.PaymentGatewayParameter:
       type: object
       description: A configuration parameter for a payment gateway, including its current value.
       properties:
