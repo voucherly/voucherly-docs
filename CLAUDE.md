@@ -16,7 +16,7 @@ Sito di documentazione Voucherly (Docusaurus 3, docs-only mode, bilingue EN/IT).
 ## File generati — non modificarli a mano
 
 - `docs/api/webapi/**` è **generato** da `docusaurus-plugin-openapi-docs` (via `customMdGenerators.ts`). Per cambiarlo, rigenera con i comandi sopra.
-- `files/openapi.yaml` è **sincronizzato dall'API**: non è la fonte di verità, le modifiche vanno fatte a monte nel backend e poi risincronizzate.
+- `static/download/openapi.yaml` è **sincronizzato dall'API**: non è la fonte di verità, le modifiche vanno fatte a monte nel backend e poi risincronizzate. Sta sotto `static/` perché è anche pubblicato, su `https://docs.voucherly.it/en/download/openapi.yaml`. Gli SDK si aggiornano leggendolo da questo repository su GitHub, a questo percorso: spostarlo o rinominarlo rompe quell'aggiornamento.
 
 ## Bilinguismo EN ↔ IT
 
