@@ -417,29 +417,15 @@ paths:
         - customer
       operationId: list-customer-address
       summary: List a Customer's Addresses
-      description: 'Returns the Addresses of the Customer, one page at a time. This is the one listing that predates the `length`/`start` cursor: it pages with `pageSize` and `pageNumber`, both required, and its `pagination` object is the offset shaped one.'
+      description: Returns a paginated list of the Addresses of the Customer, the most recent first.
       parameters:
         - $ref: '#/components/parameters/CustomerIdPathParam'
-        - name: pageSize
-          in: query
-          required: true
-          description: How many Addresses a page holds at most. It must be greater than 0.
-          schema:
-            type: integer
-            format: int32
-            minimum: 1
-        - name: pageNumber
-          in: query
-          required: true
-          description: The page to return, starting at 1.
-          schema:
-            type: integer
-            format: int32
-            minimum: 1
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PageStartQueryParam'
       responses:
         '200':
           description: |
-            A dictionary with an `items` property that contains an array of CustomerAddress objects, plus an offset shaped `pagination` object.
+            A dictionary with an `items` property that contains an array of CustomerAddress objects, plus a `pagination` cursor.
           content:
             application/json:
               schema:
@@ -447,11 +433,11 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: An array containing the Addresses of the page.
+                    description: An array containing the actual response elements, paginated by any request parameters.
                     items:
                       $ref: '#/components/schemas/Customers.CustomerAddress'
                   pagination:
-                    $ref: '#/components/schemas/OffsetPaginationResponse'
+                    $ref: '#/components/schemas/PaginationResponse'
                 additionalProperties: false
         '400':
           $ref: '#/components/responses/BadRequest'
@@ -2333,30 +2319,6 @@ components:
       additionalProperties:
         type: string
       nullable: true
-    OffsetPaginationResponse:
-      type: object
-      description: The offset shaped pagination object returned by the Address listing only. Every other listing returns `PaginationResponse` instead.
-      properties:
-        pageNumber:
-          type: integer
-          description: The index of the page returned, starting at 0.
-          nullable: true
-        pageSize:
-          type: integer
-          description: How many elements the page holds at most.
-          nullable: true
-        total:
-          type: integer
-          description: How many elements the whole list holds.
-        partialTotal:
-          type: integer
-          description: How many elements match the filters, when the count was capped rather than run to the end.
-          nullable: true
-        atLeast:
-          type: boolean
-          description: Whether `total` is a lower bound rather than the exact count.
-          nullable: true
-      additionalProperties: false
     PaginationResponse:
       type: object
       properties:

@@ -89,7 +89,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"<string>\",\n  \"merchantId\": \"f708d38c-f003-a129-5b9d-61600572d238\",\n  \"tenant\": \"live\",\n  \"joinCode\": \"string\",\n  \"name\": \"string\",\n  \"priceAdjustmentPercentage\": 741,\n  \"prepaidPolicy\": {\n    \"isActive\": false,\n    \"amount\": 7628\n  },\n  \"packagingType\": \"Disposable\",\n  \"addresses\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"deliveryFeeAmount\": 769,\n      \"storeId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"deliveryFeeAmount\": 1790,\n      \"storeId\": \"string\"\n    }\n  ]\n}",
+              "body": "{\n  \"id\": \"<string>\",\n  \"merchantId\": \"acb7ef62-f708-38c3-f003-a12915b9d161\",\n  \"tenant\": \"sand\",\n  \"joinCode\": \"string\",\n  \"name\": \"string\",\n  \"priceAdjustmentPercentage\": 5621,\n  \"prepaidPolicy\": {\n    \"isActive\": false,\n    \"amount\": 5734\n  },\n  \"packagingType\": \"Disposable\",\n  \"addresses\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"deliveryFeeAmount\": 8624,\n      \"storeId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"deliveryFeeAmount\": 4854,\n      \"storeId\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
@@ -225,7 +225,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"merchantId\": \"700ae697-5dcb-b884-92f8-91ebe02d7421\",\n      \"tenant\": \"sand\",\n      \"joinCode\": \"string\",\n      \"name\": \"string\",\n      \"priceAdjustmentPercentage\": 9645,\n      \"prepaidPolicy\": {\n        \"isActive\": true,\n        \"amount\": 4985\n      },\n      \"packagingType\": \"Disposable\",\n      \"addresses\": [\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"streetName\": \"string\",\n          \"streetNumber\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\",\n          \"deliveryFeeAmount\": 7347,\n          \"storeId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"streetName\": \"string\",\n          \"streetNumber\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\",\n          \"deliveryFeeAmount\": 9699,\n          \"storeId\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"merchantId\": \"ecce406c-881d-4a43-e004-5a32b0b362f0\",\n      \"tenant\": \"live\",\n      \"joinCode\": \"string\",\n      \"name\": \"string\",\n      \"priceAdjustmentPercentage\": 4743,\n      \"prepaidPolicy\": {\n        \"isActive\": false,\n        \"amount\": 7058\n      },\n      \"packagingType\": \"Reusable\",\n      \"addresses\": [\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"streetName\": \"string\",\n          \"streetNumber\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\",\n          \"deliveryFeeAmount\": 698,\n          \"storeId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"streetName\": \"string\",\n          \"streetNumber\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\",\n          \"deliveryFeeAmount\": 257,\n          \"storeId\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"hasMore\": false,\n    \"nextStart\": \"string\"\n  }\n}",
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"merchantId\": \"975d4f32-700a-697a-5dcb-b884792f8c91\",\n      \"tenant\": \"live\",\n      \"joinCode\": \"string\",\n      \"name\": \"string\",\n      \"priceAdjustmentPercentage\": 864,\n      \"prepaidPolicy\": {\n        \"isActive\": false,\n        \"amount\": 8628\n      },\n      \"packagingType\": \"Reusable\",\n      \"addresses\": [\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"streetName\": \"string\",\n          \"streetNumber\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\",\n          \"deliveryFeeAmount\": 3638,\n          \"storeId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"streetName\": \"string\",\n          \"streetNumber\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\",\n          \"deliveryFeeAmount\": 4008,\n          \"storeId\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"merchantId\": \"bebc1e3d-ecce-06c4-881d-4a43be004c5a\",\n      \"tenant\": \"sand\",\n      \"joinCode\": \"string\",\n      \"name\": \"string\",\n      \"priceAdjustmentPercentage\": 549,\n      \"prepaidPolicy\": {\n        \"isActive\": false,\n        \"amount\": 1955\n      },\n      \"packagingType\": \"Disposable\",\n      \"addresses\": [\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"streetName\": \"string\",\n          \"streetNumber\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\",\n          \"deliveryFeeAmount\": 8338,\n          \"storeId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"streetName\": \"string\",\n          \"streetNumber\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\",\n          \"deliveryFeeAmount\": 1833,\n          \"storeId\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"hasMore\": false,\n    \"nextStart\": \"string\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
@@ -380,7 +380,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"<string>\",\n  \"merchantId\": \"f708d38c-f003-a129-5b9d-61600572d238\",\n  \"tenant\": \"live\",\n  \"joinCode\": \"string\",\n  \"name\": \"string\",\n  \"priceAdjustmentPercentage\": 741,\n  \"prepaidPolicy\": {\n    \"isActive\": false,\n    \"amount\": 7628\n  },\n  \"packagingType\": \"Disposable\",\n  \"addresses\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"deliveryFeeAmount\": 769,\n      \"storeId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"deliveryFeeAmount\": 1790,\n      \"storeId\": \"string\"\n    }\n  ]\n}",
+              "body": "{\n  \"id\": \"<string>\",\n  \"merchantId\": \"acb7ef62-f708-38c3-f003-a12915b9d161\",\n  \"tenant\": \"sand\",\n  \"joinCode\": \"string\",\n  \"name\": \"string\",\n  \"priceAdjustmentPercentage\": 5621,\n  \"prepaidPolicy\": {\n    \"isActive\": false,\n    \"amount\": 5734\n  },\n  \"packagingType\": \"Disposable\",\n  \"addresses\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"deliveryFeeAmount\": 8624,\n      \"storeId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"deliveryFeeAmount\": 4854,\n      \"storeId\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
@@ -1976,7 +1976,7 @@
           "request": {
             "name": "List a Customer's Addresses",
             "description": {
-              "content": "Returns the Addresses of the Customer, one page at a time. This is the one listing that predates the `length`/`start` cursor: it pages with `pageSize` and `pageNumber`, both required, and its `pagination` object is the offset shaped one.",
+              "content": "Returns a paginated list of the Addresses of the Customer, the most recent first.",
               "type": "text/plain"
             },
             "url": {
@@ -1991,16 +1991,16 @@
               ],
               "query": [
                 {
-                  "disabled": false,
-                  "key": "pageSize",
-                  "value": "9157",
-                  "description": "(Required) How many Addresses a page holds at most. It must be greater than 0."
+                  "disabled": true,
+                  "key": "length",
+                  "value": "3059",
+                  "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10."
                 },
                 {
-                  "disabled": false,
-                  "key": "pageNumber",
-                  "value": "9157",
-                  "description": "(Required) The page to return, starting at 1."
+                  "disabled": true,
+                  "key": "start",
+                  "value": "string",
+                  "description": "A cursor for pagination across multiple pages of results. Don’t include this parameter on the first call. Use the `nextStart` value returned in a previous response to request subsequent results."
                 }
               ],
               "variable": [
@@ -2028,7 +2028,7 @@
           },
           "response": [
             {
-              "name": "A dictionary with an `items` property that contains an array of CustomerAddress objects, plus an offset shaped `pagination` object.\n",
+              "name": "A dictionary with an `items` property that contains an array of CustomerAddress objects, plus a `pagination` cursor.\n",
               "originalRequest": {
                 "url": {
                   "path": [
@@ -2042,12 +2042,12 @@
                   ],
                   "query": [
                     {
-                      "key": "pageSize",
-                      "value": "9157"
+                      "key": "length",
+                      "value": "3059"
                     },
                     {
-                      "key": "pageNumber",
-                      "value": "9157"
+                      "key": "start",
+                      "value": "string"
                     }
                   ],
                   "variable": [
@@ -2077,7 +2077,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"pageNumber\": 6082,\n    \"pageSize\": 6695,\n    \"total\": 1352,\n    \"partialTotal\": 2318,\n    \"atLeast\": true\n  }\n}",
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"streetName\": \"string\",\n      \"streetNumber\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"hasMore\": true,\n    \"nextStart\": \"string\"\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
@@ -2096,12 +2096,12 @@
                   ],
                   "query": [
                     {
-                      "key": "pageSize",
-                      "value": "9157"
+                      "key": "length",
+                      "value": "3059"
                     },
                     {
-                      "key": "pageNumber",
-                      "value": "9157"
+                      "key": "start",
+                      "value": "string"
                     }
                   ],
                   "variable": [
@@ -2150,12 +2150,12 @@
                   ],
                   "query": [
                     {
-                      "key": "pageSize",
-                      "value": "9157"
+                      "key": "length",
+                      "value": "3059"
                     },
                     {
-                      "key": "pageNumber",
-                      "value": "9157"
+                      "key": "start",
+                      "value": "string"
                     }
                   ],
                   "variable": [
