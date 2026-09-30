@@ -417,9 +417,25 @@ paths:
         - customer
       operationId: list-customer-address
       summary: List a Customer's Addresses
-      description: 'Returns every Address of the Customer in a single response. This is the one listing that predates the `length`/`start` cursor: it takes no pagination parameter, and its `pagination` object is the offset shaped one.'
+      description: 'Returns the Addresses of the Customer, one page at a time. This is the one listing that predates the `length`/`start` cursor: it pages with `pageSize` and `pageNumber`, both required, and its `pagination` object is the offset shaped one.'
       parameters:
         - $ref: '#/components/parameters/CustomerIdPathParam'
+        - name: pageSize
+          in: query
+          required: true
+          description: How many Addresses a page holds at most. It must be greater than 0.
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+        - name: pageNumber
+          in: query
+          required: true
+          description: The page to return, starting at 1.
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
       responses:
         '200':
           description: |
@@ -431,7 +447,7 @@ paths:
                 properties:
                   items:
                     type: array
-                    description: An array containing every Address of the Customer.
+                    description: An array containing the Addresses of the page.
                     items:
                       $ref: '#/components/schemas/Customers.CustomerAddress'
                   pagination:
@@ -2833,15 +2849,18 @@ components:
     PaymentGateways.PaymentGatewayType:
       description: The type of payment gateway.
       enum:
-        - 0
-        - 1
-        - 2
-      type: integer
-      format: int32
+        - MealVoucher
+        - CC
+        - Other
+        - Custom
+        - Hidden
+      type: string
       x-enum-descriptions:
-        - '0: Card payment gateway (credit/debit cards)'
-        - '1: Voucher payment gateway (meal vouchers, etc.)'
-        - '2: Other payment gateway type'
+        - MealVoucher: A meal voucher payment gateway, such as Edenred or Pluxee.
+        - CC: A card payment gateway, for credit and debit cards.
+        - Other: Any other payment gateway, such as Klarna or Apple Pay and Google Pay.
+        - Custom: A payment method of Voucherly itself, such as the wallet or the prepaid balance.
+        - Hidden: A payment gateway that is never offered at checkout, such as manual payments.
     Payments.PaymentMode:
       enum:
         - Payment
