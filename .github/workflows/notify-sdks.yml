@@ -19,5 +19,5 @@ jobs:
     steps:
       # The SDKs download the spec at this commit, never from main, which can still be cached with the previous spec.
       - env:
-          GH_TOKEN: ${{ secrets.SDK_DISPATCH_TOKEN }}
+          GH_TOKEN: ${{ secrets.SDK_TOKEN }}
         run: gh api "repos/${{ matrix.repository }}/dispatches" -f event_type=openapi-updated -f "client_payload[sha]=$GITHUB_SHA"
