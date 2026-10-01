@@ -9,11 +9,12 @@ const buildDir = 'build';
 const site = 'https://docs.voucherly.it';
 const locales = ['en', 'it'];
 
+// /img/ and /assets/ stay crawlable: Google shows no favicon when the icon file is blocked, and it needs the CSS and JS to render the pages.
 const robots = `# ${site.replace('https://', '')} robots.txt
 
 User-agent: *
 Allow: /
-${locales.flatMap((l) => [`Disallow: /${l}/assets/`, `Disallow: /${l}/img/`, `Disallow: /${l}/download/`]).join('\n')}
+${locales.map((l) => `Disallow: /${l}/download/`).join('\n')}
 
 Sitemap: ${site}/sitemap.xml
 `;
