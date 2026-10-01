@@ -1,0 +1,23 @@
+name: notify-sdks
+
+on:
+  push:
+    branches: [main]
+    paths: [static/download/openapi.yaml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        repository: [voucherly/voucherly-php-sdk, voucherly/voucherly-dotnet-sdk]
+    steps:
+      # The SDKs download the spec at this commit, never from main, which can still be cached with the previous spec.
+      - env:
+          GH_TOKEN: ${{ secrets.SDK_DISPATCH_TOKEN }}
+        run: gh api "repos/${{ matrix.repository }}/dispatches" -f event_type=openapi-updated -f "client_payload[sha]=$GITHUB_SHA"
