@@ -298,9 +298,11 @@ paths:
         - paymentMethod
       operationId: list-customer-payment-method
       summary: List a Customer's PaymentMethods
-      description: Returns a paginated list of PaymentMethods saved on a given Customer.
+      description: Returns a paginated list of the PaymentMethods saved on the Customer, the most recent first.
       parameters:
         - $ref: '#/components/parameters/CustomerIdPathParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PageStartQueryParam'
       responses:
         '200':
           description: |
@@ -2223,7 +2225,7 @@ components:
       additionalProperties: false
     UpdateCustomerRequest:
       type: object
-      description: Request body for updating a Customer. Any field not provided will be left unchanged. `referenceId` and `companyId` cannot be changed via this endpoint.
+      description: Request body for updating a Customer. Any field not provided will be left unchanged. `referenceId` cannot be changed via this endpoint.
       properties:
         email:
           type: string
@@ -2240,6 +2242,10 @@ components:
         phoneNumber:
           type: string
           description: The customer’s phone number.
+          nullable: true
+        companyId:
+          type: string
+          description: The ID of the Company this Customer is associated with. Pass `null` to detach the Customer from its Company.
           nullable: true
         metadata:
           $ref: '#/components/schemas/Metadata'
@@ -2578,6 +2584,8 @@ components:
     CreatePaymentRequest:
       type: object
       description: Request body for creating a Payment.
+      required:
+        - mode
       properties:
         referenceId:
           type: string
@@ -2956,6 +2964,18 @@ components:
           type: integer
           format: int32
           description: A non-negative integer in cents representing the total discount applied to the entire line.
+        totalAmount:
+          type: integer
+          format: int32
+          description: '`unitAmount` times `quantity`, in cents. Compute it from those two instead.'
+          deprecated: true
+          readOnly: true
+        totalDiscountAmount:
+          type: integer
+          format: int32
+          description: '`unitDiscountAmount` times `quantity`, in cents. Compute it from those two instead.'
+          deprecated: true
+          readOnly: true
         finalAmount:
           type: integer
           format: int32
@@ -2997,6 +3017,11 @@ components:
           nullable: true
         lineType:
           $ref: '#/components/schemas/Payments.LineType'
+        isFood:
+          type: boolean
+          description: True when `lineType` is `Food`. Read `lineType` instead.
+          deprecated: true
+          readOnly: true
         isGift:
           type: boolean
           description: Indicates whether this PaymentLine is a gift item.
@@ -3845,7 +3870,7 @@ components:
           nullable: false
         type:
           $ref: '#/components/schemas/PaymentGateways.PaymentGatewayType'
-          description: The type of payment gateway (0 = Card, 1 = Voucher, 2 = Other).
+          description: The type of payment gateway.
         paymentAction:
           $ref: '#/components/schemas/PaymentGateways.CheckoutAction'
           description: The type of checkout action required by this payment gateway.
