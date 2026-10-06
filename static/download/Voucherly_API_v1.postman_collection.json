@@ -7486,7 +7486,278 @@
                 "auth": null,
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"asCredit\": true\n}",
+                  "raw": "{\n    \"refundMode\": \"Credit\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "Returns a Payment object.",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments",
+                        ":id",
+                        "refund"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "id",
+                          "description": "(Required) Unique identifier for the object."
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"id\": \"<string>\",\n  \"tenant\": \"live\",\n  \"merchantId\": \"b5795c48-5c3b-944d-c0fc-a6455e7f56c4\",\n  \"referenceId\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"mode\": \"<string>\",\n  \"parentPaymentId\": \"string\",\n  \"companyId\": \"string\",\n  \"storeId\": \"string\",\n  \"customerId\": \"string\",\n  \"customerEmail\": \"string\",\n  \"customerFirstName\": \"string\",\n  \"customerLastName\": \"string\",\n  \"customerPhoneNumber\": \"string\",\n  \"selectedPaymentGateway\": \"string\",\n  \"paymentGatewayConfigurationId\": \"string\",\n  \"checkoutUrl\": \"string\",\n  \"callbackUrl\": \"string\",\n  \"closeCheckout\": {\n    \"success\": true,\n    \"date\": \"1997-04-24T00:42:24.264Z\",\n    \"errorReason\": \"string\",\n    \"errorAdditionalData\": \"string\"\n  },\n  \"callback\": {\n    \"success\": false,\n    \"date\": \"2022-11-24T11:42:30.020Z\"\n  },\n  \"totalAmount\": 7315,\n  \"discountAmount\": 8633,\n  \"finalAmount\": 2148,\n  \"foodAmount\": 5497,\n  \"paidAmount\": 955,\n  \"paidDigitalAmount\": 5118,\n  \"paidVoucherAmount\": 6841,\n  \"paidFringeAmount\": 1074,\n  \"paidCashAmount\": 1169,\n  \"amount\": 3820,\n  \"status\": \"Expired\",\n  \"confirmedAmount\": 8583,\n  \"confirmedOnUtc\": \"1998-12-10T07:02:43.084Z\",\n  \"cancelledAmount\": 709,\n  \"refundedAmount\": 1434,\n  \"refundedOnUtc\": \"1971-06-25T08:38:27.578Z\",\n  \"receiptId\": \"string\",\n  \"refundReceiptId\": \"string\",\n  \"receipt\": {\n    \"id\": \"string\",\n    \"externalId\": \"string\",\n    \"number\": \"string\",\n    \"date\": \"1989-01-24T01:41:35.474Z\",\n    \"type\": \"Sale\",\n    \"amount\": 9931,\n    \"parentReceiptId\": \"string\"\n  },\n  \"refundReceipt\": {\n    \"id\": \"string\",\n    \"externalId\": \"string\",\n    \"number\": \"string\",\n    \"date\": \"1996-06-05T11:11:34.397Z\",\n    \"type\": \"Void\",\n    \"amount\": 7859,\n    \"parentReceiptId\": \"string\"\n  },\n  \"created\": \"1969-10-13T07:06:29.138Z\",\n  \"metadata\": {\n    \"key_0\": \"string\"\n  },\n  \"transactions\": [\n    {\n      \"id\": \"a4174042-ac64-fbd6-2d3a-54a382abd433\",\n      \"paymentGatewayAccountId\": \"string\",\n      \"paymentGatewayId\": \"string\",\n      \"paymentGateway\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"image\": \"string\",\n        \"type\": \"Hidden\",\n        \"paymentAction\": \"REDIRECT\"\n      },\n      \"paymentGatewayId2\": \"string\",\n      \"terminalId\": \"string\",\n      \"externalId1\": \"string\",\n      \"externalId2\": \"string\",\n      \"externalId3\": \"string\",\n      \"error\": {\n        \"code\": \"TerminalBusy\",\n        \"declineErrorCode\": \"StolenOrLostCard\",\n        \"externalError\": {\n          \"message\": \"string\",\n          \"code\": \"string\"\n        }\n      },\n      \"requestedAt\": \"1998-10-02T08:40:06.990Z\",\n      \"requestedAmount\": 3088,\n      \"exceedingAmount\": 2993,\n      \"amount\": 5620,\n      \"digitalAmount\": 3208,\n      \"voucherAmount\": 1256,\n      \"fringeAmount\": 7331,\n      \"cashAmount\": 1300,\n      \"noOfVouchers\": 2016,\n      \"confirmedAmount\": 6754,\n      \"refundedAmount\": 6487,\n      \"paidOnUtc\": \"1980-12-05T13:49:06.350Z\",\n      \"currency\": \"string\",\n      \"creditCard\": {\n        \"brand\": \"string\",\n        \"pan\": \"string\",\n        \"expiration\": \"string\",\n        \"expirationMonth\": 8143,\n        \"expirationYear\": 1168,\n        \"product\": \"string\"\n      },\n      \"directDebit\": {\n        \"accountId\": \"string\",\n        \"accountBic\": \"string\",\n        \"accountIban\": \"string\"\n      },\n      \"holderEmail\": \"string\",\n      \"holderName\": \"string\",\n      \"status\": \"RequestFailed\",\n      \"request\": {\n        \"$type\": \"string\",\n        \"action\": \"DIRECT\",\n        \"externalTransactionId\": \"string\",\n        \"url\": \"string\",\n        \"key_0\": 8676.38420779258,\n        \"key_1\": \"string\"\n      },\n      \"nextAction\": {\n        \"params\": {\n          \"key_0\": false,\n          \"key_1\": \"string\"\n        }\n      },\n      \"operations\": [\n        {\n          \"id\": 7636,\n          \"operation\": \"Cancel\",\n          \"amount\": 5707,\n          \"occurredOnUtc\": \"1977-11-17T13:26:20.145Z\",\n          \"success\": false,\n          \"externalId\": \"string\",\n          \"error\": {\n            \"externalError\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isSystemError\": false\n          }\n        },\n        {\n          \"id\": 667,\n          \"operation\": \"Refund\",\n          \"amount\": 9720,\n          \"occurredOnUtc\": \"1974-12-16T12:14:47.542Z\",\n          \"success\": false,\n          \"externalId\": \"string\",\n          \"error\": {\n            \"externalError\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isSystemError\": true\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"5f2335fb-035d-09bf-53e1-265ce54a1219\",\n      \"paymentGatewayAccountId\": \"string\",\n      \"paymentGatewayId\": \"string\",\n      \"paymentGateway\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"image\": \"string\",\n        \"type\": \"MealVoucher\",\n        \"paymentAction\": \"OTP\"\n      },\n      \"paymentGatewayId2\": \"string\",\n      \"terminalId\": \"string\",\n      \"externalId1\": \"string\",\n      \"externalId2\": \"string\",\n      \"externalId3\": \"string\",\n      \"error\": {\n        \"code\": \"ExceedVoucherAmount\",\n        \"declineErrorCode\": \"InsufficientFunds\",\n        \"externalError\": {\n          \"message\": \"string\",\n          \"code\": \"string\"\n        }\n      },\n      \"requestedAt\": \"1989-07-10T17:40:01.199Z\",\n      \"requestedAmount\": 4498,\n      \"exceedingAmount\": 6123,\n      \"amount\": 4901,\n      \"digitalAmount\": 7723,\n      \"voucherAmount\": 4832,\n      \"fringeAmount\": 1145,\n      \"cashAmount\": 4548,\n      \"noOfVouchers\": 471,\n      \"confirmedAmount\": 9530,\n      \"refundedAmount\": 3270,\n      \"paidOnUtc\": \"1953-09-06T03:29:58.576Z\",\n      \"currency\": \"string\",\n      \"creditCard\": {\n        \"brand\": \"string\",\n        \"pan\": \"string\",\n        \"expiration\": \"string\",\n        \"expirationMonth\": 3293,\n        \"expirationYear\": 764,\n        \"product\": \"string\"\n      },\n      \"directDebit\": {\n        \"accountId\": \"string\",\n        \"accountBic\": \"string\",\n        \"accountIban\": \"string\"\n      },\n      \"holderEmail\": \"string\",\n      \"holderName\": \"string\",\n      \"status\": \"Paid\",\n      \"request\": {\n        \"$type\": \"string\",\n        \"action\": \"OTP_CF\",\n        \"externalTransactionId\": \"string\",\n        \"url\": \"string\",\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": false\n      },\n      \"nextAction\": {\n        \"params\": {\n          \"key_0\": true,\n          \"key_1\": \"string\",\n          \"key_2\": true\n        }\n      },\n      \"operations\": [\n        {\n          \"id\": 7845,\n          \"operation\": \"Confirm\",\n          \"amount\": 483,\n          \"occurredOnUtc\": \"1996-03-08T03:02:21.588Z\",\n          \"success\": false,\n          \"externalId\": \"string\",\n          \"error\": {\n            \"externalError\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isSystemError\": true\n          }\n        },\n        {\n          \"id\": 7617,\n          \"operation\": \"Reverse\",\n          \"amount\": 4495,\n          \"occurredOnUtc\": \"1963-01-05T11:35:20.593Z\",\n          \"success\": false,\n          \"externalId\": \"string\",\n          \"error\": {\n            \"externalError\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isSystemError\": true\n          }\n        }\n      ]\n    }\n  ],\n  \"discounts\": [\n    {\n      \"discountName\": \"string\",\n      \"discountDescription\": \"string\",\n      \"amount\": 6779,\n      \"type\": \"FIXED\",\n      \"value\": 8941,\n      \"index\": 5152,\n      \"externalId1\": \"string\",\n      \"externalId2\": \"string\",\n      \"couponCode\": \"string\",\n      \"points\": 2329\n    },\n    {\n      \"discountName\": \"string\",\n      \"discountDescription\": \"string\",\n      \"amount\": 7562,\n      \"type\": \"FIXED\",\n      \"value\": 6744,\n      \"index\": 2188,\n      \"externalId1\": \"string\",\n      \"externalId2\": \"string\",\n      \"couponCode\": \"string\",\n      \"points\": 9955\n    }\n  ],\n  \"lines\": [\n    {\n      \"quantity\": 6254,\n      \"unitAmount\": 9605,\n      \"unitDiscountAmount\": 725,\n      \"discountAmount\": 2919,\n      \"totalAmount\": 6122,\n      \"totalDiscountAmount\": 2929,\n      \"finalAmount\": 9418,\n      \"productId\": \"string\",\n      \"productName\": \"string\",\n      \"productVariant\": \"string\",\n      \"productImage\": \"string\",\n      \"productExternalId1\": \"string\",\n      \"externalId\": \"string\",\n      \"unit\": {\n        \"code\": \"string\",\n        \"size\": 4934.026363771409,\n        \"amount\": 9264\n      },\n      \"taxRate\": 1901.8014217726886,\n      \"lineType\": \"Food\",\n      \"isFood\": true,\n      \"isGift\": true,\n      \"origin\": \"Standard\",\n      \"confirmedQuantity\": 2020,\n      \"confirmedFinalAmount\": 5988,\n      \"confirmedPieces\": [\n        {\n          \"finalAmount\": 6550,\n          \"size\": 5185.633080545813\n        },\n        {\n          \"finalAmount\": 6666,\n          \"size\": 7985.312356613576\n        }\n      ]\n    },\n    {\n      \"quantity\": 7571,\n      \"unitAmount\": 9911,\n      \"unitDiscountAmount\": 6997,\n      \"discountAmount\": 1523,\n      \"totalAmount\": 7239,\n      \"totalDiscountAmount\": 9389,\n      \"finalAmount\": 6190,\n      \"productId\": \"string\",\n      \"productName\": \"string\",\n      \"productVariant\": \"string\",\n      \"productImage\": \"string\",\n      \"productExternalId1\": \"string\",\n      \"externalId\": \"string\",\n      \"unit\": {\n        \"code\": \"string\",\n        \"size\": 5246.766714844853,\n        \"amount\": 2373\n      },\n      \"taxRate\": 3663.328152615577,\n      \"lineType\": \"Food\",\n      \"isFood\": true,\n      \"isGift\": true,\n      \"origin\": \"TableUpsell\",\n      \"confirmedQuantity\": 4839,\n      \"confirmedFinalAmount\": 1582,\n      \"confirmedPieces\": [\n        {\n          \"finalAmount\": 3955,\n          \"size\": 1675.4028503783047\n        },\n        {\n          \"finalAmount\": 657,\n          \"size\": 5872.642640024424\n        }\n      ]\n    }\n  ]\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "name": "The request was unacceptable, often due to missing a required parameter.",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments",
+                        ":id",
+                        "refund"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "id",
+                          "description": "(Required) Unique identifier for the object."
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n  \"title\": \"One or more validation errors occurred.\",\n  \"status\": 400,\n  \"detail\": \"You should provide a well formatted CustomerId.\",\n  \"code\": \"VALIDATION_ERROR\",\n  \"parameter\": \"CustomerId\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "name": "The requested resource doesn’t exist.",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments",
+                        ":id",
+                        "refund"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "id",
+                          "description": "(Required) Unique identifier for the object."
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"type\": \"https://datatracker.ietf.org/doc/html/rfc9110#section-15.5.5\",\n  \"title\": \"Customer was not found.\",\n  \"status\": 404,\n  \"detail\": \"Entity \\\"Customer\\\" (cs_YZOJp96qKlW) was not found.\",\n  \"additional\": {\n    \"entity\": \"Customer\",\n    \"key\": \"cs_YZOJp96qKlW\",\n    \"error\": \"NotFound\"\n  }\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "name": "The request conflicts with the current state of the target resource.",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments",
+                        ":id",
+                        "refund"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "id",
+                          "description": "(Required) Unique identifier for the object."
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"title\": \"This operation cannot be processed because payment is in an invalid status.\",\n  \"status\": 409,\n  \"detail\": \"Only 'Paid' payment can be confirmed.\",\n  \"code\": \"INVALID_STATUS\",\n  \"paymentStatus\": \"Requested\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                }
+              ],
+              "event": [],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "name": "Refund through the gateway, into the customer's wallet where the gateway refuses",
+              "request": {
+                "name": "Refund a Payment",
+                "description": {},
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    ":id",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Voucherly-API-Key",
+                    "value": "{{apiKey}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"refundMode\": \"GatewayOrCredit\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
