@@ -63,6 +63,8 @@ Payments have a `status` field that reflects the statuses of their transactions.
 
 In short: a Payment moves from `Requested` to `Paid` when the customer completes the checkout and to `Confirmed` when the funds are captured. [Void a Payment](/api/webapi/void-payment) works only on a `Requested` Payment; once it is `Paid` or `Confirmed`, the way back is [Refund a Payment](/api/webapi/refund-payment), which cancels the authorizations not yet captured and refunds the captured ones.
 
+To confirm at the quantities or amounts actually delivered, rather than everything that was authorized, see [Confirm at what you delivered](./payment-confirmation.md).
+
 ### Transaction statuses
 
 The status of a Transaction is determined by the `status` field.

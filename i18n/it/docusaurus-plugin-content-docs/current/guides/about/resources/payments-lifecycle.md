@@ -64,6 +64,8 @@ I pagamenti hanno un campo `status` che riflette gli stati delle relative transa
 
 In breve: un Payment passa da `Requested` a `Paid` quando il cliente completa il checkout e a `Confirmed` quando i fondi vengono catturati. [Void a Payment](/api/webapi/void-payment) funziona solo su un Payment `Requested`; una volta `Paid` o `Confirmed`, la strada a ritroso è [Refund a Payment](/api/webapi/refund-payment), che annulla le autorizzazioni non ancora catturate e rimborsa quelle catturate.
 
+Per confermare alle quantità o agli importi consegnati davvero, invece che per tutto l'autorizzato, consulta [Conferma quello che hai consegnato](./payment-confirmation.md).
+
 ### Stati della transazione
 
 Lo stato di una transazione è determinato dal campo `status`.
