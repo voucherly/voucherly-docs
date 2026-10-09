@@ -56,6 +56,8 @@ const SLUG_MAP: [string, string][] = [
   ['guides/about/resources/payment-gateways/per-store-configuration/', 'guide/informazioni/risorse/gateway-di-pagamento/configurazione-per-punto-vendita/'],
   ['guides/about/resources/payment-gateways/paypal/', 'guide/informazioni/risorse/gateway-di-pagamento/paypal/'],
   ['guides/about/resources/charge-wallet/', 'guide/informazioni/risorse/ricarica-wallet/'],
+  ['guides/about/resources/payment-confirmation/', 'guide/informazioni/risorse/conferma-del-pagamento/'],
+  ['guides/about/resources/variable-weight/', 'guide/informazioni/risorse/peso-variabile/'],
   ['guides/faq/', 'guide/faq/'],
   ['api/general/errors/', 'api/generale/errori/'],
   ['api/general/best-practices/', 'api/generale/best-practice/'],
