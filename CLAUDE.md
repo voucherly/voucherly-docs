@@ -32,7 +32,7 @@ Gli URL IT sono localizzati con `slug:` nel frontmatter dei file in `i18n/it/…
 
 1. il `slug:` nel frontmatter del file IT;
 2. un redirect 301 dal vecchio URL in `netlify.toml`;
-3. la `SLUG_MAP` in `src/theme/SiteMetadata/index.tsx` — senza questo gli `hreflang` di quella pagina puntano a URL inesistenti (il componente è swizzato apposta).
+3. la `SLUG_MAP` in `src/utils/localeSlugs.ts` — senza questo gli `hreflang` di quella pagina e il selettore della lingua in navbar puntano a URL inesistenti. La mappa è una sola e la usano due componenti swizzati apposta: `src/theme/SiteMetadata` (hreflang) e `src/theme/NavbarItem/LocaleDropdownNavbarItem` (selettore).
 
 Altri vincoli sui link:
 
