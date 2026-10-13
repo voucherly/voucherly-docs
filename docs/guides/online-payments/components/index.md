@@ -113,7 +113,7 @@ Never send your `sk_` key to the browser. Voucherly.js refuses it, and anyone re
 Add the script to the page where the customer pays:
 
 ```html
-<script src="https://checkout.voucherly.it/embed/v1/voucherly.js"></script>
+<script src="https://js.voucherly.it/embed/v1/voucherly.js"></script>
 ```
 
 </TabItem>
@@ -136,7 +136,7 @@ The package ships TypeScript types for every option and event described in this 
 </TabItem>
 </Tabs>
 
-Always load Voucherly.js from `checkout.voucherly.it`: do not bundle it and do not host a copy. The file on `/embed/v1/` receives backward-compatible updates without any change on your side — new payment methods included — and an incompatible change would ship on a new path, never on `v1`. See [Versioning](./reference.md#versioning).
+Always load Voucherly.js from `js.voucherly.it`: do not bundle it and do not host a copy. The file on `/embed/v1/` receives backward-compatible updates without any change on your side — new payment methods included — and an incompatible change would ship on a new path, never on `v1`. See [Versioning](./reference.md#versioning).
 
 ### 3. Mount the Payment Component
 
@@ -316,7 +316,7 @@ The full list of variables and their defaults is in the [reference](./reference.
 If your site sends a `Content-Security-Policy` header, allow Voucherly.js and its iframe:
 
 ```text
-script-src https://checkout.voucherly.it;
+script-src https://js.voucherly.it;
 frame-src https://checkout.voucherly.it;
 connect-src https://checkout.voucherly.it;
 ```

@@ -23,7 +23,7 @@ Voucherly.js è la libreria che mostra i [Voucherly Components](./index.md) nell
 ## Includere Voucherly.js
 
 ```html
-<script src="https://checkout.voucherly.it/embed/v1/voucherly.js"></script>
+<script src="https://js.voucherly.it/embed/v1/voucherly.js"></script>
 ```
 
 Oppure, con npm, attraverso il pacchetto loader:
@@ -40,7 +40,7 @@ const Voucherly = await loadVoucherly();
 
 `loadVoucherly()` inietta lo script una sola volta — le chiamate successive condividono la stessa promise — e risolve con l'oggetto globale `Voucherly`. Risolve con `null` dove non esiste `window`, quindi può essere chiamata durante il rendering lato server. Il pacchetto contiene il loader e i tipi TypeScript, non Voucherly.js.
 
-Carica Voucherly.js solo da `checkout.voucherly.it`: non includerlo nel tuo bundle e non servirne una copia dal tuo dominio.
+Carica Voucherly.js solo da `js.voucherly.it`: non includerlo nel tuo bundle e non servirne una copia dal tuo dominio.
 
 ### Versionamento
 
@@ -50,7 +50,7 @@ Ogni major del pacchetto npm carica una versione di Voucherly.js; i due numeri s
 
 | `@voucherly/voucherly-js` | Voucherly.js |
 | --- | --- |
-| `2.x` | `https://checkout.voucherly.it/embed/v1/voucherly.js` |
+| `2.x` | `https://js.voucherly.it/embed/v1/voucherly.js` |
 
 ## Voucherly.init(options, componentOptions)
 
