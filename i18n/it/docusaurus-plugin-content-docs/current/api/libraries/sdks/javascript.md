@@ -15,7 +15,7 @@ keywords:
 [![npm](https://img.shields.io/npm/v/@voucherly/voucherly-js.svg)](https://www.npmjs.com/package/@voucherly/voucherly-js)
 [![Publish](https://github.com/voucherly/voucherly-js/actions/workflows/publish.yml/badge.svg)](https://github.com/voucherly/voucherly-js/actions?query=event%3Arelease)
 
-Il loader ufficiale di [Voucherly][voucherly] per Voucherly.js, la libreria che mostra i [Voucherly Components](/guide/pagamenti-online/components) — il modulo di pagamento incorporato nella tua pagina. Il pacchetto inietta lo script da `checkout.voucherly.it` e include i tipi TypeScript della sua API.
+Il loader ufficiale di [Voucherly][voucherly] per Voucherly.js, la libreria che mostra i [Voucherly Components](/guide/pagamenti-online/components) — il modulo di pagamento incorporato nella tua pagina. Il pacchetto inietta lo script da `js.voucherly.it` e include i tipi TypeScript della sua API.
 
 ```sh
 npm install @voucherly/voucherly-js

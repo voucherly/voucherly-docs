@@ -114,7 +114,7 @@ Non inviare mai la tua chiave `sk_` al browser. Voucherly.js la rifiuta, e chiun
 Aggiungi lo script alla pagina in cui il cliente paga:
 
 ```html
-<script src="https://checkout.voucherly.it/embed/v1/voucherly.js"></script>
+<script src="https://js.voucherly.it/embed/v1/voucherly.js"></script>
 ```
 
 </TabItem>
@@ -137,7 +137,7 @@ Il pacchetto include i tipi TypeScript di ogni opzione ed evento descritti in qu
 </TabItem>
 </Tabs>
 
-Carica Voucherly.js sempre da `checkout.voucherly.it`: non includerlo nel tuo bundle e non ospitarne una copia. Il file su `/embed/v1/` riceve aggiornamenti retrocompatibili senza alcuna modifica da parte tua — nuovi metodi di pagamento compresi — e una modifica incompatibile uscirebbe su un nuovo percorso, mai su `v1`. Consulta [Versionamento](./reference.md#versionamento).
+Carica Voucherly.js sempre da `js.voucherly.it`: non includerlo nel tuo bundle e non ospitarne una copia. Il file su `/embed/v1/` riceve aggiornamenti retrocompatibili senza alcuna modifica da parte tua — nuovi metodi di pagamento compresi — e una modifica incompatibile uscirebbe su un nuovo percorso, mai su `v1`. Consulta [Versionamento](./reference.md#versionamento).
 
 ### 3. Monta il Payment Component
 
@@ -317,7 +317,7 @@ L'elenco completo delle variabili e dei loro valori predefiniti è nel [riferime
 Se il tuo sito invia un header `Content-Security-Policy`, consenti Voucherly.js e il suo iframe:
 
 ```text
-script-src https://checkout.voucherly.it;
+script-src https://js.voucherly.it;
 frame-src https://checkout.voucherly.it;
 connect-src https://checkout.voucherly.it;
 ```
