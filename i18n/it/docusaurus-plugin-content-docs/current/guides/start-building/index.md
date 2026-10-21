@@ -2,7 +2,7 @@
 sidebar_label: Panoramica
 sidebar_position: 0
 slug: /guide/inizia-a-integrare
-description: "Guida passo passo per integrare la tua piattaforma con Voucherly: crea un account sandbox, ottieni le API key, abilita i gateway e vai in produzione."
+description: "Guida passo passo per integrare la tua piattaforma con Voucherly: richiedi un account sandbox, ottieni le API key, abilita i gateway e vai in produzione."
 keywords:
   - voucherly per iniziare
   - api key
@@ -18,10 +18,13 @@ Le istruzioni seguenti ti guideranno nell'integrazione della tua piattaforma con
 
 ## Configurazione
 
-### 1. Crea un account Sandbox
+### 1. Richiedi un account Sandbox
 
-Visita la [Dashboard][dashboard] e registra un nuovo account.  
-Verifica il tuo indirizzo email cliccando sul link inviato alla tua casella di posta.
+Richiedi un account a Voucherly dalla pagina [Prenota una demo](https://voucherly.it/prenota-una-demo).  
+Quando l'account è creato, ricevi un'email per impostare la password. Il link vale 12 ore e conferma anche il tuo indirizzo email.  
+Poi accedi alla [Dashboard][dashboard].
+
+Se lavori per un merchant che usa già Voucherly, chiedi invece al suo team di invitarti.
 
 ### 2. Ottieni le API keys
 

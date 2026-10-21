@@ -1,7 +1,7 @@
 ---
 sidebar_label: Overview
 sidebar_position: 0
-description: "Step-by-step guide to integrate your platform with Voucherly: create a sandbox account, get API keys, enable payment gateways and go live."
+description: "Step-by-step guide to integrate your platform with Voucherly: request a sandbox account, get API keys, enable payment gateways and go live."
 keywords:
   - voucherly getting started
   - api keys
@@ -17,10 +17,13 @@ The instructions below will guide you on how to integrate your platform with our
 
 ## Configuration
 
-### 1. Create a Sandbox account
+### 1. Request a Sandbox account
 
-Visit the [Dashboard][dashboard] and register a new account.  
-Verify your email address by clicking the link sent to your inbox.
+Request an account from Voucherly on the [book a demo](https://voucherly.it/prenota-una-demo) page.  
+Once the account is created, you receive an email to set your password. The link is valid for 12 hours and also confirms your email address.  
+Then sign in to the [Dashboard][dashboard].
+
+If you work for a merchant that already uses Voucherly, ask its team to invite you instead.
 
 ### 2. Obtain API keys
 
