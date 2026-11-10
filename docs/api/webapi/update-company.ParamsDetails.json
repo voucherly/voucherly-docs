@@ -1,0 +1,1 @@
+{"parameters":[{"name":"idOrCode","in":"path","required":true,"description":"The unique identifier (ID) or join code of the Company to update.","schema":{"type":"string"}}]}

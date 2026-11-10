@@ -150,6 +150,64 @@ Non è richiesta alcuna ulteriore azione da parte tua.
     </>
 </Accordion>
 
+## Usa i tuoi ID {#reference-id}
+
+Non serve salvare il `customerId` di Voucherly. Invia l'ID che il cliente ha nel tuo sistema come `customer.referenceId`: il pagamento va al Customer con quel riferimento, e al primo pagamento lo crea.
+
+```json
+{
+    "mode": "Payment",
+    [...]
+    "customer": {
+        "referenceId": "user-4821",
+        "email": "mario.rossi@voucherly.it",
+        "firstName": "Mario",
+        "lastName": "Rossi"
+    },
+    [...]
+}
+```
+
+Un riferimento è unico tra i tuoi Customer in ogni ambiente. Puoi impostarlo anche quando crei o aggiorni un Customer, e trovare il Customer con `GET /v1/customers?referenceId=user-4821`. Dare a un Customer un riferimento che un altro Customer ha già fallisce con `409 Conflict` e codice `REFERENCE_ID_ALREADY_EXISTS`, e il `customerId` della risposta è il Customer che lo ha.
+
+## Aziende {#companies}
+
+Quando i tuoi clienti ordinano come dipendenti di un'azienda, invia l'azienda insieme al pagamento. Voucherly la trova con l'ID che ha nel tuo sistema, quindi non c'è niente da creare prima.
+
+```json
+{
+    "mode": "Payment",
+    [...]
+    "customer": {
+        "referenceId": "user-4821",
+        "email": "mario.rossi@voucherly.it"
+    },
+    "company": {
+        "referenceId": "company-318",
+        "name": "Acme Srl",
+        "joinCode": "ACME01"
+    },
+    [...]
+}
+```
+
+- Quando nessuna Company ha il `company.referenceId`, il pagamento la crea con `name` e `joinCode`. Un `joinCode` assente, non di 6 caratteri o già usato da un'altra Company viene sostituito da uno generato da Voucherly: il pagamento non fallisce mai per questo.
+- Quando la Company esiste con un altro `name`, il pagamento la rinomina. Vale il nome del tuo sistema.
+- `company` e `companyId` sono alternativi: inviane uno solo.
+
+Il Customer del pagamento entra poi nella Company e ci resta per i pagamenti successivi, in qualunque modo lo identifichi: con `customerId`, con `customer.referenceId` o con un'email o un telefono verificati.
+
+| Il Customer | Cosa succede |
+| --- | --- |
+| è nuovo | Viene creato nella Company. |
+| non ha una Company | Entra nella Company. |
+| è già nella Company | Non cambia niente. |
+| è in un'altra Company | Passa alla nuova Company, come quando la persona cambia azienda nel tuo sistema. |
+
+Lo stesso vale quando invii `companyId` al posto di `company`.
+
+Fuori dai pagamenti, tieni la Company allineata al tuo sistema: imposta `referenceId` quando la crei, cambia `name`, `joinCode` o `referenceId` con `POST /v1/companys/{idOrCode}`, e trovala con `GET /v1/companys?referenceId=company-318`. Un `joinCode` o un `referenceId` che un'altra Company ha già fallisce con `409 Conflict` e codice `JOIN_CODE_ALREADY_EXISTS` o `REFERENCE_ID_ALREADY_EXISTS`, e il `companyId` della risposta è la Company che lo ha.
+
 ## Perché? I vantaggi! {#why}
 
 - **Ottimizza il checkout**.

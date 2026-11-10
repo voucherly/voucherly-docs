@@ -149,6 +149,64 @@ No further action is required on your part.
     </>
 </Accordion>
 
+## Use your own IDs {#reference-id}
+
+You don't have to store the Voucherly `customerId`. Send the ID the customer has in your system as `customer.referenceId`: the Payment goes to the Customer with that reference, and creates it on the first Payment.
+
+```json
+{
+    "mode": "Payment",
+    [...]
+    "customer": {
+        "referenceId": "user-4821",
+        "email": "mario.rossi@voucherly.it",
+        "firstName": "Mario",
+        "lastName": "Rossi"
+    },
+    [...]
+}
+```
+
+A reference is unique among your Customers in each environment. You can also set it when you create or update a Customer, and find the Customer with `GET /v1/customers?referenceId=user-4821`. Giving a Customer a reference another Customer already has fails with `409 Conflict` and code `REFERENCE_ID_ALREADY_EXISTS`, and `customerId` in the response is the Customer that has it.
+
+## Companies {#companies}
+
+When your customers order as employees of a company, send the company with the Payment. Voucherly finds it by the ID it has in your system, so there is nothing to create in advance.
+
+```json
+{
+    "mode": "Payment",
+    [...]
+    "customer": {
+        "referenceId": "user-4821",
+        "email": "mario.rossi@voucherly.it"
+    },
+    "company": {
+        "referenceId": "company-318",
+        "name": "Acme Srl",
+        "joinCode": "ACME01"
+    },
+    [...]
+}
+```
+
+- When no Company has `company.referenceId`, the Payment creates it with `name` and `joinCode`. A `joinCode` that is missing, is not 6 characters long or is used by another Company is replaced by one Voucherly generates: the Payment never fails because of it.
+- When the Company exists with another `name`, the Payment renames it. The name in your system wins.
+- `company` and `companyId` are alternatives: send one of them.
+
+The Customer of the Payment then joins the Company and stays in it for the next Payments, however you identify it: by `customerId`, by `customer.referenceId` or by a verified email or phone.
+
+| The Customer | What happens |
+| --- | --- |
+| is new | It is created in the Company. |
+| has no Company | It joins the Company. |
+| is already in the Company | Nothing changes. |
+| is in another Company | It moves to the new Company, as when the person changes employer in your system. |
+
+The same applies when you send `companyId` instead of `company`.
+
+Outside Payments, keep the Company in step with your system: set `referenceId` when you create it, change `name`, `joinCode` or `referenceId` with `POST /v1/companys/{idOrCode}`, and find it with `GET /v1/companys?referenceId=company-318`. A `joinCode` or a `referenceId` another Company already has fails with `409 Conflict` and code `JOIN_CODE_ALREADY_EXISTS` or `REFERENCE_ID_ALREADY_EXISTS`, and `companyId` in the response is the Company that has it.
+
 ## Why? Benefits! {#why}
 
 - **Streamline Checkout**.
