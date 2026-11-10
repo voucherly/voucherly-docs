@@ -1,5 +1,5 @@
 ---
-slug: /guide/pagamenti-online/integrazione-personalizzata
+slug: /guide/pagamenti-online/custom-integration
 sidebar_position: 3
 description: "Costruisci il tuo checkout su Voucherly: elenca i gateway di pagamento del tuo account, lascia che il cliente ne scelga uno sulla tua pagina, poi crea il Payment e reindirizza."
 keywords:
@@ -12,17 +12,17 @@ keywords:
 
 import GatewayFlowContent from './../../_partial/gateway_flow_content.md';
 
-# Integrazione personalizzata
+# Custom integration
 
 Mostra i gateway di pagamento del tuo account sulla tua pagina — ognuno con il suo pulsante, invece di un generico *Paga con Voucherly* — e manda il cliente direttamente a quello che ha scelto.
 
 :::info Altri modi per accettare pagamenti online
-Se preferisci non costruire il selettore, il [checkout ospitato](/guide/pagamenti-online/checkout-ospitato) offre tutti i gateway su una pagina ospitata da Voucherly, e i [Voucherly Components](/guide/pagamenti-online/components) mostrano l'intero modulo di pagamento dentro la tua pagina. Consulta [Pagamenti online](/guide/pagamenti-online) per confrontarli.
+Se preferisci non costruire il selettore, l'[Hosted Checkout](/guide/pagamenti-online/hosted-checkout) offre tutti i gateway su una pagina ospitata da Voucherly, e i [Voucherly Components](/guide/pagamenti-online/components) mostrano l'intero modulo di pagamento dentro la tua pagina. Consulta [Pagamenti online](/guide/pagamenti-online) per confrontarli.
 :::
 
 ## Guida rapida
 
-![Flusso di preparazione del checkout ospitato con gateway](./gateway_hosted_checkout.svg)
+![Flusso di preparazione dell'Hosted Checkout con gateway](./gateway_hosted_checkout.svg)
 
 <GatewayFlowContent />
 
@@ -73,7 +73,7 @@ Dopo aver creato un Payment, reindirizza il cliente al `checkoutUrl` restituito 
 
 ### 2. Gestisci la callback e il rientro
 
-Da qui in poi il flusso è quello del checkout ospitato: gestisci la [callback S2S](/guide/pagamenti-online/checkout-ospitato#2-gestisci-la-callback-s2s-prima-del-reindirizzamento) e [mostra una pagina di successo](/guide/pagamenti-online/checkout-ospitato#3-mostra-una-pagina-di-successo).
+Da qui in poi il flusso è quello dell'Hosted Checkout: gestisci la [callback S2S](/guide/pagamenti-online/hosted-checkout#2-gestisci-la-callback-s2s-prima-del-redirect) e [mostra una pagina di successo](/guide/pagamenti-online/hosted-checkout#3-mostra-una-pagina-di-successo).
 
 :::tip Metodi di pagamento salvati
 Per permettere a un cliente che torna di pagare con un metodo salvato in un clic, leggi [Gestione clienti](/api/generale/best-practice/gestione-clienti).

@@ -29,7 +29,7 @@ Puoi selezionare il flusso di pagamento più adatto al tuo caso d'uso specifico,
 Prima di iniziare, prenditi un momento per esplorare la gamma di soluzioni che abbiamo già sviluppato in Voucherly:
 
 - [Plugin e-commerce](/guide/pagamenti-online/plugin-e-commerce/) per PrestaShop, WooCommerce e Shopify
-- [Checkout ospitato](/guide/pagamenti-online/checkout-ospitato/), una pagina di pagamento ospitata da Voucherly
+- [Hosted Checkout](/guide/pagamenti-online/hosted-checkout/), una pagina di pagamento ospitata da Voucherly
 - [Voucherly Components](/guide/pagamenti-online/components/), il modulo di pagamento incorporato nella tua pagina
 
 Se nessuna di queste soluzioni predefinite soddisfa i requisiti del tuo sistema, puoi definire il tuo caso d'uso specifico e integrare le API corrispondenti per adattare Voucherly alle tue necessità.

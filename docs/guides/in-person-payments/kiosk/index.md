@@ -1,10 +1,10 @@
 ---
-slug: /guide/pagamenti-di-persona/chiosco
+slug: /guide/pagamenti-di-persona/kiosk
 sidebar_position: 1
-description: "Elabora i pagamenti sui chioschi self-service con Voucherly: mostra l'URL di checkout come QR code e usa il long polling per rilevare il completamento."
+description: "Elabora i pagamenti sui kiosk self-service con Voucherly: mostra l'URL di checkout come QR code e usa il long polling per rilevare il completamento."
 keywords:
-  - pagamenti chiosco
-  - chiosco self-service
+  - pagamenti kiosk
+  - kiosk self-service
   - pagamento QR code
   - Voucherly Checkout
   - long polling
@@ -22,10 +22,10 @@ import RedirectUrlContent from './../../_partial/redirect_url_content.md';
 
 # Kiosk
 
-Usa l'integrazione Kiosk di Voucherly per elaborare i pagamenti direttamente tramite chioschi self-service.
+Usa l'integrazione Kiosk di Voucherly per elaborare i pagamenti direttamente tramite kiosk self-service.
 
 :::warning Requisiti hardware
-Il chiosco deve disporre di:
+Il kiosk deve disporre di:
 
 - Una connessione a internet.
 - Un display rivolto verso l'utente.
@@ -33,7 +33,7 @@ Il chiosco deve disporre di:
 
 ## Guida rapida
 
-Vediamo un semplice esempio di integrazione del flusso di pagamento per un chiosco.
+Vediamo un semplice esempio di integrazione del flusso di pagamento per un kiosk.
 
 :::info
 Questa integrazione è progettata per generare dinamicamente un QR code, consentendo agli utenti di scansionarlo facilmente con i propri dispositivi mobili e completare il processo di pagamento senza intoppi.
@@ -43,7 +43,7 @@ Questa integrazione è progettata per generare dinamicamente un QR code, consent
 
 Puoi utilizzare Voucherly come intermediario per gestire tutti i tuoi pagamenti oppure integrarlo come metodo di pagamento aggiuntivo insieme a quelli esistenti.
 
-Aggiungi un pulsante di checkout al tuo chiosco e crea un pagamento in Voucherly.
+Aggiungi un pulsante di checkout al tuo kiosk e crea un Payment in Voucherly.
 
 ![Flusso Kiosk](./kiosk.svg)
 
@@ -84,7 +84,7 @@ Aggiungi un pulsante di checkout al tuo chiosco e crea un pagamento in Voucherly
 }
 ```
 
-Dopo aver creato il pagamento, mostra il `checkoutUrl` restituito nella risposta come QR code sullo schermo del chiosco.
+Dopo aver creato il Payment, mostra il `checkoutUrl` restituito nella risposta come QR code sullo schermo del kiosk.
 I clienti possono scansionare il QR code con i propri dispositivi mobili per accedere alla pagina di pagamento e completare la transazione.
 
 :::tip
@@ -108,10 +108,10 @@ Puoi utilizzare una libreria come [qrcode.js](https://davidshimjs.github.io/qrco
 
 ### 2. Attendi il completamento del pagamento
 
-Poiché il chiosco non consente connessioni internet in ingresso, il meccanismo [Callback S2S](/api/generale/best-practice/s2s/) potrebbe non essere pratico.
+Poiché il kiosk non consente connessioni internet in ingresso, il meccanismo [Callback S2S](/api/generale/best-practice/s2s/) potrebbe non essere pratico.
 In alternativa, puoi utilizzare la [Get Payment API](/api/webapi/retrieve-payment/) con l'header `Voucherly-Wait-Time` per il long polling.
 
-Se il chiosco è offline ma comunica tramite un server, è consigliabile utilizzare il meccanismo [Callback S2S](/api/generale/best-practice/s2s/). Il long polling rimane un approccio valido per aggiornare l'interfaccia del chiosco.
+Se il kiosk è offline ma comunica tramite un server, è consigliabile utilizzare il meccanismo [Callback S2S](/api/generale/best-practice/s2s/). Il long polling rimane un approccio valido per aggiornare l'interfaccia del kiosk.
 
  Una volta chiuso il pagamento, è necessario gestire eventuali operazioni aggiuntive:
 
@@ -134,9 +134,9 @@ Dopo 10 minuti, è consigliabile interrompere il processo e considerare il pagam
 
 <RedirectUrlContent />
 
-#### Chiosco
+#### Kiosk
 
-Dopo che il cliente ha completato il pagamento sulla pagina di Voucherly Checkout, può chiudere il proprio dispositivo mobile e proseguire senza interruzioni l'esperienza d'ordine direttamente al chiosco.
+Dopo che il cliente ha completato il pagamento sulla pagina di Voucherly Checkout, può chiudere il proprio dispositivo mobile e proseguire senza interruzioni l'esperienza d'ordine direttamente al kiosk.
 
 Sei libero di gestire questa fase in autonomia, in linea con le best practice della tua azienda.
 
@@ -153,7 +153,7 @@ Sei libero di gestire questa fase in autonomia, in linea con le best practice de
     </>
     <>
         :::info
-        Consulta il [Integrazione personalizzata](/guide/pagamenti-online/integrazione-personalizzata) per un esempio completo.
+        consulta la guida [Custom integration](/guide/pagamenti-online/custom-integration) per un esempio completo.
         :::
         <GatewayFlowContent />
     </>

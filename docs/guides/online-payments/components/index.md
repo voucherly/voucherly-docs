@@ -24,8 +24,8 @@ import TabItem from '@theme/TabItem';
 
 I Voucherly Components ti permettono di accettare pagamenti **dentro la tua pagina di checkout**, senza mandare il cliente sul Voucherly Checkout. Aggiungi una piccola libreria JavaScript, Voucherly.js, e monti un componente (component) in un contenitore della tua pagina: Voucherly ci disegna il modulo di pagamento, con tutti i metodi di pagamento attivi sul tuo account — carte, buoni pasto, Apple Pay, Google Pay, credito personale e quota prepagata — e, a pagamento concluso, porta il cliente sulla tua pagina di esito.
 
-:::info Cerchi il checkout ospitato?
-Se preferisci reindirizzare il cliente a una pagina ospitata da Voucherly, segui [Checkout ospitato](/guide/pagamenti-online/checkout-ospitato). La parte lato server è la stessa: entrambe partono dalla creazione di un Payment.
+:::info Cerchi l'Hosted Checkout?
+Se preferisci reindirizzare il cliente a una pagina ospitata da Voucherly, segui [Hosted Checkout](/guide/pagamenti-online/hosted-checkout). La parte lato server è la stessa: entrambe partono dalla creazione di un Payment.
 :::
 
 Sono disponibili due componenti:
@@ -43,10 +43,10 @@ Al termine di questa guida saprai come:
 
 ## Come funziona
 
-1. **Il tuo server crea un Payment** con l'API [Create a Payment](/api/webapi/create-payment) e la tua secret key (chiave segreta), esattamente come per il checkout ospitato, e passa l'id del Payment alla tua pagina.
+1. **Il tuo server crea un Payment** con l'API [Create a Payment](/api/webapi/create-payment) e la tua secret key (chiave segreta), esattamente come per l'Hosted Checkout, e passa l'id del Payment alla tua pagina.
 2. **La tua pagina carica Voucherly.js** e monta un componente con la tua publishable key (chiave pubblicabile) e l'id del Payment. Il componente gira in un iframe servito da `checkout.voucherly.it`, oppure in una finestra popup sul checkout Voucherly: i dati di pagamento del cliente vengono raccolti lì e non raggiungono mai la tua pagina.
 3. **Il cliente paga.** Carte, buoni pasto e wallet vengono gestiti dentro il componente. I metodi di pagamento che richiedono la pagina del provider, come PayPal o Satispay, navigano l'intera pagina e riportano il cliente sulla tua — oppure, in un popup, restano dentro il popup.
-4. **Il cliente arriva sulla tua pagina di esito.** Quando il Payment si chiude, Voucherly.js manda la tua pagina sul `redirectOkUrl` o sul `redirectKoUrl` del Payment, come fa il checkout ospitato. Se la tua pagina deve restare dov'è, `redirect: "if_required"` consegna invece l'esito alle tue callback.
+4. **Il cliente arriva sulla tua pagina di esito.** Quando il Payment si chiude, Voucherly.js manda la tua pagina sul `redirectOkUrl` o sul `redirectKoUrl` del Payment, come fa l'Hosted Checkout. Se la tua pagina deve restare dov'è, `redirect: "if_required"` consegna invece l'esito alle tue callback.
 5. **Voucherly avvisa il tuo server** attraverso la callback S2S e l'API. Il tuo server è la fonte di verità per evadere l'ordine.
 
 ## Prerequisiti
@@ -100,7 +100,7 @@ Dal tuo server, chiama [Create a Payment](/api/webapi/create-payment) con la tua
 }
 ```
 
-`redirectOkUrl` e `redirectKoUrl` sono le tue pagine di esito: quando il Payment si chiude, Voucherly.js manda il cliente sulla prima se il Payment è stato pagato e sulla seconda altrimenti. Sono gli stessi URL che usa il checkout ospitato, con la stessa query string.
+`redirectOkUrl` e `redirectKoUrl` sono le tue pagine di esito: quando il Payment si chiude, Voucherly.js manda il cliente sulla prima se il Payment è stato pagato e sulla seconda altrimenti. Sono gli stessi URL che usa l'Hosted Checkout, con la stessa query string.
 
 :::warning Tieni la secret key sul tuo server
 Non inviare mai la tua chiave `sk_` al browser. Voucherly.js la rifiuta, e chiunque legga il sorgente della tua pagina potrebbe usarla per operare sul tuo account.
@@ -166,7 +166,7 @@ Quando il Payment si chiude, Voucherly.js manda la tua pagina sulla pagina di es
 - il `redirectOkUrl` quando il Payment è stato pagato;
 - il `redirectKoUrl` quando è stato chiuso senza successo, per esempio perché è scaduto o il cliente lo ha annullato.
 
-L'esito viaggia nella query string, con gli stessi parametri del [checkout ospitato](/guide/pagamenti-online/checkout-ospitato#3-mostra-una-pagina-di-successo): `success` (`OK` o `KO`), `status`, `paymentId`, `referenceId`, `amount`, `customerId` e `tenant`. La tua pagina di esito legge `paymentId`, controlla il Payment dal tuo server e mostra al cliente cosa è successo.
+L'esito viaggia nella query string, con gli stessi parametri dell'[Hosted Checkout](/guide/pagamenti-online/hosted-checkout#3-mostra-una-pagina-di-successo): `success` (`OK` o `KO`), `status`, `paymentId`, `referenceId`, `amount`, `customerId` e `tenant`. La tua pagina di esito legge `paymentId`, controlla il Payment dal tuo server e mostra al cliente cosa è successo.
 
 :::warning Conferma il pagamento dal tuo server
 La query string e le callback dicono alla tua pagina cosa ha visto il cliente, non cosa hanno registrato i tuoi sistemi, e chiunque può digitare un URL con `success=OK`. Prima di evadere l'ordine, controlla lo stato del Payment con [Retrieve a Payment](/api/webapi/retrieve-payment) o aspetta la [callback S2S](/api/generale/best-practice/s2s) sul `callbackUrl` che hai passato alla creazione. Un browser può essere chiuso, uno script manomesso, una callback persa: lo stato lato server è l'unico di cui fidarsi.
@@ -205,19 +205,19 @@ Voucherly.init({
 | `onPaymentComplete` | Il Payment è interamente pagato. | Conferma dal tuo server, poi fai proseguire il cliente. |
 | `onPaymentError` con `success: false` | Il Payment è stato chiuso senza successo. | Mostra un messaggio, e crea un nuovo Payment se il cliente vuole riprovare. |
 
-La tua pagina viene comunque lasciata quando un metodo di pagamento lo richiede: inline, un metodo con reindirizzamento naviga la pagina verso il provider e ritorno. L'`event` di `onPaymentComplete` contiene il `paymentId`, l'`amount` pagato in centesimi e lo `status` del Payment. Il payload completo di ogni callback, e cosa cambia con `redirect`, sono nel [riferimento](./reference.md#reindirizzamento-dopo-il-pagamento).
+La tua pagina viene comunque lasciata quando un metodo di pagamento lo richiede: inline, un metodo con redirect naviga la pagina verso il provider e ritorno. L'`event` di `onPaymentComplete` contiene il `paymentId`, l'`amount` pagato in centesimi e lo `status` del Payment. Il payload completo di ogni callback, e cosa cambia con `redirect`, sono nel [riferimento](./reference.md#redirect-dopo-il-pagamento).
 
 #### `Paid` o `Confirmed`: cosa trovi dopo il pagamento
 
 Un Payment passa da `Requested` a `Paid` quando il cliente completa il checkout, e a `Confirmed` quando i fondi vengono catturati — il [ciclo di vita dei pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) descrive ogni stato. Quale dei due trovi sulla tua pagina di esito, o dopo `onPaymentComplete`, dipende dal metodo di pagamento e dal Payment:
 
 - Buoni pasto, credito personale, quota prepagata, Satispay scelto tra i buoni pasto e alcuni provider — tra cui SumUp e Adyen — catturano al checkout: il Payment arriva direttamente in `Confirmed`.
-- Carte, PayPal, Satispay scelto tra i pagamenti digitali e gli altri provider a due fasi si limitano ad autorizzare: il Payment resta `Paid` finché non chiami [Confirm a Payment](/api/webapi/confirm-payment), o finché l'autorizzazione non scade e i fondi vengono rilasciati.
+- Carte, PayPal, Satispay scelto tra i pagamenti digitali e gli altri provider two-step si limitano ad autorizzare: il Payment resta `Paid` finché non chiami [Confirm a Payment](/api/webapi/confirm-payment), o finché l'autorizzazione non scade e i fondi vengono rilasciati.
 - Con `isAutoConfirm: true` in [Create a Payment](/api/webapi/create-payment), Voucherly conferma ogni transazione appena il cliente paga, e il Payment è `Confirmed` qualunque sia il metodo. Senza, vale il default impostato in **Impostazioni > Pagamenti > Gateway di pagamento > Contabilizzazione automatica**.
 
-Non scrivere codice che ragiona per provider: leggi lo `status` dal tuo server e, se è `Paid`, confermalo — oppure crea il Payment con `isAutoConfirm: true` se non hai nulla da verificare tra l'autorizzazione e la cattura. Un Payment lasciato in `Paid` è denaro che non hai incassato.
+Non scrivere codice che ragiona per provider: leggi lo `status` dal tuo server e, se è `Paid`, confermalo — oppure crea il Payment con `isAutoConfirm: true` se non hai nulla da verificare tra l'autorizzazione e la capture. Un Payment lasciato in `Paid` è denaro che non hai incassato.
 
-### 5. Metodi di pagamento con reindirizzamento
+### 5. Metodi di pagamento con redirect
 
 Alcuni metodi di pagamento — PayPal, Satispay, Scalapay, Klarna, i buoni pasto con il login dell'emittente come Edenred e Pluxee — richiedono la pagina del provider. Quando il cliente ne sceglie uno nel componente inline, Voucherly.js naviga **l'intera pagina**, non l'iframe, verso il provider; quando il cliente ha finito, il provider lo rimanda all'URL della tua pagina, con alcuni parametri di query che Voucherly.js consuma e rimuove dalla barra degli indirizzi. In [modalità popup](#inline-o-popup) tutto questo non succede: la pagina del provider si apre dentro il popup, e la tua pagina non viene mai lasciata.
 
@@ -284,14 +284,14 @@ Quando il Payment si chiude — il cliente ha pagato, o ha annullato dal popup �
 | --- | --- | --- |
 | Dove paga il cliente | Dentro la tua pagina | In una finestra Voucherly sopra la tua pagina |
 | Aspetto | Personalizzabile con `appearance` | La pagina di checkout Voucherly |
-| Metodi con reindirizzamento | Navigano l'intera pagina e tornano su di essa | Restano dentro il popup: la tua pagina non si ricarica mai |
+| Metodi con redirect | Navigano l'intera pagina e tornano su di essa | Restano dentro il popup: la tua pagina non si ricarica mai |
 | Quando il Payment si chiude | Il cliente va sulla tua pagina di esito, o scattano le callback con `if_required` | Il popup si chiude, poi come inline |
-| Cosa deve gestire la tua pagina | Montare di nuovo il componente dopo un reindirizzamento | Lasciare disponibile il pulsante di pagamento se il popup viene chiuso |
+| Cosa deve gestire la tua pagina | Montare di nuovo il componente dopo un redirect | Lasciare disponibile il pulsante di pagamento se il popup viene chiuso |
 | Mobile | Dentro la tua pagina | Si apre come una nuova scheda |
 
 Scegli il popup quando la tua pagina non può ricaricarsi a metà di un pagamento — una single-page application con il carrello in memoria, un flusso difficile da riprendere — o quando non vuoi ospitare il modulo. Scegli l'iframe quando il modulo deve far parte della tua pagina.
 
-`redirect` e le callback funzionano allo stesso modo nelle due modalità, tranne `onReady`, `onResize` e `onRedirect`, che il popup non chiama. **Chiudere il popup non annulla il pagamento**: `onPopupClosed` ti dice che la finestra non c'è più, ma il cliente potrebbe aver già pagato, e l'esito — il reindirizzamento o le callback — può ancora arrivare. L'Express Checkout Component viene sempre mostrato dentro la tua pagina, e può stare accanto a un Payment Component in modalità popup. I dettagli sono nel [riferimento](./reference.md#modalità-popup).
+`redirect` e le callback funzionano allo stesso modo nelle due modalità, tranne `onReady`, `onResize` e `onRedirect`, che il popup non chiama. **Chiudere il popup non annulla il pagamento**: `onPopupClosed` ti dice che la finestra non c'è più, ma il cliente potrebbe aver già pagato, e l'esito — il redirect o le callback — può ancora arrivare. L'Express Checkout Component viene sempre mostrato dentro la tua pagina, e può stare accanto a un Payment Component in modalità popup. I dettagli sono nel [riferimento](./reference.md#modalità-popup).
 
 ## Personalizza l'aspetto
 
@@ -331,10 +331,10 @@ Usa la tua chiave `pk_sand_` nella pagina e la tua chiave `sk_sand_` sul server:
 Verifica almeno questi casi prima di andare in produzione:
 
 - un pagamento completato dentro il componente, con il cliente che arriva sul tuo `redirectOkUrl`, dove il tuo server trova il Payment `Paid` o `Confirmed`;
-- un pagamento con un metodo a reindirizzamento, con il componente che riprende sulla tua pagina prima che il cliente arrivi sulla tua pagina di esito;
+- un pagamento con un metodo a redirect, con il componente che riprende sulla tua pagina prima che il cliente arrivi sulla tua pagina di esito;
 - un pagamento con buoni pasto che copre parte dell'importo, seguito da un pagamento con carta per il resto;
-- in modalità popup, un metodo con reindirizzamento completato dentro il popup, un pagamento annullato dal popup con il cliente che arriva sul tuo `redirectKoUrl`, e un popup chiuso prima di pagare e riaperto;
-- con `redirect: "if_required"`, `onPaymentComplete` e `onPaymentError` che arrivano alla tua pagina al posto del reindirizzamento;
+- in modalità popup, un metodo con redirect completato dentro il popup, un pagamento annullato dal popup con il cliente che arriva sul tuo `redirectKoUrl`, e un popup chiuso prima di pagare e riaperto;
+- con `redirect: "if_required"`, `onPaymentComplete` e `onPaymentError` che arrivano alla tua pagina al posto del redirect;
 - la callback S2S ricevuta dal tuo server per ciascuno di essi.
 
 ## Vai in produzione

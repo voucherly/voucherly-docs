@@ -15,9 +15,9 @@
     "message": "Guides",
     "description": "The label of footer link with label=Guide linking to /"
   },
-  "link.item.label.Collezione Postman": {
+  "link.item.label.Postman collection": {
     "message": "Postman collection",
-    "description": "The label of footer link with label=Collezione Postman linking to /api/postman"
+    "description": "The label of footer link with label=Postman collection linking to /api/postman"
   },
   "link.item.label.Dashboard": {
     "message": "Dashboard",

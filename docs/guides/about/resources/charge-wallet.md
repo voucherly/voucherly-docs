@@ -1,7 +1,7 @@
 ---
-slug: /guide/informazioni/risorse/ricarica-wallet
+slug: /guide/informazioni/risorse/charge-wallet
 sidebar_position: 3
-description: "Integra il flusso di ricarica del wallet di Voucherly: crea un pagamento in modalità Wallet, reindirizza a Voucherly Checkout e gestisci la callback S2S."
+description: "Integra il flusso di ricarica del wallet di Voucherly: crea un Payment in modalità Wallet, reindirizza a Voucherly Checkout e gestisci la callback S2S."
 keywords:
   - ricarica wallet
   - ricaricare wallet
@@ -14,7 +14,7 @@ keywords:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Ricarica del Wallet
+# Charge Wallet
 
 Come già accennato, i clienti possono ricaricare il proprio wallet durante un pagamento. Voucherly mette inoltre a disposizione un flusso dedicato specificamente alla ricarica del wallet.
 
@@ -26,7 +26,7 @@ Questo caso d'uso è disponibile solo se la funzionalità wallet è abilitata da
 
 Il processo è simile a un normale pagamento, con lievi differenze nei parametri passati alla [Create Payment API](/api/webapi/create-payment).
 
-1. Quando il cliente vuole ricaricare il proprio wallet, devi creare un nuovo pagamento tramite la [Create Payment API](/api/webapi/create-payment), impostando `mode` su `Wallet`.
+1. Quando il cliente vuole ricaricare il proprio wallet, devi creare un nuovo Payment tramite la [Create Payment API](/api/webapi/create-payment), impostando `mode` su `Wallet`.
    - Puoi specificare un importo da ricaricare includendo una singola `line` con l'importo desiderato e impostando la quantità a 1.
    - Se non viene passata alcuna `line`, Voucherly chiederà al cliente di inserire l'importo.
 
@@ -44,7 +44,7 @@ Una volta che il cliente esce dalla pagina di checkout, la transazione sarà gi�
 
 Di seguito un esempio dettagliato di come integrare da zero il flusso di ricarica del wallet.
 
-### 1. Crea un pagamento
+### 1. Crea un Payment
 
 :::info
 Consulta la [Create Payment API](/api/webapi/create-payment) per tutte le funzionalità e i dettagli.
@@ -56,7 +56,7 @@ Nella richiesta:
 
 - Imposta `mode` su `Wallet`.
 - Includi i dati del cliente o il `customerId` (se cliente di ritorno).
-- Fornisci `redirectOkUrl` e `redirectKoUrl` per il reindirizzamento dopo il checkout.
+- Fornisci `redirectOkUrl` e `redirectKoUrl` per il redirect dopo il checkout.
 
 Se vuoi che Voucherly chieda al cliente l'importo che desidera ricaricare, non includere alcuna `lines`. Altrimenti, popola una singola riga di pagamento con:
 
@@ -150,7 +150,7 @@ Quando il cliente completa la ricarica del wallet sulla pagina di Checkout di Vo
 - Se il pagamento è stato completato con successo, l'utente verrà reindirizzato a `redirectOkUrl`.
 - In caso di errore, l'utente verrà reindirizzato a `redirectKoUrl`.
 
-Il merchant deve configurare due rotte sul proprio sito per gestire il risultato del pagamento e accettare i parametri della query string inviati con il reindirizzamento:
+Il merchant deve configurare due rotte sul proprio sito per gestire il risultato del pagamento e accettare i parametri della query string inviati con il redirect:
 
 - **success**: Può essere `OK` in caso di successo del pagamento, altrimenti `KO`.
 - **status**: Lo stato del pagamento.
@@ -168,7 +168,7 @@ Il merchant deve configurare due rotte sul proprio sito per gestire il risultato
 
 ### 3. Configura un endpoint Server-to-Server (opzionale)
 
-Si consiglia di definire un endpoint che verrà contattato da Voucherly tramite S2S per notificare il risultato di un pagamento prima del reindirizzamento al sito del merchant. Consulta [qui](/api/generale/best-practice/s2s) per ulteriori dettagli su come implementare un endpoint S2S e il suo comportamento.
+Si consiglia di definire un endpoint che verrà contattato da Voucherly tramite S2S per notificare il risultato di un pagamento prima del redirect al sito del merchant. Consulta [qui](/api/generale/best-practice/s2s) per ulteriori dettagli su come implementare un endpoint S2S e il suo comportamento.
 
 :::warning
 Come descritto nella [sezione Server-to-Server](/api/generale/best-practice/s2s), assicurati che il tuo endpoint risponda correttamente alle notifiche S2S. In caso contrario, il pagamento verrà annullato e gli importi rimborsati.

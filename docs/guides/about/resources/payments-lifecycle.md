@@ -1,13 +1,13 @@
 ---
 slug: /guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti
 sidebar_position: 1
-description: "Scopri come funzionano i pagamenti Voucherly: autorizzazione e capture, processo a due fasi e l'elenco completo degli stati di pagamento e transazione."
+description: "Scopri come funzionano i pagamenti Voucherly: autorizzazione e capture, processo two-step e l'elenco completo degli stati di pagamento e transazione."
 keywords:
   - ciclo di vita del pagamento
   - autorizzazione e capture
   - stati del pagamento
   - stati della transazione
-  - pagamento a due fasi
+  - pagamento two-step
   - Voucherly
 ---
 
@@ -17,25 +17,25 @@ keywords:
 
 In Voucherly, un pagamento è un'entità logica che gestisce l'esperienza di checkout dell'utente. Ogni pagamento può includere più transazioni, dove ogni transazione rappresenta un tentativo di pagamento tramite uno specifico gateway di pagamento.
 
-In genere, l'elaborazione dei pagamenti di Voucherly segue un approccio in due fasi:
+In genere, l'elaborazione dei pagamenti di Voucherly segue un approccio two-step (in due fasi):
 
 - **Autorizzazione**. Dopo che il cliente ha fornito i propri dati di pagamento, il sistema verifica la disponibilità dei fondi e li mette in sospeso.
-- **Cattura**. I fondi trattenuti vengono quindi prelevati dal conto del cliente, elaborati e trasferiti sul conto del merchant.
+- **Capture**. I fondi trattenuti vengono quindi prelevati dal conto del cliente, elaborati e trasferiti sul conto del merchant.
 
 Questo processo garantisce un flusso di pagamento sicuro e affidabile.
 
-Separare l'autorizzazione e la cattura è utile quando sono necessarie azioni aggiuntive tra la conferma della capacità di pagare del cliente e l'incasso del pagamento. Ad esempio, se vendi articoli con disponibilità limitata, potresti dover verificare che l'articolo sia ancora disponibile prima di catturare il pagamento e completare l'ordine. Puoi seguire questo flusso di lavoro:
+Separare l'autorizzazione e la capture è utile quando sono necessarie azioni aggiuntive tra la conferma della capacità di pagare del cliente e l'incasso del pagamento. Ad esempio, se vendi articoli con disponibilità limitata, potresti dover verificare che l'articolo sia ancora disponibile prima di catturare il pagamento e completare l'ordine. Puoi seguire questo flusso di lavoro:
 
 1. Verifica che Voucherly abbia autorizzato il metodo di pagamento del cliente.
 2. Controlla il tuo sistema di gestione del magazzino per verificare che l'articolo sia ancora disponibile.
 3. Aggiorna il tuo sistema di magazzino per registrare che l'articolo è stato acquistato.
-4. Cattura il pagamento del cliente.
+4. Esegui la capture del pagamento del cliente.
 5. Comunica al cliente sulla pagina di conferma se l'acquisto è andato a buon fine.
 
-Consulta [Separare autorizzazione e conferma](/guide/pagamenti-online/checkout-ospitato#separare-autorizzazione-e-conferma) per informazioni più tecniche.
+Consulta [Separare autorizzazione e conferma](/guide/pagamenti-online/hosted-checkout#separare-autorizzazione-e-conferma) per informazioni più tecniche.
 
 :::warning
-I gateway di pagamento dei buoni pasto non supportano il processo a due fasi, e nemmeno il wallet, la quota prepagata, Satispay scelto tra i buoni pasto e alcuni provider — tra cui SumUp e Adyen. Le loro transazioni vengono catturate al checkout, quindi un Payment pagato solo con questi è `Confirmed` appena il cliente paga, mentre un Payment pagato con carta, PayPal o Satispay scelto tra i pagamenti digitali resta `Paid` finché non lo confermi. La tua integrazione dovrebbe leggere lo `status` del Payment invece di dedurlo dal metodo di pagamento.
+I gateway di pagamento dei buoni pasto non supportano il processo two-step, e nemmeno il wallet, la quota prepagata, Satispay scelto tra i buoni pasto e alcuni provider — tra cui SumUp e Adyen. Le loro transazioni vengono catturate al checkout, quindi un Payment pagato solo con questi è `Confirmed` appena il cliente paga, mentre un Payment pagato con carta, PayPal o Satispay scelto tra i pagamenti digitali resta `Paid` finché non lo confermi. La tua integrazione dovrebbe leggere lo `status` del Payment invece di dedurlo dal metodo di pagamento.
 :::
 
 :::tip
@@ -54,7 +54,7 @@ Un Payment può essere pagato con più di una Transaction — un buono pasto per
 
 I pagamenti hanno un campo `status` che riflette gli stati delle relative transazioni.
 
-- **Requested**. È stato creato un pagamento ma non esiste ancora alcuna transazione.
+- **Requested**. È stato creato un Payment ma non esiste ancora alcuna transazione.
 - **Paid**. Il cliente ha completato con successo il checkout. Almeno una transazione è nello stato `Paid` e attende il completamento.
 - **Confirmed**. Il pagamento è andato a buon fine e tutte le transazioni sono state confermate.
 - **Refunded**. Tutte le transazioni sono state rimborsate o annullate.

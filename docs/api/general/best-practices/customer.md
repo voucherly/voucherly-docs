@@ -27,7 +27,7 @@ Questa guida spiega come e perché utilizzare i clienti registrati con Voucherly
 <Tabs groupId="payment" queryString>
 <TabItem value="first" label="Primo pagamento">
 
-Quando crei un pagamento, includi i dettagli del cliente.
+Quando crei un Payment, includi i dettagli del cliente.
 
 **Esempio di richiesta**
 
@@ -46,7 +46,7 @@ Quando crei un pagamento, includi i dettagli del cliente.
 
 <TabItem value="next" label="Pagamento successivo">
 
-Prima di creare un pagamento, recupera il `customerId` di Voucherly. Poi includilo nel payload della richiesta per garantire una corretta elaborazione.
+Prima di creare un Payment, recupera il `customerId` di Voucherly. Poi includilo nel payload della richiesta per garantire una corretta elaborazione.
 
 **Esempio di richiesta**
 
@@ -128,9 +128,9 @@ Non è richiesta alcuna ulteriore azione da parte tua.
 
         Il Checkout di Voucherly mostra automaticamente tutti i metodi di pagamento salvati dell'utente. Non è quindi necessario mostrarli in anticipo, poiché il processo di checkout garantisce già un'esperienza utente fluida ed efficiente.
 
-        Se utilizzi un'integrazione personalizzata, consulta il [Integrazione personalizzata](/guide/pagamenti-online/integrazione-personalizzata) per un esempio completo.
+        Se utilizzi una Custom integration, consulta la guida [Custom integration](/guide/pagamenti-online/custom-integration) per un esempio completo.
 
-        #### Flusso di integrazione personalizzata
+        #### Flusso della Custom integration
 
         - Recupera i metodi di pagamento salvati.
         - Mostrali sul tuo sito web.
