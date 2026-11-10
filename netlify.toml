@@ -1,5 +1,5 @@
 [build]
-	command = "yarn build && node postbuild.mjs"
+	command = "pnpm build && node postbuild.mjs"
 	publish = "build"
 
 # Netlify applies the first rule that matches, so a specific rule has to come before the splat that would also match it.

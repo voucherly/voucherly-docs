@@ -1,4 +1,4 @@
-// Checks the built site (run after `yarn build`): on every page of build/en and
+// Checks the built site (run after `pnpm build`): on every page of build/en and
 // build/it the locale dropdown link to the other locale must equal that
 // locale's hreflang alternate, the target must exist in the build, and the
 // target's hreflang must point back (reciprocal). Exits 1 on any error.

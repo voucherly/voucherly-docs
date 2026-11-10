@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+ignoredBuiltDependencies:
+  - core-js
+  # Its postinstall installs each codegen on its own, but their dependencies already resolve from the package's own.
+  - postman-code-generators

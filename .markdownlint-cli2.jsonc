@@ -13,7 +13,7 @@
     ".docusaurus/**"
   ],
   // Restano attive le regole di igiene (spazi, righe vuote, blocchi, newline finale):
-  // sono tutte auto-correggibili con `yarn lint:md:fix`.
+  // sono tutte auto-correggibili con `pnpm lint:md:fix`.
   // Sotto sono disattivate le regole di sola preferenza stilistica che confliggono
   // con le convenzioni già in uso in questa documentazione.
   "config": {
