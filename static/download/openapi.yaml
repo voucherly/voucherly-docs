@@ -2307,6 +2307,12 @@ components:
             $ref: '#/components/schemas/CompanyAddressForExternalApi'
           nullable: true
           readOnly: true
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/Metadata'
+          description: The fields of the Company, as you set them. A key the merchant declared in the Dashboard has the type declared there, any other key is text, and segments can filter Customers by the fields of their Company.
+          example:
+            b2b: 'true'
       additionalProperties: false
     CreateCompanyRequest:
       type: object
@@ -2330,6 +2336,12 @@ components:
           description: The ID of the Company in your own system. Another Company with the same reference answers 409.
           nullable: true
           maxLength: 100
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/Metadata'
+          description: The fields of the Company, with the limits of the Customer. Two keys that differ only in case are one key, and answer 400.
+          example:
+            b2b: 'true'
       additionalProperties: false
     UpdateCompanyRequest:
       type: object
@@ -2351,6 +2363,12 @@ components:
           description: The ID of the Company in your own system. Null removes it. Another Company with the same reference answers 409.
           nullable: true
           maxLength: 100
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/Metadata'
+          description: Only the keys passed change, and the others stay. An empty value removes its key, and null removes every key. The Company keeps at most 10 keys once merged, and two keys that differ only in case are one key.
+          example:
+            b2b: 'true'
       additionalProperties: false
     Customer:
       x-displayName: Customer
