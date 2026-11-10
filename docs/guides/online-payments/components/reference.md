@@ -184,6 +184,36 @@ Voucherly.initExpress({
 | `paymentMethods.applePay` | `"auto"` \| `"never"` | `auto` (default) shows the Apple Pay button if the customer's browser can pay with it. `never` hides it. |
 | `paymentMethods.googlePay` | `"auto"` \| `"never"` | `auto` (default) shows the Google Pay button if the customer's browser can pay with it. `never` hides it. |
 
+## Voucherly.paymentMessages(options)
+
+Shows the official message of each pay-later gateway active on your account — PayPal Pay Later, Klarna, Scalapay — one under the other, so the customer sees "3 interest-free payments of €15" before choosing how to pay. It needs no Payment: put it on a product page, in the cart, or next to any price.
+
+```js
+const messages = Voucherly.paymentMessages({
+    publicKey: "pk_live_…",
+    container: "#pay-later",
+    amount: 4500,
+    currency: "EUR",
+});
+
+messages.update({ amount: 6000 });
+```
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `publicKey` | `string` | Your publishable key, `pk_live_…` or `pk_sand_…`. |
+| `container` | `string` \| `HTMLElement` | Where the messages go: a CSS selector or the element itself. Place it close to the price it describes, as every provider requires. |
+| `amount` | `number` | The price, in cents. |
+| `currency` | `string` | Defaults to `EUR`. |
+
+It returns an object with two methods: `update({ amount })` changes the price, and groups changes that come close together, so it can follow a field as the customer types; `destroy()` removes the messages.
+
+- **The text is the provider's.** Each message is the provider's own component, with its own "learn more": Voucherly adds no text and does not restyle it.
+- **Nothing is loaded that is not needed.** A provider's script is loaded only when the gateway is active on your account and the amount is within its range. Without any, the container stays empty.
+- **What each gateway needs.** PayPal uses the client ID it already has. Klarna needs the client ID of the Klarna Web SDK, from the On-site messaging section of the Klarna portal, and every domain where the message appears authorized there. Scalapay needs the merchant token of the Developer section of the Scalapay Merchant Portal. Add both in the configuration of the gateway in the Dashboard.
+- **Consent.** The providers' scripts can store data in the customer's browser: Klarna, for instance, keeps a session in local storage. If your site asks for cookie consent, call `Voucherly.paymentMessages` after the customer gives it.
+- **Content Security Policy.** Add `https://api.voucherly.it` to `connect-src`, and the hosts of the providers you use: `*.paypal.com` and `*.paypalobjects.com` for PayPal, `js.klarna.com` in `script-src` and `https://*.klarna.com` in `frame-src` for Klarna, `cdn.scalapay.com` for Scalapay. PayPal does not draw its messages on pages served over HTTP.
+
 ## Appearance
 
 `appearance.variables` maps to the CSS custom properties of the component. Every value is a CSS value, passed as a string.
