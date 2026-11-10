@@ -50,33 +50,33 @@ Un Payment può essere pagato con più di una Transaction — un buono pasto per
 - **Partial**. Il Payment si chiude con la prima Transaction riuscita, qualunque importo copra, e il residuo non viene incassato. Usalo quando il resto si salda altrove — alla cassa, o con un Payment successivo.
 - **AnyTransaction**. Come `Partial`.
 
-### Stati del pagamento {#payment-statuses}
+### Stati del Payment {#payment-statuses}
 
-I pagamenti hanno un campo `status` che riflette gli stati delle relative transazioni.
+I Payment hanno un campo `status` che riflette gli stati delle relative Transaction.
 
-- **Requested**. È stato creato un Payment ma non esiste ancora alcuna transazione.
-- **Paid**. Il cliente ha completato con successo il checkout. Almeno una transazione è nello stato `Paid` e attende il completamento.
-- **Confirmed**. Il pagamento è andato a buon fine e tutte le transazioni sono state confermate.
-- **Refunded**. Tutte le transazioni sono state rimborsate o annullate.
-- **Cancelled**. Tutte le transazioni sono state annullate.
-- **Voided**. Il Payment è stato invalidato (voided) mentre era ancora `Requested`, dal cliente durante il checkout o da te con [Void a Payment](/api/webapi/void-payment). Tutte le transazioni sono state invalidate.
-- **Expired**. Il pagamento è scaduto.
+- **Requested**. È stato creato un Payment ma non esiste ancora alcuna Transaction.
+- **Paid**. Il cliente ha completato con successo il checkout. Almeno una Transaction è nello stato `Paid` e attende il completamento.
+- **Confirmed**. Il Payment è andato a buon fine e tutte le Transaction sono state confermate.
+- **Refunded**. Tutte le Transaction sono state rimborsate o annullate.
+- **Cancelled**. Tutte le Transaction sono state annullate.
+- **Voided**. Il Payment è stato invalidato (voided) mentre era ancora `Requested`, dal cliente durante il checkout o da te con [Void a Payment](/api/webapi/void-payment). Tutte le Transaction sono state invalidate.
+- **Expired**. Il Payment è scaduto.
 
 In breve: un Payment passa da `Requested` a `Paid` quando il cliente completa il checkout e a `Confirmed` quando i fondi vengono catturati. [Void a Payment](/api/webapi/void-payment) funziona solo su un Payment `Requested`; una volta `Paid` o `Confirmed`, la strada a ritroso è [Refund a Payment](/api/webapi/refund-payment), che annulla le autorizzazioni non ancora catturate e rimborsa quelle catturate.
 
-### Stati della transazione
+### Stati della Transaction
 
-Lo stato di una transazione è determinato dal campo `status`.
+Lo stato di una Transaction è determinato dal campo `status`.
 
-- **Requested**. È stato creato un nuovo oggetto transazione ma non è ancora stato pagato.
-- **NextAction**. Il cliente deve ancora completare un passaggio richiesto dal gateway di pagamento prima che la transazione possa essere pagata.
-- **Paid**. La transazione è stata autorizzata. I fondi restano bloccati fino alla conferma ([Confirm Payment API](/api/webapi/confirm-payment)) o allo scadere dell'intervallo di tempo definito dalla configurazione del gateway di pagamento.
-- **Confirmed**. La transazione è stata catturata (capture). I fondi precedentemente bloccati sono stati trasferiti sul conto del merchant.
-- **Refunded**. Una transazione nello stato `Confirmed` è stata completamente rimborsata.
-- **RefundedPartially**. È stata rimborsata una parte dell'importo di una transazione `Confirmed`; il resto può ancora essere rimborsato.
-- **Cancelled**. Una transazione nello stato `Paid` è stata annullata, sbloccando i fondi.
-- **Failed**. Il gateway di pagamento non è riuscito a elaborare la transazione.
-- **Voided**. Una transazione `Paid` è stata invalidata (voided) a causa di un errore o dell'annullamento del pagamento da parte del cliente.
-- **Expired**. La transazione è scaduta.
-- **Reversed**. Una transazione `Paid` è stata annullata durante il checkout, prima della chiusura del pagamento, e non concorre all'importo pagato.
-- **ImpossibleRefund**. Non è stato possibile elaborare un rimborso per la transazione. È comune per i gateway di pagamento dei buoni pasto.
+- **Requested**. È stato creato un nuovo oggetto Transaction ma non è ancora stato pagato.
+- **NextAction**. Il cliente deve ancora completare un passaggio richiesto dal gateway di pagamento prima che la Transaction possa essere pagata.
+- **Paid**. La Transaction è stata autorizzata. I fondi restano bloccati fino alla conferma ([Confirm Payment API](/api/webapi/confirm-payment)) o allo scadere dell'intervallo di tempo definito dalla configurazione del gateway di pagamento.
+- **Confirmed**. La Transaction è stata catturata (capture). I fondi precedentemente bloccati sono stati trasferiti sul conto del merchant.
+- **Refunded**. Una Transaction nello stato `Confirmed` è stata completamente rimborsata.
+- **RefundedPartially**. È stata rimborsata una parte dell'importo di una Transaction `Confirmed`; il resto può ancora essere rimborsato.
+- **Cancelled**. Una Transaction nello stato `Paid` è stata annullata, sbloccando i fondi.
+- **Failed**. Il gateway di pagamento non è riuscito a elaborare la Transaction.
+- **Voided**. Una Transaction `Paid` è stata invalidata (voided) a causa di un errore o dell'annullamento del pagamento da parte del cliente.
+- **Expired**. La Transaction è scaduta.
+- **Reversed**. Una Transaction `Paid` è stata annullata durante il checkout, prima della chiusura del Payment, e non concorre all'importo pagato.
+- **ImpossibleRefund**. Non è stato possibile elaborare un rimborso per la Transaction. È comune per i gateway di pagamento dei buoni pasto.
