@@ -22,8 +22,8 @@ Demo Voucherly simula un buono pasto. Il cliente digita un codice di sette cifre
 | Prefisso | Pagamento | Contabilizzazione | Rimborso |
 | --- | --- | --- | --- |
 | `420` | riesce | riesce | riesce |
-| `777` | riesce | riesce | fallisce: la transazione finisce in `ImpossibleRefund` |
-| `069` | riesce | fallisce: la transazione risulta scaduta quando la confermi | — |
+| `777` | riesce | riesce | fallisce: la Transaction finisce in `ImpossibleRefund` |
+| `069` | riesce | fallisce: la Transaction risulta scaduta quando la confermi | — |
 | `619` | riesce | fallisce con un errore del gateway | fallisce con un errore del gateway |
 | `090` | fallisce con un errore di pagamento | — | — |
 | qualsiasi altro | rifiutato come codice non valido | — | — |

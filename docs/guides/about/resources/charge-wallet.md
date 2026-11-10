@@ -37,7 +37,7 @@ Il processo è simile a un normale pagamento, con lievi differenze nei parametri
 4. Una volta completata la ricarica, se nel corpo della richiesta [Create Payment API](/api/webapi/create-payment) è stato fornito il campo `callbackUrl`, verrà inviata una notifica [Server-to-Server (S2S)](/api/generale/best-practice/s2s) all'URL specificato. Il cliente verrà quindi reindirizzato all'URL del sito del merchant fornito nella richiesta.
 
 :::warning
-Una volta che il cliente esce dalla pagina di checkout, la transazione sarà già nello stato `Confirmed`. Non è necessario confermarla tramite API e le ricariche del wallet non possono essere rimborsate.
+Una volta che il cliente esce dalla pagina di checkout, la Transaction sarà già nello stato `Confirmed`. Non è necessario confermarla tramite API e le ricariche del wallet non possono essere rimborsate.
 :::
 
 ## Guida rapida
@@ -160,7 +160,7 @@ Il merchant deve configurare due rotte sul proprio sito per gestire il risultato
 - **voucherAmount**: L'importo pagato con buoni pasto in centesimi.
 - **walletAmount**: L'importo pagato con il wallet in centesimi.
 - **transactions**: Il numero di transazioni.
-- **customerId**: L'identificativo Voucherly del cliente nel formato `cs_XXXXXXXXXXX`. Deve essere memorizzato nel sistema del merchant per pagamenti futuri.
+- **customerId**: L'identificativo Voucherly del Customer nel formato `cs_XXXXXXXXXXX`. Deve essere memorizzato nel sistema del merchant per pagamenti futuri.
 - **customerFirstName**: Il nome del cliente.
 - **customerLastName**: Il cognome del cliente.
 - **customerEmail**: L'indirizzo email del cliente.

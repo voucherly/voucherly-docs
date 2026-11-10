@@ -29,7 +29,7 @@ Prima di continuare con questo tutorial, verifica se puoi risparmiare tempo di s
 
 Voucherly fornisce un'API RESTful accessibile tramite richieste HTTP per gestire i tuoi dati. L'API supporta dati esclusivamente in formato JSON.
 
-L'elemento centrale della nostra API è il pagamento, che può essere collegato a più transazioni.
+L'elemento centrale della nostra API è il Payment, che può essere collegato a più Transaction.
 
 1. Inizia testando l'operazione più comune con la nostra API: [Create a Payment](/api/webapi/create-payment).
 

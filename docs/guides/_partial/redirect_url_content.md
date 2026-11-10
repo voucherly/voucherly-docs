@@ -12,6 +12,6 @@
     - **paymentId**. L'identificativo Voucherly univoco del pagamento.
     - **referenceId**. L'ID di riferimento personalizzato del merchant.
     - **amount**. L'importo totale pagato in centesimi.
-    - **customerId**. L'identificativo Voucherly univoco del cliente.
+    - **customerId**. L'identificativo Voucherly univoco del Customer.
     - **tenant**. *live* o *sand*.
 </>

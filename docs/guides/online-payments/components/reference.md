@@ -273,18 +273,18 @@ Una transazione è stata pagata ma il Payment non è ancora chiuso, tipicamente 
 | `paymentId` | `string` | Il Payment. |
 | `paidAmount` | `number` | L'importo pagato finora, in centesimi. |
 | `remainingAmount` | `number` | L'importo ancora da pagare, in centesimi. |
-| `transactionId` | `string` | La transazione appena pagata. |
-| `gatewayName` | `string` | Il nome del gateway di pagamento della transazione. |
+| `transactionId` | `string` | La Transaction appena pagata. |
+| `gatewayName` | `string` | Il nome del gateway di pagamento della Transaction. |
 
 ### onPaymentError(event)
 
-Una transazione è fallita, il Payment è stato chiuso senza successo, oppure il componente non è stato mostrato. Dopo una transazione fallita il componente resta utilizzabile: il cliente può riprovare con un altro metodo. Un Payment chiuso senza successo arriva a questa callback con `redirect: "if_required"`, o con `always` quando era già chiuso al montaggio; altrimenti il cliente viene mandato sul `redirectKoUrl`. I campi dipendono da cosa è successo, e sono tutti facoltativi.
+Una Transaction è fallita, il Payment è stato chiuso senza successo, oppure il componente non è stato mostrato. Dopo una Transaction fallita il componente resta utilizzabile: il cliente può riprovare con un altro metodo. Un Payment chiuso senza successo arriva a questa callback con `redirect: "if_required"`, o con `always` quando era già chiuso al montaggio; altrimenti il cliente viene mandato sul `redirectKoUrl`. I campi dipendono da cosa è successo, e sono tutti facoltativi.
 
 | Campo | Tipo | Descrizione |
 | --- | --- | --- |
 | `paymentId` | `string` | Il Payment. |
-| `error` | `object` | L'errore della transazione fallita, lo stesso oggetto di `transactions[].error` in [Retrieve a Payment](/api/webapi/retrieve-payment): `code` (`Declined`, `Cancelled`, `Generic`, …) e, quando il provider ne ha riportato uno, `externalError` con `message` e `code`. |
-| `gatewayName` | `string` | Il nome del gateway di pagamento della transazione fallita. |
+| `error` | `object` | L'errore della Transaction fallita, lo stesso oggetto di `transactions[].error` in [Retrieve a Payment](/api/webapi/retrieve-payment): `code` (`Declined`, `Cancelled`, `Generic`, …) e, quando il provider ne ha riportato uno, `externalError` con `message` e `code`. |
+| `gatewayName` | `string` | Il nome del gateway di pagamento della Transaction fallita. |
 | `success` | `boolean` | `false` quando il Payment è stato chiuso senza successo. |
 | `status` | `string` | Lo stato del Payment quando è stato chiuso senza successo. |
 | `message` | `string` | Una breve descrizione, quando il problema è avvenuto nel componente e non in una transazione. |

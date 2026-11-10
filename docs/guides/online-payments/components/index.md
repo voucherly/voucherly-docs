@@ -176,8 +176,8 @@ Finché il Payment è ancora aperto, il componente continua a informare la tua p
 
 | Callback | Quando | Cosa fare |
 | --- | --- | --- |
-| `onPaymentPartialComplete` | Una transazione è stata pagata ma resta un importo, tipicamente dopo i buoni pasto. | Niente: il componente si ricarica e chiede l'importo residuo. Aggiorna i tuoi totali se li mostri. |
-| `onPaymentError` | Una transazione è fallita, o il componente non è stato mostrato. | Niente per una transazione fallita: il componente mostra il messaggio e il cliente può riprovare. Un `code` è un errore di integrazione da correggere. |
+| `onPaymentPartialComplete` | Una Transaction è stata pagata ma resta un importo, tipicamente dopo i buoni pasto. | Niente: il componente si ricarica e chiede l'importo residuo. Aggiorna i tuoi totali se li mostri. |
+| `onPaymentError` | Una Transaction è fallita, o il componente non è stato mostrato. | Niente per una Transaction fallita: il componente mostra il messaggio e il cliente può riprovare. Un `code` è un errore di integrazione da correggere. |
 
 Un Payment già chiuso quando monti il componente — il cliente ricarica il checkout dopo aver pagato, o ci torna — non viene mai reindirizzato: scatta invece `onPaymentComplete` o `onPaymentError`. Così la pagina che monta il componente può essere anche la tua pagina di esito, senza far girare il cliente in tondo.
 
@@ -195,7 +195,7 @@ Voucherly.init({
         // Il cliente ha pagato: conferma l'esito dal tuo server, poi mostra la tua conferma.
     },
     onPaymentError: function (event) {
-        // Con success: false il Payment è stato chiuso senza successo; altrimenti una transazione è fallita e il cliente può riprovare.
+        // Con success: false il Payment è stato chiuso senza successo; altrimenti una Transaction è fallita e il cliente può riprovare.
     },
 });
 ```

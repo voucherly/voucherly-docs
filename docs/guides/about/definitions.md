@@ -35,9 +35,9 @@ A ogni cliente in Voucherly viene assegnato un ID univoco che consente l'accesso
 
 ### Payment (Pagamento)
 
-L'entità che rappresenta l'azione di pagamento di un cliente. Un pagamento deve essere creato tramite API ogni volta che un cliente intende effettuare un pagamento. Voucherly genera una sessione in cui il cliente viene reindirizzato per selezionare i gateway di pagamento e completare il processo.
+L'entità che rappresenta l'azione di pagamento di un cliente. Un Payment deve essere creato tramite API ogni volta che un cliente intende effettuare un pagamento. Voucherly genera una sessione in cui il cliente viene reindirizzato per selezionare i gateway di pagamento e completare il processo.
 
-Un pagamento include più transazioni, ciascuna delle quali rappresenta un tentativo di pagamento tramite uno specifico gateway.
+Un Payment include più Transaction, ciascuna delle quali rappresenta un tentativo di pagamento tramite uno specifico gateway.
 
 Consulta la guida [Come funzionano i pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) per una spiegazione dettagliata.
 

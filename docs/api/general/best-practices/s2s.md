@@ -57,7 +57,7 @@ Se il tuo server incontra un errore durante la gestione del callback, Voucherly 
 - **MerchantId** *(string)*  
   L'identificatore del merchant.  
 - **CustomerId** *(string)*  
-  L'ID del cliente per questo pagamento.  
+  L'ID del Customer di questo Payment.  
 - **TotalAmount** *(long)*  
   L'importo totale prima degli sconti.  
 - **DiscountAmount** *(long)*  
@@ -120,7 +120,7 @@ Il server del merchant deve rispondere con un codice di stato HTTP `200 OK` e un
 Voucherly chiama il tuo endpoint fino a 3 volte, a un secondo di distanza, finché non riceve la risposta attesa. Un errore di connessione, o nessuna risposta entro 60 secondi, interrompe subito i tentativi.
 
 :::warning
-Se il problema persiste, il pagamento verrà annullato e tutte le transazioni verranno rimborsate.
+Se il problema persiste, il Payment verrà annullato e tutte le Transaction verranno rimborsate.
 :::
 
 Se l'errore è *gestito* e non sei interessato a un nuovo tentativo, puoi specificare `stop` come `true`.

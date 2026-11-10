@@ -57,7 +57,7 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 
 **Processo a 2 fasi** significa che la transazione viene prima autorizzata e poi catturata in un passaggio separato. I gateway che non lo prevedono incassano direttamente al checkout.
 
-**Rimborsabile parzialmente** significa che una transazione nello stato `Confirmed` può essere rimborsata per un importo inferiore al `ConfirmedAmount`.
+**Rimborsabile parzialmente** significa che una Transaction nello stato `Confirmed` può essere rimborsata per un importo inferiore al `ConfirmedAmount`.
 :::
 
 :::note
@@ -77,7 +77,7 @@ Il Wallet è un gateway di pagamento virtuale fornito da Voucherly che consente 
 Un ulteriore vantaggio del Wallet è la sua flessibilità: elimina la limitazione dei buoni pasto dal valore fisso, offrendo ai clienti maggiore libertà nell'utilizzo dei propri fondi.
 
 :::warning
-Per utilizzare il Wallet, il sito web del merchant deve memorizzare l'ID cliente Voucherly, che viene creato quando un cliente effettua il suo primo pagamento. Questo ID deve essere incluso in tutti i pagamenti successivi.
+Per utilizzare il Wallet, il sito web del merchant deve memorizzare il Customer ID di Voucherly, che viene creato quando un cliente effettua il suo primo pagamento. Questo ID deve essere incluso in tutti i pagamenti successivi.
 
 Scopri di più nella nostra guida [Gestione del cliente](/api/generale/best-practice/gestione-clienti).
 :::

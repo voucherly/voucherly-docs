@@ -147,7 +147,7 @@ Assicurati che il tuo endpoint elabori correttamente le callback. In caso contra
         Per confermare un pagamento, puoi utilizzare la Dashboard oppure la [Confirm Payment API](/api/webapi/confirm-payment).
 
         Se l'ordine non può essere evaso o il cliente annulla prima della spedizione, utilizza la [Refund Payment API](/api/webapi/refund-payment). Voucherly:
-        - Annullerà automaticamente le transazioni nello stato `PAID`.
-        - Rimborserà le transazioni nello stato `Confirmed`.
+        - Annullerà automaticamente le Transaction nello stato `PAID`.
+        - Rimborserà le Transaction nello stato `Confirmed`.
     </>
 </Accordion>
