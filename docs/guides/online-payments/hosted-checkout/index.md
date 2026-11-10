@@ -1,13 +1,14 @@
 ---
+slug: /guide/pagamenti-online/checkout-ospitato
 sidebar_position: 1
-description: "Accept online payments with the hosted Voucherly Checkout: create a Payment, redirect the customer, handle the S2S callback and show a success page."
+description: "Accetta pagamenti online con il Voucherly Checkout ospitato: crea un Payment, reindirizza il cliente, gestisci la callback S2S e mostra una pagina di successo."
 keywords:
-  - online payments
-  - hosted checkout
+  - pagamenti online
+  - checkout ospitato
   - Voucherly Checkout
-  - ecommerce integration
+  - integrazione e-commerce
   - Create Payment API
-  - S2S callback
+  - callback S2S
 ---
 
 import Accordion from '@site/src/components/Accordion';
@@ -16,29 +17,29 @@ import PrefillCustomerContent from './../../_partial/prefill_customer_content.md
 import CreatePaymentContent from './../../_partial/create_payment_content.md';
 import RedirectUrlContent from './../../_partial/redirect_url_content.md';
 
-# Hosted checkout
+# Checkout ospitato
 
-Use a prebuilt checkout page, hosted by Voucherly, to start accepting online payments: your site creates a Payment and redirects the customer to it.
+Usa una pagina di checkout predefinita, ospitata da Voucherly, per iniziare ad accettare pagamenti online: il tuo sito crea un Payment e reindirizza lì il cliente.
 
-:::info Other ways to accept online payments
-A payment form embedded in your own page, a checkout built on your own gateway selector, or a plugin for your e-commerce platform: see [Online payments](/guides/online-payments) to choose.
+:::info Altri modi per accettare pagamenti online
+Un modulo di pagamento incorporato nella tua pagina, un checkout costruito sul tuo selettore di gateway, o un plugin per la tua piattaforma e-commerce: consulta [Pagamenti online](/guide/pagamenti-online) per scegliere.
 :::
 
-## Quick Guide
+## Guida rapida
 
-Let’s walk through a simple example of integrating the payment flow from scratch.
+Vediamo un semplice esempio di integrazione del flusso di pagamento da zero.
 
-### 1. Redirect your customer to Voucherly Checkout
+### 1. Reindirizza il cliente a Voucherly Checkout
 
-The simplest and preferred way to integrate Voucherly is to use Voucherly Checkout as a single checkout page for all your Payment gateways.
+Il modo più semplice e consigliato per integrare Voucherly è utilizzare Voucherly Checkout come un'unica pagina di checkout per tutti i tuoi gateway di pagamento.
 
-Add a checkout button to your website that calls a server-side endpoint to create a Payment in Voucherly.
+Aggiungi un pulsante di checkout al tuo sito che richiami un endpoint lato server per creare un pagamento in Voucherly.
 
-![Hosted checkout flow](./hosted_checkout.svg)
+![Flusso del checkout ospitato](./hosted_checkout.svg)
 
 <CreatePaymentContent />
 
-**Example request**
+**Esempio di richiesta**
 
 ```json
 {
@@ -74,15 +75,15 @@ Add a checkout button to your website that calls a server-side endpoint to creat
 }
 ```
 
-After creating a Payment, redirect your customer to the `checkoutUrl` returned in the response.
+Dopo aver creato un pagamento, reindirizza il cliente al `checkoutUrl` restituito nella risposta.
 
 :::tip QR code
 
-When the consumer is physically purchasing in a Brick & Mortar store with a screen facing them, you can display the `checkoutUrl` as a QR code.
+Quando il consumatore effettua un acquisto fisicamente in un negozio Brick & Mortar con uno schermo rivolto verso di lui, puoi mostrare il `checkoutUrl` sotto forma di QR code.
 
 :::
 
-**Example response**
+**Esempio di risposta**
 
 ```json
 {
@@ -97,29 +98,29 @@ When the consumer is physically purchasing in a Brick & Mortar store with a scre
 }
 ```
 
-### 2. Handle before-redirect Callback S2S
+### 2. Gestisci la callback S2S prima del reindirizzamento
 
-Voucherly sends a callback when a customer successfully completes a Payment. This callback can be used to:
+Voucherly invia una callback quando un cliente completa con successo un pagamento. Questa callback può essere utilizzata per:
 
-- Send an order confirmation email to your customer.
-- Record the sale in a database.
-- Initiate a shipping workflow.
+- Inviare al cliente un'email di conferma dell'ordine.
+- Registrare la vendita in un database.
+- Avviare un flusso di spedizione.
 
-It's highly recommended to listen for this callback instead of relying solely on the customer being redirected back to your website. Triggering actions only from your Checkout landing page can be unreliable.
+Si consiglia vivamente di rimanere in ascolto di questa callback invece di affidarsi esclusivamente al reindirizzamento del cliente al tuo sito. Attivare le azioni solo dalla pagina di destinazione del Checkout può risultare inaffidabile.
 
-Voucherly sends the callback to the endpoint specified as `callbackUrl` in the [Create Payment API](/api/webapi/create-payment) request.
+Voucherly invia la callback all'endpoint specificato come `callbackUrl` nella richiesta [Create Payment API](/api/webapi/create-payment).
 
-Learn more in our [Callback S2S](/api/general/best-practices/s2s) guide.
+Scopri di più nella nostra guida [Callback S2S](/api/generale/best-practice/s2s).
 
 :::warning
-Make sure your endpoint processes callbacks correctly. Failure to do so may lead to payment cancellations and refunds.
+Assicurati che il tuo endpoint elabori correttamente le callback. In caso contrario, i pagamenti potrebbero essere annullati e rimborsati.
 :::
 
-### 3. Show a success page
+### 3. Mostra una pagina di successo
 
 <RedirectUrlContent />
 
-## Next steps
+## Passi successivi
 
 <Accordion>
     <PrefillCustomerTitle />
@@ -128,25 +129,25 @@ Make sure your endpoint processes callbacks correctly. Failure to do so may lead
 
 <Accordion>
     <>
-        ### Separate authorization and confirm
+        ### Separare autorizzazione e conferma
     </>
     <>
         :::tip
-        Please refer to [How Payments work](/guides/about/resources/payments-lifecycle) for a complete guide on how payments work in Voucherly.
+        Consulta [Come funzionano i pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) per una guida completa sul funzionamento dei pagamenti in Voucherly.
         :::
 
-        Voucherly supports two-step card payments, allowing you to first authorize a card and capture the funds later. When Voucherly authorizes a payment, the card issuer guarantees the funds and places a hold for the payment amount on the customer’s card. You then have a specified timeframe to capture the funds (depending on the card, usually 5 days). If the payment is not captured before the authorization expires, the payment is canceled, and the issuer releases the held funds.
+        Voucherly supporta i pagamenti con carta in due fasi, consentendoti di autorizzare prima una carta e catturare i fondi in un secondo momento. Quando Voucherly autorizza un pagamento, l'emittente della carta garantisce i fondi e blocca l'importo del pagamento sulla carta del cliente. Hai quindi a disposizione un intervallo di tempo specifico per catturare i fondi (a seconda della carta, di solito 5 giorni). Se il pagamento non viene catturato prima della scadenza dell'autorizzazione, il pagamento viene annullato e l'emittente rilascia i fondi bloccati.
 
-        To enable this process, set the `isAutoConfirm` parameter to `false` when creating the Payment. This instructs Voucherly to authorize the amount on the customer’s card without capturing it immediately.
+        Per abilitare questo processo, imposta il parametro `isAutoConfirm` su `false` durante la creazione del pagamento. Questo indica a Voucherly di autorizzare l'importo sulla carta del cliente senza catturarlo immediatamente.
 
         :::warning
-        If no value is specified, the default behavior defined in **Attività > Checkout > Contabilizzazione automatica**  will be applied.
+        Se non viene specificato alcun valore, verrà applicato il comportamento predefinito definito in **Attività > Checkout > Contabilizzazione automatica**.
         :::
 
-        To confirm a payment, you can use either the Dashboard or the [Confirm Payment API](/api/webapi/confirm-payment).
+        Per confermare un pagamento, puoi utilizzare la Dashboard oppure la [Confirm Payment API](/api/webapi/confirm-payment).
 
-        If the order cannot be fulfilled or the customer cancels before shipment, use the [Refund Payment API](/api/webapi/refund-payment). Voucherly will:
-        - Automatically cancel transactions in the `PAID` status.
-        - Refund transactions in the `Confirmed` status.
+        Se l'ordine non può essere evaso o il cliente annulla prima della spedizione, utilizza la [Refund Payment API](/api/webapi/refund-payment). Voucherly:
+        - Annullerà automaticamente le transazioni nello stato `PAID`.
+        - Rimborserà le transazioni nello stato `Confirmed`.
     </>
 </Accordion>

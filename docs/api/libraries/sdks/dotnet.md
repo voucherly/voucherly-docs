@@ -1,12 +1,13 @@
 ---
+slug: /api/librerie/sdk/dotnet
 sidebar_position: 1
-description: "Official Voucherly .NET SDK supporting .NET 8 and .NET 10 to integrate the Voucherly payment API via NuGet."
+description: "SDK .NET ufficiale di Voucherly, compatibile con .NET 8 e .NET 10, per integrare l'API di pagamento Voucherly tramite NuGet."
 keywords:
-  - Voucherly .NET SDK
+  - SDK .NET Voucherly
   - NuGet
-  - C# library
+  - libreria C#
   - dotnet
-  - payment API
+  - API pagamento
 ---
 
 # .NET SDK
@@ -14,8 +15,8 @@ keywords:
 [![NuGet](https://img.shields.io/nuget/v/voucherly.sdk.svg)](https://www.nuget.org/packages/Voucherly.Sdk/)
 [![Release](https://github.com/voucherly/voucherly-dotnet-sdk/actions/workflows/release.yml/badge.svg)](https://github.com/voucherly/voucherly-dotnet-sdk/actions/workflows/release.yml)
 
-The official [Voucherly][voucherly] .NET library, supporting .NET 8 and .NET 10.
+La libreria .NET ufficiale di [Voucherly][voucherly], che supporta .NET 8 e .NET 10.
 
-Please refer to [Github](https://github.com/voucherly/voucherly-dotnet-sdk).
+Consulta [Github](https://github.com/voucherly/voucherly-dotnet-sdk).
 
 [voucherly]: https://voucherly.it

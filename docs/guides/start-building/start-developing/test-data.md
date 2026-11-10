@@ -1,51 +1,52 @@
 ---
+slug: /guide/inizia-a-integrare/inizia-a-sviluppare/dati-di-test
 sidebar_position: 4
-description: "Test data for the Voucherly sandbox: the codes of the Demo Voucherly meal vouchers, the test cards, and how to simulate a failed payment, a failed confirmation or a failed refund."
+description: "Dati di test per l'ambiente sandbox di Voucherly: i codici dei buoni pasto Demo Voucherly, le carte di test, e come simulare un pagamento fallito, una contabilizzazione fallita o un rimborso fallito."
 keywords:
-  - test data
+  - dati di test
   - sandbox
   - Demo Voucherly
-  - test cards
-  - meal vouchers
+  - carte di test
+  - buoni pasto
   - Voucherly
 ---
 
-# Test data
+# Dati di test
 
-In the sandbox environment nothing is charged: the gateways you enable there run against the test systems of the providers, or against Demo Voucherly, a gateway that exists only to let you rehearse every outcome. Use the `sk_sand_` key on your server and, with [Voucherly Components](/guides/online-payments/components), the `pk_sand_` key on your page: the sandbox gateways are configured in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** with the test toggle on.
+Nell'ambiente sandbox non viene addebitato nulla: i gateway che attivi lì lavorano contro i sistemi di test dei provider, oppure contro Demo Voucherly, un gateway che esiste solo per farti provare ogni esito. Usa la chiave `sk_sand_` sul tuo server e, con i [Voucherly Components](/guide/pagamenti-online/components), la chiave `pk_sand_` nella tua pagina: i gateway sandbox si configurano in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** con la modalità test attiva.
 
 ## Demo Voucherly
 
-Demo Voucherly simulates a meal voucher. The customer types a seven-digit code where the **first three digits choose the outcome** and the **last four are the amount in cents**: `4201200` pays 12,00 €, `4200750` pays 7,50 €.
+Demo Voucherly simula un buono pasto. Il cliente digita un codice di sette cifre in cui **le prime tre scelgono l'esito** e **le ultime quattro sono l'importo in centesimi**: `4201200` paga 12,00 €, `4200750` paga 7,50 €.
 
-| Prefix | Payment | Confirmation | Refund |
+| Prefisso | Pagamento | Contabilizzazione | Rimborso |
 | --- | --- | --- | --- |
-| `420` | succeeds | succeeds | succeeds |
-| `777` | succeeds | succeeds | fails: the transaction ends in `ImpossibleRefund` |
-| `069` | succeeds | fails: the transaction has expired when you confirm it | — |
-| `619` | succeeds | fails with a gateway error | fails with a gateway error |
-| `090` | fails with a payment error | — | — |
-| anything else | rejected as an invalid code | — | — |
+| `420` | riesce | riesce | riesce |
+| `777` | riesce | riesce | fallisce: la transazione finisce in `ImpossibleRefund` |
+| `069` | riesce | fallisce: la transazione risulta scaduta quando la confermi | — |
+| `619` | riesce | fallisce con un errore del gateway | fallisce con un errore del gateway |
+| `090` | fallisce con un errore di pagamento | — | — |
+| qualsiasi altro | rifiutato come codice non valido | — | — |
 
-Like every meal voucher, Demo Voucherly is captured at checkout: a Payment paid only with it lands directly in `Confirmed`, and you never call [Confirm a Payment](/api/webapi/confirm-payment) for it. It can also pay part of a Payment — `4200500` on a 17,00 € Payment leaves 12,00 € to cover with another method — which is the way to test partial payments.
+Come ogni buono pasto, Demo Voucherly viene catturato al checkout: un Payment pagato solo con questo arriva direttamente in `Confirmed`, e non chiami mai [Confirm a Payment](/api/webapi/confirm-payment) per lui. Può anche pagare una parte di un Payment — `4200500` su un Payment da 17,00 € lascia 12,00 € da coprire con un altro metodo — ed è il modo per provare i pagamenti parziali.
 
-## Cards
+## Carte
 
-The card gateway of the sandbox accepts these test cards, with any future expiry date and any three-digit CVC:
+Il gateway carte della sandbox accetta queste carte di test, con una data di scadenza futura qualsiasi e un CVC di tre cifre qualsiasi:
 
-| Card number | Outcome |
+| Numero di carta | Esito |
 | --- | --- |
-| `4242 4242 4242 4242` | succeeds without authentication |
-| `4000 0025 0000 3155` | asks for 3-D Secure authentication, then succeeds |
-| `4000 0000 0000 9995` | declined for insufficient funds |
-| `4000 0000 0000 0002` | declined |
+| `4242 4242 4242 4242` | riesce senza autenticazione |
+| `4000 0025 0000 3155` | chiede l'autenticazione 3-D Secure, poi riesce |
+| `4000 0000 0000 9995` | rifiutata per fondi insufficienti |
+| `4000 0000 0000 0002` | rifiutata |
 
-Card transactions are authorized at checkout and captured when you confirm the Payment, unless it was created with `isAutoConfirm: true`: after a card payment the Payment is `Paid` until you call [Confirm a Payment](/api/webapi/confirm-payment). See [How Payments work](/guides/about/resources/payments-lifecycle).
+Le transazioni con carta vengono autorizzate al checkout e catturate quando confermi il Payment, a meno che non sia stato creato con `isAutoConfirm: true`: dopo un pagamento con carta il Payment è `Paid` finché non chiami [Confirm a Payment](/api/webapi/confirm-payment). Vedi [Come funzionano i pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti).
 
-## Other gateways
+## Altri gateway
 
-MultiSafepay, PayPal, Satispay and the other providers use their own test environments and test accounts when the sandbox toggle is on. The credentials and the test instruments are those documented by each provider; the ones Voucherly configures by default for the sandbox are shown in the gateway settings of the Dashboard.
+MultiSafepay, PayPal, Satispay e gli altri provider usano i propri ambienti e account di test quando la modalità test è attiva. Le credenziali e gli strumenti di test sono quelli documentati da ciascun provider; quelli che Voucherly configura di default per la sandbox sono visibili nelle impostazioni del gateway nella Dashboard.
 
 :::tip
-For most integrations, Demo Voucherly plus one card gateway are enough to rehearse every case that matters: a full payment, a partial payment completed with a second method, a declined payment, a failed confirmation and a failed refund.
+Per la maggior parte delle integrazioni, Demo Voucherly più un gateway carte bastano a provare ogni caso che conta: un pagamento completo, un pagamento parziale completato con un secondo metodo, un pagamento rifiutato, una contabilizzazione fallita e un rimborso fallito.
 :::

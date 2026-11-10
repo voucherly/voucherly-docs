@@ -1,38 +1,39 @@
 ---
 sidebar_position: 1
-description: "Quickstart for the Voucherly REST API: create your first Payment from your server, read the request log in the Dashboard and learn which API key goes where."
+slug: /guide/inizia-a-integrare/inizia-a-sviluppare/quickstart
+description: "Quickstart per le API REST di Voucherly: crea il tuo primo Payment dal server, leggi il log delle richieste nella Dashboard e scopri quale API key va dove."
 keywords:
-  - Voucherly API
+  - API Voucherly
   - quickstart
-  - create payment
-  - REST API
-  - API keys
-  - test mode
+  - crea pagamento
+  - API REST
+  - API key
+  - modalità test
 ---
 
 # Quickstart
 
-Your first Payment through the API, in a few minutes: it is the server-side step every integration in [Online payments](/guides/online-payments) starts from.
+Il tuo primo Payment attraverso le API, in pochi minuti: è il passo lato server da cui parte ogni integrazione in [Pagamenti online](/guide/pagamenti-online).
 
-## Prerequisites
+## Prerequisiti
 
-- Read **[Getting started with a Voucherly account](/guides/start-building)**.
+- Leggi **[Come iniziare con un account Voucherly](/guide/inizia-a-integrare)**.
 
-Before continuing with this tutorial, see if you can save development time with our [postman collection](/api/postman) or range of [wrappers and SDKs](/api/libraries).
+Prima di continuare con questo tutorial, verifica se puoi risparmiare tempo di sviluppo con la nostra [collection Postman](/api/postman) o la gamma di [wrapper e SDK](/api/librerie).
 
 ## Tutorial
 
-### 1. Check how [Voucherly APIs work](/api/webapi/voucherly-api)
+### 1. Scopri come [funzionano le API Voucherly](/api/webapi/voucherly-api)
 
-### 2. Create a Payment
+### 2. Crea un pagamento
 
-Voucherly provides a RESTful API accessible through HTTP requests to manage your data. The API supports data exclusively in JSON format.
+Voucherly fornisce un'API RESTful accessibile tramite richieste HTTP per gestire i tuoi dati. L'API supporta dati esclusivamente in formato JSON.
 
-The core element of our API is the payment, which can be linked to multiple transactions.
+L'elemento centrale della nostra API è il pagamento, che può essere collegato a più transazioni.
 
-1. Begin by testing the most common operation with our API: [Create a Payment](/api/webapi/create-payment).
+1. Inizia testando l'operazione più comune con la nostra API: [Crea un pagamento](/api/webapi/create-payment).
 
-**Example request**
+**Esempio di richiesta**
 
 ```json
 {
@@ -67,9 +68,9 @@ The core element of our API is the payment, which can be linked to multiple tran
 }
 ```
 
-1. Check that you receive a 200 OK response.
+1. Verifica di ricevere una risposta 200 OK.
 
-**Example response**
+**Esempio di risposta**
 
 ```json
 {
@@ -113,28 +114,28 @@ The core element of our API is the payment, which can be linked to multiple tran
 }
 ```
 
-1. Open the `checkoutUrl` to complete payment on the checkout page.
+1. Apri il `checkoutUrl` per completare il pagamento nella pagina di checkout.
 
-### 3. View logs
+### 3. Visualizza i log
 
-Whenever you make a call to Voucherly APIs, Voucherly creates and stores the API request for your merchant account. The API key you specify for the request determines whether the objects are stored in test or live mode. For example, if the last request used your test API secret key, Voucherly stored the objects in test mode.
+Ogni volta che effettui una chiamata alle API Voucherly, Voucherly crea e memorizza la richiesta API per il tuo account merchant. La API key che specifichi per la richiesta determina se gli oggetti vengono memorizzati in modalità test o live. Per esempio, se l'ultima richiesta ha utilizzato la tua secret key di test, Voucherly ha memorizzato gli oggetti in modalità test.
 
-To view the API request log:
+Per visualizzare il log delle richieste API:
 
-1. Open the **Sviluppatori > [Log](https://dashboard.voucherly.it/Developer/Log)** page.
-2. Click on the specific request `200 OK POST /v1/payments`.
+1. Apri la pagina **Sviluppatori > [Log](https://dashboard.voucherly.it/Developer/Log)**.
+2. Clicca sulla richiesta specifica `200 OK POST /v1/payments`.
 
-### 4. Store your API keys
+### 4. Conserva le tue API key
 
-All merchant accounts have a total of four API keys by default — two for test mode and two for live mode:
+Tutti gli account merchant hanno per impostazione predefinita un totale di quattro API key — due per la modalità test e due per la modalità live:
 
-- **Test mode secret key**. Use this key to authenticate requests on your server when in test mode. By default, this key can be used to perform any API request without restriction.
-- **Test mode publishable key**. Use this key in your page to render [Voucherly Components](/guides/online-payments/components) while you test. It cannot call the API.
-- **Live mode secret key**. Use this key to authenticate requests on your server when in live mode. By default, this key can be used to perform any API request without restriction.
-- **Live mode publishable key**. Use this key in your page to render Voucherly Components when you’re ready to launch.
+- **Secret key modalità test**. Usa questa chiave per autenticare le richieste sul tuo server in modalità test. Per impostazione predefinita, questa chiave può essere usata per eseguire qualsiasi richiesta API senza restrizioni.
+- **Publishable key modalità test**. Usa questa chiave nella tua pagina per mostrare i [Voucherly Components](/guide/pagamenti-online/components) mentre fai i test. Non può chiamare l'API.
+- **Secret key modalità live**. Usa questa chiave per autenticare le richieste sul tuo server in modalità live. Per impostazione predefinita, questa chiave può essere usata per eseguire qualsiasi richiesta API senza restrizioni.
+- **Publishable key modalità live**. Usa questa chiave nella tua pagina per mostrare i Voucherly Components quando sei pronto al lancio.
 
-You can find your secret and publishable keys in **Sviluppatori > [API keys](https://dashboard.voucherly.it/Developer/ApiKey)**.
+Puoi trovare le tue secret key e publishable key in **Sviluppatori > [API keys](https://dashboard.voucherly.it/Developer/ApiKey)**.
 
-:::warning Testing and development
-Use only your test API keys for testing and development. This ensures that you don’t accidentally modify your live customers or charges.
+:::warning Test e sviluppo
+Usa solo le tue API key di test per i test e lo sviluppo. Questo garantisce che tu non modifichi accidentalmente i tuoi clienti o addebiti in modalità live.
 :::

@@ -1,14 +1,15 @@
 ---
+slug: /guide/pagamenti-online/components
 title: Voucherly Components
-sidebar_label: Integration guide
+sidebar_label: Guida all'integrazione
 sidebar_position: 1
-description: "Embed the Voucherly payment form in your own checkout page with Voucherly.js: cards, meal vouchers, Apple Pay and Google Pay without redirecting your customer."
+description: "Incorpora il modulo di pagamento Voucherly nella tua pagina di checkout con Voucherly.js: carte, buoni pasto, Apple Pay e Google Pay senza reindirizzare il cliente."
 keywords:
   - Voucherly Components
   - Voucherly.js
-  - embedded checkout
-  - payment form
-  - meal vouchers
+  - checkout incorporato
+  - modulo di pagamento
+  - buoni pasto
   - Apple Pay
   - Google Pay
   - publishable key
@@ -19,49 +20,49 @@ import TabItem from '@theme/TabItem';
 
 # Voucherly Components
 
-## Introduction
+## Introduzione
 
-Voucherly Components let you accept payments **inside your own checkout page**, without sending the customer to the Voucherly Checkout. You add a small JavaScript library, Voucherly.js, and mount a component in a container of your page: Voucherly renders the payment form there, with every payment method enabled on your account — cards, meal vouchers, Apple Pay, Google Pay, personal credit and prepaid quota — and, once the payment is over, takes the customer to your result page.
+I Voucherly Components ti permettono di accettare pagamenti **dentro la tua pagina di checkout**, senza mandare il cliente sul Voucherly Checkout. Aggiungi una piccola libreria JavaScript, Voucherly.js, e monti un componente (component) in un contenitore della tua pagina: Voucherly ci disegna il modulo di pagamento, con tutti i metodi di pagamento attivi sul tuo account — carte, buoni pasto, Apple Pay, Google Pay, credito personale e quota prepagata — e, a pagamento concluso, porta il cliente sulla tua pagina di esito.
 
-:::info Looking for the hosted checkout?
-If you prefer to redirect your customer to a page hosted by Voucherly, follow [Hosted checkout](/guides/online-payments/hosted-checkout) instead. The server-side part is the same: both start by creating a Payment.
+:::info Cerchi il checkout ospitato?
+Se preferisci reindirizzare il cliente a una pagina ospitata da Voucherly, segui [Checkout ospitato](/guide/pagamenti-online/checkout-ospitato). La parte lato server è la stessa: entrambe partono dalla creazione di un Payment.
 :::
 
-Two components are available:
+Sono disponibili due componenti:
 
-- **Payment Component** — the full payment form: an accordion with the available payment methods, the meal voucher flows, saved payment methods and the pay button. It is rendered inside your page, or in a popup window over it.
-- **Express Checkout Component** — a row of one-click buttons (Apple Pay, Google Pay, personal credit, prepaid quota) to place above your form, for customers who want to pay in one gesture.
+- **Payment Component** — il modulo di pagamento completo: una fisarmonica con i metodi di pagamento disponibili, i flussi dei buoni pasto, i metodi di pagamento salvati e il pulsante di pagamento. Viene mostrato dentro la tua pagina, oppure in una finestra popup sopra di essa.
+- **Express Checkout Component** — una fila di pulsanti a un tocco (Apple Pay, Google Pay, credito personale, quota prepagata) da mettere sopra il tuo modulo, per i clienti che vogliono pagare in un gesto.
 
-By the end of this guide, you'll know how to:
+Al termine di questa guida saprai come:
 
-- Create a Payment on your server and render it in your page
-- Take the customer to your result page, or handle the result without leaving your page
-- Support payment methods that redirect the customer to a provider
-- Choose between the inline component and the popup
-- Customize the look of the components to match your site
+- Creare un Payment sul tuo server e mostrarlo nella tua pagina
+- Portare il cliente sulla tua pagina di esito, oppure gestire l'esito senza lasciare la tua pagina
+- Supportare i metodi di pagamento che reindirizzano il cliente a un provider
+- Scegliere tra il componente inline e il popup
+- Personalizzare l'aspetto dei componenti per adattarli al tuo sito
 
-## How it works
+## Come funziona
 
-1. **Your server creates a Payment** with the [Create a Payment](/api/webapi/create-payment) API and your secret key (chiave segreta), exactly as for the hosted checkout, and passes the Payment id to your page.
-2. **Your page loads Voucherly.js** and mounts a component with your publishable key (chiave pubblicabile) and the Payment id. The component runs in an iframe served by `checkout.voucherly.it`, or in a popup window on the Voucherly checkout: the customer's payment details are collected there and never reach your page.
-3. **The customer pays.** Cards, meal vouchers and wallets are handled inside the component. Payment methods that need the provider's own page, such as PayPal or Satispay, navigate the whole page and bring the customer back to yours — or, in a popup, stay inside the popup.
-4. **The customer lands on your result page.** When the Payment closes, Voucherly.js sends your page to the `redirectOkUrl` or the `redirectKoUrl` of the Payment, as the hosted checkout does. If your page must stay where it is, `redirect: "if_required"` delivers the outcome to your callbacks instead.
-5. **Voucherly notifies your server** through the S2S callback and the API. Your server is the source of truth for fulfilling the order.
+1. **Il tuo server crea un Payment** con l'API [Create a Payment](/api/webapi/create-payment) e la tua secret key (chiave segreta), esattamente come per il checkout ospitato, e passa l'id del Payment alla tua pagina.
+2. **La tua pagina carica Voucherly.js** e monta un componente con la tua publishable key (chiave pubblicabile) e l'id del Payment. Il componente gira in un iframe servito da `checkout.voucherly.it`, oppure in una finestra popup sul checkout Voucherly: i dati di pagamento del cliente vengono raccolti lì e non raggiungono mai la tua pagina.
+3. **Il cliente paga.** Carte, buoni pasto e wallet vengono gestiti dentro il componente. I metodi di pagamento che richiedono la pagina del provider, come PayPal o Satispay, navigano l'intera pagina e riportano il cliente sulla tua — oppure, in un popup, restano dentro il popup.
+4. **Il cliente arriva sulla tua pagina di esito.** Quando il Payment si chiude, Voucherly.js manda la tua pagina sul `redirectOkUrl` o sul `redirectKoUrl` del Payment, come fa il checkout ospitato. Se la tua pagina deve restare dov'è, `redirect: "if_required"` consegna invece l'esito alle tue callback.
+5. **Voucherly avvisa il tuo server** attraverso la callback S2S e l'API. Il tuo server è la fonte di verità per evadere l'ordine.
 
-## Prerequisites
+## Prerequisiti
 
-- Read **[Getting started with a Voucherly account](/guides/start-building)**.
-- Your secret key and publishable key from **Sviluppatori > [API keys](https://dashboard.voucherly.it/Developer/ApiKey)**. Use the `sk_sand_` and `pk_sand_` pair while you develop.
-- At least one payment gateway enabled in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)**.
-- A page served over **HTTPS**. Apple Pay, Google Pay and the payment providers only work on secure origins.
+- Leggi **[Come iniziare con un account Voucherly](/guide/inizia-a-integrare)**.
+- La tua secret key e la tua publishable key da **Sviluppatori > [API keys](https://dashboard.voucherly.it/Developer/ApiKey)**. Usa la coppia `sk_sand_` e `pk_sand_` mentre sviluppi.
+- Almeno un gateway di pagamento attivo in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)**.
+- Una pagina servita in **HTTPS**. Apple Pay, Google Pay e i provider di pagamento funzionano solo su origini sicure.
 
-## Quick guide
+## Guida rapida
 
-### 1. Create a Payment
+### 1. Crea un Payment
 
-From your server, call [Create a Payment](/api/webapi/create-payment) with your secret key. Keep the `id` of the response: your page needs it to mount the component.
+Dal tuo server, chiama [Create a Payment](/api/webapi/create-payment) con la tua secret key. Conserva l'`id` della risposta: la tua pagina ne ha bisogno per montare il componente.
 
-**Example request**
+**Esempio di richiesta**
 
 ```json
 {
@@ -87,7 +88,7 @@ From your server, call [Create a Payment](/api/webapi/create-payment) with your 
 }
 ```
 
-**Example response**
+**Esempio di risposta**
 
 ```json
 {
@@ -99,18 +100,18 @@ From your server, call [Create a Payment](/api/webapi/create-payment) with your 
 }
 ```
 
-`redirectOkUrl` and `redirectKoUrl` are your result pages: when the Payment closes, Voucherly.js sends the customer to the first if the Payment was paid and to the second otherwise. They are the same URLs the hosted checkout uses, with the same query string.
+`redirectOkUrl` e `redirectKoUrl` sono le tue pagine di esito: quando il Payment si chiude, Voucherly.js manda il cliente sulla prima se il Payment è stato pagato e sulla seconda altrimenti. Sono gli stessi URL che usa il checkout ospitato, con la stessa query string.
 
-:::warning Keep the secret key on your server
-Never send your `sk_` key to the browser. Voucherly.js refuses it, and anyone reading your page source could use it to operate your account.
+:::warning Tieni la secret key sul tuo server
+Non inviare mai la tua chiave `sk_` al browser. Voucherly.js la rifiuta, e chiunque legga il sorgente della tua pagina potrebbe usarla per operare sul tuo account.
 :::
 
-### 2. Include Voucherly.js
+### 2. Includi Voucherly.js
 
 <Tabs groupId="install" queryString>
-<TabItem value="script" label="Script tag">
+<TabItem value="script" label="Tag script">
 
-Add the script to the page where the customer pays:
+Aggiungi lo script alla pagina in cui il cliente paga:
 
 ```html
 <script src="https://js.voucherly.it/embed/v1/voucherly.js"></script>
@@ -119,7 +120,7 @@ Add the script to the page where the customer pays:
 </TabItem>
 <TabItem value="npm" label="npm">
 
-Install the loader and call `loadVoucherly()`: it injects the script and resolves with the `Voucherly` object once it is available.
+Installa il loader e chiama `loadVoucherly()`: inietta lo script e risolve con l'oggetto `Voucherly` appena è disponibile.
 
 ```sh
 npm install @voucherly/voucherly-js
@@ -131,16 +132,16 @@ import { loadVoucherly } from "@voucherly/voucherly-js";
 const Voucherly = await loadVoucherly();
 ```
 
-The package ships TypeScript types for every option and event described in this guide.
+Il pacchetto include i tipi TypeScript di ogni opzione ed evento descritti in questa guida.
 
 </TabItem>
 </Tabs>
 
-Always load Voucherly.js from `js.voucherly.it`: do not bundle it and do not host a copy. The file on `/embed/v1/` receives backward-compatible updates without any change on your side — new payment methods included — and an incompatible change would ship on a new path, never on `v1`. See [Versioning](./reference.md#versioning).
+Carica Voucherly.js sempre da `js.voucherly.it`: non includerlo nel tuo bundle e non ospitarne una copia. Il file su `/embed/v1/` riceve aggiornamenti retrocompatibili senza alcuna modifica da parte tua — nuovi metodi di pagamento compresi — e una modifica incompatibile uscirebbe su un nuovo percorso, mai su `v1`. Consulta [Versionamento](./reference.md#versionamento).
 
-### 3. Mount the Payment Component
+### 3. Monta il Payment Component
 
-Add a container to your page and call `Voucherly.init` with your publishable key and the Payment id.
+Aggiungi un contenitore alla tua pagina e chiama `Voucherly.init` con la tua publishable key e l'id del Payment.
 
 ```html
 <div id="voucherly-payment"></div>
@@ -154,35 +155,35 @@ Add a container to your page and call `Voucherly.init` with your publishable key
 </script>
 ```
 
-That is all the page needs: the component shows the payment methods, reports failed attempts to the customer, and when the Payment closes Voucherly.js takes the customer to your `redirectOkUrl` or `redirectKoUrl`.
+Alla pagina non serve altro: il componente mostra i metodi di pagamento, segnala al cliente i tentativi falliti e, quando il Payment si chiude, Voucherly.js porta il cliente sul tuo `redirectOkUrl` o `redirectKoUrl`.
 
-The component sizes itself to its content and grows or shrinks as the customer moves through the form: give the container the width you want and leave the height to the component.
+Il componente si dimensiona sul suo contenuto e cresce o si riduce mentre il cliente si muove nel modulo: dai al contenitore la larghezza che vuoi e lascia l'altezza al componente.
 
-### 4. Handle the result
+### 4. Gestisci l'esito
 
-When the Payment closes, Voucherly.js sends your page to the result page of the Payment:
+Quando il Payment si chiude, Voucherly.js manda la tua pagina sulla pagina di esito del Payment:
 
-- the `redirectOkUrl` when the Payment was paid;
-- the `redirectKoUrl` when it was closed without success, for instance because it expired or the customer cancelled it.
+- il `redirectOkUrl` quando il Payment è stato pagato;
+- il `redirectKoUrl` quando è stato chiuso senza successo, per esempio perché è scaduto o il cliente lo ha annullato.
 
-The outcome travels in the query string, with the same parameters as the [hosted checkout](/guides/online-payments/hosted-checkout#3-show-a-success-page): `success` (`OK` or `KO`), `status`, `paymentId`, `referenceId`, `amount`, `customerId` and `tenant`. Your result page reads `paymentId`, checks the Payment from your server and shows the customer what happened.
+L'esito viaggia nella query string, con gli stessi parametri del [checkout ospitato](/guide/pagamenti-online/checkout-ospitato#3-mostra-una-pagina-di-successo): `success` (`OK` o `KO`), `status`, `paymentId`, `referenceId`, `amount`, `customerId` e `tenant`. La tua pagina di esito legge `paymentId`, controlla il Payment dal tuo server e mostra al cliente cosa è successo.
 
-:::warning Confirm the payment from your server
-The query string and the callbacks tell your page what the customer saw, not what your systems recorded, and anybody can type a URL with `success=OK`. Before fulfilling the order, check the Payment status with [Retrieve a Payment](/api/webapi/retrieve-payment) or wait for the [S2S callback](/api/general/best-practices/s2s) on the `callbackUrl` you passed when creating it. A browser can be closed, a script can be tampered with, a callback can be lost: the server-side status is the only one to trust.
+:::warning Conferma il pagamento dal tuo server
+La query string e le callback dicono alla tua pagina cosa ha visto il cliente, non cosa hanno registrato i tuoi sistemi, e chiunque può digitare un URL con `success=OK`. Prima di evadere l'ordine, controlla lo stato del Payment con [Retrieve a Payment](/api/webapi/retrieve-payment) o aspetta la [callback S2S](/api/generale/best-practice/s2s) sul `callbackUrl` che hai passato alla creazione. Un browser può essere chiuso, uno script manomesso, una callback persa: lo stato lato server è l'unico di cui fidarsi.
 :::
 
-While the Payment is still open, the component keeps reporting to your page through callbacks, whatever happens at the end:
+Finché il Payment è ancora aperto, il componente continua a informare la tua pagina con le callback, qualunque cosa succeda alla fine:
 
-| Callback | When | What to do |
+| Callback | Quando | Cosa fare |
 | --- | --- | --- |
-| `onPaymentPartialComplete` | A transaction was paid but an amount remains, typically after meal vouchers. | Nothing: the component reloads and asks for the remaining amount. Update your totals if you show them. |
-| `onPaymentError` | A transaction failed, or the component could not be rendered. | Nothing for a failed transaction: the component shows the message and the customer can retry. A `code` is an integration error to fix. |
+| `onPaymentPartialComplete` | Una transazione è stata pagata ma resta un importo, tipicamente dopo i buoni pasto. | Niente: il componente si ricarica e chiede l'importo residuo. Aggiorna i tuoi totali se li mostri. |
+| `onPaymentError` | Una transazione è fallita, o il componente non è stato mostrato. | Niente per una transazione fallita: il componente mostra il messaggio e il cliente può riprovare. Un `code` è un errore di integrazione da correggere. |
 
-A Payment that is already closed when you mount the component — the customer reloads the checkout after paying, or comes back to it — is never redirected: `onPaymentComplete` or `onPaymentError` fires instead. So the page that mounts the component can also be your result page without sending the customer round in circles.
+Un Payment già chiuso quando monti il componente — il cliente ricarica il checkout dopo aver pagato, o ci torna — non viene mai reindirizzato: scatta invece `onPaymentComplete` o `onPaymentError`. Così la pagina che monta il componente può essere anche la tua pagina di esito, senza far girare il cliente in tondo.
 
-#### Stay on your page: `redirect: "if_required"`
+#### Resta sulla tua pagina: `redirect: "if_required"`
 
-If your page must not be left at the end of the payment — a single-page application that shows its own confirmation, for instance — pass `redirect: "if_required"`. The page stays where it is, and the outcome reaches your callbacks:
+Se la tua pagina non deve essere lasciata alla fine del pagamento — per esempio una single-page application che mostra la propria conferma — passa `redirect: "if_required"`. La pagina resta dov'è, e l'esito arriva alle tue callback:
 
 ```js
 Voucherly.init({
@@ -191,44 +192,44 @@ Voucherly.init({
     containerId: "voucherly-payment",
     redirect: "if_required",
     onPaymentComplete: function (event) {
-        // The customer paid: confirm the outcome from your server, then show your confirmation.
+        // Il cliente ha pagato: conferma l'esito dal tuo server, poi mostra la tua conferma.
     },
     onPaymentError: function (event) {
-        // With success: false the Payment was closed without success; otherwise a transaction failed and the customer can retry.
+        // Con success: false il Payment è stato chiuso senza successo; altrimenti una transazione è fallita e il cliente può riprovare.
     },
 });
 ```
 
-| Callback | When | What to do |
+| Callback | Quando | Cosa fare |
 | --- | --- | --- |
-| `onPaymentComplete` | The Payment is fully paid. | Confirm from your server, then move the customer on. |
-| `onPaymentError` with `success: false` | The Payment was closed without success. | Show a message, and create a new Payment if the customer wants to try again. |
+| `onPaymentComplete` | Il Payment è interamente pagato. | Conferma dal tuo server, poi fai proseguire il cliente. |
+| `onPaymentError` con `success: false` | Il Payment è stato chiuso senza successo. | Mostra un messaggio, e crea un nuovo Payment se il cliente vuole riprovare. |
 
-Your page is still left when a payment method needs it: inline, a redirect-based method navigates the page to the provider and back. The `event` of `onPaymentComplete` carries the `paymentId`, the `amount` paid in cents and the `status` of the Payment. The full payload of every callback, and what `redirect` changes, are in the [reference](./reference.md#redirect-after-the-payment).
+La tua pagina viene comunque lasciata quando un metodo di pagamento lo richiede: inline, un metodo con reindirizzamento naviga la pagina verso il provider e ritorno. L'`event` di `onPaymentComplete` contiene il `paymentId`, l'`amount` pagato in centesimi e lo `status` del Payment. Il payload completo di ogni callback, e cosa cambia con `redirect`, sono nel [riferimento](./reference.md#reindirizzamento-dopo-il-pagamento).
 
-#### `Paid` or `Confirmed`: what you find after the payment
+#### `Paid` o `Confirmed`: cosa trovi dopo il pagamento
 
-A Payment goes from `Requested` to `Paid` when the customer completes the checkout, and to `Confirmed` when the funds are captured — the [payment lifecycle](/guides/about/resources/payments-lifecycle) describes every status. Which of the two you find on your result page, or after `onPaymentComplete`, depends on the payment method and on the Payment:
+Un Payment passa da `Requested` a `Paid` quando il cliente completa il checkout, e a `Confirmed` quando i fondi vengono catturati — il [ciclo di vita dei pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) descrive ogni stato. Quale dei due trovi sulla tua pagina di esito, o dopo `onPaymentComplete`, dipende dal metodo di pagamento e dal Payment:
 
-- Meal vouchers, personal credit, prepaid quota, Satispay chosen among the meal vouchers and some providers — SumUp and Adyen among them — capture at checkout: the Payment lands directly in `Confirmed`.
-- Cards, PayPal, Satispay chosen among the digital payments and the other two-step providers only authorize: the Payment stays `Paid` until you call [Confirm a Payment](/api/webapi/confirm-payment), or until the authorization expires and the funds are released.
-- With `isAutoConfirm: true` in [Create a Payment](/api/webapi/create-payment), Voucherly confirms every transaction as soon as the customer pays, and the Payment is `Confirmed` whatever the method. Without it, the default set in **Impostazioni > Pagamenti > Gateway di pagamento > Contabilizzazione automatica** applies.
+- Buoni pasto, credito personale, quota prepagata, Satispay scelto tra i buoni pasto e alcuni provider — tra cui SumUp e Adyen — catturano al checkout: il Payment arriva direttamente in `Confirmed`.
+- Carte, PayPal, Satispay scelto tra i pagamenti digitali e gli altri provider a due fasi si limitano ad autorizzare: il Payment resta `Paid` finché non chiami [Confirm a Payment](/api/webapi/confirm-payment), o finché l'autorizzazione non scade e i fondi vengono rilasciati.
+- Con `isAutoConfirm: true` in [Create a Payment](/api/webapi/create-payment), Voucherly conferma ogni transazione appena il cliente paga, e il Payment è `Confirmed` qualunque sia il metodo. Senza, vale il default impostato in **Impostazioni > Pagamenti > Gateway di pagamento > Contabilizzazione automatica**.
 
-Do not write code that reasons per provider: read the `status` from your server and, if it is `Paid`, confirm it — or create the Payment with `isAutoConfirm: true` if you have nothing to check between the authorization and the capture. A `Paid` Payment left alone is money you have not collected.
+Non scrivere codice che ragiona per provider: leggi lo `status` dal tuo server e, se è `Paid`, confermalo — oppure crea il Payment con `isAutoConfirm: true` se non hai nulla da verificare tra l'autorizzazione e la cattura. Un Payment lasciato in `Paid` è denaro che non hai incassato.
 
-### 5. Redirect-based payment methods
+### 5. Metodi di pagamento con reindirizzamento
 
-Some payment methods — PayPal, Satispay, Scalapay, Klarna, meal vouchers with the issuer's login such as Edenred and Pluxee — need the provider's own page. When the customer picks one in the inline component, Voucherly.js navigates **the whole page**, not the iframe, to the provider; once the customer is done, the provider sends them back to the URL of your page, with a few query parameters that Voucherly.js consumes and removes from the address bar. In [popup mode](#inline-or-popup) none of this happens: the provider's page opens inside the popup, and your page is never left.
+Alcuni metodi di pagamento — PayPal, Satispay, Scalapay, Klarna, i buoni pasto con il login dell'emittente come Edenred e Pluxee — richiedono la pagina del provider. Quando il cliente ne sceglie uno nel componente inline, Voucherly.js naviga **l'intera pagina**, non l'iframe, verso il provider; quando il cliente ha finito, il provider lo rimanda all'URL della tua pagina, con alcuni parametri di query che Voucherly.js consuma e rimuove dalla barra degli indirizzi. In [modalità popup](#inline-o-popup) tutto questo non succede: la pagina del provider si apre dentro il popup, e la tua pagina non viene mai lasciata.
 
-For the round trip to work inline, your page must be able to render the component again after a reload:
+Perché il giro funzioni inline, la tua pagina deve poter mostrare di nuovo il componente dopo un ricaricamento:
 
-- **Keep the Payment id retrievable** — in your server session, or in a query parameter of your own: Voucherly.js preserves your parameters and strips only its own. When the page loads again, call `Voucherly.init` with the same `paymentId`: the component resumes where the customer left and `onReady` receives `resumed: true`. If the Payment closed at the provider, Voucherly.js then takes the customer to your result page — or, with `redirect: "if_required"`, fires `onPaymentComplete` or `onPaymentError`.
-- **If the customer should come back to a different page**, pass it as `returnUrl`. It must be an absolute `https` URL of your site, and that page must mount the component too. `returnUrl` is where the customer resumes paying, not your result page: that is always the `redirectOkUrl` or `redirectKoUrl` of the Payment.
-- **If you want to control the navigation**, pass `onRedirect`. The default is `window.location.href = url`; a single-page application can use it to save its state first. Never open the URL inside a frame: providers refuse it.
+- **Mantieni recuperabile l'id del Payment** — nella sessione del tuo server, o in un tuo parametro di query: Voucherly.js conserva i tuoi parametri e rimuove solo i propri. Quando la pagina si ricarica, chiama `Voucherly.init` con lo stesso `paymentId`: il componente riprende da dove il cliente era rimasto e `onReady` riceve `resumed: true`. Se il Payment si è chiuso presso il provider, Voucherly.js porta poi il cliente sulla tua pagina di esito — oppure, con `redirect: "if_required"`, fa scattare `onPaymentComplete` o `onPaymentError`.
+- **Se il cliente deve tornare su una pagina diversa**, passala come `returnUrl`. Deve essere un URL `https` assoluto del tuo sito, e anche quella pagina deve montare il componente. `returnUrl` è la pagina su cui il cliente riprende a pagare, non la tua pagina di esito: quella è sempre il `redirectOkUrl` o il `redirectKoUrl` del Payment.
+- **Se vuoi controllare la navigazione**, passa `onRedirect`. Il default è `window.location.href = url`; una single-page application può usarla per salvare prima il proprio stato. Non aprire mai l'URL dentro un frame: i provider lo rifiutano.
 
 ## Express Checkout Component
 
-The Express Checkout Component is a row of buttons for the payment methods that close the Payment in a single gesture. Mount it in its own container, above your checkout form, with `Voucherly.initExpress`:
+L'Express Checkout Component è una fila di pulsanti per i metodi di pagamento che chiudono il Payment in un solo gesto. Montalo in un contenitore dedicato, sopra il tuo modulo di checkout, con `Voucherly.initExpress`:
 
 ```html
 <div id="voucherly-express"></div>
@@ -248,16 +249,16 @@ The Express Checkout Component is a row of buttons for the payment methods that 
 </script>
 ```
 
-The two components share the same Payment and the same session, so a payment started in one is reflected in the other, and the result is handled once whichever component closes the Payment: pass both the same `redirect` and the same callbacks, as the shared `options` above do. Apple Pay and Google Pay appear only on devices and browsers that can pay with them, and only if a gateway with wallet support is enabled on your account; personal credit and prepaid quota appear according to `paymentMethods`, where `auto` shows them only when they cover the whole remaining amount — an express button that leaves the customer with a residual to pay defeats its purpose.
+I due componenti condividono lo stesso Payment e la stessa sessione, quindi un pagamento avviato in uno si riflette nell'altro, e l'esito viene gestito una volta sola, qualunque componente chiuda il Payment: passa a entrambi lo stesso `redirect` e le stesse callback, come fanno le `options` condivise qui sopra. Apple Pay e Google Pay compaiono solo sui dispositivi e browser che possono pagarci, e solo se sul tuo account è attivo un gateway con il supporto ai wallet; credito personale e quota prepagata compaiono secondo `paymentMethods`, dove `auto` li mostra solo quando coprono l'intero importo residuo — un pulsante express che lascia al cliente un residuo da pagare tradisce il suo scopo.
 
-While the Express Checkout Component is mounted, the Payment Component hides whatever the express row already shows: its Apple Pay and Google Pay rows, and personal credit and prepaid quota when the express row shows them. Each method is offered once, and the form keeps the rest — with `paymentMethods.prepaid: "auto"`, a prepaid quota that does not cover the remaining amount stays out of the express row and in the form. You do not need to set anything on the Payment Component for this.
+Finché l'Express Checkout Component è montato, il Payment Component nasconde ciò che la riga express mostra già: le proprie righe Apple Pay e Google Pay, e credito personale e quota prepagata quando la riga express li mostra. Ogni metodo viene offerto una volta sola e il form tiene il resto — con `paymentMethods.prepaid: "auto"`, una quota prepagata che non copre l'importo residuo resta fuori dalla riga express e rimane nel form. Non serve impostare nulla sul Payment Component per ottenerlo.
 
-## Inline or popup
+## Inline o popup
 
-By default the Payment Component is rendered inline, inside your page, in an iframe. It can also open in a **popup window** over your page: your page shows only its own pay button, and the customer pays in the Voucherly checkout page.
+Di default il Payment Component viene mostrato inline, dentro la tua pagina, in un iframe. Può anche aprirsi in una **finestra popup** sopra la tua pagina: la tua pagina mostra solo il proprio pulsante di pagamento, e il cliente paga nella pagina di checkout Voucherly.
 
 ```html
-<button id="pay-button">Pay</button>
+<button id="pay-button">Paga</button>
 
 <script>
     Voucherly.init({
@@ -265,7 +266,7 @@ By default the Payment Component is rendered inline, inside your page, in an ifr
         publicKey: "pk_sand_…",
         paymentId: "pay_4vZz3m9kQ1x",
         onPopupClosed: function () {
-            // The window is gone, not necessarily the payment: keep the pay button available.
+            // La finestra non c'è più, non necessariamente il pagamento: lascia disponibile il pulsante di pagamento.
         },
     });
 
@@ -275,26 +276,26 @@ By default the Payment Component is rendered inline, inside your page, in an ifr
 </script>
 ```
 
-`Voucherly.submit()` opens the popup, so it must run directly in the click handler of your button: browsers block a popup opened outside a user gesture, and in that case `onPaymentError` receives `popup_blocked`. While the popup is open, Voucherly.js dims your page with a button to bring the popup back to the front; pass `overlay: false` to handle that yourself.
+`Voucherly.submit()` apre il popup, quindi deve essere eseguito direttamente nel gestore del click del tuo pulsante: i browser bloccano un popup aperto fuori da un gesto dell'utente, e in quel caso `onPaymentError` riceve `popup_blocked`. Finché il popup è aperto, Voucherly.js oscura la tua pagina con un pulsante per riportare il popup in primo piano; passa `overlay: false` per gestirlo tu.
 
-When the Payment closes — the customer paid, or cancelled from the popup — the popup closes by itself and your page goes to the `redirectOkUrl` or `redirectKoUrl` of the Payment, exactly as inline. The overlay stays until the popup is gone, so your page is never uncovered with the popup still on top. With `redirect: "if_required"` your page stays, and the callbacks fire instead.
+Quando il Payment si chiude — il cliente ha pagato, o ha annullato dal popup — il popup si chiude da solo e la tua pagina va sul `redirectOkUrl` o sul `redirectKoUrl` del Payment, esattamente come inline. L'overlay resta finché il popup non c'è più, così la tua pagina non si scopre mai con il popup ancora sopra. Con `redirect: "if_required"` la tua pagina resta, e scattano invece le callback.
 
 | | Inline | Popup |
 | --- | --- | --- |
-| Where the customer pays | Inside your page | In a Voucherly window over your page |
-| Look | Customizable with `appearance` | The Voucherly checkout page |
-| Redirect-based methods | Navigate your whole page and come back to it | Stay inside the popup: your page never reloads |
-| When the Payment closes | The customer goes to your result page, or the callbacks fire with `if_required` | The popup closes, then the same as inline |
-| What your page must handle | Mounting the component again after a redirect | Keeping the pay button available if the popup is closed |
-| Mobile | Inside your page | Opens as a new tab |
+| Dove paga il cliente | Dentro la tua pagina | In una finestra Voucherly sopra la tua pagina |
+| Aspetto | Personalizzabile con `appearance` | La pagina di checkout Voucherly |
+| Metodi con reindirizzamento | Navigano l'intera pagina e tornano su di essa | Restano dentro il popup: la tua pagina non si ricarica mai |
+| Quando il Payment si chiude | Il cliente va sulla tua pagina di esito, o scattano le callback con `if_required` | Il popup si chiude, poi come inline |
+| Cosa deve gestire la tua pagina | Montare di nuovo il componente dopo un reindirizzamento | Lasciare disponibile il pulsante di pagamento se il popup viene chiuso |
+| Mobile | Dentro la tua pagina | Si apre come una nuova scheda |
 
-Choose the popup when your page cannot be reloaded in the middle of a payment — a single-page application with a cart held in memory, a flow that is hard to resume — or when you do not want to host the form. Choose the iframe when the form must be part of your page.
+Scegli il popup quando la tua pagina non può ricaricarsi a metà di un pagamento — una single-page application con il carrello in memoria, un flusso difficile da riprendere — o quando non vuoi ospitare il modulo. Scegli l'iframe quando il modulo deve far parte della tua pagina.
 
-`redirect` and the callbacks work the same way in both modes, except `onReady`, `onResize` and `onRedirect`, which the popup does not call. **Closing the popup does not cancel the payment**: `onPopupClosed` tells you the window is gone, but the customer may have paid already, and the outcome — the redirect or the callbacks — can still arrive. The Express Checkout Component is always rendered inside your page, and can sit next to a Payment Component in popup mode. Details are in the [reference](./reference.md#popup-mode).
+`redirect` e le callback funzionano allo stesso modo nelle due modalità, tranne `onReady`, `onResize` e `onRedirect`, che il popup non chiama. **Chiudere il popup non annulla il pagamento**: `onPopupClosed` ti dice che la finestra non c'è più, ma il cliente potrebbe aver già pagato, e l'esito — il reindirizzamento o le callback — può ancora arrivare. L'Express Checkout Component viene sempre mostrato dentro la tua pagina, e può stare accanto a un Payment Component in modalità popup. I dettagli sono nel [riferimento](./reference.md#modalità-popup).
 
-## Customize the appearance
+## Personalizza l'aspetto
 
-Both components accept an `appearance` object with the colours, fonts and radius of your site:
+Entrambi i componenti accettano un oggetto `appearance` con i colori, i font e il raggio del tuo sito:
 
 ```js
 Voucherly.init(options, {
@@ -309,11 +310,11 @@ Voucherly.init(options, {
 });
 ```
 
-The full list of variables and their defaults is in the [reference](./reference.md#appearance). To place the pay button somewhere else in your page, hide the one of the component with `showSubmitButton: false` and call `Voucherly.submit()` from your own button.
+L'elenco completo delle variabili e dei loro valori predefiniti è nel [riferimento](./reference.md#aspetto). Per mettere il pulsante di pagamento altrove nella tua pagina, nascondi quello del componente con `showSubmitButton: false` e chiama `Voucherly.submit()` dal tuo pulsante.
 
 ## Content Security Policy
 
-If your site sends a `Content-Security-Policy` header, allow Voucherly.js and its iframe:
+Se il tuo sito invia un header `Content-Security-Policy`, consenti Voucherly.js e il suo iframe:
 
 ```text
 script-src https://js.voucherly.it;
@@ -321,27 +322,27 @@ frame-src https://checkout.voucherly.it;
 connect-src https://checkout.voucherly.it;
 ```
 
-`connect-src` is needed in popup mode, where Voucherly.js reads the status of the Payment from `checkout.voucherly.it` while the popup is open.
+`connect-src` serve in modalità popup, dove Voucherly.js legge lo stato del Payment da `checkout.voucherly.it` finché il popup è aperto.
 
-## Test the integration
+## Testa l'integrazione
 
-Use your `pk_sand_` key on the page and your `sk_sand_` key on the server: the Payment is created in the sandbox environment and the component shows the gateways you enabled there, with their test credentials. The environment is read from the key, so the same page works in production once you swap the keys. The codes of the Demo Voucherly meal vouchers and the test cards are in [Test data](/guides/start-building/start-developing/test-data).
+Usa la tua chiave `pk_sand_` nella pagina e la tua chiave `sk_sand_` sul server: il Payment viene creato nell'ambiente sandbox e il componente mostra i gateway che hai attivato lì, con le loro credenziali di test. L'ambiente si legge dalla chiave, quindi la stessa pagina funziona in produzione una volta sostituite le chiavi. I codici dei buoni pasto Demo Voucherly e le carte di test sono in [Dati di test](/guide/inizia-a-integrare/inizia-a-sviluppare/dati-di-test).
 
-Check at least these cases before going live:
+Verifica almeno questi casi prima di andare in produzione:
 
-- a payment completed inside the component, and the customer landing on your `redirectOkUrl`, where your server finds the Payment `Paid` or `Confirmed`;
-- a payment with a redirect-based method, and the component resuming on your page before the customer lands on your result page;
-- a meal voucher payment that covers part of the amount, followed by a card payment for the rest;
-- in popup mode, a redirect-based method completed inside the popup, a payment cancelled from the popup and the customer landing on your `redirectKoUrl`, and a popup closed before paying and opened again;
-- with `redirect: "if_required"`, `onPaymentComplete` and `onPaymentError` reaching your page instead of the redirect;
-- the S2S callback received by your server for each of them.
+- un pagamento completato dentro il componente, con il cliente che arriva sul tuo `redirectOkUrl`, dove il tuo server trova il Payment `Paid` o `Confirmed`;
+- un pagamento con un metodo a reindirizzamento, con il componente che riprende sulla tua pagina prima che il cliente arrivi sulla tua pagina di esito;
+- un pagamento con buoni pasto che copre parte dell'importo, seguito da un pagamento con carta per il resto;
+- in modalità popup, un metodo con reindirizzamento completato dentro il popup, un pagamento annullato dal popup con il cliente che arriva sul tuo `redirectKoUrl`, e un popup chiuso prima di pagare e riaperto;
+- con `redirect: "if_required"`, `onPaymentComplete` e `onPaymentError` che arrivano alla tua pagina al posto del reindirizzamento;
+- la callback S2S ricevuta dal tuo server per ciascuno di essi.
 
-## Go live
+## Vai in produzione
 
-Replace the sandbox keys with the live ones, on the page and on the server, and go through the [go-live checklist](/guides/start-building/start-developing/go-live-checklist).
+Sostituisci le chiavi sandbox con quelle live, nella pagina e sul server, e segui la [checklist per il go-live](/guide/inizia-a-integrare/inizia-a-sviluppare/checklist-go-live).
 
 :::info support
 
-- Email support@voucherly.it.
-- Submit a support request at [voucherly.it/contattaci](https://voucherly.it/contattaci).
+- Scrivi a support@voucherly.it.
+- Invia una richiesta di supporto su [voucherly.it/contattaci](https://voucherly.it/contattaci).
 :::

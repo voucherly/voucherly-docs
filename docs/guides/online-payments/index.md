@@ -1,28 +1,29 @@
 ---
+slug: /guide/pagamenti-online
 sidebar_position: 0
-title: Online payments
-sidebar_label: Overview
-description: "Choose how to accept online payments with Voucherly: hosted checkout, Voucherly Components in your page, a custom integration on your own gateway selector, or an e-commerce plugin."
+title: Pagamenti online
+sidebar_label: Panoramica
+description: "Scegli come accettare pagamenti online con Voucherly: checkout ospitato, Voucherly Components nella tua pagina, un'integrazione personalizzata sul tuo selettore di gateway, o un plugin e-commerce."
 keywords:
-  - online payments
-  - hosted checkout
+  - pagamenti online
+  - checkout ospitato
   - Voucherly Components
-  - custom integration
-  - e-commerce plugins
-  - meal vouchers online
+  - integrazione personalizzata
+  - plugin e-commerce
+  - buoni pasto online
 ---
 
-# Online payments
+# Pagamenti online
 
-Every way to accept an online payment with Voucherly starts the same way — your server creates a Payment with the API — and differs in what the customer sees next. Pick the one that fits how much of the checkout you want to own.
+Ogni modo di accettare un pagamento online con Voucherly parte allo stesso modo — il tuo server crea un Payment con l'API — e si distingue per quello che il cliente vede dopo. Scegli quello che corrisponde a quanta parte del checkout vuoi gestire tu.
 
-| | Where the customer pays | What you build | Best for |
+| | Dove paga il cliente | Cosa costruisci | Ideale per |
 | --- | --- | --- | --- |
-| **[Hosted checkout](./hosted-checkout/index.md)** | On a page hosted by Voucherly, with every payment method of your account | A button that creates the Payment and redirects | Getting live fast, with no frontend work |
-| **[Voucherly Components](./components/index.md)** | Inside your page, in a payment form rendered by Voucherly.js | The Payment, a container and a few callbacks | A checkout that stays on your site, without handling payment data |
-| **[Custom integration](./custom-integration/index.md)** | On the page of the gateway they picked on your site | Your own gateway selector on top of the API | Full control over how methods are presented |
-| **[E-commerce plugins](./ecommerce-plugins/index.md)** | On the hosted checkout, wired by the plugin | Nothing: install and configure | WooCommerce, PrestaShop and Shopify stores |
+| **[Checkout ospitato](./hosted-checkout/index.md)** | Su una pagina ospitata da Voucherly, con tutti i metodi di pagamento del tuo account | Un pulsante che crea il Payment e reindirizza | Andare in produzione in fretta, senza lavoro sul frontend |
+| **[Voucherly Components](./components/index.md)** | Dentro la tua pagina, in un modulo di pagamento mostrato da Voucherly.js | Il Payment, un contenitore e qualche callback | Un checkout che resta sul tuo sito, senza gestire dati di pagamento |
+| **[Integrazione personalizzata](./custom-integration/index.md)** | Sulla pagina del gateway che ha scelto sul tuo sito | Il tuo selettore di gateway sopra l'API | Controllo completo su come presentare i metodi |
+| **[Plugin e-commerce](./ecommerce-plugins/index.md)** | Sul checkout ospitato, collegato dal plugin | Niente: installa e configura | Negozi WooCommerce, PrestaShop e Shopify |
 
-Whatever you choose, the outcome reaches your server the same way: the [S2S callback](/api/general/best-practices/s2s) and the [Retrieve a Payment](/api/webapi/retrieve-payment) API. Two-step payments, saved payment methods and the rest of the [payment lifecycle](/guides/about/resources/payments-lifecycle) work with all of them.
+Qualunque sia la scelta, l'esito arriva al tuo server nello stesso modo: la [callback S2S](/api/generale/best-practice/s2s) e l'API [Retrieve a Payment](/api/webapi/retrieve-payment). Pagamenti in due fasi, metodi di pagamento salvati e il resto del [ciclo di vita dei pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) funzionano con tutti.
 
-Selling in person — a kiosk, a vending machine — is covered in [In-person payments](/guides/in-person-payments); paying at the table in a restaurant is a Voucherly product of its own, [Pay at table](/guides/products/pay-at-table).
+La vendita di persona — un chiosco, un distributore automatico — è trattata in [Pagamenti di persona](/guide/pagamenti-di-persona); il pagamento al tavolo in un ristorante è un prodotto Voucherly a sé, [Pagamento al tavolo](/guides/products/pay-at-table).

@@ -1,81 +1,82 @@
 ---
+slug: /guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti
 sidebar_position: 1
-description: "Understand how Voucherly Payments work: authorization and capture, two-step processing, and the full list of Payment and Transaction statuses."
+description: "Scopri come funzionano i pagamenti Voucherly: autorizzazione e capture, processo a due fasi e l'elenco completo degli stati di pagamento e transazione."
 keywords:
-  - payment lifecycle
-  - authorization and capture
-  - payment statuses
-  - transaction statuses
-  - two-step payment
+  - ciclo di vita del pagamento
+  - autorizzazione e capture
+  - stati del pagamento
+  - stati della transazione
+  - pagamento a due fasi
   - Voucherly
 ---
 
-# How Payments work
+# Come funzionano i pagamenti
 
-### Learn how Payments work within the payment flow
+### Scopri come funzionano i pagamenti all'interno del flusso di pagamento
 
-In Voucherly, a Payment is a logical entity that manages the user's checkout experience. Each Payment can include multiple Transactions, where each Transaction represents a payment attempt using a specific Payment gateway.
+In Voucherly, un pagamento è un'entità logica che gestisce l'esperienza di checkout dell'utente. Ogni pagamento può includere più transazioni, dove ogni transazione rappresenta un tentativo di pagamento tramite uno specifico gateway di pagamento.
 
-Typically, Voucherly payment processing follows a two-step approach:
+In genere, l'elaborazione dei pagamenti di Voucherly segue un approccio in due fasi:
 
-- **Authorization**. After the customer provides their payment details, the system verifies the availability of funds and places them on hold.
-- **Capture**. The held funds are then withdrawn from the customer’s account, processed, and transferred to the merchant’s account.
+- **Autorizzazione**. Dopo che il cliente ha fornito i propri dati di pagamento, il sistema verifica la disponibilità dei fondi e li mette in sospeso.
+- **Cattura**. I fondi trattenuti vengono quindi prelevati dal conto del cliente, elaborati e trasferiti sul conto del merchant.
 
-This process ensures a secure and reliable payment flow.
+Questo processo garantisce un flusso di pagamento sicuro e affidabile.
 
-Separating authorization and capture is useful when additional actions are needed between confirming a customer's ability to pay and collecting their payment. For example, if you’re selling stock-limited items, you may need to confirm that the item is still available before capturing the payment and completing the order. You can follow this workflow:
+Separare l'autorizzazione e la cattura è utile quando sono necessarie azioni aggiuntive tra la conferma della capacità di pagare del cliente e l'incasso del pagamento. Ad esempio, se vendi articoli con disponibilità limitata, potresti dover verificare che l'articolo sia ancora disponibile prima di catturare il pagamento e completare l'ordine. Puoi seguire questo flusso di lavoro:
 
-1. Confirm that Voucherly has authorized the customer’s payment method.
-2. Check your inventory management system to confirm the item is still available.
-3. Update your inventory system to reflect that the item has been purchased.
-4. Capture the customer’s payment.
-5. Notify the customer whether their purchase was successful on the confirmation page.
+1. Verifica che Voucherly abbia autorizzato il metodo di pagamento del cliente.
+2. Controlla il tuo sistema di gestione del magazzino per verificare che l'articolo sia ancora disponibile.
+3. Aggiorna il tuo sistema di magazzino per registrare che l'articolo è stato acquistato.
+4. Cattura il pagamento del cliente.
+5. Comunica al cliente sulla pagina di conferma se l'acquisto è andato a buon fine.
 
-Please look at [Separate authorization and confirm](/guides/online-payments/hosted-checkout#separate-authorization-and-confirm) for more technical information.
+Consulta [Separare autorizzazione e conferma](/guide/pagamenti-online/checkout-ospitato#separare-autorizzazione-e-conferma) per informazioni più tecniche.
 
 :::warning
-Meal voucher Payment gateways do not support two-step process, and neither do the wallet, the prepaid quota, Satispay chosen among the meal vouchers and a few providers — SumUp and Adyen among them. Their transactions are captured at checkout, so a Payment paid only with them is `Confirmed` as soon as the customer pays, while a Payment paid with a card, PayPal or Satispay chosen among the digital payments stays `Paid` until you confirm it. Your integration should read the `status` of the Payment rather than assume it from the payment method.
+I gateway di pagamento dei buoni pasto non supportano il processo a due fasi, e nemmeno il wallet, la quota prepagata, Satispay scelto tra i buoni pasto e alcuni provider — tra cui SumUp e Adyen. Le loro transazioni vengono catturate al checkout, quindi un Payment pagato solo con questi è `Confirmed` appena il cliente paga, mentre un Payment pagato con carta, PayPal o Satispay scelto tra i pagamenti digitali resta `Paid` finché non lo confermi. La tua integrazione dovrebbe leggere lo `status` del Payment invece di dedurlo dal metodo di pagamento.
 :::
 
 :::tip
-You can define the default behaviour in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways) > Contabilizzazione automatica**. When enabled, all transactions are automatically captured at the end of a payment.
+Puoi definire il comportamento predefinito in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways) > Contabilizzazione automatica**. Quando è abilitata, tutte le transazioni vengono catturate automaticamente al termine di un pagamento.
 :::
 
-### When a Payment closes {#completion-mode}
+### Quando un Payment si chiude {#completion-mode}
 
-A Payment can be paid with more than one Transaction — a meal voucher for part of the amount, a card for the rest. `completionMode`, set in [Create a Payment](/api/webapi/create-payment), decides when the Payment stops asking for more:
+Un Payment può essere pagato con più di una Transaction — un buono pasto per una parte dell'importo, una carta per il resto. `completionMode`, impostato in [Create a Payment](/api/webapi/create-payment), decide quando il Payment smette di chiedere altro:
 
-- **Standard** (default). The Payment closes when the whole amount is covered. After a partial Transaction the checkout asks for the remaining amount with another payment method.
-- **Partial**. The Payment closes with the first successful Transaction, whatever it covers, and the remaining amount is not collected. Use it when the rest is settled elsewhere — at the till, or with a later Payment.
-- **AnyTransaction**. As `Partial`.
+- **Standard** (default). Il Payment si chiude quando l'intero importo è coperto. Dopo una Transaction parziale il checkout chiede l'importo residuo con un altro metodo di pagamento.
+- **Partial**. Il Payment si chiude con la prima Transaction riuscita, qualunque importo copra, e il residuo non viene incassato. Usalo quando il resto si salda altrove — alla cassa, o con un Payment successivo.
+- **AnyTransaction**. Come `Partial`.
 
-### Payment statuses {#payment-statuses}
+### Stati del pagamento {#payment-statuses}
 
-Payments have a `status` field that reflects the statuses of their transactions.
+I pagamenti hanno un campo `status` che riflette gli stati delle relative transazioni.
 
-- **Requested**. A payment has been created but no transactions exist yet.
-- **Paid**. The customer has successfully completed the checkout. At least one transaction is in the `Paid` status and awaits completion.
-- **Confirmed**. The payment was successful, and all transactions have been confirmed.
-- **Refunded**. All transactions have been refunded or cancelled.
-- **Cancelled**. All transactions have been cancelled.
-- **Voided**. The Payment was voided while still `Requested`, by the customer during checkout or by you with [Void a Payment](/api/webapi/void-payment). All transactions have been voided.
-- **Expired**. The payment has expired.
+- **Requested**. È stato creato un pagamento ma non esiste ancora alcuna transazione.
+- **Paid**. Il cliente ha completato con successo il checkout. Almeno una transazione è nello stato `Paid` e attende il completamento.
+- **Confirmed**. Il pagamento è andato a buon fine e tutte le transazioni sono state confermate.
+- **Refunded**. Tutte le transazioni sono state rimborsate o annullate.
+- **Cancelled**. Tutte le transazioni sono state annullate.
+- **Voided**. Il Payment è stato invalidato (voided) mentre era ancora `Requested`, dal cliente durante il checkout o da te con [Void a Payment](/api/webapi/void-payment). Tutte le transazioni sono state invalidate.
+- **Expired**. Il pagamento è scaduto.
 
-In short: a Payment moves from `Requested` to `Paid` when the customer completes the checkout and to `Confirmed` when the funds are captured. [Void a Payment](/api/webapi/void-payment) works only on a `Requested` Payment; once it is `Paid` or `Confirmed`, the way back is [Refund a Payment](/api/webapi/refund-payment), which cancels the authorizations not yet captured and refunds the captured ones.
+In breve: un Payment passa da `Requested` a `Paid` quando il cliente completa il checkout e a `Confirmed` quando i fondi vengono catturati. [Void a Payment](/api/webapi/void-payment) funziona solo su un Payment `Requested`; una volta `Paid` o `Confirmed`, la strada a ritroso è [Refund a Payment](/api/webapi/refund-payment), che annulla le autorizzazioni non ancora catturate e rimborsa quelle catturate.
 
-### Transaction statuses
+### Stati della transazione
 
-The status of a Transaction is determined by the `status` field.
+Lo stato di una transazione è determinato dal campo `status`.
 
-- **Requested**. A new transaction object has been created but has not yet been paid.
-- **NextAction**. The customer still has to complete a step required by the payment gateway before the transaction can be paid.
-- **Paid**. The transaction has been authorized. Funds are blocked until confirmation occurs ([Confirm Payment API](/api/webapi/confirm-payment)) or the time interval defined by the payment gateway configuration expires.
-- **Confirmed**. The transaction has been captured. Funds previously blocked have been transferred to the merchant’s account.
-- **Refunded**. A transaction in the `Confirmed` status has been fully refunded.
-- **RefundedPartially**. Part of the amount of a `Confirmed` transaction has been refunded; the rest can still be refunded.
-- **Cancelled**. A transaction in the `Paid` status has been cancelled, unlocking the funds.
-- **Failed**. The payment gateway failed to process the transaction.
-- **Voided**. A `Paid` transaction has been voided due to an error or a customer cancelling the payment.
-- **Expired**. The transaction has expired.
-- **Reversed**. A `Paid` transaction has been cancelled during the checkout, before the payment closed, and does not count towards the paid amount.
-- **ImpossibleRefund**. A refund could not be processed for the transaction. It's common for meal voucher Payment gateways.
+- **Requested**. È stato creato un nuovo oggetto transazione ma non è ancora stato pagato.
+- **NextAction**. Il cliente deve ancora completare un passaggio richiesto dal gateway di pagamento prima che la transazione possa essere pagata.
+- **Paid**. La transazione è stata autorizzata. I fondi restano bloccati fino alla conferma ([Confirm Payment API](/api/webapi/confirm-payment)) o allo scadere dell'intervallo di tempo definito dalla configurazione del gateway di pagamento.
+- **Confirmed**. La transazione è stata catturata (capture). I fondi precedentemente bloccati sono stati trasferiti sul conto del merchant.
+- **Refunded**. Una transazione nello stato `Confirmed` è stata completamente rimborsata.
+- **RefundedPartially**. È stata rimborsata una parte dell'importo di una transazione `Confirmed`; il resto può ancora essere rimborsato.
+- **Cancelled**. Una transazione nello stato `Paid` è stata annullata, sbloccando i fondi.
+- **Failed**. Il gateway di pagamento non è riuscito a elaborare la transazione.
+- **Voided**. Una transazione `Paid` è stata invalidata (voided) a causa di un errore o dell'annullamento del pagamento da parte del cliente.
+- **Expired**. La transazione è scaduta.
+- **Reversed**. Una transazione `Paid` è stata annullata durante il checkout, prima della chiusura del pagamento, e non concorre all'importo pagato.
+- **ImpossibleRefund**. Non è stato possibile elaborare un rimborso per la transazione. È comune per i gateway di pagamento dei buoni pasto.

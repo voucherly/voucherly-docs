@@ -1,41 +1,42 @@
 ---
+slug: /guide/pagamenti-online/integrazione-personalizzata
 sidebar_position: 3
-description: "Build your own checkout on Voucherly: list the payment gateways of your account, let the customer pick one on your page, then create the Payment and redirect."
+description: "Costruisci il tuo checkout su Voucherly: elenca i gateway di pagamento del tuo account, lascia che il cliente ne scelga uno sulla tua pagina, poi crea il Payment e reindirizza."
 keywords:
-  - custom payment integration
-  - payment gateways API
+  - integrazione di pagamento personalizzata
+  - API gateway di pagamento
   - selectedPaymentGateway
-  - customer payment methods
-  - Voucherly API
+  - metodi di pagamento del cliente
+  - API Voucherly
 ---
 
 import GatewayFlowContent from './../../_partial/gateway_flow_content.md';
 
-# Custom integration
+# Integrazione personalizzata
 
-Show the payment gateways of your account on your own page — each with its own button, instead of a generic *Pay with Voucherly* — and send the customer straight to the one they chose.
+Mostra i gateway di pagamento del tuo account sulla tua pagina — ognuno con il suo pulsante, invece di un generico *Paga con Voucherly* — e manda il cliente direttamente a quello che ha scelto.
 
-:::info Other ways to accept online payments
-If you would rather not build the selector, the [hosted checkout](/guides/online-payments/hosted-checkout) offers every gateway on a page hosted by Voucherly, and [Voucherly Components](/guides/online-payments/components) render the whole payment form inside your page. See [Online payments](/guides/online-payments) to compare.
+:::info Altri modi per accettare pagamenti online
+Se preferisci non costruire il selettore, il [checkout ospitato](/guide/pagamenti-online/checkout-ospitato) offre tutti i gateway su una pagina ospitata da Voucherly, e i [Voucherly Components](/guide/pagamenti-online/components) mostrano l'intero modulo di pagamento dentro la tua pagina. Consulta [Pagamenti online](/guide/pagamenti-online) per confrontarli.
 :::
 
-## Quick guide
+## Guida rapida
 
-![Gateway hosted checkout preparation flow](./gateway_hosted_checkout.svg)
+![Flusso di preparazione del checkout ospitato con gateway](./gateway_hosted_checkout.svg)
 
 <GatewayFlowContent />
 
-### 1. Create a Payment for the selected gateway
+### 1. Crea un Payment per il gateway selezionato
 
-If clicked, specify the selected Payment gateway using the `selectedPaymentGateway` parameter or the Customer payment method using the `customerPaymentMethodId` parameter.
+Al clic, specifica il gateway di pagamento selezionato tramite il parametro `selectedPaymentGateway` oppure il metodo di pagamento del cliente tramite il parametro `customerPaymentMethodId`.
 
-**Example request**
+**Esempio di richiesta**
 
 ```json
 {
     "mode": "Payment",
-    "selectedPaymentGateway": "GATEWAY", // or customerPaymentMethodId
-    "customerPaymentMethodId": "my-customer-method-1", // or selectedPaymentGateway
+    "selectedPaymentGateway": "GATEWAY", // oppure customerPaymentMethodId
+    "customerPaymentMethodId": "my-customer-method-1", // oppure selectedPaymentGateway
     "customerId": "my-customer-id-1",
     "customerEmail": "mario.rossi@voucherly.it",
     "customerFirstName": "Mario",
@@ -68,12 +69,12 @@ If clicked, specify the selected Payment gateway using the `selectedPaymentGatew
 }
 ```
 
-After creating a Payment, redirect your customer to the `checkoutUrl` returned in the response: Voucherly opens the selected gateway directly, without showing its own selection page.
+Dopo aver creato un Payment, reindirizza il cliente al `checkoutUrl` restituito nella risposta: Voucherly apre direttamente il gateway selezionato, senza mostrare la propria pagina di scelta.
 
-### 2. Handle the callback and the return
+### 2. Gestisci la callback e il rientro
 
-From here on, the flow is the one of the hosted checkout: handle the [S2S callback](/guides/online-payments/hosted-checkout#2-handle-before-redirect-callback-s2s) and [show a success page](/guides/online-payments/hosted-checkout#3-show-a-success-page).
+Da qui in poi il flusso è quello del checkout ospitato: gestisci la [callback S2S](/guide/pagamenti-online/checkout-ospitato#2-gestisci-la-callback-s2s-prima-del-reindirizzamento) e [mostra una pagina di successo](/guide/pagamenti-online/checkout-ospitato#3-mostra-una-pagina-di-successo).
 
-:::tip Saved payment methods
-To let a returning customer pay with a saved method in one click, read [Customer management](/api/general/best-practices/customer).
+:::tip Metodi di pagamento salvati
+Per permettere a un cliente che torna di pagare con un metodo salvato in un clic, leggi [Gestione clienti](/api/generale/best-practice/gestione-clienti).
 :::

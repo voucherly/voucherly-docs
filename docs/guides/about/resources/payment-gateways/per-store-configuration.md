@@ -1,48 +1,49 @@
 ---
+slug: /guide/informazioni/risorse/gateway-di-pagamento/configurazione-per-punto-vendita
 sidebar_position: 5
-description: "Assign the right payment gateway account to each location in Voucherly using payment accounts, payment configurations and the default configuration fallback."
+description: "Assegna a ogni punto vendita il giusto account del gateway di pagamento in Voucherly tramite account di pagamento, configurazioni di pagamento e configurazione predefinita."
 keywords:
-  - per-store configuration
-  - payment accounts
-  - payment configuration
-  - multi-location
-  - chain
+  - configurazione per punto vendita
+  - account di pagamento
+  - configurazione di pagamento
+  - multi-punto vendita
+  - catena
   - Voucherly
 ---
 
-# Per-store configuration
+# Configurazione per punto vendita
 
-Voucherly lets you decide **which payment gateway account is used by each of your locations**. This is useful when you run more than one store, or when the same gateway (e.g. Satispay or Edenred) is activated separately for each location.
+Voucherly ti permette di decidere **quale account del gateway di pagamento viene utilizzato da ciascuno dei tuoi punti vendita**. È utile quando gestisci più di un punto vendita, o quando lo stesso gateway (es. Satispay o Edenred) è attivato separatamente per ogni punto vendita.
 
-The model has three levels:
+Il modello ha tre livelli:
 
-- **Payment account** — a single activation of a gateway (for example one Satispay store, or one Edenred MID). It holds the credentials you enter in the Dashboard.
-- **Payment configuration** — a named bundle of one or more payment accounts. Every merchant has a **default configuration** that applies automatically to all locations without a specific one.
-- **Location** (*Sede*) — a point of sale. Each location can be assigned a payment configuration.
+- **Account di pagamento** — una singola attivazione di un gateway (ad esempio un negozio Satispay, o un MID Edenred). Contiene le credenziali che inserisci nella Dashboard.
+- **Configurazione di pagamento** — un insieme denominato di uno o più account di pagamento. Ogni merchant ha una **configurazione predefinita** che si applica automaticamente a tutti i punti vendita che non ne hanno una specifica.
+- **Punto vendita** (*Sede*) — un tuo punto vendita fisico o online. A ogni punto vendita può essere assegnata una configurazione di pagamento.
 
 :::info
-A **Location** is never linked to a payment account directly. It points to a **payment configuration**, which in turn contains one or more accounts. Change the configuration assigned to a location to change which accounts that location uses.
+Un **punto vendita** non è mai collegato direttamente a un account di pagamento. Punta a una **configurazione di pagamento**, che a sua volta contiene uno o più account. Cambia la configurazione assegnata a un punto vendita per modificare quali account utilizza quel punto vendita.
 :::
 
-## Single location
+## Punto vendita singolo
 
-If you have a single store (for example one e-commerce), you don't need to configure anything per location:
+Se hai un solo punto vendita (ad esempio un unico e-commerce), non devi configurare nulla per punto vendita:
 
-1. Create one payment account for the gateway in **Impostazioni > Pagamenti > [Account di pagamento](https://dashboard.voucherly.it/settings/payment/payment-accounts)**.
-2. Keep it in the **default configuration**.
+1. Crea un account di pagamento per il gateway in **Impostazioni > Pagamenti > [Account di pagamento](https://dashboard.voucherly.it/settings/payment/payment-accounts)**.
+2. Mantienilo nella **configurazione predefinita**.
 
-The default configuration is applied automatically, so payments will use that account.
+La configurazione predefinita viene applicata automaticamente, quindi i pagamenti utilizzeranno quell'account.
 
-## Multiple locations / chain
+## Punti vendita multipli / catena
 
-If you run several locations — or the gateway is activated separately per location (for example one Satispay store code per shop, or a different Edenred MID per shop) — create **one payment account per activation** and assign each account to the right location:
+Se gestisci più punti vendita — o il gateway è attivato separatamente per ogni punto vendita (ad esempio un codice negozio Satispay per ogni negozio, o un MID Edenred diverso per ogni negozio) — crea **un account di pagamento per ogni attivazione** e assegna ciascun account al punto vendita corretto:
 
-1. In **Impostazioni > Pagamenti > [Account di pagamento](https://dashboard.voucherly.it/settings/payment/payment-accounts)**, create one account for each activation (give each a name that identifies the location).
-2. Group the accounts into **[payment configurations](https://dashboard.voucherly.it/settings/payment/payment-gateways)** (one configuration per location, or per group of locations that share the same account).
-3. Assign each configuration to its location, in one of two ways:
-   - From the location: **Impostazioni > [Sedi](https://dashboard.voucherly.it/settings/store)** → open the location → field *"Configurazione di pagamento"*.
-   - From the configuration: *"Gestisci configurazione"* → field *"Punti vendita assegnati"*.
+1. In **Impostazioni > Pagamenti > [Account di pagamento](https://dashboard.voucherly.it/settings/payment/payment-accounts)**, crea un account per ogni attivazione (assegna a ciascuno un nome che identifichi il punto vendita).
+2. Raggruppa gli account in **[configurazioni di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** (una configurazione per punto vendita, o per gruppo di punti vendita che condividono lo stesso account).
+3. Assegna ogni configurazione al proprio punto vendita, in uno dei due modi seguenti:
+   - Dal punto vendita: **Impostazioni > [Sedi](https://dashboard.voucherly.it/settings/store)** → apri il punto vendita → campo *"Configurazione di pagamento"*.
+   - Dalla configurazione: *"Gestisci configurazione"* → campo *"Punti vendita assegnati"*.
 
 :::tip
-The **default configuration** stays the fallback: any location you don't assign explicitly keeps using it.
+La **configurazione predefinita** resta il fallback: qualsiasi punto vendita che non assegni esplicitamente continua a utilizzarla.
 :::

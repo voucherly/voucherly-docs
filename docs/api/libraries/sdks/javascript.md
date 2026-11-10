@@ -1,10 +1,11 @@
 ---
+slug: /api/librerie/sdk/javascript
 sidebar_position: 3
-description: "Official Voucherly.js loader for npm, with TypeScript types, to render Voucherly Components in your checkout page."
+description: "Loader ufficiale di Voucherly.js per npm, con i tipi TypeScript, per mostrare i Voucherly Components nella tua pagina di checkout."
 keywords:
   - Voucherly.js
   - npm
-  - JavaScript library
+  - libreria JavaScript
   - TypeScript
   - Voucherly Components
 ---
@@ -14,12 +15,12 @@ keywords:
 [![npm](https://img.shields.io/npm/v/@voucherly/voucherly-js.svg)](https://www.npmjs.com/package/@voucherly/voucherly-js)
 [![Publish](https://github.com/voucherly/voucherly-js/actions/workflows/publish.yml/badge.svg)](https://github.com/voucherly/voucherly-js/actions?query=event%3Arelease)
 
-The official [Voucherly][voucherly] loader for Voucherly.js, the library that renders [Voucherly Components](/guides/online-payments/components) — the payment form embedded in your own page. The package injects the script from `js.voucherly.it` and ships the TypeScript types of its API.
+Il loader ufficiale di [Voucherly][voucherly] per Voucherly.js, la libreria che mostra i [Voucherly Components](/guide/pagamenti-online/components) — il modulo di pagamento incorporato nella tua pagina. Il pacchetto inietta lo script da `js.voucherly.it` e include i tipi TypeScript della sua API.
 
 ```sh
 npm install @voucherly/voucherly-js
 ```
 
-Please refer to [Github](https://github.com/voucherly/voucherly-js) and to the [Voucherly.js reference](/guides/online-payments/components/reference).
+Consulta [Github](https://github.com/voucherly/voucherly-js) e il [riferimento di Voucherly.js](/guide/pagamenti-online/components/riferimento).
 
 [voucherly]: https://voucherly.it

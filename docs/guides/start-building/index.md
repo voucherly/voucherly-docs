@@ -1,66 +1,67 @@
 ---
-sidebar_label: Overview
+sidebar_label: Panoramica
 sidebar_position: 0
-description: "Step-by-step guide to integrate your platform with Voucherly: request a sandbox account, get API keys, enable payment gateways and go live."
+slug: /guide/inizia-a-integrare
+description: "Guida passo passo per integrare la tua piattaforma con Voucherly: richiedi un account sandbox, ottieni le API key, abilita i gateway e vai in produzione."
 keywords:
-  - voucherly getting started
-  - api keys
-  - sandbox account
-  - payment gateways
-  - integration
-  - go live
+  - voucherly per iniziare
+  - api key
+  - account sandbox
+  - gateway di pagamento
+  - integrazione
+  - produzione
 ---
 
-# Getting started
+# Per iniziare
 
-The instructions below will guide you on how to integrate your platform with our APIs.
+Le istruzioni seguenti ti guideranno nell'integrazione della tua piattaforma con le nostre API.
 
-## Configuration
+## Configurazione
 
-### 1. Request a Sandbox account
+### 1. Richiedi un account Sandbox
 
-Request an account from Voucherly on the [book a demo](https://voucherly.it/prenota-una-demo) page.  
-Once the account is created, you receive an email to set your password. The link is valid for 12 hours and also confirms your email address.  
-Then sign in to the [Dashboard][dashboard].
+Richiedi un account a Voucherly dalla pagina [Prenota una demo](https://voucherly.it/prenota-una-demo).  
+Quando l'account è creato, ricevi un'email per impostare la password. Il link vale 12 ore e conferma anche il tuo indirizzo email.  
+Poi accedi alla [Dashboard][dashboard].
 
-If you work for a merchant that already uses Voucherly, ask its team to invite you instead.
+Se lavori per un merchant che usa già Voucherly, chiedi invece al suo team di invitarti.
 
-### 2. Obtain API keys
+### 2. Ottieni le API keys
 
-In the **[Sviluppatori](https://dashboard.voucherly.it/Developer/ApiKey)** section, you will find both secret and publishable keys.  
-Use the secret key to authenticate API calls, as explained in [API Authentication](/api/webapi/voucherly-api#authentication).  
+Nella sezione **[Sviluppatori](https://dashboard.voucherly.it/Developer/ApiKey)** troverai sia la secret key (chiave segreta) sia la publishable key (chiave pubblicabile).  
+Utilizza la secret key per autenticare le chiamate API, come spiegato in [Autenticazione API](/api/webapi/voucherly-api#authentication).  
 
-The publishable key is meant for the browser: it initializes [Voucherly Components](/guides/online-payments/components), the payment form embedded in your page. It cannot call the API.
+La publishable key è pensata per il browser: inizializza i [Voucherly Components](/guide/pagamenti-online/components), il modulo di pagamento incorporato nella tua pagina. Non può chiamare l'API.
 
-### 3. Enable Payment gateways
+### 3. Abilita i gateway di pagamento
 
-Activate payment gateways in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)**.
+Attiva i gateway di pagamento in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)**.
 
-Voucher payments often require supplementation with a *standard* transaction, such as a card payment. Therefore, activating at least one non-voucher payment gateway is strongly recommended.
+I pagamenti con buoni spesso richiedono un'integrazione con una transazione *standard*, come un pagamento con carta. Per questo motivo, si consiglia vivamente di attivare almeno un gateway di pagamento diverso dai buoni.
 
 :::tip
-For sandbox testing, we recommend activating Demo Voucherly and MultiSafepay. These are sufficient to replicate all payment behaviors.\
-Please refer to the [Payment gateways resource](/guides/about/resources/payment-gateways/) for more information about payment gateways.
+Per i test in sandbox, consigliamo di attivare Demo Voucherly e MultiSafepay. Sono sufficienti a replicare tutti i comportamenti di pagamento.\
+Per maggiori informazioni sui gateway di pagamento, consulta la [risorsa Gateway di pagamento](/guide/informazioni/risorse/gateway-di-pagamento/).
 :::
 
-### 4. Let's start
+### 4. Iniziamo
 
-Make your first API call with the [Quickstart](/guides/start-building/start-developing/quickstart), then pick the integration that suits you in [Online payments](/guides/online-payments):
+Fai la tua prima chiamata API con il [Quickstart](/guide/inizia-a-integrare/inizia-a-sviluppare/quickstart), poi scegli l'integrazione più adatta a te in [Pagamenti online](/guide/pagamenti-online):
 
-- **E-commerce plugins** — developed in-house for PrestaShop, WooCommerce and Shopify, they require minimal or no development effort and let you start testing immediately.
-- **Hosted checkout** — your server creates a Payment and redirects the customer to a page hosted by Voucherly.
-- **Voucherly Components** — the payment form rendered inside your own page.
-- **Custom integration** — your own gateway selector on top of the REST API, for full control over the payment flow.
+- **Plugin e-commerce** — sviluppati internamente per PrestaShop, WooCommerce e Shopify, richiedono uno sforzo di sviluppo minimo o nullo e ti permettono di iniziare a testare da subito.
+- **Checkout ospitato** — il tuo server crea un Payment e reindirizza il cliente a una pagina ospitata da Voucherly.
+- **Voucherly Components** — il modulo di pagamento mostrato dentro la tua pagina.
+- **Integrazione personalizzata** — il tuo selettore di gateway sopra le API REST, per il pieno controllo del flusso di pagamento.
 
-Selling in person, from a kiosk or a vending machine, is covered in [In-person payments](/guides/in-person-payments).
+La vendita di persona, da un chiosco o da un distributore automatico, è trattata in [Pagamenti di persona](/guide/pagamenti-di-persona).
 
-### 5. Before going live
+### 5. Prima di andare in produzione
 
-To start processing real transactions, we need to verify and approve your merchant account information.
+Per iniziare a elaborare transazioni reali, dobbiamo verificare e approvare le informazioni del tuo account merchant.
 
-1. [Activate your account](/guides/start-building/activate-account) providing information about your company.
-1. Ensure your website aligns with [Website checklist](/guides/start-building/start-developing/website-checklist).
+1. [Attiva il tuo account](/guide/inizia-a-integrare/attiva-account) fornendo le informazioni sulla tua azienda.
+1. Assicurati che il tuo sito web sia conforme alla [Checklist del sito web](/guide/inizia-a-integrare/inizia-a-sviluppare/checklist-sito-web).
 
-Once submitted, we will perform know your customer (KYC) checks. If approved, your account will go live.
+Una volta inviata la richiesta, effettueremo le verifiche KYC (know your customer). Se approvato, il tuo account verrà attivato in produzione.
 
 [dashboard]: https://dashboard.voucherly.it/

@@ -1,37 +1,37 @@
 ---
 sidebar_position: 1
 slug: /
-description: "Voucherly is a prebuilt payment platform letting merchants accept online payments and meal vouchers through many payment gateways."
+description: "Voucherly è la piattaforma di pagamento predefinita che permette ai merchant di accettare pagamenti online e buoni pasto tramite molti gateway."
 keywords:
   - voucherly
-  - online payments
-  - meal vouchers
-  - payment gateways
+  - pagamenti online
+  - buoni pasto
+  - gateway di pagamento
   - checkout
 ---
 
-# Overview
+# Panoramica
 
-Voucherly provides a prebuilt, optimized payment environment that allows merchants to securely and effortlessly accept online payments, including meal vouchers, through a wide range of payment gateways.
+Voucherly fornisce un ambiente di pagamento predefinito e ottimizzato che consente ai merchant di accettare pagamenti online in modo sicuro e semplice, inclusi i buoni pasto, attraverso un'ampia gamma di gateway di pagamento.
 
-With Voucherly, merchants no longer need to integrate each payment gateway individually on their websites. Voucherly handles all the complexities for you.
+Con Voucherly, i merchant non devono più integrare singolarmente ogni gateway di pagamento sui propri siti web. Voucherly gestisce per te tutte le complessità.
 
-Customers are redirected to the Voucherly Checkout page, where they can choose from a variety of payment options—including meal voucher gateways—and complete their transactions quickly and securely. For a complete list of supported payment gateways, see [here](/guides/about/resources/payment-gateways).
+I clienti vengono reindirizzati alla pagina di Checkout di Voucherly, dove possono scegliere tra diverse opzioni di pagamento — inclusi i gateway dei buoni pasto — e completare le transazioni in modo rapido e sicuro. Per l'elenco completo dei gateway di pagamento supportati, consulta [questa pagina](/guide/informazioni/risorse/gateway-di-pagamento).
 
-This documentation is designed to help you at every step of the integration process of the Voucherly APIs.
-Whether you're a developer or a merchant, our documentation is here to support you.
+Questa documentazione è pensata per accompagnarti in ogni fase del processo di integrazione delle API di Voucherly.
+Che tu sia uno sviluppatore o un merchant, la nostra documentazione è qui per aiutarti.
 
-In this documentation, you'll also discover a wide array of real-world examples that illustrate the practical applications of Voucherly. These examples serve as valuable references to help you understand how Voucherly can benefit your business.
+In questa documentazione troverai anche numerosi esempi concreti che illustrano le applicazioni pratiche di Voucherly. Questi esempi rappresentano un riferimento prezioso per capire come Voucherly può portare valore alla tua attività.
 
-Additionally, we provide detailed insights into the available payment flows.
-You can select the payment flow that aligns best with your specific use case, simplifying the process of integrating Voucherly according to your needs.
+Inoltre, forniamo indicazioni dettagliate sui flussi di pagamento disponibili.
+Puoi selezionare il flusso di pagamento più adatto al tuo caso d'uso specifico, semplificando l'integrazione di Voucherly in base alle tue esigenze.
 
-Before getting started, take a moment to explore the range of solutions we've already developed at Voucherly:
+Prima di iniziare, prenditi un momento per esplorare la gamma di soluzioni che abbiamo già sviluppato in Voucherly:
 
-- [E-commerce plugins](/guides/online-payments/ecommerce-plugins/) for PrestaShop, WooCommerce and Shopify
-- [Hosted checkout](/guides/online-payments/hosted-checkout/), a payment page hosted by Voucherly
-- [Voucherly Components](/guides/online-payments/components/), the payment form embedded in your own page
+- [Plugin e-commerce](/guide/pagamenti-online/plugin-e-commerce/) per PrestaShop, WooCommerce e Shopify
+- [Checkout ospitato](/guide/pagamenti-online/checkout-ospitato/), una pagina di pagamento ospitata da Voucherly
+- [Voucherly Components](/guide/pagamenti-online/components/), il modulo di pagamento incorporato nella tua pagina
 
-If none of these pre-built solutions align with your system requirements, you can define your unique use case and integrate the corresponding APIs to tailor Voucherly to your needs.
+Se nessuna di queste soluzioni predefinite soddisfa i requisiti del tuo sistema, puoi definire il tuo caso d'uso specifico e integrare le API corrispondenti per adattare Voucherly alle tue necessità.
 
-If you have any further questions or need assistance about the integration process you can write to our support at support@voucherly.it.
+Per ulteriori domande o assistenza sul processo di integrazione puoi scrivere al nostro supporto all'indirizzo support@voucherly.it.

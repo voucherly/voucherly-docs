@@ -1,15 +1,16 @@
 ---
-description: "Official Voucherly libraries and SDKs to integrate the payment API in your language, including .NET and PHP."
+slug: /api/librerie
+description: "Librerie e SDK ufficiali di Voucherly per integrare l'API di pagamento nel tuo linguaggio, tra cui .NET e PHP."
 keywords:
-  - Voucherly libraries
+  - librerie Voucherly
   - SDK
-  - .NET SDK
-  - PHP SDK
-  - API integration
+  - SDK .NET
+  - SDK PHP
+  - integrazione API
 ---
 
 import DocCardList from '@theme/DocCardList';
 
-# Libraries
+# Librerie
 
 <DocCardList />

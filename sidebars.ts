@@ -18,7 +18,7 @@ const sidebars: SidebarsConfig = {
   apiSidebar: [
     {
       type: 'category',
-      label: "General",
+      label: "Generale",
       collapsed: false,
       items: [
         ...apisidebar.slice(0, 1),
@@ -31,7 +31,7 @@ const sidebars: SidebarsConfig = {
     { type: 'doc', id: 'api/postman' },
     {
       type: 'category',
-      label: "Libraries",
+      label: "Librerie",
       collapsed: true,
       link: { type: "doc", id: "api/libraries/index" }, 
       items: [
@@ -43,7 +43,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: "Endpoints 🔗",
+      label: "Endpoint 🔗",
       collapsed: false,
       collapsible: false,
       className: 'endpoint-section',

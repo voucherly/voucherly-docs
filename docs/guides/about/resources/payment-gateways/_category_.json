@@ -1,5 +1,5 @@
 {
-  "label": "Payment gateways",
+  "label": "Gateway di pagamento",
   "position": 2,
   "link": { "type": "doc", "id": "index"}
 }

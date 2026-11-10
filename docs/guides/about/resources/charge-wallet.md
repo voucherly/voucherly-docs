@@ -1,70 +1,71 @@
 ---
+slug: /guide/informazioni/risorse/ricarica-wallet
 sidebar_position: 3
-description: "Integrate Voucherly's wallet recharge flow: create a Wallet-mode payment, redirect to Voucherly Checkout, and handle the S2S callback."
+description: "Integra il flusso di ricarica del wallet di Voucherly: crea un pagamento in modalità Wallet, reindirizza a Voucherly Checkout e gestisci la callback S2S."
 keywords:
-  - wallet recharge
-  - charge wallet
+  - ricarica wallet
+  - ricaricare wallet
   - Voucherly Checkout
   - Create Payment API
-  - Wallet mode
-  - S2S callback
+  - modalità Wallet
+  - callback S2S
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Charge Wallet
+# Ricarica del Wallet
 
-As previously mentioned, customers can charge their wallet during a payment. Voucherly also provides a dedicated flow specifically for recharging the wallet.
-
-:::warning
-This use case is available only if the wallet feature is enabled from the Dashboard.
-:::
-
-## Wallet Recharge Lifecycle
-
-The process is similar to a regular payment, with minor differences in the parameters passed to the [Create Payment API](/api/webapi/create-payment).
-
-1. When the customer wants to charge their wallet, you must create a new payment via the [Create Payment API](/api/webapi/create-payment), setting `mode` to `Wallet`.
-   - You can specify an amount to charge by including a single `line` with the desired amount and setting the quantity to 1.
-   - If no `line` is passed, Voucherly will prompt the customer to input the amount.
-
-2. The API response will include the URL of the Voucherly Checkout page to which the customer must be redirected.
-
-3. The customer can complete the recharge using a voucher payment gateway, a non-voucher payment gateway, or a combination of both.
-
-4. After the recharge is completed, if the `callbackUrl` field was provided in the [Create Payment API](/api/webapi/create-payment) request, a [Server-to-Server (S2S)](/api/general/best-practices/s2s) notification will be sent to the specified URL. The customer will then be redirected to the merchant's website URL provided in the request.
+Come già accennato, i clienti possono ricaricare il proprio wallet durante un pagamento. Voucherly mette inoltre a disposizione un flusso dedicato specificamente alla ricarica del wallet.
 
 :::warning
-Once the customer exits the checkout page, the transaction will already be in the `Confirmed` state. You do not need to confirm it via API, and wallet recharges cannot be refunded.
+Questo caso d'uso è disponibile solo se la funzionalità wallet è abilitata dalla Dashboard.
 :::
 
-## Quick Guide
+## Ciclo di vita della ricarica del wallet
 
-Below is a detailed example of how to integrate the wallet recharge flow from scratch.
+Il processo è simile a un normale pagamento, con lievi differenze nei parametri passati alla [Create Payment API](/api/webapi/create-payment).
 
-### 1. Create Payment
+1. Quando il cliente vuole ricaricare il proprio wallet, devi creare un nuovo pagamento tramite la [Create Payment API](/api/webapi/create-payment), impostando `mode` su `Wallet`.
+   - Puoi specificare un importo da ricaricare includendo una singola `line` con l'importo desiderato e impostando la quantità a 1.
+   - Se non viene passata alcuna `line`, Voucherly chiederà al cliente di inserire l'importo.
+
+2. La risposta dell'API includerà l'URL della pagina di Voucherly Checkout a cui il cliente deve essere reindirizzato.
+
+3. Il cliente può completare la ricarica utilizzando un gateway di pagamento con buoni, un gateway di pagamento non basato su buoni, oppure una combinazione di entrambi.
+
+4. Una volta completata la ricarica, se nel corpo della richiesta [Create Payment API](/api/webapi/create-payment) è stato fornito il campo `callbackUrl`, verrà inviata una notifica [Server-to-Server (S2S)](/api/generale/best-practice/s2s) all'URL specificato. Il cliente verrà quindi reindirizzato all'URL del sito del merchant fornito nella richiesta.
+
+:::warning
+Una volta che il cliente esce dalla pagina di checkout, la transazione sarà già nello stato `Confirmed`. Non è necessario confermarla tramite API e le ricariche del wallet non possono essere rimborsate.
+:::
+
+## Guida rapida
+
+Di seguito un esempio dettagliato di come integrare da zero il flusso di ricarica del wallet.
+
+### 1. Crea un pagamento
 
 :::info
-Refer to the [Create Payment API](/api/webapi/create-payment) for full functionality and details.
+Consulta la [Create Payment API](/api/webapi/create-payment) per tutte le funzionalità e i dettagli.
 :::
 
-When the customer is ready to recharge their wallet, the merchant's site must make an HTTP call to the [Create Payment API](/api/webapi/create-payment).
+Quando il cliente è pronto a ricaricare il proprio wallet, il sito del merchant deve effettuare una chiamata HTTP alla [Create Payment API](/api/webapi/create-payment).
 
-In the request:
+Nella richiesta:
 
-- Set `mode` to `Wallet`.
-- Include customer data or `customerId` (if returning).
-- Provide `redirectOkUrl` and `redirectKoUrl` for post-checkout redirection.
+- Imposta `mode` su `Wallet`.
+- Includi i dati del cliente o il `customerId` (se cliente di ritorno).
+- Fornisci `redirectOkUrl` e `redirectKoUrl` per il reindirizzamento dopo il checkout.
 
-If you want Voucherly to prompt the customer for the amount they wish to recharge, do not include any `lines`. Otherwise, populate a single payment line with:
+Se vuoi che Voucherly chieda al cliente l'importo che desidera ricaricare, non includere alcuna `lines`. Altrimenti, popola una singola riga di pagamento con:
 
-- A quantity of 1.
-- The amount to be recharged.
+- Una quantità pari a 1.
+- L'importo da ricaricare.
 
-The `referenceId` is optional and allows the merchant to include a custom identifier (e.g., cart ID or order ID) for reconciliation with their internal system.
+Il `referenceId` è opzionale e consente al merchant di includere un identificativo personalizzato (ad es. l'ID del carrello o dell'ordine) per la riconciliazione con il proprio sistema interno.
 
-It is highly recommended to set up a Server-to-Server (S2S) endpoint that Voucherly can call to notify the merchant of the payment outcome. The URL for this endpoint should be included in the `callbackUrl` field.
+Si consiglia vivamente di configurare un endpoint Server-to-Server (S2S) che Voucherly possa contattare per notificare al merchant l'esito del pagamento. L'URL di questo endpoint deve essere incluso nel campo `callbackUrl`.
 
 <Tabs>
 
@@ -113,7 +114,7 @@ curl --location 'api-stg.voucherly.it/v1/payments' \
 
 </Tabs>
 
-The Voucherly API returns the newly created Payment object. The key field to focus on is `CheckoutUrl`, which contains the URL of the Voucherly Checkout system. The merchant's website must redirect the user to this URL to proceed with the payment.
+L'API di Voucherly restituisce l'oggetto Payment appena creato. Il campo chiave a cui prestare attenzione è `CheckoutUrl`, che contiene l'URL del sistema Voucherly Checkout. Il sito del merchant deve reindirizzare l'utente a questo URL per procedere con il pagamento.
 
 ```json [Response]
 {
@@ -142,33 +143,33 @@ The Voucherly API returns the newly created Payment object. The key field to foc
 }
 ```
 
-### 2. Configure a Checkout Callback Page
+### 2. Configura una pagina di callback per il checkout
 
-When the customer completes the wallet recharge on the Voucherly Checkout page, they are redirected to the URLs specified in the [Create Payment API](/api/webapi/create-payment) request:
+Quando il cliente completa la ricarica del wallet sulla pagina di Checkout di Voucherly, viene reindirizzato agli URL specificati nella richiesta [Create Payment API](/api/webapi/create-payment):
 
-- If the payment was completed successfully, the user is redirected to `redirectOkUrl`.
-- In case of an error, the user is redirected to `redirectKoUrl`.
+- Se il pagamento è stato completato con successo, l'utente verrà reindirizzato a `redirectOkUrl`.
+- In caso di errore, l'utente verrà reindirizzato a `redirectKoUrl`.
 
-The merchant must configure two routes on their site to handle the payment result and accept the query-string parameters sent with the redirect:
+Il merchant deve configurare due rotte sul proprio sito per gestire il risultato del pagamento e accettare i parametri della query string inviati con il reindirizzamento:
 
-- **success**: Can be `OK` if the payment succeeded, otherwise `KO`.
-- **status**: The payment status.
-- **paymentId**: The payment ID, in the format `pay_XXXXXXXXXXX`.
-- **referenceId**: The merchant's custom reference ID sent when creating the payment.
-- **amount**: The amount paid, in cents.
-- **voucherAmount**: The amount paid with meal vouchers, in cents.
-- **walletAmount**: The amount paid with the wallet, in cents.
-- **transactions**: The number of transactions.
-- **customerId**: The Voucherly customer identifier, in the format `cs_XXXXXXXXXXX`. It must be stored in the merchant's system for future payments.
-- **customerFirstName**: The customer's first name.
-- **customerLastName**: The customer's last name.
-- **customerEmail**: The customer's email address.
-- **tenant**: *live* or *sand*.
+- **success**: Può essere `OK` in caso di successo del pagamento, altrimenti `KO`.
+- **status**: Lo stato del pagamento.
+- **paymentId**: L'ID del pagamento, nel formato `pay_XXXXXXXXXXX`.
+- **referenceId**: L'ID di riferimento personalizzato del merchant inviato durante la creazione del pagamento.
+- **amount**: L'importo pagato in centesimi.
+- **voucherAmount**: L'importo pagato con buoni pasto in centesimi.
+- **walletAmount**: L'importo pagato con il wallet in centesimi.
+- **transactions**: Il numero di transazioni.
+- **customerId**: L'identificativo Voucherly del cliente nel formato `cs_XXXXXXXXXXX`. Deve essere memorizzato nel sistema del merchant per pagamenti futuri.
+- **customerFirstName**: Il nome del cliente.
+- **customerLastName**: Il cognome del cliente.
+- **customerEmail**: L'indirizzo email del cliente.
+- **tenant**: *live* o *sand*.
 
-### 3. Configure a Server-to-Server Endpoint (Optional)
+### 3. Configura un endpoint Server-to-Server (opzionale)
 
-We recommend defining an endpoint that Voucherly will call via S2S to notify the payment result before redirecting to the merchant's site. See [here](/api/general/best-practices/s2s) for more details on how to implement an S2S endpoint and its behavior.
+Si consiglia di definire un endpoint che verrà contattato da Voucherly tramite S2S per notificare il risultato di un pagamento prima del reindirizzamento al sito del merchant. Consulta [qui](/api/generale/best-practice/s2s) per ulteriori dettagli su come implementare un endpoint S2S e il suo comportamento.
 
 :::warning
-As described in the [Server-to-Server section](/api/general/best-practices/s2s), make sure your endpoint responds correctly to S2S notifications. Otherwise, the payment will be cancelled and the amounts refunded.
+Come descritto nella [sezione Server-to-Server](/api/generale/best-practice/s2s), assicurati che il tuo endpoint risponda correttamente alle notifiche S2S. In caso contrario, il pagamento verrà annullato e gli importi rimborsati.
 :::
