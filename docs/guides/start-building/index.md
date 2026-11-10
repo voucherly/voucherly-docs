@@ -49,11 +49,11 @@ Per maggiori informazioni sui gateway di pagamento, consulta la [risorsa Gateway
 Fai la tua prima chiamata API con il [Quickstart](/guide/inizia-a-integrare/inizia-a-sviluppare/quickstart), poi scegli l'integrazione più adatta a te in [Pagamenti online](/guide/pagamenti-online):
 
 - **Plugin e-commerce** — sviluppati internamente per PrestaShop, WooCommerce e Shopify, richiedono uno sforzo di sviluppo minimo o nullo e ti permettono di iniziare a testare da subito.
-- **Checkout ospitato** — il tuo server crea un Payment e reindirizza il cliente a una pagina ospitata da Voucherly.
+- **Hosted Checkout** — il tuo server crea un Payment e reindirizza il cliente a una pagina ospitata da Voucherly.
 - **Voucherly Components** — il modulo di pagamento mostrato dentro la tua pagina.
-- **Integrazione personalizzata** — il tuo selettore di gateway sopra le API REST, per il pieno controllo del flusso di pagamento.
+- **Custom integration** — il tuo selettore di gateway sopra le API REST, per il pieno controllo del flusso di pagamento.
 
-La vendita di persona, da un chiosco o da un distributore automatico, è trattata in [Pagamenti di persona](/guide/pagamenti-di-persona).
+La vendita di persona, da un kiosk o da una vending machine, è trattata in [Pagamenti di persona](/guide/pagamenti-di-persona).
 
 ### 5. Prima di andare in produzione
 

@@ -25,13 +25,13 @@ Prima di continuare con questo tutorial, verifica se puoi risparmiare tempo di s
 
 ### 1. Scopri come [funzionano le API Voucherly](/api/webapi/voucherly-api)
 
-### 2. Crea un pagamento
+### 2. Crea un Payment
 
 Voucherly fornisce un'API RESTful accessibile tramite richieste HTTP per gestire i tuoi dati. L'API supporta dati esclusivamente in formato JSON.
 
 L'elemento centrale della nostra API è il pagamento, che può essere collegato a più transazioni.
 
-1. Inizia testando l'operazione più comune con la nostra API: [Crea un pagamento](/api/webapi/create-payment).
+1. Inizia testando l'operazione più comune con la nostra API: [Create a Payment](/api/webapi/create-payment).
 
 **Esempio di richiesta**
 

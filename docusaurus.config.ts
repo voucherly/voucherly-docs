@@ -122,7 +122,7 @@ const config: Config = {
           title: 'Documentazione',
           items: [
             {label: 'Guide', to: '/'},
-            {label: 'Collezione Postman', to: '/api/postman'},
+            {label: 'Postman collection', to: '/api/postman'},
           ],
         },
         {

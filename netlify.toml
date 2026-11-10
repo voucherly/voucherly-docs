@@ -161,22 +161,48 @@ status = 301
 
 [[redirects]]
 from = '/it/guide/casi-duso/e-commerce/'
-to = '/it/guide/pagamenti-online/checkout-ospitato/'
+to = '/it/guide/pagamenti-online/hosted-checkout/'
 status = 301
 
 [[redirects]]
 from = '/it/guide/casi-duso/chiosco/'
-to = '/it/guide/pagamenti-di-persona/chiosco/'
+to = '/it/guide/pagamenti-di-persona/kiosk/'
 status = 301
 
 [[redirects]]
 from = '/it/guide/casi-duso/distributori-automatici-smart/'
-to = '/it/guide/pagamenti-di-persona/distributori-automatici-smart/'
+to = '/it/guide/pagamenti-di-persona/smart-vending-machine/'
 status = 301
 
 [[redirects]]
 from = '/it/guide/casi-duso/ricarica-wallet/'
-to = '/it/guide/informazioni/risorse/ricarica-wallet/'
+to = '/it/guide/informazioni/risorse/charge-wallet/'
+status = 301
+
+# --- Product and integration names stay in English in the Italian URLs too ---
+[[redirects]]
+from = '/it/guide/pagamenti-online/checkout-ospitato/'
+to = '/it/guide/pagamenti-online/hosted-checkout/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/pagamenti-online/integrazione-personalizzata/'
+to = '/it/guide/pagamenti-online/custom-integration/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/pagamenti-di-persona/chiosco/'
+to = '/it/guide/pagamenti-di-persona/kiosk/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/pagamenti-di-persona/distributori-automatici-smart/'
+to = '/it/guide/pagamenti-di-persona/smart-vending-machine/'
+status = 301
+
+[[redirects]]
+from = '/it/guide/informazioni/risorse/ricarica-wallet/'
+to = '/it/guide/informazioni/risorse/charge-wallet/'
 status = 301
 
 [[redirects]]

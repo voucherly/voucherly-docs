@@ -1,19 +1,19 @@
 ---
-slug: /guide/pagamenti-di-persona/distributori-automatici-smart
+slug: /guide/pagamenti-di-persona/smart-vending-machine
 sidebar_position: 2
-description: "Accetta pagamenti sui distributori automatici self-service connessi a internet con Voucherly, con lo stesso flusso del caso d'uso Kiosk."
+description: "Accetta pagamenti sulle vending machine self-service connesse a internet con Voucherly, con lo stesso flusso del caso d'uso Kiosk."
 keywords:
-  - distributori automatici smart
+  - smart vending machine
   - pagamenti vending machine
   - self-service
   - integrazione Voucherly
   - pagamento QR code
-  - chiosco
+  - kiosk
 ---
 
 
-# Distributori automatici smart
+# Smart vending machine
 
-Usa l'integrazione Distributori automatici smart di Voucherly per elaborare i pagamenti direttamente tramite distributori automatici self-service connessi a internet.
+Usa l'integrazione Smart vending machine di Voucherly per elaborare i pagamenti direttamente tramite vending machine self-service connesse a internet.
 
-Dal punto di vista dei pagamenti, l'integrazione di un distributore automatico segue lo stesso processo dell'integrazione di un chiosco. Consulta il [caso d'uso Kiosk](/guide/pagamenti-di-persona/chiosco) per indicazioni.
+Dal punto di vista dei pagamenti, l'integrazione di una vending machine segue lo stesso processo dell'integrazione di un kiosk. Consulta il [caso d'uso Kiosk](/guide/pagamenti-di-persona/kiosk) per indicazioni.

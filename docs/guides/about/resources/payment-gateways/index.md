@@ -1,11 +1,11 @@
 ---
 slug: /guide/informazioni/risorse/gateway-di-pagamento
 sidebar_position: 2
-description: "I gateway di pagamento disponibili in Voucherly: buoni pasto, carte e wallet, con supporto per processo a due fasi e rimborsi parziali."
+description: "I gateway di pagamento disponibili in Voucherly: buoni pasto, carte e wallet, con supporto per processo two-step e rimborsi parziali."
 keywords:
   - gateway di pagamento
   - buoni pasto
-  - pagamento a due fasi
+  - pagamento two-step
   - rimborso parziale
   - wallet Voucherly
   - gateway supportati
@@ -61,7 +61,7 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 :::
 
 :::note
-**Apple Pay** e **Google Pay** sono wallet, non gateway autonomi: vengono offerti sopra un gateway già configurato. Apple Pay si appoggia a MultiSafepay e SumUp; Google Pay a Fabrick, MultiSafepay, Nexi e SumUp. Il comportamento su rimborsi e catture segue quello del gateway sottostante.
+**Apple Pay** e **Google Pay** sono wallet, non gateway autonomi: vengono offerti sopra un gateway già configurato. Apple Pay si appoggia a MultiSafepay e SumUp; Google Pay a Fabrick, MultiSafepay, Nexi e SumUp. Il comportamento su rimborsi e capture segue quello del gateway sottostante.
 
 **Sodexo** e **Pluxee** sono due gateway distinti e coesistono, nonostante il rebrand commerciale di Sodexo in Pluxee. Attivare uno non attiva l'altro.
 :::

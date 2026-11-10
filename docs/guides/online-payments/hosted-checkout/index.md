@@ -1,10 +1,10 @@
 ---
-slug: /guide/pagamenti-online/checkout-ospitato
+slug: /guide/pagamenti-online/hosted-checkout
 sidebar_position: 1
-description: "Accetta pagamenti online con il Voucherly Checkout ospitato: crea un Payment, reindirizza il cliente, gestisci la callback S2S e mostra una pagina di successo."
+description: "Accetta pagamenti online con l'Hosted Checkout di Voucherly: crea un Payment, reindirizza il cliente, gestisci la callback S2S e mostra una pagina di successo."
 keywords:
   - pagamenti online
-  - checkout ospitato
+  - hosted checkout
   - Voucherly Checkout
   - integrazione e-commerce
   - Create Payment API
@@ -17,7 +17,7 @@ import PrefillCustomerContent from './../../_partial/prefill_customer_content.md
 import CreatePaymentContent from './../../_partial/create_payment_content.md';
 import RedirectUrlContent from './../../_partial/redirect_url_content.md';
 
-# Checkout ospitato
+# Hosted Checkout
 
 Usa una pagina di checkout predefinita, ospitata da Voucherly, per iniziare ad accettare pagamenti online: il tuo sito crea un Payment e reindirizza lì il cliente.
 
@@ -33,9 +33,9 @@ Vediamo un semplice esempio di integrazione del flusso di pagamento da zero.
 
 Il modo più semplice e consigliato per integrare Voucherly è utilizzare Voucherly Checkout come un'unica pagina di checkout per tutti i tuoi gateway di pagamento.
 
-Aggiungi un pulsante di checkout al tuo sito che richiami un endpoint lato server per creare un pagamento in Voucherly.
+Aggiungi un pulsante di checkout al tuo sito che richiami un endpoint lato server per creare un Payment in Voucherly.
 
-![Flusso del checkout ospitato](./hosted_checkout.svg)
+![Flusso dell'Hosted Checkout](./hosted_checkout.svg)
 
 <CreatePaymentContent />
 
@@ -75,7 +75,7 @@ Aggiungi un pulsante di checkout al tuo sito che richiami un endpoint lato serve
 }
 ```
 
-Dopo aver creato un pagamento, reindirizza il cliente al `checkoutUrl` restituito nella risposta.
+Dopo aver creato un Payment, reindirizza il cliente al `checkoutUrl` restituito nella risposta.
 
 :::tip QR code
 
@@ -98,7 +98,7 @@ Quando il consumatore effettua un acquisto fisicamente in un negozio Brick & Mor
 }
 ```
 
-### 2. Gestisci la callback S2S prima del reindirizzamento
+### 2. Gestisci la callback S2S prima del redirect
 
 Voucherly invia una callback quando un cliente completa con successo un pagamento. Questa callback può essere utilizzata per:
 
@@ -106,7 +106,7 @@ Voucherly invia una callback quando un cliente completa con successo un pagament
 - Registrare la vendita in un database.
 - Avviare un flusso di spedizione.
 
-Si consiglia vivamente di rimanere in ascolto di questa callback invece di affidarsi esclusivamente al reindirizzamento del cliente al tuo sito. Attivare le azioni solo dalla pagina di destinazione del Checkout può risultare inaffidabile.
+Si consiglia vivamente di rimanere in ascolto di questa callback invece di affidarsi esclusivamente al redirect del cliente al tuo sito. Attivare le azioni solo dalla pagina di destinazione del Checkout può risultare inaffidabile.
 
 Voucherly invia la callback all'endpoint specificato come `callbackUrl` nella richiesta [Create Payment API](/api/webapi/create-payment).
 
@@ -136,7 +136,7 @@ Assicurati che il tuo endpoint elabori correttamente le callback. In caso contra
         Consulta [Come funzionano i pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) per una guida completa sul funzionamento dei pagamenti in Voucherly.
         :::
 
-        Voucherly supporta i pagamenti con carta in due fasi, consentendoti di autorizzare prima una carta e catturare i fondi in un secondo momento. Quando Voucherly autorizza un pagamento, l'emittente della carta garantisce i fondi e blocca l'importo del pagamento sulla carta del cliente. Hai quindi a disposizione un intervallo di tempo specifico per catturare i fondi (a seconda della carta, di solito 5 giorni). Se il pagamento non viene catturato prima della scadenza dell'autorizzazione, il pagamento viene annullato e l'emittente rilascia i fondi bloccati.
+        Voucherly supporta i pagamenti con carta two-step, consentendoti di autorizzare prima una carta e catturare i fondi in un secondo momento. Quando Voucherly autorizza un pagamento, l'emittente della carta garantisce i fondi e blocca l'importo del pagamento sulla carta del cliente. Hai quindi a disposizione un intervallo di tempo specifico per catturare i fondi (a seconda della carta, di solito 5 giorni). Se il pagamento non viene catturato prima della scadenza dell'autorizzazione, il pagamento viene annullato e l'emittente rilascia i fondi bloccati.
 
         Per abilitare questo processo, imposta il parametro `isAutoConfirm` su `false` durante la creazione del pagamento. Questo indica a Voucherly di autorizzare l'importo sulla carta del cliente senza catturarlo immediatamente.
 

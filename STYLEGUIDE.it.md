@@ -32,15 +32,24 @@ La lingua sorgente è l'italiano perché chi legge la documentazione è soprattu
 
 ## 4. Glossario canonico EN ↔ IT
 
+**I nomi di prodotto, di integrazione e i termini tecnici restano in inglese**, nel testo, nei titoli, nella sidebar e negli slug degli URL italiani. Si traduce la prosa che li circonda, non il nome. Fanno eccezione i nomi che il merchant vede in italiano nella Dashboard o nel Checkout (Pagamento al tavolo, Link di pagamento, Scontrino elettronico, quota prepagata, credito personale): la documentazione usa il nome che il merchant vede.
+
 Pattern di introduzione al primo uso: **`Termine EN (gloss IT)`**, poi si usa il termine scelto.
 
 | Concetto EN | Reso canonico IT | Note / cosa correggere |
 |---|---|---|
+| Hosted Checkout | **Hosted Checkout** (invariato) | Nome di prodotto: mai "checkout ospitato". Articolo: "l'Hosted Checkout", "dell'Hosted Checkout". Slug `hosted-checkout`. |
+| Custom integration | **Custom integration** (invariato) | Mai "integrazione personalizzata". Femminile: "la Custom integration". Slug `custom-integration`. |
+| Kiosk | **kiosk** (invariato, maiuscolo nei titoli) | Mai "chiosco". Slug `kiosk`. |
+| Smart vending machine | **smart vending machine** (invariato, maiuscolo nei titoli) | Mai "distributore automatico". Femminile: "la vending machine". Slug `smart-vending-machine`. |
+| Charge Wallet | **Charge Wallet** (invariato) | Nome del caso d'uso. L'azione nella prosa resta "ricarica del wallet". Slug `charge-wallet`. |
+| Postman collection | **Postman collection** (invariato) | Mai "collezione Postman". |
+| nomi degli endpoint (`Create a Payment`, `Confirm a Payment`, …) | **invariati**, come nella reference API | Il testo di un link a `/api/webapi/*` è il nome dell'endpoint in inglese. |
 | merchant | **merchant** (invariato) | Mai "esercente/commerciante/negoziante". Già coerente. |
 | user | **utente** (entità: `User`) | |
-| customer | **cliente** (entità: `Customer`) | |
-| payment | **pagamento** (entità: `Payment`) | |
-| transaction | **transazione** (entità: `Transaction`) | |
+| customer | **cliente**; **`Customer`** quando è l'oggetto dell'API | "Il cliente paga", ma "crea un Customer", "il `customerId` del Customer". |
+| payment | **pagamento**; **`Payment`** quando è l'oggetto dell'API | "Il cliente completa il pagamento", ma "crea un Payment", "lo stato del Payment". |
+| transaction | **transazione**; **`Transaction`** quando è l'oggetto dell'API | |
 | payment gateway | **gateway di pagamento** | Primo uso: "Payment Gateway (gateway di pagamento)". |
 | payment method | **metodo di pagamento** | |
 | wallet | **wallet (portafoglio)** al 1º uso, poi `wallet` | Già coerente. |
@@ -56,8 +65,10 @@ Pattern di introduzione al primo uso: **`Termine EN (gloss IT)`**, poi si usa il
 | test (toggle/modalità) | **modalità test** | |
 | live / production (ambiente) | **ambiente di produzione** | |
 | live (toggle/modalità) | **modalità live** | |
-| authorization | **autorizzazione** | Fase del processo a due fasi. |
-| capture / to capture | **cattura / catturare** (gloss "(capture)" al 1º uso) | ⚠️ Tradurre anche la label "Capture" nella lista a due fasi (oggi lasciata in EN accanto a "Autorizzazione"). |
+| two-step | **two-step** (gloss "(in due fasi)" al 1º uso) | "processo two-step", "pagamento two-step". |
+| authorization | **autorizzazione** | Fase del processo two-step. |
+| capture / to capture | **capture** (sostantivo, invariato) / **catturare** (verbo) | "la capture", "esegui la capture"; "i fondi vengono catturati". |
+| redirect | **redirect** (sostantivo, invariato) / **reindirizzare** (verbo) | Mai "reindirizzamento". "Il redirect al tuo sito", "metodi con redirect"; "reindirizza il cliente". |
 | to cancel / Cancelled | **annullare / annullata** | Stato API `Cancelled` resta in EN. |
 | to void / Voided | **invalidare / invalidata** (gloss "(void)" al 1º uso) | ⚠️ Distinguere da *cancel*. Stato API `Voided` resta in EN. Uniformare `s2s.md` alla resa di `payments-lifecycle.md`. |
 | webhook / callback / S2S | **webhook / callback / S2S (server-to-server)** | Invariati. |

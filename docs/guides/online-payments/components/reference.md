@@ -3,13 +3,13 @@ slug: /guide/pagamenti-online/components/riferimento
 title: Riferimento di Voucherly.js
 sidebar_label: Riferimento di Voucherly.js
 sidebar_position: 2
-description: "Riferimento di Voucherly.js: come includerlo, le opzioni del Payment Component e dell'Express Checkout Component, il reindirizzamento dopo il pagamento, la modalità popup, callback, metodi, errori e versionamento."
+description: "Riferimento di Voucherly.js: come includerlo, le opzioni del Payment Component e dell'Express Checkout Component, il redirect dopo il pagamento, la modalità popup, callback, metodi, errori e versionamento."
 keywords:
   - Voucherly.js
   - Voucherly Components
   - riferimento JavaScript
   - Voucherly.init
-  - reindirizzamento dopo il pagamento
+  - redirect dopo il pagamento
   - modalità popup
   - aspetto
   - callback
@@ -76,8 +76,8 @@ Lo stesso oggetto è accettato da `Voucherly.init` e da `Voucherly.initExpress`.
 | `publicKey` | `string` (**obbligatorio**) | La publishable key (chiave pubblicabile) del tuo account merchant, `pk_live_…` o `pk_sand_…`. Decide l'ambiente: una chiave `pk_sand_` mostra i Payment sandbox, una chiave `pk_live_` quelli live. Una secret key (`sk_`) o una restricted key (`rk_`) genera un'eccezione. |
 | `paymentId` | `string` (**obbligatorio**) | L'`id` del Payment creato con [Create a Payment](/api/webapi/create-payment), `pay_…`. Il Payment deve appartenere al merchant della chiave. |
 | `containerId` | `string` (**obbligatorio**) | L'`id` dell'elemento in cui il componente viene mostrato. Il suo contenuto viene sostituito. |
-| `redirect` | `"always"` \| `"if_required"` | Cosa fa la tua pagina quando il Payment si chiude. `always` (default) la manda sul `redirectOkUrl` o sul `redirectKoUrl` del Payment; `if_required` la lascia dov'è e fa scattare `onPaymentComplete` o `onPaymentError`. Vedi [Reindirizzamento dopo il pagamento](#reindirizzamento-dopo-il-pagamento). |
-| `returnUrl` | `string` | La pagina su cui il cliente torna dopo un metodo di pagamento con reindirizzamento, per finire di pagare nel componente. Il default è l'URL corrente della pagina. Deve essere un URL assoluto del tuo sito, e quella pagina deve montare il componente con lo stesso `paymentId`. Non è la pagina di esito del Payment. |
+| `redirect` | `"always"` \| `"if_required"` | Cosa fa la tua pagina quando il Payment si chiude. `always` (default) la manda sul `redirectOkUrl` o sul `redirectKoUrl` del Payment; `if_required` la lascia dov'è e fa scattare `onPaymentComplete` o `onPaymentError`. Vedi [Redirect dopo il pagamento](#redirect-dopo-il-pagamento). |
+| `returnUrl` | `string` | La pagina su cui il cliente torna dopo un metodo di pagamento con redirect, per finire di pagare nel componente. Il default è l'URL corrente della pagina. Deve essere un URL assoluto del tuo sito, e quella pagina deve montare il componente con lo stesso `paymentId`. Non è la pagina di esito del Payment. |
 | `onReady` | `function` | Vedi [Callback](#callback). |
 | `onResize` | `function` | |
 | `onPaymentComplete` | `function` | |
@@ -96,28 +96,28 @@ Lo stesso oggetto è accettato da `Voucherly.init` e da `Voucherly.initExpress`.
 
 Apple Pay e Google Pay richiedono inoltre un gateway con il supporto ai wallet attivo sul tuo account. Quando nella stessa pagina c'è l'Express Checkout Component, il Payment Component non li mostra, qualunque cosa dica `wallets`: sono già nella riga express. Allo stesso modo il Payment Component non mostra credito personale e quota prepagata quando la riga express li mostra, secondo i suoi [`paymentMethods`](#componentoptions-1).
 
-### Reindirizzamento dopo il pagamento
+### Redirect dopo il pagamento
 
 `redirect` decide cosa fa la tua pagina quando il Payment si chiude. Funziona allo stesso modo inline e in modalità popup, e per entrambi i componenti.
 
 | Valore | Quando il Payment si chiude |
 | --- | --- |
 | `always` (default) | Voucherly.js manda la tua pagina sul `redirectOkUrl` del Payment se è stato pagato, sul suo `redirectKoUrl` altrimenti. Né `onPaymentComplete` né `onPaymentError` vengono chiamate per il Payment chiuso. |
-| `if_required` | La tua pagina resta dov'è, e `onPaymentComplete` o `onPaymentError` riceve l'esito. La pagina viene lasciata solo quando un metodo di pagamento lo richiede: inline, per un metodo con reindirizzamento; in modalità popup, mai. |
+| `if_required` | La tua pagina resta dov'è, e `onPaymentComplete` o `onPaymentError` riceve l'esito. La pagina viene lasciata solo quando un metodo di pagamento lo richiede: inline, per un metodo con redirect; in modalità popup, mai. |
 
-L'esito viaggia nella query string del reindirizzamento, con gli stessi parametri del [checkout ospitato](/guide/pagamenti-online/checkout-ospitato#3-mostra-una-pagina-di-successo): `success` (`OK` o `KO`), `status`, `paymentId`, `referenceId`, `amount`, `customerId` e `tenant`. Usali per decidere cosa mostrare, e controlla il Payment dal tuo server prima di evadere l'ordine.
+L'esito viaggia nella query string del redirect, con gli stessi parametri dell'[Hosted Checkout](/guide/pagamenti-online/hosted-checkout#3-mostra-una-pagina-di-successo): `success` (`OK` o `KO`), `status`, `paymentId`, `referenceId`, `amount`, `customerId` e `tenant`. Usali per decidere cosa mostrare, e controlla il Payment dal tuo server prima di evadere l'ordine.
 
 Con `always`:
 
 - **Il Payment deve avere sia `redirectOkUrl` sia `redirectKoUrl`.** Create a Payment li richiede, quindi un Payment senza è stato creato in un altro modo: il componente non viene mostrato, e `onPaymentError` riceve [`redirect_url_missing`](#errori) appena chiami `Voucherly.init`, prima che il cliente paghi.
-- **Un Payment già chiuso quando il componente viene montato non viene reindirizzato**: scatta `onPaymentComplete` o `onPaymentError`, come con `if_required`. La pagina che monta il componente può quindi essere anche la tua pagina di esito, senza un ciclo di reindirizzamenti.
+- **Un Payment già chiuso quando il componente viene montato non viene reindirizzato**: scatta `onPaymentComplete` o `onPaymentError`, come con `if_required`. La pagina che monta il componente può quindi essere anche la tua pagina di esito, senza un ciclo di redirect.
 - **Le callback di un Payment aperto vengono comunque chiamate**: `onPaymentPartialComplete` dopo un pagamento parziale, e `onPaymentError` per una transazione fallita che il cliente può riprovare.
-- **`onRedirect` non c'entra**: gestisce la navigazione verso la pagina di un provider durante il pagamento, non il reindirizzamento alla fine.
-- Inline, dopo un metodo con reindirizzamento, il cliente torna prima sulla tua pagina: il componente carica il Payment chiuso, e solo allora Voucherly.js manda la pagina sull'URL di esito.
+- **`onRedirect` non c'entra**: gestisce la navigazione verso la pagina di un provider durante il pagamento, non il redirect alla fine.
+- Inline, dopo un metodo con redirect, il cliente torna prima sulla tua pagina: il componente carica il Payment chiuso, e solo allora Voucherly.js manda la pagina sull'URL di esito.
 
 ### Modalità popup
 
-Con `displayMode: "popup"`, `Voucherly.init` non mostra nulla nella tua pagina: [`Voucherly.submit()`](#voucherlysubmit) apre il checkout Voucherly in una finestra popup sopra di essa. I metodi di pagamento con reindirizzamento restano dentro il popup, e quando il Payment si chiude il popup si chiude e [`redirect`](#reindirizzamento-dopo-il-pagamento) si applica come inline.
+Con `displayMode: "popup"`, `Voucherly.init` non mostra nulla nella tua pagina: [`Voucherly.submit()`](#voucherlysubmit) apre il checkout Voucherly in una finestra popup sopra di essa. I metodi di pagamento con redirect restano dentro il popup, e quando il Payment si chiude il popup si chiude e [`redirect`](#redirect-dopo-il-pagamento) si applica come inline.
 
 ```js
 Voucherly.init({
@@ -247,7 +247,7 @@ Il componente è stato mostrato ed è interattivo.
 | Campo | Tipo | Descrizione |
 | --- | --- | --- |
 | `height` | `number` | Altezza del componente in pixel, già applicata al suo contenitore. |
-| `resumed` | `boolean` | `true` quando il componente si sta ricaricando dopo che il cliente è tornato da un metodo di pagamento con reindirizzamento. |
+| `resumed` | `boolean` | `true` quando il componente si sta ricaricando dopo che il cliente è tornato da un metodo di pagamento con redirect. |
 
 ### onResize(height)
 
@@ -294,7 +294,7 @@ Una transazione è fallita, il Payment è stato chiuso senza successo, oppure il
 
 Il metodo di pagamento scelto richiede la pagina del provider. L'implementazione di default naviga la pagina con `window.location.href = url`; fornisci la tua per salvare prima lo stato. La navigazione deve avvenire al livello più alto della pagina, mai in un frame. Quando il cliente torna, monta di nuovo il componente con lo stesso `paymentId`: riprende con `resumed: true` in `onReady` e riporta l'esito.
 
-Non viene chiamata per il reindirizzamento alla pagina di esito quando il Payment si chiude: vedi [Reindirizzamento dopo il pagamento](#reindirizzamento-dopo-il-pagamento). Non viene chiamata nemmeno in modalità popup: la pagina del provider si apre dentro il popup.
+Non viene chiamata per il redirect alla pagina di esito quando il Payment si chiude: vedi [Redirect dopo il pagamento](#redirect-dopo-il-pagamento). Non viene chiamata nemmeno in modalità popup: la pagina del provider si apre dentro il popup.
 
 ### onPopupOpened()
 
