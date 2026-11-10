@@ -1,134 +1,135 @@
 ---
+slug: /guide/inizia-a-integrare/inizia-a-sviluppare/checklist-sito-web
 sidebar_position: 3
-description: "Website checklist to go live with Voucherly: contact info, business details, policies, privacy, security and payment gateway logos."
+description: "Checklist del sito web per andare in produzione con Voucherly: contatti, dati aziendali, policy, privacy, sicurezza e loghi dei gateway."
 keywords:
-  - voucherly website checklist
-  - go live requirements
+  - checklist sito web voucherly
+  - requisiti produzione
   - privacy policy
-  - terms and conditions
+  - termini e condizioni
   - pci
-  - payment gateways
+  - gateway di pagamento
 ---
 
 import Checkbox from '@site/src/components/Checkbox';
 
-# Website checklist
+# Checklist del sito web
 
-Make sure your website aligns with card network standards and e-commerce best practices.
+Assicurati che il tuo sito web sia conforme agli standard dei circuiti di pagamento e alle best practice dell'e-commerce.
 
-This page contains a list of the common elements — such as accurate product descriptions, clear policies, and proper security features — that each business on Voucherly should address on its website. Adhering to these recommendations reduces the risk of customer confusion and disputes. It also helps you meet Voucherly’s standards and the standards set by the credit card networks.
+Questa pagina contiene un elenco degli elementi comuni — come descrizioni accurate dei prodotti, policy chiare e adeguate funzionalità di sicurezza — che ogni attività su Voucherly dovrebbe curare sul proprio sito web. Rispettare queste raccomandazioni riduce il rischio di confusione e contestazioni da parte dei clienti. Ti aiuta inoltre a soddisfare gli standard di Voucherly e quelli stabiliti dai circuiti delle carte di credito.
 
-### Requirements
+### Requisiti
 
 :::warning
-If any requirements are not met, Voucherly activation cannot proceed, and you will be asked to update the necessary information.
+Se uno qualsiasi dei requisiti non è soddisfatto, l'attivazione di Voucherly non può procedere e ti verrà chiesto di aggiornare le informazioni necessarie.
 :::
 
-<Checkbox label="Customer service contact information" >
+<Checkbox label="Informazioni di contatto del servizio clienti" >
 
-Ensure customers can reach you easily by providing multiple contact methods, such as:
+Assicurati che i clienti possano contattarti facilmente offrendo più canali di contatto, come:
 
-- Email addresses
-- Phone numbers
+- Indirizzi email
+- Numeri di telefono
 - Live chat
 
-Low-friction communication channels reduce misunderstandings and improve customer satisfaction, helping to prevent disputes. Avoid relying solely on contact forms.
+Canali di comunicazione a bassa frizione riducono i malintesi e migliorano la soddisfazione dei clienti, contribuendo a prevenire le contestazioni. Evita di affidarti esclusivamente ai moduli di contatto.
 
 </Checkbox>
 
-<Checkbox label="Your business information" >
+<Checkbox label="Le informazioni sulla tua attività" >
 
-Provide clear details about your business, including:
+Fornisci dettagli chiari sulla tua attività, tra cui:
 
-- Full legal name
-- VAT number
-- Chamber of Commerce registration (CoC, also known as REA in Italy)
-- Registered business address
+- Ragione sociale completa
+- Partita IVA
+- Iscrizione alla Camera di Commercio (CoC, in Italia nota come REA)
+- Sede legale dell'attività
 
-This information adds credibility and helps customers verify your business’s legitimacy.
+Queste informazioni aumentano la credibilità e aiutano i clienti a verificare la legittimità della tua attività.
 
 </Checkbox>
 
-<Checkbox label="Your service's general terms and conditions" >
+<Checkbox label="I termini e le condizioni generali del tuo servizio" >
 
-Clearly outline your policies to build trust and set expectations. These include:
+Illustra chiaramente le tue policy per creare fiducia e definire le aspettative. Queste includono:
 
-- **Refund Policy**. Conditions under which refunds are issued.
-- **Cancellation Policy**. Rules for subscription or reservation cancellations.
-- **Return Policy**. Conditions for returns and step-by-step instructions.
-- **Shipping Policy**. Methods, times, rates, and eligible destinations.
-- **One-click payment Addendum**. Please refer to [Voucherly one-click payment addendum](https://legal.voucherly.it/examples/one-click-payment).
+- **Policy di rimborso**. Le condizioni in base alle quali vengono emessi i rimborsi.
+- **Policy di cancellazione**. Le regole per la cancellazione di abbonamenti o prenotazioni.
+- **Policy di reso**. Le condizioni per i resi e le istruzioni passo passo.
+- **Policy di spedizione**. Metodi, tempi, tariffe e destinazioni ammesse.
+- **Addendum sul pagamento one-click**. Consulta l'[addendum Voucherly sul pagamento one-click](https://legal.voucherly.it/examples/one-click-payment).
 
-Please add a click-to-accept checkbox with the terms and conditions at checkout. If this is not possible, clearly inform your customers that by placing the order, they implicitly accept the website's terms and conditions.
+Aggiungi al checkout una casella di spunta (click-to-accept) con i termini e le condizioni. Se non è possibile, informa chiaramente i clienti che, effettuando l'ordine, accettano implicitamente i termini e le condizioni del sito web.
 
 :::info
-If your business has no fulfillment process (such as in-person service), fulfillment policies are not required.
+Se la tua attività non prevede un processo di evasione (come nei servizi erogati di persona), le policy di evasione non sono richieste.
 :::
 
 </Checkbox>
 
-<Checkbox label="Your website's privacy policy" >
+<Checkbox label="La privacy policy del tuo sito web" >
 
-To comply with global privacy laws, include a clear privacy policy that explains how customer data is collected, stored, used, or shared. This demonstrates your commitment to protecting customer information.
+Per rispettare le normative sulla privacy a livello globale, includi una privacy policy chiara che spieghi come i dati dei clienti vengono raccolti, conservati, utilizzati o condivisi. Questo dimostra il tuo impegno nella protezione delle informazioni dei clienti.
 
 </Checkbox>
 
-### Best practices
+### Best practice
 
-By implementing these practices, you enhance customer trust, improve their experience, and reduce the likelihood of disputes.
+Applicando queste pratiche, aumenti la fiducia dei clienti, migliori la loro esperienza e riduci la probabilità di contestazioni.
 
-<Checkbox label="A description of what you are selling" >
+<Checkbox label="Una descrizione di ciò che vendi" >
 
-Help your customers make informed purchasing decisions by providing detailed descriptions of your products or services. For example:
+Aiuta i tuoi clienti a prendere decisioni d'acquisto consapevoli fornendo descrizioni dettagliate dei tuoi prodotti o servizi. Ad esempio:
 
-- For physical goods, include multiple images and information about materials, colors, and other specifications.
-- For digital or service-based offerings, clearly outline features, benefits, and any limitations.
+- Per i beni fisici, includi più immagini e informazioni su materiali, colori e altre specifiche.
+- Per le offerte digitali o basate su servizi, illustra chiaramente caratteristiche, vantaggi ed eventuali limitazioni.
 
-Detailed descriptions also help set accurate expectations, reducing the risk of disputes by making it clear what customers will receive.
+Descrizioni dettagliate aiutano anche a definire aspettative accurate, riducendo il rischio di contestazioni perché chiariscono ciò che i clienti riceveranno.
 
 :::info
-If your website does not clearly describe what you’re selling, we may contact you with recommendations for improvement.
+Se il tuo sito web non descrive chiaramente ciò che vendi, potremmo contattarti con suggerimenti per migliorarlo.
 :::
 
 </Checkbox>
 
-<Checkbox label="The purchase currency" >
+<Checkbox label="La valuta di acquisto" >
 
-Clearly display the currency used for pricing on your site. Use explicit terms like EUR or USD instead of relying solely on symbols which can vary by region. This helps international customers avoid confusion.
+Mostra chiaramente la valuta utilizzata per i prezzi sul tuo sito. Usa termini espliciti come EUR o USD invece di affidarti ai soli simboli, che possono variare da regione a regione. Questo aiuta i clienti internazionali a evitare confusione.
 
 :::warning
-Voucherly supports EUR only payments.
+Voucherly supporta esclusivamente pagamenti in EUR.
 :::
 
 </Checkbox>
 
-<Checkbox label="Legal or export restrictions" >
+<Checkbox label="Restrizioni legali o all'esportazione" >
 
-Disclose any legal or export restrictions applicable to your products or services. This transparency builds trust and helps customers understand any limitations that might impact them.
-
-</Checkbox>
-
-<Checkbox label="The terms of any promotions you are offering" >
-
-Clearly state the conditions for any promotions, discounts, or free trials. Provide visible disclaimers or links when customers agree to participate, ensuring transparency and avoiding disputes.
+Segnala eventuali restrizioni legali o all'esportazione applicabili ai tuoi prodotti o servizi. Questa trasparenza crea fiducia e aiuta i clienti a comprendere eventuali limitazioni che potrebbero riguardarli.
 
 </Checkbox>
 
-<Checkbox label="Security of your website and payment information" >
+<Checkbox label="I termini di eventuali promozioni offerte" >
 
-Reassure customers that their payment data is safe by:
-
-- Complying with PCI standards.
-- Using HTTPS and other security best practices.
-- Preventing vulnerabilities such as card testing.
-
-Explain how you handle customer payment information securely and maintain their trust.
+Indica chiaramente le condizioni di eventuali promozioni, sconti o prove gratuite. Fornisci disclaimer o link ben visibili quando i clienti accettano di parteciparvi, garantendo trasparenza ed evitando contestazioni.
 
 </Checkbox>
 
-<Checkbox label="Accepted payment gateway logos" >
+<Checkbox label="Sicurezza del tuo sito web e delle informazioni di pagamento" >
 
-Display the logos of the payment gateways you accept at checkout. This reduces friction by making it clear which payment methods are supported.
-Voucherly provides this information via API. Please refer to the [List all PaymentGateways](/api/webapi/list-payment-gateway) endpoint.
+Rassicura i clienti sul fatto che i loro dati di pagamento sono al sicuro:
+
+- Rispettando gli standard PCI.
+- Utilizzando HTTPS e altre best practice di sicurezza.
+- Prevenendo vulnerabilità come il card testing.
+
+Spiega come gestisci in modo sicuro le informazioni di pagamento dei clienti e come ne mantieni la fiducia.
+
+</Checkbox>
+
+<Checkbox label="I loghi dei gateway di pagamento accettati" >
+
+Mostra al checkout i loghi dei gateway di pagamento che accetti. Questo riduce la frizione rendendo chiaro quali metodi di pagamento sono supportati.
+Voucherly fornisce questa informazione tramite API. Consulta l'endpoint [List all PaymentGateways](/api/webapi/list-payment-gateway).
 
 </Checkbox>

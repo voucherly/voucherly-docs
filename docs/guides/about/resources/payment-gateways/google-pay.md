@@ -1,11 +1,12 @@
 ---
+slug: /guide/informazioni/risorse/gateway-di-pagamento/google-pay
 sidebar_position: 20
-description: "Enable Google Pay on a custom domain with Voucherly: submit your site for Google approval and go live via MultiSafepay, Nexi or Stripe."
+description: "Abilita Google Pay su un dominio personalizzato con Voucherly: invia il tuo sito all'approvazione di Google e vai live tramite MultiSafepay, Nexi o Stripe."
 keywords:
   - Google Pay
-  - custom domain
-  - Google Pay Business Console
-  - PSP integration
+  - dominio personalizzato
+  - Business Console Google Pay
+  - integrazione PSP
   - Voucherly
   - go live
 ---
@@ -15,14 +16,14 @@ keywords:
 
 :::info
 
-- By processing Google Pay payments, you agree to the [Google API Terms of Service](https://payments.developers.google.com/terms/sellertos).
-- When integrating Google Pay into your ecommerce platform, you must follow [Google's brand guidelines](https://developers.google.com/pay/api/web/guides/brand-guidelines).
-- For more information, see [Google Pay – Overview](https://developers.google.com/pay/api/web/overview).
+- Elaborando i pagamenti Google Pay, accetti i [Termini di servizio delle API Google](https://payments.developers.google.com/terms/sellertos).
+- Quando integri Google Pay nella tua piattaforma e-commerce, devi rispettare le [linee guida del brand di Google](https://developers.google.com/pay/api/web/guides/brand-guidelines).
+- Per maggiori informazioni, consulta [Google Pay – Overview](https://developers.google.com/pay/api/web/overview).
 
 :::
 
 :::warning
-Integration with Google Pay is not a direct integration. A supported PSP is required:
+L'integrazione con Google Pay non è un'integrazione diretta. È necessario un PSP supportato:
 
 - MultiSafepay
 - Nexi
@@ -30,49 +31,49 @@ Integration with Google Pay is not a direct integration. A supported PSP is requ
 
 :::
 
-Voucherly complies with all technical and UX standards set by Google Pay. Activation for a custom domain requires Google Pay approval.
+Voucherly rispetta tutti gli standard tecnici e di UX definiti da Google Pay. L'attivazione per un dominio personalizzato richiede l'approvazione di Google Pay.
 
 :::info
-If you don't use a custom domain you don't need this guide. Google Pay can be directly activated in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard.
+Se non utilizzi un dominio personalizzato non hai bisogno di questa guida. Google Pay può essere attivato direttamente in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** nella Dashboard di Voucherly.
 :::
 
-## Submit your details for approval
+## Invia i tuoi dati per l'approvazione
 
-Go to [Google Pay's Business Console](https://pay.google.com/business/console/) and submit your business details and add the websites where you want to enable the Google Pay button.
+Vai alla [Business Console di Google Pay](https://pay.google.com/business/console/), invia i dati della tua attività e aggiungi i siti web su cui vuoi abilitare il pulsante Google Pay.
 
-### Provide your business details
+### Fornisci i dati della tua attività
 
-1. Under **Business Profile**, click **Get started**.
-1. Complete both the **Business identity** and **Business information** sections
-1. Click **Save**.
+1. In **Business Profile**, clicca **Get started**.
+1. Completa entrambe le sezioni **Business identity** e **Business information**
+1. Clicca **Save**.
 
-### Send your website details for approval
+### Invia i dati del tuo sito web per l'approvazione
 
 :::info
-Every website where you want to implement the Google Pay button must be approved.
+Ogni sito web su cui vuoi implementare il pulsante Google Pay deve essere approvato.
 :::
 
-1. Under **Google Pay API**, click **Create an integration**.
-1. Click **Get started**, accept the terms and conditions and click **Continue**
-1. Under **Integrate with your website**, click **Add website**.
-1. Add the website where you want to integrate **Google Pay direct**.
-1. Set the **Google Pay API integration** type to **Gateway**.
-1. Upload the requested screenshots for each section of your website. You can activate Google Pay in the Voucherly sandbox environment.
-    - See [Payment method screen](/download/google-pay/Payment%20method%20screen.png) or download <a target="_blank" download href="/download/google-pay/Payment method screen.png">here</a>.
-    - See [Google Pay API payment screen](/download/google-pay/Google%20Pay%20API%20payment%20screen.png) or download <a target="_blank" download href="/download/google-pay/Google Pay API payment screen.png">here</a>.
-1. Click **Save**.
+1. In **Google Pay API**, clicca **Create an integration**.
+1. Clicca **Get started**, accetta i termini e le condizioni e clicca **Continue**
+1. In **Integrate with your website**, clicca **Add website**.
+1. Aggiungi il sito web su cui vuoi integrare **Google Pay direct**.
+1. Imposta il tipo di **Google Pay API integration** su **Gateway**.
+1. Carica gli screenshot richiesti per ogni sezione del tuo sito web. Puoi attivare Google Pay nell'ambiente sandbox di Voucherly.
+    - Vedi [Payment method screen](/download/google-pay/Payment%20method%20screen.png) o scaricalo <a target="_blank" download href="/download/google-pay/Payment method screen.png">qui</a>.
+    - Vedi [Google Pay API payment screen](/download/google-pay/Google%20Pay%20API%20payment%20screen.png) o scaricalo <a target="_blank" download href="/download/google-pay/Google Pay API payment screen.png">qui</a>.
+1. Clicca **Save**.
 
-Once all details have been provided and approved, go to **Google Pay API**. In the form, check every box once you have confirmed that all steps have been cleared. Click **Submit for approval**.
+Una volta forniti e approvati tutti i dati, vai su **Google Pay API**. Nel modulo, spunta ogni casella dopo aver verificato che tutti i passaggi siano stati completati. Clicca **Submit for approval**.
 
-## Production environment and Go live
+## Ambiente di produzione e Go live
 
 :::warning
-You need an active Voucherly account to configure Google Pay in the live environment. If you haven’t done so yet, [activate your account](/guides/start-building/activate-account) by providing your company information.
+Hai bisogno di un account Voucherly attivo per configurare Google Pay nell'ambiente di produzione. Se non l'hai ancora fatto, [attiva il tuo account](/guide/inizia-a-integrare/attiva-account) fornendo le informazioni della tua azienda.
 :::
 
-Once Google approves your website, you can get the merchant ID and merchant name from your [Google Pay Business Console](https://pay.google.com/business/console/).
+Una volta che Google ha approvato il tuo sito web, puoi ottenere il merchant ID e il merchant name dalla tua [Business Console di Google Pay](https://pay.google.com/business/console/).
 
-1. Configure the merchant ID in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use live environment.
-1. Depending on your PSP, additional steps or configurations may be required. Visit the reference documentation for more information.
+1. Configura il merchant ID in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** nella Dashboard di Voucherly. Utilizza l'ambiente di produzione.
+1. A seconda del tuo PSP, potrebbero essere necessari passaggi o configurazioni aggiuntivi. Consulta la documentazione di riferimento per maggiori informazioni.
 
-Now you're ready to accept Google Pay with Voucherly!
+Ora sei pronto ad accettare Google Pay con Voucherly!

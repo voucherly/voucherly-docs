@@ -23,7 +23,7 @@ import {useLocalizedPath} from '@site/src/utils/localeSlugs';
 function AlternateLangHeaders() {
   const {
     siteConfig: {url: siteUrl},
-    i18n: {currentLocale, defaultLocale, localeConfigs},
+    i18n: {currentLocale, localeConfigs},
   } = useDocusaurusContext();
   const localizedPath = useLocalizedPath();
 
@@ -40,7 +40,8 @@ function AlternateLangHeaders() {
       {Object.entries(localeConfigs).map(([locale, {htmlLang}]) => (
         <link key={locale} rel="alternate" href={buildUrl(locale)} hrefLang={htmlLang} />
       ))}
-      <link rel="alternate" href={buildUrl(defaultLocale)} hrefLang="x-default" />
+      {/* Italian is the source language, but a reader matching neither locale is better served in English, as the root redirect in netlify.toml does. */}
+      <link rel="alternate" href={buildUrl('en')} hrefLang="x-default" />
 
       <meta property="og:locale" content={bcp47ToOpenGraphLocale(currentHtmlLang)} />
       {Object.values(localeConfigs)

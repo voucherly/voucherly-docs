@@ -1,61 +1,62 @@
 ---
+slug: /guide/informazioni/definizioni
 sidebar_position: 3
-description: "Key Voucherly terms and concepts: merchant, user, customer, payment, payment gateway, wallet and payment method."
+description: "Termini e concetti chiave di Voucherly: merchant, user, customer, payment, gateway di pagamento, wallet e metodo di pagamento."
 keywords:
-  - voucherly definitions
+  - definizioni voucherly
   - merchant
   - customer
-  - payment gateway
+  - gateway di pagamento
   - wallet
-  - payment method
+  - metodo di pagamento
 ---
 
-# Definitions
+# Definizioni
 
-This section defines the key terms and concepts used in Voucherly to help you better understand the guides and system functionality.
+Questa sezione definisce i termini e i concetti chiave utilizzati in Voucherly per aiutarti a comprendere meglio le guide e il funzionamento del sistema.
 
-## Concepts and Terms
+## Concetti e termini
 
 ### Merchant
 
-The business owner of an online shop integrating Voucherly. It is the entity to which invoices are addressed.
+Il titolare dell'attività di un negozio online che integra Voucherly. È l'entità a cui vengono intestate le fatture.
 
-### User
+### User (Utente)
 
-An individual, typically a merchant's employee, who can access and manage the merchant account via the Dashboard. Users can view data, adjust settings, and perform operations.
+Una persona, tipicamente un dipendente del merchant, che può accedere e gestire l'account del merchant tramite la Dashboard. Gli utenti possono visualizzare i dati, modificare le impostazioni ed eseguire operazioni.
 
-A single user may have access to multiple merchants.
+Un singolo utente può avere accesso a più merchant.
 
-### Customer
+### Customer (Cliente)
 
-The individual making purchases on the merchant's website and paying through Voucherly.
+La persona che effettua acquisti sul sito del merchant e paga tramite Voucherly.
 
-Each customer in Voucherly is assigned a unique ID that enables access to their wallet and allows saving and reusing payment methods.
+A ogni cliente in Voucherly viene assegnato un ID univoco che consente l'accesso al proprio wallet e permette di salvare e riutilizzare i metodi di pagamento.
 
-### Payment
+### Payment (Pagamento)
 
-The entity representing a customer's payment action. A payment must be created via API each time a customer intends to make a payment. Voucherly generates a session where the customer is redirected to select payment gateways and finalize the process.
+L'entità che rappresenta l'azione di pagamento di un cliente. Un pagamento deve essere creato tramite API ogni volta che un cliente intende effettuare un pagamento. Voucherly genera una sessione in cui il cliente viene reindirizzato per selezionare i gateway di pagamento e completare il processo.
 
-A payment includes multiple transactions, each representing a payment attempt through a specific gateway.
+Un pagamento include più transazioni, ciascuna delle quali rappresenta un tentativo di pagamento tramite uno specifico gateway.
 
-Refer to the [How Payments work](/guides/about/resources/payments-lifecycle) guide for a detailed explanation.
+Consulta la guida [Come funzionano i pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) per una spiegazione dettagliata.
 
-### Payment Gateway
+### Payment Gateway (Gateway di pagamento)
 
-An external service that Voucherly uses to authorize and process transactions.
+Un servizio esterno che Voucherly utilizza per autorizzare ed elaborare le transazioni.
 
-Payment gateways can be activated or deactivated from the Dashboard after entering the necessary credentials obtained through agreements between the merchant and the gateway provider.
+I gateway di pagamento possono essere attivati o disattivati dalla Dashboard dopo aver inserito le credenziali necessarie, ottenute tramite accordi tra il merchant e il fornitore del gateway.
 
-Refer to the [Payment gateways](/guides/about/resources/payment-gateways) guide for a detailed explanation.
+Consulta la guida [Gateway di pagamento](/guide/informazioni/risorse/gateway-di-pagamento) per una spiegazione dettagliata.
 
-### Wallet
+### Wallet (Portafoglio)
 
-A digital wallet that enhances the purchasing experience by eliminating the need to enter payment data for each transaction. When enabled via the Dashboard, customers can top up their wallets and use the credit for future purchases.
+Un portafoglio digitale che migliora l'esperienza d'acquisto eliminando la necessità di inserire i dati di pagamento a ogni transazione. Quando è abilitato tramite la Dashboard, i clienti possono ricaricare il proprio wallet e utilizzare il credito per acquisti futuri.
 
-Wallets support voucher-based reloading, and the credit can only be used for products eligible for voucher payments.
+I wallet supportano la ricarica tramite buoni e il credito può essere utilizzato solo per prodotti idonei al pagamento con buoni.
 
-For more details, see [here](/guides/about/resources/payment-gateways#wallet).
+Per maggiori dettagli, consulta [questa pagina](/guide/informazioni/risorse/gateway-di-pagamento#wallet).
 
-### Payment Method
+### Payment Method (Metodo di pagamento)
 
-The instrument used by the customer within a payment gateway to execute a transaction.
+Lo strumento utilizzato dal cliente all'interno di un gateway di pagamento per eseguire una transazione.

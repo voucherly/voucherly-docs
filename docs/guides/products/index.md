@@ -1,20 +1,21 @@
 ---
+slug: /guide/prodotti
 sidebar_position: 0
-title: Products
-sidebar_label: Products
-description: "The Voucherly products beyond online payments: the electronic receipt sent to the Italian tax authority, and pay at table with upselling for restaurants."
+title: Prodotti
+sidebar_label: Prodotti
+description: "I prodotti Voucherly oltre ai pagamenti online: lo scontrino elettronico inviato all'Agenzia delle Entrate, e il pagamento al tavolo con upselling per i ristoranti."
 keywords:
-  - Voucherly products
-  - electronic receipt
+  - prodotti Voucherly
+  - scontrino elettronico
   - documento commerciale
-  - pay at table
+  - pagamento al tavolo
   - upselling
 ---
 
 import DocCardList from '@theme/DocCardList';
 
-# Products
+# Prodotti
 
-Besides accepting payments, Voucherly ships products that live next to the checkout. Each one has its own section, with configuration and integration guides.
+Oltre ad accettare pagamenti, Voucherly offre prodotti che vivono accanto al checkout. Ognuno ha una sezione propria, con le guide di configurazione e integrazione.
 
 <DocCardList />

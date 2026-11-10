@@ -1,92 +1,93 @@
 ---
-sidebar_label: Authentication and SSO
-title: Authentication and SSO integration
+sidebar_label: Autenticazione e SSO
+slug: /guide/prodotti/pagamento-al-tavolo/autenticazione-sso
+title: Integrazione autenticazione e SSO
 sidebar_position: 1
-description: "Integrate your authentication and SSO with Voucherly pay-at-table: expose login/logout endpoints and sign redirect parameters with a 2048-bit RSA key."
+description: "Integra autenticazione e SSO con il pagamento al tavolo Voucherly: esponi endpoint di login/logout e firma i parametri di redirect con chiave RSA a 2048 bit."
 keywords:
-  - Voucherly pay at table
-  - SSO integration
-  - RSA signature
-  - login endpoint
-  - QR code payment
-  - authentication
+  - pagamento al tavolo Voucherly
+  - integrazione SSO
+  - firma RSA
+  - endpoint di login
+  - pagamento con QR code
+  - autenticazione
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Accordion from '@site/src/components/Accordion';
 
-# Voucherly pay-at-table authentication and SSO integration guide
+# Guida all'integrazione dell'autenticazione e SSO per il pagamento al tavolo di Voucherly
 
-## Introduction
+## Introduzione
 
-This guide explains how to connect your authentication system with Voucherly’s pay-at-table experience.  
-When a customer opens a Voucherly link (typically by scanning a QR code on the table), Voucherly may need to verify their identity before proceeding.
-Instead of handling authentication directly, Voucherly delegates the process to your system allowing you to manage sessions, user data, and login methods as you prefer.
+Questa guida spiega come collegare il tuo sistema di autenticazione all'esperienza di pagamento al tavolo di Voucherly.  
+Quando un cliente apre un link Voucherly (in genere scansionando un QR code sul tavolo), Voucherly potrebbe aver bisogno di verificarne l'identità prima di procedere.
+Invece di gestire direttamente l'autenticazione, Voucherly delega il processo al tuo sistema, permettendoti di gestire sessioni, dati utente e metodi di login come preferisci.
 
-You’ll need to expose a login endpoint (required) and optionally a logout endpoint, which Voucherly will call whenever authentication or session termination is required.
-These endpoints will exchange a set of signed parameters to ensure data integrity and trust between your system and Voucherly.
+Dovrai esporre un endpoint di login (obbligatorio) e, facoltativamente, un endpoint di logout, che Voucherly chiamerà ogni volta che è necessaria l'autenticazione o la chiusura della sessione.
+Questi endpoint si scambieranno un insieme di parametri firmati per garantire l'integrità dei dati e la fiducia tra il tuo sistema e Voucherly.
 
-By the end of this guide, you’ll know how to:
+Al termine di questa guida, saprai come:
 
-- Set up your authentication endpoints
-- Generate and verify digital signatures
-- Configure everything in the Dashboard
-- (Optionally) handle user logout
+- Configurare i tuoi endpoint di autenticazione
+- Generare e verificare le firme digitali
+- Configurare tutto nella Dashboard
+- (Facoltativamente) gestire il logout dell'utente
 
-## Prerequisites
+## Prerequisiti
 
-- Read **[Getting started with a Voucherly account](/guides/start-building)**.
+- Leggi **[Come iniziare con un account Voucherly](/guide/inizia-a-integrare)**.
 
-## Overview
+## Panoramica
 
-Voucherly requires your system to expose two endpoints:
+Voucherly richiede che il tuo sistema esponga due endpoint:
 
-- **Endpoint login** – standard SSO-style login page that receives authentication requests from Voucherly and, after verifying the user, redirects them back to Voucherly with the required customer information.
-- **Endpoint logout** (optional) – if implemented, handles logout requests from Voucherly to terminate customer sessions in your system.
+- **Endpoint login** – pagina di login standard in stile SSO che riceve le richieste di autenticazione da Voucherly e, dopo aver verificato l'utente, lo reindirizza a Voucherly con le informazioni cliente richieste.
+- **Endpoint logout** (facoltativo) – se implementato, gestisce le richieste di logout provenienti da Voucherly per terminare le sessioni cliente nel tuo sistema.
 
-Your system is responsible for verifying user identity, optionally allowing guest access, and securely communicating customer data back to Voucherly via signed query parameters.
+Il tuo sistema è responsabile della verifica dell'identità dell'utente, dell'eventuale accesso come ospite e della comunicazione sicura dei dati cliente a Voucherly tramite parametri di query firmati.
 
-## Integration
+## Integrazione
 
-### Login endpoint
+### Endpoint di login
 
-This endpoint works like a typical SSO login page:
+Questo endpoint funziona come una tipica pagina di login SSO:
 
-1. Voucherly calls your authentication endpoint with a `returnUrl` query parameter.
-2. Your system verifies the user’s identity.
-    - Unauthenticated users: optionally allow guest access by redirecting back to `returnUrl` without query parameters.
-    - Authenticated users: redirect back to `returnUrl` with the following query parameters.
+1. Voucherly chiama il tuo endpoint di autenticazione con un parametro di query `returnUrl`.
+2. Il tuo sistema verifica l'identità dell'utente.
+    - Utenti non autenticati: facoltativamente consenti l'accesso come ospite reindirizzando a `returnUrl` senza parametri di query.
+    - Utenti autenticati: reindirizza a `returnUrl` con i seguenti parametri di query.
 
-| Parameter      | Description |
+| Parametro      | Descrizione |
 | -------------- | ----------------- |
-| `customerId`   | Unique identifier of the customer in your system (**required**) |
-| `email`        | Customer's email address |
-| `receiptEmail` | Email address used to pre-fill the receipt recipient during checkout. Provide it when `email` carries a masked value. If omitted, `email` is used. |
-| `friendlyName` | Display name that Voucherly will use to address the customer |
-| `firstName`    | Customer's first name |
-| `lastName`     | Customer's last name |
-| `timestamp`    | Unix timestamp in seconds (generated by your system at the moment of redirect) |
-| `signature`    | Digital signature to verify authenticity |
+| `customerId`   | Identificatore univoco del cliente nel tuo sistema (**obbligatorio**) |
+| `email`        | Indirizzo email del cliente |
+| `receiptEmail` | Indirizzo email usato per precompilare il destinatario dello scontrino durante il checkout. Passalo quando `email` contiene un valore mascherato. Se omesso, viene usato `email`. |
+| `friendlyName` | Nome visualizzato che Voucherly userà per rivolgersi al cliente |
+| `firstName`    | Nome del cliente |
+| `lastName`     | Cognome del cliente |
+| `timestamp`    | Timestamp Unix in secondi (generato dal tuo sistema al momento del redirect) |
+| `signature`    | Firma digitale per verificare l'autenticità |
 
-:::info Why `email` and `receiptEmail` can differ
-`email` may carry a masked value (for example, to avoid exposing the real address). `receiptEmail` should carry the actual address used to deliver the fiscal receipt: Voucherly applies its own retention and redemption rules to it for GDPR compliance. If `receiptEmail` is not passed, Voucherly falls back to `email` to pre-fill the receipt recipient.
+:::info Perché `email` e `receiptEmail` possono essere diversi
+`email` può contenere un valore mascherato (ad esempio per non esporre l'indirizzo reale). `receiptEmail` deve invece contenere l'indirizzo effettivo usato per l'invio dello scontrino fiscale: Voucherly vi applica le proprie logiche di conservazione e redemption per la compliance GDPR. Se `receiptEmail` non viene passato, Voucherly usa `email` come fallback per precompilare il destinatario dello scontrino.
 :::
 
-#### Signature calculation
+#### Calcolo della firma
 
-The `signature` parameter ensures the integrity and authenticity of the redirect. Use your [2048-bit RSA private key (PKCS#8)](#generating-a-2048-bit-rsa-key-pair-pkcs8) to sign the parameters.
+Il parametro `signature` garantisce l'integrità e l'autenticità del redirect. Usa la tua [chiave privata RSA a 2048 bit (PKCS#8)](#generazione-di-una-coppia-di-chiavi-rsa-a-2048-bit-pkcs8) per firmare i parametri.
 
-1. Concatenate the following parameters in the exact order:
+1. Concatena i seguenti parametri nell'esatto ordine:
 
    ```text
    customerId + email + receiptEmail + friendlyName + firstName + lastName + timestamp
    ```
 
-2. Compute the SHA-256 hash of the concatenated string.
-3. Sign the hash using RSA PKCS#1 v1.5 with your private key.
-4. Encode the signature in base64.
-5. Append it to the redirect URL as `signature`.
+2. Calcola l'hash SHA-256 della stringa concatenata.
+3. Firma l'hash usando RSA PKCS#1 v1.5 con la tua chiave privata.
+4. Codifica la firma in base64.
+5. Aggiungila all'URL di redirect come `signature`.
 
 <Tabs>
 
@@ -120,82 +121,82 @@ var signature = rsa.SignData(dataBytes, HashAlgorithmName.SHA256, RSASignaturePa
 
 </Tabs>
 
-#### Generating a 2048-bit RSA Key Pair (PKCS#8)
+#### Generazione di una coppia di chiavi RSA a 2048 bit (PKCS#8)
 
-To sign authentication requests, you need an asymmetric RSA key pair:
+Per firmare le richieste di autenticazione, hai bisogno di una coppia di chiavi asimmetriche RSA:
 
-1. Generate the private key in PKCS#8 format (2048-bit).
-2. Export the public key to share with Voucherly for signature verification.
+1. Genera la chiave privata in formato PKCS#8 (2048 bit).
+2. Esporta la chiave pubblica da condividere con Voucherly per la verifica della firma.
 
 ``` bash
-# Generate a 2048-bit private key in PKCS#8 PEM format
+# Genera una chiave privata a 2048 bit in formato PKCS#8 PEM
 openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
 
-# Extract the corresponding public key
+# Estrai la chiave pubblica corrispondente
 openssl rsa -pubout -in private_key.pem -out public_key.pem
 ```
 
 :::warning
 
-- Keep the private key secure. Do not expose it in client-side code.
+- Mantieni la chiave privata al sicuro. Non esporla nel codice client-side.
 
 :::
 
-### Logout endpoint (optional)
+### Endpoint di logout (facoltativo)
 
-This endpoint is optional and works like a standard SSO logout page:
+Questo endpoint è facoltativo e funziona come una pagina di logout SSO standard:
 
-1. Voucherly calls your logout endpoint and provides a `returnUrl` query parameter.
-2. Your system terminates the customer session (e.g., clears cookies, ends server-side session).
-3. Redirect the user back to the `returnUrl`.
+1. Voucherly chiama il tuo endpoint di logout e fornisce un parametro di query `returnUrl`.
+2. Il tuo sistema termina la sessione del cliente (es. cancella i cookie, chiude la sessione lato server).
+3. Reindirizza l'utente al `returnUrl`.
 
 :::info
-If not implemented, the user will not see a logout button in Voucherly.
+Se non implementato, l'utente non vedrà un pulsante di logout in Voucherly.
 :::
 
-## Configuration
+## Configurazione
 
-1. Sign in to the Dashboard.
-1. Go to **Impostazioni > [Pagamento al tavolo](https://dashboard.voucherly.it/settings/table)**.
-    - Select `Redirect` as the authentication type.
-    - Enter your login endpoint URL.
-    - (Optional) Enter your logout endpoint URL.
-    - Upload your [RSA public key in PEM (PKCS#8)](#generating-a-2048-bit-rsa-key-pair-pkcs8) format.
-    - Save the configuration.
+1. Accedi alla Dashboard.
+1. Vai su **Impostazioni > [Pagamento al tavolo](https://dashboard.voucherly.it/settings/table)**.
+    - Seleziona `Redirect` come tipo di autenticazione.
+    - Inserisci l'URL del tuo endpoint di login.
+    - (Facoltativo) Inserisci l'URL del tuo endpoint di logout.
+    - Carica la tua [chiave pubblica RSA in formato PEM (PKCS#8)](#generazione-di-una-coppia-di-chiavi-rsa-a-2048-bit-pkcs8).
+    - Salva la configurazione.
 
 :::tip
-You can include placeholders in the endpoint URLs that will be populated at redirect time:
+Puoi includere negli URL degli endpoint dei segnaposto che verranno popolati al momento del redirect:
 
 - `{ExternalTableId}`
 - `{ExternalShopId}`
 - `{OrderId}`
 
-These placeholders can be used, for example, to perform checks on shops or tables before redirecting the user.
+Questi segnaposto possono essere usati, per esempio, per eseguire controlli su negozi o tavoli prima di reindirizzare l'utente.
 :::
 
-## Test the integration
+## Testa l'integrazione
 
-Once you’ve configured your login/logout endpoints and uploaded your RSA key, you can test the pay-at-table flow directly from the Dashboard.
+Una volta configurati i tuoi endpoint di login/logout e caricata la tua chiave RSA, puoi testare il flusso di pagamento al tavolo direttamente dalla Dashboard.
 
-1. Sign in to the Dashboard.
-1. Go to **Impostazioni > [Sedi](https://dashboard.voucherly.it/settings/store)** and create a new location (if not already present).
-1. Navigate to **Tavoli > [Sedi e tavoli](https://dashboard.voucherly.it/table/table)**.
-    - Select the location you just created.
-    - If needed, create a room first, then add a table.
-    - Now you’ll see a populated table with your rooms and tables. In the QR code column, you’ll find three icons:
-        - Clicking the first two icons will copy the pay-at-table URL to your clipboard.
-        - Clicking the third icon will open the pay-at-table page in a new browser tab.
-1. Open the pay-at-table URL in a browser.
-    - Verify that authentication works correctly.
-    - Check that the signed parameters are passed and the user is redirected back to Voucherly.
+1. Accedi alla Dashboard.
+1. Vai su **Impostazioni > [Sedi](https://dashboard.voucherly.it/settings/store)** e crea una nuova sede (se non già presente).
+1. Vai su **Tavoli > [Sedi e tavoli](https://dashboard.voucherly.it/table/table)**.
+    - Seleziona la sede che hai appena creato.
+    - Se necessario, crea prima una sala, poi aggiungi un tavolo.
+    - Ora vedrai una tabella popolata con le tue sale e i tuoi tavoli. Nella colonna del QR code troverai tre icone:
+        - Cliccando sulle prime due icone copierai l'URL di pagamento al tavolo negli appunti.
+        - Cliccando sulla terza icona aprirai la pagina di pagamento al tavolo in una nuova scheda del browser.
+1. Apri l'URL di pagamento al tavolo in un browser.
+    - Verifica che l'autenticazione funzioni correttamente.
+    - Controlla che i parametri firmati vengano passati e che l'utente venga reindirizzato a Voucherly.
 
 :::tip
-Make sure you are in the sandbox environment so you always have an active order on the table.  
-Otherwise, you’ll need to manage the presence of orders in your POS system manually.
+Assicurati di essere nell'ambiente sandbox così da avere sempre un ordine attivo sul tavolo.  
+Altrimenti, dovrai gestire manualmente la presenza degli ordini nel tuo sistema POS.
 :::
 
 :::info support
 
-- Email support@voucherly.it.
-- Submit a support request at [voucherly.it/contattaci](https://voucherly.it/contattaci).
+- Scrivi a support@voucherly.it.
+- Invia una richiesta di supporto su [voucherly.it/contattaci](https://voucherly.it/contattaci).
 :::

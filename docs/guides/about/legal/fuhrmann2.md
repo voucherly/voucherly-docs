@@ -1,29 +1,30 @@
 ---
+slug: /guide/informazioni/note-legali/fuhrmann2
 sidebar_position: 2
-title: "Fuhrmann-2: payment button requirements"
+title: "Fuhrmann-2: requisiti del pulsante di pagamento"
 sidebar_label: Fuhrmann-2
-description: "Voucherly Checkout payment buttons meet the EU Fuhrmann-2 (C-249/21) ruling: button text must clearly state the customer's obligation to pay."
+description: "I pulsanti di pagamento del Checkout Voucherly rispettano la sentenza UE Fuhrmann-2 (C-249/21): il testo deve indicare chiaramente l'obbligo di pagamento."
 keywords:
   - Fuhrmann-2
   - C-249/21
-  - payment button
-  - obligation to pay
-  - EU e-commerce law
-  - Voucherly Checkout
+  - pulsante di pagamento
+  - obbligo di pagamento
+  - normativa e-commerce UE
+  - Checkout Voucherly
 ---
 
 # Fuhrmann-2
 
-European merchants must ensure that the text on their payment button clearly informs customers that, by clicking it, they are placing an order with an obligation to pay. This requirement ensures the electronic contract between the parties is valid.
+I merchant europei devono assicurarsi che il testo del proprio pulsante di pagamento informi chiaramente i clienti che, cliccandolo, stanno effettuando un ordine con obbligo di pagamento. Questo requisito garantisce la validità del contratto elettronico tra le parti.
 
-This guidance stems from the Court of Justice of the European Union's decision in the **Fuhrmann-2 Case C-249/21** (April 2022).
+Questa indicazione deriva dalla decisione della Corte di giustizia dell'Unione Europea nel **caso Fuhrmann-2 C-249/21** (aprile 2022).
 
-## Requirements for Payment Button Text
+## Requisiti per il testo del pulsante di pagamento
 
-- **Clarity**: The text must clearly indicate the customer's obligation to pay.
-- **Legibility**: The text must be easily readable and unambiguous.
-- **Suggested Text**: The Court provided the example, *"Order with obligation to pay"*. Merchants may use similar formulations that convey the same meaning.
+- **Chiarezza**: il testo deve indicare chiaramente l'obbligo di pagamento del cliente.
+- **Leggibilità**: il testo deve essere facilmente leggibile e inequivocabile.
+- **Testo suggerito**: la Corte ha fornito l'esempio *"Ordine con obbligo di pagamento"*. I merchant possono utilizzare formulazioni simili che trasmettano lo stesso significato.
 
-## Voucherly Compliance
+## Conformità di Voucherly
 
-All payment buttons on **Voucherly Checkout page** are fully compliant with these requirements. Merchants using Voucherly can be confident that their payment processes meet the legal standards established by the EU.
+Tutti i pulsanti di pagamento presenti nella **pagina di Checkout di Voucherly** sono pienamente conformi a questi requisiti. I merchant che utilizzano Voucherly possono avere la certezza che i propri processi di pagamento rispettino gli standard legali stabiliti dall'UE.

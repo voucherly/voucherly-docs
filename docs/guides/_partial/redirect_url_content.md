@@ -1,17 +1,17 @@
 <>
-    It’s important for your customers to see a success or error page after submitting the payment form.
+    È importante che i tuoi clienti vedano una pagina di successo o di errore dopo aver inviato il modulo di pagamento.
 
-    When a customer completes payment on the Voucherly Checkout page, they are redirected to the URLs specified in the [Create Payment API](/api/webapi/create-payment) request:
-    - If the payment is successful, the customer is redirected to the `redirectOkUrl`.
-    - If the payment fails, the customer is redirected to the `redirectKoUrl`.
+    Quando un cliente completa il pagamento sulla pagina di Voucherly Checkout, viene reindirizzato agli URL specificati nella richiesta [Create Payment API](/api/webapi/create-payment):
+    - Se il pagamento va a buon fine, il cliente viene reindirizzato al `redirectOkUrl`.
+    - Se il pagamento fallisce, il cliente viene reindirizzato al `redirectKoUrl`.
 
-    Payment information is passed via the query string:
+    Le informazioni sul pagamento vengono passate tramite la query string:
 
-    - **success**. Indicates the Payment result (`OK` for success, `KO` for failure).
-    - **status**. The status of the Payment.
-    - **paymentId**. The unique Voucherly identifier for the Payment.
-    - **referenceId**. The merchant's custom reference ID.
-    - **amount**. The total paid amount in cents.
-    - **customerId**. The unique Voucherly identifier for the customer.
-    - **tenant**. *live* or *sand*.
+    - **success**. Indica l'esito del pagamento (`OK` per successo, `KO` per fallimento).
+    - **status**. Lo stato del pagamento.
+    - **paymentId**. L'identificativo Voucherly univoco del pagamento.
+    - **referenceId**. L'ID di riferimento personalizzato del merchant.
+    - **amount**. L'importo totale pagato in centesimi.
+    - **customerId**. L'identificativo Voucherly univoco del cliente.
+    - **tenant**. *live* o *sand*.
 </>

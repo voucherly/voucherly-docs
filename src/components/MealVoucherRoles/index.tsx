@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const t = (id: string, message: string) => translate({ id: `mealVoucherRoles.${id}`, message });
 
 const MealVoucherRoles: React.FC = () => {
-  const title = t('title', 'The role of Voucherly between the merchant ecommerce and the meal voucher issuers');
+  const title = t('title', 'Il ruolo di Voucherly tra l\'ecommerce del merchant e gli emettitori di buoni pasto');
 
   return (
     <figure className={styles.figure}>
@@ -19,57 +19,57 @@ const MealVoucherRoles: React.FC = () => {
           </marker>
         </defs>
 
-        <text x="500" y="26" textAnchor="middle" className={styles.section}>{t('flow', 'TECHNICAL PAYMENT FLOW')}</text>
+        <text x="500" y="26" textAnchor="middle" className={styles.section}>{t('flow', 'FLUSSO TECNICO DEL PAGAMENTO')}</text>
 
         <rect x="270" y="44" width="440" height="210" rx="14" className={styles.merchantArea} />
-        <text x="490" y="70" textAnchor="middle" className={styles.areaLabel}>{t('merchantTools', 'Tools chosen and used by the merchant')}</text>
+        <text x="490" y="70" textAnchor="middle" className={styles.areaLabel}>{t('merchantTools', 'Strumenti scelti e utilizzati dal merchant')}</text>
 
         <rect x="30" y="92" width="170" height="100" rx="10" className={styles.box} />
-        <text x="115" y="136" textAnchor="middle" className={styles.name}>{t('customer', 'Customer')}</text>
-        <text x="115" y="160" textAnchor="middle" className={styles.caption}>{t('customerCaption', 'pays with meal vouchers')}</text>
+        <text x="115" y="136" textAnchor="middle" className={styles.name}>{t('customer', 'Cliente')}</text>
+        <text x="115" y="160" textAnchor="middle" className={styles.caption}>{t('customerCaption', 'paga con buoni pasto')}</text>
 
         <rect x="290" y="92" width="170" height="100" rx="10" className={styles.box} />
         <text x="375" y="136" textAnchor="middle" className={styles.name}>{t('ecommerce', 'Ecommerce')}</text>
-        <text x="375" y="160" textAnchor="middle" className={styles.caption}>{t('ecommerceCaption', 'of the merchant')}</text>
+        <text x="375" y="160" textAnchor="middle" className={styles.caption}>{t('ecommerceCaption', 'del merchant')}</text>
 
         <rect x="520" y="92" width="170" height="100" rx="10" className={styles.voucherlyBox} />
         <text x="605" y="136" textAnchor="middle" className={`${styles.name} ${styles.brand}`}>Voucherly</text>
-        <text x="605" y="160" textAnchor="middle" className={styles.caption}>{t('voucherlyCaption', 'technology layer')}</text>
+        <text x="605" y="160" textAnchor="middle" className={styles.caption}>{t('voucherlyCaption', 'layer tecnologico')}</text>
 
         <rect x="800" y="92" width="170" height="100" rx="10" className={styles.issuerBox} />
-        <text x="885" y="130" textAnchor="middle" className={styles.name}>{t('issuers', 'Issuers')}</text>
-        <text x="885" y="152" textAnchor="middle" className={styles.caption}>{t('issuersCaption', 'of meal vouchers')}</text>
+        <text x="885" y="130" textAnchor="middle" className={styles.name}>{t('issuers', 'Emettitori')}</text>
+        <text x="885" y="152" textAnchor="middle" className={styles.caption}>{t('issuersCaption', 'di buoni pasto')}</text>
         <text x="885" y="174" textAnchor="middle" className={styles.small}>Edenred, Pluxee, Day, …</text>
 
         <line x1="202" y1="142" x2="286" y2="142" className={styles.arrow} markerEnd="url(#mvrArrowInk)" />
-        <text x="234" y="132" textAnchor="middle" className={styles.small}>{t('buys', 'buys')}</text>
+        <text x="234" y="132" textAnchor="middle" className={styles.small}>{t('buys', 'acquista')}</text>
 
         <line x1="462" y1="142" x2="516" y2="142" className={styles.arrow} markerEnd="url(#mvrArrowInk)" />
 
         <line x1="692" y1="128" x2="796" y2="128" className={styles.arrow} markerEnd="url(#mvrArrowInk)" />
-        <text x="745" y="118" textAnchor="middle" className={styles.small}>{t('request', 'request')}</text>
+        <text x="745" y="118" textAnchor="middle" className={styles.small}>{t('request', 'richiesta')}</text>
         <line x1="796" y1="158" x2="694" y2="158" className={styles.arrow} markerEnd="url(#mvrArrowInk)" />
-        <text x="745" y="176" textAnchor="middle" className={styles.small}>{t('outcome', 'outcome')}</text>
+        <text x="745" y="176" textAnchor="middle" className={styles.small}>{t('outcome', 'esito')}</text>
 
-        <text x="490" y="230" textAnchor="middle" className={styles.statement}>{t('serviceStatement', 'A service for the merchant, not for the issuers')}</text>
+        <text x="490" y="230" textAnchor="middle" className={styles.statement}>{t('serviceStatement', 'Un servizio per il merchant, non per gli emettitori')}</text>
 
         <line x1="30" y1="290" x2="970" y2="290" className={styles.divider} />
 
-        <text x="500" y="324" textAnchor="middle" className={styles.section}>{t('relationship', 'CONTRACTUAL AND ECONOMIC RELATIONSHIP')}</text>
+        <text x="500" y="324" textAnchor="middle" className={styles.section}>{t('relationship', 'RAPPORTO CONTRATTUALE ED ECONOMICO')}</text>
 
         <rect x="200" y="348" width="170" height="90" rx="10" className={styles.merchantBox} />
         <text x="285" y="388" textAnchor="middle" className={styles.name}>Merchant</text>
-        <text x="285" y="411" textAnchor="middle" className={styles.caption}>{t('merchantCaption', 'affiliated')}</text>
+        <text x="285" y="411" textAnchor="middle" className={styles.caption}>{t('merchantCaption', 'convenzionato')}</text>
 
         <rect x="630" y="348" width="170" height="90" rx="10" className={styles.issuerBox} />
-        <text x="715" y="388" textAnchor="middle" className={styles.name}>{t('issuer', 'Issuer')}</text>
-        <text x="715" y="411" textAnchor="middle" className={styles.caption}>{t('issuerCaption', 'of meal vouchers')}</text>
+        <text x="715" y="388" textAnchor="middle" className={styles.name}>{t('issuer', 'Emettitore')}</text>
+        <text x="715" y="411" textAnchor="middle" className={styles.caption}>{t('issuerCaption', 'di buoni pasto')}</text>
 
         <line x1="374" y1="393" x2="626" y2="393" className={styles.agreement} markerStart="url(#mvrArrowAgreement)" markerEnd="url(#mvrArrowAgreement)" />
-        <text x="500" y="381" textAnchor="middle" className={styles.agreementLabel}>{t('agreement', 'direct agreement')}</text>
+        <text x="500" y="381" textAnchor="middle" className={styles.agreementLabel}>{t('agreement', 'convenzione diretta')}</text>
 
         <rect x="310" y="462" width="380" height="52" rx="10" className={styles.notPartyBox} />
-        <text x="500" y="493" textAnchor="middle" className={styles.notParty}>{t('notParty', 'Voucherly is not a party to the agreement')}</text>
+        <text x="500" y="493" textAnchor="middle" className={styles.notParty}>{t('notParty', 'Voucherly non è parte della convenzione')}</text>
       </svg>
     </figure>
   );

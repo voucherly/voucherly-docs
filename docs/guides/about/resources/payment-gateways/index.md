@@ -1,22 +1,23 @@
 ---
+slug: /guide/informazioni/risorse/gateway-di-pagamento
 sidebar_position: 2
-description: "The payment gateways available in Voucherly, including meal vouchers, cards and wallets, with support for two-step processing and partial refunds."
+description: "I gateway di pagamento disponibili in Voucherly: buoni pasto, carte e wallet, con supporto per processo a due fasi e rimborsi parziali."
 keywords:
-  - payment gateways
-  - meal vouchers
-  - two-step payment
-  - partial refund
-  - Voucherly Wallet
-  - supported gateways
+  - gateway di pagamento
+  - buoni pasto
+  - pagamento a due fasi
+  - rimborso parziale
+  - wallet Voucherly
+  - gateway supportati
 ---
 
 import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 
-# Payment gateways
+# Gateway di pagamento
 
-## List of available Payment gateways
+## Elenco dei gateway di pagamento disponibili
 
-| Id | Name | Meal voucher | 2-step process | Partial refundable |
+| Id | Nome | Buoni pasto | Processo a 2 fasi | Rimborsabile parzialmente |
 |-|-|-|-|-|
 | **ADYEN**             | Adyen             |   |   | V |
 | **AMZNPAY**           | Amazon Pay        |   | V | V |
@@ -52,33 +53,33 @@ import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 | **YESTCKT**           | Yes!Ticket        | V |   |   |
 
 :::info
-**Meal voucher** means that the gateway can settle part of the payment with meal voucher funds, which are only usable on the food portion of the order.
+**Buoni pasto** significa che il gateway può saldare una parte del pagamento con fondi da buono pasto, utilizzabili solo sulla quota alimentare dell'ordine.
 
-**2-step process** means that the transaction is authorised first and captured in a separate step. Gateways without it capture the funds directly at checkout.
+**Processo a 2 fasi** significa che la transazione viene prima autorizzata e poi catturata in un passaggio separato. I gateway che non lo prevedono incassano direttamente al checkout.
 
-**Partial refundable** means that a transaction in the `Confirmed` status can be refunded for an amount lower than the `ConfirmedAmount`.
+**Rimborsabile parzialmente** significa che una transazione nello stato `Confirmed` può essere rimborsata per un importo inferiore al `ConfirmedAmount`.
 :::
 
 :::note
-**Apple Pay** and **Google Pay** are wallets, not standalone gateways: they are offered on top of an already configured gateway. Apple Pay runs on MultiSafepay and SumUp; Google Pay runs on Fabrick, MultiSafepay, Nexi and SumUp. Refund and capture behaviour follows the underlying gateway.
+**Apple Pay** e **Google Pay** sono wallet, non gateway autonomi: vengono offerti sopra un gateway già configurato. Apple Pay si appoggia a MultiSafepay e SumUp; Google Pay a Fabrick, MultiSafepay, Nexi e SumUp. Il comportamento su rimborsi e catture segue quello del gateway sottostante.
 
-**Sodexo** and **Pluxee** are two distinct gateways and coexist, despite Sodexo's commercial rebranding to Pluxee. Activating one does not activate the other.
+**Sodexo** e **Pluxee** sono due gateway distinti e coesistono, nonostante il rebrand commerciale di Sodexo in Pluxee. Attivare uno non attiva l'altro.
 :::
 
 ### Demo Voucherly {#demo}
 
-The Demo Voucherly is a virtual payment gateway provided by Voucherly that you can use for testing purposes. It simulates a meal voucher: the code the customer types decides the outcome of the payment, of the confirmation and of the refund. The codes are in [Test data](/guides/start-building/start-developing/test-data).
+Demo Voucherly è un gateway di pagamento virtuale fornito da Voucherly che puoi utilizzare per scopi di test. Simula un buono pasto: il codice che il cliente digita decide l'esito del pagamento, della contabilizzazione e del rimborso. I codici sono in [Dati di test](/guide/inizia-a-integrare/inizia-a-sviluppare/dati-di-test).
 
 ### Wallet
 
-The Wallet is a virtual payment gateway provided by Voucherly that enables customers to pay in advance and load *credit*. For future purchases, customers can conveniently use the Wallet to pay for food items without interacting with meal voucher Payment gateways again.
+Il Wallet è un gateway di pagamento virtuale fornito da Voucherly che consente ai clienti di pagare in anticipo e caricare *credito*. Per gli acquisti futuri, i clienti possono comodamente utilizzare il Wallet per pagare i prodotti alimentari senza dover interagire nuovamente con i gateway di pagamento dei buoni pasto.
 
-An additional advantage of the Wallet is its flexibility — it eliminates the limitation of meal vouchers with fixed values, giving customers greater freedom in how they use their funds.
+Un ulteriore vantaggio del Wallet è la sua flessibilità: elimina la limitazione dei buoni pasto dal valore fisso, offrendo ai clienti maggiore libertà nell'utilizzo dei propri fondi.
 
 :::warning
-To use the Wallet, the merchant's website must store the Voucherly customer ID, which is created when a customer makes their first payment. This ID must be included in all subsequent payments.
+Per utilizzare il Wallet, il sito web del merchant deve memorizzare l'ID cliente Voucherly, che viene creato quando un cliente effettua il suo primo pagamento. Questo ID deve essere incluso in tutti i pagamenti successivi.
 
-Learn more in our [Manage customer](/api/general/best-practices/customer) guide.
+Scopri di più nella nostra guida [Gestione del cliente](/api/generale/best-practice/gestione-clienti).
 :::
 
 <!-- ## Fallback Payment Gateway

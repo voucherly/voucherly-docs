@@ -1,67 +1,68 @@
 ---
+slug: /guide/inizia-a-integrare/inizia-a-sviluppare/checklist-go-live
 sidebar_position: 2
-description: "Checklist to take your Voucherly integration live: follow API best practices, review error handling and logging, and switch from test to live API keys."
+description: "Checklist per portare in produzione la tua integrazione Voucherly: best practice API, gestione errori e logging, e passaggio dalle API key di test a live."
 keywords:
-  - go-live checklist
-  - Voucherly integration
-  - live mode
-  - API keys
-  - best practices
-  - error handling
+  - checklist go-live
+  - integrazione Voucherly
+  - modalità live
+  - API key
+  - best practice
+  - gestione errori
 ---
 
 import Checkbox from '@site/src/components/Checkbox';
 
-# Go-live checklist
+# Checklist per andare in produzione
 
-Use this checklist to ensure a smooth transition when taking your integration live.
+Usa questa checklist per garantire una transizione senza intoppi quando porti la tua integrazione in produzione.
 
-Voucherly’s live and test modes are designed to function as similarly as possible, making the transition to live mode largely a matter of switching your API keys.
+Le modalità live e test di Voucherly sono progettate per funzionare nel modo più simile possibile, rendendo il passaggio alla modalità live essenzialmente una questione di sostituzione delle API key.
 
-If you are a developer, or had a developer integrate Voucherly for you, consider the following points before going live. If you’re using Voucherly through a connected website or plug-in, many of these items may not apply.
+Se sei uno sviluppatore, o se hai fatto integrare Voucherly da uno sviluppatore, considera i seguenti punti prima di andare in produzione. Se utilizzi Voucherly tramite un sito web collegato o un plug-in, molti di questi elementi potrebbero non essere applicabili.
 
-<Checkbox label="Follow Voucherly API best practices" >
+<Checkbox label="Segui le best practice delle API Voucherly" >
 
-Make sure your integration follow [Voucherly API best practices](/api/general/best-practices).
-
-</Checkbox>
-
-<Checkbox label="Always authenticate your user" >
-
-We recommend that you send user information to Voucherly endpoints. This allows you to keep relevant internal references and take full advantage of Voucherly's features, such as advanced reporting and recurring payments.
+Assicurati che la tua integrazione segua le [best practice delle API Voucherly](/api/generale/best-practice).
 
 </Checkbox>
 
-<Checkbox label="Handle edge cases" >
+<Checkbox label="Autentica sempre il tuo utente" >
 
-We recommend thoroughly testing your integration using specific test values to replicate various states and responses. Beyond standard tests, ensure your system handles the following scenarios:
-
-- Incomplete data
-- Invalid data
-- Duplicate data (for example, retrying the same request to observe the behavior)
-
-Involve non-technical individuals in the testing process to uncover issues that might be overlooked by developers.
+Ti consigliamo di inviare le informazioni dell'utente agli endpoint di Voucherly. Questo ti permette di mantenere i riferimenti interni rilevanti e di sfruttare appieno le funzionalità di Voucherly, come la reportistica avanzata e i pagamenti ricorrenti.
 
 </Checkbox>
 
-<Checkbox label="Review your API error handling" >
+<Checkbox label="Gestisci i casi limite" >
 
-Discovering issues with error handling after going live can have serious repercussions. Ensure your code is robust and handles not only common errors but also rare and unexpected ones.
+Ti consigliamo di testare a fondo la tua integrazione utilizzando valori di test specifici per replicare vari stati e risposte. Oltre ai test standard, assicurati che il tuo sistema gestisca i seguenti scenari:
 
-When testing error handling, pay attention to the information displayed to users.
+- Dati incompleti
+- Dati non validi
+- Dati duplicati (per esempio, ritentando la stessa richiesta per osservarne il comportamento)
 
-</Checkbox>
-
-<Checkbox label="Review your logging" >
-
-Voucherly keeps a record of every API request, accessible through the [Dashboard](https://dashboard.voucherly.it/Developer/Log). However, it’s essential to log relevant data on your end as well. These logs can be critical for diagnosing issues, such as server communication problems or API key errors.
-
-Ensure your logs do not store sensitive information, such as card details or personally identifiable information.
+Coinvolgi persone non tecniche nel processo di test per far emergere problemi che potrebbero sfuggire agli sviluppatori.
 
 </Checkbox>
 
-<Checkbox label="Ensure you're not relying on test mode objects" >
+<Checkbox label="Rivedi la gestione degli errori delle API" >
 
-Objects created in test mode are not usable in live mode. Before going live, recreate the necessary objects in live mode, ensuring the same IDs are used to maintain compatibility with your code.
+Scoprire problemi nella gestione degli errori dopo essere andati in produzione può avere gravi ripercussioni. Assicurati che il tuo codice sia robusto e gestisca non solo gli errori comuni ma anche quelli rari e inaspettati.
+
+Quando testi la gestione degli errori, presta attenzione alle informazioni mostrate agli utenti.
+
+</Checkbox>
+
+<Checkbox label="Rivedi il tuo logging" >
+
+Voucherly conserva una traccia di ogni richiesta API, accessibile tramite la [Dashboard](https://dashboard.voucherly.it/Developer/Log). Tuttavia, è essenziale registrare i dati rilevanti anche dalla tua parte. Questi log possono essere fondamentali per diagnosticare problemi, come problemi di comunicazione con il server o errori delle API key.
+
+Assicurati che i tuoi log non memorizzino informazioni sensibili, come i dettagli delle carte o informazioni personali identificabili.
+
+</Checkbox>
+
+<Checkbox label="Assicurati di non dipendere da oggetti creati in modalità test" >
+
+Gli oggetti creati in modalità test non sono utilizzabili in modalità live. Prima di andare in produzione, ricrea gli oggetti necessari in modalità live, assicurandoti di utilizzare gli stessi ID per mantenere la compatibilità con il tuo codice.
 
 </Checkbox>

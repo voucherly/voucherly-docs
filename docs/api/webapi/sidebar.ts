@@ -40,6 +40,12 @@ const sidebar: SidebarsConfig = {
           label: "Retrieve a Company",
           className: "api-method get",
         },
+        {
+          type: "doc",
+          id: "api/webapi/update-company",
+          label: "Update a Company",
+          className: "api-method post",
+        },
       ],
     },
     {
@@ -176,6 +182,12 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/webapi/create-payment",
           label: "Create a Payment",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/webapi/quote-payment",
+          label: "Quote a Payment",
           className: "api-method post",
         },
         {

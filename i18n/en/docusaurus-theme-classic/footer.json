@@ -1,0 +1,38 @@
+{
+  "link.title.Documentazione": {
+    "message": "Documentation",
+    "description": "The title of the footer links column with title=Documentazione in the footer"
+  },
+  "link.title.Prodotto": {
+    "message": "Product",
+    "description": "The title of the footer links column with title=Prodotto in the footer"
+  },
+  "link.title.Supporto": {
+    "message": "Support",
+    "description": "The title of the footer links column with title=Supporto in the footer"
+  },
+  "link.item.label.Guide": {
+    "message": "Guides",
+    "description": "The label of footer link with label=Guide linking to /"
+  },
+  "link.item.label.Collezione Postman": {
+    "message": "Postman collection",
+    "description": "The label of footer link with label=Collezione Postman linking to /api/postman"
+  },
+  "link.item.label.Dashboard": {
+    "message": "Dashboard",
+    "description": "The label of footer link with label=Dashboard linking to https://dashboard.voucherly.it/"
+  },
+  "link.item.label.Sito web": {
+    "message": "Website",
+    "description": "The label of footer link with label=Sito web linking to https://voucherly.it/"
+  },
+  "link.item.label.Contatti": {
+    "message": "Contact",
+    "description": "The label of footer link with label=Contatti linking to https://voucherly.it/#contact"
+  },
+  "copyright": {
+    "message": "© 2026 Voucherly. All rights reserved.",
+    "description": "The footer copyright"
+  }
+}

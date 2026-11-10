@@ -1,7 +1,7 @@
 <div>
-    If you’ve already collected your customer’s information, you can include the `customerEmail`, `customerFirstName`, `customerLastName` parameters when creating the Payment. Additionally, be sure to handle the `customerId` returned in the response (if not provided in the request).
+    Se hai già raccolto le informazioni del tuo cliente, puoi includere i parametri `customerEmail`, `customerFirstName`, `customerLastName` durante la creazione del pagamento. Inoltre, assicurati di gestire il `customerId` restituito nella risposta (se non fornito nella richiesta).
 
-    By doing so, Voucherly can consistently manage customer data for search and reporting purposes while also optimizing the checkout process. This includes saving payment methods and customer preferences for a smoother experience.
+    In questo modo, Voucherly può gestire in modo coerente i dati dei clienti per finalità di ricerca e reportistica, ottimizzando allo stesso tempo il processo di checkout. Questo include il salvataggio dei metodi di pagamento e delle preferenze del cliente per un'esperienza più fluida.
 
-    Learn more in our [Manage customer](/api/general/best-practices/customer) guide.
+    Scopri di più nella nostra guida [Gestire il cliente](/api/generale/best-practice/gestione-clienti).
 </div>

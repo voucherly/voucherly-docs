@@ -1,23 +1,24 @@
 ---
-description: "Official Voucherly plugins for the most popular e-commerce platforms: WooCommerce, PrestaShop and Shopify. Accept meal vouchers and payments online."
+slug: /guide/pagamenti-online/plugin-e-commerce
+description: "Plugin ufficiali Voucherly per le piattaforme e-commerce più diffuse: WooCommerce, PrestaShop e Shopify. Accetta buoni pasto e pagamenti online."
 keywords:
-  - Voucherly plugins
-  - e-commerce plugins
+  - plugin Voucherly
+  - plugin e-commerce
   - WooCommerce
   - PrestaShop
   - Shopify
-  - meal vouchers
+  - buoni pasto
 ---
 
 import DocCardList from '@theme/DocCardList';
 
-# E-commerce plugins
+# Plugin e-commerce
 
-Voucherly official plugins for the most widespread e-commerce platforms are available:
+Sono disponibili i plugin ufficiali Voucherly per le piattaforme e-commerce più diffuse:
 <DocCardList />
 
 :::info
 
-- Refer to [Voucherly Plugin](https://voucherly.it/soluzioni/plugin) for additional info.
+- Consulta [Voucherly Plugin](https://voucherly.it/soluzioni/plugin) per ulteriori informazioni.
 
 :::

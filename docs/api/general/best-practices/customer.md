@@ -1,34 +1,35 @@
 ---
+slug: /api/generale/best-practice/gestione-clienti
 sidebar_position: 5
-description: "Manage registered customers with Voucherly to streamline checkout, reuse saved payment methods and simplify payment reconciliation."
+description: "Gestisci i clienti registrati con Voucherly per ottimizzare il checkout, riutilizzare i metodi di pagamento salvati e semplificare la riconciliazione."
 keywords:
-  - Voucherly customer management
+  - gestione clienti Voucherly
   - customerId
-  - saved payment methods
+  - metodi di pagamento salvati
   - checkout
-  - reconciliation
+  - riconciliazione
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Accordion from '@site/src/components/Accordion';
 
-# Manage customer
+# Gestione dei clienti
 
-Proper customer management is not only a technical best practice but also essential for enhancing the user experience, streamlining operations, and driving business success.
+Una corretta gestione dei clienti non è solo una best practice tecnica, ma è anche essenziale per migliorare l'esperienza utente, semplificare le operazioni e favorire il successo del business.
 
-This guide explains how and why to use registered customers with Voucherly.
+Questa guida spiega come e perché utilizzare i clienti registrati con Voucherly.
 
-## Development Guide
+## Guida allo sviluppo
 
-### 1. Prepare your request
+### 1. Prepara la richiesta
 
 <Tabs groupId="payment" queryString>
-<TabItem value="first" label="First payment">
+<TabItem value="first" label="Primo pagamento">
 
-When creating a Payment, include the customer details.
+Quando crei un pagamento, includi i dettagli del cliente.
 
-**Example Request**
+**Esempio di richiesta**
 
 ```json
 {
@@ -43,11 +44,11 @@ When creating a Payment, include the customer details.
 
 </TabItem>
 
-<TabItem value="next" label="Next payment">
+<TabItem value="next" label="Pagamento successivo">
 
-Before creating a Payment retrieve the Voucherly `customerId`. Then include it as part of the request payload to ensure proper processing
+Prima di creare un pagamento, recupera il `customerId` di Voucherly. Poi includilo nel payload della richiesta per garantire una corretta elaborazione.
 
-**Example Request**
+**Esempio di richiesta**
 
 ```json
 {
@@ -58,9 +59,9 @@ Before creating a Payment retrieve the Voucherly `customerId`. Then include it a
 }
 ```
 
-You can also pass the customer details to update them.
+Puoi anche passare i dettagli del cliente per aggiornarli.
 
-**Example Request**
+**Esempio di richiesta**
 
 ```json
 {
@@ -77,9 +78,9 @@ You can also pass the customer details to update them.
 </TabItem>
 </Tabs>
 
-### 2. Handle the response
+### 2. Gestisci la risposta
 
-**Example response**
+**Esempio di risposta**
 
 ```json
 {
@@ -95,47 +96,47 @@ You can also pass the customer details to update them.
 ```
 
 <Tabs groupId="payment" queryString>
-<TabItem value="first" label="First payment">
+<TabItem value="first" label="Primo pagamento">
 
-If you haven't provided a `customerId` in your initial request, you should:
+Se non hai fornito un `customerId` nella richiesta iniziale, dovresti:
 
-- Extract the `customerId` from the response.
-- Save it to your database.
-- Include it in subsequent requests for the same customer.
+- Estrarre il `customerId` dalla risposta.
+- Salvarlo nel tuo database.
+- Includerlo nelle richieste successive per lo stesso cliente.
 
 </TabItem>
 
-<TabItem value="next" label="Next payment">
+<TabItem value="next" label="Pagamento successivo">
 
-Since you've provided a `customerId` in your initial request, the payment will automatically reference the corresponding existing Customer for the Payment.
+Poiché hai fornito un `customerId` nella richiesta iniziale, il pagamento farà automaticamente riferimento al Customer esistente corrispondente.
 
-No further action is required on your part.
+Non è richiesta alcuna ulteriore azione da parte tua.
 
 </TabItem>
 </Tabs>
 
 <Accordion>
     <>
-        ### Retrieve Customer Payment Methods
+        ### Recupera i metodi di pagamento del cliente
     </>
     <>
 
-        Use the `GET Customer Payment Methods API` to fetch a customer's saved payment methods. This functionality can be used to:
-        - Display the saved payment methods in the customer's profile page.
-        - Reduce checkout time and increase conversion rates by offering direct access to the customer's preferred payment methods. 
+        Utilizza la `GET Customer Payment Methods API` per recuperare i metodi di pagamento salvati di un cliente. Questa funzionalità può essere utilizzata per:
+        - Mostrare i metodi di pagamento salvati nella pagina del profilo del cliente.
+        - Ridurre i tempi di checkout e aumentare i tassi di conversione offrendo accesso diretto ai metodi di pagamento preferiti del cliente.
 
 
-        The Voucherly Checkout automatically displays all saved payment methods for the user. Therefore, there is no need to pre-display them in advance, as the checkout process already ensures a seamless and efficient user experience.
+        Il Checkout di Voucherly mostra automaticamente tutti i metodi di pagamento salvati dell'utente. Non è quindi necessario mostrarli in anticipo, poiché il processo di checkout garantisce già un'esperienza utente fluida ed efficiente.
 
-        If you use a custom integration, please refer to the [Custom integration](/guides/online-payments/custom-integration) for a complete example.
+        Se utilizzi un'integrazione personalizzata, consulta il [Integrazione personalizzata](/guide/pagamenti-online/integrazione-personalizzata) per un esempio completo.
 
-        #### Custom integration workflow
+        #### Flusso di integrazione personalizzata
 
-        - Retrieve saved payment methods.
-        - Display them on your website.
-        - Use `customerPaymentMethodId` to preselect the customer’s preferred payment method when creating the Payment.
+        - Recupera i metodi di pagamento salvati.
+        - Mostrali sul tuo sito web.
+        - Usa `customerPaymentMethodId` per preselezionare il metodo di pagamento preferito del cliente durante la creazione del pagamento.
 
-        **Example Request**
+        **Esempio di richiesta**
 
         ```json
         {
@@ -149,10 +150,68 @@ No further action is required on your part.
     </>
 </Accordion>
 
-## Why? Benefits! {#why}
+## Usa i tuoi ID {#reference-id}
 
-- **Streamline Checkout**.
-  - Prefill customer details like name and email, reducing manual input.
-  - Save customer preferences and payment methods for quicker future checkouts.
-  - Reduce friction. For example, Payment gateways like Edenred use Single Sign-On (SSO). Voucherly can maintain active sessions, improving the purchase flow.
-- **Simplified Reconciliation**. Associating every payment with a customer enables clear transaction tracking. This is particularly useful for managing refunds, sales analysis and accounting audits.
+Non serve salvare il `customerId` di Voucherly. Invia l'ID che il cliente ha nel tuo sistema come `customer.referenceId`: il pagamento va al Customer con quel riferimento, e al primo pagamento lo crea.
+
+```json
+{
+    "mode": "Payment",
+    [...]
+    "customer": {
+        "referenceId": "user-4821",
+        "email": "mario.rossi@voucherly.it",
+        "firstName": "Mario",
+        "lastName": "Rossi"
+    },
+    [...]
+}
+```
+
+Un riferimento è unico tra i tuoi Customer in ogni ambiente. Puoi impostarlo anche quando crei o aggiorni un Customer, e trovare il Customer con `GET /v1/customers?referenceId=user-4821`. Dare a un Customer un riferimento che un altro Customer ha già fallisce con `409 Conflict` e codice `REFERENCE_ID_ALREADY_EXISTS`, e il `customerId` della risposta è il Customer che lo ha.
+
+## Aziende {#companies}
+
+Quando i tuoi clienti ordinano come dipendenti di un'azienda, invia l'azienda insieme al pagamento. Voucherly la trova con l'ID che ha nel tuo sistema, quindi non c'è niente da creare prima.
+
+```json
+{
+    "mode": "Payment",
+    [...]
+    "customer": {
+        "referenceId": "user-4821",
+        "email": "mario.rossi@voucherly.it"
+    },
+    "company": {
+        "referenceId": "company-318",
+        "name": "Acme Srl",
+        "joinCode": "ACME01"
+    },
+    [...]
+}
+```
+
+- Quando nessuna Company ha il `company.referenceId`, il pagamento la crea con `name` e `joinCode`. Un `joinCode` assente, non di 6 caratteri o già usato da un'altra Company viene sostituito da uno generato da Voucherly: il pagamento non fallisce mai per questo.
+- Quando la Company esiste con un altro `name`, il pagamento la rinomina. Vale il nome del tuo sistema.
+- `company` e `companyId` sono alternativi: inviane uno solo.
+
+Il Customer del pagamento entra poi nella Company e ci resta per i pagamenti successivi, in qualunque modo lo identifichi: con `customerId`, con `customer.referenceId` o con un'email o un telefono verificati.
+
+| Il Customer | Cosa succede |
+| --- | --- |
+| è nuovo | Viene creato nella Company. |
+| non ha una Company | Entra nella Company. |
+| è già nella Company | Non cambia niente. |
+| è in un'altra Company | Passa alla nuova Company, come quando la persona cambia azienda nel tuo sistema. |
+
+Lo stesso vale quando invii `companyId` al posto di `company`.
+
+Fuori dai pagamenti, tieni la Company allineata al tuo sistema: imposta `referenceId` quando la crei, cambia `name`, `joinCode` o `referenceId` con `POST /v1/companys/{idOrCode}`, e trovala con `GET /v1/companys?referenceId=company-318`. Un `joinCode` o un `referenceId` che un'altra Company ha già fallisce con `409 Conflict` e codice `JOIN_CODE_ALREADY_EXISTS` o `REFERENCE_ID_ALREADY_EXISTS`, e il `companyId` della risposta è la Company che lo ha.
+
+## Perché? I vantaggi! {#why}
+
+- **Ottimizza il checkout**.
+  - Precompila i dettagli del cliente come nome ed email, riducendo l'inserimento manuale.
+  - Salva le preferenze e i metodi di pagamento del cliente per checkout futuri più rapidi.
+  - Riduci gli attriti. Ad esempio, gateway di pagamento come Edenred utilizzano il Single Sign-On (SSO). Voucherly può mantenere attive le sessioni, migliorando il flusso di acquisto.
+- **Riconciliazione semplificata**. Associare ogni pagamento a un cliente consente un tracciamento chiaro delle transazioni. Questo è particolarmente utile per gestire i rimborsi, l'analisi delle vendite e le verifiche contabili.

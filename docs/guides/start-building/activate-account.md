@@ -1,65 +1,66 @@
 ---
+slug: /guide/inizia-a-integrare/attiva-account
 sidebar_position: 1
-description: "Activate your Voucherly live account: complete onboarding, configure payment gateways, choose a subscription plan and set up branding."
+description: "Attiva il tuo account Voucherly di produzione: completa l'onboarding, configura i gateway di pagamento, scegli un piano e imposta il branding."
 keywords:
-  - voucherly activation
+  - attivazione voucherly
   - onboarding
-  - live account
-  - payment gateways
-  - subscription
+  - account produzione
+  - gateway di pagamento
+  - abbonamento
   - kyc
 ---
 
 import Checkbox from '@site/src/components/Checkbox';
 
-# Activate your account
+# Attiva il tuo account
 
-Onboarding involves Voucherly verifying and approving the information submitted by merchants and partners applying for a live account to process real transactions.
+L'onboarding prevede che Voucherly verifichi e approvi le informazioni inviate dai merchant e dai partner che richiedono un account di produzione (live) per elaborare transazioni reali.
 
-<Checkbox label="Complete onboarding" >
+<Checkbox label="Completa l'onboarding" >
 
-Sign in to [Dashboard](https://dashboard.voucherly.it) and:
+Accedi alla [Dashboard](https://dashboard.voucherly.it) e:
 
-1. Provide billing information at **Attività > [Panoramica](https://dashboard.voucherly.it/Merchant)**.
-1. Set up a payment method at **Abbonamento e fatturazione > [Metodi di pagamento](https://dashboard.voucherly.it/Billing/PaymentMethod)**.
+1. Fornisci le informazioni di fatturazione in **Attività > [Panoramica](https://dashboard.voucherly.it/Merchant)**.
+1. Configura un metodo di pagamento in **Abbonamento e fatturazione > [Metodi di pagamento](https://dashboard.voucherly.it/Billing/PaymentMethod)**.
 
 :::info
-Voucherly will verify your details and activate your account.
+Voucherly verificherà i tuoi dati e attiverà il tuo account.
 :::
 
 </Checkbox>
 
-<Checkbox label="Configure Payment gateways" >
+<Checkbox label="Configura i gateway di pagamento" >
 
-Navigate to **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** and enable payment gateways you need.
+Vai in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** e abilita i gateway di pagamento di cui hai bisogno.
 
 :::warning
-Merchant-specific configuration parameters must be entered to activate payment gateways. These parameters are provided to the merchant through a direct agreement with the payment gateway.
+Per attivare i gateway di pagamento è necessario inserire i parametri di configurazione specifici del merchant. Questi parametri vengono forniti al merchant tramite un accordo diretto con il gateway di pagamento.
 :::
 
 :::tip
-We strongly recommend activating an additional payment gateway, such as credit card, Satispay, or PayPal. This is essential to ensure that customers can always complete their payment, even if they are not using meal vouchers.
+Consigliamo vivamente di attivare un gateway di pagamento aggiuntivo, come carta di credito, Satispay o PayPal. È essenziale per garantire che i clienti possano sempre completare il pagamento, anche quando non utilizzano i buoni pasto.
 :::
 
 </Checkbox>
 
-<Checkbox label="Choose the best Subscription plan" >
+<Checkbox label="Scegli il piano di abbonamento migliore" >
 
-Select a subscription plan that meets your needs.  
-You can upgrade or downgrade your plan anytime to suit your evolving requirements.
+Seleziona un piano di abbonamento adatto alle tue esigenze.  
+Puoi effettuare l'upgrade o il downgrade del piano in qualsiasi momento per adattarlo alle tue necessità in evoluzione.
 
 </Checkbox>
 
-<Checkbox label="Setup branding" >
+<Checkbox label="Configura il branding" >
 
-Make sure to configure the branding settings for your account before going live. You can adjust:
+Assicurati di configurare le impostazioni di branding del tuo account prima di andare in produzione. Puoi personalizzare:
 
-- Custom colors
-- Custom logo and icon
-- Custom domain
+- Colori personalizzati
+- Logo e icona personalizzati
+- Dominio personalizzato
 
 :::info
-This feature is available depending on your Subscription plan.
+Questa funzionalità è disponibile in base al tuo piano di abbonamento.
 :::
 
 </Checkbox>

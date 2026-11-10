@@ -1,74 +1,75 @@
 ---
+slug: /guide/informazioni/risorse/gateway-di-pagamento/satispay
 sidebar_position: 15
-description: "Accept Satispay with Voucherly in a single integration that also handles meal vouchers and Fringe Benefit: create a store, connect its activation code, go live."
+description: "Accetta Satispay con Voucherly in un'unica integrazione che gestisce anche buoni pasto e Fringe Benefit: crea un negozio, collega il codice di attivazione, vai live."
 keywords:
   - Satispay
   - Satispay Business
-  - meal vouchers
+  - buoni pasto
   - Fringe Benefit
-  - activation code
+  - codice di attivazione
   - Voucherly
 ---
 
 
 # Satispay
 
-Voucherly integrates Satispay with a **single integration** that accepts, in the same transaction and transparently:
+Voucherly integra Satispay con un'**unica integrazione** che accetta, nella stessa transazione e in modo trasparente:
 
-- **Satispay** — the standard digital payment.
-- **Buoni Pasto** (meal vouchers).
-- **Fringe Benefit** (welfare / fringe benefit).
+- **Satispay** — il pagamento digitale standard.
+- **Buoni Pasto**.
+- **Fringe Benefit** (welfare / benefit aziendale).
 
-You don't configure these separately: if your Satispay business is enabled for meal vouchers or welfare benefit, they simply work alongside standard Satispay. Voucherly reads back how each payment is split (digital / meal voucher / fringe) from Satispay.
+Non devi configurarli separatamente: se la tua utenza Satispay Business è abilitata ai buoni pasto o al welfare, funzionano semplicemente insieme al Satispay standard. Voucherly recupera da Satispay come viene suddiviso ogni pagamento (digitale / buono pasto / benefit).
 
-Activation only requires you to create a Satispay **store** and connect its activation code to Voucherly.
+L'attivazione richiede solo di creare un **negozio** Satispay e collegare il suo codice di attivazione a Voucherly.
 
-## Become a partner
+## Diventa partner
 
-To accept Satispay with Voucherly you need a **Satispay Business** account and at least one **store** (*negozio*).
+Per accettare Satispay con Voucherly ti servono un account **Satispay Business** e almeno un **negozio**.
 
-1. Sign in to [dashboard.satispay.com](https://dashboard.satispay.com) and create a store — see [Negozi](https://support.satispay.com/it/articles/negozi).
-   - Choose **E-commerce web** for a single online store.
-   - Choose **Punto vendita fisico** for a physical location.
-2. Get the store's **activation code** — see [Codice di attivazione](https://support.satispay.com/it/articles/codice-di-attivazione). You will paste this code into Voucherly.
+1. Accedi a [dashboard.satispay.com](https://dashboard.satispay.com) e crea un negozio — vedi [Negozi](https://support.satispay.com/it/articles/negozi).
+   - Scegli **E-commerce web** per un singolo negozio online.
+   - Scegli **Punto vendita fisico** per una sede fisica.
+2. Ottieni il **codice di attivazione** del negozio — vedi [Codice di attivazione](https://support.satispay.com/it/articles/codice-di-attivazione). Incollerai questo codice in Voucherly.
 
 :::info
-Each Satispay store has its own activation code. One store = one activation code = one payment account in Voucherly. If you run more than one location, create one store per location and see [Per-store configuration](./per-store-configuration.md).
+Ogni negozio Satispay ha il proprio codice di attivazione. Un negozio = un codice di attivazione = un account di pagamento in Voucherly. Se gestisci più di un punto vendita, crea un negozio per ogni punto vendita e consulta [Configurazione per punto vendita](/guide/informazioni/risorse/gateway-di-pagamento/configurazione-per-punto-vendita).
 :::
 
-## Configuration
+## Configurazione
 
-Configure Satispay in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard:
+Configura Satispay in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** nella Dashboard di Voucherly:
 
-1. Create a new Satispay payment account and give it a name that identifies the store.
-2. Set the parameters below and save.
+1. Crea un nuovo account di pagamento Satispay e assegnagli un nome che identifichi il negozio.
+2. Imposta i parametri seguenti e salva.
 
-| Parameter | Value |
+| Parametro | Valore |
 |-|-|
-| **Environment** | *Produzione* for live payments, *Staging* for testing. |
-| **Token** | The store **activation code** from your Satispay Business dashboard. |
+| **Ambiente** | *Produzione* per i pagamenti in produzione, *Staging* per i test. |
+| **Token** | Il **codice di attivazione** del negozio dalla tua dashboard Satispay Business. |
 
-That's it: Voucherly generates the signing keys and the `KeyId` automatically and validates the credentials. No other value needs to be entered by hand.
+È tutto: Voucherly genera automaticamente le chiavi di firma e il `KeyId` e valida le credenziali. Non è necessario inserire manualmente alcun altro valore.
 
 :::warning
-The activation code is single-use and tied to one store. If validation fails, generate a new activation code from the Satispay dashboard and paste it again.
+Il codice di attivazione è monouso e legato a un singolo negozio. Se la validazione fallisce, genera un nuovo codice di attivazione dalla dashboard Satispay e incollalo di nuovo.
 :::
 
-### Multiple locations
+### Punti vendita multipli
 
-For a chain, or when Satispay is already activated separately for each shop, create **one payment account per store** and assign each one to its location. See **[Per-store configuration](./per-store-configuration.md)**.
+Per una catena, o quando Satispay è già attivato separatamente per ogni negozio, crea **un account di pagamento per ogni negozio** e assegna ciascuno al proprio punto vendita. Vedi **[Configurazione per punto vendita](/guide/informazioni/risorse/gateway-di-pagamento/configurazione-per-punto-vendita)**.
 
-## Meal vouchers & Fringe Benefit
+## Buoni pasto & Fringe Benefit
 
-Accepting **Buoni Pasto** and **Fringe Benefit** through Satispay does not require any extra setup in Voucherly — the same integration handles them.
+Accettare **Buoni Pasto** e **Fringe Benefit** tramite Satispay non richiede alcuna configurazione aggiuntiva in Voucherly — la stessa integrazione li gestisce.
 
-- If your Satispay business is **already enabled** for meal vouchers / welfare benefit, they work right away.
-- If you want to **enable** them, this depends on Satispay, not on Voucherly: contact **Satispay support** to request the activation.
+- Se la tua utenza Satispay Business è **già abilitata** ai buoni pasto / welfare, funzionano immediatamente.
+- Se vuoi **abilitarli**, questo dipende da Satispay, non da Voucherly: contatta il **supporto Satispay** per richiedere l'attivazione.
 
 :::info
-Reach out via the [Satispay contacts page](https://www.satispay.com/it-it/contatti/). See also the merchant guide [Buoni Pasto Satispay per il tuo negozio](https://www.satispay.com/it-it/blog/welfare-benefits/configurare-satispay-accettare-buoni-pasto-nei-negozi/). On the Voucherly side everything is transparent — once your Satispay business is enabled, no configuration change is needed.
+Contattali tramite la [pagina contatti di Satispay](https://www.satispay.com/it-it/contatti/). Consulta anche la guida per i merchant [Buoni Pasto Satispay per il tuo negozio](https://www.satispay.com/it-it/blog/welfare-benefits/configurare-satispay-accettare-buoni-pasto-nei-negozi/). Sul lato Voucherly è tutto trasparente — una volta abilitata la tua utenza Satispay Business, non è necessaria alcuna modifica alla configurazione.
 :::
 
 ## Go live
 
-Once the account is configured with the *Produzione* environment and validated, you're ready to accept Satispay — including Buoni Pasto and Fringe Benefit — with Voucherly!
+Una volta configurato l'account con l'ambiente *Produzione* e validato, sei pronto ad accettare Satispay — inclusi buoni pasto e Fringe Benefit — con Voucherly!

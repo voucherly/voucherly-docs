@@ -31,7 +31,7 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: 'it',
     locales: ['en', 'it'],
     path: 'i18n',
     localeConfigs: {
@@ -83,7 +83,7 @@ const config: Config = {
     ],
     navbar: {
       logo: {
-        alt: 'Voucherly logo',
+        alt: 'Logo Voucherly',
         src: 'img/voucherly-logo.png',
         srcDark: 'img/voucherly-logo-white.png',
       },
@@ -92,7 +92,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'guidesSidebar',
           position: 'left',
-          label: 'Guides',
+          label: 'Guide',
         },
         {
           type: 'docSidebar',
@@ -119,27 +119,27 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Documentation',
+          title: 'Documentazione',
           items: [
-            {label: 'Guides', to: '/'},
-            {label: 'Postman collection', to: '/api/postman'},
+            {label: 'Guide', to: '/'},
+            {label: 'Collezione Postman', to: '/api/postman'},
           ],
         },
         {
-          title: 'Product',
+          title: 'Prodotto',
           items: [
             {label: 'Dashboard', href: 'https://dashboard.voucherly.it/'},
-            {label: 'Website', href: 'https://voucherly.it/'},
+            {label: 'Sito web', href: 'https://voucherly.it/'},
           ],
         },
         {
-          title: 'Support',
+          title: 'Supporto',
           items: [
-            {label: 'Contact', href: 'https://voucherly.it/#contact'},
+            {label: 'Contatti', href: 'https://voucherly.it/#contact'},
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} Voucherly. All rights reserved.`,
+      copyright: `© ${new Date().getFullYear()} Voucherly. Tutti i diritti riservati.`,
     },
     prism: {
       theme: prismThemes.github,

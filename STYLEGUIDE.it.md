@@ -1,16 +1,18 @@
 <!--
   Documento interno di stile e terminologia per voucherly-docs.
-  NON pubblicato (fuori da docs/). Riferimento per traduzioni IT e coerenza EN.
+  NON pubblicato (fuori da docs/). Riferimento per la scrittura in italiano e la traduzione in inglese.
 -->
 
-# Style guide & glossario — voucherly-docs (EN / IT)
+# Style guide & glossario — voucherly-docs (IT / EN)
 
-Riferimento per mantenere **coerenza terminologica, naturalezza e branding** nella documentazione, in inglese (sorgente `docs/`) e italiano (`i18n/it/…/current/`).
+Riferimento per mantenere **coerenza terminologica, naturalezza e branding** nella documentazione, in italiano (sorgente `docs/`) e inglese (`i18n/en/…/current/`).
+
+La lingua sorgente è l'italiano perché chi legge la documentazione è soprattutto italiano: si scrive prima la pagina italiana in `docs/`, poi la sua traduzione inglese.
 
 ## 1. Principi generali
 
 - **Audience mista**: merchant (non-tecnici) + sviluppatori. Spiegare il *perché* prima del *come*; introdurre i termini tecnici con un gloss al primo uso.
-- **Fedeltà + naturalezza**: la traduzione IT non deve suonare come "traduttese". Preferire la resa italiana idiomatica alla traduzione letterale, senza aggiungere o omettere contenuto.
+- **Fedeltà + naturalezza**: nessuna delle due lingue deve suonare come "traduttese". L'italiano si scrive da subito in italiano idiomatico; la traduzione EN preferisce la resa inglese naturale a quella letterale, senza aggiungere o omettere contenuto.
 - **Struttura allineata**: EN e IT devono avere gli stessi heading, lo stesso ordine di sezioni e lo stesso frontmatter (tradotto). Vedi §7 (anti-drift).
 
 ## 2. Registro e tono (IT)
@@ -28,7 +30,7 @@ Riferimento per mantenere **coerenza terminologica, naturalezza e branding** nel
 - **Nomi di campo/parametro** (`mode`, `status`, `ParentPaymentId`, `checkoutUrl`, …): invariati, in `code`.
 - Percorsi di menu Dashboard resi con `>`: es. **Sviluppatori > API keys**, **Impostazioni > Pagamenti > Gateway di pagamento**.
 
-## 4. Glossario canonico EN → IT
+## 4. Glossario canonico EN ↔ IT
 
 Pattern di introduzione al primo uso: **`Termine EN (gloss IT)`**, poi si usa il termine scelto.
 
@@ -69,11 +71,10 @@ Pattern di introduzione al primo uso: **`Termine EN (gloss IT)`**, poi si usa il
 
 1. **UI Dashboard solo italiana** → le voci di menu Dashboard restano **in italiano anche nei doc EN** (l'utente vede una UI italiana). Si uniformano solo le varianti: la voce chiavi è sempre **Sviluppatori > API keys** (non "Chiavi API"/"API Key" da soli).
 2. **`secret key`/`publishable key` invariati in IT** (inglese), con glossa "(chiave segreta)"/"(chiave pubblicabile)" al primo uso. Vietato "chiave privata/pubblica".
-3. **`ade-documento-commerciale`**: il sorgente `docs/` va **tradotto in inglese**; la versione italiana resta in `i18n/it`.
 
 ## 5. Convenzione frontmatter SEO (EN + IT)
 
-Modello di riferimento già presente: [docs/guides/marketplace/ade-documento-commerciale/index.mdx](docs/guides/marketplace/ade-documento-commerciale/index.mdx).
+Modello di riferimento già presente: [docs/guides/products/electronic-receipt/ade-documento-commerciale/index.mdx](docs/guides/products/electronic-receipt/ade-documento-commerciale/index.mdx).
 
 Ogni pagina di prosa deve avere:
 
@@ -92,14 +93,14 @@ image: <og:image per-pagina, per le pagine di punta>
 
 Regole:
 
-- `description` **unica per pagina**, non generica; in IT è **tradotta** (non lasciata in EN).
+- `description` **unica per pagina**, non generica; in EN è **tradotta** (non lasciata in IT).
 - `keywords` in lingua: keyword italiane nei file IT, inglesi nei file EN.
-- `title`/`description`/`keywords`/`image` vanno **sempre tradotti** nella controparte `i18n/it`.
+- `title`/`description`/`keywords`/`image` vanno **sempre tradotti** nella controparte `i18n/en`.
 - Pagine FAQ: usare il componente `FAQStructuredData` (`@site/src/theme/MDXComponents/FAQStructuredData`) con `export const faqs = [{question, answer}, …]` per generare il JSON-LD `FAQPage`.
 
 ## 6. Slug italiani
 
-- Gli URL IT sono localizzati tramite `slug:` nel frontmatter dei file in `i18n/it/…/current/**` (l'EN resta path-based).
+- Gli URL IT sono localizzati tramite `slug:` nel frontmatter dei file italiani in `docs/**`. I file EN in `i18n/en/…/current/**` restano path-based, con il solo `slug: /` della home: il path del file resta in inglese.
 - Schema: segmenti in italiano, minuscoli, con trattini. Es. `/guide/risorse/gateway-di-pagamento/paypal`.
 - Ogni cambio di slug richiede un **redirect 301** in `netlify.toml` dal vecchio URL IT (path inglese) al nuovo.
 - **Importante — hreflang**: Docusaurus genera gli `hreflang` scambiando solo il prefisso di locale sullo stesso path, quindi con slug diversi tra EN e IT gli alternate puntano a pagine inesistenti. Lo stesso vale per il selettore della lingua in navbar, che porterebbe a una 404. Per questo la corrispondenza sta in una `SLUG_MAP` (coppie suffisso EN ↔ IT) in [src/utils/localeSlugs.ts](src/utils/localeSlugs.ts), usata da due componenti swizzati: `theme/SiteMetadata` per gli hreflang e `theme/NavbarItem/LocaleDropdownNavbarItem` per il selettore. **Quando aggiungi/cambi uno slug IT, aggiorna anche `SLUG_MAP`**, altrimenti hreflang e selettore di quella pagina tornano rotti.
@@ -108,13 +109,13 @@ Regole:
 - Il build con `onBrokenLinks: 'throw'` deve passare: è la garanzia che nessun link interno si sia rotto. Dopo il deploy, forzare il re-crawl di Algolia DocSearch (contextualSearch per lingua) per riallineare l'indice ai nuovi slug.
 - **Footer/config**: i link `to:` del footer (in `docusaurus.config.ts`) NON seguono gli slug per-locale; usare solo target stabili in entrambi i locali (home `/`, `/api/postman`, `/api/webapi/*`) o `href` esterni.
 
-## 7. Procedura anti-drift EN ↔ IT
+## 7. Procedura anti-drift IT ↔ EN
 
-Le traduzioni sono copie manuali complete: **ogni modifica a un file `docs/**` va replicata nella controparte `i18n/it/…/current/**`** (stesso path, stessi heading/anchor, stesso frontmatter tradotto).
+Le traduzioni sono copie manuali complete: **ogni modifica a un file `docs/**` va replicata nella controparte `i18n/en/…/current/**`** (stesso path, stessi heading/anchor, stesso frontmatter tradotto). `pnpm build` fallisce se una pagina di `docs/` non ha la controparte EN, o se un file EN non ha più la sua sorgente italiana (`check-locale-files.mjs`).
 
 Checklist rapida a ogni modifica:
 
-1. Il file IT esiste allo stesso path? Ha gli stessi heading e lo stesso numero di sezioni?
-2. Frontmatter tradotto (title/description/keywords) e `slug` IT presente?
-3. `import`, componenti, nomi immagine e ancore identici all'EN?
+1. Il file EN esiste allo stesso path? Ha gli stessi heading e lo stesso numero di sezioni?
+2. Frontmatter tradotto (title/description/keywords), `slug` IT presente nel file italiano e assente in quello EN (tranne la home)?
+3. `import`, componenti, nomi immagine e ancore identici all'IT?
 4. `pnpm build` passa (link interni validi)?

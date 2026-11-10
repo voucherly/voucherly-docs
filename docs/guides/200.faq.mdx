@@ -1,37 +1,38 @@
 ---
+slug: /guide/faq
 sidebar_position: 200
-description: "Answers to common Voucherly questions: missing payment gateways at checkout, empty wallet credit, what Wallet credit can pay for and gateway configuration errors."
+description: "Risposte alle domande frequenti su Voucherly: gateway mancanti al checkout, credito wallet vuoto, cosa può pagare il credito del Wallet ed errori di configurazione."
 keywords:
-  - Voucherly FAQ
-  - payment gateway
-  - Voucherly Checkout
-  - wallet credit
+  - FAQ Voucherly
+  - gateway di pagamento
+  - Checkout Voucherly
+  - credito wallet
   - Customer ID
-  - troubleshooting
+  - risoluzione problemi
 ---
 
 import FAQStructuredData from '@site/src/theme/MDXComponents/FAQStructuredData';
 
-# FAQs
+# Domande frequenti
 
-A list of questions and answers that might resolve some doubts.
+Un elenco di domande e risposte che potrebbero chiarire alcuni dubbi.
 
 export const faqs = [
   {
-    question: 'Some payment gateways are not shown to the customer on the Voucherly Checkout page.',
-    answer: 'There could be several reasons:<ul><li>The payment gateway in question has not been enabled from the Dashboard.</li><li>The customer\'s payment amount is below the minimum for that payment gateway, so it is not shown.</li></ul>',
+    question: 'Alcuni gateway di pagamento non vengono mostrati al cliente nella pagina di Checkout di Voucherly.',
+    answer: 'Le cause possono essere diverse:<ul><li>Il gateway di pagamento in questione non è stato abilitato dalla Dashboard.</li><li>L\'importo del pagamento del cliente è inferiore al minimo previsto per quel gateway di pagamento, quindi non viene mostrato.</li></ul>',
   },
   {
-    question: 'A customer has empty wallet credit, despite having charged their wallet in a previous payment.',
-    answer: '<ul><li>Make sure you save the Voucherly Customer ID associated with each user at the end of a payment.</li><li>When creating a payment, be sure to send the Voucherly Customer ID.</li></ul>',
+    question: 'Un cliente ha il credito del wallet vuoto, nonostante abbia ricaricato il wallet in un pagamento precedente.',
+    answer: '<ul><li>Assicurati di salvare il Voucherly Customer ID associato a ciascun utente al termine di un pagamento.</li><li>Quando crei un pagamento, assicurati di inviare il Voucherly Customer ID.</li></ul>',
   },
   {
-    question: 'A customer cannot pay with the Wallet, even if they have sufficient remaining credit.',
-    answer: '<ul><li>Wallet credit keeps the nature of the money it came from. The part loaded with meal vouchers can only pay food items (<code>IsFood</code> set to true); the part loaded with a card or another payment method, or credited manually from the Dashboard, can pay any item.</li><li>If the cart holds only non-food items, credit loaded with meal vouchers cannot cover it.</li></ul>',
+    question: 'Un cliente non riesce a pagare con il Wallet, anche se ha credito residuo sufficiente.',
+    answer: '<ul><li>Il credito del Wallet mantiene la natura del denaro da cui proviene. La parte caricata con buoni pasto può pagare solo prodotti alimentari (<code>IsFood</code> impostato a true); la parte caricata con carta o con un altro metodo di pagamento, o accreditata manualmente dalla Dashboard, può pagare qualsiasi prodotto.</li><li>Se il carrello contiene solo prodotti non alimentari, il credito caricato con buoni pasto non può coprirlo.</li></ul>',
   },
   {
-    question: 'An error occurs when a customer tries to use a certain payment gateway.',
-    answer: '<ul><li>Make sure you have configured your payment gateway correctly (see <a href="https://docs.voucherly.it/en/guides/about/resources/payment-gateways">here</a>).</li><li>If the problem persists, please contact us on the <a href="https://voucherly.it/#contact">contact page</a>.</li></ul>',
+    question: 'Si verifica un errore quando un cliente prova a utilizzare un determinato gateway di pagamento.',
+    answer: '<ul><li>Assicurati di aver configurato correttamente il gateway di pagamento (consulta <a href="https://docs.voucherly.it/it/guide/informazioni/risorse/gateway-di-pagamento">questa pagina</a>).</li><li>Se il problema persiste, contattaci nella <a href="https://voucherly.it/#contact">pagina dei contatti</a>.</li></ul>',
   },
 ];
 

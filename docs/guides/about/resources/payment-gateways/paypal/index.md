@@ -1,54 +1,55 @@
 ---
+slug: /guide/informazioni/risorse/gateway-di-pagamento/paypal
 title: PayPal
 sidebar_position: 30
-description: "Get your PayPal client ID and client secret from the PayPal Developer Dashboard and configure them in Voucherly for Sandbox and Live payments."
+description: "Ottieni client ID e client secret di PayPal dalla PayPal Developer Dashboard e configurali in Voucherly per i pagamenti Sandbox e Live."
 keywords:
   - PayPal
   - client ID
   - client secret
-  - PayPal business account
+  - account PayPal business
   - Sandbox
   - Voucherly
 ---
 
 
-# How to get PayPal client ID and client secret
+# Come ottenere client ID e client secret di PayPal
 
 :::warning
-You must use a PayPal business account.
+Devi utilizzare un account PayPal business.
 :::
 
-1. Select [Log in to Dashboard](https://developer.paypal.com/dashboard/) and log in or sign up.
-1. Select **Apps & Credentials**.
-![PayPal business Dashboard](go-to-app.png)
-1. Choose your environment (use Sandbox for test payments) and click **Create App** (or use the Default Application).
-![App & Credentials page](sandbox-create.png)
-1. Copy the client ID and client secret for your app.
-![Copy client ID and client secret](copy-client-keys.png)
-1. Configure these parameters in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** on the Voucherly Dashboard. Use the correct environment.
+1. Seleziona [Accedi alla Dashboard](https://developer.paypal.com/dashboard/) ed effettua il login o registrati.
+1. Seleziona **Apps & Credentials**.
+![Dashboard business PayPal](go-to-app.png)
+1. Scegli il tuo ambiente (usa Sandbox per i pagamenti di test) e clicca **Create App** (oppure usa la Default Application).
+![Pagina App & Credentials](sandbox-create.png)
+1. Copia il client ID e il client secret della tua app.
+![Copia client ID e client secret](copy-client-keys.png)
+1. Configura questi parametri in **Impostazioni > Pagamenti > [Gateway di pagamento](https://dashboard.voucherly.it/settings/payment/payment-gateways)** nella Dashboard di Voucherly. Utilizza l'ambiente corretto.
 
 :::tip
 
-- You get different keys for Sandbox and Live. Don’t mix them up.
-- Keep your Client Secret private. Never share it publicly.
-- If something doesn’t work, double-check the environment and credentials.
+- Ottieni chiavi diverse per Sandbox e Live. Non confonderle.
+- Mantieni privato il tuo Client Secret. Non condividerlo mai pubblicamente.
+- Se qualcosa non funziona, ricontrolla l'ambiente e le credenziali.
 
 :::
 
-## Enable Transaction Search for Treasury
+## Abilita Transaction Search per Tesoreria
 
-Treasury reads your PayPal withdrawals to your bank, the payments they contain and the fee PayPal withheld on each one. It uses the same client ID and client secret you configured above, but PayPal only allows it once **Transaction Search** is enabled on that app. Until then, the gateway account shows that the credential cannot read payouts.
+Tesoreria legge da PayPal i prelievi verso la tua banca, i pagamenti che contengono e la commissione che PayPal ha trattenuto su ciascuno. Usa lo stesso client ID e client secret che hai configurato sopra, ma PayPal lo permette solo quando sull'app è abilitata **Transaction Search**. Fino ad allora, l'account del gateway indica che la credenziale non può leggere gli accrediti.
 
-1. Select [Log in to Dashboard](https://developer.paypal.com/dashboard/) and log in with your PayPal business account.
-1. Select **Apps & Credentials** and switch to **Live**.
-1. Open the app whose client ID and client secret you saved in Voucherly.
-1. In the **Features** section, select **Transaction search**.
-1. Save the changes.
+1. Seleziona [Accedi alla Dashboard](https://developer.paypal.com/dashboard/) ed effettua il login con il tuo account PayPal business.
+1. Seleziona **Apps & Credentials** e passa a **Live**.
+1. Apri l'app di cui hai salvato client ID e client secret in Voucherly.
+1. Nella sezione **Features**, seleziona **Transaction search**.
+1. Salva le modifiche.
 
 :::info
 
-- PayPal can take up to 9 hours to grant access after you enable it. Treasury retries on its own several times a day, so you don't need to do anything else.
-- Your client ID and client secret don't change: there is nothing to update in the Voucherly Dashboard.
-- Payments keep working as before. Transaction Search only lets Voucherly read your transactions; it cannot move money.
+- Dopo l'abilitazione PayPal può impiegare fino a 9 ore a concedere l'accesso. Tesoreria riprova da sola più volte al giorno: non devi fare altro.
+- Client ID e client secret non cambiano: nella Dashboard di Voucherly non c'è niente da aggiornare.
+- I pagamenti continuano a funzionare come prima. Transaction Search permette a Voucherly solo di leggere le tue transazioni, non di muovere denaro.
 
 :::

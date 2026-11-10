@@ -1,12 +1,13 @@
 ---
+slug: /api/librerie/sdk/php
 sidebar_position: 2
-description: "Official Voucherly PHP SDK supporting PHP 7.4 and later to integrate the Voucherly payment API."
+description: "SDK PHP ufficiale di Voucherly, compatibile con PHP 7.4 e versioni successive, per integrare l'API di pagamento Voucherly."
 keywords:
-  - Voucherly PHP SDK
-  - PHP library
+  - SDK PHP Voucherly
+  - libreria PHP
   - Composer
   - Packagist
-  - payment API
+  - API pagamento
 ---
 
 # PHP SDK
@@ -15,8 +16,8 @@ keywords:
 [![Total Downloads](https://poser.pugx.org/voucherly/voucherly-php-sdk/downloads.svg)](https://packagist.org/packages/voucherly/voucherly-php-sdk)
 [![License](https://poser.pugx.org/voucherly/voucherly-php-sdk/license.svg)](https://packagist.org/packages/voucherly/voucherly-php-sdk)
 
-The official [Voucherly][voucherly] PHP library, supporting PHP 7.4 and later.
+La libreria PHP ufficiale di [Voucherly][voucherly], che supporta PHP 7.4 e versioni successive.
 
-Please refer to [Github](https://github.com/voucherly/voucherly-php-sdk).
+Consulta [Github](https://github.com/voucherly/voucherly-php-sdk).
 
 [voucherly]: https://voucherly.it
