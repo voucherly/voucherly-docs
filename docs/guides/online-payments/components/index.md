@@ -210,8 +210,8 @@ Your page is still left when a payment method needs it: inline, a redirect-based
 
 A Payment goes from `Requested` to `Paid` when the customer completes the checkout, and to `Confirmed` when the funds are captured — the [payment lifecycle](/guides/about/resources/payments-lifecycle) describes every status. Which of the two you find on your result page, or after `onPaymentComplete`, depends on the payment method and on the Payment:
 
-- Meal vouchers, personal credit, prepaid quota and some providers — Satispay, SumUp, Adyen among them — capture at checkout: the Payment lands directly in `Confirmed`.
-- Cards, PayPal and the other two-step providers only authorize: the Payment stays `Paid` until you call [Confirm a Payment](/api/webapi/confirm-payment), or until the authorization expires and the funds are released.
+- Meal vouchers, personal credit, prepaid quota, Satispay chosen among the meal vouchers and some providers — SumUp and Adyen among them — capture at checkout: the Payment lands directly in `Confirmed`.
+- Cards, PayPal, Satispay chosen among the digital payments and the other two-step providers only authorize: the Payment stays `Paid` until you call [Confirm a Payment](/api/webapi/confirm-payment), or until the authorization expires and the funds are released.
 - With `isAutoConfirm: true` in [Create a Payment](/api/webapi/create-payment), Voucherly confirms every transaction as soon as the customer pays, and the Payment is `Confirmed` whatever the method. Without it, the default set in **Impostazioni > Pagamenti > Gateway di pagamento > Contabilizzazione automatica** applies.
 
 Do not write code that reasons per provider: read the `status` from your server and, if it is `Paid`, confirm it — or create the Payment with `isAutoConfirm: true` if you have nothing to check between the authorization and the capture. A `Paid` Payment left alone is money you have not collected.

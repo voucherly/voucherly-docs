@@ -34,7 +34,7 @@ Separating authorization and capture is useful when additional actions are neede
 Please look at [Separate authorization and confirm](/guides/online-payments/hosted-checkout#separate-authorization-and-confirm) for more technical information.
 
 :::warning
-Meal voucher Payment gateways do not support two-step process, and neither do the wallet, the prepaid quota and a few providers — Satispay, SumUp and Adyen among them. Their transactions are captured at checkout, so a Payment paid only with them is `Confirmed` as soon as the customer pays, while a Payment paid with a card or PayPal stays `Paid` until you confirm it. Your integration should read the `status` of the Payment rather than assume it from the payment method.
+Meal voucher Payment gateways do not support two-step process, and neither do the wallet, the prepaid quota, Satispay chosen among the meal vouchers and a few providers — SumUp and Adyen among them. Their transactions are captured at checkout, so a Payment paid only with them is `Confirmed` as soon as the customer pays, while a Payment paid with a card, PayPal or Satispay chosen among the digital payments stays `Paid` until you confirm it. Your integration should read the `status` of the Payment rather than assume it from the payment method.
 :::
 
 :::tip

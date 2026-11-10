@@ -35,7 +35,7 @@ Separare l'autorizzazione e la cattura è utile quando sono necessarie azioni ag
 Consulta [Separare autorizzazione e conferma](/guide/pagamenti-online/checkout-ospitato#separare-autorizzazione-e-conferma) per informazioni più tecniche.
 
 :::warning
-I gateway di pagamento dei buoni pasto non supportano il processo a due fasi, e nemmeno il wallet, la quota prepagata e alcuni provider — tra cui Satispay, SumUp e Adyen. Le loro transazioni vengono catturate al checkout, quindi un Payment pagato solo con questi è `Confirmed` appena il cliente paga, mentre un Payment pagato con carta o PayPal resta `Paid` finché non lo confermi. La tua integrazione dovrebbe leggere lo `status` del Payment invece di dedurlo dal metodo di pagamento.
+I gateway di pagamento dei buoni pasto non supportano il processo a due fasi, e nemmeno il wallet, la quota prepagata, Satispay scelto tra i buoni pasto e alcuni provider — tra cui SumUp e Adyen. Le loro transazioni vengono catturate al checkout, quindi un Payment pagato solo con questi è `Confirmed` appena il cliente paga, mentre un Payment pagato con carta, PayPal o Satispay scelto tra i pagamenti digitali resta `Paid` finché non lo confermi. La tua integrazione dovrebbe leggere lo `status` del Payment invece di dedurlo dal metodo di pagamento.
 :::
 
 :::tip

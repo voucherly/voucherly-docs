@@ -211,8 +211,8 @@ La tua pagina viene comunque lasciata quando un metodo di pagamento lo richiede:
 
 Un Payment passa da `Requested` a `Paid` quando il cliente completa il checkout, e a `Confirmed` quando i fondi vengono catturati — il [ciclo di vita dei pagamenti](/guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti) descrive ogni stato. Quale dei due trovi sulla tua pagina di esito, o dopo `onPaymentComplete`, dipende dal metodo di pagamento e dal Payment:
 
-- Buoni pasto, credito personale, quota prepagata e alcuni provider — tra cui Satispay, SumUp e Adyen — catturano al checkout: il Payment arriva direttamente in `Confirmed`.
-- Carte, PayPal e gli altri provider a due fasi si limitano ad autorizzare: il Payment resta `Paid` finché non chiami [Confirm a Payment](/api/webapi/confirm-payment), o finché l'autorizzazione non scade e i fondi vengono rilasciati.
+- Buoni pasto, credito personale, quota prepagata, Satispay scelto tra i buoni pasto e alcuni provider — tra cui SumUp e Adyen — catturano al checkout: il Payment arriva direttamente in `Confirmed`.
+- Carte, PayPal, Satispay scelto tra i pagamenti digitali e gli altri provider a due fasi si limitano ad autorizzare: il Payment resta `Paid` finché non chiami [Confirm a Payment](/api/webapi/confirm-payment), o finché l'autorizzazione non scade e i fondi vengono rilasciati.
 - Con `isAutoConfirm: true` in [Create a Payment](/api/webapi/create-payment), Voucherly conferma ogni transazione appena il cliente paga, e il Payment è `Confirmed` qualunque sia il metodo. Senza, vale il default impostato in **Impostazioni > Pagamenti > Gateway di pagamento > Contabilizzazione automatica**.
 
 Non scrivere codice che ragiona per provider: leggi lo `status` dal tuo server e, se è `Paid`, confermalo — oppure crea il Payment con `isAutoConfirm: true` se non hai nulla da verificare tra l'autorizzazione e la cattura. Un Payment lasciato in `Paid` è denaro che non hai incassato.
