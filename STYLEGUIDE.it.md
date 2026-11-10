@@ -117,4 +117,4 @@ Checklist rapida a ogni modifica:
 1. Il file IT esiste allo stesso path? Ha gli stessi heading e lo stesso numero di sezioni?
 2. Frontmatter tradotto (title/description/keywords) e `slug` IT presente?
 3. `import`, componenti, nomi immagine e ancore identici all'EN?
-4. `yarn build` passa (link interni validi)?
+4. `pnpm build` passa (link interni validi)?

@@ -6,12 +6,12 @@ Sito di documentazione Voucherly (Docusaurus 3, docs-only mode, bilingue EN/IT).
 
 ## Comandi
 
-- **Package manager: `yarn`** (`package-lock.json` è in `.gitignore`; non usare npm). `yarn.lock` è tracciato: CI e Netlify installano con `--frozen-lockfile`, quindi va committato insieme a ogni cambio di dipendenze. Versione di Node pinnata in `.nvmrc` (22), letta sia dalla CI sia da Netlify.
-- `yarn start` — dev server. Serve **solo il locale di default (en)**; per vedere l'italiano: `yarn start --locale it`.
-- `yarn build` — build di tutti i locali. È il gate di qualità: `onBrokenLinks: 'throw'` e `onBrokenMarkdownLinks: 'throw'`, quindi **un link interno rotto fa fallire il build**. Eseguirlo dopo modifiche a link, slug o rinomine di file.
-- `yarn typecheck` — `tsc` sui file TS/TSX.
-- Rigenerare la reference API: `yarn docusaurus clean-api-docs webapi; yarn docusaurus gen-api-docs webapi`.
-- Il build di produzione è `yarn build && node postbuild.mjs` (definito in `netlify.toml`): `postbuild.mjs` sintetizza `robots.txt`, l'indice `sitemap.xml` e la 404 alla radice del dominio, che Docusaurus lascia vuota per via dei baseUrl per-locale.
+- **Package manager: `pnpm`**, alla versione fissata da `packageManager` in `package.json` (non usare npm né yarn: i loro lockfile sono in `.gitignore`). `pnpm-lock.yaml` è tracciato: CI e Netlify installano con `--frozen-lockfile`, quindi va committato insieme a ogni cambio di dipendenze. Una dipendenza nuova con uno script di installazione va autorizzata in `onlyBuiltDependencies` di `pnpm-workspace.yaml`, altrimenti pnpm non esegue lo script. Versione di Node pinnata in `.nvmrc` (22), letta sia dalla CI sia da Netlify.
+- `pnpm start` — dev server. Serve **solo il locale di default (en)**; per vedere l'italiano: `pnpm start --locale it`.
+- `pnpm build` — build di tutti i locali. È il gate di qualità: `onBrokenLinks: 'throw'` e `onBrokenMarkdownLinks: 'throw'`, quindi **un link interno rotto fa fallire il build**. Eseguirlo dopo modifiche a link, slug o rinomine di file.
+- `pnpm typecheck` — `tsc` sui file TS/TSX.
+- Rigenerare la reference API: `pnpm docusaurus clean-api-docs webapi; pnpm docusaurus gen-api-docs webapi`.
+- Il build di produzione è `pnpm build && node postbuild.mjs` (definito in `netlify.toml`): `postbuild.mjs` sintetizza `robots.txt`, l'indice `sitemap.xml` e la 404 alla radice del dominio, che Docusaurus lascia vuota per via dei baseUrl per-locale.
 
 ## File generati — non modificarli a mano
 
@@ -42,6 +42,6 @@ Altri vincoli sui link:
 ## Git e deploy
 
 - **`main` è protetto: nessun push diretto.** Ogni modifica entra via branch + PR su `github.com/voucherly/voucherly-docs`. Messaggi di commit brevi, in inglese, all'imperativo (`Add POS-RT connection`).
-- Ogni PR verso `main` fa girare la GitHub Action `build` (`yarn build && node postbuild.mjs`, lo stesso comando di `netlify.toml`): è un required status check, quindi un link rotto blocca il merge. In parallelo Netlify pubblica un deploy preview della PR.
+- Ogni PR verso `main` fa girare la GitHub Action `build` (`pnpm build && node postbuild.mjs`, lo stesso comando di `netlify.toml`): è un required status check, quindi un link rotto blocca il merge. In parallelo Netlify pubblica un deploy preview della PR.
 - **È il merge su `main` a pubblicare in produzione**, non il push: Netlify builda e deploya `docs.voucherly.it`.
 - Dopo un cambio di slug, forzare il re-crawl di Algolia DocSearch per riallineare l'indice.
