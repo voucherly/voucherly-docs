@@ -2392,7 +2392,7 @@ components:
         registered:
           type: string
           format: date-time
-          description: The date and time the Customer registered on your website, in UTC, as you declared it with `registeredAt`. Null for the Customers not created through this API.
+          description: The date and time the Customer registered on your website, in UTC, as you declared it with `registeredAt` when you created or updated it. Null for the Customers not created through this API, until an update declares it.
           nullable: true
           readOnly: true
         origin:
@@ -2653,6 +2653,11 @@ components:
           maxItems: 20
           items:
             $ref: '#/components/schemas/Customers.ConsentRequest'
+          nullable: true
+        registeredAt:
+          type: string
+          format: date-time
+          description: When the Customer registered on your website, to correct a registration recorded later than it happened, such as the day you first synchronized your existing customers. Only a date earlier than the current one is taken, and it starts no Marketing automation. It can't be in the future. Omit it or pass `null` to leave the registration as it is.
           nullable: true
       additionalProperties: false
     Customers.Consent:
