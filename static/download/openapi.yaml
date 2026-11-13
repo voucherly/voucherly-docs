@@ -2307,6 +2307,12 @@ components:
             $ref: '#/components/schemas/CompanyAddressForExternalApi'
           nullable: true
           readOnly: true
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/Metadata'
+          description: The fields of the Company, as you set them. A key the merchant declared in the Dashboard has the type declared there, any other key is text, and segments can filter Customers by the fields of their Company.
+          example:
+            b2b: 'true'
       additionalProperties: false
     CreateCompanyRequest:
       type: object
@@ -2330,6 +2336,12 @@ components:
           description: The ID of the Company in your own system. Another Company with the same reference answers 409.
           nullable: true
           maxLength: 100
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/Metadata'
+          description: The fields of the Company, with the limits of the Customer. Two keys that differ only in case are one key, and answer 400.
+          example:
+            b2b: 'true'
       additionalProperties: false
     UpdateCompanyRequest:
       type: object
@@ -2351,6 +2363,12 @@ components:
           description: The ID of the Company in your own system. Null removes it. Another Company with the same reference answers 409.
           nullable: true
           maxLength: 100
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/Metadata'
+          description: Only the keys passed change, and the others stay. An empty value removes its key, and null removes every key. The Company keeps at most 10 keys once merged, and two keys that differ only in case are one key.
+          example:
+            b2b: 'true'
       additionalProperties: false
     Customer:
       x-displayName: Customer
@@ -2374,7 +2392,7 @@ components:
         registered:
           type: string
           format: date-time
-          description: The date and time the Customer registered on your website, in UTC, as you declared it with `registeredAt`. Null for the Customers not created through this API.
+          description: The date and time the Customer registered on your website, in UTC, as you declared it with `registeredAt` when you created or updated it. Null for the Customers not created through this API, until an update declares it.
           nullable: true
           readOnly: true
         origin:
@@ -2635,6 +2653,11 @@ components:
           maxItems: 20
           items:
             $ref: '#/components/schemas/Customers.ConsentRequest'
+          nullable: true
+        registeredAt:
+          type: string
+          format: date-time
+          description: When the Customer registered on your website, to correct a registration recorded later than it happened, such as the day you first synchronized your existing customers. Only a date earlier than the current one is taken, and it starts no Marketing automation. It can't be in the future. Omit it or pass `null` to leave the registration as it is.
           nullable: true
       additionalProperties: false
     Customers.Consent:
