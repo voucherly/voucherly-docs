@@ -1,0 +1,1 @@
+{"parameters":[{"name":"idOrCode","in":"path","required":true,"description":"Here always the ID of the Company in your own system, its `referenceId`, from 1 to 100 characters, without spaces at either end and unique per environment. It is never read as a Voucherly ID or a join code.","schema":{"type":"string","minLength":1,"maxLength":100}}]}
