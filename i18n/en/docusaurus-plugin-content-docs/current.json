@@ -342,5 +342,9 @@
   "sidebar.apiSidebar.doc.Volumes": {
     "message": "Volumes",
     "description": "The label for the doc item 'Volumes' in sidebar 'apiSidebar', linking to the doc api/webapi/volumes-report"
+  },
+  "sidebar.guidesSidebar.category.Marketing": {
+    "message": "Marketing",
+    "description": "The label for category 'Marketing' in sidebar 'guidesSidebar'"
   }
 }
