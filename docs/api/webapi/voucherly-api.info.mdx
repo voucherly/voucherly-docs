@@ -47,6 +47,8 @@ Your API keys carry many privileges, so be sure to keep them secure! Do not shar
 
 Publishable keys (`pk_sand_`, `pk_live_`) are meant for client-side code and are **not** accepted by this API: every request authenticated with one is rejected with `401 Unauthorized` and the message "This API call cannot be made with a publishable API key. Use your secret key from your server."
 
+Live keys work only while the merchant account is active. When it is not, for example while it is suspended for an unpaid Voucherly invoice, every request made with a live key is rejected with `401 Unauthorized` until the account is active again. Sandbox keys keep working.
+
 Provide your API key as the "Voucherly-API-Key" header. For example:
 ```cURL []
 -H  "Voucherly-API-Key: sk_sand_BYsZDnaUWfVKGwHFvLop0dc9Fp1mE8py2Mtgm5aU6IrtCiuJg9s4747J"

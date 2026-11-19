@@ -46,6 +46,12 @@ const sidebar: SidebarsConfig = {
           label: "Update a Company",
           className: "api-method post",
         },
+        {
+          type: "doc",
+          id: "api/webapi/upsert-company",
+          label: "Create or update a Company by your own ID",
+          className: "api-method put",
+        },
       ],
     },
     {
