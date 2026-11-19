@@ -38,6 +38,7 @@ export const SLUG_MAP: [string, string][] = [
   ['guides/products/electronic-receipt/pos-rt-connection/', 'guide/prodotti/scontrino-elettronico/collegamento-pos-rt/'],
   ['guides/products/pay-at-table/authentication-sso/', 'guide/prodotti/pagamento-al-tavolo/autenticazione-sso/'],
   ['guides/products/pay-at-table/upselling/', 'guide/prodotti/pagamento-al-tavolo/upselling/'],
+  ['guides/products/marketing/plugin/', 'guide/prodotti/marketing/plugin/'],
   ['guides/about/resources/payments-lifecycle/', 'guide/informazioni/risorse/ciclo-di-vita-dei-pagamenti/'],
   ['guides/about/resources/payment-gateways/', 'guide/informazioni/risorse/gateway-di-pagamento/'],
   ['guides/about/resources/payment-gateways/meal-vouchers/', 'guide/informazioni/risorse/gateway-di-pagamento/buoni-pasto/'],
